@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f3f7960-80fc-4977-ab1a-fd124b744dd2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Inf/Lab1/inf_lab1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab1.docx" beforeDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-=======
->>>>>>> 7b800d6f631a0961a52559e84a101f7a84b88f6e
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/2D array/2D array/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../musor/py.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../lab1.iml" beforeDir="false" />
+    <list default="true" id="2ca00c62-1d64-419f-8cbb-ea86c39da89e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,59 +19,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2mIUfAv09Wf1NZoBtkKNU82ncjd" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2mhil3mZhZlHTZqbzw4Szv26bpr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/ITMO/Labs/Prog/Lab1/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "/Users/ipka23/Desktop/ITMO-REPO/Labs/Prog/Lab1/src/Main.java"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Lab1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5f3f7960-80fc-4977-ab1a-fd124b744dd2" name="Changes" comment="" />
-      <created>1726763685445</created>
+      <changelist id="2ca00c62-1d64-419f-8cbb-ea86c39da89e" name="Changes" comment="" />
+      <created>1727535355272</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1726763685445</updated>
+      <updated>1727535355272</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
