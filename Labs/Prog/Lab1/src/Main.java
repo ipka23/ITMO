@@ -3,11 +3,11 @@ public class Main
 {
     static void printRes(double[][] z1)
     {
-        for (int i = 0; i < z1.length; i++)
+        for (int line = 0; line < z1.length; line++)
         {
-            for (int j = 0; j < z1[i].length; j++)
+            for (int row = 0; row < z1[line].length; row++)
             {
-                System.out.printf("%7.2f", z1[i][j]);
+                System.out.printf("%7.2f", z1[line][row]);
             }
             System.out.println();
         }
