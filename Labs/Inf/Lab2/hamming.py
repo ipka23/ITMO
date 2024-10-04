@@ -18,13 +18,12 @@ for i in range(0, 8):
     if S(s1, s2, s3) == 0:
         print('Сообщение передано без ошибок: ', message)
         print('Информационное сообщение:', message[2] + message[4:])
-        break
-    if S(s1, s2, s3) == i and message[i-1] == '1':
+    elif S(s1, s2, s3) == i and message[i-1] == '1':
         message = message[:i-1] + '0' + message[i:]
         print('Ошибка в бите', S(s1, s2, s3))
         print('Исправленное сообщение:', message)
         print('Информационное сообщение:', message[2] + message[4:])
-    if S(s1, s2, s3) == i and message[i-1] == '0':
+    elif S(s1, s2, s3) == i and message[i-1] == '0':
         message = message[:i-1] + '1' + message[i:]
         print('Ошибка в бите', S(s1, s2, s3))
         print('Исправленное сообщение:', message)
