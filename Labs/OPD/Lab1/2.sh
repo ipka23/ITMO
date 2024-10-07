@@ -1,7 +1,8 @@
-chmod u+rwx-w clamper4
-chmod g+rwx clamper4 
-chmod o+rwx clamper4
-cd clamper4
+cd lab0
+chmod u+rwx-w clamperl4
+chmod g+rwx clamperl4 
+chmod o+rwx clamperl4
+cd clamperl4
 chmod u+rw-x stoutland
 chmod g+w-r-x stoutland
 chmod o+w-r-x stoutland
