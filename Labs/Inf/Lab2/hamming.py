@@ -1,4 +1,6 @@
 message = input('Исходное сообщение: ')
+while len(message) < 7:
+    message += '0'
 
 
 def xor(x1, x2, x3, x4):
@@ -15,9 +17,13 @@ s3 = xor(message[3], message[4], message[5], message[6])
 
 
 for i in range(0, 8):
+    if len(message) > 7:
+        print('!error!')
+        break
     if S(s1, s2, s3) == 0:
         print('Сообщение передано без ошибок: ', message)
         print('Информационное сообщение:', message[2] + message[4:])
+        break
     elif S(s1, s2, s3) == i and message[i-1] == '1':
         message = message[:i-1] + '0' + message[i:]
         print('Ошибка в бите', S(s1, s2, s3))
@@ -28,3 +34,7 @@ for i in range(0, 8):
         print('Ошибка в бите', S(s1, s2, s3))
         print('Исправленное сообщение:', message)
         print('Информационное сообщение:', message[2] + message[4:])
+
+
+
+
