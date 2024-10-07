@@ -1,7 +1,7 @@
 mkdir lab0
 cd lab0 
-mkdir -p clamper4/vileplume clamper4/poochyena
-cd clamper4
+mkdir -p clamperl4/vileplume clamperl4/poochyena
+cd clamperl4
 echo "satk=5 sdef=9 spd=8" > stoutland
 cd ..
 echo "Возможности Overland=4\nSurface=2 Jump=2 Power=1 Intelligence=5\nTelekinetic=0" > duosion6 
