@@ -10,6 +10,6 @@ public class BrutalSwing extends PhysicalMove {
     }
     @Override
     public String describe() {
-    return "использует Brutal Swing";
+        return "использует Brutal Swing";
     }
 }
