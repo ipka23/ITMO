@@ -1,8 +1,8 @@
 package moves;
 
-import ru.ifmo.se.pokemon.PhysicalMove;
-import ru.ifmo.se.pokemon.Pokemon;
-import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.Effect;
+
 
 public class WakeUpSlap extends PhysicalMove {
     public WakeUpSlap() {
@@ -10,7 +10,14 @@ public class WakeUpSlap extends PhysicalMove {
     }
 
     @Override
-    protected void applyOppEffects(Pokemon p) {
-
+    protected void applyOppEffects(Pokemon pokemon) {
+        Status pokemonCondition = pokemon.getCondition();
+        if (pokemonCondition == Status.SLEEP){
+            pokemon.setMod(Stat.ATTACK, 2);
+        }
+    }
+    @Override
+    protected String describe() {
+        return "использует Wake-Up Slap";
     }
 }
