@@ -38,10 +38,10 @@ public class Main
             i++;
         }
         i = 0;
-        while (i < z1.length)
+        do
         {
             j = 0;
-            while (j < z1[i].length)
+            do
             {
                 float x1 = x[j];
                 z1[i][j] = switch ((short) z[i])
@@ -60,9 +60,9 @@ public class Main
 //                    default -> z1[i][j] = Math.log10(Math.sqrt((Math.acos((Math.cos(x1))))));
 //                }
                 j++;
-            }
+            } while (j < z1[i].length);
             i++;
-        }
+        } while ((i < z1.length));
         printRes(z1);
     }
 }
