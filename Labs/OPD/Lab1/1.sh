@@ -21,4 +21,3 @@ echo "Возможности\nOverland=3 Surface=2 Sky=8 Jump=2 Power1=0 Intelli
 echo "Способности Growl Absorb Nature Power Fake Out\nFury Swipes Water Sport Bubblebeam Zen Headbutt Uproar Hydro\nPump" > lombre
 cd ..
 echo "Возможности Overland=5 Surface=4 Jump=1 Power=2\nIntelligence=4 Inflatable=0" > trubbish4
-
