@@ -1,4 +1,7 @@
 package moves;
 
-public class Confide {
+public class Confide extends  {
+    public Confide {
+
+    }
 }
