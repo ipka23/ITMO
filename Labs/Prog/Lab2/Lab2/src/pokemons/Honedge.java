@@ -2,6 +2,7 @@ package pokemons;
 
 import moves.BrutalSwing;
 import moves.DoubleTeam;
+import ru.ifmo.se.pokemon.Move;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 

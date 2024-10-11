@@ -12,7 +12,7 @@ public class Blizzard extends SpecialMove {
         if (Math.random() <= 0.1){
             pokemon.setCondition(effect);
         }
-//        pokemon.setCondition(new Effect().chance(0.1).condition(Status.FREEZE));
+        pokemon.setCondition(new Effect().chance(0.1).condition(Status.FREEZE));
 //
 //        if (Math.random() <= 0.1){
 //            Effect.freeze(pokemon);
