@@ -13,8 +13,8 @@ public class MetalSound extends StatusMove {
 
    @Override
    protected void applyOppEffects(Pokemon pokemon){
-       for (int i = 0; i < 3; i++) {
-           pokemon.setMod(Stat.SPECIAL_DEFENSE, -2);
+       for (int i = -2; i > -7; i-=2) {
+           pokemon.setMod(Stat.SPECIAL_DEFENSE, i);
        }
    }
 

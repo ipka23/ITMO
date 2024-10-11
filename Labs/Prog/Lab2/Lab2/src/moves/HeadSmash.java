@@ -9,12 +9,8 @@ public class HeadSmash extends PhysicalMove {
 
 
     @Override
-    protected void applyOppDamage(Pokemon defendingPokemon, double damage){
-        defendingPokemon.setMod(Stat.HP, (int) Math.round(damage));
-    }
-    @Override
-    protected void applySelfDamage(Pokemon attackingPokemon, double damage){
-        attackingPokemon.setMod(Stat.HP, ((int) (0.5 * (Math.round(damage)))));
+    protected void applySelfDamage(Pokemon pokemon, double damage){
+        pokemon.setMod(Stat.HP, (int) (0.5 * damage));
     }
     @Override
     public String describe(){
