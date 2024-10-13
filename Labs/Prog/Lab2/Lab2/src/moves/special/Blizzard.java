@@ -8,15 +8,8 @@ public class Blizzard extends SpecialMove {
     }
     @Override
     protected void applyOppEffects(Pokemon pokemon){
-        Effect effect = new Effect().condition(Status.FREEZE);
-        if (Math.random() <= 0.1){
-            pokemon.setCondition(effect);
-        }
-        pokemon.setCondition(new Effect().chance(0.1).condition(Status.FREEZE));
-//
-//        if (Math.random() <= 0.1){
-//            Effect.freeze(pokemon);
-//        }
+        Effect freeze = new Effect().chance(0.1).condition(Status.FREEZE);
+        pokemon.addEffect(freeze);
     }
 
     @Override

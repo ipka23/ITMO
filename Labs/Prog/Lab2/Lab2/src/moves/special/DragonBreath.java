@@ -9,7 +9,7 @@ public class DragonBreath extends SpecialMove {
     @Override
     protected void applyOppEffects(Pokemon pokemon){
         Effect paralyze = new Effect().chance(0.3).condition(Status.PARALYZE);
-        pokemon.setCondition(paralyze);
+        pokemon.addEffect(paralyze);
     }
     @Override
     public String describe(){

@@ -9,7 +9,7 @@ public class DreamEater extends SpecialMove {
 
     @Override
     protected void applySelfDamage(Pokemon attackingPokemon, double damage){
-        attackingPokemon.setMod(Stat.HP, -((int) Math.round(damage)));
+        attackingPokemon.setMod(Stat.HP, -((int) Math.round(damage * 0.5)));
     }
     @Override
     protected void applyOppDamage(Pokemon defendingPokemon, double damage){
