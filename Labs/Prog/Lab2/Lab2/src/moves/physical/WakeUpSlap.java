@@ -11,9 +11,8 @@ public class WakeUpSlap extends PhysicalMove {
 
     @Override
     protected void applyOppEffects(Pokemon pokemon) {
-        Status pokemonCondition = pokemon.getCondition();
         Effect normalCondition = new Effect().condition(Status.NORMAL);
-        if (pokemonCondition == Status.SLEEP){
+        if (pokemon.getCondition() == Status.SLEEP){
             pokemon.setMod(Stat.ATTACK, 2);
             pokemon.setCondition(normalCondition);
         }
