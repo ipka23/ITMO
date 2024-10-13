@@ -1,8 +1,7 @@
 package pokemons;
 
-import moves.BrutalSwing;
-import moves.DoubleTeam;
-import ru.ifmo.se.pokemon.Move;
+import moves.physical.BrutalSwing;
+import moves.status.DoubleTeam;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
