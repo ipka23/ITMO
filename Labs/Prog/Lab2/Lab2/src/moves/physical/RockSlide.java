@@ -1,5 +1,4 @@
-package moves;
-import java.lang.Math.*;
+package moves.physical;
 
 import ru.ifmo.se.pokemon.*;
 

@@ -1,4 +1,4 @@
-package moves;
+package moves.status;
 
 import ru.ifmo.se.pokemon.*;
 
@@ -7,12 +7,12 @@ public class Confide extends StatusMove {
         super(Type.NORMAL, 0, 0);
     }
 
+
     @Override
     protected void applyOppEffects(Pokemon pokemon){
-        for (int i = -1; i > -6; i--) {
-            pokemon.setMod(Stat.SPECIAL_ATTACK, i);
-        }
+        pokemon.setMod(Stat.SPECIAL_ATTACK, -1);
     }
+
     @Override
     public String describe(){
         return "использует Confide";

@@ -1,17 +1,23 @@
-import pokemons.Doublade;
-import pokemons.Honedge;
-import pokemons.Miltank;
+import pokemons.*;
 import ru.ifmo.se.pokemon.Battle;
 
 public class Main {
     public static void main(String[] args) {
         Battle b = new Battle();
-        Honedge p1 = new Honedge("Мазурова", 1);
-        Miltank p2 = new Miltank("Молочный танк", 1);
-        Doublade p3 = new Doublade("Шпага", 1);
+        Miltank p1 = new Miltank("Мазурова", 10);
+        Swablu p2 = new Swablu("Биба", 10);
+        Altaria p3 = new Altaria("Боба", 10);
+        Honedge p4 = new Honedge("Ножик", 10);
+        Doublade p5 = new Doublade("Нож", 10);
+        AegislashBlade p6 = new AegislashBlade("Ножище", 10);
         b.addAlly(p1);
-        b.addFoe(p2);
+        b.addAlly(p2);
         b.addAlly(p3);
+        b.addFoe(p4);
+        b.addFoe(p5);
+        b.addFoe(p6);
         b.go();
+
+
     }
 }

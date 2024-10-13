@@ -1,9 +1,9 @@
 package pokemons;
 
-import moves.Blizzard;
-import moves.DoubleTeam;
-import moves.RockSlide;
-import moves.WakeUpSlap;
+import moves.special.Blizzard;
+import moves.status.DoubleTeam;
+import moves.physical.RockSlide;
+import moves.physical.WakeUpSlap;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
