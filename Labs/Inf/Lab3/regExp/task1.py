@@ -1,6 +1,5 @@
 import re
 
-
 def count_regex(test):
     l = re.findall(r"X-\\", test)
     return print(len(l))
