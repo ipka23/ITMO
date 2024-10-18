@@ -12,7 +12,37 @@
 ВТ лучшая кафедра в ИТМО
 '''
 import re
-text = "А ты знал, что ВТ - лучшая кафедра в ИТМО?"
+test1 = "А ты знал, что ВТ - лучшая кафедра в ИТМО?"
+test2 = "Кафедра ! ВТ --- ВТ & ВТ ? АЛО ИТМО"
+test3 = "ИВТ ВТ кафедра - НЕ ИТМОС      A      ИТМО"
+test4 = "ВТ раз два три четыре пять шесть семь ИТМО"
+test5 = "ВТ ИТМО"
 
-regexp = re.sub(r'.*(ВТ.*?)(.* ){1,4}(.*ИТМО).*', r"\1\2\3", text) # .*(?=ВТ.*ИТМО)|(?<=ИТМО).*
-print(regexp)
+
+def vt_best(text):
+    if re.fullmatch(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', text):
+        regexp = re.sub(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', r'\2 \3 \4 \5 \6 \7', text)
+        print(regexp)
+    elif re.fullmatch(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', text):
+        regexp = re.sub(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', r'\2 \3 \4 \5 \6', text)
+        print(regexp)
+    elif re.fullmatch(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', text):
+        regexp = re.sub(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', r'\2 \3 \4 \5', text)
+        print(regexp)
+
+    elif re.fullmatch(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', text):
+        regexp = re.sub(r'.*((?<!ВТ)(\bВТ\b))\W+(\w+)\W+(\bИТМО\b(?!ИТМО)).*', r'\2 \3 \4', text)
+        print(regexp)
+    else:
+        print("The text does not match!")
+
+
+def test():
+    vt_best(test1)
+    vt_best(test2)
+    vt_best(test3)
+    vt_best(test4)
+    vt_best(test5)
+
+
+test()
