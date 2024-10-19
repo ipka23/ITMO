@@ -1,8 +1,8 @@
 import re
 
 def count_regex(test):
-    l = re.findall(r"X-\\", test)
-    return print(len(l), l)
+    match = re.findall(r"X-\\", test)
+    return print(len(match), match)
 
 
 for i in range(1,6):
