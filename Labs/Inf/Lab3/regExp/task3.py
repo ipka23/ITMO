@@ -42,17 +42,21 @@ def cron(s):
     month = "jan(/[0-9]+)?|feb(/[0-9]+)?|mar(/[0-9]+)?|apr(/[0-9]+)?|may(/[0-9]+)?|jun(/[0-9]+)?|jul(/[0-9]+)?|aug(/[0-9]+)?|sep(/[0-9]+)?|oct(/[0-9]+)?|nov(/[0-9]+)?|dec(/[0-9]+)?"
     weekday = "sun(/[0-9]+)?|mon(/[0-9]+)?|tue(/[0-9]+)?|wed(/[0-9]+)?|thu(/[0-9]+)?|fri(/[0-9]+)?|sat(/[0-9]+)?"
     pattern = fr'^([0-9](/[0-9]+)?|[1-5][0-9](/[0-9]+)?|(([0-9]\b|[1-5][0-9])[-]([0-9]\b|[1-5][0-9]))?|(([0-9]\b|[1-5][0-9])(?:,([0-9]\b|[1-5][0-9]))+)?|\*(/[0-9]+)?)\s([0-9](/[0-9]+)?|1[0-9](/[0-9]+)?|2[0-3](/[0-9]+)?|(([0-9]|1[0-9]|2[0-3])[-]([0-9]\b|1[0-9]|2[0-3]))?|(([0-9]|1[0-9]|2[0-3])(?:,([0-9]\b|1[0-9]|2[0-3]))+)?|\*(/[0-9]+)?)\s([1-9](/[0-9]+)?|1[0-9](/[0-9]+)?|2[0-9](/[0-9]+)?|3[0-1](/[0-9]+)?|(([1-9]|1[0-9]|2[0-9]|3[0-1])[-]([1-9]\b|1[0-9]|2[0-9]|3[0-1]))?|([1-9]|1[0-9]|2[0-2]|L)W|(L-([1-9]\b|1[0-9]|2[0-2]))?|(([1-9]\b|1[0-9]|2[0-9]|3[0-1])(?:,([1-9]\b|1[0-9]|2[0-9]|3[0-1]))+)?|\*(/[0-9]+)?|\?(/[0-9]+)?)\s([1-9](/[0-9]+)?|1[0-2](/[0-9]+)?|{month}|(([1-9]|1[0-2])[-]([1-9]\b|1[0-2]))?|(({month})[-]({month}))?|(([1-9]|1[0-2])(?:,([1-9]\b|1[0-2]))+)?|(({month})(?:,({month}))+)?|\*(/[0-9]+)?)\s([0-6](/[0-9]+)?|{weekday}|([0-6][,-][0-6])?|(({weekday})[-]({weekday}))?|(([0-6]#[1-4])|(({weekday})#[1-4]))?|(([0-6]L)|(({weekday})L))?|(([0-6])(?:,([0-6]))+)?|(({weekday})(?:,({weekday}))+)?|\*(/[0-9]+)?|\?(/[0-9]+)?)$'
+    month30 = ["apr", "jun", "sen", "nov", "4", "6", "9", "11"]
+    after28 = ["29", "30", "31"]
+    feb = ["feb", "2"]
+    if ((s.split()[3][:3] in feb) + (s.split()[3][-3:] in feb) + (s.split()[3][0] in feb) + (s.split()[3][-1] in feb)) >= 1 \
+            and ((s.split()[2][:2] in after28) + (s.split()[2][-2:] in after28)) >= 1 \
+            or ((s.split()[3][:3] in month30) + (s.split()[3][-3:] in month30)
+                + (s.split()[3][:2] in month30) + (s.split()[3][-2:] in month30)
+                + (s.split()[3][0] in month30) + (s.split()[3][-1] in month30)) >= 1 \
+                and ((s.split()[2][:2] == "31") + (s.split()[2][-2:] == "31")) >= 1:
+        return print("There is no such date in this month!")
     if s == "* * * * *":
-        return print("incorrect cron expression!")
-    elif (s.split()[3][:3] == "feb" + s.split()[2][:2] == "29" + s.split()[3][:3] == "feb" + s.split()[2][:2] == "30") == 2\
-            or (s.split()[3][:3] == "feb" and s.split()[2][:2] == "31") \
-        or (s.split()[3][:3] == "apr" and s.split()[2][:2] == "31") or (s.split()[3][:3] == "jun" and s.split()[2][:2] == "31") \
-            or (s.split()[3][:3] == "sep" and s.split()[2][:2] == "31") or (s.split()[3][:3] == "nov" and s.split()[2][:2] == "31") \ #сделать тоже самое с номерами месяцев (feb = 2)
-        or
-
-            elif re.fullmatch(pattern, s, flags=re.IGNORECASE):
-        return print(f"right format!\ncron expression: {s}")
-    return print("incorrect format!")
+        return print("Incorrect cron expression!")
+    if re.fullmatch(pattern, s, flags=re.IGNORECASE):
+        return print(f"Right format!\ncron expression: {s}")
+    return print("Incorrect format!")
 
 
 def test1():
@@ -101,13 +105,13 @@ def test8():
 
 def test9():
     print("TEST №9:")
-    s = "0 0 25 DEC ?"
+    s = "0 0 31 11 ?"
     cron(s)
 
 
 def test10():
     print("TEST №10:")
-    s = "0 0 ? * */2"
+    s = "0 0 29 feb */2"
     cron(s)
 
 
