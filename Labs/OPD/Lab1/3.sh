@@ -25,7 +25,12 @@ cd taillow0
 chmod -x beartic
 cd .. # в lab0
 ln -s graveler2 Copy_48
+chmod u+w taillow0
 ln trubbish4 taillow0/beartictrubbish
+chmod u-w taillow0
 cp excadrill7 clamperl4/poochyena
+chmod u+w taillow0
 cat duosion6 > taillow0/chimechoduosion
+chmod u-w taillow0
 cd ..
+

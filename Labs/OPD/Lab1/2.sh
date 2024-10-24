@@ -1,6 +1,6 @@
 cd lab0
 chmod u+rwx-w clamperl4
-chmod g+rwx clamperl4 
+chmod g+rwx clamperl4
 chmod o+rwx clamperl4
 cd clamperl4
 chmod u+rw-x stoutland
@@ -18,9 +18,8 @@ cd ..
 chmod 404 duosion6
 chmod a= excadrill7
 chmod a+r excadrill7
-chmod a= graveler2
 chmod u+rwx graveler2
-chmod g+wx graveler2
+chmod g-r+wx graveler2
 chmod o+rwx graveler2
 cd graveler2
 chmod u+rw-x rapidash
@@ -31,14 +30,3 @@ chmod g+r staraptor
 chmod o+r staraptor
 chmod 046 servine
 cd ..
-chmod 537 taillow0
-cd taillow0
-chmod 006 blastoise
-chmod 400 bronzong
-chmod 440 beartic
-chmod u= chimecho
-chmod g= chimecho
-chmod o+rw chimecho
-chmod 640 lombre
-cd ..
-chmod 440 trubbish4
