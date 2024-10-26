@@ -21,11 +21,11 @@ public class MetalSound extends StatusMove {
         }
     }
 
-    @Override
-    protected double calcSameTypeAttackBonus(Pokemon att, Pokemon def){
-        Effect attackBonus = new Effect().stat(Stat.ATTACK, 1);
-        att.addEffect(attackBonus);
-    }
+//    @Override
+//    protected double calcSameTypeAttackBonus(Pokemon att, Pokemon def){
+//        Effect attackBonus = new Effect().stat(Stat.ATTACK, 1);
+//        att.addEffect(attackBonus);
+//    }
     @Override
     public String describe() {
         return "использует Metal Sound";
