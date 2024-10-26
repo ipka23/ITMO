@@ -4,6 +4,7 @@ import moves.physical.FuryAttack;
 import moves.special.DreamEater;
 import moves.status.Confide;
 import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Stat;
 import ru.ifmo.se.pokemon.Type;
 
 public class Swablu extends Pokemon {
@@ -22,6 +23,5 @@ public class Swablu extends Pokemon {
             i = 5; // 87.5% - 100%
         }
         setMove(new Confide(), new DreamEater(), new FuryAttack(i));
-
     }
 }

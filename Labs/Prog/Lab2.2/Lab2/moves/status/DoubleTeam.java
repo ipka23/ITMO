@@ -11,15 +11,17 @@ public class DoubleTeam extends StatusMove {
     @Override
     protected void applySelfEffects(Pokemon pokemon){
         if (evasionModificator <= 6) {
-            Effect evasion = new Effect().stat(Stat.EVASION, 1);
-            pokemon.addEffect(evasion);
+            pokemon.setMod(Stat.EVASION, 0);
             evasionModificator += 1;
 //            System.out.println(evasionModificator);
         }
         else {
-            Effect evasion = new Effect().chance(0).stat(Stat.EVASION, 0);
-            pokemon.addEffect(evasion);
+            pokemon.setMod(Stat.EVASION, 0);
         }
+    }
+    @Override
+    protected boolean checkAccuracy(Pokemon att, Pokemon def){
+        return true;
     }
     @Override
     protected String describe(){
