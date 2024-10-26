@@ -12,23 +12,13 @@ public class MetalSound extends StatusMove {
     @Override
     protected void applyOppEffects(Pokemon pokemon){
         if (specialDefenceModificator < 3){
-            Effect specialDefenceReduction = new Effect().stat(Stat.SPECIAL_DEFENSE, -2);
+            pokemon.setMod(Stat.SPECIAL_DEFENSE, -2);
             specialDefenceModificator += 1;
-            pokemon.addEffect(specialDefenceReduction);
-//            System.out.println(specialDefenceModificator);
         }
         else {
-            Effect specialDefenceReduction = new Effect().chance(0).stat(Stat.SPECIAL_DEFENSE, 0);
-            pokemon.addEffect(specialDefenceReduction);
-
+            pokemon.setMod(Stat.SPECIAL_DEFENSE, 0);
         }
     }
-
-//    @Override
-//    protected double calcSameTypeAttackBonus(Pokemon att, Pokemon def){
-//        Effect attackBonus = new Effect().stat(Stat.ATTACK, 1);
-//        att.addEffect(attackBonus);
-//    }
 
 
 //    protected double calcSameTypeAttackBonus(Pokemon var1, Pokemon var2) {

@@ -12,15 +12,16 @@ public class Confide extends StatusMove {
     @Override
     protected void 	applyOppEffects(Pokemon pokemon){
         if (specialDefenseModificator < 6){
-            Effect specialDefenceReduction = new Effect().stat(Stat.SPECIAL_DEFENSE, -1);
-            specialDefenseModificator += 1;
-            pokemon.addEffect(specialDefenceReduction);
-//            System.out.println(pokemon + "понижает специальную защиту вражеского покемона на 1 ступень!");
+            pokemon.setMod(Stat.SPECIAL_DEFENSE, -1);
+            specialDefenseModificator++;
         }
         else {
-            Effect specialDefense = new Effect().chance(0).stat(Stat.SPECIAL_DEFENSE, 0);
-            pokemon.addEffect(specialDefense);
+            pokemon.setMod(Stat.SPECIAL_DEFENSE, 0);
         }
+    }
+    @Override
+    protected boolean checkAccuracy(Pokemon att, Pokemon def){
+        return true;
     }
     @Override
     protected String describe(){
