@@ -1,14 +1,15 @@
 package pokemons;
 
 
+import moves.physical.HeadSmash;
 import ru.ifmo.se.pokemon.Move;
 import ru.ifmo.se.pokemon.Pokemon;
 
-public class AegislashBlade extends Pokemon {
+public class AegislashBlade extends Doublade {
     public AegislashBlade(String name, int lvl){
         super(name, lvl);
-        setStats(60, 140, 50, 140, 50, 60);
-        setMove();
+        addMove(new HeadSmash());
+        setStats(60, 50, 140, 50, 140, 60);
     }
 
 }

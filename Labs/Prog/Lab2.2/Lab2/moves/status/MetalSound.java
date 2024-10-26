@@ -4,20 +4,23 @@ import ru.ifmo.se.pokemon.*;
 
 public class MetalSound extends StatusMove {
     private static final Type TYPE = Type.STEEL;
-    private static final double ACCURACY = 0.85;
+    private static final double ACCURACY = 85;
     public MetalSound() {
         super(TYPE, 0, ACCURACY);
     }
-    private int specialDefenceModificator = 1;
+    private int specialDefenceModificator = 0;
     @Override
     protected void applyOppEffects(Pokemon pokemon){
-        if (specialDefenceModificator <= 3){
-            Effect lowerSpecialDefence = new Effect().stat(Stat.SPECIAL_DEFENSE, -2);
+        if (specialDefenceModificator < 3){
+            Effect specialDefenceReduction = new Effect().stat(Stat.SPECIAL_DEFENSE, -2);
             specialDefenceModificator += 1;
+            pokemon.addEffect(specialDefenceReduction);
 //            System.out.println(specialDefenceModificator);
         }
         else {
-            Effect lowerSpecialDefence = new Effect().chance(0).stat(Stat.SPECIAL_DEFENSE, -2);
+            Effect specialDefenceReduction = new Effect().chance(0).stat(Stat.SPECIAL_DEFENSE, 0);
+            pokemon.addEffect(specialDefenceReduction);
+
         }
     }
 
@@ -26,8 +29,26 @@ public class MetalSound extends StatusMove {
 //        Effect attackBonus = new Effect().stat(Stat.ATTACK, 1);
 //        att.addEffect(attackBonus);
 //    }
+
+
+//    protected double calcSameTypeAttackBonus(Pokemon var1, Pokemon var2) {
+//        double var3 = 1.0;
+//        if (this.type != Type.NONE) {
+//            Type[] var5 = var1.getTypes();
+//            int var6 = var5.length;
+//
+//            for(int var7 = 0; var7 < var6; ++var7) {
+//                Type var8 = var5[var7];
+//                if (var8 == this.type) {
+//                    var3 *= 1.5;
+//                }
+//            }
+//        }
+//
+//        return var3;
+//    }
     @Override
-    public String describe() {
+    protected String describe() {
         return "использует Metal Sound";
     }
 }
