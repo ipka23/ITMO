@@ -5,7 +5,7 @@ import ru.ifmo.se.pokemon.*;
 public class DoubleTeam extends StatusMove {
     private static final Type TYPE = Type.NORMAL;
     public DoubleTeam(){
-        this.type = TYPE;
+        super(TYPE, 0, 0);
     }
     private int evasionModificator = 0;
     @Override

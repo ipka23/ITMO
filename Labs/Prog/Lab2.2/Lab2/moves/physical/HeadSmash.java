@@ -5,8 +5,8 @@ import ru.ifmo.se.pokemon.*;
 
 public class HeadSmash extends PhysicalMove {
     private static final Type TYPE = Type.ROCK;
-    private static final int POWER = 85;
-    private static final double ACCURACY = 0.80;
+    private static final double POWER = 85;
+    private static final double ACCURACY = 80;
 
     public HeadSmash(){
         super(TYPE, POWER, ACCURACY);
