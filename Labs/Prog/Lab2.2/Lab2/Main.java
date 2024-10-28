@@ -1,11 +1,3 @@
-import moves.physical.BrutalSwing;
-import moves.physical.FuryAttack;
-import moves.physical.HeadSmash;
-import moves.special.DreamEater;
-import moves.status.Confide;
-import moves.status.DoubleTeam;
-import moves.status.MetalSound;
-import pokemons.AegislashBlade;
 import pokemons.Honedge;
 import pokemons.Swablu;
 import ru.ifmo.se.pokemon.*;
