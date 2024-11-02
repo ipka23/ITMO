@@ -1,11 +1,24 @@
-import pokemons.Honedge;
-import pokemons.Swablu;
+import pokemons.*;
 import ru.ifmo.se.pokemon.*;
 
 import java.time.Duration;
 
 public class Main {
     public static void main(String[] args) {
+        Pokemon p1 = new Honedge("pokemon", 1);
+        Pokemon p2 = new Doublade("pokemon", 1);
+        Pokemon p3 = new AegislashBlade("pokemon", 1);
+        Pokemon p4 = new Swablu("pokemon", 1);
+        Pokemon p5 = new Altaria("pokemon", 1);
+        Pokemon p6 = new Miltank("pokemon", 1);
+        Battle b = new Battle();
+        b.addAlly(p1);
+        b.addAlly(p2);
+        b.addAlly(p3);
+        b.addFoe(p4);
+        b.addFoe(p5);
+        b.addFoe(p6);
+        b.go();
 //         if (p1.hasType(Type.STEEL)){
 //             System.out.println("YES");
 //         }
@@ -13,12 +26,6 @@ public class Main {
 //             System.out.println("NO");
 //         }
 
-        Pokemon p1 = new Honedge("pokemon", 1);
-        Pokemon p2 = new Swablu("pokemon", 1);
-        Battle b = new Battle();
-        b.addAlly(p1);
-        b.addFoe(p2);
-        b.go();
 //        Effect sleep = new Effect().condition(Status.SLEEP);
 //        p1.addEffect(sleep);
 //        Confide dt = new Confide();
