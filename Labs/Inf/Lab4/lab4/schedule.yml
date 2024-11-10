@@ -1,0 +1,71 @@
+schedule:
+  weeks:
+    - week: Чётная
+      days:
+        - day: Понедельник
+          disciplines:
+            - name: Основы профессиональной деятельности
+              teacher: Остапенко Ольга Денисовна
+              building: Кронверкский пр., д.49, лит.А
+              classroom: "2308"
+              lessons:
+                - first_lesson:
+                    time: "8:20-9:50"
+                    type: Лабораторная
+                - second_lesson:
+                    time: "9:50-11:20"
+                    type: Лабораторная
+            - name: Дискретная математика
+              teacher: Поляков Владимир Иванович
+              building: Кронверкский пр., д.49, лит.А
+              classroom: "2403"
+              lessons:
+                - first_lesson:
+                    time: "11:40-13:10"
+                    type: Лекция
+                - second_lesson:
+                    time: "13:30-15:00"
+                    type: Практика
+        - day: Четверг
+
+    - week: Нечётная
+      days:
+        - day: Понедельник
+          disciplines:
+            - name: Программирование
+              teacher: Вербовой Александр Александрович
+              building: Кронверкский пр., д.49, лит.А
+              classroom: "1338"
+              lessons:
+                - first_lesson:
+                    time: "8:20-9:50"
+                    type: Лабораторная
+                - second_lesson:
+                    time: "9:50-11:20"
+                    type: Лабораторная
+
+            - name: Дискретная математика
+              teacher: Поляков Владимир Иванович
+              building: Кронверкский пр., д.49, лит.А
+              classroom: "2403"
+              lessons:
+                - first_lesson:
+                    time: "11:40-13:10"
+                    type: Лекция
+                - second_lesson:
+                    time: "13:30-15:00"
+                    type: Практика
+
+        - day: Четверг
+          disciplines:
+            - name: История российской науки и техники
+              teacher: Белоусов Александр Сергеевич
+              building: Кронверкский пр., д.49, лит.А
+              classroom: "2326"
+              lessons:
+                - first_lesson:
+                    time: "13:30-15:00"
+                    type: Лекция
+                - second_lesson:
+                    time: "15:20-16:50"
+                    type: Практика
