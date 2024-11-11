@@ -19,22 +19,5 @@ public class Main {
         b.addFoe(p5);
         b.addFoe(p6);
         b.go();
-//         if (p1.hasType(Type.STEEL)){
-//             System.out.println("YES");
-//         }
-//         else {
-//             System.out.println("NO");
-//         }
-
-//        Effect sleep = new Effect().condition(Status.SLEEP);
-//        p1.addEffect(sleep);
-//        Confide dt = new Confide();
-//        System.out.println(p1.getStat(Stat.ACCURACY));
-//        System.out.println(p2.getStat(Stat.EVASION));
-//        System.out.println(p1.getStat(Stat.ACCURACY) / p1.getStat(Stat.EVASION));
-//        dt.attack(p1, p2);
-//        dt.attack(p1, p2);
-//        dt.attack(p1, p2);
-//        dt.attack(p1, p2);
     }
 }
