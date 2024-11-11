@@ -7,12 +7,11 @@ public class RockSlide extends PhysicalMove {
         super(Type.ROCK, 75, 90);
     }
 
-    private boolean isFlinched = false;
+
     @Override
     protected void applyOppEffects(Pokemon pokemon){
-        if ((Math.random() < 0.3) & (isFlinched)){
+        if (Math.random() < 0.3){
             Effect.flinch(pokemon);
-            isFlinched = true;
         }
     }
 
