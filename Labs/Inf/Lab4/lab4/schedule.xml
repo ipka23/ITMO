@@ -1,0 +1,68 @@
+<schedule>
+ <weeks>
+   <week>Чётная</week>
+    <days>
+      <day>Понедельник</day>
+       <Disciplines>
+         <name>Основы профессиональной деятельности</name>
+          <teacher>Остапенко Ольга Денисовна</teacher>
+          <building>Кронверкский пр., д.49, лит.А</building>
+          <classroom>2308</classroom>
+          <lessons>
+            <First-lesson>
+               <time>8:20-9:50</time>
+               <type>Лабораторная</type>
+            <Second-lesson>
+               <time>9:50-11:20</time>
+               <type>Лабораторная</type>
+         <name>Дискретная математика</name>
+          <teacher>Поляков Владимир Иванович</teacher>
+          <building>Кронверкский пр., д.49, лит.А</building>
+          <classroom>2403</classroom>
+          <lessons>
+            <First-lesson>
+               <time>11:40-13:10</time>
+               <type>Лекция</type>
+            <Second-lesson>
+               <time>13:30-15:00</time>
+               <type>Практика</type>
+      <day>Четверг</day>
+   <week>Нечётная</week>
+    <days>
+      <day>Понедельник</day>
+       <Disciplines>
+         <name>Программирование</name>
+          <teacher>Вербовой Александр Александрович</teacher>
+          <building>Кронверкский пр., д.49, лит.А</building>
+          <classroom>1338</classroom>
+          <lessons>
+            <First-lesson>
+               <time>8:20-9:50</time>
+               <type>Лабораторная</type>
+            <Second-lesson>
+               <time>9:50-11:20</time>
+               <type>Лабораторная</type>
+         <name>Дискретная математика</name>
+          <teacher>Поляков Владимир Иванович</teacher>
+          <building>Кронверкский пр., д.49, лит.А</building>
+          <classroom>2403</classroom>
+          <lessons>
+            <First-lesson>
+              <time>11:40-13:10</time>
+              <type>Лекция</type>
+            <Second-lesson>
+              <time>13:30-15:00</time>
+              <type>Практика</type>
+      <day>Четверг</day>
+       <Disciplines>
+         <name>История российской науки и техники</name>
+          <teacher>Белоусов Александр Сергеевич</teacher>
+          <building>Кронверкский пр., д.49, лит.А</building>
+          <classroom>2326</classroom>
+          <lessons>
+            <First-lesson>
+              <time>13:30-15:00</time>
+              <type>Лекция</type>
+            <Second-lesson>
+              <time>15:20-16:50</time>
+              <type>Практика</type>
