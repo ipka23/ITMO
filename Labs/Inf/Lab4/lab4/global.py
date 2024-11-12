@@ -1,4 +1,3 @@
-text = "#       ##        Привет, мир!###           "
-clean_text = text.strip(' #')
-print(clean_text)
+text = "schedule:"
+print(text.split(': '))
 # Вывод: "Привет, мир!"
