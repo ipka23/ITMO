@@ -1,3 +1,4 @@
-text = "schedule:"
-print(text.split(': '))
+text = "              "
+print(text.split(':') == "")
+print(text == "")
 # Вывод: "Привет, мир!"

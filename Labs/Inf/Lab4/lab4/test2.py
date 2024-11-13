@@ -38,21 +38,21 @@ i = 0
 # yaml_list()
 
 
-def json_dict():
-    global i
-
-    res = {}
-
-    while i < len(yaml_lines) - 2:
-        i += 1
-        if len(yaml_lines[i+1].split(':', )) == 1 or i + 1 == len(yaml_lines):
-            return res
-        if ":" not in yaml_lines[i]:
-            yaml_lines[i] =   ,]
-        key, value = yaml_lines[i].split(':', 1)
-        if value == '':
-            res[key] = json_dict()
-        else:
-            res[key] = value
-        print(res)
-json_dict()
+# def json_dict():
+#     global i
+#
+#     res = {}
+#
+#     while i < len(yaml_lines) - 2:
+#         i += 1
+#         if len(yaml_lines[i+1].split(':', )) == 1 or i + 1 == len(yaml_lines):
+#             return res
+#         if ":" not in yaml_lines[i]:
+#             yaml_lines[i] =   ,]
+#         key, value = yaml_lines[i].split(':', 1)
+#         if value == '':
+#             res[key] = json_dict()
+#         else:
+#             res[key] = value
+#         print(res)
+# json_dict()
