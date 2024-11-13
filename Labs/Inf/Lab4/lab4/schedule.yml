@@ -32,7 +32,6 @@ schedule:
                   time: "13:30-15:00"
         -
           day: Четверг
-
     -
       week: Нечётная
       days:
