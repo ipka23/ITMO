@@ -1,4 +1,5 @@
-path = "empty.yml"
+import re
+path = "schedule.yml"
 yaml_file = open(path, "r", encoding="utf-8")
 yaml_lines = [line.strip('-') for line in yaml_file]
 i = 0
@@ -7,7 +8,7 @@ def to_yaml():
     global s
     global i
     while i < len(yaml_lines):
-        line_split = yaml_lines[i].strip().replace("\"", "").split(':', 1)
+        line_split = re.sub(r'\"', '', yaml_lines[i]).strip().split(':', 1)
         space = len(yaml_lines[i]) - len(yaml_lines[i].strip())
         if yaml_lines[i] == "":
             pass
