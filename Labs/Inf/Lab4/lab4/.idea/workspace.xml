@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa787b10-2742-4726-bdc3-0c11297165f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/additional_task_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/additonal_task_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Report lab4 inf.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Report lab4 inf.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/-schedule-.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/additional_task_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additonal_task_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/additonal_task_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/required task.py" beforeDir="false" afterPath="$PROJECT_DIR$/required task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,20 +40,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.3.1.executor": "Run",
     "Python.additional_task_1.executor": "Run",
+    "Python.additional_task_3.1.executor": "Run",
+    "Python.additional_task_3.executor": "Run",
+    "Python.additonal_task_2.executor": "Run",
     "Python.exzmple.executor": "Run",
     "Python.required task.executor": "Run",
+    "Python.task2.executor": "Run",
     "Python.test.executor": "Run",
     "Python.test2.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/ipka23/Desktop/ITMO/Labs/Inf/Lab4/lab4"
+    "last_opened_file_path": "/Users/ipka23/Desktop/ITMO/Labs/Inf/Lab4/lab4",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
       </set>
     </attachedChunks>
   </component>

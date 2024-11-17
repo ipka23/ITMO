@@ -1,9 +1,9 @@
-path = "empty.yml"
+path = "schedule.yml"
 yaml_file = open(path, "r", encoding="utf-8")
 yaml_lines = [line.strip('-') for line in yaml_file]
 i = 0
 s = ""
-def to_yaml():
+def to_xml():
     global s
     global i
     while i < len(yaml_lines):
@@ -15,7 +15,7 @@ def to_yaml():
             key = line_split[0]
             s += ' ' * space + f'<{key}>\n'
             i += 1
-            to_yaml()
+            to_xml()
             s += ' ' * space + f'</{line_split[0]}>\n'
         elif len(line_split) == 2 and line_split[1] != '': #элемент списка
             key, value = line_split
@@ -24,6 +24,6 @@ def to_yaml():
     return s.strip()
 
 with open('schedule.xml', 'w', encoding='utf-8') as xml_file:
-    result = to_yaml()
+    result = to_xml()
     xml_file.write(result)
 yaml_file.close()
