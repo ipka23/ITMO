@@ -1,30 +1,34 @@
 import re
 path = "schedule.yml"
-yaml_file = open(path, "r", encoding="utf-8")
-yaml_lines = [line.strip('-') for line in yaml_file]
+with open(path, "r", encoding="utf-8") as yaml_file:
+    yaml_lines = [line for line in yaml_file]
 i = 0
 s = ""
-def to_yaml():
-    global s
+
+
+def to_xml():
     global i
+    global s
     while i < len(yaml_lines):
-        line_split = re.sub(r'\"', '', yaml_lines[i]).strip().split(':', 1)
-        space = len(yaml_lines[i]) - len(yaml_lines[i].strip())
-        if yaml_lines[i] == "":
-            pass
-        elif len(line_split) == 2 and line_split[1] == '': #начало списка
-            key = line_split[0]
-            s += ' ' * space + f'<{key}>\n'
+        line = re.sub('\"', '', yaml_lines[i])
+        space = len(line) - len(line.strip())
+        match_list = re.fullmatch(r'(\w+):', line.strip())  # начало списка
+        match_element = re.fullmatch(r'(\w+):( \w+.+)', line.strip())
+
+        if match_list:
+            list_name = match_list.group(1)
+            s += space * ' ' + f'<{list_name}>\n'
             i += 1
-            to_yaml()
-            s += ' ' * space + f'</{line_split[0]}>\n'
-        elif len(line_split) == 2 and line_split[1] != '': #элемент списка
-            key, value = line_split
-            s += ' ' * space + f'<{key}>{value.strip()}</{key}>\n'
+            to_xml()
+            s += space * ' ' + f'</{list_name}>\n'
+
+        elif match_element:  # элемент списка
+            element_name = match_element.group(1)
+            element_value = match_element.group(2).strip()
+            s += space * ' ' + f'<{element_name}>{element_value}</{element_name}>\n'
         i += 1
     return s.strip()
 
 with open('schedule.xml', 'w', encoding='utf-8') as xml_file:
-    result = to_yaml()
+    result = to_xml()
     xml_file.write(result)
-yaml_file.close()

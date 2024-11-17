@@ -1,0 +1,29 @@
+<document> ::= <block>
+<block> ::= <mapping> | <sequence> | <scalar>
+
+<mapping> ::= "{" [ <key_value_pair> { "," <key_value_pair> } ] "}" 
+            | <block_mapping>
+<block_mapping> ::= <indentation> <key_value_pair> { <newline> <indentation> <key_value_pair> }
+
+<key_value_pair> ::= <scalar> ":" <value>
+
+<sequence> ::= "[" [ <value> { "," <value> } ] "]" 
+            | <block_sequence>
+<block_sequence> ::= <indentation> "-" <value> { <newline> <indentation> "-" <value> }
+
+<scalar> ::= <string> | <number> | <boolean> | null
+
+<string> ::= '"' { any_character_except_quote } '"' 
+           | "'" { any_character_except_quote } "'"
+
+<number> ::= [ "-" ] [ "0" | ( "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ) { digit } ]
+           | [ "-" ] "0x" { hex_digit }
+           | [ "-" ] "0b" { binary_digit }
+
+<boolean> ::= "true" | "false"
+
+<value> ::= <scalar> | <mapping> | <sequence>
+
+<newline> ::= "\n"
+
+<indentation> ::= (space_character)+
