@@ -46,7 +46,15 @@ def yaml_string():
     return xml_escape(r[1:-1])
 
 def yaml_dict():
-
+    global i
+    global symbol
+    key = ""
+    value = ""
+    while i < yaml_len and re.search(r'-'):
+        i += 2 ####### - day:
+        while symbol != ':':
+            key += symbol
+        value = 
 
 
 
