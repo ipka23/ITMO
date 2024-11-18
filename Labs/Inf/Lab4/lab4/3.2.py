@@ -54,8 +54,21 @@ def yaml_dict():
         i += 2 ####### - day:
         while symbol != ':':
             key += symbol
-        value = 
+        value += symbol
 
+def yaml_list():
+    global i
+    global symbol
+    r = []
+    s = ""
+    while i < yaml_len:
+        if symbol == '-':
+            i += 2
+            while symbol != " ":
+                s += symbol
+                i += 1
+            s += " "
+        i += 1
 
 
 

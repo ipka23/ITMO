@@ -1,4 +1,4 @@
-path = "schedule.yml"
+path = "empty.yml"
 with open(path, "r", encoding="utf-8") as yaml_file:
     yaml_lines = [line.rstrip().replace("\"", "") for line in yaml_file]
 i = 0
