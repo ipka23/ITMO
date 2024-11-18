@@ -77,5 +77,3 @@ xml_output = dict_to_xml(parsed_data)
 # Запись в XML файл
 with open('schedule.xml', 'w', encoding='utf-8') as xml_file:
     xml_file.write(xml_output)
-
-print("Конвертация завершена!")
