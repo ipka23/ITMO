@@ -1,215 +1,140 @@
-# def parse_yaml(yaml_str):
-#     result = {}
-#     lines = yaml_str.strip().splitlines()
-#
-#     current_key = None
-#     for line in lines:
-#         line = line.strip()
-#
-#         if line.startswith('- '):  # Обработка списков
-#             item = line[2:]  # Убираем '- '
-#             if current_key not in result:
-#                 result[current_key] = []  # Инициализация списка
-#             result[current_key].append(item)  # Добавляем элемент в список
-#         elif ':' in line:  # Обработка ключ-значение
-#             key, value = line.split(':', 1)
-#             current_key = key.strip()
-#             result[current_key] = value.strip() if value.strip() else None  # Устанавливаем значение
-#
-#     return result
-#
-#
-# # Пример использования
-# yaml_data = """
-# UserName: Alicia
-# Password: pinga123*
-# phone: (495) 555-32-56
-# room: 10
-# TablesList:
-#  - EmployeeTable
-#  - SoftwaresList
-#  - HardwareList
-# """
-#
-# parsed_data = parse_yaml(yaml_data)
-# print(parsed_data)
+def Task_4():
+    def parse(yaml_lines):
+        line_mass = []
+        stack = []
+        line_numb = 0
+        while line_numb < len(yaml_lines):
+            line = yaml_lines[line_numb].rstrip()
+            if not line:
+                line_numb += 1
+                continue
+
+            tab = level_tab(line)
+            key, value = parse_key_value_mass(line)
+            line_dict = {"tab": tab, "key": key, "value": value, "children": []}
+            while stack and stack[-1]["tab"] >= tab:
+                stack.pop()
+
+            if stack:
+                stack[-1]["children"].append(line_dict)
+            else:
+                line_mass.append(line_dict)
+
+            stack.append(line_dict)
+            line_numb += 1
+
+        return line_mass
+
+    # Функция для подсчёта уровня вложенности
+    def level_tab(line):
+        # подсчёт пробелов
+        flag = 0
+        tab = 0
+        for i in range(len(line)):
+            if line[i] == " " and flag == 0:
+                tab += 1
+            if line[i] != " ":
+                flag = 1
+        return (tab)
+
+        # функция для разбиения строки на ключ и значение
+
+    def parse_key_value_mass(line):
+
+        if (":" in line) and ("[" not in line) and ("]" not in line) and ("&" not in line) and ("<" not in line):
+            key, value = line.split(":", 1)
+            key = key.strip()
+            value = value.strip()
+            return key, value
+        # обработка массивов
+        elif "-" in line:
+            line = line.replace("-", "", 1)
+            line = line.lstrip()
+            key = line
+            value = line
+            return key, value
+        elif (":" in line) and ("[" in line) and ("]" in line):
+            key, value = line.split(":", 1)
+            key = key.strip()
+            value = value.strip()
+            array_elements = [v.strip() for v in value.strip("[]").split(",")]
+            return key, array_elements
+        # обработка комментариев
+        elif "#" in line:
+            line = line.replace("#", "")
+            line = line.lstrip()
+            key = "#"
+            value = line
+            return key, value
+        # обработка ссылок
+        elif "&" in line:
+            key, value = line.split(":", 1)
+            key = key.strip()
+            value = value.strip()
+            return f"{key} id=\"{key}\"", value
+        elif "<<:" in line and "*" in line:
+            reference = line.split("*", 1)[1].strip()  # Извлечь ссылку
+            key = "ref"
+            value = f"#{reference}"  # Формат ссылки
+            return key, value
+
+        return line, ""
+
+        # функция для записи в XML
+
+    def to_xml(data, root_tag="root"):
+        # print(data)
+
+        def build_xml(elements, level=0):
+            xml_str = ""
+            indent = "  " * level
+            for element in elements:
+                key = element["key"]
+                value = element["value"]
+                children = element["children"]
+                if isinstance(value, list):
+                    # Если значение - массив, создаём вложенные элементы
+                    xml_str += f"{indent}<{key}>\n"
+                    for item in value:
+                        xml_str += f"{indent}  <item>{item}</item>\n"
+                    xml_str += f"{indent}</{key}>\n"
+                elif children:
+                    # Рекурсивный вызов для вложенных элементов
+                    if "id=" in key:  # Проверка на наличие атрибута id
+                        tag_name, attr = key.split(" ", 1)
+                        xml_str += f"{indent}<{tag_name} {attr}>\n"
+                        xml_str += build_xml(children, level + 1)
+                        xml_str += f"{indent}</{tag_name}>\n"
+                    else:
+                        xml_str += f"{indent}<{key}>\n"
+                        xml_str += build_xml(children, level + 1)
+                        xml_str += f"{indent}</{key}>\n"
+                elif key == "ref":
+                    xml_str += f'{indent}<reference ref="{value}"/>\n'
+                elif key == "#":
+                    xml_str += f"<!--{value}-->\n"
+                else:
+                    # Элементы без дочерних узлов
+                    xml_str += f"{indent}<{key}>{value}</{key}>\n"
+
+            return xml_str
+
+        xml_str = f"<{root_tag}>\n"
+        xml_str += build_xml(data)
+        xml_str += f"</{root_tag}>\n"
+
+        return xml_str
+
+    with open('-schedule-.yml', 'r', encoding='utf-8') as file_yml:
+        content = file_yml.read()
+        lines = content.splitlines()
+
+        YAML_parsed = parse(lines)
+        xml_data = to_xml(YAML_parsed)
+        # print(xml_data)
+
+    with open('schedule.xml', 'w', encoding='utf-8') as file:
+        file.write(xml_data)
 
 
-# l = []
-# s = "word exel libre writer"
-# l.append(s.split())
-# print(l)
-
-# s = "- lesson: Лекция "
-# for i in range(len(s)):
-#     while s[i] != " ":
-#         print(s[i])
-#         i += 1
-
-
-
-
-
-
-
-
-
-
-
-
-# yml = '''
-#                 - lesson: Лекция
-#                   time: "11:4013:10"
-#                 - lesson: Практика
-#                   time: "13:3015:00"
-# '''
-# yaml_len = len(yml)
-# i = 0
-# def yaml_list():
-#     global i
-#     r = []
-#
-#     while i < yaml_len:
-#         # Пропускаем пробелы
-#         while i < yaml_len and yml[i] == ' ':
-#             i += 1
-#
-#         # Проверяем на наличие символа '-'
-#         if i < yaml_len and yml[i] == '-':
-#             i += 1  # Пропускаем '-'
-#
-#             # Пропускаем пробелы после '-'
-#             while i < yaml_len and yml[i] == ' ':
-#                 i += 1
-#
-#             s = ""
-#             # Считываем до конца строки или следующего '-'
-#             while i < yaml_len and yml[i] != '\n':
-#                 s += yml[i]
-#                 i += 1
-#             key, val = s.split(': ')
-#             r.append({key: val})  # Добавляем строку без лишних пробелов
-#
-#         # Переходим к следующей строке
-#         i += 1
-#
-#     return r
-#
-#
-# # Вызов функции и вывод результата
-# result = yaml_list()
-# print(result)
-
-
-yml = '''
-      days:
-        -
-          day: Понедельник
-          disciplines:
-            -
-              discipline: Основы профессиональной деятельности
-              teacher: Остапенко Ольга Денисовна
-              building: Кронверкский пр., д.49, лит.А
-              classroom: "2308"
-              lessons:
-                -
-                  lesson: Лабораторная
-                  time: "8:20-9:50"
-                -
-                  lesson: Лабораторная
-                  time: "9:50-11:20"
-            -
-              discipline: Дискретная математика
-              teacher: Поляков Владимир Иванович
-              building: Кронверкский пр., д.49, лит.А
-              classroom: "2403"
-              lessons:
-                -
-                  lesson: Лекция
-                  time: "11:40-13:10"
-                -
-                  lesson: Практика
-                  time: "13:30-15:00"
-        -
-          day: Четверг
-'''
-yaml_len = len(yml)
-i = 0
-
-
-def yaml_list():
-    global i
-    r = {}
-
-    # Пропускаем пробелы перед основным ключом
-    while i < yaml_len and yml[i].isspace():
-        i += 1
-
-    # Считываем основной ключ (lessons)
-    key = ""
-    while i < yaml_len and yml[i] != '\n':
-        key += yml[i]
-        i += 1
-    key = key.strip().rstrip(':')  # Убираем пробелы и двоеточие
-
-    r[key] = []  # Инициализируем список для значений
-
-    # Переходим к следующей строке
-    i += 1
-
-    while i < yaml_len:
-        # Пропускаем пробелы
-        while i < yaml_len and yml[i].isspace():
-            i += 1
-
-        # Проверяем на наличие символа '-'
-        if i < yaml_len and yml[i] == '-':
-            i += 1  # Пропускаем '-'
-
-            # Пропускаем пробелы после '-'
-            while i < yaml_len and yml[i].isspace():
-                i += 1
-
-            current_dict = {}
-
-            # Считываем ключ-значение пар до следующего '-'
-            while i < yaml_len and yml[i] != '-':
-                # Пропускаем пробелы перед ключом
-                while i < yaml_len and yml[i].isspace():
-                    i += 1
-
-                s = ""
-                while i < yaml_len and yml[i] != '\n':
-                    s += yml[i]
-                    i += 1
-
-                # Пропускаем пустые строки
-                if not s.strip():
-                    i += 1
-                    continue
-
-                if ':' in s:
-                    k, v = s.split(':', 1)  # Разделяем по первому вхождению ':'
-                    current_dict[k.strip()] = v.strip().strip('"')  # Убираем лишние пробелы и кавычки
-
-                # Переходим на следующую строку
-                i += 1
-
-            r[key].append(current_dict)
-
-        else:
-            i += 1  # Переходим к следующей строке
-
-    return r
-
-
-# Вызов функции и вывод результата
-result = yaml_list()
-print(result)
-
-
-
-
-
-
-
+Task_4()
