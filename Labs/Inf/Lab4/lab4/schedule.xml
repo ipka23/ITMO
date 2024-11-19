@@ -1,34 +1,41 @@
-<days>
-  <day>Понедельник</day>
-  <disciplines>
-    <building>Кронверкский пр., д.49, лит.А</building>
-    <classroom>2308</classroom>
-    <discipline>Основы профессиональной деятельности</discipline>
-    <lessons>
-      <lesson>Лабораторная</lesson>
-      <time>8:20-9:50</time>
-    </lessons>
-    <lessons>
-      <lesson>Лабораторная</lesson>
-      <time>9:50-11:20</time>
-    </lessons>
-    <teacher>Остапенко Ольга Денисовна</teacher>
-  </disciplines>
-  <disciplines>
-    <building>Кронверкский пр., д.49, лит.А</building>
-    <classroom>2403</classroom>
-    <discipline>Дискретная математика</discipline>
-    <lessons>
-      <lesson>Лекция</lesson>
-      <time>11:40-13:10</time>
-    </lessons>
-    <lessons>
-      <lesson>Практика</lesson>
-      <time>13:30-15:00</time>
-    </lessons>
-    <teacher>Поляков Владимир Иванович</teacher>
-  </disciplines>
-</days>
-<days>
-  <day>Четверг</day>
-</days>
+<root>
+<schedule>
+  <weeks>
+    <- week>
+      <days>
+        <- day>
+          <disciplines>
+            <- discipline>
+              <teacher>Остапенко Ольга Денисовна</teacher>
+              <building>Кронверкский пр., д.49, лит.А</building>
+              <classroom>"2308"</classroom>
+              <lessons>
+                <- lesson>
+                  <time>"8:20-9:50"</time>
+                </- lesson>
+                <- lesson>
+                  <time>"9:50-11:20"</time>
+                </- lesson>
+              </lessons>
+            </- discipline>
+            <- discipline>
+              <teacher>Поляков Владимир Иванович</teacher>
+              <building>Кронверкский пр., д.49, лит.А</building>
+              <classroom>"2403"</classroom>
+              <lessons>
+                <- lesson>
+                  <time>"11:40-13:10"</time>
+                </- lesson>
+                <- lesson>
+                  <time>"13:30-15:00"</time>
+                </- lesson>
+              </lessons>
+            </- discipline>
+          </disciplines>
+        </- day>
+        <- day>Четверг</- day>
+      </days>
+    </- week>
+  </weeks>
+</schedule>
+</root>
