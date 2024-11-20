@@ -40,45 +40,24 @@ def Task_4():
         # функция для разбиения строки на ключ и значение
 
     def parse_key_value_mass(line):
-
-        if (":" in line) and ("[" not in line) and ("]" not in line) and ("&" not in line) and ("<" not in line):
+        if (":" in line) and "-" not in line:
             key, value = line.split(":", 1)
-            key = key.strip()
+            key = key.strip() #############
             value = value.strip()
             return key, value
         # обработка массивов
-        elif "-" in line:
+        elif (":" in line) and "-" in line:
+            key, value = line.split(":", 1)
+            key = key.replace("-", "", 1).strip() #############
+            value = value.strip()
+            return key, value
+        elif ":" not in line:
             line = line.replace("-", "", 1)
             line = line.lstrip()
             key = line
             value = line
             return key, value
-        elif (":" in line) and ("[" in line) and ("]" in line):
-            key, value = line.split(":", 1)
-            key = key.strip()
-            value = value.strip()
-            array_elements = [v.strip() for v in value.strip("[]").split(",")]
-            return key, array_elements
-        # обработка комментариев
-        elif "#" in line:
-            line = line.replace("#", "")
-            line = line.lstrip()
-            key = "#"
-            value = line
-            return key, value
-        # обработка ссылок
-        elif "&" in line:
-            key, value = line.split(":", 1)
-            key = key.strip()
-            value = value.strip()
-            return f"{key} id=\"{key}\"", value
-        elif "<<:" in line and "*" in line:
-            reference = line.split("*", 1)[1].strip()  # Извлечь ссылку
-            key = "ref"
-            value = f"#{reference}"  # Формат ссылки
-            return key, value
 
-        return line, ""
 
         # функция для записи в XML
 
@@ -92,29 +71,13 @@ def Task_4():
                 key = element["key"]
                 value = element["value"]
                 children = element["children"]
-                if isinstance(value, list):
-                    # Если значение - массив, создаём вложенные элементы
-                    xml_str += f"{indent}<{key}>\n"
-                    for item in value:
-                        xml_str += f"{indent}  <item>{item}</item>\n"
-                    xml_str += f"{indent}</{key}>\n"
-                elif children:
+                if children:
                     # Рекурсивный вызов для вложенных элементов
-                    if "id=" in key:  # Проверка на наличие атрибута id
-                        tag_name, attr = key.split(" ", 1)
-                        xml_str += f"{indent}<{tag_name} {attr}>\n"
-                        xml_str += build_xml(children, level + 1)
-                        xml_str += f"{indent}</{tag_name}>\n"
-                    else:
-                        xml_str += f"{indent}<{key}>\n"
-                        xml_str += build_xml(children, level + 1)
-                        xml_str += f"{indent}</{key}>\n"
-                elif key == "ref":
-                    xml_str += f'{indent}<reference ref="{value}"/>\n'
-                elif key == "#":
-                    xml_str += f"<!--{value}-->\n"
+                    xml_str += f"{indent}<{key}>\n"
+                    xml_str += build_xml(children, level + 1)
+                    xml_str += f"{indent}</{key}>\n"
+                # Элементы без дочерних узлов
                 else:
-                    # Элементы без дочерних узлов
                     xml_str += f"{indent}<{key}>{value}</{key}>\n"
 
             return xml_str
@@ -125,8 +88,8 @@ def Task_4():
 
         return xml_str
 
-    with open('-schedule-.yml', 'r', encoding='utf-8') as file_yml:
-        content = file_yml.read()
+    with open('simple_schedule.yml', 'r', encoding='utf-8') as file_yml:
+        content = file_yml.read().replace("\"", "")
         lines = content.splitlines()
 
         YAML_parsed = parse(lines)
