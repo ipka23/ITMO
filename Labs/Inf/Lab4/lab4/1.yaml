@@ -1,0 +1,41 @@
+schedule:
+  Thursday: 
+    classes1: 
+      lineal algebra 1:
+        type class: lecture
+        lector: Тушавин Глеб Викторович
+        time: 11:40 - 13:10
+        classroom: 2202
+        location: Lomonosova st. 9
+      lineal algebra 2:  
+          type class: practice
+          lector: Свинцов Михаил Викторович
+          time: 13:30 - 15:00
+          classroom: 4306
+          location: Lomonosova st. 9       
+  Friday:
+    classes2: 
+      English language 1:
+        type class: practice
+        lector: Зельницкая Екатерина Юрьевна
+        time: 8:20 - 9:50
+        classroom: 3209
+        location: Lomonosova st. 9
+      English language 2:  
+        type class: practice
+        lector: Зельницкая Екатерина Юрьевна
+        time: 10:00 - 11:30
+        classroom: 3209
+        location: Lomonosova st. 9
+      mathematical analysis 1:
+        type class: lecture
+        lector: Попов Игорь Юрьевич
+        time: 11:40 - 13:10
+        classroom: 1124
+        location: Lomonosova st. 9
+      mathematical analysis 2:  
+        type class: practice
+        lector: Попов Игорь Юрьевич
+        time: 13:30 - 15:00
+        classroom: 4306
+        location: Lomonosova st. 9
