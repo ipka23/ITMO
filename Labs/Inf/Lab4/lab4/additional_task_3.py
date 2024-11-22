@@ -1,39 +1,62 @@
-path = "empty.yml"
-with open(path, "r", encoding="utf-8") as yaml_file:
-    yaml_lines = [line.rstrip().replace("\"", "") for line in yaml_file]
-i = 0
-s = ""
-
-def parse_yaml(indent_level):
-    global i
-    global s
-
+def parse_yaml(yaml_lines):
+    dict_lines = []
+    l = []
+    i = 0
     while i < len(yaml_lines):
-        line = yaml_lines[i]
-        current_indent = len(line) - len(line.lstrip())
-
-        if current_indent < indent_level:
-            return s
-
-        if ':' in line:
-            key, value = line.split(':', 1)
-            key = key.strip()
-            value = value.strip()
-
-            if value == "":
-                s += ' ' * current_indent + f'<{key}>\n'
-                i += 1
-                parse_yaml(current_indent + 2)
-                s += ' ' * current_indent + f'</{key}>\n'
-            else:
-                s += ' ' * current_indent + f'<{key}>{value}</{key}>\n'
+        line = yaml_lines[i].rstrip()
+        if line.strip() == "":
+            i += 1
+            continue
+        indent = indent_level(line)
+        key, value = line_split(line)
+        line_dict = {"indent": indent, "key": key, "value": value, "children": []}
+        while l and l[-1]["indent"] >= indent:
+            l.pop()
+        if l:
+            l[-1]["children"].append(line_dict)
+        else:
+            dict_lines.append(line_dict)
+        l.append(line_dict)
         i += 1
+    return dict_lines
 
-def to_xml():
-    global s
-    parse_yaml(0)
+def indent_level(line):
+    flag = 0
+    indent = 0
+    for i in range(len(line)):
+        if line[i] == " " and flag == 0:
+                indent += 1
+        if line[i] != " ":
+            flag = 1
+    return indent
+
+def line_split(line):
+    if ":" in line:
+        key, value = line.split(":", 1)
+        return key.strip(), value.strip()
+
+def to_xml(dict_elements, level=0):
+    s = ""
+    indent = "  " * level
+    for element in dict_elements:
+        key = element["key"]
+        value = element["value"]
+        children = element["children"]
+        if children: # если у элемента есть дочерние элементы
+                s += f"{indent}<{key}>\n"
+                s += to_xml(children, level + 1)
+                s += f"{indent}</{key}>\n"
+        else: # если дочерних элементов нет
+            s += f"{indent}<{key}>{value}</{key}>\n"
     return s
 
-result = to_xml()
-with open('schedule.xml', 'w', encoding='utf-8') as xml_file:
-    xml_file.write(result)
+
+with open('schedule.yml', 'r', encoding='utf-8') as file_yml:
+    file = file_yml.read().replace('\"', '').replace(" -", "")
+    lines = file.splitlines()
+
+    YAML_parsed = parse_yaml(lines)
+    xml_data = to_xml(YAML_parsed)
+
+with open('schedule.xml', 'w', encoding='utf-8') as file:
+    file.write(xml_data)

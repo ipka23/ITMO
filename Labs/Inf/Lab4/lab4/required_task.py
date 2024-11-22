@@ -1,6 +1,3 @@
-path = "schedule.yml"
-yaml_file = open(path, "r", encoding="utf-8")
-yaml_lines = [line.strip('-') for line in yaml_file]
 i = 0
 s = ""
 def to_xml():
@@ -21,9 +18,10 @@ def to_xml():
             key, value = line_split
             s += ' ' * space + f'<{key}>{value.strip()}</{key}>\n'
         i += 1
-    return s.strip()
+    return s
 
+with open("schedule.yml", "r", encoding="utf-8") as yaml_file:
+    yaml_lines = [line.strip('-') for line in yaml_file]
 with open('schedule.xml', 'w', encoding='utf-8') as xml_file:
     result = to_xml()
     xml_file.write(result)
-yaml_file.close()
