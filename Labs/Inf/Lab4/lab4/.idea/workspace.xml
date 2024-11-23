@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa787b10-2742-4726-bdc3-0c11297165f5" name="Changes" comment="" />
+    <list default="true" id="fa787b10-2742-4726-bdc3-0c11297165f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Report lab4 inf.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Report lab4 inf.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additonal_task_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule.csv" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,10 +62,16 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\Labs\Inf\Lab4\lab4\trash" />
+      <recent name="C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\Labs\Inf\Lab4\lab4" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
       </set>
     </attachedChunks>
   </component>

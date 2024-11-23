@@ -10,9 +10,9 @@ def parse_yaml(yaml_lines):
         indent = indent_level(line)
         key, value = line_split(line)
         line_dict = {"indent": indent, "key": key, "value": value, "children": []}
-        while l and l[-1]["indent"] >= indent:
+        while l and l[-1]["indent"] >= indent: # если текущий уровень <= уровня последнего элемента в l, то удаляем этот элемент из l
             l.pop()
-        if l:
+        if l: # если l не пустой, добавляем текущий элемент как вложенный к последнему элементу l
             l[-1]["children"].append(line_dict)
         else:
             dict_lines.append(line_dict)
