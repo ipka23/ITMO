@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa787b10-2742-4726-bdc3-0c11297165f5" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/trash/addit3test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
@@ -21,6 +22,20 @@
       <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/src/Person.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/untitled.iml" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/../../Lab5/dop3/comma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/SPFB.RTS-12.18_180901_181231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/data.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/dop2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab5/dop2.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/dop3/dop3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab5/dop3/dop3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/dop3/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab5/dop3/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/lab5.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/new-ipka23pc.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab5/new.csv" beforeDir="false" />
+>>>>>>> 28e97c8f44899663fd06e2f2a5a20da1705ad6b1
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +98,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
       </set>
     </attachedChunks>
   </component>
