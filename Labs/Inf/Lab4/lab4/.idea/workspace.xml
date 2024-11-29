@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa787b10-2742-4726-bdc3-0c11297165f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trash/addit3test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/additional_task_5.py" beforeDir="false" afterPath="$PROJECT_DIR$/additional_task_5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/schedule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trash/3.2.py" beforeDir="false" afterPath="$PROJECT_DIR$/trash/could_be_great_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/src/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Prog/Lab3/test/untitled/untitled.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +41,9 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2oZwogYgTMiTCfShW6lTCZCtXyP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,12 +51,14 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Python.3.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.addit3test.executor&quot;: &quot;Run&quot;,
     &quot;Python.additional_task_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.additional_task_3.1.executor&quot;: &quot;Run&quot;,
     &quot;Python.additional_task_3.executor&quot;: &quot;Run&quot;,
     &quot;Python.additional_task_4.executor&quot;: &quot;Run&quot;,
     &quot;Python.additional_task_5.executor&quot;: &quot;Run&quot;,
     &quot;Python.additonal_task_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.addtask5.executor&quot;: &quot;Run&quot;,
     &quot;Python.exzmple.executor&quot;: &quot;Run&quot;,
     &quot;Python.lab4_task4_4.executor&quot;: &quot;Run&quot;,
     &quot;Python.parse_yaml_list_dict.executor&quot;: &quot;Run&quot;,
@@ -78,5 +97,16 @@
       <updated>1731090581149</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/trash/addit3test.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
