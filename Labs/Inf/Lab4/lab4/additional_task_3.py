@@ -1,6 +1,6 @@
 def parse_yaml(yaml_lines):
     dict_lines = []
-    l = []
+    stack = []
     i = 0
     while i < len(yaml_lines):
         line = yaml_lines[i].rstrip()
@@ -10,13 +10,13 @@ def parse_yaml(yaml_lines):
         indent = indent_level(line)
         key, value = line_split(line)
         line_dict = {"indent": indent, "key": key, "value": value, "children": []}
-        while l and l[-1]["indent"] >= indent: # если текущий уровень <= уровня последнего элемента в l, то удаляем этот элемент из l
-            l.pop()
-        if l: # если l не пустой, добавляем текущий элемент как вложенный к последнему элементу l
-            l[-1]["children"].append(line_dict)
+        while stack and stack[-1]["indent"] >= indent: # если текущий уровень <= уровня последнего элемента в stack, то удаляем этот элемент из stack
+            stack.pop()
+        if stack: # если stack не пустой, добавляем текущий элемент как вложенный к последнему элементу l
+            stack[-1]["children"].append(line_dict)
         else:
             dict_lines.append(line_dict)
-        l.append(line_dict)
+        stack.append(line_dict)
         i += 1
     return dict_lines
 
