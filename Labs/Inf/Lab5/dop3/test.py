@@ -1,8 +1,12 @@
-file = open('data.csv').readlines()
-lines = [line.replace(';', ',') for line in file]
-new_file = open('data2.csv', 'w')
-s = ""
-for i in range(len(lines)):
-    s += lines[i]
-new_file.write(s)
+import numpy as np
+import matplotlib.pyplot as plt
 
+x = np.linspace(-10, 10, 1000)
+y = -x**2 + x
+
+plt.plot(x, y, label="y = -x^2 + x")
+plt.title("Парабола")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid()
+plt.show()
