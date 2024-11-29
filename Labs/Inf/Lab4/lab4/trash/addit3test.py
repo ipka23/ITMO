@@ -43,10 +43,13 @@ def to_xml(dict_elements):
     s = ""
     global lvl
     indent = "  " * lvl
-    for element in dict_elements:
-        key = element["key"]
-        value = element["value"]
-        children = element["children"]
+    for key, value in dict_elements.items():
+        if isinstance(value, dict):
+            children = value["children"]
+        if isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    children = value["children"]
         if children: # если у элемента есть дочерние элементы
             s += f"{indent}<{key}>\n"
             lvl += 1
@@ -58,13 +61,13 @@ def to_xml(dict_elements):
     return s
 
 
-with open('schedule.yml', 'r', encoding='utf-8') as file_yml:
+with open('../schedule.yml', 'r', encoding='utf-8') as file_yml:
     file = file_yml.read().replace('\"', '').replace(" -", "")
     lines = file.splitlines()
 
-    parsed_yaml = parse_yaml(lines)
-    xml_data = to_xml(parsed_yaml)
+    YAML_parsed = parse_yaml(lines)
+    xml_data = to_xml(YAML_parsed)
 
 
-with open('schedule.xml', 'w', encoding='utf-8') as file:
+with open('../schedule.xml', 'w', encoding='utf-8') as file:
     file.write(xml_data)
