@@ -1,3 +1,5 @@
+package ru.ipka23.javalab3.classes;
+
 public class Book {
     private String title;
     private int pages;
