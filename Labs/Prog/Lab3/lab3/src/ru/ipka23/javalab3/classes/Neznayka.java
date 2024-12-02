@@ -16,7 +16,7 @@ public class Neznayka extends AbstractCharacter {
         }
     }
     public final Neznayka makeBlot() {
-        if (Math.random() < this.ch) {
+        if (Math.random() <= this.ch) {
             System.out.println(getName() + " поставил кляксу!");
         }
         else {
