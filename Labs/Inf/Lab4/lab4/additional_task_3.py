@@ -10,9 +10,14 @@ def add_3():
                 i += 1
                 continue
             indent = indent_level(line)
-            key, value = line_split(line.strip())
+            split_result = line_split(line.strip())
+            if not split_result:  # Пропускаем строки без ключ-значения
+                i += 1
+                continue
+            key, value = split_result
             line_dict = {"indent": indent, "key": key, "value": value, "children": []}
-            while stack and stack[-1]["indent"] >= indent:  # если уровень отступа последнего элемента в stack >= текущего уровня, то удаляем этот элемент из stack
+            while stack and stack[-1][
+                "indent"] >= indent:  # если уровень отступа последнего элемента в stack >= текущего уровня, то удаляем этот элемент из stack
                 stack.pop()
             if stack:  # если stack не пустой, добавляем текущий элемент как вложенный к последнему элементу stack
                 stack[-1]["children"].append(line_dict)
@@ -36,6 +41,7 @@ def add_3():
         if ":" in line:
             key, value = line.strip().split(":", 1)
             return key.strip(), value.strip()
+        return None
 
 
 
@@ -58,13 +64,13 @@ def add_3():
         return s
 
     with open('yaml_org.yml', 'r', encoding='utf-8') as file_yml:
-        file = file_yml.read().replace('\"', '').replace(" -", "")
+        file = file_yml.read().replace('\"', '').replace(' -', "")
         lines = file.splitlines()
 
         parsed_yaml = parse_yaml(lines)
         xml_data = to_xml(parsed_yaml)
 
-    with open('schedule.xml', 'w', encoding='utf-8') as file:
+    with open('dop_dop_3.xml', 'w', encoding='utf-8') as file:
         file.write(xml_data)
 
 add_3()
