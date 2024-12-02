@@ -13,7 +13,4 @@ public class TypeOfInkObject implements Ink {
     public void setInkObject(InkObject inkObject) {
         this.inkObject = inkObject;
     }
-
-
-
 }

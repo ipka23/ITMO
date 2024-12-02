@@ -1,8 +1,8 @@
 package ru.ipka23.javalab3.classes;
 
-import ru.ipka23.javalab3.abstractclases.Action;
+import ru.ipka23.javalab3.abstractclases.AbstractAction;
 
-public class Read extends Action {
+public class Read extends AbstractAction {
     private Neznayka neznayka; // Добавлено поле для хранения объекта ru.ipka23.javalab3.classes.Neznayka
     private Book book;
 
