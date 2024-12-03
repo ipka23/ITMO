@@ -1,9 +1,9 @@
+import ru.ipka23.javalab3.classes.Blot;
 import ru.ipka23.javalab3.classes.Neznayka;
 import ru.ipka23.javalab3.enums.Game;
 import ru.ipka23.javalab3.enums.ObjectForSitting;
 
 import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
         Neznayka neznayka = new Neznayka();
@@ -13,5 +13,12 @@ public class Main {
         }
         neznayka.sit(ObjectForSitting.CHAIR);
         neznayka.makeBlot().chance(0.5);
+        Blot blot = new Blot();
+        blot.setName("ddd");
+        blot.hasLongTail();
+        System.out.println(blot.getName());
+        blot.setLongTail();
+        blot.hasLongTail();
+        System.out.println(blot.getName());
     }
 }
