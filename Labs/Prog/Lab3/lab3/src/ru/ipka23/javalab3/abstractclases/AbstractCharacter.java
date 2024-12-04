@@ -1,11 +1,13 @@
 package ru.ipka23.javalab3.abstractclases;
 
+import ru.ipka23.javalab3.classes.Book;
 import ru.ipka23.javalab3.enums.Game;
 import ru.ipka23.javalab3.enums.ObjectForSitting;
 import ru.ipka23.javalab3.interfaces.Playable;
+import ru.ipka23.javalab3.interfaces.Readable;
 import ru.ipka23.javalab3.interfaces.Sitable;
 
-public abstract class AbstractCharacter implements Playable, Sitable {
+public abstract class AbstractCharacter implements Playable, Sitable, Readable {
     private String name;
     public AbstractCharacter(String name) {
         this.name = name;
@@ -13,7 +15,6 @@ public abstract class AbstractCharacter implements Playable, Sitable {
     }
 
 
-    @Override
     public void sit(ObjectForSitting objectForSitting){
         if (ObjectForSitting.TABLE == objectForSitting){
             System.out.println(getName() + " сел за " + objectForSitting.getObjectForSittingName());
@@ -22,18 +23,20 @@ public abstract class AbstractCharacter implements Playable, Sitable {
             System.out.println(getName() + " сел на " + objectForSitting.getObjectForSittingName());
         }
     }
-    @Override
+
     public void play(Game game, boolean b) {
         if (b){
             System.out.println(getName() + " играет в " + game.getGame());
         }
         else {
-            System.out.print("вместо того чтобы " + getName() + " играть в " + game.getGame() + ", ");
+            System.out.println(getName() + " не играет в " + game.getGame());
         }
-
-
     }
 
+    @Override
+    public void read(Book book) {
+        System.out.println(getName() + " читал " + book.getTitle());
+    }
     public String getName() {
         return name;
     }

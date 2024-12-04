@@ -1,18 +1,18 @@
 package ru.ipka23.javalab3.classes;
-import ru.ipka23.javalab3.abstractclases.AbstractAction;
-import ru.ipka23.javalab3.abstractclases.AbstractBlot;
+
+import ru.ipka23.javalab3.abstractclases.AbstractInkObject;
 
 
-public class Lick extends AbstractAction {
-    private AbstractBlot blot;
-    public Lick(AbstractBlot blot) {
+public class Lick {
+    private AbstractInkObject blot;
+    public Lick(AbstractInkObject blot) {
         this.blot = blot;
     }
-    public AbstractBlot getBlotName() {
+    public AbstractInkObject getBlotName() {
         return blot;
     }
 
-    public void setBlot(AbstractBlot blot) {
+    public void setBlot(AbstractInkObject blot) {
         this.blot = blot;
     }
 
