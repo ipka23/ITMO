@@ -17,7 +17,7 @@ public class Book {
     public String getTitle(){
         return title;
     }
-    public int getCountOfPages(){
-        return page.getCount();
-    }
+
+
+
 }

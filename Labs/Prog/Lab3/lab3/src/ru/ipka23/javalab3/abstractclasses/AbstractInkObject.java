@@ -1,4 +1,4 @@
-package ru.ipka23.javalab3.abstractclases;
+package ru.ipka23.javalab3.abstractclasses;
 
 import ru.ipka23.javalab3.enums.InkObject;
 import ru.ipka23.javalab3.interfaces.Ink;
@@ -9,7 +9,6 @@ public abstract class AbstractInkObject implements Ink {
     protected String name;
     public AbstractInkObject(String name){
         this.name = name;
-        System.out.println(getName() + " создана");
     }
     @Override
     public InkObject getTypeOfInkObject() {
@@ -23,7 +22,6 @@ public abstract class AbstractInkObject implements Ink {
     public AbstractInkObject(String name, InkObject inkObject){
         this.name = name;
         this.inkObject = inkObject;
-        System.out.println(getName() + " создана");
     }
 
     public String getName() {
@@ -34,7 +32,10 @@ public abstract class AbstractInkObject implements Ink {
         this.name = name;
     }
 
-
+    @Override
+    public String toString() {
+        return "объект из чернил: " + getName();
+    }
 
 
 }

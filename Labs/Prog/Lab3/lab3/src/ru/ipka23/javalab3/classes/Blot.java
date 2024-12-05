@@ -1,9 +1,11 @@
 package ru.ipka23.javalab3.classes;
 
-import ru.ipka23.javalab3.abstractclases.AbstractInkObject;
+import ru.ipka23.javalab3.abstractclasses.AbstractInkObject;
 
 public class Blot extends AbstractInkObject {
     private boolean longTail = false;
+    private boolean blotIsOnThePage = false;
+    private Neznayka neznayka;
     public Blot() {
         super("клякса");
     }
@@ -25,4 +27,12 @@ public class Blot extends AbstractInkObject {
         this.name = name;
     }
 
+    public boolean isOnThePage() {
+        return blotIsOnThePage;
+    }
+
+    public void setBlotOnThePage() {
+        this.blotIsOnThePage = true;
+        System.out.println("клякса на странице!");
+    }
 }

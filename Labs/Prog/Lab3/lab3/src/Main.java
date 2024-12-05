@@ -13,16 +13,11 @@ public class Main {
         for (Game game : gamesList) {
             neznayka.play(game, false);
         }
-        neznayka.sit(ObjectForSitting.CHAIR);
-        neznayka.makeBlot().chance(1);
-        Blot blot = new Blot();
-        blot.setLongTail();
-        System.out.println(blot.getName());
-        blot.hasLongTail();
-        System.out.println(blot.getName());
-        Blot blot2 = new Blot();
-        System.out.println(blot2.getName());
-        Book book = new Book("Book", new Page(7));
-        System.out.println(book.getCountOfPages());
+        Blot blot1 = new Blot();
+        neznayka.sit(ObjectForSitting.TABLE);
+        Page page = new Page(1);
+        Book book = new Book("Книга", page);
+        neznayka.read(page);
+
     }
 }
