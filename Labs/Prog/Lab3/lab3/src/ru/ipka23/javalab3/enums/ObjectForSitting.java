@@ -6,7 +6,7 @@ public enum ObjectForSitting {
 
     private final String name;
 
-    private ObjectForSitting(String name) {
+    ObjectForSitting(String name) {
         this.name = name;
     }
 

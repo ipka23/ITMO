@@ -10,7 +10,7 @@ public class Neznayka extends AbstractCharacter {
     }
 
 
-    public final void chance(double ch) {
+    public void chance(double ch) {
         this.ch = ch;
         if (ch < 0 || ch > 1) {
             throw new IllegalArgumentException("Шанс должен быть в пределах от 0 до 1");

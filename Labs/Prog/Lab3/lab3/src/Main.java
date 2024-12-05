@@ -14,7 +14,7 @@ public class Main {
             neznayka.play(game, false);
         }
         neznayka.sit(ObjectForSitting.CHAIR);
-        neznayka.makeBlot().chance(0.5);
+        neznayka.makeBlot().chance(1);
         Blot blot = new Blot();
         blot.setLongTail();
         System.out.println(blot.getName());
