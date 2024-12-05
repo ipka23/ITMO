@@ -9,7 +9,6 @@ public enum Game {
     FOOTBALL("футбол");
     private final String game;
 
-    // Конструктор принимает строку
     Game(String game) {
         this.game = game;
     }
@@ -18,7 +17,7 @@ public enum Game {
         return this.game;
     }
 
-    // Метод для создания списка игр
+    // метод для создания списка игр
     public static List<Game> createGameList(Game... games) {
         return Arrays.asList(games);
     }

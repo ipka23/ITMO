@@ -9,6 +9,8 @@ import ru.ipka23.javalab3.interfaces.Sitable;
 
 public abstract class AbstractCharacter implements Playable, Sitable, Readable {
     private String name;
+    private boolean readingIsFinished;
+    private boolean writingIsFinished;
     public AbstractCharacter(String name) {
         this.name = name;
         System.out.println("Персонаж " + name + " создан");
@@ -32,6 +34,7 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable {
             System.out.println(getName() + " не играет в " + game.getGame());
         }
     }
+
 
     @Override
     public void read(Book book) {

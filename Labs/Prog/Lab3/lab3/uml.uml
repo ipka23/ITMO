@@ -1,0 +1,88 @@
+@startuml
+abstract class Character {
+  -name : String 
+  +getName() : String
+  +setName() : void
+  +play(game : Game) : void
+  +read(page : Page) : void
+  +write(letter: Letter) : void
+  +sit(objectForSitting : ObjectForSitting) : void  
+}
+
+class Neznayka extends Character{
+  +lickTheBlot(blot : Blot) : void 
+}
+
+enum ObjectForSitting{
+  TABLE,
+  CHAIR
+}
+enum InkObject{
+  BLOT,
+  KRIVULKA, 
+  KRENDEL
+}
+enum Game {
+  FOOTBALL,
+  TOWNS
+}
+enum Letter{
+  WRITTEN,
+  PRINTED,
+  BEAUTIFUL,
+  NOTBEAUTIFUL
+  UPPERCASE,
+  LOWERCASE
+}
+
+interface Ink { 
+  getTypeOfInkObject(inkObject : InkObject) : InkObject
+}
+
+
+abstract class Paper {
+  #getSizeOfPaper() : void
+  #setSizeOfPaper() : void
+}
+class Page extends Paper{
+  +count(count : int) : int
+}
+abstract class Action{
+  +doSomething() : void 
+}
+class Read extends Action{
+  -readingIsFinished : boolean
+  +read(page : Page) : void
+}
+class Play extends Action{
+  +play(game : game) : void
+}
+
+abstract class TypeOfInkObject implements Ink {
+  #getTypeOfInkObject(inkObject : InkObject) : InkObject
+}
+
+class Blot extends InkObject{
+  -longTail : boolean
+  #hasLongTail() : void
+  #makeBlot() : void
+}
+class LickTheBlot extends Action {
+  
+}
+class ReadingFrequency extends Read{
+  -frequencyOfReading : int
+  +getFrequencyOfReading() : void
+  +setFrequencyOfReading(frequencyOfReading : int) : void
+} 
+class Benefit {
+  +getABenefit() : void
+}
+
+class Write extends Action {
+  +write(letter : Letter) : void 
+}
+class TryHard() extends Action{
+  +tryHard(neznayka : Neznayka) : void  
+}
+@enduml

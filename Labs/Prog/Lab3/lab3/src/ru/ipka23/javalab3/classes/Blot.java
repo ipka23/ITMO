@@ -9,11 +9,11 @@ public class Blot extends AbstractInkObject {
     }
     public void hasLongTail() {
         if (longTail) {
-            this.name = "комета";
+            changeName("комета");
             System.out.println(longTail);
         }
         else {
-            this.name = "клякса";
+            changeName("клякса");
             System.out.println(longTail);
         }
 
@@ -21,4 +21,8 @@ public class Blot extends AbstractInkObject {
     public void setLongTail() {
         this.longTail = true;
     }
+    private void changeName(String name) {
+        this.name = name;
+    }
+
 }
