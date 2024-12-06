@@ -1,7 +1,6 @@
 package ru.ipka23.javalab3.classes;
 
-import ru.ipka23.javalab3.abstractclasses.AbstractCharacter;
-
+import java.lang.ref.PhantomReference;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,28 +14,27 @@ public class Page {
     public int getNumberOfPage() {
         return numberOfPage;
     }
-    public Page[] createPages(Page[] pages) {
-        return pages;
+    public List<Page> createPages(Page... pages) {
+        return Arrays.asList(pages);
     }
-    private int countOfReadenPages = 0;
-    public void readStatus(AbstractCharacter character, Page page) {
+    public void readStatus() {
         if (flag) {
-            System.out.println(character.getName() + " прочитал страницу №" + page.getNumberOfPage());
+            System.out.println("прочитана");
         }
         else {
-            System.out.println(page.getNumberOfPage() + " ещё не была прочитана персонажем " + character.getName());
+            System.out.println("не прочитана");
         }
     }
     public void setReadFlag() {
         this.flag = true;
     }
-    public int countOfReadenPages(Page[] pages) {
-        return pages.length;
-    }
+
     public void setNumberOfPage(int numberOfPage) {
         this.numberOfPage = numberOfPage;
     }
-
+    public static List<Page> setPages(Page... pages) {
+        return Arrays.asList(pages);
+    }
     @Override
     public String toString() {
         return "страница " + numberOfPage;
