@@ -1,10 +1,13 @@
 package ru.ipka23.javalab3.classes;
 
 import ru.ipka23.javalab3.abstractclasses.AbstractCharacter;
+import ru.ipka23.javalab3.enums.Frequency;
 import ru.ipka23.javalab3.enums.Game;
 
+import java.util.List;
+
 public class Neznayka extends AbstractCharacter {
-    public Neznayka(){
+    public Neznayka() {
         super("Незнайка");
     }
 
@@ -17,7 +20,7 @@ public class Neznayka extends AbstractCharacter {
             System.out.println(getName() + " играет в " + game.getGame());
         }
         else {
-            System.out.print("вместо того чтобы " + getName() + " играть в " + game.getGame() + ", ");
+            System.out.print("Вместо того чтобы " + getName() + " играть в " + game.getGame() + ", ");
         }
     }
     public void makeBlot(Blot blot, double chance) {
@@ -38,11 +41,7 @@ public class Neznayka extends AbstractCharacter {
             System.out.println(getName() + " облизал " + blot.getName());
         }
     }
-    @Override
-    public void read(Page[] pages) {
-        for (Page page : pages) {
-            page.setReadFlag();
-        }
-        System.out.println(getName() + " прочитал " + pages.length + " страниц ");
-    }
+
+
 }
+
