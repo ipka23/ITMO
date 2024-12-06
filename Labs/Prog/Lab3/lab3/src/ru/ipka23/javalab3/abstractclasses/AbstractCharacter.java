@@ -37,12 +37,8 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable {
     }
 
 
-    @Override
-    public void read(Page page) {
-        page.setFlag();
-        System.out.println(getName() + " прочитал " + page.getNumberOfPage() + " страницу за день");
 
-    }
+
     public String getName() {
         return name;
     }

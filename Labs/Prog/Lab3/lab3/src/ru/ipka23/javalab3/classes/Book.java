@@ -2,22 +2,24 @@ package ru.ipka23.javalab3.classes;
 
 public class Book {
     private String title;
-    private Page page;
+    private Page[] pages;
     public Book(String title) {
         this.title = title;
-        System.out.println("Книга " + title + " создана");
     }
-    public Book(Page page) {
-        this.page = page;
+    public Book(Page[] pages) {
+        this.pages = pages;
     }
-    public Book(String title, Page page) {
+    public Book(String title, Page[] pages) {
         this.title = title;
-        this.page = page;
+        this.pages = pages;
     }
     public String getTitle(){
         return title;
     }
-
+    @Override
+    public String toString(){
+        return "Книга: " + title + "\n" + "Количество страниц: " + pages.length;
+    }
 
 
 }

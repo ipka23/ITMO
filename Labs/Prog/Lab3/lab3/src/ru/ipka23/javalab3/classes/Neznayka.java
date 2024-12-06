@@ -39,8 +39,10 @@ public class Neznayka extends AbstractCharacter {
         }
     }
     @Override
-    public void read(Page... pages) {
-        if (pages.)
-
+    public void read(Page[] pages) {
+        for (Page page : pages) {
+            page.setReadFlag();
+        }
+        System.out.println(getName() + " прочитал " + pages.length + " страниц ");
     }
 }
