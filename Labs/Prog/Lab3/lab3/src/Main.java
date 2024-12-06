@@ -16,8 +16,10 @@ public class Main {
         Blot blot1 = new Blot();
         neznayka.sit(ObjectForSitting.TABLE);
         Page page = new Page(1);
-        Book book = new Book("Книга", page);
-        neznayka.read(page);
+        Page page2 = new Page(2);
+        Page[] pages = new Page[2];
+        Book book = new Book("Книга", pages);
+        System.out.println(book);
 
     }
 }

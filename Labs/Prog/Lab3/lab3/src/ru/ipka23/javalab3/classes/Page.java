@@ -15,23 +15,23 @@ public class Page {
     public int getNumberOfPage() {
         return numberOfPage;
     }
-    public List<Page> createPages(Page... pages) {
-        return Arrays.asList(pages);
+    public Page[] createPages(Page[] pages) {
+        return pages;
     }
     private int countOfReadenPages = 0;
-    public void readStatus(AbstractCharacter character, Page... pages) {
+    public void readStatus(AbstractCharacter character, Page page) {
         if (flag) {
-            System.out.println(character.getName() + " прочитал страницу №" + pages.getNumberOfPage());
+            System.out.println(character.getName() + " прочитал страницу №" + page.getNumberOfPage());
         }
         else {
-            System.out.println(page.getNumberOfPage() + "ещё не была прочитана персонажем " + character.getName());
+            System.out.println(page.getNumberOfPage() + " ещё не была прочитана персонажем " + character.getName());
         }
     }
-    public void setFlag() {
+    public void setReadFlag() {
         this.flag = true;
     }
-    public void countOfReadenPages(int cnt) {
-        this.countOfReadenPages += cnt;
+    public int countOfReadenPages(Page[] pages) {
+        return pages.length;
     }
     public void setNumberOfPage(int numberOfPage) {
         this.numberOfPage = numberOfPage;
