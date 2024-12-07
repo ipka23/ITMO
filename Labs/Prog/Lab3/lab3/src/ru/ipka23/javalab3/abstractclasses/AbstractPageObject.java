@@ -1,18 +1,19 @@
 package ru.ipka23.javalab3.abstractclasses;
 
-import ru.ipka23.javalab3.classes.Page;
-
 import java.util.List;
 
-public class AbstractPageObject {
-    private List<Page> pages;
-    public AbstractPageObject(List<Page> pages) {
+public abstract class AbstractPageObject<pageType extends AbstractPage> {
+    private List<pageType> pages;
+
+    public AbstractPageObject(List<pageType> pages) {
         this.pages = pages;
     }
-    protected List<Page> getPages() {
+
+    public List<pageType> getPages() {
         return pages;
     }
-    protected void setPages(List<Page> pages) {
+
+    protected void setPages(List<pageType> pages) {
         this.pages = pages;
     }
 }
