@@ -1,28 +1,28 @@
 package ru.ipka23.javalab3.classes;
 
+import ru.ipka23.javalab3.abstractclasses.AbstractPage;
 import ru.ipka23.javalab3.abstractclasses.AbstractPageObject;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class Book extends AbstractPageObject {
+public class Book extends AbstractPageObject<BookPage> {
     private String title;
-    public Book(List<Page> pages) {
+
+    public Book(List<BookPage> pages) {
         super(pages);
     }
-    public Book(String title, List<Page> pages) {
+
+    public Book(String title, List<BookPage> pages) {
         super(pages);
         this.title = title;
     }
 
-
-
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-    @Override
-    public String toString(){
-        return "Книга: " + title + "\n" + "Содержимое: " + getPages();
+
+    public static List<BookPage> setBookPages(BookPage... bookPages) {
+        return Arrays.asList(bookPages);
     }
-
-
 }

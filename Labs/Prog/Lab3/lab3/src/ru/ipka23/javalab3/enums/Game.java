@@ -17,7 +17,6 @@ public enum Game {
         return this.game;
     }
 
-    // метод для создания списка игр
     public static List<Game> createGameList(Game... games) {
         return Arrays.asList(games);
     }

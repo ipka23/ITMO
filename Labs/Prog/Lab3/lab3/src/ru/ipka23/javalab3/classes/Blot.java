@@ -12,18 +12,25 @@ public class Blot extends AbstractInkObject {
     public void hasLongTail() {
         if (longTail) {
             changeName("комета");
-            System.out.println(longTail);
+            System.out.println("Такие кляксы с длинным хвостом он называл " + getName() + ".");
         }
         else {
             changeName("клякса");
-            System.out.println(longTail);
+            System.out.println("обычная клякса");
         }
 
     }
     public void setLongTail() {
         this.longTail = true;
     }
-    private void changeName(String name) {
+
+
+    public boolean getLongTail() {
+        return longTail;
+    }
+
+
+    protected void changeName(String name) {
         this.name = name;
     }
 
@@ -33,6 +40,5 @@ public class Blot extends AbstractInkObject {
 
     public void setBlotOnThePage() {
         this.blotIsOnThePage = true;
-        System.out.println("клякса на странице!");
     }
 }

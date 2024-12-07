@@ -1,20 +1,24 @@
 package ru.ipka23.javalab3.abstractclasses;
 
-import ru.ipka23.javalab3.classes.Page;
-import ru.ipka23.javalab3.enums.Frequency;
-import ru.ipka23.javalab3.enums.Game;
-import ru.ipka23.javalab3.enums.ObjectForSitting;
+import ru.ipka23.javalab3.classes.BookPage;
+import ru.ipka23.javalab3.classes.Letter;
+import ru.ipka23.javalab3.classes.Notebook;
+import ru.ipka23.javalab3.classes.NotebookPage;
+import ru.ipka23.javalab3.enums.*;
 import ru.ipka23.javalab3.interfaces.Playable;
 import ru.ipka23.javalab3.interfaces.Readable;
 import ru.ipka23.javalab3.interfaces.Sitable;
 import ru.ipka23.javalab3.interfaces.Writeable;
 
+import java.security.cert.Certificate;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractCharacter implements Playable, Sitable, Readable, Writeable {
     private String name;
     private Frequency readingFrequency;
     private String benefitStatus;
+    private static int experience = 0;
     private boolean readingIsStarted;
     private boolean writingIsStarted;
     private boolean readingIsFinished;
@@ -49,11 +53,12 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
 //        System.out.println(" начал читать.");
 //    }
     @Override
-    public boolean finishReading(List<Page> pages) {
+    public boolean finishReading(List<BookPage> pages) {
         this.readingIsFinished = true;
+        System.out.print("Покончив с чтением, ");
         return true;
     }
-    public boolean isReading(List<Page> pages) {
+    public boolean isReading(List<BookPage> pages) {
         return readingIsStarted;
     }
 
@@ -79,21 +84,20 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
         return readingFrequency.getFrequency();
     }
     @Override
-    public void read(List<Page> pages, double chance) {
+    public void read(List<BookPage> pages, double chance) {
         if (Math.random() < chance){
-            for (Page page : pages) {
+            for (BookPage page : pages) {
                 page.setReadFlag();
             }
-            finishReading(pages);
             System.out.println("Читал он " + getReadingFrequency() + " по страничке, " + "но сегодня прочитал две" + getBenefit());
         }
         else {
-            for (Page page : pages) {
+            for (BookPage page : pages) {
                 page.setReadFlag();
-                System.out.println("Читал он " + getReadingFrequency() + " по страничке, но" + getBenefit());
                 break;
             }
-            finishReading(pages);
+            System.out.println("Читал он " + getReadingFrequency() + " по страничке, но" + getBenefit());
+
         }
     }
     public String getBenefit(){
@@ -107,20 +111,32 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
 
 
     @Override
-    public void  startReading(List<Page> pages) {
+    public void  startReading(List<BookPage> pages) {
         readingIsStarted = true;
         System.out.println(" начал читать.");
     }
     @Override
-    public void write(List<Page> pages) {
-
+    public void writeLetter(List<NotebookPage> pages, Letter letter, boolean b) {
+        if (!b) {
+            enhanceTheExperience();
+            System.out.print("Писал " + getName() + " не " + letter.getLetterType().getLetter());
+        }
+        else {
+            enhanceTheExperience();
+            System.out.println(", а " + letter.getLetterCharacteristic().getLetter() + " " + letter.getLetterType().getLetter() + ".");
+        }
     }
 
     @Override
-    public boolean startWriting() {
+    public boolean startWriting(Notebook notebook) {
         this.writingIsFinished = false;
         this.writingIsStarted = true;
-        System.out.println("Покончив с чтением ");
+        if (readingIsFinished) {
+            System.out.println(getName() + " начинал писать в " + notebook.getNotebookName() + ".");
+        }
+        else {
+            System.out.println(getName() + " ещё не закончил читать!");
+        }
         return true;
     }
 
@@ -132,7 +148,38 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
     }
 
     @Override
-    public boolean isWriting(List<Page> pages) {
+    public boolean isWriting(List<NotebookPage> pages) {
       return writingIsStarted;
+    }
+
+    @Override
+    public void write(List<Letter> letters) {
+        enhanceTheExperience();
+        if (getExperience() <= 3) {
+            System.out.print(experience() + " у " + getName() + " выходили " + InkObject.KRIVULKA.getName() + " и " + InkObject.KRENDEL.getName());
+        }
+        else {
+            System.out.println(", но " + tryHard() + " и постепенно выучился писать " + letters.get(0).getLetterType().getLetter() + " " + letters.get(0).getLetterCharacteristic().getLetter() + " и " + letters.get(1).getLetterType().getLetter() + " " + letters.get(1).getLetterCharacteristic().getLetter() + " буквы.");
+        }
+    }
+    public int getExperience() {
+        return experience;
+    }
+    public String experience() {
+        if (experience <= 3) {
+            return "Первое время ";
+        }
+        else {
+            return "с опытом";
+        }
+
+    }
+
+    public void enhanceTheExperience() {
+        experience++;
+    }
+
+    public String tryHard(){
+        return getName() + " очень старался";
     }
 }

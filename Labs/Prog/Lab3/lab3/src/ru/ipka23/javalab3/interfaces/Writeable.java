@@ -1,14 +1,19 @@
 package ru.ipka23.javalab3.interfaces;
 
-import ru.ipka23.javalab3.classes.Page;
+import ru.ipka23.javalab3.classes.Letter;
+import ru.ipka23.javalab3.classes.Notebook;
+import ru.ipka23.javalab3.classes.NotebookPage;
 import ru.ipka23.javalab3.enums.Frequency;
+import ru.ipka23.javalab3.enums.InkObject;
+import ru.ipka23.javalab3.enums.LetterType;
 
 import java.util.List;
 
 public interface Writeable {
-    void write(List<Page> pages);
-    boolean startWriting();
+    void writeLetter(List<NotebookPage> pages, Letter letter, boolean b);
+    boolean startWriting(Notebook notebook);
     boolean finishWriting();
-    boolean isWriting(List<Page> pages);
+    boolean isWriting(List<NotebookPage> pages);
+    void write(List<Letter> letters);
 
 }
