@@ -9,4 +9,8 @@ public abstract class AbstractPage {
         this.numberOfPage = numberOfPage;
     }
 
+
+    public int getNumberOfPage() {
+        return numberOfPage;
+    }
 }
