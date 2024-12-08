@@ -1,8 +1,9 @@
 import ru.ipka23.newjavalab3.actions.*;
 import ru.ipka23.newjavalab3.characters.Neznayka;
-import ru.ipka23.newjavalab3.characters.Znayka;
 import ru.ipka23.newjavalab3.classes.*;
 import ru.ipka23.newjavalab3.enums.*;
+import ru.ipka23.newjavalab3.exeptions.InvalidNumberOfPage;
+import ru.ipka23.newjavalab3.exeptions.NumberOfPageValidator;
 import ru.ipka23.newjavalab3.inkobject.Blot;
 import ru.ipka23.newjavalab3.page.BookPage;
 import ru.ipka23.newjavalab3.page.NotebookPage;
@@ -14,9 +15,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        NumberOfPageValidator validator = new NumberOfPageValidator();
 
         Neznayka neznayka = new Neznayka();
-        Znayka znayka = new Znayka();
+
 
         Benefit benefit = new Benefit();
 
@@ -24,14 +26,27 @@ public class Main {
         Blot blot2 = new Blot();
 
         MoodStatus moodStatus = new MoodStatus();
-
         BookPage bookPage1 = new BookPage(1);
         BookPage bookPage2 = new BookPage(2);
+        try {
+            validator.validatePageNumber(bookPage1.getNumberOfPage());
+            validator.validatePageNumber(bookPage2.getNumberOfPage());
+        }
+        catch (InvalidNumberOfPage e) {
+            throw new RuntimeException(e);
+        }
         List<BookPage> bookPages = Arrays.asList(bookPage1, bookPage2);
 
 
         NotebookPage notebookPage1 = new NotebookPage(1);
         NotebookPage notebookPage2 = new NotebookPage(2);
+        try {
+            validator.validatePageNumber(notebookPage1.getNumberOfPage());
+            validator.validatePageNumber(notebookPage2.getNumberOfPage());
+        }
+        catch (InvalidNumberOfPage e) {
+            throw new RuntimeException(e);
+        }
         List<NotebookPage> notebookPages = Arrays.asList(notebookPage1, notebookPage2);
         Notebook notebook = new Notebook(notebookPages);
 
@@ -73,6 +88,8 @@ public class Main {
 
 
         writingAction.startWriting(neznayka, notebook);
+        writingAction.writeLetter(neznayka, notebookPages, printedLetter, false);
+        writingAction.writeLetter(neznayka, notebookPages, notBeautifulWrittenLetter, true);
         writingAction.write(neznayka, lettersList, experience);
         effort.isTryingHard(neznayka);
         effort.setPatience(neznayka);
@@ -92,9 +109,6 @@ public class Main {
 
         moodStatus.changeMood(neznayka, notebookPages);
         thinkingAction.think(neznayka, effort, notebookPages);
-
-
-
 
     }
 }
