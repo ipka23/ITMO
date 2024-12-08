@@ -36,7 +36,7 @@ public class Neznayka extends AbstractCharacter {
         }
     }
 
-    public void setMood(Mood mood) {
+    private void setMood(Mood mood) {
         this.mood = mood;
     }
     public void lickTheBlot(Blot blot) {
@@ -45,6 +45,7 @@ public class Neznayka extends AbstractCharacter {
             System.out.println("слизал " + blot.getName() + " языком.");
         }
     }
+
     public void mood(List<NotebookPage> pages) {
         if (NotebookPage.isHasBlotOnEveryPage()) {
             setMood(Mood.UPSET);

@@ -10,8 +10,6 @@ import ru.ipka23.javalab3.interfaces.Readable;
 import ru.ipka23.javalab3.interfaces.Sitable;
 import ru.ipka23.javalab3.interfaces.Writeable;
 
-import java.security.cert.Certificate;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractCharacter implements Playable, Sitable, Readable, Writeable {
@@ -20,8 +18,8 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
     private String benefitStatus;
     private static int experience = 0;
     private boolean readingIsStarted;
-    private boolean writingIsStarted;
     private boolean readingIsFinished;
+    private boolean writingIsStarted;
     private boolean writingIsFinished;
     public AbstractCharacter(String name) {
         this.name = name;
@@ -58,6 +56,7 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
         System.out.print("Покончив с чтением, ");
         return true;
     }
+    @Override
     public boolean isReading(List<BookPage> pages) {
         return readingIsStarted;
     }
@@ -104,10 +103,7 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
         benefitStatus = "большая польза";
         return " и от этого была, конечно, " + benefitStatus + ".";
     }
-    @Override
-    public String toString() {
-        return "Персонаж: " + name;
-    }
+
 
 
     @Override
@@ -165,6 +161,8 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
     public int getExperience() {
         return experience;
     }
+
+
     public String experience() {
         if (experience <= 3) {
             return "Первое время ";
@@ -172,7 +170,6 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
         else {
             return "с опытом";
         }
-
     }
 
     public void enhanceTheExperience() {
@@ -181,5 +178,11 @@ public abstract class AbstractCharacter implements Playable, Sitable, Readable, 
 
     public String tryHard(){
         return getName() + " очень старался";
+    }
+
+
+    @Override
+    public String toString() {
+        return "Персонаж: " + name;
     }
 }

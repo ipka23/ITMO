@@ -1,6 +1,6 @@
-package ru.ipka23.javalab3.classes;
+package ru.ipka23.newjavalab3.pageobjects;
 
-import ru.ipka23.javalab3.abstractclasses.AbstractPageObject;
+import ru.ipka23.newjavalab3.page.BookPage;
 
 import java.util.Arrays;
 import java.util.List;
