@@ -1,6 +1,6 @@
-package ru.ipka23.javalab3.classes;
+package ru.ipka23.newjavalab3.pageobjects;
 
-import ru.ipka23.javalab3.abstractclasses.AbstractPageObject;
+import ru.ipka23.newjavalab3.page.NotebookPage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,3 +20,4 @@ public class Notebook extends AbstractPageObject<NotebookPage> {
         return Arrays.asList(notebookPages);
     }
 }
+
