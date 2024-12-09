@@ -36,7 +36,6 @@ public class Main {
         Notebook notebook = new Notebook(notebookPages);
 
 
-        Book book = new Book("Приключения Незнайки и его друзей", bookPages);
 
 
         GameAction gameAction = new GameAction();
@@ -46,7 +45,9 @@ public class Main {
         BlotAction blotAction = new BlotAction();
         ThinkingAction thinkingAction = new ThinkingAction();
 
+        WriterAction writer = new WriterAction() {
 
+        }
 
 
         Letter printedLetter = new Letter(LetterType.PRINTED);
