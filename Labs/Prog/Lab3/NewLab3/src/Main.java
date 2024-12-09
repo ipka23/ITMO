@@ -7,6 +7,7 @@ import ru.ipka23.newjavalab3.exeptions.NumberOfPageValidator;
 import ru.ipka23.newjavalab3.inkobject.Blot;
 import ru.ipka23.newjavalab3.page.BookPage;
 import ru.ipka23.newjavalab3.page.NotebookPage;
+import ru.ipka23.newjavalab3.pageobjects.Book;
 import ru.ipka23.newjavalab3.pageobjects.Notebook;
 
 import java.util.Arrays;
@@ -19,7 +20,6 @@ public class Main {
 
         Neznayka neznayka = new Neznayka();
 
-
         Benefit benefit = new Benefit();
 
         Blot blot1 = new Blot();
@@ -28,27 +28,15 @@ public class Main {
         MoodStatus moodStatus = new MoodStatus();
         BookPage bookPage1 = new BookPage(1);
         BookPage bookPage2 = new BookPage(2);
-        try {
-            validator.validatePageNumber(bookPage1.getNumberOfPage());
-            validator.validatePageNumber(bookPage2.getNumberOfPage());
-        }
-        catch (InvalidNumberOfPage e) {
-            throw new RuntimeException(e);
-        }
+
         List<BookPage> bookPages = Arrays.asList(bookPage1, bookPage2);
-
-
         NotebookPage notebookPage1 = new NotebookPage(1);
         NotebookPage notebookPage2 = new NotebookPage(2);
-        try {
-            validator.validatePageNumber(notebookPage1.getNumberOfPage());
-            validator.validatePageNumber(notebookPage2.getNumberOfPage());
-        }
-        catch (InvalidNumberOfPage e) {
-            throw new RuntimeException(e);
-        }
         List<NotebookPage> notebookPages = Arrays.asList(notebookPage1, notebookPage2);
         Notebook notebook = new Notebook(notebookPages);
+
+
+        Book book = new Book("Приключения Незнайки и его друзей", bookPages);
 
 
         GameAction gameAction = new GameAction();
@@ -57,6 +45,8 @@ public class Main {
         WritingAction writingAction = new WritingAction();
         BlotAction blotAction = new BlotAction();
         ThinkingAction thinkingAction = new ThinkingAction();
+
+
 
 
         Letter printedLetter = new Letter(LetterType.PRINTED);
@@ -68,7 +58,6 @@ public class Main {
 
         Experience experience = new Experience();
         Effort effort = new Effort();
-
 
 
 
@@ -100,6 +89,7 @@ public class Main {
 
         blotAction.makeTheBlot(neznayka, blot1, notebookPage1);
         blotAction.makeTheBlot(neznayka, blot2, notebookPage2);
+        writingAction.finishWriting(neznayka, notebook);
         blotAction.lickTheBlot(neznayka, blot1);
         blotAction.lickTheBlot(neznayka, blot2);
         blot1.hasLongTail();
