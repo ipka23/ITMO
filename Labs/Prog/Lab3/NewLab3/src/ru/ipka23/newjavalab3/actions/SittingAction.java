@@ -22,7 +22,17 @@ public class SittingAction implements Sitable {
 
 
     @Override
-    public boolean getSittingStatus(AbstractCharacter abstractCharacter) {
+    public boolean getSittingStatus() {
         return isSitting;
+    }
+
+    @Override
+    public String tell() {
+        if (isSitting) {
+            return "сидит";
+        }
+        else {
+            return "не сидит";
+        }
     }
 }
