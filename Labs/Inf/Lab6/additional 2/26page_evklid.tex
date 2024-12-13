@@ -1,8 +1,7 @@
-\documentclass[twocolumn]{article} % Начинаем с двух колонок и увеличиваем размер шрифта
-
-\usepackage{graphicx} % Для вставки изображений
-\usepackage{tikz} % Для рисования
-\usepackage[russian]{babel} % Поддержка русского языка
+\documentclass[twocolumn]{article} 
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usepackage[russian]{babel} 
 \usepackage{fancyhdr}
 \usepackage[left=0.5cm, right=3cm, top=3cm, paperwidth=210mm, paperheight=270mm]{geometry}
 
@@ -11,14 +10,14 @@
 
 
 \pagestyle{fancy}
-\fancyhf{} % Очищаем все поля
+\fancyhf{} % очистка автоматических номеров страницы
 
-% Заголовок и номер страницы
-\fancyhead[R]{КНИГА I ПРЕДЛ. II. ЗАДАЧА} % Заголовок слева
-\fancyhead[C]{26} % Номер страницы справа
 
-% Убираем линию под колонтитулом
-\renewcommand{\headrulewidth}{0pt}
+\fancyhead[R]{КНИГА I ПРЕДЛ. II. ЗАДАЧА} % 
+\fancyhead[C]{26} 
+
+
+\renewcommand{\headrulewidth}{0pt} % убираем линию верхнего колонтитула 
 
 \begin{document}
 
@@ -47,15 +46,15 @@
     \draw[dashed, orange, line width=0.7mm] (0.6,-1) -- (0.3,-0.2);
 \end{tikzpicture}
 
-\newpage % Начинаем новый раздел с двух колонок
+\newpage % новая колонка
 
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \node[left] (img) at (0, 0) {
-            \includegraphics[scale=0.08]{O.png} % Укажите путь к вашему изображению
+            \includegraphics[scale=0.08]{O.png} 
         };
-        \node[right, text width=8cm, align=left] at (0, 1) { % Установите ширину текста и выравнивание
+        \node[right, text width=8cm, align=left] at (0, 1) { 
             т\textit{ данной точки}
             \begin{tikzpicture}
                 \draw[thick, orange, line width=0.7mm] (0, 0) -- (0.5, 0);
