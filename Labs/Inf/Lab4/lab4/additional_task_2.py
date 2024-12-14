@@ -4,8 +4,15 @@ s = ""
 def add_2():
     with open("schedule.yml", "r", encoding="utf-8") as yaml_file:
         yaml_lines = [line for line in yaml_file]
-    def strip(string):
-        return string.strip()
+
+    def strip(char, string):
+        if char == "":  # not "stripChar"
+            regsp = re.compile(r'^\s+|\s+$')
+            stripContext = regsp.sub("", string)
+            return stripContext
+        else:  # some changes are here in this else statement
+            stripContext = re.sub(r'^{}+|{}+$'.format(char, char), "", strip("", string))
+            return stripContext
     def to_xml():
         global i
         global s
