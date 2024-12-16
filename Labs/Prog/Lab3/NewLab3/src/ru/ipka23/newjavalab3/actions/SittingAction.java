@@ -27,12 +27,7 @@ public class SittingAction implements Sitable {
     }
 
     @Override
-    public String tell() {
-        if (isSitting) {
-            return "сидит";
-        }
-        else {
-            return "не сидит";
-        }
+    public void tell() {
+        getCurrentState();
     }
 }

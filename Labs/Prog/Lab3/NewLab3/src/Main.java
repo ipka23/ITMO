@@ -45,9 +45,7 @@ public class Main {
         BlotAction blotAction = new BlotAction();
         ThinkingAction thinkingAction = new ThinkingAction();
 
-        WriterAction writer = new WriterAction() {
-
-        }
+        WriterAction writer = new WriterAction();
 
 
         Letter printedLetter = new Letter(LetterType.PRINTED);
@@ -100,6 +98,6 @@ public class Main {
 
         moodStatus.changeMood(neznayka, notebookPages);
         thinkingAction.think(neznayka, effort, notebookPages);
-
+        writer.tell();
     }
 }

@@ -8,11 +8,18 @@ public interface Sitable extends StoryTeller {
     boolean getSittingStatus();
 
 
+
     default String getCurrentState(){
         if (getSittingStatus()){
             return "сидит";
-        } else {
+        }
+        else{
             return "не сидит";
         }
     }
+    @Override
+    default void tell(){
+        System.out.println(getCurrentState());;
+    }
+
 }
