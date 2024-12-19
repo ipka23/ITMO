@@ -6,5 +6,6 @@ public class WriterAction implements StoryTeller {
 
     @Override
     public void tell(){
+        System.out.println("-------------");
     }
 }

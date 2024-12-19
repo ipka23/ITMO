@@ -26,8 +26,5 @@ public class SittingAction implements Sitable {
         return isSitting;
     }
 
-    @Override
-    public void tell() {
-        getCurrentState();
-    }
+
 }

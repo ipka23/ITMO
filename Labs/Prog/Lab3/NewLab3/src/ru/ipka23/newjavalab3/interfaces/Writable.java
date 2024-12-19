@@ -10,7 +10,9 @@ import java.util.List;
 
 public interface Writable {
     void write(Neznayka neznayka, List<Letter> letters, Experience experience);
-    void writeLetter(Neznayka neznayka, List<NotebookPage> pages, Letter letter, boolean b);
+    void writeLetter(Neznayka neznayka, List<NotebookPage> pages, Letter letter);
+    void cantWriteLetter(Neznayka neznayka, List<NotebookPage> pages, Letter letter);
     void startWriting(Neznayka neznayka, Notebook notebook);
     void finishWriting(Neznayka neznayka, Notebook notebook);
+
 }
