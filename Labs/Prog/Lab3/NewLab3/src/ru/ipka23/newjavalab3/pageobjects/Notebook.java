@@ -2,7 +2,6 @@ package ru.ipka23.newjavalab3.pageobjects;
 
 import ru.ipka23.newjavalab3.page.NotebookPage;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Notebook extends AbstractPageObject<NotebookPage> {
@@ -16,8 +15,5 @@ public class Notebook extends AbstractPageObject<NotebookPage> {
         return notebookName;
     }
 
-    public static List<NotebookPage> setNotebookPages(NotebookPage... notebookPages) {
-        return Arrays.asList(notebookPages);
-    }
 }
 

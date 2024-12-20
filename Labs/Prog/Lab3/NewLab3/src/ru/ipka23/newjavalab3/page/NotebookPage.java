@@ -50,23 +50,32 @@ public class NotebookPage extends AbstractPage {
     }
 
 
-    public static void hasBlots(List<NotebookPage> pages) {
+    public static void setPagesWithBlots(List<NotebookPage> pages) {
         if (pages.get(0).hasBlot() && pages.get(1).hasBlot()) {
             hasBlotOnEveryPage = true;
             hasNoBlots = false;
-            System.out.println("Такие кометы были у него на каждой странице.");
         }
         else if (!pages.get(0).hasBlot() && !pages.get(1).hasBlot()) {
             hasNoBlots = true;
-            System.out.println("Ни на одной странице не было кометы.");
         }
         else {
             hasBlotAlmostOnEveryPage = true;
             hasNoBlots = false;
-            System.out.println("Такие кометы были у него почти на каждой странице.");
+
         }
     }
 
+    public static void getBlotCount() {
+        if (hasBlotOnEveryPage) {
+            System.out.println("Такие кометы были у него на каждой странице.");
+        }
+        if (hasNoBlots){
+            System.out.println("Ни на одной странице не было кометы.");
+        }
+        if (hasBlotAlmostOnEveryPage) {
+            System.out.println("Такие кометы были у него почти на каждой странице.");
+        }
+    }
 
     @Override
     public String toString() {

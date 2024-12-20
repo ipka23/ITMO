@@ -1,6 +1,5 @@
 package ru.ipka23.newjavalab3.inkobject;
 
-import ru.ipka23.newjavalab3.characters.Neznayka;
 import ru.ipka23.newjavalab3.enums.InkObject;
 
 public class Blot extends AbstractInkObject {
@@ -13,11 +12,8 @@ public class Blot extends AbstractInkObject {
     }
 
 
-    public void hasLongTail() {
-        if (longTail) {
-            changeName("комета");
-            System.out.println("Кляксы с длинным хвостом он называл " + getName() + ".");
-        }
+    public boolean hasLongTail() {
+        return longTail;
 
     }
 
@@ -27,7 +23,7 @@ public class Blot extends AbstractInkObject {
     }
 
 
-    private void changeName(String name) {
+    public void changeName(String name) {
         this.name = name;
     }
 
