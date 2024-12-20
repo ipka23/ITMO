@@ -6,6 +6,6 @@ import ru.ipka23.newjavalab3.page.NotebookPage;
 
 public interface IBlot {
     void makeTheBlot(Neznayka neznayka, Blot blot, NotebookPage notebookPage);
-    void lickTheBlot(Neznayka neznayka, Blot blot);
+    void lickTheBlot(Blot blot);
 
 }

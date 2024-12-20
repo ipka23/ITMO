@@ -1,9 +1,8 @@
 package ru.ipka23.newjavalab3.inkobject;
 
 import ru.ipka23.newjavalab3.enums.InkObject;
-import ru.ipka23.newjavalab3.interfaces.Ink;
 
-public abstract class AbstractInkObject implements Ink {
+public abstract class AbstractInkObject{
     protected InkObject inkObject;
     protected String name;
 
@@ -14,13 +13,13 @@ public abstract class AbstractInkObject implements Ink {
     }
 
 
-    @Override
+
     public InkObject getTypeOfInkObject() {
         return inkObject;
     }
 
 
-    @Override
+
     public void setTypeOfInkObject(InkObject inkObject) {
         this.inkObject = inkObject;
     }

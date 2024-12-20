@@ -26,9 +26,7 @@ public class Letter {
         return letterCharacteristic;
     }
 
-    public void setLetterType(LetterType letterType) {
-        this.letterType = letterType;
-    }
+
     public LetterType getLetterType() {
         return letterType;
     }
