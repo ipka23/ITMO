@@ -1,4 +1,3 @@
-CLA
 NOT
 AND 19B
 ----OR 19D----
