@@ -7,7 +7,7 @@ public class Main {
         Neznayka neznayka = new Neznayka();
         List<Game> gamesList = Game.createGameList(Game.TOWNS, Game.FOOTBALL);
         for (Game game : gamesList) {
-            neznayka.play(game, false);
+            neznayka.dontPlay(game);
         }
         Blot blot = new Blot();
         neznayka.sit(ObjectForSitting.TABLE);
@@ -29,20 +29,20 @@ public class Main {
 
         neznayka.setReadingFrequency(Frequency.EVERY_DAY);
         neznayka.startReading(bookPages);
-        neznayka.read(bookPages, 0.7);
-//        page1.readStatus();
-//        page2.readStatus();
-        neznayka.finishReading(bookPages);
+        neznayka.read(bookPages);
+
+        neznayka.finishReading();
         neznayka.startWriting(notebook);
-        neznayka.writeLetter(notebookPages, printedLetter, false);
-        neznayka.writeLetter(notebookPages, notBeautifulWrittenLetter, true);
+        neznayka.cantWriteLetter(notebookPage1, printedLetter);
+        neznayka.canWriteLetter(notebookPage2, notBeautifulWrittenLetter);
         neznayka.write(lettersList);
         neznayka.write(lettersList);
-        neznayka.makeBlot(blot, 0.5, notebookPage1);
-        neznayka.makeBlot(blot, 0.5, notebookPage2);
+        neznayka.makeBlot(blot, notebookPage1);
+        neznayka.makeBlot(blot, notebookPage2);
         neznayka.lickTheBlot(blot);
-        blot.hasLongTail();
+        blot.blotWithLongTail();
         NotebookPage.hasBlots(notebookPages);
-        neznayka.mood(notebookPages);
+        neznayka.mood();
+        neznayka.tell();
     }
 }

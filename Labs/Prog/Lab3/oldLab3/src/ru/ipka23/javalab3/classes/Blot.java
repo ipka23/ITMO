@@ -9,19 +9,17 @@ public class Blot extends AbstractInkObject {
     public Blot() {
         super("клякса");
     }
-    public void hasLongTail() {
-        if (longTail) {
-            changeName("комета");
-            System.out.println("Такие кляксы с длинным хвостом он называл " + getName() + ".");
-        }
-        else {
-            changeName("клякса");
-            System.out.println("обычная клякса");
-        }
+    public void blotWithLongTail() {
+        System.out.println("Такие кляксы с длинным хвостом он называл " + "комета" + ".");
 
+    }
+
+    public void regularBlot() {
+        System.out.println("обычная клякса");
     }
     public void setLongTail() {
         this.longTail = true;
+        changeName("комета");
     }
 
 

@@ -6,7 +6,7 @@ public enum LetterType {
     UPPERCASE("заглавная"),
     LOWERCASE("маленькая");
     private final String letter;
-    private LetterType(String letter) {
+    LetterType(String letter) {
         this.letter = letter;
     }
     public String getLetter() {
