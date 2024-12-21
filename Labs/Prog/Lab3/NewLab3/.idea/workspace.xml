@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc39984c-aa97-4c51-902f-474432b734ab" name="Changes" comment="" />
+    <list default="true" id="bc39984c-aa97-4c51-902f-474432b734ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/abstractclasses/AbstractCharacter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/classes/Blot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/classes/Blot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/classes/Neznayka.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/classes/Neznayka.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/enums/LetterType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/enums/LetterType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Playable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Playable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Readable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Readable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Writeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oldLab3/src/ru/ipka23/javalab3/interfaces/Writeable.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +102,7 @@
       <workItem from="1734215804320" duration="5000" />
       <workItem from="1734381310505" duration="5032000" />
       <workItem from="1734771347316" duration="19000" />
+      <workItem from="1734783651798" duration="2000" />
     </task>
     <servers />
   </component>
