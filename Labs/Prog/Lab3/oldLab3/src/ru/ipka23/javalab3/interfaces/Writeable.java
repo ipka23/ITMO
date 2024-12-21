@@ -10,8 +10,9 @@ import ru.ipka23.javalab3.enums.LetterType;
 import java.util.List;
 
 public interface Writeable {
-    void writeLetter(List<NotebookPage> pages, Letter letter, boolean b);
-    boolean startWriting(Notebook notebook);
+    void canWriteLetter(NotebookPage notebookPage, Letter letter);
+    void cantWriteLetter(NotebookPage notebookPage, Letter letter);
+    void startWriting(Notebook notebook);
     boolean finishWriting();
     boolean isWriting(List<NotebookPage> pages);
     void write(List<Letter> letters);
