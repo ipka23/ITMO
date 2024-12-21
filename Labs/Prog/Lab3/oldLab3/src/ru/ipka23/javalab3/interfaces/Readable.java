@@ -6,9 +6,9 @@ import ru.ipka23.javalab3.enums.Frequency;
 import java.util.List;
 
 public interface Readable {
-    void read(List<BookPage> pages, double chance);
+    void read(List<BookPage> pages);
     void startReading(List<BookPage> pages);
-    boolean finishReading(List<BookPage> pages);
+    void finishReading();
     boolean isReading(List<BookPage> pages);
     void setReadingFrequency(Frequency frequency);
     String getReadingFrequency();
