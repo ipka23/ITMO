@@ -2,10 +2,7 @@ package utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 import java.nio.file.*;
 
 import managers.CommandManager;
@@ -145,12 +142,12 @@ public class Runner {
 
         switch (userCommand[0]) {
             case "execute_script" -> {
-                ExecutionResponse tmp = commandManager.getCommands().get("execute_script").apply(userCommand);
+                ExecutionResponse tmp = commandManager.getCommands().get("execute_script").apply(Arrays.toString(userCommand));
                 if (!tmp.getExitCode()) return tmp;
                 ExecutionResponse tmp2 = scriptMode(userCommand[1]);
                 return new ExecutionResponse(tmp2.getExitCode(), tmp.getMassage()+"\n"+tmp2.getMassage().trim());
             }
-            default -> { return command.apply(userCommand); }
+            default -> { return command.apply(Arrays.toString(userCommand)); }
         }
     }
 }

@@ -78,7 +78,7 @@ public class CollectionManager {
      */
     public boolean update(Aboba a) {
         if (!isСontain(a)) return false;
-        collection.remove(byId(a.getId());
+        collection.remove(byId(a.getId()));
         abobus.put(a.getId(), a);
         collection.add(a);
         update();
@@ -107,7 +107,7 @@ public class CollectionManager {
     public boolean init() {
         collection.clear();
         abobus.clear();
-        dumpManager.readCollection(collection)
+        dumpManager.readCollection(collection);
         lastInitTime = LocalDateTime.now();
         for (var e : collection)
             if (byId(e.getId()) != null) {
@@ -141,4 +141,4 @@ public class CollectionManager {
         return info.toString().trim();
     }
 }
-}
+
