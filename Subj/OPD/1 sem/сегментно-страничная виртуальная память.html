@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmented-Paged Virtual Memory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .section {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .segment-table, .page-table {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+        }
+        .row:nth-child(even) {
+            background-color: #d8d8d8;
+        }
+        .memory-space {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+        .memory-block {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #bbb;
+            background-color: #fafafa;
+            font-size: 12px;
+        }
+        .memory-block.used {
+            background-color: #87cefa;
+            color: #fff;
+        }
+        .arrow {
+            margin: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Segment Table</h2>
+            <div class="segment-table">
+                <div class="row"><span>Segment 0</span><span>Base: 0x1000</span><span>Limit: 4 KB</span></div>
+                <div class="row"><span>Segment 1</span><span>Base: 0x2000</span><span>Limit: 8 KB</span></div>
+                <div class="row"><span>Segment 2</span><span>Base: 0x3000</span><span>Limit: 2 KB</span></div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="section">
+            <h2>Page Table (Segment 1)</h2>
+            <div class="page-table">
+                <div class="row"><span>Page 0</span><span>Frame: 0x5000</span></div>
+                <div class="row"><span>Page 1</span><span>Frame: 0x5100</span></div>
+                <div class="row"><span>Page 2</span><span>Frame: 0x5200</span></div>
+                <div class="row"><span>Page 3</span><span>Frame: 0x5300</span></div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="section">
+            <h2>Physical Memory</h2>
+            <div class="memory-space">
+                <div class="memory-block">0</div>
+                <div class="memory-block">1</div>
+                <div class="memory-block">2</div>
+                <div class="memory-block">3</div>
+                <div class="memory-block used">4</div>
+                <div class="memory-block used">5</div>
+                <div class="memory-block">6</div>
+                <div class="memory-block used">7</div>
+                <div class="memory-block">8</div>
+                <div class="memory-block used">9</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
