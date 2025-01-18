@@ -1,22 +1,64 @@
+import managers.CollectionManager;
+import managers.DumpManager;
 import models.*;
 import utility.Ask;
 import utility.StandardConsole;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-//    static List<Organization> organizations = new ArrayList<Organization>();
-//    public static void main(String[] args) {
-//        organizations.add(new Organization(88005553535L,"UFO SEARCH", new Coordinates(0, 2f), 23, OrganizationType.PRIVATE_LIMITED_COMPANY, new Address("Portovaya 31/12", "685000", new Location(23f, 323, 32, "Magadan"))));
-//        organizations.add(new Organization(89045452595L,"LOLs", new Coordinates(0, 2f), 32, OrganizationType.OPEN_JOINT_STOCK_COMPANY, new Address("Pushkina 12/31", "777000", new Location(32f, 232, 23, "Moscow"))));
-//        System.out.println(organizations);
-//
-//
-//        var console = new StandardConsole();
-//}
+    public static void main(String[] args) throws Ask.AskBreak {
+        var console = new StandardConsole();
+
+        var fileName = "db.csv"; // TODO from variable or args
+
+        var dumpManager = new DumpManager(fileName, console);
+        var collectionManager = new CollectionManager(dumpManager);
+        if (!collectionManager.init()) { System.exit(1); }
+
+        while (true) {
+            String[] userCommand = {"", ""};
+            console.prompt();
+            userCommand = (console.readln().trim() + " ").split(" ", 2);
+            userCommand[1] = userCommand[1].trim();
+
+            switch (userCommand[0]) {
+                case "":
+                    break;
+                case "help":
+                    console.println("help, info, save, add, exit");
+                    break;
+                case "info":
+                    console.println(collectionManager.toString());
+                    break;
+                case "save":
+                    collectionManager.saveCollection();
+                    break;
+                case "add":
+                    console.println("* Создание нового Organization:");
+                    Organization organization = Ask.askOrganization(console, collectionManager.getFreeId());
+                    if (organization != null && organization.validate()) {
+                        collectionManager.add(organization);
+                        console.println("Organization успешно добавлен!");
+                    } else {
+                        console.printError("Поля Aboba не валидны! Aboba не создан!");
+                    }
+                    break;
+                case "exit":
+                    return;
+                default:
+                    console.printError("Команда '" + userCommand[0] +
+                            "' не найдена. Наберите 'help' для справки");
+            }
+        }
+
+    }
+}
 
     
-}

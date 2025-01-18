@@ -12,4 +12,22 @@ public enum OrganizationType {
             System.out.println(organizationType);
         }
     }
+
+//    @Override
+//    public String toString() {
+//        switch (this) {
+//            case COMMERCIAL:
+//                return "Commercial";
+//            case PUBLIC:
+//                return "Public";
+//            case TRUST:
+//                return "Trust";
+//            case PRIVATE_LIMITED_COMPANY:
+//                return "Private Limited Company";
+//            case OPEN_JOINT_STOCK_COMPANY:
+//                return "Open Join Stock Company";
+//            default:
+//                return "";
+//        }
+//    }
 }

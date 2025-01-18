@@ -3,7 +3,11 @@ package models;
 import utility.Element;
 import utility.Validatable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 
 public class Organization extends Element implements Validatable {
@@ -42,13 +46,78 @@ public class Organization extends Element implements Validatable {
         super();
     }
 
+    public static String[] toArray(Organization e) {
+        var list = new ArrayList<String>();
+        list.add(e.getId().toString());
+        list.add(e.getName());
+        list.add(e.getCoordinates().toString());
+        list.add(e.getCreationDate().toString());
+        list.add(e.getOrganizationType().toString());
+        list.add(String.valueOf(e.annualTurnover));
+        list.add(e.getAddress().toString());
+        return list.toArray(new String[0]);
+    }
+
+    public static Organization fromArray(String[] a) {
+        Long id;
+        String name;
+        Coordinates coordinates;
+        Date creationDate = null;
+        double annualTurnover = 0.0;
+        OrganizationType organizationType = null;
+        Address address = null;
+        if (a.length < 7) {
+            System.err.println("Ошибка: Недостаточно данных для создания Organization.");
+            return null;
+        }
+
+        try {
+
+            try {
+                id = Long.parseLong(a[0]);
+            } catch (NumberFormatException e) {
+                id = null;
+            }
+
+            name = a[1];
+            coordinates = new Coordinates(a[2]);
+
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                creationDate = dateFormat.parse(a[3]);
+            } catch (ParseException e) {
+                System.err.println("Ошибка: Неверный формат даты.");
+            }
+
+            try {
+                annualTurnover = Double.parseDouble(a[4]);
+            }
+            catch (NumberFormatException e) {}
+
+            try {
+                organizationType = OrganizationType.valueOf(a[5]);
+            }
+            catch (IllegalArgumentException e) {}
+
+            try {
+                address = new Address(a[6]);
+            } catch (Exception e) {}
+            return new Organization(id, name, coordinates, annualTurnover, creationDate, organizationType, address);
+
+        } catch (ArrayIndexOutOfBoundsException e) {}
+        return null;
+    }
+
+
     @Override
     public String toString() {
         return "organization{\"id\": " + id + ", " +
                 "\"name\": \"" + name + "\", " +
                 "\"creationDate\": \"" + creationDate + "\", " +
                 "\"coordinates\": \"" + coordinates + "\", " +
-                "\"organizationType\": " + (organizationType == null ? "null" : "\""+organizationType+"\"") + "}";
+                "\"organizationType\": " + (organizationType == null ? "null" : "\""+organizationType+"\"") + ", " +
+                "\"annualTurnover\": \"" + annualTurnover + "\", " +
+                "\"address\": \"" + "{" + address + "}" + "}";
     }
 
 
@@ -96,5 +165,18 @@ public class Organization extends Element implements Validatable {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organization that = (Organization) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, creationDate, coordinates, organizationType);
     }
 }

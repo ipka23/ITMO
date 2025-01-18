@@ -15,4 +15,15 @@ public class Coordinates implements Validatable {
         if (x <= -80) return false;
         return true;
     }
+    public Coordinates(String s) {
+        try {
+            try { this.x = Integer.parseInt(s.split(";")[0]); } catch (NumberFormatException e) { }
+            try { this.y = Float.parseFloat(s.split(";")[1]); } catch (NumberFormatException e) { }
+        } catch (ArrayIndexOutOfBoundsException e) {}
+    }
+    @Override
+    public String toString() {
+        return x + ";" + y;
+    }
+
 }

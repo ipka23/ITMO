@@ -3,6 +3,10 @@ package utility;
 import models.*;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 public class Ask {
@@ -20,7 +24,27 @@ public class Ask {
             var organizationType = askOrganizationType(console);
             var annualTurnover = askAnnualTurnover(console);
             var address = askAddress(console);
-            return new Organization(id, name, coordinates, organizationType, annualTurnover, address);
+//            var creationDate = askCreationDate(console);
+            LocalDateTime creationDate;
+            while (true) {
+                console.print("data-time (Exemple: " +
+                        LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME) + " or 2023-03-11): ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.equals("")) {
+                    creationDate = null;
+                    break;
+                }
+                try {
+                    creationDate = LocalDateTime.parse(line, DateTimeFormatter.ISO_DATE_TIME);
+                    break;
+                } catch (DateTimeParseException e) { }
+                try {
+                    creationDate = LocalDateTime.parse(line+"T00:00:00.0000", DateTimeFormatter.ISO_DATE_TIME);
+                    break;
+                } catch (DateTimeParseException e) { }
+            }
+            return new Organization(id, name, coordinates, organizationType,  annualTurnover, address);
         }
         catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
@@ -34,13 +58,13 @@ public class Ask {
                 console.print("x_coordinates: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         x = Integer.parseInt(line);
-                        break;
+                        if (x >= -80) break;
                     }
                     catch (NumberFormatException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -49,13 +73,13 @@ public class Ask {
                 console.print("y_coordinates: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         y = Float.parseFloat(line);
                         break;
                     }
                     catch (NumberFormatException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -75,7 +99,7 @@ public class Ask {
                 console.print("organizationType: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         organizationType = OrganizationType.valueOf(line);
                         break;
@@ -100,13 +124,13 @@ public class Ask {
                 console.print("x_location: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         x = Float.parseFloat(line);
                         break;
                     }
                     catch (IllegalArgumentException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -115,13 +139,13 @@ public class Ask {
                 console.print("y_location: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         y = Double.parseDouble(line);
                         break;
                     }
                     catch (IllegalArgumentException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -130,13 +154,13 @@ public class Ask {
                 console.print("z_location: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         z = Double.parseDouble(line);
                         break;
                     }
                     catch (IllegalArgumentException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -145,9 +169,11 @@ public class Ask {
                 console.print("street: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
-                    street = line;
-                    break;
+                if (!line.isEmpty()) {
+                    try{
+                        street = line;
+                        if (street.length() <= 198) break;
+                    } catch (IllegalArgumentException e) {}
                 }
             }
             String zipCode;
@@ -155,7 +181,7 @@ public class Ask {
                 console.print("zipCode: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     zipCode = line;
                     break;
                 }
@@ -165,7 +191,7 @@ public class Ask {
                 console.print("name: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     name = line;
                     break;
                 }
@@ -184,13 +210,13 @@ public class Ask {
                 console.print("annualTurnover: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
-                if (!line.equals("")) {
+                if (!line.isEmpty()) {
                     try {
                         annualTurnover = Double.parseDouble(line);
                         break;
                     }
                     catch (NumberFormatException e) {
-                        console.printError("Неправильный формат числа");
+                        System.err.println("Неправильный формат числа");
                     }
                 }
             }
@@ -201,4 +227,5 @@ public class Ask {
             return 0;
         }
     }
+
 }
