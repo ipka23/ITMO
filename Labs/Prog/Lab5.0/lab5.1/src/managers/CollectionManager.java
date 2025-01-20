@@ -140,4 +140,19 @@ public class CollectionManager {
         }
         return info.toString().trim();
     }
+    public boolean loadCollection() {
+        organizationsMap.clear();
+        dumpManager.readCollection(collection);
+        lastInitTime = LocalDateTime.now();
+        for (var e : collection)
+            if (getOrganizationById(e.getId()) != null) {
+                collection.clear();
+                return false;
+            } else {
+                if (e.getId()>currentId) currentId = e.getId();
+                organizationsMap.put(e.getId(), e);
+            }
+        update();
+        return true;
+    }
 }

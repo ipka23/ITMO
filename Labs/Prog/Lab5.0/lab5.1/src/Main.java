@@ -1,64 +1,45 @@
+import commands.Add;
 import managers.CollectionManager;
+import managers.CommandManager;
 import managers.DumpManager;
-import models.*;
-import utility.Ask;
+import utility.Runner;
 import utility.StandardConsole;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
-    public static void main(String[] args) throws Ask.AskBreak {
+    public static void main(String[] args) {
         var console = new StandardConsole();
 
-        var fileName = "db.csv"; // TODO from variable or args
-
-        var dumpManager = new DumpManager(fileName, console);
-        var collectionManager = new CollectionManager(dumpManager);
-        if (!collectionManager.init()) { System.exit(1); }
-
-        while (true) {
-            String[] userCommand = {"", ""};
-            console.prompt();
-            userCommand = (console.readln().trim() + " ").split(" ", 2);
-            userCommand[1] = userCommand[1].trim();
-
-            switch (userCommand[0]) {
-                case "":
-                    break;
-                case "help":
-                    console.println("help, info, save, add, exit");
-                    break;
-                case "info":
-                    console.println(collectionManager.toString());
-                    break;
-                case "save":
-                    collectionManager.saveCollection();
-                    break;
-                case "add":
-                    console.println("* Создание нового Organization:");
-                    Organization organization = Ask.askOrganization(console, collectionManager.getFreeId());
-                    if (organization != null && organization.validate()) {
-                        collectionManager.add(organization);
-                        console.println("Organization успешно добавлен!");
-                    } else {
-                        console.printError("Поля Aboba не валидны! Aboba не создан!");
-                    }
-                    break;
-                case "exit":
-                    return;
-                default:
-                    console.printError("Команда '" + userCommand[0] +
-                            "' не найдена. Наберите 'help' для справки");
-            }
+        if (args.length == 0) {
+            console.println(
+                    "Введите имя загружаемого файла как аргумент командной строки");
+            System.exit(1);
         }
 
-    }
-}
+        var dumpManager = new DumpManager(args[0], console);
+        var collectionManager = new CollectionManager(dumpManager);
+        if (!collectionManager.loadCollection()) {
+            System.exit(1);
+        }
 
-    
+        var commandManager = new CommandManager() {{
+//            register("help", new Help(console, this));
+//            register("history", new History(console, this));
+//            register("info", new Info(console, collectionManager));
+//            register("show", new Show(console, collectionManager));
+            register("add", new Add(console, collectionManager));
+//            register("update", new Update(console, collectionManager));
+//            register("remove_by_id", new RemoveById(console, collectionManager));
+//            register("clear", new Clear(console, collectionManager));
+//            register("save", new Save(console, collectionManager));
+//            register("execute_script", new ExecuteScript(console));
+//            register("exit", new Exit(console));
+//            register("remove_at", new RemoveAt(console, collectionManager));
+//            register("remove_last", new RemoveLast(console, collectionManager));
+//            register("remove_any_by_character", new RemoveAnyByCharacter(console, collectionManager));
+//            register("max_by_character", new MaxByCharacter(console, collectionManager));
+//            register("print_unique_age", new PrintUniqueAge(console, collectionManager));
+        }};
+
+        new Runner(console, commandManager).interactiveMode();
+    }
+} 
