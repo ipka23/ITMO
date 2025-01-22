@@ -15,6 +15,7 @@ public class ExecutionResponse {
 
     public boolean getExitCode() { return exitCode; }
     public String getMassage() { return massage; }
+
     public String toString() {
         return String.valueOf(exitCode)+";"+massage+";";
     }
