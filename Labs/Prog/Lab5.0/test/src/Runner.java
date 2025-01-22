@@ -10,11 +10,14 @@ public class Runner {
             console.prompt();
             try {
                 userCommand = console.read();
-                if (userCommand.equals("hi")){
+                if (userCommand.isEmpty()){
+                    continue;
+                }
+                else if (userCommand.equals("hi")){
                     System.out.println("Hello console!");
                     break;
                 }
-                if (userCommand.equals("exit")){
+                else if (userCommand.equals("exit")){
                     break;
                 }
                 else {
