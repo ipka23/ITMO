@@ -2,7 +2,7 @@ package utility;
 
 import java.util.Scanner;
 
-public class StandardConsole implements Console{
+public class StandartConsole implements Console{
     private static final String PROMPT = "$ ";
     private static Scanner fileScanner;
     private static final Scanner consoleScanner = new Scanner(System.in);

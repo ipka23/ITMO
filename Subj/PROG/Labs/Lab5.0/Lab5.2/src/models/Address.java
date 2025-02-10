@@ -13,6 +13,7 @@ public class Address implements Validatable {
         this.town = town;
     }
 
+
     public boolean isValid() {
         if (street == null || street.length() > 198) return false;
         if (zipCode == null) return false;
