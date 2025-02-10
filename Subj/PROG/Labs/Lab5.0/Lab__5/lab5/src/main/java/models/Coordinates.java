@@ -3,24 +3,24 @@ package models;
 import utility.Validatable;
 
 public class Coordinates implements Validatable {
-    private double x; //Значение поля должно быть больше -80
-    private Float y; //Поле не может быть null
+    private Integer x; //Поле не может быть null
+    private float y; //Максимальное значение поля: 751
 
-    public Coordinates(double x, Float y) {
+    public Coordinates(Integer x, float y) {
         this.x = x;
         this.y = y;
     }
 
     public Coordinates(String s) {
         try {
-            try { this.x = Double.parseDouble(s.split(";")[0]); } catch (NumberFormatException e) { }
+            try { this.x = Integer.parseInt(s.split(";")[0]); } catch (NumberFormatException e) { }
             try { this.y = Float.parseFloat(s.split(";")[1]); } catch (NumberFormatException e) { }
         } catch (ArrayIndexOutOfBoundsException e) {}
     }
-
-    public boolean isValid(){
-        if (x <= -80) return false;
-        if (y == null) return false;
+    @Override
+    public boolean isValid() {
+        if (x == null) return false;
+        if (y > 751) return false;
         return true;
     }
 
