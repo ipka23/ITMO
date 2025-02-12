@@ -275,4 +275,3 @@ public class Neznayka implements Playable, Sitable, Readable, Writeable {
         }
     }
 }
-
