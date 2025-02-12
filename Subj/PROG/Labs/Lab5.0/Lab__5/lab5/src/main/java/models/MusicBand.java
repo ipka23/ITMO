@@ -19,6 +19,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     private MusicGenre genre; //Поле не может быть null
     private Album bestAlbum; //Поле не может быть null
 
+
     public MusicBand(long id, String name, Coordinates coordinates, LocalDate creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.id = id;
         this.name = name;
@@ -55,6 +56,74 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         if (genre == null) return false;
         if (bestAlbum == null || !bestAlbum.isValid()) return false;
         return true;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Long getNumberOfParticipants() {
+        return numberOfParticipants;
+    }
+
+    public void setNumberOfParticipants(Long numberOfParticipants) {
+        this.numberOfParticipants = numberOfParticipants;
+    }
+
+    public Long getSinglesCount() {
+        return singlesCount;
+    }
+
+    public void setSinglesCount(Long singlesCount) {
+        this.singlesCount = singlesCount;
+    }
+
+    public Date getEstablishmentDate() {
+        return establishmentDate;
+    }
+
+    public void setEstablishmentDate(Date establishmentDate) {
+        this.establishmentDate = establishmentDate;
+    }
+
+    public MusicGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(MusicGenre genre) {
+        this.genre = genre;
+    }
+
+    public Album getBestAlbum() {
+        return bestAlbum;
+    }
+
+    public void setBestAlbum(Album bestAlbum) {
+        this.bestAlbum = bestAlbum;
     }
 
     @Override
