@@ -28,4 +28,13 @@ public class Coordinates implements Validatable {
     public String toString() {
         return x + ";" + y;
     }
+
+//    @Override
+//    public String toString() {
+//        return "\"coordinates\": {" +
+//                    "\"x\":" + x + "," +
+//                    "\"y\":" + y +
+//                "}";
+//    }
+
 }

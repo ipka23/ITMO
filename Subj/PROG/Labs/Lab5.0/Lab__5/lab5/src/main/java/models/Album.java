@@ -6,9 +6,9 @@ public class Album implements Validatable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Long tracks; //Поле не может быть null, Значение поля должно быть больше 0
     private long length; //Значение поля должно быть больше 0
-    private Double sales; //Поле не может быть null, Значение поля должно быть больше 0
+    private Double sales; //Поле не может быть null, Значение поля должно быть больше 0 //////Double
 
-    public Album(String name, Long tracks, long length, Double sales) {
+    public Album(String name, Long tracks, long length, Double sales) { //////Double
         this.name = name;
         this.tracks = tracks;
         this.length = length;
@@ -22,5 +22,15 @@ public class Album implements Validatable {
         if (length <= 0) return false;
         if (sales == null || sales <= 0) return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "\"bestAlbum\": {" +
+                    "\"name\":" + name + "," +
+                    "\"tracks\":" + tracks + "," +
+                    "\"length\":" + length + "," +
+                    "\"sales\":" + sales +
+                "}";
     }
 }
