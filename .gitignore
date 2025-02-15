@@ -1,6 +1,6 @@
-subj\KiK
-subj\ENGLISH
-subj\HISTORY
+Subj\KiK
+Subj\ENGLISH
+Subj\HISTORY
 *.sh
 **/*.DS_Store
 sh.exe.stackdump
