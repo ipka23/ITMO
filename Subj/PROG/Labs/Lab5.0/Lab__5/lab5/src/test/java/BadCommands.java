@@ -1,8 +1,7 @@
-import managers.CollectionManager;
 import managers.DumpManager;
 import models.Ask;
 import models.MusicBand;
-import models.MusicGenre;
+import managers.*;
 import utility.StandartConsole;
 
 public class BadCommands {

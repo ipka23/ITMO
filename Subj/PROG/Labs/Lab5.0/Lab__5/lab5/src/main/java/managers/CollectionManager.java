@@ -9,7 +9,7 @@ import java.util.*;
 public class CollectionManager {
     private int freeId = 1;
     private Map<Integer, MusicBand> musicBandsHashMap = new HashMap<>();
-    private LinkedList<MusicBand> collection = new LinkedList<>();
+    private HashSet<MusicBand> collection = new HashSet<>();
     private LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;
     private final DumpManager dumpManager;
@@ -28,7 +28,7 @@ public class CollectionManager {
         return lastSaveTime;
     }
 
-    public LinkedList<MusicBand> getCollection() {
+    public HashSet<MusicBand> getCollection() {
         return collection;
     }
 
@@ -50,7 +50,7 @@ public class CollectionManager {
         if (isContain(band)) return false;
         musicBandsHashMap.put((int)band.getId(), band);
         collection.add(band);
-        update();
+//        update();
         return true;
     }
 //
@@ -63,9 +63,9 @@ public class CollectionManager {
 //        return true;
 //    }
 
-    public void update() {
-        Collections.sort(collection);
-    }
+//    public void update() {
+//        Collections.sort(collection);
+//    }
     public void saveCollection() {
         dumpManager.writeCollection(collection);
         lastSaveTime = LocalDateTime.now();
@@ -74,7 +74,7 @@ public class CollectionManager {
         if (getMusicBandById((int)band.getId()) == null) return false;
         musicBandsHashMap.remove((int)band.getId());
         collection.remove(band);
-        update();
+//        update();
         return true;
     }
 //
@@ -106,8 +106,8 @@ public class CollectionManager {
         if (collection.isEmpty()) return "Коллекция пуста!";
 
         StringBuilder info = new StringBuilder();
-        for (var band: collection) {
-            info.append(band+"\n\n");
+        for (var v: collection) {
+            info.append(v+"\n\n");
         }
         return info.toString().trim();
     }
