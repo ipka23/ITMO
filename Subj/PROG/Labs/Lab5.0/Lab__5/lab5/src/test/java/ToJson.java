@@ -4,14 +4,10 @@ import models.Album;
 import models.Coordinates;
 import models.MusicBand;
 import models.MusicGenre;
-import utility.LocalDateAdapter;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ToJson {
