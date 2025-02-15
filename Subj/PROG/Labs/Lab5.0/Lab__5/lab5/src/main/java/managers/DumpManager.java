@@ -5,14 +5,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import models.MusicBand;
 import utility.Console;
+import utility.LocalDateAdapter;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.PriorityQueue;
 
 
 public class DumpManager {
-    private Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create(); //.registerTypeAdapter
+    private Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).serializeNulls().create(); //.registerTypeAdapter
     private String fileName;
     private Console console;
     public DumpManager(String fileName, Console console) {

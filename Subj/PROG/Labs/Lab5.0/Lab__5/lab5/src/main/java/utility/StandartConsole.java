@@ -46,7 +46,7 @@ public class StandartConsole implements Console{
 
     @Override
     public void printPrompt() {
-        System.out.println(PROMPT);
+        System.out.print(PROMPT);
     }
 
     @Override

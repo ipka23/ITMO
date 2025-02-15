@@ -1,5 +1,6 @@
 package models;
 
+import utility.LocalDateAdapter;
 import utility.Validatable;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private String creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Long numberOfParticipants; //Поле может быть null, Значение поля должно быть больше 0
     private Long singlesCount; //Поле не может быть null, Значение поля должно быть больше 0
     private java.util.Date establishmentDate; //Поле может быть null
@@ -20,11 +21,11 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     private Album bestAlbum; //Поле не может быть null
 
 
-    public MusicBand(long id, String name, Coordinates coordinates, LocalDate creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
+    public MusicBand(long id, String name, Coordinates coordinates, String creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = creationDate;
+        this.creationDate = LocalDate.now().toString();
         this.numberOfParticipants = numberOfParticipants;
         this.singlesCount = singlesCount;
         this.establishmentDate = establishmentDate;
@@ -41,6 +42,30 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.genre = genre;
         this.bestAlbum = bestAlbum;
     }
+
+
+    /// for json test
+    public MusicBand(long id, String name, Long numberOfParticipants, Long singlesCount, MusicGenre genre) {
+        this.id = id;
+        this.name = name;
+        this.numberOfParticipants = numberOfParticipants;
+        this.singlesCount = singlesCount;
+        this.genre = genre;
+    }
+
+    public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, MusicGenre genre, Album bestAlbum) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.numberOfParticipants = numberOfParticipants;
+        this.singlesCount = singlesCount;
+        this.genre = genre;
+        this.bestAlbum = bestAlbum;
+    }
+    /// for json test
+
+
+
     public long getId() {
         return id;
     }
@@ -78,12 +103,12 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.coordinates = coordinates;
     }
 
-    public LocalDate getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
     public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
+        this.creationDate = LocalDate.now().toString();
     }
 
     public Long getNumberOfParticipants() {
@@ -127,8 +152,8 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     }
 
     @Override
-    public int compareTo(MusicBand mb) {
-        return (int) (this.id - mb.getId());
+    public int compareTo(MusicBand band) {
+        return Long.compare(this.id, band.getId());
     }
 
     @Override
@@ -149,8 +174,8 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MusicBand mb = (MusicBand) o;
-        return Objects.equals(id, mb.id);
+        MusicBand band = (MusicBand) o;
+        return Objects.equals(id, band.id);
     }
 }
 
