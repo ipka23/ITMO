@@ -1,6 +1,5 @@
 package models;
 
-import utility.LocalDateAdapter;
 import utility.Validatable;
 
 import java.time.LocalDate;

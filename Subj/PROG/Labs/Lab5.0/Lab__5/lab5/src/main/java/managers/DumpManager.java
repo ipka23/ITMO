@@ -5,16 +5,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import models.MusicBand;
 import utility.Console;
-import utility.LocalDateAdapter;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.Collection;
-import java.util.PriorityQueue;
+import java.util.HashSet;
 
 
 public class DumpManager {
-    private Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).serializeNulls().create(); //.registerTypeAdapter
+    private Gson gson =
+            new GsonBuilder()
+                    .setPrettyPrinting()
+//                    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                    .serializeNulls()
+                    .create();
     private String fileName;
     private Console console;
     public DumpManager(String fileName, Console console) {
@@ -27,7 +30,7 @@ public class DumpManager {
     }
 
     public void writeCollection(Collection<MusicBand> collection) { // ?? возможно ошибка ??
-        try (FileWriter fw = new FileWriter(fileName)) {
+        try (OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
             var collectionType = new TypeToken<Collection<MusicBand>>(){}.getType();
             String json = gson.toJson(collection, collectionType);
             fw.write(json);
@@ -39,7 +42,7 @@ public class DumpManager {
     public Collection<MusicBand> readCollection() {
         if (fileName != null && !fileName.isEmpty()) {
             try (var fileReader = new FileReader(fileName)) {
-                var collectionType = new TypeToken<PriorityQueue<MusicBand>>(){}.getType();
+                var collectionType = new TypeToken<HashSet<MusicBand>>(){}.getType();
                 BufferedReader reader = new BufferedReader(fileReader);
                 StringBuilder jsonString = new StringBuilder();
 
@@ -53,13 +56,13 @@ public class DumpManager {
                         jsonString = new StringBuilder("[]");
                     }
                 }
-                PriorityQueue<MusicBand> collection = gson.fromJson(jsonString.toString(), collectionType);
+                HashSet<MusicBand> collection = gson.fromJson(jsonString.toString(), collectionType);
                 System.out.println("Коллекция была успешно загружена из файла!");
                 return collection;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return new PriorityQueue<>(); // чтобы не возникало NullPointerException, и можно было просто работать с пустой коллекцией, например добавлять в неё новые элементы
+        return new HashSet<>(); // чтобы не возникало NullPointerException, и можно было просто работать с пустой коллекцией, например добавлять в неё новые элементы
     }
 }
