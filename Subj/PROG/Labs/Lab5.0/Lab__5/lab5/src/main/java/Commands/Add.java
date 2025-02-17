@@ -7,8 +7,8 @@ import utility.Console;
 import utility.ExecutionResponse;
 
 public class Add extends Command {
-    Console console;
-    CollectionManager collectionManager;
+    private final Console console;
+    private final CollectionManager collectionManager;
 
     public Add(Console console, CollectionManager collectionManager) {
         super("add {element}", "добавить новый элемент в коллекцию");
