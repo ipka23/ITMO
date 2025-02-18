@@ -1,21 +1,31 @@
+import commands.*;
+import managers.CollectionManager;
+import managers.CommandManager;
+import managers.DumpManager;
 import models.Ask;
-import models.MusicBand;
 import utility.Console;
+import utility.Runner;
 import utility.StandartConsole;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main {
-    static List<MusicBand> musicBands = new ArrayList<MusicBand>();
+
     public static void main(String[] args) throws Ask.AskBreak {
         Console console = new StandartConsole();
-        console.selectConsoleScanner();
-        musicBands.add(Ask.askMusicBand(console, 120));
-        for (var v : musicBands) {
-            System.out.println(v);
+        if (args.length == 0) {
+            console.println("Введите имя загружаемого файла как аргумент командной строки");
+            System.exit(1);
         }
+
+        CommandManager commandManager = new CommandManager();
+        DumpManager dumpManager = new DumpManager(args[0], console);
+        CollectionManager collectionManager = new CollectionManager(dumpManager);
+        commandManager.addCommand("add", new Add(console, collectionManager));
+        commandManager.addCommand("help", new Help(console, commandManager));
+        commandManager.addCommand("info", new Info(console, collectionManager));
+        commandManager.addCommand("clear",new Clear(console, collectionManager));
+        commandManager.addCommand("save", new Save(console, collectionManager));
+        Runner runner = new Runner(console, commandManager);
+        runner.interactiveMode();
     }
 }
