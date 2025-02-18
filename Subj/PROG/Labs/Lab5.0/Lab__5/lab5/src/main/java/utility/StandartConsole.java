@@ -28,11 +28,11 @@ public class StandartConsole implements Console{
 
 
     //throws IllegalStateException
-    @Override
-    public boolean isCanReadln() {
-        if (fileScanner != null) return fileScanner.hasNextLine();
-        else return consoleScanner.hasNextLine();
-    }
+//    @Override
+//    public boolean isCanReadln() {
+//        if (fileScanner != null) return fileScanner.hasNextLine();
+//        else return consoleScanner.hasNextLine();
+//    }
 
     @Override
     public void printError(Object obj) {
@@ -49,19 +49,19 @@ public class StandartConsole implements Console{
         System.out.print(PROMPT);
     }
 
-    @Override
-    public String getPrompt() {
-        return PROMPT;
-    }
-
-    // метод для выбора файла как источника ввода сканера вместо консоли
-    @Override
-    public void selectFileScanner(Scanner scanner) {
-        fileScanner = scanner;
-    }
-    // метод для выбора консоли как источника ввода сканера вместо файла
-    @Override
-    public void selectConsoleScanner() {
-        fileScanner = null;
-    }
+//    @Override
+//    public String getPrompt() {
+//        return PROMPT;
+//    }
+//
+//    // метод для выбора файла как источника ввода сканера вместо консоли
+//    @Override
+//    public void selectFileScanner(Scanner scanner) {
+//        fileScanner = scanner;
+//    }
+//    // метод для выбора консоли как источника ввода сканера вместо файла
+//    @Override
+//    public void selectConsoleScanner() {
+//        fileScanner = null;
+//    }
 }

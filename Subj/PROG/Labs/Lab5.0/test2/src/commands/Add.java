@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 import managers.CollectionManager;
 import models.Ask;
@@ -20,7 +20,7 @@ public class Add extends Command {
     public ExecutionResponse execute(String[] args) {
         try {
             if (args.length > 1) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-            console.println("Cоздание новой MusicBand");
+            console.println("----Cоздание новой MusicBand----\n");
             MusicBand band = Ask.askMusicBand(console, collectionManager.getFreeId());
 
             if (band != null && band.isValid()) {

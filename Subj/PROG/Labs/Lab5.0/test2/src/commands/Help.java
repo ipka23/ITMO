@@ -1,6 +1,5 @@
-package Commands;
+package commands;
 
-import managers.CollectionManager;
 import managers.CommandManager;
 import utility.Console;
 import utility.ExecutionResponse;
@@ -18,6 +17,7 @@ public class Help extends Command {
     public ExecutionResponse execute(String[] args) {
         StringBuilder s = new StringBuilder();
         if (args.length > 0) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        s.append("----Доступные команды----\n");
         for (Command command : commandManager.getCommands()){
             s.append(command.getName()).append(": ").append(command.getDescription()).append("\n");
         }

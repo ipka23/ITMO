@@ -1,6 +1,6 @@
 package managers;
 
-import Commands.Command;
+import commands.Command;
 
 import java.util.*;
 
@@ -9,12 +9,12 @@ public class CommandManager {
     private final List<String> commandHistory = new ArrayList<>();
 
 
-    public void addCommand(Command command) {
-        commands.put(command.getName(), command);
+    public void addCommand(String name, Command command) {
+        commands.put(name, command);
     }
 
-    public void addCommandToHistory(Command command) {
-        commandHistory.add(command.getName());
+    public void addCommandToHistory(String command) {
+        commandHistory.add(command);
     }
 
     public Collection<Command> getCommands() {

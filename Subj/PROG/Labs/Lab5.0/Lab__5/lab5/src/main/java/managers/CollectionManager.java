@@ -96,19 +96,19 @@ public class CollectionManager {
 //        return true;
 //    }
 
-//    private void loadCollection() {
-//        collection = (LinkedList<MusicBand>) dumpManager.readCollection();
-//        lastInitTime = LocalDateTime.now();
-//    }
+
 
     @Override
     public String toString() {
         if (collection.isEmpty()) return "Коллекция пуста!";
 
         StringBuilder info = new StringBuilder();
-        for (var v: collection) {
-            info.append(v+"\n\n");
-        }
-        return info.toString().trim();
+        info.append("----Информация о коллекции----\n");
+        info.append("Тип коллекции: ").append(collection.getClass()).append("\n");
+        info.append("Дата инициализации: ").append(lastInitTime).append("\n");
+        info.append("Дата последнего сохранения: ").append(lastSaveTime).append("\n");
+        info.append("Количество элементов: ").append(collection.size()).append("\n");
+
+        return info.toString();
     }
 }
