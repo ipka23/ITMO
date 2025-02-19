@@ -43,26 +43,6 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     }
 
 
-    /// for json test
-    public MusicBand(long id, String name, Long numberOfParticipants, Long singlesCount, MusicGenre genre) {
-        this.id = id;
-        this.name = name;
-        this.numberOfParticipants = numberOfParticipants;
-        this.singlesCount = singlesCount;
-        this.genre = genre;
-    }
-
-    public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, MusicGenre genre, Album bestAlbum) {
-        this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.numberOfParticipants = numberOfParticipants;
-        this.singlesCount = singlesCount;
-        this.genre = genre;
-        this.bestAlbum = bestAlbum;
-    }
-    /// for json test
-
 
 
     public long getId() {

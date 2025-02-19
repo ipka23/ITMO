@@ -8,10 +8,12 @@ import java.util.NoSuchElementException;
 public class Runner {
     private Console console;
     private final CommandManager commandManager;
+
     public Runner(Console console, CommandManager commandManager) {
         this.console = console;
         this.commandManager = commandManager;
     }
+
     public void interactiveMode() {
         try {
             ExecutionResponse commandStatus;
@@ -29,10 +31,12 @@ public class Runner {
             console.printError(e.getMessage());
         }
     }
+
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = commandManager.getCommandsMap().get(userCommand[0]);
-        if (command == null) return new ExecutionResponse(true, "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
+        if (command == null)
+            return new ExecutionResponse(true, "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
         return command.execute(userCommand);
     }
 }

@@ -20,14 +20,6 @@ public class CollectionManager {
         this.dumpManager = dumpManager;
     }
 
-    public LocalDateTime getLastInitTime() {
-        return lastInitTime;
-    }
-
-    public LocalDateTime getLastSaveTime() {
-        return lastSaveTime;
-    }
-
     public HashSet<MusicBand> getCollection() {
         return collection;
     }
@@ -42,59 +34,22 @@ public class CollectionManager {
 
 
     public int getFreeId() {
-        while (getMusicBandById(++freeId) != null);
+        while (getMusicBandById(++freeId) != null) ;
         return freeId;
     }
 
     public boolean add(MusicBand band) {
         if (isContain(band)) return false;
-        musicBandsHashMap.put((int)band.getId(), band);
+        musicBandsHashMap.put((int) band.getId(), band);
         collection.add(band);
-//        update();
+        lastInitTime = LocalDateTime.now();
         return true;
     }
-//
-//    public boolean update(MusicBand band) {
-//        if (!isContain(band)) return false;
-//        collection.remove(getMusicBandById(((int)band.getId())));
-//        musicBand.put((int)band.getId(), band);
-//        collection.add(band);
-//        update();
-//        return true;
-//    }
 
-//    public void update() {
-//        Collections.sort(collection);
-//    }
     public void saveCollection() {
         dumpManager.writeCollection(collection);
         lastSaveTime = LocalDateTime.now();
     }
-    public boolean remove(MusicBand band) {
-        if (getMusicBandById((int)band.getId()) == null) return false;
-        musicBandsHashMap.remove((int)band.getId());
-        collection.remove(band);
-//        update();
-        return true;
-    }
-//
-//    public boolean init() {
-//        collection.clear();
-//        musicBandsHashMap.clear();
-//        dumpManager.readCollection();
-//        lastInitTime = LocalDateTime.now();
-//        for (var e : collection)
-//            if (getMusicBandById((int)e.getId()) != null) {
-//                collection.clear();
-//                musicBandsHashMap.clear();
-//                return false;
-//            } else {
-//                if (e.getId()>freeId) freeId = (int) e.getId();
-//                musicBandsHashMap.put((int)e.getId(), e);
-//            }
-//        update();
-//        return true;
-//    }
 
 
 

@@ -10,6 +10,6 @@ public enum MusicGenre {
         for (var musicGenre : values()) {
             nameList.append(musicGenre.name()).append(", ");
         }
-        return nameList.substring(0, nameList.length()-2);
+        return nameList.substring(0, nameList.length() - 2);
     }
 }
