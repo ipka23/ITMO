@@ -1,0 +1,21 @@
+[
+  {
+    "id": 0,
+    "name": "df",
+    "coordinates": {
+      "x": 3,
+      "y": 3.0
+    },
+    "creationDate": null,
+    "numberOfParticipants": 3,
+    "singlesCount": 3,
+    "establishmentDate": null,
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "f",
+      "tracks": 3,
+      "length": 3,
+      "sales": 3.0
+    }
+  }
+]
