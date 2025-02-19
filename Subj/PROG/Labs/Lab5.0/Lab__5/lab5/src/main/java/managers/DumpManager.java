@@ -13,36 +13,37 @@ import java.util.HashSet;
 
 public class DumpManager {
     private Gson gson = new GsonBuilder()
-                    .setPrettyPrinting()
-                    .serializeNulls()
-                    .create();
-    //                    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+            .setPrettyPrinting()
+            .serializeNulls()
+            .create();
+//            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+
 
     private String fileName;
     private Console console;
+
     public DumpManager(String fileName, Console console) {
-//        if (!(new File(fileName).exists())) {
-//            fileName = "../" + fileName;
-//        }
 
         this.fileName = fileName;
         this.console = console;
     }
 
-    public void writeCollection(Collection<MusicBand> collection) { // ?? возможно ошибка ??
+    public void writeCollection(Collection<MusicBand> collection) {
         try (OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
-            var collectionType = new TypeToken<Collection<MusicBand>>(){}.getType();
+            var collectionType = new TypeToken<Collection<MusicBand>>() {
+            }.getType();
             String json = gson.toJson(collection, collectionType);
             fw.write(json);
         } catch (IOException e) {
-            console.printError("Не удается открыть указанный файл!"); //console.printError(e.getMessage());
+            console.printError("Не удается открыть указанный файл!");
         }
     }
 
     public Collection<MusicBand> readCollection() {
         if (fileName != null && !fileName.isEmpty()) {
             try (var fileReader = new FileReader(fileName)) {
-                var collectionType = new TypeToken<HashSet<MusicBand>>(){}.getType();
+                var collectionType = new TypeToken<HashSet<MusicBand>>() {
+                }.getType();
                 BufferedReader reader = new BufferedReader(fileReader);
                 StringBuilder jsonString = new StringBuilder();
 

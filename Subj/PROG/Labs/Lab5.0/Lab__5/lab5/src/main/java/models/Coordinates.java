@@ -13,10 +13,18 @@ public class Coordinates implements Validatable {
 
     public Coordinates(String s) {
         try {
-            try { this.x = Integer.parseInt(s.split(";")[0]); } catch (NumberFormatException e) { }
-            try { this.y = Float.parseFloat(s.split(";")[1]); } catch (NumberFormatException e) { }
-        } catch (ArrayIndexOutOfBoundsException e) {}
+            try {
+                this.x = Integer.parseInt(s.split(";")[0]);
+            } catch (NumberFormatException e) {
+            }
+            try {
+                this.y = Float.parseFloat(s.split(";")[1]);
+            } catch (NumberFormatException e) {
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
     }
+
     @Override
     public boolean isValid() {
         if (x == null) return false;
@@ -28,13 +36,5 @@ public class Coordinates implements Validatable {
     public String toString() {
         return x + ";" + y;
     }
-
-//    @Override
-//    public String toString() {
-//        return "\"coordinates\": {" +
-//                    "\"x\":" + x + "," +
-//                    "\"y\":" + y +
-//                "}";
-//    }
 
 }

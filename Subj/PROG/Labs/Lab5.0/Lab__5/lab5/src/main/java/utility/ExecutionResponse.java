@@ -9,9 +9,6 @@ public class ExecutionResponse {
         this.message = message;
     }
 
-    public boolean getExitCode() {
-        return exitStatus;
-    }
     public String getMessage() {
         return message;
     }

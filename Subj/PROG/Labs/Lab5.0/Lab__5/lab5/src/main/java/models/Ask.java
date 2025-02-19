@@ -1,9 +1,9 @@
+
 package models;
 
 import utility.Console;
 
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
@@ -142,10 +142,10 @@ public class Ask {
                 try {
                     musicGenre = MusicGenre.valueOf(line);
                     break;
-                } catch (IllegalArgumentException e) {} // | NullPointerException
+                } catch (IllegalArgumentException e) {}
             }
             return musicGenre;
-        } catch (Exception e) { // NoSuchElementException | IllegalStateException e
+        } catch (Exception e) {
             console.printError("Ошибка чтения");
             return null;
         }
