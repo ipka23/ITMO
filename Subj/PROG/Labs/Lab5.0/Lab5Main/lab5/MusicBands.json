@@ -1,20 +1,58 @@
 [
   {
-    "id": 0,
-    "name": "df",
+    "id": 2,
+    "name": "ds",
     "coordinates": {
       "x": 3,
       "y": 3.0
     },
-    "creationDate": null,
+    "creationDate": "2025-02-20",
     "numberOfParticipants": 3,
-    "singlesCount": 3,
-    "establishmentDate": null,
+    "singlesCount": 2,
+    "establishmentDate": "01.01.2001",
     "genre": "POP",
     "bestAlbum": {
-      "name": "f",
+      "name": "sl",
       "tracks": 3,
-      "length": 3,
+      "length": 5,
+      "sales": 3.0
+    }
+  },
+  {
+    "id": 3,
+    "name": "d",
+    "coordinates": {
+      "x": 4,
+      "y": 4.0
+    },
+    "creationDate": "2025-02-20",
+    "numberOfParticipants": 4,
+    "singlesCount": 3,
+    "establishmentDate": "03.11.2000",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "totpo",
+      "tracks": 4,
+      "length": 4,
+      "sales": 2245.0
+    }
+  },
+  {
+    "id": 0,
+    "name": "d",
+    "coordinates": {
+      "x": 4,
+      "y": 3.0
+    },
+    "creationDate": "2025-02-20",
+    "numberOfParticipants": 4,
+    "singlesCount": 4,
+    "establishmentDate": "03.08.2006",
+    "genre": "HIP_HOP",
+    "bestAlbum": {
+      "name": "LLELELE",
+      "tracks": 3,
+      "length": 2,
       "sales": 3.0
     }
   }

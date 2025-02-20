@@ -6,12 +6,17 @@ import utility.Console;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.NoSuchElementException;
 
 public class Ask {
-    public static class AskBreak extends Exception {}
+    public static class AskBreak extends Exception {
+    }
 
     public static MusicBand askMusicBand(Console console, long id) throws AskBreak {
         try {
@@ -21,7 +26,7 @@ public class Ask {
                 name = console.readln().trim();
                 if (name.equals("exit")) throw new AskBreak();
                 if (name.isEmpty()) continue;
-                if (!hasNoDigits(name)) continue;
+                if (!hasLetters(name)) continue;
                 break;
             }
             var coordinates = askCoordinates(console);
@@ -37,10 +42,11 @@ public class Ask {
             return null;
         }
     }
+
     public static Coordinates askCoordinates(Console console) {
         try {
             Integer x;
-            while (true){
+            while (true) {
                 console.print("coordinates.x: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -48,11 +54,12 @@ public class Ask {
                     try {
                         x = Integer.parseInt(line);
                         break;
-                    } catch (NumberFormatException e) {}
+                    } catch (NumberFormatException e) {
+                    }
                 }
             }
             float y;
-            while (true){
+            while (true) {
                 console.print("coordinates.y: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -61,7 +68,8 @@ public class Ask {
                     y = Float.parseFloat(line);
                     if (y > 751) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             return new Coordinates(x, y);
         } catch (Exception e) {
@@ -73,7 +81,7 @@ public class Ask {
     public static Long askNumberOfParticipants(Console console) {
         try {
             Long numberOfParticipants;
-            while (true){
+            while (true) {
                 console.print("numberOfParticipants: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -82,7 +90,8 @@ public class Ask {
                     numberOfParticipants = Long.parseLong(line);
                     if (numberOfParticipants <= 0) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             return numberOfParticipants;
         } catch (Exception e) {
@@ -94,7 +103,7 @@ public class Ask {
     public static Long askSinglesCount(Console console) {
         try {
             Long singlesCount;
-            while (true){
+            while (true) {
                 console.print("singlesCount: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -103,7 +112,8 @@ public class Ask {
                     singlesCount = Long.parseLong(line);
                     if (singlesCount <= 0) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             return singlesCount;
         } catch (Exception e) {
@@ -111,19 +121,22 @@ public class Ask {
             return null;
         }
     }
+
     public static Date askEstablishmentDate(Console console) {
         try {
             Date establishmentDate;
-            while (true){
+            while (true) {
                 console.print("data-time (dd.MM.yyyy): ");
                 var line = console.readln().trim();
+                SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
                 if (line.equals("exit")) throw new AskBreak();
                 if (line.isEmpty()) continue;
                 try {
-                    establishmentDate = dateFormat.parse(line); // ????????????? Thu Aug 03 00:00:00 MSD 2006
+                    establishmentDate = dateFormat.parse(line);// ????????????? Thu Aug 03 00:00:00 MSD 2006
                     break;
-                } catch (ParseException e) {}
+                } catch (Exception e) {
+                }
             }
             return establishmentDate;
         } catch (Exception e) {
@@ -135,7 +148,7 @@ public class Ask {
     public static MusicGenre askMusicGenre(Console console) throws AskBreak {
         try {
             MusicGenre musicGenre;
-            while (true){
+            while (true) {
                 console.print("musicGenre (" + MusicGenre.names() + "): ");
                 var line = console.readln().toUpperCase().trim();
                 if (line.equals("EXIT")) throw new AskBreak();
@@ -143,7 +156,8 @@ public class Ask {
                 try {
                     musicGenre = MusicGenre.valueOf(line);
                     break;
-                } catch (IllegalArgumentException e) {}
+                } catch (IllegalArgumentException e) {
+                }
             }
             return musicGenre;
         } catch (Exception e) {
@@ -155,17 +169,17 @@ public class Ask {
     public static Album askAlbum(Console console) throws AskBreak {
         try {
             String name;
-            while (true){
+            while (true) {
                 console.print("album.name: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (line.isEmpty()) continue;
                 name = line;
-                if (!hasNoDigits(name)) continue;
+                if (!hasLetters(name)) continue;
                 break;
             }
             Long tracks;
-            while (true){
+            while (true) {
                 console.print("album.tracks: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -174,10 +188,11 @@ public class Ask {
                     tracks = Long.parseLong(line);
                     if (tracks <= 0) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             long length;
-            while (true){
+            while (true) {
                 console.print("album.length: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
@@ -186,19 +201,21 @@ public class Ask {
                     length = Long.parseLong(line);
                     if (length <= 0) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             Double sales;
-            while (true){
+            while (true) {
                 console.print("album.sales: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (line.isEmpty()) continue;
                 try {
                     sales = Double.parseDouble(line);
-                    if (sales <= 0) continue;
+                    if (sales < 0) continue;
                     break;
-                } catch (NumberFormatException e) {}
+                } catch (NumberFormatException e) {
+                }
             }
             return new Album(name, tracks, length, sales);
         } catch (Exception e) {
@@ -207,7 +224,8 @@ public class Ask {
         }
     }
 
-    private static boolean hasNoDigits(String str) {
-        return str.replaceAll("[0-9]", "").equals(str);
+    private static boolean hasLetters(String str) {
+        return str.matches(".*[A-Za-zа-яА-я].*"); // .* означает любой символ в любом количестве
     }
+
 }

@@ -21,6 +21,6 @@ public class Help extends Command {
         for (Command command : commandManager.getCommands()){
             s.append(command.getName()).append(": ").append(command.getDescription()).append("\n");
         }
-        return new ExecutionResponse(true, s.toString());
+        return new ExecutionResponse(true, s.substring(0, s.length() - 2));
     }
 }

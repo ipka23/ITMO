@@ -27,7 +27,7 @@ public class Runner {
                 commandStatus = run(userCommand);
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
-                console.println(commandStatus.getMessage()); ////// println
+                console.println(commandStatus.getMessage());
             }
         } catch (NoSuchElementException e) {
             console.printError(e.getMessage());

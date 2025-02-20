@@ -17,6 +17,6 @@ public class Info extends Command {
     @Override
     public ExecutionResponse execute(String[] args) {
         if (!args[1].isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-        return new ExecutionResponse(true, collectionManager.toString());
+        return new ExecutionResponse(true, collectionManager.info());
     }
 }
