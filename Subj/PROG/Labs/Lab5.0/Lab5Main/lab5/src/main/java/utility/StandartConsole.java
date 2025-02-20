@@ -1,10 +1,12 @@
 package utility;
 
+
 import java.util.Scanner;
 
 public class StandartConsole implements Console{
     private static final String PROMPT = "$ ";
-    private static final Scanner consoleScanner = new Scanner(System.in);
+    private static Scanner fileScanner = null;
+    private static Scanner consoleScanner = new Scanner(System.in);
 
 
 
@@ -20,7 +22,15 @@ public class StandartConsole implements Console{
 
     @Override
     public String readln() {
-        return consoleScanner.nextLine();
+        if (fileScanner == null) return consoleScanner.nextLine();
+        return fileScanner.nextLine();
+    }
+
+    public void selectConsoleScanner() {
+        fileScanner = null;
+    }
+    public void selectFileScanner(Scanner scanner){
+        fileScanner = scanner;
     }
 
 

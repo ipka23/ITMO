@@ -5,9 +5,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import models.MusicBand;
 import utility.Console;
+import utility.DateAdapter;
 
 import java.io.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 
@@ -15,9 +17,8 @@ public class DumpManager {
     private Gson gson = new GsonBuilder()
             .setPrettyPrinting()
             .serializeNulls()
+            .registerTypeAdapter(Date.class, new DateAdapter())
             .create();
-//            .registerTypeAdapter(LocalDate.class, new DateAdapter())
-
 
     private String fileName;
     private Console console;
@@ -29,11 +30,10 @@ public class DumpManager {
     }
 
     public void writeCollection(HashSet<MusicBand> collection) {
-        try (OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
-            var collectionType = new TypeToken<Collection<MusicBand>>() {
-            }.getType();
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
+            var collectionType = new TypeToken<Collection<MusicBand>>() {}.getType();
             String json = gson.toJson(collection, collectionType);
-            fw.write(json);
+            writer.write(json);
         } catch (IOException e) {
             console.printError("Не удается открыть указанный файл!");
         }
@@ -42,8 +42,7 @@ public class DumpManager {
     public Collection<MusicBand> readCollection() {
         if (fileName != null && !fileName.isEmpty()) {
             try (var fileReader = new FileReader(fileName)) {
-                var collectionType = new TypeToken<HashSet<MusicBand>>() {
-                }.getType();
+                var collectionType = new TypeToken<HashSet<MusicBand>>() {}.getType();
                 BufferedReader reader = new BufferedReader(fileReader);
                 StringBuilder jsonString = new StringBuilder();
 
@@ -53,7 +52,7 @@ public class DumpManager {
                     if (!line.isEmpty()) {
                         jsonString.append(line);
                     }
-                    if (jsonString.length() == 0) {
+                    if (jsonString.isEmpty()) {
                         jsonString = new StringBuilder("[]");
                     }
                 }

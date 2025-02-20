@@ -15,6 +15,9 @@ public class Album implements Validatable {
         this.sales = sales;
     }
 
+    public Double getSales(){
+        return sales;
+    }
     @Override
     public boolean isValid() {
         if (name == null || name.isEmpty()) return false;
@@ -26,11 +29,11 @@ public class Album implements Validatable {
 
     @Override
     public String toString() {
-        return "\"bestAlbum\": {" +
-                    "\"name\":" + name + "," +
-                    "\"tracks\":" + tracks + "," +
-                    "\"length\":" + length + "," +
-                    "\"sales\":" + sales +
+        return "{" +
+                    "\"name\": \"" + name + "\", " +
+                    "\"tracks\": \"" + tracks + "\", " +
+                    "\"length\": \"" + length + "\", " +
+                    "\"sales\": \"" + sales + "\"" +
                 "}";
     }
 }

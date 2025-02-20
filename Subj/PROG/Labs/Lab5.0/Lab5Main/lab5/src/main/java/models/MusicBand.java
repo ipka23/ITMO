@@ -55,12 +55,13 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     }
 
 
-
-
     public long getId() {
         return id;
     }
 
+    public Double getSales(){
+        return bestAlbum.getSales();
+    }
     @Override
     public boolean isValid() {
         if (name == null || name.isEmpty()) return false;
@@ -74,10 +75,6 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         return true;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -86,70 +83,25 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.name = name;
     }
 
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
+    public void update(MusicBand band) {
+        this.name = band.name;
+        this.coordinates = band.coordinates;
         this.creationDate = LocalDate.now().toString();
+        this.numberOfParticipants = band.numberOfParticipants;
+        this.singlesCount = band.singlesCount;
+        this.establishmentDate = band.establishmentDate;
+        this.genre = band.genre;
+        this.bestAlbum = band.bestAlbum;
     }
 
-    public Long getNumberOfParticipants() {
-        return numberOfParticipants;
-    }
-
-    public void setNumberOfParticipants(Long numberOfParticipants) {
-        this.numberOfParticipants = numberOfParticipants;
-    }
-
-    public Long getSinglesCount() {
-        return singlesCount;
-    }
-
-    public void setSinglesCount(Long singlesCount) {
-        this.singlesCount = singlesCount;
-    }
-
-    public Date getEstablishmentDate() {
-        return establishmentDate;
-    }
-
-    public void setEstablishmentDate(Date establishmentDate) {
-        this.establishmentDate = establishmentDate;
-    }
-
-    public MusicGenre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(MusicGenre genre) {
-        this.genre = genre;
-    }
-
-    public Album getBestAlbum() {
-        return bestAlbum;
-    }
-
-    public void setBestAlbum(Album bestAlbum) {
-        this.bestAlbum = bestAlbum;
-    }
 
     @Override
     public int compareTo(MusicBand band) {
-        return Long.compare(this.id, band.getId());
+        return getSales().compareTo(band.getSales());
     }
-
     @Override
     public String toString() {
-        return "models.MusicBand{\"id\": " + id + ", " +
+        return "MusicBand{\"id\": " + id + ", " +
                 "\"name\": \"" + name + "\", " +
                 "\"coordinates\": \"" + coordinates + "\", " +
                 "\"creationDate\": \"" + creationDate + "\", " +
@@ -157,7 +109,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
                 "\"singlesCount\": \"" + singlesCount + "\", " +
                 "\"establishmentDate\": \"" + establishmentDate + "\", " +
                 "\"genre\": \"" + genre + "\", " +
-                "\"bestAlbum\": \"" + bestAlbum + "\"}";
+                "\"bestAlbum\": " + bestAlbum + "}";
 
     }
 
