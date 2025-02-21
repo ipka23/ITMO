@@ -125,15 +125,17 @@ public class Ask {
     public static Date askEstablishmentDate(Console console) {
         try {
             Date establishmentDate;
+            String formattedDate;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
             while (true) {
                 console.print("data-time (dd.MM.yyyy): ");
                 var line = console.readln().trim();
-                SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
                 if (line.equals("exit")) throw new AskBreak();
                 if (line.isEmpty()) continue;
                 try {
-                    establishmentDate = dateFormat.parse(line);// ????????????? Thu Aug 03 00:00:00 MSD 2006
+                    establishmentDate = dateFormat.parse(line);
+                    formattedDate = dateFormat.format(establishmentDate);
+                    establishmentDate = dateFormat.parse(formattedDate);
                     break;
                 } catch (Exception e) {
                 }

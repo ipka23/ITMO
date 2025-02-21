@@ -2,7 +2,10 @@ package models;
 
 import utility.Validatable;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
 
@@ -101,6 +104,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     }
     @Override
     public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         return "MusicBand{\"id\": " + id + ", " +
                 "\"name\": \"" + name + "\", " +
                 "\"coordinates\": \"" + coordinates + "\", " +
