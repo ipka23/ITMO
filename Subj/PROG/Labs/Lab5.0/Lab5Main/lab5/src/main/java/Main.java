@@ -33,6 +33,7 @@ public class Main {
         commandManager.addCommand("add_if_max", new AddIfMax(console, collectionManager));
         commandManager.addCommand("add_if_min", new AddIfMin(console, collectionManager));
         commandManager.addCommand("remove_greater", new RemoveGreater(console, collectionManager));
+        commandManager.addCommand("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
         commandManager.addCommand("exit", new Exit(console));
         Runner runner = new Runner(console, commandManager);
         runner.interactiveMode();

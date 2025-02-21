@@ -5,6 +5,7 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
@@ -13,6 +14,7 @@ public class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date>
 
     @Override
     public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         try {
             return dateFormat.parse(jsonElement.getAsString());
         } catch (ParseException e) {
