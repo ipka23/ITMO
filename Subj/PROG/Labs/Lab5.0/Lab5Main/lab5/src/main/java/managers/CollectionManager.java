@@ -41,7 +41,7 @@ public class CollectionManager {
         return Collections.min(collection);
     }
     public long getFreeId() {
-        while (getMusicBandById(++freeId) != null) ;
+        while (getMusicBandById(++freeId) != null);
         return freeId;
     }
 
@@ -62,9 +62,7 @@ public class CollectionManager {
         return true;
     }
 
-    public void remove(MusicBand band) {
-        collection.remove(band);
-    }
+
 
     public void saveCollection() {
         dumpManager.writeCollection(collection);

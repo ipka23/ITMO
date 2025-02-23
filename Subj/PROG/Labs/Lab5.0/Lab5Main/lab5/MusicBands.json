@@ -1,24 +1,5 @@
 [
   {
-    "id": 3,
-    "name": "d",
-    "coordinates": {
-      "x": 4,
-      "y": 4.0
-    },
-    "creationDate": "2025-02-20",
-    "numberOfParticipants": 4,
-    "singlesCount": 3,
-    "establishmentDate": "03.11.2000",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "totpo",
-      "tracks": 4,
-      "length": 4,
-      "sales": 2245.0
-    }
-  },
-  {
     "id": 0,
     "name": "d",
     "coordinates": {
@@ -35,6 +16,44 @@
       "tracks": 3,
       "length": 2,
       "sales": 3.0
+    }
+  },
+  {
+    "id": 4,
+    "name": "imya",
+    "coordinates": {
+      "x": 345,
+      "y": 23.0
+    },
+    "creationDate": "2025-02-22",
+    "numberOfParticipants": 3,
+    "singlesCount": 4,
+    "establishmentDate": "03.03.3407",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "fdj",
+      "tracks": 3,
+      "length": 3,
+      "sales": 23.0
+    }
+  },
+  {
+    "id": 3,
+    "name": "d",
+    "coordinates": {
+      "x": 4,
+      "y": 4.0
+    },
+    "creationDate": "2025-02-20",
+    "numberOfParticipants": 4,
+    "singlesCount": 3,
+    "establishmentDate": "03.11.2000",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "totpo",
+      "tracks": 4,
+      "length": 4,
+      "sales": 2245.0
     }
   },
   {
