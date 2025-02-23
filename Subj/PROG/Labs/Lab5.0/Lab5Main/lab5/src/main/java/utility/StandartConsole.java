@@ -20,6 +20,7 @@ public class StandartConsole implements Console{
         System.out.println(obj);
     }
 
+
     @Override
     public String readln() {
         if (fileScanner == null) return consoleScanner.nextLine();

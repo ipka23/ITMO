@@ -23,10 +23,11 @@ public class Ask {
             String name;
             while (true) {
                 console.print("name: ");
-                name = console.readln().trim();
-                if (name.equals("exit")) throw new AskBreak();
-                if (name.isEmpty()) continue;
-                if (!hasLetters(name)) continue;
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                if (!hasLetters(line)) continue;
+                name = line;
                 break;
             }
             var coordinates = askCoordinates(console);
@@ -43,7 +44,7 @@ public class Ask {
         }
     }
 
-    public static Coordinates askCoordinates(Console console) {
+    public static Coordinates askCoordinates(Console console) throws AskBreak {
         try {
             Integer x;
             while (true) {
@@ -66,19 +67,22 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     y = Float.parseFloat(line);
-                    if (y > 751) continue;
+                    if (y > 751) {
+                        console.println("Значение \"y\" должно быть меньше 751!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
             }
             return new Coordinates(x, y);
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }
     }
 
-    public static Long askNumberOfParticipants(Console console) {
+    public static Long askNumberOfParticipants(Console console) throws AskBreak {
         try {
             Long numberOfParticipants;
             while (true) {
@@ -88,19 +92,22 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     numberOfParticipants = Long.parseLong(line);
-                    if (numberOfParticipants <= 0) continue;
+                    if (numberOfParticipants <= 0) {
+                        console.println("Значение \"numberOfParticipants\" должно быть больше 0!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
             }
             return numberOfParticipants;
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }
     }
 
-    public static Long askSinglesCount(Console console) {
+    public static Long askSinglesCount(Console console) throws AskBreak {
         try {
             Long singlesCount;
             while (true) {
@@ -110,19 +117,22 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     singlesCount = Long.parseLong(line);
-                    if (singlesCount <= 0) continue;
+                    if (singlesCount <= 0) {
+                        console.println("Значение \"singlesCount\" должно быть больше 0!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
             }
             return singlesCount;
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }
     }
 
-    public static Date askEstablishmentDate(Console console) {
+    public static Date askEstablishmentDate(Console console) throws AskBreak {
         try {
             Date establishmentDate;
             String formattedDate;
@@ -141,7 +151,7 @@ public class Ask {
                 }
             }
             return establishmentDate;
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }
@@ -162,7 +172,7 @@ public class Ask {
                 }
             }
             return musicGenre;
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }
@@ -188,7 +198,10 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     tracks = Long.parseLong(line);
-                    if (tracks <= 0) continue;
+                    if (tracks <= 0) {
+                        console.println("Значение \"tracks\" должно быть больше 0!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
@@ -201,7 +214,10 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     length = Long.parseLong(line);
-                    if (length <= 0) continue;
+                    if (length <= 0) {
+                        console.println("Значение \"length\" должно быть больше 0!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
@@ -214,13 +230,16 @@ public class Ask {
                 if (line.isEmpty()) continue;
                 try {
                     sales = Double.parseDouble(line);
-                    if (sales < 0) continue;
+                    if (sales < 0) {
+                        console.println("Значение \"length\" не может быть равно 0!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                 }
             }
             return new Album(name, tracks, length, sales);
-        } catch (Exception e) {
+        } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
             return null;
         }

@@ -16,7 +16,7 @@ public class RemoveByID extends Command {
     }
 
     public ExecutionResponse execute(String[] args) {
-        if (args[1].isEmpty()) {
+        if (args[1].trim().isEmpty()) {
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
         }
         long id;
