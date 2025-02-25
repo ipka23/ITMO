@@ -34,8 +34,8 @@ public class Ask {
             Long numberOfParticipants = askNumberOfParticipants(console);
             Long singlesCount = askSinglesCount(console);
             Date establishmentDate = askEstablishmentDate(console);
-            var musicGenre = askMusicGenre(console);
-            var bestAlbum = askAlbum(console);
+            MusicGenre musicGenre = askMusicGenre(console);
+            Album bestAlbum = askAlbum(console);
 
             return new MusicBand(id, name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
         } catch (NoSuchElementException | IllegalStateException e) {

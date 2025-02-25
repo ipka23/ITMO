@@ -12,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws Ask.AskBreak {
         Console console = new StandartConsole();
+
         if (args.length == 0) {
             console.println("Введите имя загружаемого файла как аргумент командной строки");
             System.exit(1);
@@ -20,7 +21,6 @@ public class Main {
         CommandManager commandManager = new CommandManager();
         DumpManager dumpManager = new DumpManager(args[0], console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);
-
 
         commandManager.addCommand("add", new Add(console, collectionManager));
         commandManager.addCommand("help", new Help(console, commandManager));

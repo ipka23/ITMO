@@ -6,9 +6,9 @@ public class Album implements Validatable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Long tracks; //Поле не может быть null, Значение поля должно быть больше 0
     private long length; //Значение поля должно быть больше 0
-    private Double sales; //Поле не может быть null, Значение поля должно быть больше 0 //////Double
+    private Double sales; //Поле не может быть null, Значение поля должно быть больше 0
 
-    public Album(String name, Long tracks, long length, Double sales) { //////Double
+    public Album(String name, Long tracks, long length, Double sales) {
         this.name = name;
         this.tracks = tracks;
         this.length = length;

@@ -1,6 +1,7 @@
 package utility;
 
 import commands.Command;
+import commands.Help;
 import managers.CommandManager;
 
 import java.util.NoSuchElementException;
@@ -22,7 +23,6 @@ public class Runner {
                 console.printPrompt();
                 userCommand = (console.readln() + " ").split(" ", 2);
                 userCommand[0] = userCommand[0].toLowerCase().trim();
-                commandManager.addCommandToHistory(userCommand[0]);
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
                 commandStatus = run(userCommand);

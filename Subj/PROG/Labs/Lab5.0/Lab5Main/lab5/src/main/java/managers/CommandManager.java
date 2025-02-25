@@ -6,16 +6,13 @@ import java.util.*;
 
 public class CommandManager {
     private final Map<String, Command> commands = new LinkedHashMap<>();
-    private final List<String> commandHistory = new ArrayList<>();
 
 
     public void addCommand(String name, Command command) {
         commands.put(name, command);
     }
 
-    public void addCommandToHistory(String command) {
-        commandHistory.add(command);
-    }
+
 
     public Collection<Command> getCommands() {
         return commands.values();
@@ -25,8 +22,5 @@ public class CommandManager {
         return commands;
     }
 
-    public List<String> getCommandHistory() {
-        return commandHistory;
-    }
 
 }
