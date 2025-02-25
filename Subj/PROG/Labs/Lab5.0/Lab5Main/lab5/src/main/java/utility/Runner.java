@@ -20,13 +20,12 @@ public class Runner {
             String[] userCommand = {"", ""};
             while (true) {
                 console.printPrompt();
-                console.print("\r");
                 userCommand = (console.readln() + " ").split(" ", 2);
                 userCommand[0] = userCommand[0].toLowerCase().trim();
                 commandManager.addCommandToHistory(userCommand[0]);
-                commandStatus = run(userCommand);
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
+                commandStatus = run(userCommand);
                 console.println(commandStatus.getMessage());
             }
         } catch (NoSuchElementException e) {
@@ -34,11 +33,21 @@ public class Runner {
         }
     }
 
+
+    public ExecutionResponse runScript(String filename) {
+        return null;
+    }
+
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = commandManager.getCommandsMap().get(userCommand[0]);
         if (command == null)
             return new ExecutionResponse(true, "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
+        if (userCommand[0].equals("execute_script")) {
+            ExecutionResponse response1 = commandManager.getCommandsMap().get("execute_script").execute(userCommand);
+            if (!response1.getExitStatus()) return response1;
+            ExecutionResponse response2 = runScript(userCommand[1]);
+        }
         return command.execute(userCommand);
     }
 }

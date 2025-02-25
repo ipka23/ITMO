@@ -13,6 +13,9 @@ public class ExecutionResponse {
         this.exitStatus = exitStatus;
     }
 
+    public boolean getExitStatus() {
+        return exitStatus;
+    }
     public String getMessage() {
         return message;
     }
