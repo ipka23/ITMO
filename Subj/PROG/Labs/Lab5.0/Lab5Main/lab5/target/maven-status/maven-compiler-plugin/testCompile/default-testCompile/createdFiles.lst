@@ -1,5 +1,7 @@
 BadCommands.class
+TestSerializeDeserialize.class
 FromJson$1.class
+TestDateAdapter.class
 TestMain.class
 FromJson.class
 ToJson.class
