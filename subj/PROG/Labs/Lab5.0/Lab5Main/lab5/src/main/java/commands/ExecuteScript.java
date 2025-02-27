@@ -73,6 +73,8 @@ public class ExecuteScript extends Command {
                 } else {
                     commandStatus = new ExecutionResponse(true, "Превышена максимальная глубина рекурсии!");
                 }
+                console.println(commandStatus.getMessage());
+                if (!commandStatus.getExitStatus()) break;
             } while (commandStatus.getExitStatus() && !commandStatus.getMessage().equals("exit") && console.hasNextLine());
 
 
