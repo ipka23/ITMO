@@ -1,0 +1,86 @@
+@startuml
+abstract class AbstractCharacter implements Playable, Sitable, Readable {
+  -name : String
+  -readingIsFinished : boolean
+  -writingIsFinished : boolean
+  +getName() : String
+  +setName() : void
+  +play(game : Game, b : boolean) : void
+  +read(book : Book) : void
+  +write(letter: Letter) : void
+  +sit(objectForSitting : ObjectForSitting) : void
+}
+
+class Neznayka extends AbstractCharacter{
+  +makeBlot() : void
+  +chance(double ch) : void
+  +lickTheBlot(blot : Blot) : void
+  +play(game : Game, b : boolean)
+}
+
+enum ObjectForSitting{
+  TABLE,
+  CHAIR
+}
+enum InkObject{
+  BLOT,
+  KRIVULKA,
+  KRENDEL
+}
+enum Game {
+  TOWNS,
+  FOOTBALL
+}
+enum Letter{
+  WRITTEN,
+  PRINTED,
+  BEAUTIFUL,
+  NOTBEAUTIFUL,
+  UPPERCASE,
+  LOWERCASE
+}
+
+interface Ink {
+  setTypeOfInkObject(inkObject : InkObject) : void
+  getTypeOfInkObject() : InkObject
+}
+interface Playable {
+  play(game : Game, b : boolean) : void
+}
+
+interface Readable {
+  read(book : Book) : void
+}
+
+interface Sitable {
+  sit(ObjectForSitting objectForSitting) : void
+}
+
+class Page{
+  +getCount() : int
+  +setCount(count : int) : void
+}
+
+abstract class AbstractInkObject implements Ink {
+  +getTypeOfInkObject() : InkObject
+  +setTypeOfInkObject(inkObject : InkObject)
+}
+
+class Blot extends AbstractInkObject{
+  -longTail : boolean
+  +hasLongTail() : void
+  +setLongTail() : void
+  -changeName(name : String) : void
+}
+class Lick{
+  -blot : Blot
+  +lickTheBlot(blot : Blot) : void
+  +setBlot()
+}
+class Book{
+  -title : String
+  -page : Page
+  +getTitle() : void
+  +getCountOfPages() : int
+}
+@enduml

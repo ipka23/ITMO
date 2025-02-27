@@ -1,0 +1,70 @@
+<schedule>
+  <weeks>
+    <week>Чётная</week>
+    <days>
+      <day>Понедельник</day>
+      <disciplines>
+        <discipline>Основы профессиональной деятельности</discipline>
+        <teacher>Остапенко Ольга Денисовна</teacher>
+        <building>Кронверкский пр., д.49, лит.А</building>
+        <classroom>2308</classroom>
+        <lessons>
+          <lesson>Лабораторная</lesson>
+          <time>8:20-9:50</time>
+          <lesson>Лабораторная</lesson>
+          <time>9:50-11:20</time>
+        </lessons>
+        <discipline>Дискретная математика</discipline>
+        <teacher>Поляков Владимир Иванович</teacher>
+        <building>Кронверкский пр., д.49, лит.А</building>
+        <classroom>2403</classroom>
+        <lessons>
+          <lesson>Лекция</lesson>
+          <time>11:40-13:10</time>
+          <lesson>Практика</lesson>
+          <time>13:30-15:00</time>
+        </lessons>
+      </disciplines>
+      <day>Четверг</day>
+    </days>
+    <week>Нечётная</week>
+    <days>
+      <day>Понедельник</day>
+      <disciplines>
+        <discipline>Программирование</discipline>
+        <teacher>Вербовой Александр Александрович</teacher>
+        <building>Кронверкский пр., д.49, лит.А</building>
+        <classroom>1338</classroom>
+        <lessons>
+          <lesson>Лабораторная</lesson>
+          <time>8:20-9:50</time>
+          <lesson>Лабораторная</lesson>
+          <time>9:50-11:20</time>
+        </lessons>
+        <discipline>Дискретная математика</discipline>
+        <teacher>Поляков Владимир Иванович</teacher>
+        <building>Кронверкский пр., д.49, лит.А</building>
+        <classroom>2403</classroom>
+        <lessons>
+          <lesson>Лекция</lesson>
+          <time>11:40-13:10</time>
+          <lesson>Практика</lesson>
+          <time>13:30-15:00</time>
+        </lessons>
+      </disciplines>
+      <day>Четверг</day>
+      <disciplines>
+        <discipline>История российской науки и техники</discipline>
+        <teacher>Белоусов Александр Сергеевич</teacher>
+        <building>Кронверкский пр., д.49, лит.А</building>
+        <classroom>2326</classroom>
+        <lessons>
+          <lesson>Лекция</lesson>
+          <time>13:30-15:00</time>
+          <lesson>Практика</lesson>
+          <time>15:20-16:50</time>
+        </lessons>
+      </disciplines>
+    </days>
+  </weeks>
+</schedule>

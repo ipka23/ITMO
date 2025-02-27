@@ -1,0 +1,50 @@
+<YAML>YAML Ain't Markup Language™</YAML>
+<What It Is></What It Is>
+<YAML Resources>
+  <YAML Specifications></YAML Specifications>
+  <- YAML 1.2></- YAML 1.2>
+  <YAML Matrix Chat>chat yaml.io</YAML Matrix Chat>
+  <YAML IRC Channel>libera.chat#yaml</YAML IRC Channel>
+  <YAML News>twitter.com/yamlnews</YAML News>
+  <YAML Mailing List>yaml-core</YAML Mailing List>
+  <YAML on GitHub>
+    <YAML Specs>yaml-spec/</YAML Specs>
+    <YAML 1.2 Grammar>yaml-grammar/</YAML 1.2 Grammar>
+    <YAML Test Suite>yaml-test-suite/</YAML Test Suite>
+    <YAML Issues>issues/</YAML Issues>
+  </YAML on GitHub>
+  <YAML Reference Parsers></YAML Reference Parsers>
+  <YAML Test Matrix>matrix.yaml.io</YAML Test Matrix>
+</YAML Resources>
+<YAML Frameworks and Tools>
+  <C/C++></C/C++>
+  <Crystal></Crystal>
+  <C#/.NET></C#/.NET>
+  <D></D>
+  <Dart></Dart>
+  <Delphi></Delphi>
+  <Elixir></Elixir>
+  <Erlang></Erlang>
+  <Golang></Golang>
+  <Haskell></Haskell>
+  <Java></Java>
+  <JavaScript></JavaScript>
+  <Nim></Nim>
+  <OCaml></OCaml>
+  <Perl Modules></Perl Modules>
+  <- YAML>:XS</- YAML>
+  <- YAML>:Syck</- YAML>
+  <- YAML>:Tiny</- YAML>
+  <- YAML>:PP</- YAML>
+  <PHP></PHP>
+  <Python></Python>
+  <R></R>
+  <Raku></Raku>
+  <- YAML>:Parser::LibYAML</- YAML>
+  <Ruby></Ruby>
+  <Rust></Rust>
+  <Shell></Shell>
+  <Swift></Swift>
+  <Others></Others>
+</YAML Frameworks and Tools>
+<Related Projects></Related Projects>

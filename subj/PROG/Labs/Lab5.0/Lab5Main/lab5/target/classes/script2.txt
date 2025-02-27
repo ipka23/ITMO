@@ -1,0 +1,2 @@
+print_field_ascending_establishment_date\
+execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\Lab5Main\lab5\src\main\resources\script3.txt

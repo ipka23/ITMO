@@ -1,0 +1,232 @@
+\documentclass[twocolumn]{article} 
+\usepackage{graphicx}
+\usepackage{tikz} 
+\usepackage[russian]{babel} 
+\usepackage{fancyhdr}
+\usepackage[left=0.5cm, right=3cm, top=3cm, paperwidth=210mm, paperheight=270mm]{geometry}
+
+
+\usepackage{caption}
+
+
+\pagestyle{fancy}
+\fancyhf{} % очистка автоматических номеров страницы
+
+
+\fancyhead[R]{КНИГА I ПРЕДЛ. II. ЗАДАЧА} % 
+\fancyhead[C]{26} 
+
+
+\renewcommand{\headrulewidth}{0pt} % убираем линию верхнего колонтитула 
+
+\begin{document}
+
+\begin{tikzpicture}
+    % оранжевый круг
+    \draw[line width=0.7mm, orange] (0,0) circle (3cm);
+    
+    % синий круг
+    \draw[line width=0.7mm, blue] (0.6,-1) circle (1.8cm);
+    \node[below] at (0.6,-1) {B};
+    
+    % линии
+    \draw[blue, line width=0.7mm] (2.95,-0.6) -- (1.2,-0.3);
+    \node[above] at (1.2,-0.3) {A};
+    \node[right] at (2.95,-0.6) {F};
+    
+    \draw[orange, line width=0.7mm] (0.3,-0.2) -- (1.2,-0.3);
+    \node[left] at (0.3,-0.2) {D};
+    
+    \draw[yellow, line width=0.7mm] (1.7,-2.45) -- (0.6,-1);
+    \node[below] at (1.7,-2.45) {E};
+    \draw[dashed, navy, line width=0.7mm] (0.6,-1) -- (1.2,-0.3);
+    
+    \draw[navy, line width=0.7mm] (-1.2,-1) -- (0.6,-1);
+    \node[left] at (-1.2,-1) {C};
+    \draw[dashed, orange, line width=0.7mm] (0.6,-1) -- (0.3,-0.2);
+\end{tikzpicture}
+
+\newpage % новая колонка
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \node[left] (img) at (0, 0) {
+            \includegraphics[scale=0.08]{O.png} 
+        };
+        \node[right, text width=8cm, align=left] at (0, 1) { 
+            т\textit{ данной точки}
+            \begin{tikzpicture}
+                \draw[thick, orange, line width=0.7mm] (0, 0) -- (0.5, 0);
+                \node[above] at (0.5, 0) {A};
+                \draw[thick, blue, line width=0.7mm] (0.5, 0) -- (1, 0);
+            \end{tikzpicture}
+            \textit{отложить прямую,
+            равную данной прямой}
+            \begin{tikzpicture}
+                \draw[thick, navy, line width=0.7mm] (0, 0) -- (1, 0);
+                \node[above] at (0, 0) {B};
+                \node[above] at (1, 0) {C};
+            \end{tikzpicture}.
+        };
+    \end{tikzpicture}
+\end{figure}
+
+
+\begin{center}
+    Проведем 
+\begin{tikzpicture}
+     \draw[dashed, navy, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {A};
+     \node[above] at (1, 0) {B};
+\end{tikzpicture}
+(пост. I),
+
+построим
+\begin{tikzpicture}
+    \draw[thick, orange, line width=0.7mm] (0.3,-0.2) -- (1.2,-0.3);
+    \draw[dashed, navy, line width=0.7mm] (0.6,-1) -- (1.2,-0.3);
+    \draw[dashed, orange, line width=0.7mm] (0.6,-1) -- (0.3,-0.2);
+\end{tikzpicture}
+(пр. I.1),
+
+продлим 
+\begin{tikzpicture}
+     \draw[dashed, orange, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {D};
+\end{tikzpicture}
+(пост. II),
+
+опишем
+\begin{tikzpicture}
+    \draw[line width=0.7mm, blue] (0,0) circle (0.5cm);
+    \draw[line width=0.7mm, navy] (0, 0) -- (-0.5, 0)
+    \node[left] at (-0.5, 0) {C}
+    \node[right] at (0, 0) {B}
+\end{tikzpicture}
+(пост. III), и
+\begin{tikzpicture}
+    \draw[line width=0.7mm, orange] (0,0) circle (0.8cm);
+    \draw[dashed, line width=0.7mm, orange] (0, 0) -- (0.10, -0.3)
+    \draw[line width=0.7mm, yellow] (0.10, -0.3) -- (0.25, -0.73)
+    \node[above] at (0, 0) {D}
+    \node[below] at (0.25, -0.73) {E}
+\end{tikzpicture}
+(пост. III);
+
+продлим
+\begin{tikzpicture}
+     \draw[orange, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {D};
+     \node[above] at (1, 0) {A};
+\end{tikzpicture}
+(пост. III);
+
+тогда искомая прямая это
+\begin{tikzpicture}
+     \draw[blue, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {A};
+     \node[above] at (1, 0) {F};
+\end{tikzpicture}
+.
+
+Поскольку
+\begin{tikzpicture}
+     \draw[line width=0.7mm, orange] (0, 0) -- (0.3, 0);
+     \draw[dashed, line width=0.7mm, yellow] (0.3, 0) -- (1, 0);
+     \node[above] at (0, 0) {E};
+     \node[above] at (1, 0) {D};
+\end{tikzpicture}
+\textbf{=}
+\begin{tikzpicture}
+     \draw[line width=0.7mm, orange] (0, 0) -- (0.7, 0);
+     \draw[line width=0.7mm, blue] (0.7, 0) -- (1, 0);
+     \node[above] at (0, 0) {D};
+     \node[above] at (1, 0) {F};
+\end{tikzpicture}
+(опр. 15),
+
+и
+\begin{tikzpicture}
+     \draw[dashed, orange, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {D};
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+     \draw[dashed, orange, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {D};
+     \node[above] at (1, 0) {A};
+\end{tikzpicture}
+(постр.),
+
+\begin{tikzpicture}
+    \fill (0, 0) circle (0.7pt);  
+    \fill (0.12, 0) circle (0.7pt);
+    \fill (0.06, 0.09) circle (0.7pt);
+\end{tikzpicture}
+\begin{tikzpicture}
+     \draw[yellow, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {E};
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+     \draw[blue, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {A};
+     \node[above] at (1, 0) {F};
+\end{tikzpicture}
+(акс. III),
+
+но(опр. 15)
+\begin{tikzpicture}
+     \draw[navy, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {C};
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+     \draw[yellow, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {E};
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+     \draw[blue, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {A};
+     \node[above] at (1, 0) {F};
+\end{tikzpicture}
+.
+
+\begin{tikzpicture}
+    \fill (0, 0) circle (0.7pt);  
+    \fill (0.12, 0) circle (0.7pt);
+    \fill (0.06, 0.09) circle (0.7pt);
+\end{tikzpicture}
+\begin{tikzpicture}
+     \draw[blue, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {A};
+     \node[above] at (1, 0) {F};
+\end{tikzpicture}
+проведенная из данной точки 
+
+(\begin{tikzpicture}
+    \draw[thick, orange, line width=0.7mm] (0, 0) -- (0.5, 0);
+    \node[above] at (0.5, 0) {A};
+    \draw[thick, blue, line width=0.7mm] (0.5, 0) -- (1, 0);
+\end{tikzpicture})
+равна данной прямой
+\begin{tikzpicture}
+     \draw[тфмн, line width=0.7mm] (0, 0) -- (1, 0);
+     \node[above] at (0, 0) {B};
+     \node[above] at (1, 0) {C};
+\end{tikzpicture}
+(акс. I).
+
+\begin{flushright}
+    ч. т. д.
+\end{flushright}
+
+\end{center}
+\end{document}
