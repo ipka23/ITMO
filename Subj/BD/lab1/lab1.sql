@@ -10,9 +10,7 @@ drop table if exists Characters cascade;
 drop type if exists person_sex cascade;
 drop type if exists character_type cascade;
 create type person_sex as enum ('Male', 'Female');
-create type character_type as enum ('Person', 'Robot', 'Both');
-
-
+create type character_type as enum ('Person', 'Robot-helper', 'Robot-security');
 
 create table Action(id int primary key, name text);
 create table Location(id int primary key, name text);
@@ -61,9 +59,9 @@ insert into Characters(id, name) values (3, 'ЭАЛ');
 insert into Characters(id, name) values (4, 'ПЭЛ');
 
 insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(2, 3,3, 1,'2125-02-23 22:15:23', '2125-02-23 22:20:12','Person');
-insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(1, 2,2, 2,'2125-02-23 15:00:11', '2125-02-23 15:30:33', 'Both');
-insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(3, 1,1, 3,'2125-02-23 18:00:00', '2125-02-23 18:10:00','Person');
-insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(4, 4,1, 4,'2120-12-01 18:00:00', NULL,'Robot');
+insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(1, 2,2, 2,'2125-02-23 15:00:11', '2125-02-23 15:30:33', 'Person');
+insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(3, 1,1, 3,'2125-02-23 18:00:00', '2125-02-23 18:10:00','Robot-helper');
+insert into Event(id, Action_id, Location_id, Characters_id, begin_time, end_time, character_type) values(4, 4,1, 4,'2120-12-01 18:00:00', NULL,'Robot-security');
 
 
 insert into Person(id, sex, age) values(1, 'Male', 30);

@@ -1,0 +1,1393 @@
+проанализируй код проекта
+package commands;
+
+import managers.CollectionManager;
+import models.Ask;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Add extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public Add(Console console, CollectionManager collectionManager) {
+        super("add", "РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕР»Р»РµРєС†РёСЋ");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        try {
+            if (!args[1].trim().isEmpty())
+                return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+            console.println("----CРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ MusicBand----");
+            MusicBand band = Ask.askMusicBand(console, collectionManager.getFreeId());
+            if (band != null) {
+                collectionManager.add(band);
+                return new ExecutionResponse(true, "MusicBand Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°Р»РµРЅР°!");
+            } else {
+                return new ExecutionResponse(false, "РџРѕР»СЏ MusicBand РЅРµ РІР°Р»РёРґРЅС‹, MusicBand РЅРµ СЃРѕР·РґР°РЅР°!");
+            }
+        } catch (Ask.AskBreak e) {
+            return new ExecutionResponse(false, "РћС‚РјРµРЅР° РІРІРѕРґР°...");
+        }
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.Ask;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class AddIfMax extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public AddIfMax(Console console, CollectionManager collectionManager) {
+        super("add_if_max", "РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕР»Р»РµРєС†РёСЋ, РµСЃР»Рё РµРіРѕ Р·РЅР°С‡РµРЅРёРµ РїСЂРµРІС‹С€Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РЅР°РёР±РѕР»СЊС€РµРіРѕ СЌР»РµРјРµРЅС‚Р° СЌС‚РѕР№ РєРѕР»Р»РµРєС†РёРё");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        try {
+            if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+            long id = collectionManager.getFreeId();
+            MusicBand newBand = Ask.askMusicBand(console, id);
+            if (newBand.getSales() > collectionManager.getMax().getSales()) {
+                collectionManager.add(newBand);
+                return new ExecutionResponse(true, "Р’ РєРѕР»Р»РµРєС†РёСЋ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ СЌР»РµРјРµРЅС‚ album.sales РєРѕС‚РѕСЂРѕРіРѕ РїСЂРµРІС‹С€Р°СЋС‚ СЌР»РµРјРµРЅС‚ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј album.sales!");
+            }
+            else {
+                collectionManager.removeByID(id);
+                return new ExecutionResponse(true, "РР»РµРјРµРЅС‚ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ РєРѕР»Р»РµРєС†РёСЋ, С‚. Рє. РµРіРѕ album.sales РЅРµ РїСЂРµРІС‹С€Р°СЋС‚ СЌР»РµРјРµРЅС‚ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј album.sales!");
+            }
+        } catch (Ask.AskBreak e) {
+            return new ExecutionResponse(true, "РћС‚РјРµРЅР° РІРІРѕРґР°...");
+        }
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.Ask;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class AddIfMin extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public AddIfMin(Console console, CollectionManager collectionManager) {
+        super("add_if_min", "РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕР»Р»РµРєС†РёСЋ, РµСЃР»Рё РµРіРѕ Р·РЅР°С‡РµРЅРёРµ РјРµРЅСЊС€Рµ, С‡РµРј Сѓ РЅР°РёРјРµРЅСЊС€РµРіРѕ СЌР»РµРјРµРЅС‚Р° СЌС‚РѕР№ РєРѕР»Р»РµРєС†РёРё");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        try {
+            if (!args[1].isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+            long id = collectionManager.getFreeId();
+            MusicBand newBand = Ask.askMusicBand(console, id);
+            if (newBand.getSales() < collectionManager.getMin().getSales()) {
+                collectionManager.add(newBand);
+                return new ExecutionResponse(true, "Р’ РєРѕР»Р»РµРєС†РёСЋ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ СЌР»РµРјРµРЅС‚ album.sales РєРѕС‚РѕСЂРѕРіРѕ РјРµРЅСЊС€Рµ С‡РµРј Сѓ СЌР»РµРјРµРЅС‚Р° СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј album.sales!");
+            }
+            else {
+                collectionManager.removeByID(id);
+                return new ExecutionResponse(true, "РР»РµРјРµРЅС‚ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ РєРѕР»Р»РµРєС†РёСЋ, С‚. Рє. РµРіРѕ album.sales РїСЂРµРІС‹С€Р°СЋС‚ СЌР»РµРјРµРЅС‚ СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј album.sales!");
+            }
+        } catch (Ask.AskBreak e) {
+            return new ExecutionResponse(true, "РћС‚РјРµРЅР° РІРІРѕРґР°...");
+        }
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Clear extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+    public Clear(Console console, CollectionManager collectionManager) {
+        super("clear", "РѕС‡РёСЃС‚РёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty())  return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        collectionManager.getCollection().clear();
+        return new ExecutionResponse(true, "РљРѕР»Р»РµРєС†РёСЏ Р±С‹Р»Р° РѕС‡РёС‰РµРЅР°!");
+    }
+}
+package commands;
+
+import utility.ExecutionResponse;
+
+public abstract class Command {
+    public final String name;
+    public final String description;
+    public Command(String command, String description) {
+        this.name = command;
+        this.description = description;
+    }
+
+    public abstract ExecutionResponse execute(String[] args);
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+package commands;
+
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Exit extends Command {
+    private final Console console;
+
+    public Exit(Console console) {
+        super("exit", "Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ (Р±РµР· СЃРѕС…СЂР°РЅРµРЅРёСЏ РІ С„Р°Р№Р»)");
+        this.console = console;
+    }
+
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        return new ExecutionResponse(true);
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+import java.util.HashSet;
+
+public class FilterStartsWithName extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public FilterStartsWithName(Console console, CollectionManager collectionManager) {
+        super("filter_starts_with_name name", "РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ name РєРѕС‚РѕСЂС‹С… РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ Р·Р°РґР°РЅРЅРѕР№ РїРѕРґСЃС‚СЂРѕРєРё");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (args[1].trim().trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        StringBuilder s = new StringBuilder();
+        HashSet<MusicBand> collection = collectionManager.getCollection();
+        for (MusicBand band : collection) {
+            if (band.getName().startsWith(args[1].trim())) {
+                s.append(band).append("\n");
+            }
+        }
+        if (s.isEmpty()) return new ExecutionResponse(true, "РќРµС‚ MusicBands Сѓ РєРѕС‚РѕСЂС‹С… РёРјСЏ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ " + args[1] + "!");
+        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+    }
+}
+package commands;
+
+import managers.CommandManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Help extends Command {
+    private final Console console;
+    private final CommandManager commandManager;
+    public Help(Console console, CommandManager commandManager) {
+        super("help", "РІС‹РІРµСЃС‚Рё СЃРїСЂР°РІРєСѓ РїРѕ РґРѕСЃС‚СѓРїРЅС‹Рј РєРѕРјР°РЅРґР°Рј");
+        this.console = console;
+        this.commandManager = commandManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        StringBuilder s = new StringBuilder();
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        s.append("--------------------------------Р”РѕСЃС‚СѓРїРЅС‹Рµ РєРѕРјР°РЅРґС‹--------------------------------\n");
+        for (Command command : commandManager.getCommands()){
+            s.append(command.getName()).append(": ").append(command.getDescription()).append("\n");
+        }
+        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Info extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public Info(Console console, CollectionManager collectionManager) {
+        super("info", "РІС‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕР»Р»РµРєС†РёРё");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        return new ExecutionResponse(true, collectionManager.info());
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class MaxByBestBestAlbum extends Command{
+    private final Console console;
+    private final CollectionManager collectionManager;
+    public MaxByBestBestAlbum(Console console, CollectionManager collectionManager) {
+        super("max_by_best_album", "РІС‹РІРµСЃС‚Рё Р»СЋР±РѕР№ РѕР±СЉРµРєС‚ РёР· РєРѕР»Р»РµРєС†РёРё, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ bestAlbum РєРѕС‚РѕСЂРѕРіРѕ СЏРІР»СЏРµС‚СЃСЏ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        MusicBand bestBand;
+        bestBand = collectionManager.getMax();
+        StringBuilder s = new StringBuilder();
+        s.append("MusicBand СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј РєРѕР»РёС‡РµСЃС‚РІРѕРј album.sales:").append("\n");
+        s.append(bestBand.toString());
+        return new ExecutionResponse(true, s.toString());
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+import java.util.*;
+
+public class PrintFieldAscendingEstablishmentDate extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public PrintFieldAscendingEstablishmentDate(Console console, CollectionManager collectionManager) {
+        super("print_field_ascending_establishment_date", "РІС‹РІРµСЃС‚Рё Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЏ establishmentDate РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        HashSet<MusicBand> collection = collectionManager.getCollection();
+        StringBuilder s = new StringBuilder();
+        List<Date> dates = new ArrayList<>();
+        for (MusicBand band : collection) {
+            dates.add(band.getEstablishmentDate());
+        }
+        Collections.sort(dates);
+        for (Date date : dates) {
+            s.append(date.toString()).append("\n");
+        }
+        if (s.isEmpty()) return new ExecutionResponse(true, "РљРѕР»Р»РµРєС†РёСЏ РїСѓСЃС‚Р°!");
+        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+
+
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+
+public class RemoveByID extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public RemoveByID(Console console, CollectionManager collectionManager) {
+        super("remove_by_id id", "СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё РїРѕ РµРіРѕ id");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    public ExecutionResponse execute(String[] args) {
+        if (args[1].trim().isEmpty()) {
+            return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        }
+        long id;
+        try {
+            id = Long.parseLong(args[1].trim());
+        } catch (NumberFormatException e) {
+            return new ExecutionResponse(false, "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ id!");
+        }
+        var band = collectionManager.getMusicBandById(id);
+        if (band == null || !collectionManager.getCollection().contains(band)) {
+            return new ExecutionResponse(false, "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚Р° СЃ С‚Р°РєРёРј id!");
+        }
+        collectionManager.removeByID(id);
+        return new ExecutionResponse(true, "РР»РµРјРµРЅС‚ СЃ id = " + id + " Р±С‹Р» СѓРґР°Р»РµРЅ РёР· РєРѕР»Р»РµРєС†РёРё!");
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.Ask;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class RemoveGreater extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public RemoveGreater(Console console, CollectionManager collectionManager) {
+        super("remove_greater", "СѓРґР°Р»РёС‚СЊ РёР· РєРѕР»Р»РµРєС†РёРё РІСЃРµ СЌР»РµРјРµРЅС‚С‹, РїСЂРµРІС‹С€Р°СЋС‰РёРµ Р·Р°РґР°РЅРЅС‹Р№");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        HashSet<MusicBand> collection = collectionManager.getCollection();
+
+        try {
+            MusicBand newBand = Ask.askMusicBand(console, collectionManager.getFreeId());
+            Iterator<MusicBand> iterator = collection.iterator();
+            if (collection.isEmpty()) return new ExecutionResponse(true, "РљРѕР»Р»РµРєС†РёСЏ РїСѓСЃС‚Р°!");
+            while (iterator.hasNext()) {
+                if (iterator.next().getSales() > newBand.getSales()) {
+                    iterator.remove();
+                }
+            }
+            return new ExecutionResponse(true, "РР· РєРѕР»Р»РµРєС†РёРё Р±С‹Р»Рё СѓРґР°Р»РµРЅС‹ РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РїСЂРµРІС‹С€Р°СЋС‰РёРµ РґР°РЅРЅС‹Р№ РїРѕ РїР°СЂР°РјРµС‚СЂСѓ album.sales");
+        } catch (Ask.AskBreak e) {
+            return new ExecutionResponse(true, "РћС‚РјРµРЅР° РІРІРѕРґР°...");
+        }
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Save extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+    public Save(Console console, CollectionManager collectionManager) {
+        super("save", "СЃРѕС…СЂР°РЅРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р»");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        collectionManager.saveCollection();
+        return new ExecutionResponse(true, "РљРѕР»Р»РµРєС†РёСЏ Р±С‹Р»Р° СЃРѕС…СЂР°РЅРµРЅР°!");
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import utility.Console;
+import utility.ExecutionResponse;
+
+
+public class Show extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+    public Show(Console console, CollectionManager collectionManager) {
+        super("show", "РІС‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РєРѕР»Р»РµРєС†РёРё РІ СЃС‚СЂРѕРєРѕРІРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+
+    @Override
+    public ExecutionResponse execute(String[] args) {
+            if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+
+        return new ExecutionResponse(true, collectionManager.toString());
+    }
+}
+package commands;
+
+import managers.CollectionManager;
+import models.Ask;
+import models.MusicBand;
+import utility.Console;
+import utility.ExecutionResponse;
+
+public class Update extends Command {
+    private final Console console;
+    private final CollectionManager collectionManager;
+
+    public Update(Console console, CollectionManager collectionManager) {
+        super("update id", "РѕР±РЅРѕРІРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РєРѕР»Р»РµРєС†РёРё, id РєРѕС‚РѕСЂРѕРіРѕ СЂР°РІРµРЅ Р·Р°РґР°РЅРЅРѕРјСѓ");
+        this.console = console;
+        this.collectionManager = collectionManager;
+    }
+
+    public ExecutionResponse execute(String[] args) {
+        if (args[1].trim().isEmpty())
+            return new ExecutionResponse(false, "РќРµРїСЂР°РІРёР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ!\nРСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: '" + getName() + "'");
+        long id;
+        try {
+            id = Long.parseLong(args[1].trim());
+        } catch (NumberFormatException e) {
+            return new ExecutionResponse(false, "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ id!");
+        }
+        var band = collectionManager.getMusicBandById(id);
+        if (band == null || !collectionManager.getCollection().contains(band)) {
+            return new ExecutionResponse(false, "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚Р° СЃ С‚Р°РєРёРј id!");
+        }
+        MusicBand newBand;
+        try {
+            console.println("----Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ MusicBand----");
+            newBand = Ask.askMusicBand(console, id);
+        } catch (Ask.AskBreak e) {
+            return new ExecutionResponse(true, "РћС‚РјРµРЅР° РІРІРѕРґР°...");
+        }
+        band.update(newBand);
+        return new ExecutionResponse(true, "РР»РµРјРµРЅС‚ СЃ id = " + id + " Р±С‹Р» РѕР±РЅРѕРІР»С‘РЅ!");
+    }
+}
+package managers;
+
+import models.MusicBand;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+
+public class CollectionManager {
+    private long freeId = 1;
+    private Map<Long, MusicBand> musicBandsHashMap = new HashMap<>();
+    private HashSet<MusicBand> collection = new HashSet<>();
+    private LocalDateTime lastInitTime;
+    private LocalDateTime lastSaveTime;
+    private final DumpManager dumpManager;
+
+    public CollectionManager(DumpManager dumpManager) {
+        this.lastInitTime = null;
+        this.lastSaveTime = null;
+        this.dumpManager = dumpManager;
+        loadFromFile();
+    }
+
+    public HashSet<MusicBand> getCollection() {
+        return collection;
+    }
+
+    public MusicBand getMusicBandById(long id) {
+        return musicBandsHashMap.get(id);
+    }
+
+    public boolean isContain(MusicBand band) {
+        return band != null && musicBandsHashMap.containsKey(band.getId());
+    }
+
+    public MusicBand getMax() {
+        return Collections.max(collection);
+    }
+    public MusicBand getMin() {
+        return Collections.min(collection);
+    }
+    public long getFreeId() {
+        while (getMusicBandById(++freeId) != null);
+        return freeId;
+    }
+
+
+    public boolean add(MusicBand band) {
+        if (isContain(band)) return false;
+        musicBandsHashMap.put(band.getId(), band);
+        collection.add(band);
+        lastInitTime = LocalDateTime.now();
+        return true;
+    }
+
+    public boolean removeByID(long id) {
+        MusicBand band = getMusicBandById(id);
+        if (band == null) return false;
+        musicBandsHashMap.remove(id);
+        collection.remove(band);
+        return true;
+    }
+
+
+
+    public void saveCollection() {
+        dumpManager.writeCollection(collection);
+        lastSaveTime = LocalDateTime.now();
+    }
+
+
+    private void loadFromFile() {
+        collection = new HashSet<>(dumpManager.readCollection());
+        lastInitTime = LocalDateTime.now();
+        for (MusicBand band : collection) {
+            musicBandsHashMap.put(band.getId(), band);
+        }
+    }
+
+    public String info() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        StringBuilder info = new StringBuilder();
+        if (collection.isEmpty()) {
+            info.append("----РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕР»Р»РµРєС†РёРё----\n");
+            info.append("РўРёРї РєРѕР»Р»РµРєС†РёРё: ").append(collection.getClass()).append("\n");
+            info.append("Р”Р°С‚Р° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё: ").append(lastInitTime != null ? lastInitTime.format(formatter) : "null").append("\n");
+            info.append("Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ СЃРѕС…СЂР°РЅРµРЅРёСЏ: ").append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");
+            info.append("РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ: ").append(collection.size());
+        } else {
+            info.append("----РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕР»Р»РµРєС†РёРё----\n");
+            info.append("РўРёРї РєРѕР»Р»РµРєС†РёРё: ").append(collection.getClass()).append("\n");
+            info.append("Р”Р°С‚Р° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё: ").append(lastInitTime != null ? lastInitTime.format(formatter) : "null").append("\n");
+            info.append("Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ СЃРѕС…СЂР°РЅРµРЅРёСЏ: ").append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");
+            info.append("РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ: ").append(collection.size());
+        }
+        return info.toString();
+    }
+
+    @Override
+    public String toString() {
+        if (collection.isEmpty()) return "РљРѕР»Р»РµРєС†РёСЏ РїСѓСЃС‚Р°!";
+        StringBuilder s = new StringBuilder();
+        for (MusicBand band : collection){
+          s.append(band).append("\n");
+        }
+        return s.substring(0, s.length() - 2);
+    }
+}
+package managers;
+
+import commands.Command;
+
+import java.util.*;
+
+public class CommandManager {
+    private final Map<String, Command> commands = new LinkedHashMap<>();
+
+
+    public void addCommand(String name, Command command) {
+        commands.put(name, command);
+    }
+
+
+
+    public Collection<Command> getCommands() {
+        return commands.values();
+    }
+
+    public Map<String, Command> getCommandsMap() {
+        return commands;
+    }
+
+
+}
+package managers;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import models.MusicBand;
+import utility.Console;
+import utility.DateAdapter;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+
+
+public class DumpManager {
+    private Gson gson = new GsonBuilder()
+            .setPrettyPrinting()
+            .serializeNulls()
+            .registerTypeAdapter(Date.class, new DateAdapter())
+            .create();
+
+    private String fileName;
+    private Console console;
+
+    public DumpManager(String fileName, Console console) {
+
+        this.fileName = fileName;
+        this.console = console;
+    }
+
+    public void writeCollection(HashSet<MusicBand> collection) {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
+            var collectionType = new TypeToken<Collection<MusicBand>>() {}.getType();
+            String json = gson.toJson(collection, collectionType);
+            writer.write(json);
+        } catch (IOException e) {
+            console.printError("РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р»!");
+        }
+    }
+
+    public Collection<MusicBand> readCollection() {
+        if (fileName != null && !fileName.isEmpty()) {
+            try (var fileReader = new FileReader(fileName)) {
+                var collectionType = new TypeToken<HashSet<MusicBand>>() {}.getType();
+                BufferedReader reader = new BufferedReader(fileReader);
+                StringBuilder jsonString = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    line = line.trim();
+                    if (!line.isEmpty()) {
+                        jsonString.append(line);
+                    }
+                    if (jsonString.isEmpty()) {
+                        jsonString = new StringBuilder("[]");
+                    }
+                }
+                HashSet<MusicBand> collection = gson.fromJson(jsonString.toString(), collectionType);
+                System.out.println("РљРѕР»Р»РµРєС†РёСЏ Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅР° РёР· С„Р°Р№Р»Р°!");
+                return collection;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return new HashSet<>(); // С‡С‚РѕР±С‹ РЅРµ РІРѕР·РЅРёРєР°Р»Рѕ NullPointerException, Рё РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РїСЂРѕСЃС‚Рѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РїСѓСЃС‚РѕР№ РєРѕР»Р»РµРєС†РёРµР№, РЅР°РїСЂРёРјРµСЂ РґРѕР±Р°РІР»СЏС‚СЊ РІ РЅРµС‘ РЅРѕРІС‹Рµ СЌР»РµРјРµРЅС‚С‹
+    }
+}
+package models;
+
+import utility.Validatable;
+
+public class Album implements Validatable {
+    private String name; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, РЎС‚СЂРѕРєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№
+    private Long tracks; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private long length; //Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private Double sales; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+
+    public Album(String name, Long tracks, long length, Double sales) {
+        this.name = name;
+        this.tracks = tracks;
+        this.length = length;
+        this.sales = sales;
+    }
+
+    public Double getSales(){
+        return sales;
+    }
+    @Override
+    public boolean isValid() {
+        if (name == null || name.isEmpty()) return false;
+        if (tracks == null || tracks <= 0) return false;
+        if (length <= 0) return false;
+        if (sales == null || sales <= 0) return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                    "\"name\": \"" + name + "\", " +
+                    "\"tracks\": \"" + tracks + "\", " +
+                    "\"length\": \"" + length + "\", " +
+                    "\"sales\": \"" + sales + "\"" +
+                "}";
+    }
+}
+
+package models;
+
+import utility.Console;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
+import java.util.NoSuchElementException;
+
+public class Ask {
+    public static class AskBreak extends Exception {
+    }
+
+    public static MusicBand askMusicBand(Console console, long id) throws AskBreak {
+        try {
+            String name;
+            while (true) {
+                console.print("name: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                if (!hasLetters(line)) continue;
+                name = line;
+                break;
+            }
+            var coordinates = askCoordinates(console);
+            Long numberOfParticipants = askNumberOfParticipants(console);
+            Long singlesCount = askSinglesCount(console);
+            Date establishmentDate = askEstablishmentDate(console);
+            MusicGenre musicGenre = askMusicGenre(console);
+            Album bestAlbum = askAlbum(console);
+
+            return new MusicBand(id, name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static Coordinates askCoordinates(Console console) throws AskBreak {
+        try {
+            Integer x;
+            while (true) {
+                console.print("coordinates.x: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (!line.isEmpty()) {
+                    try {
+                        x = Integer.parseInt(line);
+                        break;
+                    } catch (NumberFormatException e) {
+                    }
+                }
+            }
+            float y;
+            while (true) {
+                console.print("coordinates.y: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    y = Float.parseFloat(line);
+                    if (y > 751) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"y\" РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 751!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            return new Coordinates(x, y);
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static Long askNumberOfParticipants(Console console) throws AskBreak {
+        try {
+            Long numberOfParticipants;
+            while (true) {
+                console.print("numberOfParticipants: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    numberOfParticipants = Long.parseLong(line);
+                    if (numberOfParticipants <= 0) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"numberOfParticipants\" РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            return numberOfParticipants;
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static Long askSinglesCount(Console console) throws AskBreak {
+        try {
+            Long singlesCount;
+            while (true) {
+                console.print("singlesCount: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    singlesCount = Long.parseLong(line);
+                    if (singlesCount <= 0) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"singlesCount\" РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            return singlesCount;
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static Date askEstablishmentDate(Console console) throws AskBreak {
+        try {
+            Date establishmentDate;
+            String formattedDate;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+            while (true) {
+                console.print("data-time (dd.MM.yyyy): ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    establishmentDate = dateFormat.parse(line);
+                    formattedDate = dateFormat.format(establishmentDate);
+                    establishmentDate = dateFormat.parse(formattedDate);
+                    break;
+                } catch (Exception e) {
+                }
+            }
+            return establishmentDate;
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static MusicGenre askMusicGenre(Console console) throws AskBreak {
+        try {
+            MusicGenre musicGenre;
+            while (true) {
+                console.print("musicGenre (" + MusicGenre.names() + "): ");
+                var line = console.readln().toUpperCase().trim();
+                if (line.equals("EXIT")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    musicGenre = MusicGenre.valueOf(line);
+                    break;
+                } catch (IllegalArgumentException e) {
+                }
+            }
+            return musicGenre;
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    public static Album askAlbum(Console console) throws AskBreak {
+        try {
+            String name;
+            while (true) {
+                console.print("album.name: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                name = line;
+                if (!hasLetters(name)) continue;
+                break;
+            }
+            Long tracks;
+            while (true) {
+                console.print("album.tracks: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    tracks = Long.parseLong(line);
+                    if (tracks <= 0) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"tracks\" РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            long length;
+            while (true) {
+                console.print("album.length: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    length = Long.parseLong(line);
+                    if (length <= 0) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"length\" РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            Double sales;
+            while (true) {
+                console.print("album.sales: ");
+                var line = console.readln().trim();
+                if (line.equals("exit")) throw new AskBreak();
+                if (line.isEmpty()) continue;
+                try {
+                    sales = Double.parseDouble(line);
+                    if (sales < 0) {
+                        console.println("Р—РЅР°С‡РµРЅРёРµ \"length\" РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°РІРЅРѕ 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
+            return new Album(name, tracks, length, sales);
+        } catch (NoSuchElementException | IllegalStateException e) {
+            console.printError("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ");
+            return null;
+        }
+    }
+
+    private static boolean hasLetters(String str) {
+        return str.matches(".*[A-Za-zР°-СЏРђ-СЏ].*"); // .* РѕР·РЅР°С‡Р°РµС‚ Р»СЋР±РѕР№ СЃРёРјРІРѕР» РІ Р»СЋР±РѕРј РєРѕР»РёС‡РµСЃС‚РІРµ
+    }
+
+}
+package models;
+
+import utility.Validatable;
+
+public class Coordinates implements Validatable {
+    private Integer x; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private float y; //РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ: 751
+
+    public Coordinates(Integer x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Coordinates(String s) {
+        try {
+            try {
+                this.x = Integer.parseInt(s.split(";")[0]);
+            } catch (NumberFormatException e) {
+            }
+            try {
+                this.y = Float.parseFloat(s.split(";")[1]);
+            } catch (NumberFormatException e) {
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
+    }
+
+    @Override
+    public boolean isValid() {
+        if (x == null) return false;
+        if (y > 751) return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return x + ";" + y;
+    }
+
+}
+package models;
+
+import utility.Validatable;
+
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Objects;
+
+public class MusicBand implements Comparable<MusicBand>, Validatable {
+
+
+    private long id; //Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рј, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+    private String name; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, РЎС‚СЂРѕРєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№
+    private Coordinates coordinates; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private String creationDate; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+    private Long numberOfParticipants; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private Long singlesCount; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private java.util.Date establishmentDate; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private MusicGenre genre; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Album bestAlbum; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+
+
+    public MusicBand(long id, String name, Coordinates coordinates, String creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = LocalDate.now().toString();
+        this.numberOfParticipants = numberOfParticipants;
+        this.singlesCount = singlesCount;
+        this.establishmentDate = establishmentDate;
+        this.genre = genre;
+        this.bestAlbum = bestAlbum;
+    }
+
+    public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.numberOfParticipants = numberOfParticipants;
+        this.singlesCount = singlesCount;
+        this.establishmentDate = establishmentDate;
+        this.genre = genre;
+        this.bestAlbum = bestAlbum;
+    }
+
+    public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.numberOfParticipants = numberOfParticipants;
+        this.singlesCount = singlesCount;
+        this.establishmentDate = establishmentDate;
+        this.genre = genre;
+        this.bestAlbum = bestAlbum;
+        this.creationDate = LocalDate.now().toString();
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public Double getSales(){
+        return bestAlbum.getSales();
+    }
+    @Override
+    public boolean isValid() {
+        if (name == null || name.isEmpty()) return false;
+        if (coordinates == null || !coordinates.isValid()) return false;
+        if (creationDate == null) return false;
+        if (numberOfParticipants == null || numberOfParticipants <= 0) return false;
+        if (singlesCount == null || singlesCount <= 0) return false;
+        if (establishmentDate == null) return false;
+        if (genre == null) return false;
+        if (bestAlbum == null || !bestAlbum.isValid()) return false;
+        return true;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public Date getEstablishmentDate() {
+        return establishmentDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void update(MusicBand band) {
+        this.name = band.name;
+        this.coordinates = band.coordinates;
+        this.creationDate = LocalDate.now().toString();
+        this.numberOfParticipants = band.numberOfParticipants;
+        this.singlesCount = band.singlesCount;
+        this.establishmentDate = band.establishmentDate;
+        this.genre = band.genre;
+        this.bestAlbum = band.bestAlbum;
+    }
+
+
+    @Override
+    public int compareTo(MusicBand band) {
+        return getSales().compareTo(band.getSales());
+    }
+
+    @Override
+    public String toString() {
+        return "MusicBand{\"id\": " + id + ", " +
+                "\"name\": \"" + name + "\", " +
+                "\"coordinates\": \"" + coordinates + "\", " +
+                "\"creationDate\": \"" + creationDate + "\", " +
+                "\"numberOfParticipants\": \"" + numberOfParticipants + "\", " +
+                "\"singlesCount\": \"" + singlesCount + "\", " +
+                "\"establishmentDate\": \"" + establishmentDate + "\", " +
+                "\"genre\": \"" + genre + "\", " +
+                "\"bestAlbum\": " + bestAlbum + "}";
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MusicBand band = (MusicBand) o;
+        return Objects.equals(id, band.id);
+    }
+}
+
+package models;
+
+public enum MusicGenre {
+    PROGRESSIVE_ROCK,
+    HIP_HOP,
+    POP;
+
+    public static String names() {
+        StringBuilder nameList = new StringBuilder();
+        for (var musicGenre : values()) {
+            nameList.append(musicGenre.name()).append(", ");
+        }
+        return nameList.substring(0, nameList.length() - 2);
+    }
+}
+package utility;
+
+public interface Console {
+    void print(Object obj);
+    void println(Object obj);
+    String readln();
+    boolean hasNextLine();
+    void printError(Object obj);
+    void printPrompt();
+}
+package utility;
+
+import com.google.gson.*;
+
+import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+public class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+
+    @Override
+    public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        try {
+            return dateFormat.parse(jsonElement.getAsString());
+        } catch (ParseException e) {
+            throw new JsonParseException(e);
+        }
+    }
+
+    @Override
+    public JsonElement serialize(Date date, Type type, JsonSerializationContext jsonSerializationContext) {
+        return new JsonPrimitive(dateFormat.format(date));
+    }
+}
+package utility;
+
+public class ExecutionResponse {
+    boolean exitStatus;
+    String message;
+
+    public ExecutionResponse(boolean exitStatus, String message) {
+        this.exitStatus = exitStatus;
+        this.message = message;
+    }
+
+    public ExecutionResponse(boolean exitStatus) {
+        this.exitStatus = exitStatus;
+    }
+
+    public boolean getExitStatus() {
+        return exitStatus;
+    }
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(exitStatus)+";"+message;
+    }
+}
+package utility;
+
+import commands.Command;
+import commands.Help;
+import managers.CommandManager;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class Runner {
+    private Console console;
+    private final CommandManager commandManager;
+    private final List<String> scriptList = new ArrayList<>();
+    private int recursionDepth = 0;
+
+    public Runner(Console console, CommandManager commandManager) {
+        this.console = console;
+        this.commandManager = commandManager;
+    }
+
+    public void interactiveMode() {
+        try {
+            ExecutionResponse commandStatus;
+            String[] userCommand = {"", ""};
+            while (true) {
+                console.printPrompt();
+                userCommand = (console.readln() + " ").split(" ", 2);
+                userCommand[0] = userCommand[0].toLowerCase().trim();
+                if (userCommand[0].equals("exit")) break;
+                if (userCommand[0].isEmpty()) continue;
+                commandStatus = run(userCommand);
+                console.println(commandStatus.getMessage());
+            }
+        } catch (NoSuchElementException e) {
+            console.printError(e.getMessage());
+        }
+    }
+
+    private boolean checkRecursionDepth() {
+
+    }
+
+    public ExecutionResponse runScript(String filename) {
+        return null;
+    }
+
+    public ExecutionResponse run(String[] userCommand) {
+        if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
+        Command command = commandManager.getCommandsMap().get(userCommand[0]);
+        if (command == null)
+            return new ExecutionResponse(true, "РљРѕРјР°РЅРґР° '" + userCommand[0] + "' РЅРµ РЅР°Р№РґРµРЅР°. РќР°Р±РµСЂРёС‚Рµ 'help' РґР»СЏ СЃРїСЂР°РІРєРё");
+        if (userCommand[0].equals("execute_script")) {
+            ExecutionResponse response1 = commandManager.getCommandsMap().get("execute_script").execute(userCommand);
+            if (!response1.getExitStatus()) return response1;
+            ExecutionResponse response2 = runScript(userCommand[1]);
+        }
+        return command.execute(userCommand);
+    }
+}
+package utility;
+
+
+import java.util.Scanner;
+
+public class StandartConsole implements Console{
+    private static final String PROMPT = "$ ";
+    private static Scanner fileScanner = null;
+    private static Scanner consoleScanner = new Scanner(System.in);
+
+
+
+    @Override
+    public void print(Object obj) {
+        System.out.print(obj);
+    }
+
+    @Override
+    public void println(Object obj) {
+        System.out.println(obj);
+    }
+
+
+    @Override
+    public String readln() {
+        if (fileScanner == null) return consoleScanner.nextLine();
+        return fileScanner.nextLine();
+    }
+
+    @Override
+    public boolean hasNextLine() throws IllegalStateException {
+        if (fileScanner == null) return consoleScanner.hasNextLine();
+        return fileScanner.hasNextLine();
+    }
+
+    public String getPrompt() {
+        return PROMPT; 
+    }
+
+
+    public void selectConsoleScanner() {
+        fileScanner = null;
+    }
+    public void selectFileScanner(Scanner scanner){
+        fileScanner = scanner;
+    }
+
+
+
+
+    @Override
+    public void printError(Object obj) {
+        System.err.println("Error: " + obj);
+    }
+
+
+    @Override
+    public void printPrompt() {
+        System.out.print(PROMPT);
+    }
+}
+package utility;
+
+public interface Validatable {
+    boolean isValid();
+}
+import commands.*;
+import managers.CollectionManager;
+import managers.CommandManager;
+import managers.DumpManager;
+import models.Ask;
+import utility.Console;
+import utility.Runner;
+import utility.StandartConsole;
+
+
+public class Main {
+
+    public static void main(String[] args) throws Ask.AskBreak {
+        Console console = new StandartConsole();
+
+        if (args.length == 0) {
+            console.println("Р’РІРµРґРёС‚Рµ РёРјСЏ Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ С„Р°Р№Р»Р° РєР°Рє Р°СЂРіСѓРјРµРЅС‚ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё");
+            System.exit(1);
+        }
+
+        CommandManager commandManager = new CommandManager();
+        DumpManager dumpManager = new DumpManager(args[0], console);
+        CollectionManager collectionManager = new CollectionManager(dumpManager);
+
+        commandManager.addCommand("add", new Add(console, collectionManager));
+        commandManager.addCommand("help", new Help(console, commandManager));
+        commandManager.addCommand("info", new Info(console, collectionManager));
+        commandManager.addCommand("clear",new Clear(console, collectionManager));
+        commandManager.addCommand("save", new Save(console, collectionManager));
+        commandManager.addCommand("show", new Show(console, collectionManager));
+        commandManager.addCommand("remove_by_id", new RemoveByID(console, collectionManager));
+        commandManager.addCommand("update", new Update(console, collectionManager));
+        commandManager.addCommand("add_if_max", new AddIfMax(console, collectionManager));
+        commandManager.addCommand("add_if_min", new AddIfMin(console, collectionManager));
+        commandManager.addCommand("remove_greater", new RemoveGreater(console, collectionManager));
+        commandManager.addCommand("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
+        commandManager.addCommand("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
+        commandManager.addCommand("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
+        commandManager.addCommand("exit", new Exit(console));
+        Runner runner = new Runner(console, commandManager);
+        runner.interactiveMode();
+    }
+} 

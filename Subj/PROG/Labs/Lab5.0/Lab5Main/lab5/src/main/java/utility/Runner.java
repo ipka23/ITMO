@@ -4,11 +4,15 @@ import commands.Command;
 import commands.Help;
 import managers.CommandManager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Runner {
     private Console console;
     private final CommandManager commandManager;
+    private final List<String> scriptList = new ArrayList<>();
+    private int recursionDepth = 0;
 
     public Runner(Console console, CommandManager commandManager) {
         this.console = console;
@@ -33,6 +37,9 @@ public class Runner {
         }
     }
 
+    private boolean checkRecursionDepth() {
+        return false;
+    }
 
     public ExecutionResponse runScript(String filename) {
         return null;

@@ -27,6 +27,17 @@ public class StandartConsole implements Console{
         return fileScanner.nextLine();
     }
 
+    @Override
+    public boolean hasNextLine() throws IllegalStateException {
+        if (fileScanner == null) return consoleScanner.hasNextLine();
+        return fileScanner.hasNextLine();
+    }
+
+    public String getPrompt() {
+        return PROMPT;
+    }
+
+
     public void selectConsoleScanner() {
         fileScanner = null;
     }
