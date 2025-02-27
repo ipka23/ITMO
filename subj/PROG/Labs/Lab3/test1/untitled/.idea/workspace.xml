@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77869cc2-670f-40ed-81f9-8281efb124f0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../lab3/src/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab3/src/Neznayka.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/Report lab4 inf.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/Report lab4 inf.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/csv-editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additional_task_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additional_task_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additional_task_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additional_task_4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additonal_task_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/additional_task_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/schedule.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Inf/Lab4/lab4/schedule.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/Lab2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/physical/BrutalSwing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/physical/FuryAttack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/physical/HeadSmash.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/physical/RockSlide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/physical/WakeUpSlap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/special/Blizzard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/special/DragonBreath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/special/DreamEater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/status/Confide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/status/DoubleTeam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/moves/status/MetalSound.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/Lab2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/physical/BrutalSwing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/physical/FuryAttack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/physical/HeadSmash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/physical/RockSlide.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/physical/WakeUpSlap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/special/Blizzard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/special/DragonBreath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/special/DreamEater.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/status/Confide.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/status/DoubleTeam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/moves/status/MetalSound.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/AegislashBlade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/Altaria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/Doublade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/Honedge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/Miltank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/out/production/Lab2/pokemons/Swablu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/AegislashBlade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/Altaria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/Doublade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/Honedge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/Miltank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Lab2/pokemons/Swablu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2.2/Pokemon.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/Lab2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/UML.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/physical/BrutalSwing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/physical/FuryAttack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/physical/HeadSmash.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/physical/RockSlide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/physical/WakeUpSlap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/special/Blizzard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/special/DragonBreath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/special/DreamEater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/status/Confide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/status/DoubleTeam.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/moves/status/MetalSound.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/AegislashBlade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/Altaria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/Doublade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/Honedge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/Miltank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lab2/Lab2/src/pokemons/Swablu.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2pFqj6gDh8yl6PgBeN8XzvMxic5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/ilyai/OneDrive/Рабочий стол/ITMO/Labs/Prog/Lab3/test/untitled/src/Main.java&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77869cc2-670f-40ed-81f9-8281efb124f0" name="Changes" comment="" />
+      <created>1732372303830</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732372303830</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "WSTR",
+    "coordinates": {
+      "x": 23,
+      "y": 32.0
+    },
+    "numberOfParticipants": 3,
+    "singlesCount": 4,
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "SKRWRD",
+      "tracks": 6,
+      "length": 5,
+      "sales": 2.0
+    }
+  }
+]
