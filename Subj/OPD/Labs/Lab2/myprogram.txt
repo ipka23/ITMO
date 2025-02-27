@@ -1,7 +1,0 @@
-NOT
-AND 19B
-----OR 19D----
-ST 199
-LD 19C
-ADD 199
-ST 19A
