@@ -11,8 +11,7 @@ import java.util.NoSuchElementException;
 public class Runner {
     private Console console;
     private final CommandManager commandManager;
-    private final List<String> scriptList = new ArrayList<>();
-    private int recursionDepth = 0;
+
 
     public Runner(Console console, CommandManager commandManager) {
         this.console = console;
@@ -27,6 +26,7 @@ public class Runner {
                 console.printPrompt();
                 userCommand = (console.readln() + " ").split(" ", 2);
                 userCommand[0] = userCommand[0].toLowerCase().trim();
+                userCommand[1] = userCommand[1].trim();
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
                 commandStatus = run(userCommand);
@@ -37,24 +37,13 @@ public class Runner {
         }
     }
 
-    private boolean checkRecursionDepth() {
-        return false;
-    }
 
-    public ExecutionResponse runScript(String filename) {
-        return null;
-    }
 
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = commandManager.getCommandsMap().get(userCommand[0]);
         if (command == null)
             return new ExecutionResponse(true, "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
-        if (userCommand[0].equals("execute_script")) {
-            ExecutionResponse response1 = commandManager.getCommandsMap().get("execute_script").execute(userCommand);
-            if (!response1.getExitStatus()) return response1;
-            ExecutionResponse response2 = runScript(userCommand[1]);
-        }
         return command.execute(userCommand);
     }
 }
