@@ -1,1 +1,0 @@
-cat: lab0/graveler2/servine: Permission denied
