@@ -51,6 +51,12 @@ public class ExecuteScript extends Command {
     public ExecutionResponse runScript(String filename) {
         String[] userCommand = {"", ""};
         StringBuilder executionResponseMessage = new StringBuilder();
+        if (!new File(filename).exists()) {
+            return new ExecutionResponse(false, "Файл не найден!");
+        }
+        if (!Files.isReadable(Paths.get(filename))) {
+            return new ExecutionResponse(false, "execute_script: " + filename + ": Permission denied!!!!!!!!!!!!!!!");
+        }
         try (Scanner scriptFileScanner = new Scanner(new File(filename))) {
             ExecutionResponse commandStatus = null;
             if (!scriptFileScanner.hasNextLine()) throw new NoSuchElementException();
@@ -83,14 +89,17 @@ public class ExecuteScript extends Command {
                 executionResponseMessage.append("Ошибка в скрипте!").append("\n");
             }
 
+
             return new ExecutionResponse(commandStatus.getExitStatus(), executionResponseMessage.substring(0, executionResponseMessage.length() - 1));
 
-        } catch (NoSuchElementException | FileNotFoundException | IllegalStateException e) {
-            console.printError("Ошибка!");
-            System.exit(0);
-        }
-        return new ExecutionResponse(true, "");
+        } catch (FileNotFoundException exception) {
+            return new ExecutionResponse(false, "Файл со скриптом не найден!");
+        } catch (NoSuchElementException exception) {
+            return new ExecutionResponse(false, "Файл со скриптом пуст!");
+        } catch (IllegalStateException exception) {
+            return new ExecutionResponse(false, "Непредвиденная ошибка!");
     }
+}
 
     @Override
     public ExecutionResponse execute(String[] args) {
@@ -101,7 +110,7 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(false, "Файл не найден!");
         }
         if (!Files.isReadable(Paths.get(scriptFile))) {
-            return new ExecutionResponse(false, "execute_script: " + scriptFile + ": Permission denied");
+            return new ExecutionResponse(false, "execute_script: " + scriptFile + ": Permission denied!");
         }
         scriptList.add(scriptFile);
         ExecutionResponse executionResponse = runScript(scriptFile);
