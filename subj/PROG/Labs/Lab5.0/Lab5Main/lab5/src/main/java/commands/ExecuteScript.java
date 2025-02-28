@@ -58,7 +58,7 @@ public class ExecuteScript extends Command {
 
 
             do {
-                boolean shouldExecuteCommand = false;
+                boolean shouldExecuteCommand = true;
                 userCommand = (console.readln().trim() + " ").split(" ", 2);
                 userCommand[0] = userCommand[0].toLowerCase().trim();
                 userCommand[1] = userCommand[1].trim();
@@ -94,7 +94,7 @@ public class ExecuteScript extends Command {
 
     @Override
     public ExecutionResponse execute(String[] args) {
-        scriptList.add(args[1]);
+
         String scriptFile = args[1].trim();
         if (args[1].trim().isEmpty())  return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
         if (!new File(scriptFile).exists()) {
@@ -103,6 +103,7 @@ public class ExecuteScript extends Command {
         if (!Files.isReadable(Paths.get(scriptFile))) {
             return new ExecutionResponse(false, "execute_script: " + scriptFile + ": Permission denied");
         }
+        scriptList.add(scriptFile);
         ExecutionResponse executionResponse = runScript(scriptFile);
         scriptList.remove(scriptList.size() - 1);
         return executionResponse;
