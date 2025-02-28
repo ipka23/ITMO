@@ -14,12 +14,12 @@ public class Main {
         Console console = new StandartConsole();
 
         if (args.length == 0) {
-            console.println("Введите имя загружаемого файла как аргумент командной строки");
+            console.println("Введите переменную окружения как аргумент командной строки");
             System.exit(1);
         }
 
         CommandManager commandManager = new CommandManager();
-        DumpManager dumpManager = new DumpManager(args[0], console);
+        DumpManager dumpManager = new DumpManager(System.getenv(args[0]), console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);
 
         commandManager.addCommand("add", new Add(console, collectionManager));
