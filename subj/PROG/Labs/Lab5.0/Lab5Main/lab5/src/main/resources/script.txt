@@ -11,4 +11,4 @@ album
 5
 10000
 show
-execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\Lab5Main\lab5\src\main\resources\script2.txt
+execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\Lab5Main\lab5\src\main\resources\script.txt

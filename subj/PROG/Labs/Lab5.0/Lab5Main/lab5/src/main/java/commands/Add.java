@@ -21,7 +21,7 @@ public class Add extends Command {
         try {
             if (!args[1].trim().isEmpty())
                 return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-            console.println("----Cоздание новой MusicBand----");
+            console.println("--------------------------------Cоздание новой MusicBand--------------------------------");
             MusicBand band = Ask.askMusicBand(console, collectionManager.getFreeId());
             if (band != null) {
                 collectionManager.add(band);

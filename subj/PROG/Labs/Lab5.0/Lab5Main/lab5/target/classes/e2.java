@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
+//       execute_script /Users/ipka23/Desktop/mac
 public class ExecuteScript extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
@@ -27,18 +27,24 @@ public class ExecuteScript extends Command {
         this.runner = runner;
     }
 
-    private boolean checkRecursionDepth(String file_name) {
+    private boolean checkUniqueness(List<String> list) {
+        Set<String> set = new HashSet<>(list);
+        return set.size() == list.size();
+    }
+
+
+    private boolean checkRecursionDepth(String file_name, Scanner scriptFileScanner) {
         int startDepth = -1;
         int i = 0;
         for (String script_file : scriptList) {
 
             if (file_name.equals(script_file)) {
                 if (startDepth == -1) startDepth = i;
-                if (recursionDepth > 300) {
+                if (recursionDepth < 0) {
                     console.selectConsoleScanner();
-                    console.println("Recursion depth: " + startDepth + recursionDepth);
+                    console.println("Recursion depth: " + recursionDepth);
                 }
-                if (i > startDepth + recursionDepth || i > 300) return false;
+                if (i > startDepth + recursionDepth || i > 2) return false;
             }
             i++;
         }
@@ -48,7 +54,13 @@ public class ExecuteScript extends Command {
     public ExecutionResponse runScript(String filename) {
         String[] userCommand = {"", ""};
         StringBuilder executionResponseMessage = new StringBuilder();
-        executionResponseMessage.append("--------------------------------История выполненных комманд из скрипта: \"").append(filename).append("\"").append("--------------------------------").append("\n");
+        if (scriptList.size() == 1) executionResponseMessage.append("--------------------------------История выполненных комманд из скрипта: \"").append(filename).append("\"").append("--------------------------------").append("\n");
+//        if (!new File(filename).exists()) {
+//            return new ExecutionResponse(false, "Файл не найден!");
+//        }
+//        if (!Files.isReadable(Paths.get(filename))) {
+//            return new ExecutionResponse(false, "execute_script: " + filename + ": Permission denied!!!!!!!!!!!!!!!");
+//        }
         try (Scanner scriptFileScanner = new Scanner(new File(filename))) {
             ExecutionResponse commandStatus = null;
             if (!scriptFileScanner.hasNextLine()) throw new NoSuchElementException();
@@ -64,7 +76,7 @@ public class ExecuteScript extends Command {
                 if (userCommand[0].isEmpty()) continue;
                 executionResponseMessage.append(console.getScriptPrompt()).append(userCommand[0]).append(" ").append(userCommand[1]).append("\n");
                 if (userCommand[0].equals("execute_script")) {
-                    shouldExecuteCommand = checkRecursionDepth(userCommand[1]);
+                    shouldExecuteCommand = checkRecursionDepth(userCommand[1], scriptFileScanner);
                 }
                 if (shouldExecuteCommand) {
                     commandStatus = runner.run(userCommand);
@@ -73,8 +85,8 @@ public class ExecuteScript extends Command {
                 }
                 console.println(commandStatus.getMessage());
                 if (!commandStatus.getExitStatus()) break;
-
             } while (commandStatus.getExitStatus() && !commandStatus.getMessage().equals("exit") && console.hasNextLine());
+
 
             console.selectConsoleScanner();
             if (!commandStatus.getExitStatus() && !(userCommand[0].equals("execute_script") && !userCommand[1].isEmpty())) {
@@ -85,7 +97,7 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(commandStatus.getExitStatus(), executionResponseMessage.substring(0, executionResponseMessage.length() - 1));
 
         } catch (FileNotFoundException exception) {
-            return new ExecutionResponse(false, "Файл со скриптом не найден!");
+            return new ExecutionResponse(false, "Файл со скриптом \""+ filename +"\" не найден!");
         } catch (NoSuchElementException exception) {
             return new ExecutionResponse(false, "Файл со скриптом пуст!");
         } catch (IllegalStateException exception) {
@@ -95,17 +107,15 @@ public class ExecuteScript extends Command {
 
     @Override
     public ExecutionResponse execute(String[] args) {
-        
         String scriptFile = args[1].trim();
         if (args[1].trim().isEmpty())  return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-        if (!Files.exists(Paths.get(scriptFile))) {
-            return new ExecutionResponse(false,  "Файл со скриптом \""+ scriptFile +"\" не найден!");
+        String[] parts = (scriptFile + " ").split(" ", 2);
+
+        if (!Files.isReadable(Paths.get(parts[1].trim())) && !parts[1].isEmpty()) {
+            return new ExecutionResponse(false, "execute_script: " + parts[1].trim() + ": Permission denied!");
         }
-        if (!Files.isReadable(Paths.get(scriptFile))) {
-            return new ExecutionResponse(false, "execute_script: " + scriptFile + ": Permission denied!");
-        }
-        scriptList.add(scriptFile);
-        ExecutionResponse executionResponse = runScript(scriptFile);
+        scriptList.add((parts[1].trim().isEmpty() ? parts[0].trim() : parts[1].trim()));
+        ExecutionResponse executionResponse = runScript((parts[1].trim().isEmpty() ? parts[0].trim() : parts[1].trim()));
         scriptList.remove(scriptList.size() - 1);
         return executionResponse;
     }
