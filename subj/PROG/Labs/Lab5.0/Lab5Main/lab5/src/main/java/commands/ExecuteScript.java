@@ -10,10 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class ExecuteScript extends Command {
     private final Console console;
@@ -28,6 +25,10 @@ public class ExecuteScript extends Command {
         this.collectionManager = collectionManager;
         this.commandManager = commandManager;
         this.runner = runner;
+    }
+    private boolean checkUniqueness(List<String> list) {
+        Set<String> set = new HashSet<>(list);
+        return set.size() == list.size();
     }
 
     private boolean checkRecursionDepth(String file_name, Scanner scriptScanner) {
@@ -98,8 +99,8 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(false, "Файл со скриптом пуст!");
         } catch (IllegalStateException exception) {
             return new ExecutionResponse(false, "Непредвиденная ошибка!");
+        }
     }
-}
 
     @Override
     public ExecutionResponse execute(String[] args) {
@@ -119,8 +120,3 @@ public class ExecuteScript extends Command {
     }
 }
 
-// if (args[0].equals("execute_script")) {
-//ExecutionResponse response1 = commandManager.getCommandsMap().get("execute_script").execute(args);
-//            if (!response1.getExitStatus()) return response1;
-//ExecutionResponse response2 = runScript(args[1]);
-//        }
