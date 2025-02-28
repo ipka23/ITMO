@@ -19,6 +19,25 @@
     }
   },
   {
+    "id": 2,
+    "name": "ds",
+    "coordinates": {
+      "x": 3,
+      "y": 3.0
+    },
+    "creationDate": "2025-02-20",
+    "numberOfParticipants": 3,
+    "singlesCount": 2,
+    "establishmentDate": "01.01.2001",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "sl",
+      "tracks": 3,
+      "length": 5,
+      "sales": 3.0
+    }
+  },
+  {
     "id": 4,
     "name": "imya",
     "coordinates": {
@@ -38,6 +57,25 @@
     }
   },
   {
+    "id": 5,
+    "name": "name",
+    "coordinates": {
+      "x": 10,
+      "y": 25.0
+    },
+    "creationDate": "2025-02-28",
+    "numberOfParticipants": 4,
+    "singlesCount": 42,
+    "establishmentDate": "01.01.2001",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "album",
+      "tracks": 12,
+      "length": 5,
+      "sales": 10000.0
+    }
+  },
+  {
     "id": 3,
     "name": "d",
     "coordinates": {
@@ -54,25 +92,6 @@
       "tracks": 4,
       "length": 4,
       "sales": 2245.0
-    }
-  },
-  {
-    "id": 2,
-    "name": "ds",
-    "coordinates": {
-      "x": 3,
-      "y": 3.0
-    },
-    "creationDate": "2025-02-20",
-    "numberOfParticipants": 3,
-    "singlesCount": 2,
-    "establishmentDate": "01.01.2001",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "sl",
-      "tracks": 3,
-      "length": 5,
-      "sales": 3.0
     }
   }
 ]
