@@ -19,7 +19,7 @@ public class FilterStartsWithName extends Command {
 
     @Override
     public ExecutionResponse execute(String[] args) {
-        if (args[1].trim().trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        if (args[1].trim().trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         StringBuilder s = new StringBuilder();
         HashSet<MusicBand> collection = collectionManager.getCollection();
         for (MusicBand band : collection) {

@@ -11,6 +11,5 @@ public interface Console {
     void printPrompt();
     void selectConsoleScanner();
     void selectFileScanner(Scanner scanner);
-    String getPrompt();
     String getScriptPrompt();
 }

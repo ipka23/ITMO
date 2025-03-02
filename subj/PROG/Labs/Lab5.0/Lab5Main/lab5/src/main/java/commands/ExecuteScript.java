@@ -97,7 +97,7 @@ public class ExecuteScript extends Command {
     public ExecutionResponse execute(String[] args) {
 
         String scriptFile = args[1].trim();
-        if (args[1].trim().isEmpty())  return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        if (args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         if (!Files.exists(Paths.get(scriptFile))) {
             return new ExecutionResponse(false,  "Файл со скриптом \""+ scriptFile +"\" не найден!");
         }

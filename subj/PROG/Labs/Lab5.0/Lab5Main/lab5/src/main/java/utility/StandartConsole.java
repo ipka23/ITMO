@@ -34,10 +34,6 @@ public class StandartConsole implements Console{
         return fileScanner.hasNextLine();
     }
 
-    @Override
-    public String getPrompt() {
-        return PROMPT;
-    }
 
     @Override
     public String getScriptPrompt() {
