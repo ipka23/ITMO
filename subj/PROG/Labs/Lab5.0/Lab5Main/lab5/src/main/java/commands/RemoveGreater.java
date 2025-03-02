@@ -20,7 +20,7 @@ public class RemoveGreater extends Command {
     }
 
     public ExecutionResponse execute(String[] args) {
-        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         HashSet<MusicBand> collection = collectionManager.getCollection();
 
         try {

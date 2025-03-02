@@ -16,7 +16,7 @@ public class Help extends Command {
     @Override
     public ExecutionResponse execute(String[] args) {
         StringBuilder s = new StringBuilder();
-        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         s.append("--------------------------------Доступные команды--------------------------------\n");
         for (Command command : commandManager.getCommands()){
             s.append(command.getName()).append(": ").append(command.getDescription()).append("\n");

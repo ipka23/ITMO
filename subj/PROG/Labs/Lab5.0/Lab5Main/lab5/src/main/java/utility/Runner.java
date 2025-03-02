@@ -43,7 +43,7 @@ public class Runner {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = commandManager.getCommandsMap().get(userCommand[0]);
         if (command == null)
-            return new ExecutionResponse(true, "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
+            return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
         return command.execute(userCommand);
     }
 }

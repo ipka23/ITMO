@@ -18,7 +18,7 @@ public class Update extends Command {
 
     public ExecutionResponse execute(String[] args) {
         if (args[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         long id;
         try {
             id = Long.parseLong(args[1].trim());
@@ -31,7 +31,7 @@ public class Update extends Command {
         }
         MusicBand newBand;
         try {
-            console.println("----Введите новые данные для MusicBand----");
+            console.println("--------------------------------Введите новые данные для MusicBand--------------------------------");
             newBand = Ask.askMusicBand(console, id);
         } catch (Ask.AskBreak e) {
             return new ExecutionResponse(true, "Отмена ввода...");

@@ -19,7 +19,7 @@ public class AddIfMin extends Command {
     @Override
     public ExecutionResponse execute(String[] args) {
         try {
-            if (!args[1].isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
+            if (!args[1].isEmpty())return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
             long id = collectionManager.getFreeId();
             MusicBand newBand = Ask.askMusicBand(console, id);
             if (newBand.getSales() < collectionManager.getMin().getSales()) {

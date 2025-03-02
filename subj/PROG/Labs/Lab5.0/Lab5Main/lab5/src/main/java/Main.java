@@ -21,6 +21,7 @@ public class Main {
         CommandManager commandManager = new CommandManager();
         DumpManager dumpManager = new DumpManager(System.getenv(args[0]), console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);
+        Runner runner = new Runner(console, commandManager);
 
         commandManager.addCommand("add", new Add(console, collectionManager));
         commandManager.addCommand("help", new Help(console, commandManager));
@@ -36,10 +37,8 @@ public class Main {
         commandManager.addCommand("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
         commandManager.addCommand("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandManager.addCommand("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
-        commandManager.addCommand("exit", new Exit(console));
-
-        Runner runner = new Runner(console, commandManager);
         commandManager.addCommand("execute_script", new ExecuteScript(console, collectionManager, commandManager, runner));
+        commandManager.addCommand("exit", new Exit(console));
 
         runner.interactiveMode();
     }
