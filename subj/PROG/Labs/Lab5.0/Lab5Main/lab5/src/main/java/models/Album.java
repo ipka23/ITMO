@@ -1,7 +1,10 @@
 package models;
 
 import utility.Validatable;
-
+/**
+ * Класс Альбома.
+ * @author ipka23
+ */
 public class Album implements Validatable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Long tracks; //Поле не может быть null, Значение поля должно быть больше 0
@@ -18,6 +21,8 @@ public class Album implements Validatable {
     public Double getSales(){
         return sales;
     }
+
+
     @Override
     public boolean isValid() {
         if (name == null || name.isEmpty()) return false;
