@@ -26,7 +26,7 @@ public class Main {
         commandManager.addCommand("add", new Add(console, collectionManager));
         commandManager.addCommand("help", new Help(console, commandManager));
         commandManager.addCommand("info", new Info(console, collectionManager));
-        commandManager.addCommand("clear",new Clear(console, collectionManager));
+        commandManager.addCommand("clear", new Clear(console, collectionManager));
         commandManager.addCommand("save", new Save(console, collectionManager));
         commandManager.addCommand("show", new Show(console, collectionManager));
         commandManager.addCommand("remove_by_id", new RemoveByID(console, collectionManager));
