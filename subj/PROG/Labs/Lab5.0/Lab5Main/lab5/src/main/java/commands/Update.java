@@ -6,16 +6,33 @@ import models.MusicBand;
 import utility.Console;
 import utility.ExecutionResponse;
 
+/**
+ * Данный класс отвечает за выполнение команды "update"
+ *
+ * @author ipka23
+ */
 public class Update extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
 
+    /**
+     * Конструктор
+     *
+     * @param console           интерфейс Console для взаимодействия с консолью
+     * @param collectionManager объект CollectionManager для управления коллекцией
+     */
     public Update(Console console, CollectionManager collectionManager) {
         super("update id", "обновить значение элемента коллекции, id которого равен заданному");
         this.console = console;
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Метод для выполнения команды
+     *
+     * @param args аргументы команды
+     * @return объект ExecutionResponse, содержащий результат выполнения команды
+     */
     public ExecutionResponse execute(String[] args) {
         if (args[1].trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");

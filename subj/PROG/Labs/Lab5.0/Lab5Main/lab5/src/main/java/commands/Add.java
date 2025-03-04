@@ -6,16 +6,31 @@ import models.MusicBand;
 import utility.Console;
 import utility.ExecutionResponse;
 
+/**
+ * Данный класс отвечает за выполнение команды "add"
+ *
+ * @author ipka23
+ */
 public class Add extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
-
+    /**
+     * Конструктор
+     *
+     * @param console           интерфейс Console для взаимодействия с консолью
+     * @param collectionManager объект CollectionManager для управления коллекцией
+     */
     public Add(Console console, CollectionManager collectionManager) {
         super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
     }
-
+    /**
+     * Метод для выполнения команды
+     *
+     * @param args аргументы команды
+     * @return объект ExecutionResponse, содержащий результат выполнения команды
+     */
     @Override
     public ExecutionResponse execute(String[] args) {
         try {

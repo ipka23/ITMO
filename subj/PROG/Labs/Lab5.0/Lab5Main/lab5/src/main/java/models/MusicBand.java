@@ -6,6 +6,12 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Данный класс представляет музыкальную группу и реализует интерфейс Validatable для проверки корректности данных;
+ * Содержит информацию о музыкальной группе: id, название, координаты, дату создания, количество участников, количество синглов, дату основания, жанр музыки и лучший альбом
+ *
+ * @author ipka23
+ */
 public class MusicBand implements Comparable<MusicBand>, Validatable {
 
 
@@ -19,7 +25,19 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     private MusicGenre genre; //Поле не может быть null
     private Album bestAlbum; //Поле не может быть null
 
-
+    /**
+     * Конструктор
+     *
+     * @param id                   идентификатор музыкальной группы
+     * @param name                 название музыкальной группы
+     * @param coordinates          координаты группы
+     * @param creationDate         дата создания группы
+     * @param numberOfParticipants количество участников группы
+     * @param singlesCount         количество синглов группы
+     * @param establishmentDate    дата основания группы
+     * @param genre                жанр музыки группы
+     * @param bestAlbum            лучший альбом группы
+     */
     public MusicBand(long id, String name, Coordinates coordinates, String creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.id = id;
         this.name = name;
@@ -32,6 +50,17 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.bestAlbum = bestAlbum;
     }
 
+    /**
+     * Конструктор
+     *
+     * @param name                 название музыкальной группы
+     * @param coordinates          координаты группы
+     * @param numberOfParticipants количество участников группы
+     * @param singlesCount         количество синглов группы
+     * @param establishmentDate    дата основания группы
+     * @param genre                жанр музыки группы
+     * @param bestAlbum            лучший альбом группы
+     */
     public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.name = name;
         this.coordinates = coordinates;
@@ -42,6 +71,18 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.bestAlbum = bestAlbum;
     }
 
+    /**
+     * Конструктор
+     *
+     * @param id                   идентификатор музыкальной группы
+     * @param name                 название музыкальной группы
+     * @param coordinates          координаты группы
+     * @param numberOfParticipants количество участников группы
+     * @param singlesCount         количество синглов группы
+     * @param establishmentDate    дата основания группы
+     * @param genre                жанр музыки группы
+     * @param bestAlbum            лучший альбом группы
+     */
     public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.id = id;
         this.name = name;
@@ -54,14 +95,29 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.creationDate = LocalDate.now().toString();
     }
 
-
+    /**
+     * Метод для получения id музыкальной группы
+     *
+     * @return id музыкальной группы
+     */
     public long getId() {
         return id;
     }
 
-    public Double getSales(){
+    /**
+     * Метод для получения количества продаж лучшего альбома группы
+     *
+     * @return количество продаж лучшего альбома группы
+     */
+    public Double getSales() {
         return bestAlbum.getSales();
     }
+
+    /**
+     * Метод для проверки валидности полей музыкальной группы
+     *
+     * @return true, если все поля валидны, false в противном случае
+     */
     @Override
     public boolean isValid() {
         if (name == null || name.isEmpty()) return false;
@@ -75,17 +131,38 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         return true;
     }
 
+    /**
+     * Метод для получения названия музыкальной группы
+     *
+     * @return название музыкальной группы
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * Метод для получения даты основания группы
+     *
+     * @return дата основания группы
+     */
     public Date getEstablishmentDate() {
         return establishmentDate;
     }
 
+    /**
+     * Метод для установки названия музыкальной группы
+     *
+     * @param name название музыкальной группы
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Метод для обновления данных музыкальной группы
+     *
+     * @param band объект MusicBand с новыми данными
+     */
     public void update(MusicBand band) {
         this.name = band.name;
         this.coordinates = band.coordinates;
@@ -97,12 +174,22 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.bestAlbum = band.bestAlbum;
     }
 
-
+    /**
+     * Метод для сравнения музыкальных групп по количеству продаж лучшего альбома
+     *
+     * @param band объект MusicBand для сравнения
+     * @return результат сравнения количества продаж лучшего альбома
+     */
     @Override
     public int compareTo(MusicBand band) {
         return getSales().compareTo(band.getSales());
     }
 
+    /**
+     * Возвращает строковое представление объекта MusicBand в формате JSON
+     *
+     * @return строковое представление объекта MusicBand
+     */
     @Override
     public String toString() {
         return "MusicBand{\"id\": " + id + ", " +
@@ -117,6 +204,12 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
 
     }
 
+    /**
+     * Метод для сравнения объектов музыкальной группы
+     *
+     * @param o объект для сравнения
+     * @return true, если объекты равны, false в противном случае
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

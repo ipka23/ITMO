@@ -11,8 +11,11 @@ import java.io.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-
-
+/**
+ * Данный класс отвечает за сохранение и загрузку коллекции объектов MusicBand в/из файла в формате JSON;
+ * Использует библиотеку Gson для сериализации и десериализации объектов
+ * @author ipka23
+ */
 public class DumpManager {
     private Gson gson = new GsonBuilder()
             .setPrettyPrinting()
@@ -22,13 +25,21 @@ public class DumpManager {
 
     private String fileName;
     private Console console;
-
+    /**
+     * Конструктор
+     *
+     * @param fileName имя файла для сохранения и загрузки коллекции
+     * @param console интерфейс Console для взаимодействия с пользователем
+     */
     public DumpManager(String fileName, Console console) {
-
         this.fileName = fileName;
         this.console = console;
     }
-
+    /**
+     * Метод для сохранения коллекции MusicBand в файл
+     *
+     * @param collection коллекция MusicBand для сохранения
+     */
     public void writeCollection(HashSet<MusicBand> collection) {
         try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
             var collectionType = new TypeToken<Collection<MusicBand>>() {}.getType();
@@ -38,7 +49,11 @@ public class DumpManager {
             console.printError("Не удается открыть указанный файл!");
         }
     }
-
+    /**
+     * Метод для загрузки коллекции MusicBand из файла
+     *
+     * @return коллекция MusicBand, загруженная из файла
+     */
     public Collection<MusicBand> readCollection() {
         if (fileName != null && !fileName.isEmpty()) {
             try (var fileReader = new FileReader(fileName)) {
