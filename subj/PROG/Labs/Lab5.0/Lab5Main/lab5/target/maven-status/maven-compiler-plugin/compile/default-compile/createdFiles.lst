@@ -16,6 +16,7 @@ models/Ask.class
 commands/MaxByBestBestAlbum.class
 commands/AddIfMin.class
 commands/PrintFieldAscendingEstablishmentDate.class
+commands/ExecuteScript.class
 managers/DumpManager.class
 commands/Show.class
 utility/Runner.class

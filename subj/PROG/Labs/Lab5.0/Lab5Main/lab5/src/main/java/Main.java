@@ -19,7 +19,7 @@ public class Main {
         }
 
         CommandManager commandManager = new CommandManager();
-        DumpManager dumpManager = new DumpManager(System.getenv(args[0]), console);
+        DumpManager dumpManager = new DumpManager(System.getenv(args[0].trim()), console);
         CollectionManager collectionManager = new CollectionManager(dumpManager);
         Runner runner = new Runner(console, commandManager);
 
