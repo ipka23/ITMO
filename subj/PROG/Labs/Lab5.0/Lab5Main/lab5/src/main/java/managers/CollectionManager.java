@@ -143,7 +143,7 @@ public class CollectionManager {
     public String info() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         StringBuilder info = new StringBuilder();
-        info.append("----Информация о коллекции----\n");
+        info.append("--------------------------------Информация о коллекции--------------------------------\n");
         info.append("Тип коллекции: ").append(collection.getClass()).append("\n");
         info.append("Дата инициализации: ").append(lastInitTime != null ? lastInitTime.format(formatter) : "null").append("\n");
         info.append("Дата последнего сохранения: ").append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");

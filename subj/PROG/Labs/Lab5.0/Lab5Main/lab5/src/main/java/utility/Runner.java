@@ -1,7 +1,6 @@
 package utility;
 
 import commands.Command;
-import commands.Help;
 import managers.CommandManager;
 
 import java.util.NoSuchElementException;
