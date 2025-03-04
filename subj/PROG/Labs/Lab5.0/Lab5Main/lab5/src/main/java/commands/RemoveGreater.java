@@ -9,18 +9,36 @@ import utility.ExecutionResponse;
 import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * Данный класс отвечает за выполнение команды "remove_greater"
+ *
+ * @author ipka23
+ */
 public class RemoveGreater extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
 
+    /**
+     * Конструктор
+     *
+     * @param console           интерфейс Console для взаимодействия с консолью
+     * @param collectionManager объект CollectionManager для управления коллекцией
+     */
     public RemoveGreater(Console console, CollectionManager collectionManager) {
         super("remove_greater", "удалить из коллекции все элементы, превышающие заданный");
         this.console = console;
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Метод для выполнения команды
+     *
+     * @param args аргументы команды
+     * @return объект ExecutionResponse, содержащий результат выполнения команды
+     */
     public ExecutionResponse execute(String[] args) {
-        if (!args[1].trim().isEmpty()) return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+        if (!args[1].trim().isEmpty())
+            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         HashSet<MusicBand> collection = collectionManager.getCollection();
 
         try {

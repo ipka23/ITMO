@@ -4,20 +4,31 @@ package models;
 import utility.Console;
 
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.NoSuchElementException;
 
+/**
+ * Данный класс содержит методы для взаимодействия с пользователем и получения данных для создания MusicBand;*
+ *
+ * @author ipka23
+ */
 public class Ask {
+    /**
+     * Исключение для прерывания процесса запроса данных
+     */
     public static class AskBreak extends Exception {
     }
 
+    /**
+     * Метод для запроса данных для создания объекта MusicBand
+     *
+     * @param console объект Console для взаимодействия с пользователем
+     * @param id идентификатор музыкальной группы
+     * @return новый объект MusicBand
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static MusicBand askMusicBand(Console console, long id) throws AskBreak {
         try {
             String name;
@@ -43,7 +54,13 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для запроса данных для создания объекта Coordinates
+     *
+     * @param console интерфейс Console для взаимодействия с пользователем
+     * @return объект Coordinates - координаты
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static Coordinates askCoordinates(Console console) throws AskBreak {
         try {
             Integer x;
@@ -81,7 +98,13 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для запроса данных для количества участников
+     *
+     * @param console интерфейс Console для взаимодействия с пользователем
+     * @return количество участников
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static Long askNumberOfParticipants(Console console) throws AskBreak {
         try {
             Long numberOfParticipants;
@@ -106,7 +129,13 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для запроса данных для количества синглов
+     *
+     * @param console интерфейс Console для взаимодействия с пользователем
+     * @return количество синглов
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static Long askSinglesCount(Console console) throws AskBreak {
         try {
             Long singlesCount;
@@ -132,6 +161,13 @@ public class Ask {
         }
     }
 
+    /**
+     * Метод для запроса данных для даты основания
+     *
+     * @param console интерфейс Console для взаимодействия с пользователем
+     * @return дата основания
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static Date askEstablishmentDate(Console console) throws AskBreak {
         try {
             Date establishmentDate;
@@ -156,7 +192,13 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для запроса данных для жанра музыки
+     *
+     * @param console объект Console для взаимодействия с пользователем
+     * @return объект MusicGenre - жанр музыки
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static MusicGenre askMusicGenre(Console console) throws AskBreak {
         try {
             MusicGenre musicGenre;
@@ -177,7 +219,13 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для запроса данных для создания объекта Album
+     *
+     * @param console интерфейс Console для взаимодействия с пользователем
+     * @return объект Album - альбом
+     * @throws AskBreak если пользователь вводит "exit"
+     */
     public static Album askAlbum(Console console) throws AskBreak {
         try {
             String name;
@@ -244,9 +292,14 @@ public class Ask {
             return null;
         }
     }
-
+    /**
+     * Метод для проверки, содержит ли строка буквы
+     *
+     * @param str строка для проверки
+     * @return true, если строка содержит буквы, false в противном случае
+     */
     private static boolean hasLetters(String str) {
-        return str.matches(".*[A-Za-zа-яА-я].*"); // .* означает любой символ в любом количестве
+        return str.matches(".*[A-Za-zа-яА-я].*");
     }
 
 }

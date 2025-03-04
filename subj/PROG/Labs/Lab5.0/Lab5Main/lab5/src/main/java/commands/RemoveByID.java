@@ -4,17 +4,33 @@ import managers.CollectionManager;
 import utility.Console;
 import utility.ExecutionResponse;
 
-
+/**
+ * Данный класс отвечает за выполнение команды "remove_by_id"
+ *
+ * @author ipka23
+ */
 public class RemoveByID extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
 
+    /**
+     * Конструктор
+     *
+     * @param console           интерфейс Console для взаимодействия с консолью
+     * @param collectionManager объект CollectionManager для управления коллекцией
+     */
     public RemoveByID(Console console, CollectionManager collectionManager) {
         super("remove_by_id id", "удалить элемент из коллекции по его id");
         this.console = console;
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Метод для выполнения команды
+     *
+     * @param args аргументы команды
+     * @return объект ExecutionResponse, содержащий результат выполнения команды
+     */
     public ExecutionResponse execute(String[] args) {
         if (args[1].trim().isEmpty()) {
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
