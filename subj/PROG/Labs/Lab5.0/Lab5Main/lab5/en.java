@@ -23,16 +23,16 @@ public class DumpManager {
             .registerTypeAdapter(Date.class, new DateAdapter())
             .create();
 
-    private String fileName;
+    private String env;
     private Console console;
     /**
      * Конструктор
      *
-     * @param fileName имя файла для сохранения и загрузки коллекции
+     * @param env имя переменной окружения для сохранения и загрузки коллекции
      * @param console интерфейс Console для взаимодействия с пользователем
      */
-    public DumpManager(String fileName, Console console) {
-        this.fileName = fileName;
+    public DumpManager(String env, Console console) {
+        this.env = env;
         this.console = console;
     }
     /**
@@ -41,7 +41,7 @@ public class DumpManager {
      * @param collection коллекция MusicBand для сохранения
      */
     public void writeCollection(HashSet<MusicBand> collection) {
-        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8")) {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(System.getenv(env)), "UTF-8")) {
             var collectionType = new TypeToken<Collection<MusicBand>>() {}.getType();
             String json = gson.toJson(collection, collectionType);
             writer.write(json);
@@ -55,8 +55,8 @@ public class DumpManager {
      * @return коллекция MusicBand, загруженная из файла
      */
     public Collection<MusicBand> readCollection() {
-        if (fileName != null && !fileName.isEmpty()) {
-            try (var fileReader = new FileReader(fileName)) {
+        if (System.getenv(env) != null && !System.getenv(env).isEmpty()) {
+            try (var fileReader = new FileReader(System.getenv(env))) {
                 var collectionType = new TypeToken<HashSet<MusicBand>>() {}.getType();
                 BufferedReader reader = new BufferedReader(fileReader);
                 StringBuilder jsonString = new StringBuilder();
@@ -81,3 +81,4 @@ public class DumpManager {
         return new HashSet<>(); // чтобы не возникало NullPointerException, и можно было просто работать с пустой коллекцией, например добавлять в неё новые элементы
     }
 }
+
