@@ -101,7 +101,7 @@ public class ExecuteScript extends Command {
                 console.println(commandStatus.getMessage());
                 if (!commandStatus.getExitStatus()) break;
 
-            } while (commandStatus.getExitStatus() && !commandStatus.getMessage().equals("exit") && console.hasNextLine());
+            } while (console.hasNextLine());
             if (scriptList.size() > 1) {
                 executionResponseMessage.append("Введите \"exit\" чтобы посмотреть историю команд из вложенного скрипта:").append("\n");
                 console.printPrompt();
@@ -133,7 +133,6 @@ public class ExecuteScript extends Command {
      */
     @Override
     public ExecutionResponse execute(String[] args) {
-
         String scriptFile = args[1].trim();
         if (args[1].trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
