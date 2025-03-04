@@ -4,20 +4,33 @@ import commands.Command;
 import commands.Help;
 import managers.CommandManager;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
+
+/**
+ * Данный класс отвечает за запуск консоли и выполнение команд, предоставленных пользователем;
+ * Он взаимодействует с менеджером команд(CommandManager) через интерфейс консоли(Console) для выполнения команд и получения результатов.
+ *
+ * @author ipka23
+ */
 public class Runner {
     private Console console;
     private final CommandManager commandManager;
 
-
+    /**
+     * Конструктор
+     *
+     * @param console        интерфейс Console для взаимодействия с консолью
+     * @param commandManager менеджер команд CommandManager для управления командами
+     */
     public Runner(Console console, CommandManager commandManager) {
         this.console = console;
         this.commandManager = commandManager;
     }
 
+    /**
+     * Метод для запуска интерактивного режима работы с консолью
+     */
     public void interactiveMode() {
         try {
             ExecutionResponse commandStatus;
@@ -38,7 +51,12 @@ public class Runner {
     }
 
 
-
+    /**
+     * Выполняет команду, предоставленную пользователем, и возвращает результат выполнения
+     *
+     * @param userCommand - массив строк, состоящий из команды и её аргументов
+     * @return статус выполнения ExecutionResponse, содержащий результат выполнения команды
+     */
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = commandManager.getCommandsMap().get(userCommand[0]);
