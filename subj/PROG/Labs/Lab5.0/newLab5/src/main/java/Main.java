@@ -1,10 +1,7 @@
 import commands.*;
-import exceptions.AddBreak;
 import managers.CollectionManager;
 import managers.CommandManager;
 import managers.FileManager;
-import models.*;
-import org.jline.console.CommandRegistry;
 import utility.Console;
 import utility.Runner;
 import utility.StandartConsole;
@@ -21,9 +18,9 @@ public class Main {
         }
         FileManager fileManager = new FileManager(args[0].trim(), console);
 
-        CollectionManager collectionManager = new CollectionManager(fileManager);
+        CollectionManager collectionManager = new CollectionManager(fileManager, console);
         CommandManager commandManager = new CommandManager();
-        Runner runner = new Runner(console, commandManager);
+        Runner runner = new Runner(console, commandManager, collectionManager);
         commandManager.add("add", new Add(console, collectionManager));
         commandManager.add("help", new Help(console, commandManager));
         commandManager.add("info", new Info(console, collectionManager));

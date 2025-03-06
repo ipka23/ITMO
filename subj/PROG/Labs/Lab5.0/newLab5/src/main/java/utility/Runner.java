@@ -3,6 +3,7 @@ package utility;
 import commands.Command;
 import managers.CollectionManager;
 import managers.CommandManager;
+import models.CollectionType;
 
 import java.util.NoSuchElementException;
 
@@ -14,8 +15,9 @@ import java.util.NoSuchElementException;
  * @author ipka23
  */
 public class Runner {
-    private Console console;
-    private final CommandManager commandManager;
+    private final Console CONSOLE;
+    private final CommandManager COMMAND_MANAGER;
+    private final CollectionManager COLLECTION_MANAGER;
 
     /**
      * Конструктор
@@ -23,31 +25,31 @@ public class Runner {
      * @param console        интерфейс Console для взаимодействия с консолью
      * @param commandManager менеджер команд CommandManager для управления командами
      */
-    public Runner(Console console, CommandManager commandManager) {
-        this.console = console;
-        this.commandManager = commandManager;
+    public Runner(Console console, CommandManager commandManager, CollectionManager collectionManager) {
+        this.CONSOLE = console;
+        this.COMMAND_MANAGER = commandManager;
+        this.COLLECTION_MANAGER = collectionManager;
     }
 
     /**
      * Метод для запуска интерактивного режима работы с консолью
      */
     public void interactiveMode() {
+        COLLECTION_MANAGER.chooseTypeOfCollection();
         try {
             ExecutionResponse commandStatus;
             String[] userCommand = {"", ""};
             while (true) {
-                console.printPrompt();
-                userCommand = (console.nextLine() + " ").split(" ", 2);
+                CONSOLE.printPrompt();
+                userCommand = (CONSOLE.nextLine() + " ").split(" ", 2);
                 userCommand[0] = userCommand[0].toLowerCase().trim();
                 userCommand[1] = userCommand[1].toLowerCase().trim();
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
                 commandStatus = run(userCommand);
-                console.println(commandStatus.getMessage());
+                CONSOLE.println(commandStatus.getMessage());
             }
-        } catch (NoSuchElementException e) {
-            console.printError(e.getMessage());
-        }
+        } catch (NoSuchElementException e) {}
     }
 
 
@@ -59,8 +61,8 @@ public class Runner {
      */
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
-        Command command = commandManager.getCommandsMap().get(userCommand[0]);
-        if (!commandManager.getCommandsMap().containsKey(userCommand[0])) return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
+        Command command = COMMAND_MANAGER.getCommandsMap().get(userCommand[0]);
+        if (!COMMAND_MANAGER.getCommandsMap().containsKey(userCommand[0])) return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
         return command.execute(userCommand);
     }
 }
