@@ -38,7 +38,7 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
     public ExecutionResponse execute(String[] args) {
         if (!args[1].trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        HashSet<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
+        Collection<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
         StringBuilder s = new StringBuilder();
         List<Date> dates = new ArrayList<>();
         for (MusicBand band : collection) {

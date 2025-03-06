@@ -5,6 +5,7 @@ import models.MusicBand;
 import utility.Console;
 import utility.ExecutionResponse;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 /**
@@ -39,7 +40,7 @@ public class FilterStartsWithName extends Command {
         if (args[1].trim().trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         StringBuilder s = new StringBuilder();
-        HashSet<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
+        Collection<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
         for (MusicBand band : collection) {
             if (band.getName().startsWith(args[1].trim())) {
                 s.append(band).append("\n");

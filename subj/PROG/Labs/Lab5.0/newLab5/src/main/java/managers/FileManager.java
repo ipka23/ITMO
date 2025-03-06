@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 
 public class FileManager {
     private static class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
@@ -44,6 +43,7 @@ public class FileManager {
             .create();
     private final String PATH;
     private final Console CONSOLE;
+    private int cnt = 0;
 
     public FileManager(String path, Console console) {
         this.PATH = path;
@@ -56,7 +56,7 @@ public class FileManager {
      * @return коллекция MusicBand, загруженная из файла
      */
     public Collection<MusicBand> readCollectionFromFile() {
-        HashSet<MusicBand> collection = new HashSet<>();
+        Collection<MusicBand> collection = null;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(PATH), "UTF-8"))) {
             StringBuilder s = new StringBuilder();
             String line;
@@ -69,9 +69,9 @@ public class FileManager {
                     break;
                 }
             }
-            Type collectionType = new TypeToken<HashSet<MusicBand>>() {}.getType();
+            Type collectionType = new TypeToken<Collection<MusicBand>>() {}.getType();
             collection = gson.fromJson(s.toString(), collectionType);
-            CONSOLE.println("Коллекция была успешно загружена из файла!");
+
         } catch (FileNotFoundException e) {
             CONSOLE.printError("Файл не найден: " + e.getMessage());
         } catch (UnsupportedEncodingException e) {
@@ -79,6 +79,7 @@ public class FileManager {
         } catch (IOException e) {
             CONSOLE.printError("Ошибка ввода-вывода: " + e.getMessage());
         }
+        if (cnt++ != 0) CONSOLE.println("Коллекция была успешно загружена из файла!");
         return collection;
     }
 
@@ -87,7 +88,7 @@ public class FileManager {
      *
      * @param collection коллекция MusicBand для сохранения
      */
-    public void writeCollectionToFile(HashSet<MusicBand> collection) {
+    public void writeCollectionToFile(Collection<MusicBand> collection) {
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(PATH), "UTF-8"))) {
             String json = gson.toJson(collection);
             writer.write(json);

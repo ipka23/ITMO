@@ -6,6 +6,7 @@ import models.MusicBand;
 import utility.Console;
 import utility.ExecutionResponse;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -39,7 +40,7 @@ public class RemoveGreater extends Command {
     public ExecutionResponse execute(String[] args) {
         if (!args[1].trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        HashSet<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
+        Collection<MusicBand> collection = COLLECTION_MANAGER.getMusicBands();
 
         try {
             MusicBand newBand = Add.inputMusicBand(CONSOLE, COLLECTION_MANAGER.getId());

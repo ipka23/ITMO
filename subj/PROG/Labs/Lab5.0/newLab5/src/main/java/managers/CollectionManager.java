@@ -1,38 +1,49 @@
 package managers;
 
+import models.CollectionType;
 import models.MusicBand;
+import utility.Console;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CollectionManager {
-    private long Id = 0;
+    private long id = 0;
     private Map<Long, MusicBand> musicBandsMap = new HashMap<>();
-    private HashSet<MusicBand> musicBands = new HashSet<>();
+    private Collection<MusicBand> musicBands;
     private final FileManager FILE_MANAGER;
     private LocalDateTime lastSaveTime;
     private LocalDateTime initTime;
+    private Console CONSOLE;
 
-    public CollectionManager(FileManager fileManager) {
+    public CollectionManager(FileManager fileManager, Console console) {
         lastSaveTime = null;
         initTime = null;
         this.FILE_MANAGER = fileManager;
+        this.CONSOLE = console;
         loadCollectionFromFile();
     }
 
+
+//    public void useHashSet(boolean b) {
+//        if (b) {
+//            musicBands = new HashSet<>();
+//        } else {
+//            musicBands = new LinkedList<>();
+//        }
+//        loadCollectionFromFile();
+//    }
+
+
     public long getId() {
         do {
-            Id++;
-        } while (musicBandsMap.containsKey(Id));
-        return Id;
+            id++;
+        } while (musicBandsMap.containsKey(id));
+        return id;
     }
 
-    public MusicBand getMusicBand(long id) {
-        return musicBandsMap.get(id);
-    }
-
-    public HashSet<MusicBand> getMusicBands() {
+    public Collection<MusicBand> getMusicBands() {
         return musicBands;
     }
 
@@ -46,9 +57,17 @@ public class CollectionManager {
     public void loadCollectionFromFile() {
         Collection<MusicBand> loadedCollection = FILE_MANAGER.readCollectionFromFile();
         if (loadedCollection != null) {
-            musicBands = new HashSet<>(loadedCollection);
+            if (musicBands instanceof HashSet) {
+                musicBands = new HashSet<>(loadedCollection);
+            } else {
+                musicBands = new LinkedList<>(loadedCollection);
+            }
         } else {
-            musicBands = new HashSet<>();
+            if (musicBands instanceof HashSet) {
+                musicBands = new HashSet<>();
+            } else {
+                musicBands = new LinkedList<>();
+            }
         }
         initTime = LocalDateTime.now();
         for (MusicBand band : musicBands) {
@@ -56,6 +75,35 @@ public class CollectionManager {
         }
     }
 
+    public void chooseTypeOfCollection() {
+        try {
+            String userCommand = "";
+            CONSOLE.println(CollectionType.names());
+            while (true) {
+                CONSOLE.print("(1/2): ");
+                userCommand = CONSOLE.nextLine();
+                userCommand = userCommand.toLowerCase().trim();
+                switch (userCommand) {
+                    case "exit":
+                        return;
+                    case "":
+                        continue;
+                    case "1":
+                        CONSOLE.println("HashSet");
+                        musicBands = new HashSet<>();
+                        break;
+                    case "2":
+                        CONSOLE.println("LinkedList");
+                        musicBands = new LinkedList<>();
+                        break;
+                    default:
+                        continue;
+                }
+                loadCollectionFromFile();
+                break;
+            }
+        } catch (NoSuchElementException e) {}
+    }
 
     public void saveCollectionToFile() {
         FILE_MANAGER.writeCollectionToFile(musicBands);
@@ -89,15 +137,6 @@ public class CollectionManager {
         return musicBandsMap.get(id);
     }
 
-    /**
-     * Метод для проверки наличия объекта MusicBand в коллекции по его id
-     *
-     * @param band объект MusicBand
-     * @return true, если объект присутствует в коллекции, false в противном случае
-     */
-    public boolean isContain(MusicBand band) {
-        return band != null && musicBandsMap.containsKey(band.getId());
-    }
 
     public boolean removeByID(long id) {
         MusicBand band = getMusicBandById(id);
