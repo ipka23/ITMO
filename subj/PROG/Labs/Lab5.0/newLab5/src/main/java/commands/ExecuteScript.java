@@ -108,7 +108,6 @@ public class ExecuteScript extends Command {
 
             } while (CONSOLE.hasNextLine());
             if (SCRIPT_LIST.size() > 1) {
-                executionResponseMessage.append("Введите \"exit\" чтобы посмотреть историю команд из вложенного скрипта:").append("\n");
                 CONSOLE.printPrompt();
             }
 
@@ -144,7 +143,7 @@ public class ExecuteScript extends Command {
         if (!Files.exists(Paths.get(scriptFile))) {
             return new ExecutionResponse(false, "Файл со скриптом \"" + scriptFile + "\" не найден!");
         }
-        if (!Files.isReadable(Paths.get(scriptFile))) {
+        if (!Files.isReadable(Paths.get(new File(scriptFile).getAbsolutePath()))) {
             return new ExecutionResponse(false, "execute_script: " + scriptFile + ": Permission denied!");
         }
         SCRIPT_LIST.add(scriptFile);
