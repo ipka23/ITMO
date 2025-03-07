@@ -3,7 +3,6 @@ package utility;
 import commands.Command;
 import managers.CollectionManager;
 import managers.CommandManager;
-import models.CollectionType;
 
 import java.util.NoSuchElementException;
 
@@ -62,6 +61,10 @@ public class Runner {
     public ExecutionResponse run(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = COMMAND_MANAGER.getCommandsMap().get(userCommand[0]);
+        if (userCommand[0].equals("hist")) {
+            CONSOLE.println(COMMAND_MANAGER.getHistory());
+        }
+        COMMAND_MANAGER.addToHistory(userCommand);
         if (!COMMAND_MANAGER.getCommandsMap().containsKey(userCommand[0])) return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
         return command.execute(userCommand);
     }

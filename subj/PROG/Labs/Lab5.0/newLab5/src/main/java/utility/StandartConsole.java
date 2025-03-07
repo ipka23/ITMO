@@ -1,15 +1,12 @@
 package utility;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class StandartConsole implements Console {
-    private final String PROMPT = "$ ";
-    private final String SCRIPT_PROMPT = "> ";
-    private final Scanner consoleScanner = new Scanner(System.in);
-    private String filename;
-    private Scanner fileScanner;
+    private final String PROMPT = ">";
+    private final String SCRIPT_PROMPT = "# ";
+    protected final Scanner consoleScanner = new Scanner(System.in);
+    protected Scanner fileScanner;
 
 
     @Override

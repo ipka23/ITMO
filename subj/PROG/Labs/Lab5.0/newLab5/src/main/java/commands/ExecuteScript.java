@@ -22,7 +22,7 @@ public class ExecuteScript extends Command {
     private final Console CONSOLE;
     private final CollectionManager COLLECTION_MANAGER;
     private final CommandManager COMMAND_MANAGER;
-    private final Runner RUNNER;
+    private Runner runner;
     private final List<String> SCRIPT_LIST = new ArrayList<>();
     private int recursionDepth = -1;
 
@@ -39,7 +39,11 @@ public class ExecuteScript extends Command {
         this.CONSOLE = console;
         this.COLLECTION_MANAGER = collectionManager;
         this.COMMAND_MANAGER = commandManager;
-        this.RUNNER = runner;
+        this.runner = runner;
+    }
+
+    public void setRunner(Runner runner) {
+        this.runner = runner;
     }
 
     /**
@@ -84,7 +88,7 @@ public class ExecuteScript extends Command {
             do {
                 boolean shouldExecuteCommand = true;
                 userCommand = (CONSOLE.nextLine().trim() + " ").split(" ", 2);
-                userCommand[0] = userCommand[0].toLowerCase().trim();
+                userCommand[0] = userCommand[0].trim();
                 userCommand[1] = userCommand[1].trim();
                 if (userCommand[0].equals("exit")) break;
                 if (userCommand[0].isEmpty()) continue;
@@ -94,7 +98,7 @@ public class ExecuteScript extends Command {
                     shouldExecuteCommand = checkRecursionDepth(userCommand[1]);
                 }
                 if (shouldExecuteCommand) {
-                    commandStatus = RUNNER.run(userCommand);
+                    commandStatus = runner.run(userCommand);
                 } else {
                     commandStatus = new ExecutionResponse(true, "Превышена максимальная глубина рекурсии!");
                 }
