@@ -11,7 +11,6 @@ public class UnixConsole extends StandartConsole {
     private final LineReader lineReader;
     private final Terminal terminal;
 
-    private final String PROMPT = "$ ";
 
     public UnixConsole() {
         try {
@@ -24,7 +23,6 @@ public class UnixConsole extends StandartConsole {
 
     @Override
     public void printPrompt() {
-        System.out.print(PROMPT);
     }
 
     @Override
@@ -32,7 +30,7 @@ public class UnixConsole extends StandartConsole {
         if (fileScanner != null) {
             return fileScanner.nextLine();
         } else {
-            return lineReader.readLine().trim();
+            return lineReader.readLine("$ ");
         }
     }
 }
