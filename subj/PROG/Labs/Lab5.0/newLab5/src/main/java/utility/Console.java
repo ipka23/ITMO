@@ -1,6 +1,5 @@
 package utility;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public interface Console {
