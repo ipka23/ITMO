@@ -1,7 +1,8 @@
 package commands;
 
 import managers.CommandManager;
-import utility.Console;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 public class History extends Command {

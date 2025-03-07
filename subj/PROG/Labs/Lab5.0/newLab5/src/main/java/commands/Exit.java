@@ -1,6 +1,7 @@
 package commands;
 
-import utility.Console;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 /**

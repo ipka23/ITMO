@@ -2,8 +2,8 @@ package managers;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import models.MusicBand;
-import utility.Console;
+import entities.MusicBand;
+import utility.interfaces.Console;
 
 import java.io.*;
 import java.lang.reflect.Type;

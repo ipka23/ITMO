@@ -1,10 +1,8 @@
 package utility;
 
-import commands.Command;
-import managers.CollectionManager;
 import managers.CommandManager;
-
-import java.util.NoSuchElementException;
+import utility.interfaces.Console;
+import utility.interfaces.Executable;
 
 
 /**
@@ -13,44 +11,17 @@ import java.util.NoSuchElementException;
  *
  * @author ipka23
  */
-public class Runner {
-    private final Console CONSOLE;
+public class Invoker implements Executable {
     private final CommandManager COMMAND_MANAGER;
-    private final CollectionManager COLLECTION_MANAGER;
-    public int counter = 0;
 
     /**
      * Конструктор
      *
-     * @param console        интерфейс Console для взаимодействия с консолью
+//     * @param console        интерфейс Console для взаимодействия с консолью
      * @param commandManager менеджер команд CommandManager для управления командами
      */
-    public Runner(Console console, CommandManager commandManager, CollectionManager collectionManager) {
-        this.CONSOLE = console;
+    public Invoker(CommandManager commandManager) {
         this.COMMAND_MANAGER = commandManager;
-        this.COLLECTION_MANAGER = collectionManager;
-    }
-
-    /**
-     * Метод для запуска интерактивного режима работы с консолью
-     */
-    public void interactiveMode() {
-        CONSOLE.println(COMMAND_MANAGER.getCommandsList());
-        COLLECTION_MANAGER.chooseTypeOfCollection();
-        try {
-            ExecutionResponse commandStatus;
-            String[] userCommand = {"", ""};
-            while (true) {
-                CONSOLE.printPrompt();
-                userCommand = (CONSOLE.nextLine() + " ").split(" ", 2);
-                userCommand[0] = userCommand[0].toLowerCase().trim();
-                userCommand[1] = userCommand[1].toLowerCase().trim();
-                if (userCommand[0].equals("exit")) break;
-                if (userCommand[0].isEmpty()) continue;
-                commandStatus = run(userCommand);
-                CONSOLE.println(commandStatus.getMessage());
-            }
-        } catch (NoSuchElementException e) {}
     }
 
 
@@ -60,14 +31,13 @@ public class Runner {
      * @param userCommand - массив строк, состоящий из команды и её аргументов
      * @return статус выполнения ExecutionResponse, содержащий результат выполнения команды
      */
-    public ExecutionResponse run(String[] userCommand) {
+    @Override
+    public ExecutionResponse execute(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(true, "");
         Command command = COMMAND_MANAGER.getCommandsMap().get(userCommand[0]);
-        if (userCommand[0].equals("hist")) {
-            CONSOLE.println(COMMAND_MANAGER.getHistory());
-        }
         COMMAND_MANAGER.addToHistory(userCommand);
         if (!COMMAND_MANAGER.getCommandsMap().containsKey(userCommand[0])) return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
         return command.execute(userCommand);
     }
+
 }

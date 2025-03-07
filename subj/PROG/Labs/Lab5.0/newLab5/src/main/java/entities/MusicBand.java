@@ -1,7 +1,7 @@
-package models;
+package entities;
 
-import exceptions.ValidateException;
-import utility.Validatable;
+import utility.exceptions.ValidateException;
+import utility.interfaces.Validatable;
 
 import java.time.LocalDate;
 import java.util.Date;

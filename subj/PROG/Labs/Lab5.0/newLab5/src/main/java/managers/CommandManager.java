@@ -1,17 +1,17 @@
 package managers;
 
 import commands.*;
-import utility.Console;
-import utility.Runner;
+import utility.Command;
+import utility.interfaces.Console;
+import utility.Invoker;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class CommandManager {
     private final Console CONSOLE;
     private final CollectionManager COLLECTION_MANAGER;
-    private Runner runner;
+    private Invoker invoker;
     private LinkedList<String> history = new LinkedList<>();
     private HashMap<String, Command> commandsMap = new HashMap<>();
     public CommandManager(Console console, CollectionManager collectionManager) {
@@ -32,13 +32,13 @@ public class CommandManager {
         commandsMap.put("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
         commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
-        commandsMap.put("execute_script", new ExecuteScript(console, collectionManager, this, runner));
+        commandsMap.put("execute_script", new ExecuteScript(console, collectionManager, this, invoker));
         commandsMap.put("exit", new Exit(console));
     }
 
-    public void setRunner(Runner runner) {
-        this.runner = runner;
-        ((ExecuteScript) commandsMap.get("execute_script")).setRunner(runner);
+    public void setRunner(Invoker invoker) {
+        this.invoker = invoker;
+        ((ExecuteScript) commandsMap.get("execute_script")).setRunner(invoker);
     }
 
     public void addToHistory(String[] userCommand) {

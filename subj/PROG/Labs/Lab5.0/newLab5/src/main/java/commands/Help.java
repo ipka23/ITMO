@@ -1,8 +1,8 @@
 package commands;
 
-import managers.CollectionManager;
 import managers.CommandManager;
-import utility.Console;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 /**

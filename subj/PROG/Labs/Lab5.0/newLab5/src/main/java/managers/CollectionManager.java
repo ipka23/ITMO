@@ -1,8 +1,8 @@
 package managers;
 
-import models.CollectionType;
-import models.MusicBand;
-import utility.Console;
+import utility.CollectionType;
+import entities.MusicBand;
+import utility.interfaces.Console;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,15 +25,6 @@ public class CollectionManager {
         loadCollectionFromFile();
     }
 
-
-//    public void useHashSet(boolean b) {
-//        if (b) {
-//            musicBands = new HashSet<>();
-//        } else {
-//            musicBands = new LinkedList<>();
-//        }
-//        loadCollectionFromFile();
-//    }
 
 
     public long getId() {
@@ -79,7 +70,7 @@ public class CollectionManager {
         try {
             String userCommand = "";
             while (true) {
-                CONSOLE.println(CollectionType.choosingTypePrompt());
+                CONSOLE.print(CollectionType.choosingTypePrompt() + "\n");
                 userCommand = CONSOLE.nextLine();
                 userCommand = userCommand.toLowerCase().trim();
                 switch (userCommand) {

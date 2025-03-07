@@ -1,13 +1,13 @@
 package commands;
 
-import exceptions.AddBreak;
+import utility.exceptions.AddBreak;
 import managers.CollectionManager;
-import models.MusicBand;
-import utility.Console;
+import entities.MusicBand;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 
 /**

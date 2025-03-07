@@ -1,5 +1,5 @@
 import managers.FileManager;
-import utility.Console;
+import utility.interfaces.Console;
 
 public class TestFileManager extends FileManager {
 
