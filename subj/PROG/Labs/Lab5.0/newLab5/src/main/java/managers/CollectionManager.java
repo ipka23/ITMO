@@ -78,9 +78,8 @@ public class CollectionManager {
     public void chooseTypeOfCollection() {
         try {
             String userCommand = "";
-            CONSOLE.println(CollectionType.names());
             while (true) {
-                CONSOLE.print("(1/2): ");
+                CONSOLE.println(CollectionType.choosingTypePrompt());
                 userCommand = CONSOLE.nextLine();
                 userCommand = userCommand.toLowerCase().trim();
                 switch (userCommand) {
@@ -88,11 +87,11 @@ public class CollectionManager {
                         return;
                     case "":
                         continue;
-                    case "1":
+                    case "1", "hashset":
                         CONSOLE.println("HashSet");
                         musicBands = new HashSet<>();
                         break;
-                    case "2":
+                    case "2", "linkedlist":
                         CONSOLE.println("LinkedList");
                         musicBands = new LinkedList<>();
                         break;

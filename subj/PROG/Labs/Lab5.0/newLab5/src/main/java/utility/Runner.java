@@ -17,6 +17,7 @@ public class Runner {
     private final Console CONSOLE;
     private final CommandManager COMMAND_MANAGER;
     private final CollectionManager COLLECTION_MANAGER;
+    public int counter = 0;
 
     /**
      * Конструктор
@@ -34,6 +35,7 @@ public class Runner {
      * Метод для запуска интерактивного режима работы с консолью
      */
     public void interactiveMode() {
+        CONSOLE.println(COMMAND_MANAGER.getCommandsList());
         COLLECTION_MANAGER.chooseTypeOfCollection();
         try {
             ExecutionResponse commandStatus;

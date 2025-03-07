@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Console console = new UnixConsole();
+
         if (args.length == 0 || args[0].isEmpty()) {
 
             console.print("Введите имя файла как аргумент командой строки!");

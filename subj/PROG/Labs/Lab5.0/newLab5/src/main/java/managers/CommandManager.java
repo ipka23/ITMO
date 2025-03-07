@@ -4,6 +4,7 @@ import commands.*;
 import utility.Console;
 import utility.Runner;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -69,5 +70,13 @@ public class CommandManager {
 
         }
         return stringBuilder.substring(0, stringBuilder.length() - 1);
+    }
+
+    public LinkedList<String> getCommandsList() {
+        LinkedList<String> commands = new LinkedList<>();
+        for (Command command : commandsMap.values()) {
+            commands.add(command.getName());
+        }
+        return commands;
     }
 }
