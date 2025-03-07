@@ -2,9 +2,10 @@ package commands;
 
 import managers.CollectionManager;
 import managers.CommandManager;
-import utility.Console;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
-import utility.Runner;
+import utility.Invoker;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -22,7 +23,7 @@ public class ExecuteScript extends Command {
     private final Console CONSOLE;
     private final CollectionManager COLLECTION_MANAGER;
     private final CommandManager COMMAND_MANAGER;
-    private Runner runner;
+    private Invoker invoker;
     private final List<String> SCRIPT_LIST = new ArrayList<>();
     private int recursionDepth = -1;
 
@@ -32,18 +33,18 @@ public class ExecuteScript extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      * @param commandManager    менеджер команд CommandManager для управления командами
-     * @param runner            для выполнения команд
+     * @param invoker            для выполнения команд
      */
-    public ExecuteScript(Console console, CollectionManager collectionManager, CommandManager commandManager, Runner runner) {
+    public ExecuteScript(Console console, CollectionManager collectionManager, CommandManager commandManager, Invoker invoker) {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.CONSOLE = console;
         this.COLLECTION_MANAGER = collectionManager;
         this.COMMAND_MANAGER = commandManager;
-        this.runner = runner;
+        this.invoker = invoker;
     }
 
-    public void setRunner(Runner runner) {
-        this.runner = runner;
+    public void setRunner(Invoker invoker) {
+        this.invoker = invoker;
     }
 
     /**
@@ -98,7 +99,7 @@ public class ExecuteScript extends Command {
                     shouldExecuteCommand = checkRecursionDepth(userCommand[1]);
                 }
                 if (shouldExecuteCommand) {
-                    commandStatus = runner.run(userCommand);
+                    commandStatus = invoker.execute(userCommand);
                 } else {
                     commandStatus = new ExecutionResponse(true, "Превышена максимальная глубина рекурсии!");
                 }

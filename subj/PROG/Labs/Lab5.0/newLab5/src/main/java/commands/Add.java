@@ -1,13 +1,13 @@
-
 package commands;
 
-import exceptions.AddBreak;
+import utility.exceptions.AddBreak;
 import managers.CollectionManager;
-import models.Album;
-import models.Coordinates;
-import models.MusicBand;
-import models.MusicGenre;
-import utility.Console;
+import entities.Album;
+import entities.Coordinates;
+import entities.MusicBand;
+import entities.MusicGenre;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 
@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
  *
  * @author ipka23
  */
-public class Add extends Command{
+public class Add extends Command {
     private final Console CONSOLE;
     private final CollectionManager COLLECTION_MANAGER;
 

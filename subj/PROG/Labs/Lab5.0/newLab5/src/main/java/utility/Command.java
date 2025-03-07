@@ -1,8 +1,8 @@
-package commands;
+package utility;
 
-import utility.ExecutionResponse;
+import utility.interfaces.Executable;
 
-public abstract class Command {
+public abstract class Command implements Executable {
     private final String NAME;
     private final String DESCRIPTION;
 
@@ -11,7 +11,7 @@ public abstract class Command {
         this.DESCRIPTION = description;
     }
 
-    public abstract ExecutionResponse execute(String[] args);
+    public abstract ExecutionResponse execute(String[] userCommand);
 
     public String getName() {
         return NAME;

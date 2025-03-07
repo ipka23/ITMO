@@ -1,6 +1,6 @@
-package models;
+package entities;
 
-import utility.Validatable;
+import utility.interfaces.Validatable;
 
 /**
  * Данный класс представляет музыкальный альбом и реализует интерфейс Validatable для проверки корректности данных;

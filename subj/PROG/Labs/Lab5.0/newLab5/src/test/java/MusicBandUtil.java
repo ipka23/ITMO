@@ -1,7 +1,7 @@
-import models.Album;
-import models.Coordinates;
-import models.MusicBand;
-import models.MusicGenre;
+import entities.Album;
+import entities.Coordinates;
+import entities.MusicBand;
+import entities.MusicGenre;
 
 import java.util.ArrayList;
 

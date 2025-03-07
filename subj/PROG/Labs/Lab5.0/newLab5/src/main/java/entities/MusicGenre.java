@@ -1,4 +1,4 @@
-package models;
+package entities;
 
 /**
  * Данный класс enum представляет доступные жанры музыки

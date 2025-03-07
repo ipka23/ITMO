@@ -1,6 +1,6 @@
-package utility;
+package utility.interfaces;
 
-import exceptions.ValidateException;
+import utility.exceptions.ValidateException;
 
 public interface Validatable {
     boolean isValid() throws ValidateException;

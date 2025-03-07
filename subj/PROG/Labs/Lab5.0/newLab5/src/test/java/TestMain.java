@@ -1,19 +1,15 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import exceptions.AddBreak;
-import managers.FileManager;
-import models.MusicBand;
-import utility.Console;
-import utility.StandartConsole;
+import utility.exceptions.AddBreak;
+import entities.MusicBand;
+import utility.interfaces.Console;
+import utility.consoles.StandartConsole;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 public class TestMain {
     public static void main(String[] args) throws AddBreak {
         ArrayList<MusicBand> musicBands;
-        Console console = new StandartConsole();
+        Console console = new StandartConsole(null, null);
 
         musicBands = MusicBandUtil.createMusicBands();
 

@@ -1,12 +1,12 @@
 package commands;
 
 import managers.CollectionManager;
-import models.MusicBand;
-import utility.Console;
+import entities.MusicBand;
+import utility.Command;
+import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * Данный класс отвечает за выполнение команды "filter_starts_with_name"

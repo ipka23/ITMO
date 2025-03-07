@@ -1,4 +1,4 @@
-package models;
+package utility;
 
 public enum CollectionType {
     HashSet, LinkedList;
