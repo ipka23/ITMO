@@ -19,6 +19,5 @@ public interface Console {
     void launch();
     void setCollectionManager(CollectionManager collectionManager);
     void setInvoker(Invoker invoker);
-    String getPrompt();
     void setCommandManager(CommandManager commandManager);
 }

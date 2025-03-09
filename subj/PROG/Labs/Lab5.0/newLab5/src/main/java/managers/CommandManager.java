@@ -33,7 +33,7 @@ public class CommandManager {
         commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
         commandsMap.put("execute_script", new ExecuteScript(console, collectionManager, this, invoker));
-        commandsMap.put("exit", new Exit(console));
+        commandsMap.put("exit", new Exit());
     }
 
     public void setRunner(Invoker invoker) {
@@ -53,24 +53,7 @@ public class CommandManager {
     public HashMap<String, Command> getCommandsMap() {
         return commandsMap;
     }
-
-    public Command getCommand(String command) {
-        return commandsMap.get(command);
-    }
-
-    public String getCommands() {
-        StringBuilder stringBuilder = new StringBuilder();
-        int cnt = 0;
-        for (Command command : commandsMap.values()) {
-            if (cnt > 0 && cnt % 4 == 0) {
-                stringBuilder.append("\n");
-            }
-            stringBuilder.append(command.getName()).append(" ");
-            cnt++;
-
-        }
-        return stringBuilder.substring(0, stringBuilder.length() - 1);
-    }
+    
 
     public LinkedList<String> getCommandsList() {
         LinkedList<String> commands = new LinkedList<>();

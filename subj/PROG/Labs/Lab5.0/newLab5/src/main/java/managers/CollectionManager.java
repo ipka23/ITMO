@@ -26,7 +26,6 @@ public class CollectionManager {
     }
 
 
-
     public long getId() {
         do {
             id++;
@@ -42,7 +41,6 @@ public class CollectionManager {
         musicBandsMap.put(musicBand.getId(), musicBand);
         musicBands.add(musicBand);
     }
-
 
 
     public void loadCollectionFromFile() {
@@ -92,7 +90,8 @@ public class CollectionManager {
                 loadCollectionFromFile();
                 break;
             }
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
     }
 
     public void saveCollectionToFile() {
@@ -117,6 +116,7 @@ public class CollectionManager {
     public MusicBand getMin() {
         return Collections.min(musicBands);
     }
+
     /**
      * Метод для получения объекта MusicBand по его id
      *
@@ -135,6 +135,7 @@ public class CollectionManager {
         musicBands.remove(band);
         return true;
     }
+
     /**
      * Метод для получения информации о коллекции
      *

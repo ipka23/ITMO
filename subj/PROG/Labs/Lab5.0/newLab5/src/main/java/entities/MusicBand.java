@@ -55,40 +55,6 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.id = id;
     }
 
-    /**
-     * Метод для установки названия музыкальной группы
-     *
-     * @param name название музыкальной группы
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public void setNumberOfParticipants(Long numberOfParticipants) {
-        this.numberOfParticipants = numberOfParticipants;
-    }
-
-    public void setSinglesCount(Long singlesCount) {
-        this.singlesCount = singlesCount;
-    }
-
-    public void setEstablishmentDate(Date establishmentDate) {
-        this.establishmentDate = establishmentDate;
-    }
-
-    public void setMusicGenre(MusicGenre genre) {
-        this.genre = genre;
-    }
-
-    public void setBestAlbum(Album bestAlbum) {
-        this.bestAlbum = bestAlbum;
-    }
 
 
     /**

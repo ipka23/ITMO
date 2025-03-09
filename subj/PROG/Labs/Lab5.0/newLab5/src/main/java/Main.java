@@ -12,8 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        Console console = new StandartConsole(null, null);
-        Console console = new UnixConsole(null, null);
+        Console console = new StandartConsole(null, null);
+//        Console console = new UnixConsole(null, null);
 //        Console console = new AlmostUnixConsole(null, null, null);
 
         if (args.length == 0) {
