@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class StandartConsole implements Console {
     private final String PROMPT = ">";
     private final String SCRIPT_PROMPT = "# ";
-    private CollectionManager collectionManager;
-    private Invoker invoker;
+    protected CollectionManager collectionManager;
+    protected Invoker invoker;
     protected final Scanner consoleScanner = new Scanner(System.in);
     protected Scanner fileScanner;
 
