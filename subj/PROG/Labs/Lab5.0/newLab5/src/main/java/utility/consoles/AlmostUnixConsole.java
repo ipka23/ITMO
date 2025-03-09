@@ -75,10 +75,6 @@ public class AlmostUnixConsole extends StandartConsole {
             }
         }
     }
-    @Override
-    public String getPrompt() {
-        return PROMPT;
-    }
 
     @Override
     public void launch() {
@@ -107,20 +103,4 @@ public class AlmostUnixConsole extends StandartConsole {
             System.err.println("Ошибка: " + e.getMessage());
         }
     }
-//
-//    public String getPreviousCommand() {
-//        if (historyIndex > 0) {
-//            historyIndex--;
-//            return history.get(historyIndex);
-//        }
-//        return "";
-//    }
-//
-//    public String getNextCommand() {
-//        if (historyIndex < history.size() - 1) {
-//            historyIndex++;
-//            return history.get(historyIndex);
-//        }
-//        return "";
-//    }
 }

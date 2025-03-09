@@ -39,23 +39,28 @@ public class UnixConsole extends StandartConsole {
     }
 
     @Override
+    public void setCollectionManager(CollectionManager collectionManager) {
+        this.collectionManager = collectionManager;
+    }
+    @Override
+    public String nextLine() {
+        if (fileScanner != null) {
+            return fileScanner.nextLine();
+        } else {
+            return lineReader.readLine("$ ");
+        }
+    }
+
+    @Override
     public void setInvoker(Invoker invoker) {
         this.invoker = invoker;
     }
 
-    @Override
-    public void setCollectionManager(CollectionManager collectionManager) {
-        this.collectionManager = collectionManager;
-    }
 
     @Override
     public void printPrompt() {
     }
 
-    @Override
-    public String getPrompt() {
-        return PROMPT;
-    }
 
     @Override
     public void launch() {
@@ -77,12 +82,4 @@ public class UnixConsole extends StandartConsole {
         }
     }
 
-    @Override
-    public String nextLine() {
-        if (fileScanner != null) {
-            return fileScanner.nextLine();
-        } else {
-            return lineReader.readLine("$ ");
-        }
-    }
 }

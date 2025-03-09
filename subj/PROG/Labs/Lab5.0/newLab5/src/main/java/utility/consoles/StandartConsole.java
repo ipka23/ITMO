@@ -21,19 +21,17 @@ public class StandartConsole implements Console {
         this.collectionManager = collectionManager;
         this.invoker = invoker;
     }
+
     @Override
     public void setCollectionManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
+
     @Override
     public void setInvoker(Invoker invoker) {
         this.invoker = invoker;
     }
 
-    @Override
-    public String getPrompt() {
-        return PROMPT;
-    }
 
     @Override
     public void setCommandManager(CommandManager commandManager) {
@@ -109,6 +107,7 @@ public class StandartConsole implements Console {
                 commandStatus = invoker.execute(userCommand);
                 println(commandStatus.getMessage());
             }
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+        }
     }
 }
