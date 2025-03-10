@@ -5,6 +5,7 @@ import utility.Command;
 import utility.interfaces.Console;
 import utility.Invoker;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -13,6 +14,7 @@ public class CommandManager {
     private final CollectionManager COLLECTION_MANAGER;
     private Invoker invoker;
     private LinkedList<String> history = new LinkedList<>();
+    private int historyIndex = 0;
     private HashMap<String, Command> commandsMap = new HashMap<>();
     public CommandManager(Console console, CollectionManager collectionManager) {
         this.CONSOLE = console;
@@ -50,16 +52,45 @@ public class CommandManager {
         return history;
     }
 
+    public int getHistorySize() {
+        return history.size();
+    }
+    public String getCommand(int index) {
+        return history.get(index);
+    }
     public HashMap<String, Command> getCommandsMap() {
         return commandsMap;
     }
-    
 
+    public void updateHistory(String userCommand) {
+        history.add(userCommand);
+//        addToHistory(userCommand);
+        historyIndex = history.size() - 1;
+    }
     public LinkedList<String> getCommandsList() {
         LinkedList<String> commands = new LinkedList<>();
         for (Command command : commandsMap.values()) {
             commands.add(command.getName());
         }
         return commands;
+    }
+
+    public String getPreviousCommand() {
+        if (historyIndex > 0) {
+            historyIndex--;
+            return history.get(historyIndex);
+        }
+        return "notUp";
+    }
+
+    public String getNextCommand() {
+        if (historyIndex < history.size() - 1) {
+            historyIndex++;
+            return history.get(historyIndex);
+        } else if (historyIndex == history.size() - 1) {
+            historyIndex++;
+            return "";
+        }
+        return "notDown";
     }
 }
