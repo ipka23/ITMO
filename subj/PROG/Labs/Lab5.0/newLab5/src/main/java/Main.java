@@ -17,6 +17,10 @@ public class Main {
 //        Console console = new UnixConsole(null, null);
 //        Console console = new AlmostUnixConsole(null, null, null);
         Console console = new AdvancedConsole(null, null);
+<<<<<<< HEAD
+=======
+
+>>>>>>> e4d6471d86b93e4c7c204de028a3aff45310167a
         if (args.length == 0) {
             console.print("Введите имя файла как аргумент командой строки!");
             System.exit(2);
