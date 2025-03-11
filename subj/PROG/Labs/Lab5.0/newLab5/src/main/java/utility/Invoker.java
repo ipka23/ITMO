@@ -35,9 +35,8 @@ public class Invoker implements Executable {
      */
     @Override
     public ExecutionResponse execute(String[] userCommand) {
-        COMMAND_MANAGER.updateHistory(userCommand[0]);
         Command command = COMMAND_MANAGER.getCommandsMap().get(userCommand[0].toLowerCase().trim());
-        COMMAND_MANAGER.addToHistory(userCommand);
+        COMMAND_MANAGER.addToHistory(String.join(" ", userCommand));
         if (!COMMAND_MANAGER.getCommandsMap().containsKey(userCommand[0])) return new ExecutionResponse(true, "Команда \"" + userCommand[0] + "\" не найдена. Наберите \"help\" для справки");
         return command.execute(userCommand);
     }

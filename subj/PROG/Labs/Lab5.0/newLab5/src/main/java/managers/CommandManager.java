@@ -5,7 +5,6 @@ import utility.Command;
 import utility.interfaces.Console;
 import utility.Invoker;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -14,8 +13,9 @@ public class CommandManager {
     private final CollectionManager COLLECTION_MANAGER;
     private Invoker invoker;
     private LinkedList<String> history = new LinkedList<>();
-    private int historyIndex = 0;
+    private int historyIndex = -1;
     private HashMap<String, Command> commandsMap = new HashMap<>();
+
     public CommandManager(Console console, CollectionManager collectionManager) {
         this.CONSOLE = console;
         this.COLLECTION_MANAGER = collectionManager;
@@ -43,9 +43,9 @@ public class CommandManager {
         ((ExecuteScript) commandsMap.get("execute_script")).setRunner(invoker);
     }
 
-    public void addToHistory(String[] userCommand) {
-        StringBuilder s = new StringBuilder();
-        history.add(s.append(userCommand[0]).append(" ").append(userCommand[1]).toString().trim());
+    public void addToHistory(String userCommand) {
+        history.add(userCommand.trim());
+        historyIndex = history.size();
     }
 
     public LinkedList<String> getHistory() {
@@ -55,24 +55,9 @@ public class CommandManager {
     public int getHistorySize() {
         return history.size();
     }
-    public String getCommand(int index) {
-        return history.get(index);
-    }
+
     public HashMap<String, Command> getCommandsMap() {
         return commandsMap;
-    }
-
-    public void updateHistory(String userCommand) {
-        history.add(userCommand);
-//        addToHistory(userCommand);
-        historyIndex = history.size() - 1;
-    }
-    public LinkedList<String> getCommandsList() {
-        LinkedList<String> commands = new LinkedList<>();
-        for (Command command : commandsMap.values()) {
-            commands.add(command.getName());
-        }
-        return commands;
     }
 
     public String getPreviousCommand() {
@@ -80,7 +65,7 @@ public class CommandManager {
             historyIndex--;
             return history.get(historyIndex);
         }
-        return "notUp";
+        return null;
     }
 
     public String getNextCommand() {
@@ -89,8 +74,15 @@ public class CommandManager {
             return history.get(historyIndex);
         } else if (historyIndex == history.size() - 1) {
             historyIndex++;
-            return "";
         }
-        return "notDown";
+        return null;
+    }
+
+    public int getHistoryIndex() {
+        return historyIndex;
+    }
+
+    public void resetHistoryIndex() {
+        historyIndex = history.size();
     }
 }
