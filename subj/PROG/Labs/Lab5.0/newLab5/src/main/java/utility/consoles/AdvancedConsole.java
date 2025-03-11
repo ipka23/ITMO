@@ -6,8 +6,9 @@ import utility.ExecutionResponse;
 import utility.Invoker;
 import utility.interfaces.Console;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.NoSuchElementException;
+import java.io.InputStreamReader;
 
 public class AdvancedConsole extends StandartConsole implements Console {
     private final String PROMPT = "$ ";
@@ -26,68 +27,57 @@ public class AdvancedConsole extends StandartConsole implements Console {
 
     @Override
     public void launch() {
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             ExecutionResponse commandStatus;
-            String input;
+            StringBuilder input = new StringBuilder();
+            byte character;
+
             while (true) {
                 printPrompt();
+                input.setLength(0);
 
-
-
-
-
-
-                input = nextLine().trim();
-                if (input.equals("exit")) break;
-                if (input.isEmpty()) continue;
-                if (input.equals("h")) {
-                    println(commandManager.getHistory() + "\nsize: " + commandManager.getHistorySize() + "\nindex: " + commandManager.getHistoryIndex());
-                    continue;
-                }
-                if (input.equals("up")) { //\\033[A
-                    String previousCommand = commandManager.getPreviousCommand();
-                    if (previousCommand != null) {
-                        println(previousCommand);
+                while ((character = (byte) reader.read()) != -1) {
+                    if (character == '\n') {
+                        break;
+                    } else if (character == 27) { // ESC
+                        if (reader.read() == 91) { // [
+                            character = (byte) reader.read();
+                            if (character == 65) {
+                                String previousCommand = commandManager.getPreviousCommand();
+                                if (previousCommand != null) {
+                                    print("\r" + PROMPT + previousCommand);
+                                    input.setLength(0);
+                                    input.append(previousCommand);
+                                }
+                            } else if (character == 66) { // B
+                                String nextCommand = commandManager.getNextCommand();
+                                if (nextCommand != null) {
+                                    print("\r" + PROMPT + nextCommand);
+                                    input.setLength(0);
+                                    input.append(nextCommand);
+                                }
+                            }
+                        }
+                    } else {
+                        input.append((char) character);
                     }
-                    continue;
-                }
-                if (input.equals("dn")) {
-                    String nextCommand = commandManager.getNextCommand();
-                    if (nextCommand != null) {
-                        println(nextCommand);
-                    }
-                    continue;
                 }
 
-                commandManager.addToHistory(input);
+                if (input.toString().trim().equals("exit")) break;
+                if (input.toString().trim().isEmpty()) continue;
+
+                String commandString = input.toString().trim();
+                commandManager.addToHistory(commandString);
                 commandManager.resetHistoryIndex();
 
-                String[] userCommand = input.split(" ", 2);
+                String[] userCommand = commandString.split(" ", 2);
                 commandStatus = invoker.execute(userCommand);
                 println(commandStatus.getMessage());
             }
-        } catch (NoSuchElementException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-
-
-    public void arrowProcessing() throws IOException {
-        while (true) {
-            printPrompt();
-            byte firstByte = (byte) System.in.read();
-            if (firstByte == 27) {
-                byte secondByte = (byte) System.in.read();
-                byte thirdByte = (byte) System.in.read();
-                if (secondByte == 91 && thirdByte == 65) {
-                    println(commandManager.getPreviousCommand());
-                }
-            }
-        }
-    }
-
-
-
 
     @Override
     public void printPrompt() {
