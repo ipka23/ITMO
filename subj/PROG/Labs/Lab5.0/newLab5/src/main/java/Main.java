@@ -10,13 +10,14 @@ import utility.interfaces.Console;
 
 
 public class Main {
-
+//    mvn clean package
+//    java -jar target\newLab5-1.0-0.jar MusicBands.json
     public static void main(String[] args) {
 
-//        Console console = new StandartConsole(null, null);
+        Console console = new StandartConsole(null, null);
 //        Console console = new UnixConsole(null, null);
 //        Console console = new AlmostUnixConsole(null, null, null);
-        Console console = new AdvancedConsole(null, null);
+//        Console console = new AdvancedConsole(null, null);
 
         if (args.length == 0) {
             console.print("Введите имя файла как аргумент командой строки!");

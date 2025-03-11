@@ -6,6 +6,7 @@ import utility.ExecutionResponse;
 import utility.Invoker;
 import utility.interfaces.Console;
 
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 public class AdvancedConsole extends StandartConsole implements Console {
@@ -30,6 +31,12 @@ public class AdvancedConsole extends StandartConsole implements Console {
             String input;
             while (true) {
                 printPrompt();
+
+
+
+
+
+
                 input = nextLine().trim();
                 if (input.equals("exit")) break;
                 if (input.isEmpty()) continue;
@@ -37,7 +44,7 @@ public class AdvancedConsole extends StandartConsole implements Console {
                     println(commandManager.getHistory() + "\nsize: " + commandManager.getHistorySize() + "\nindex: " + commandManager.getHistoryIndex());
                     continue;
                 }
-                if (input.equals("up")) {
+                if (input.equals("up")) { //\\033[A
                     String previousCommand = commandManager.getPreviousCommand();
                     if (previousCommand != null) {
                         println(previousCommand);
@@ -62,6 +69,25 @@ public class AdvancedConsole extends StandartConsole implements Console {
         } catch (NoSuchElementException e) {
         }
     }
+
+
+
+    public void arrowProcessing() throws IOException {
+        while (true) {
+            printPrompt();
+            byte firstByte = (byte) System.in.read();
+            if (firstByte == 27) {
+                byte secondByte = (byte) System.in.read();
+                byte thirdByte = (byte) System.in.read();
+                if (secondByte == 91 && thirdByte == 65) {
+                    println(commandManager.getPreviousCommand());
+                }
+            }
+        }
+    }
+
+
+
 
     @Override
     public void printPrompt() {
