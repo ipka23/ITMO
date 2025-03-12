@@ -30,36 +30,44 @@ public class AdvancedConsole extends StandartConsole implements Console {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             ExecutionResponse commandStatus;
             StringBuilder input = new StringBuilder();
-            byte character;
+            int character;
 
             while (true) {
                 printPrompt();
                 input.setLength(0);
 
-                while ((character = (byte) reader.read()) != -1) {
+                while ((character = reader.read()) != -1) {
                     if (character == '\n') {
                         break;
                     } else if (character == 27) { // ESC
+                        reader.mark(2);
                         if (reader.read() == 91) { // [
-                            character = (byte) reader.read();
-                            if (character == 65) {
+                            character = reader.read();
+                            if (character == 65) { // A
                                 String previousCommand = commandManager.getPreviousCommand();
                                 if (previousCommand != null) {
-                                    print("\r" + PROMPT + previousCommand);
+                                    System.out.print("\r\033[K");
                                     input.setLength(0);
                                     input.append(previousCommand);
+                                    println(PROMPT + previousCommand);
                                 }
                             } else if (character == 66) { // B
                                 String nextCommand = commandManager.getNextCommand();
                                 if (nextCommand != null) {
-                                    print("\r" + PROMPT + nextCommand);
+                                    System.out.print("\r\033[K");
                                     input.setLength(0);
                                     input.append(nextCommand);
+                                    println(PROMPT + nextCommand);
                                 }
+                            } else {
+                                reader.reset();
                             }
+                        } else {
+                            reader.reset();
                         }
                     } else {
                         input.append((char) character);
+                        System.out.print((char) character);
                     }
                 }
 
@@ -78,6 +86,10 @@ public class AdvancedConsole extends StandartConsole implements Console {
             e.printStackTrace();
         }
     }
+
+//    private void clearLine() {
+//        System.out.print("\r\033[K"); // ANSI escape sequence to clear the line
+//    }
 
     @Override
     public void printPrompt() {
