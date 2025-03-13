@@ -27,6 +27,7 @@ public class AdvancedConsole extends StandartConsole implements Console {
 
     @Override
     public void launch() {
+        collectionManager.chooseTypeOfCollection();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             ExecutionResponse commandStatus;
             StringBuilder input = new StringBuilder();

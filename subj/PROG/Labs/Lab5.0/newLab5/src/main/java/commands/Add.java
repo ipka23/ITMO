@@ -50,7 +50,7 @@ public class Add extends Command {
                 name = line;
                 break;
             }
-            var coordinates = inputCoordinates(console);
+            Coordinates coordinates = inputCoordinates(console);
             Long numberOfParticipants = inputNumberOfParticipants(console);
             Long singlesCount = inputSinglesCount(console);
             Date establishmentDate = inputEstablishmentDate(console);
