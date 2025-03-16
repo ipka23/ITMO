@@ -1,5 +1,7 @@
 package utility.interfaces;
 
+import utility.ExecutionResponse;
+
 public interface Executable {
-    void execute(String[] command);
+    ExecutionResponse execute(String[] command);
 }
