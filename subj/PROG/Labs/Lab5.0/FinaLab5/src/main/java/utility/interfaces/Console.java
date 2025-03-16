@@ -1,9 +1,21 @@
 package utility.interfaces;
 
+import managers.CollectionManager;
+import utility.Invoker;
+
+import java.util.Scanner;
+
+
 public interface Console {
-    void nextLine();
-    void hasNextLine();
+    String nextLine();
+    boolean hasNextLine();
     void launch();
     void println(Object o);
     void print(Object o);
+    void printPrompt();
+    void setInvoker(Invoker invoker);
+    void setCollectionManager(CollectionManager collectionManager);
+    void setScanner(Scanner scanner);
+    Scanner getScanner();
+    String getScriptPrompt();
 }

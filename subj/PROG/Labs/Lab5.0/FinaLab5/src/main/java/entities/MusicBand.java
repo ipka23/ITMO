@@ -1,7 +1,5 @@
 package entities;
 
-import utility.exceptions.ValidateException;
-import utility.interfaces.Validatable;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,13 +11,13 @@ import java.util.Objects;
  *
  * @author ipka23
  */
-public class MusicBand implements Comparable<MusicBand>, Validatable {
+public class MusicBand implements Comparable<MusicBand> {
 
 
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private String creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Long numberOfParticipants; //Поле может быть null, Значение поля должно быть больше 0
     private Long singlesCount; //Поле не может быть null, Значение поля должно быть больше 0
     private Date establishmentDate; //Поле может быть null
@@ -43,7 +41,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = LocalDate.now().toString();
+        this.creationDate = LocalDate.now();
         this.numberOfParticipants = numberOfParticipants;
         this.singlesCount = singlesCount;
         this.establishmentDate = establishmentDate;
@@ -54,7 +52,6 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
     public void setId(long id) {
         this.id = id;
     }
-
 
 
     /**
@@ -78,6 +75,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.genre = genre;
         this.bestAlbum = bestAlbum;
     }
+
     public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, MusicGenre genre, Album bestAlbum) {
         this.name = name;
         this.coordinates = coordinates;
@@ -85,6 +83,10 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.singlesCount = singlesCount;
         this.genre = genre;
         this.bestAlbum = bestAlbum;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, MusicGenre genre, Album bestAlbum) {
@@ -96,6 +98,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.genre = genre;
         this.bestAlbum = bestAlbum;
     }
+
     /**
      * Конструктор
      *
@@ -108,7 +111,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
      * @param genre                жанр музыки группы
      * @param bestAlbum            лучший альбом группы
      */
-    public MusicBand(long id, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
+    public MusicBand(long id, String name, Coordinates coordinates, LocalDate creationDate, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre genre, Album bestAlbum) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -117,7 +120,7 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         this.establishmentDate = establishmentDate;
         this.genre = genre;
         this.bestAlbum = bestAlbum;
-        this.creationDate = LocalDate.now().toString();
+        this.creationDate = LocalDate.now();
     }
 
 
@@ -139,23 +142,6 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         return bestAlbum.getSales();
     }
 
-    /**
-     * Метод для проверки валидности полей музыкальной группы
-     *
-     * @return true, если все поля валидны, false в противном случае
-     */
-    @Override
-    public boolean isValid() throws ValidateException {
-        if (name == null || name.isEmpty()) return false;
-        if (coordinates == null || !coordinates.isValid()) return false;
-        if (creationDate == null) return false;
-        if (numberOfParticipants == null || numberOfParticipants <= 0) return false;
-        if (singlesCount == null || singlesCount <= 0) return false;
-        if (establishmentDate == null) return false;
-        if (genre == null) return false;
-        if (bestAlbum == null || !bestAlbum.isValid()) return false;
-        return true;
-    }
 
     /**
      * Метод для получения названия музыкальной группы
@@ -175,6 +161,29 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
         return establishmentDate;
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public Long getNumberOfParticipants() {
+        return numberOfParticipants;
+    }
+
+    public Long getSinglesCount() {
+        return singlesCount;
+    }
+
+    public MusicGenre getGenre() {
+        return genre;
+    }
+
+    public Album getBestAlbum() {
+        return bestAlbum;
+    }
 
     /**
      * Метод для обновления данных музыкальной группы
@@ -182,14 +191,14 @@ public class MusicBand implements Comparable<MusicBand>, Validatable {
      * @param band объект MusicBand с новыми данными
      */
     public void update(MusicBand band) {
-        this.name = band.name;
-        this.coordinates = band.coordinates;
-        this.creationDate = LocalDate.now().toString();
-        this.numberOfParticipants = band.numberOfParticipants;
-        this.singlesCount = band.singlesCount;
-        this.establishmentDate = band.establishmentDate;
-        this.genre = band.genre;
-        this.bestAlbum = band.bestAlbum;
+        this.name = band.getName();
+        this.coordinates = band.getCoordinates();
+        this.creationDate = LocalDate.now();
+        this.numberOfParticipants = band.getNumberOfParticipants();
+        this.singlesCount = band.getSinglesCount();
+        this.establishmentDate = band.getEstablishmentDate();
+        this.genre = band.getGenre();
+        this.bestAlbum = band.getBestAlbum();
     }
 
     /**

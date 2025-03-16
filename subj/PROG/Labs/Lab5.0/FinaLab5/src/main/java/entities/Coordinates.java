@@ -1,6 +1,5 @@
 package entities;
 
-import utility.interfaces.Validatable;
 
 /**
  * Данный класс представляет координаты и реализует интерфейс Validatable для проверки корректности данных;
@@ -8,7 +7,7 @@ import utility.interfaces.Validatable;
  *
  * @author ipka23
  */
-public class Coordinates implements Validatable {
+public class Coordinates {
     private Integer x; //Поле не может быть null
     private float y; //Максимальное значение поля: 751
 
@@ -19,18 +18,6 @@ public class Coordinates implements Validatable {
     public Coordinates(Integer x, float y) {
         this.x = x;
         this.y = y;
-    }
-
-    /**
-     * Метод для проверки валидности координат
-     *
-     * @return true, если координаты валидны, false в противном случае
-     */
-    @Override
-    public boolean isValid() {
-        if (x == null) return false;
-        if (y > 751) return false;
-        return true;
     }
 
     /**
