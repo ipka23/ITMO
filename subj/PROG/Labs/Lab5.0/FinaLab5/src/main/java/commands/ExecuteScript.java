@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ExecuteScript extends Command {
     private Console console;
     private final Invoker invoker;
-    private static final int MAX_RECURSION_DEPTH = 0;
+    private static final int MAX_RECURSION_DEPTH = 2;
 
     public ExecuteScript(Console console, Invoker invoker) {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
