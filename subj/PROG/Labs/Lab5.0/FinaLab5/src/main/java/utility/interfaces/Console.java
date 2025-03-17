@@ -1,6 +1,7 @@
 package utility.interfaces;
 
 import managers.CollectionManager;
+import managers.CommandManager;
 import utility.Invoker;
 
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public interface Console {
     void printPrompt();
     void setInvoker(Invoker invoker);
     void setCollectionManager(CollectionManager collectionManager);
+    void setCommandManager(CommandManager commandManager);
     void setScanner(Scanner scanner);
     Scanner getScanner();
     String getScriptPrompt();

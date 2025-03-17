@@ -7,27 +7,39 @@ import utility.exceptions.RecursionDepthExceedException;
 import utility.exceptions.ScriptExecutionException;
 import utility.interfaces.Console;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ExecuteScript extends Command {
     private Console console;
     private final Invoker invoker;
-    private static final int MAX_RECURSION_DEPTH = 2;
+    private static final int MAX_RECURSION_DEPTH = 3;
+    private static int currentDepth = -1;
+    private String scriptName;
+    private int d;
 
-    public ExecuteScript(Console console, Invoker invoker) {
+    public ExecuteScript(Console console, Invoker invoker) throws RecursionDepthExceedException {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.console = console;
         this.invoker = invoker;
     }
 
-    public ExecutionResponse runScript(String fileName, int currentDepth) {
-        if (currentDepth > MAX_RECURSION_DEPTH) throw new RecursionDepthExceedException();
+    public ExecutionResponse runScript(String fileName) {
+        currentDepth++;
+        d = currentDepth;
+        if (currentDepth / 2 > MAX_RECURSION_DEPTH) {
+            currentDepth = 0;
+            throw new RecursionDepthExceedException();
+        }
+
         StringBuilder scriptFileContent = new StringBuilder();
         scriptFileContent.append("--------------------------------История выполнения команд из скрипта \"").append(fileName).append("\"--------------------------------\n");
         try (Scanner fileScanner = new Scanner(new FileReader(fileName))) {
             console.setScanner(fileScanner);
+
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
                 scriptFileContent.append(console.getScriptPrompt()).append(line).append("\n");
@@ -36,18 +48,19 @@ public class ExecuteScript extends Command {
 
                 String[] command = (line + " ").split(" ", 2);
 
-
                 ExecutionResponse response = invoker.execute(command);
+
                 if (response == null) {
                     console.setScanner(new Scanner(System.in));
                     throw new ScriptExecutionException();
                 }
-                scriptFileContent.append(response.getMessage()).append("\n");
-
+                scriptFileContent.append(response.getMessage());
                 if (command[0].equals("execute_script")) {
-                    runScript(command[1], currentDepth + 1);
+                    if (scriptName.equals(command[1])) throw new RecursionDepthExceedException();
+                    currentDepth++;
+                    d = currentDepth;
+                    runScript(command[1]);
                 }
-
                 if (command[0].equals("exit")) break;
             }
         } catch (FileNotFoundException e) {
@@ -58,15 +71,15 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(false, "\n" + e.getMessage());
         }
         console.setScanner(new Scanner(System.in));
-        return new ExecutionResponse(true, scriptFileContent.toString());
+        return new ExecutionResponse(true, scriptFileContent.substring(0, scriptFileContent.length() - 1));
     }
 
     @Override
     public ExecutionResponse execute(String[] command) {
-        if (command.length != 2 || command[1].trim().isEmpty()) {
+        if (command[1].trim().isEmpty()) {
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
-
-        return runScript(command[1].trim(), 0);
+        scriptName = command[1].trim();
+        return runScript(scriptName);
     }
 }

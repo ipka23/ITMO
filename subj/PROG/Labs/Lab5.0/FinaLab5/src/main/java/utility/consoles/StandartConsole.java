@@ -1,18 +1,21 @@
-package utility;
+package utility.consoles;
 
 import managers.CollectionManager;
-import managers.FileManager;
+import managers.CommandManager;
+import utility.ExecutionResponse;
+import utility.Invoker;
 import utility.interfaces.Console;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 //Invoker, CollectionManager
 public class StandartConsole implements Console {
-    private Scanner scanner;// = new Scanner(System.in);
-    private final String PROMPT = "$ ";
+    protected Scanner scanner;// = new Scanner(System.in);
+    private final String PROMPT = ">";
     private final String SCRIPT_PROMPT = "# ";
-    private Invoker invoker;
-    private CollectionManager collectionManager;
+    protected Invoker invoker;
+    protected CollectionManager collectionManager;
+    protected CommandManager commandManager;
 
     public StandartConsole(Invoker invoker, CollectionManager collectionManager) {
         this.invoker = invoker;
@@ -63,6 +66,7 @@ public class StandartConsole implements Console {
         this.collectionManager = collectionManager;
     }
 
+
     @Override
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
@@ -73,6 +77,10 @@ public class StandartConsole implements Console {
         return SCRIPT_PROMPT;
     }
 
+    @Override
+    public void setCommandManager(CommandManager commandManager) {
+        this.commandManager = commandManager;
+    }
 
     @Override
     public void launch() {

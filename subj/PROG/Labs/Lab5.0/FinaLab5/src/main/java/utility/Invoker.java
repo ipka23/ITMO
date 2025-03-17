@@ -22,6 +22,9 @@ public class Invoker implements Executable {
         this.console = console;
     }
 
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
     @Override
     public ExecutionResponse execute(String[] command) {
         if (command[0].isEmpty()) {}
