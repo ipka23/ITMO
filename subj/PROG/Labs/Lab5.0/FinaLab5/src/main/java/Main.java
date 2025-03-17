@@ -7,8 +7,10 @@ import utility.StandartConsole;
 import utility.interfaces.Console;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.Scanner;
 // execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\FinaLab5\script.txt
+// execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script.txt
 public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
@@ -18,6 +20,10 @@ public class Main {
         // доделать: Программа должна корректно работать с неправильными данными (ошибки пользовательского ввода, отсутствие прав доступа к файлу и т.п.)
         else if (!new File(args[0]).exists()) {
             System.out.print("Файл \"" + args[0] + "\" не найден!");
+            System.exit(2);
+        }
+        else if (!new File(args[0]).canRead()) {
+            System.out.print("Нет прав на чтение файла \"" + args[0] + "\"!");
             System.exit(2);
         }
 
