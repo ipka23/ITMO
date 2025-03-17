@@ -52,7 +52,7 @@ public class AdvancedConsole extends StandartConsole {
                         reader.mark(2);
                         if (reader.read() == 91) { // [
                             character = reader.read();
-                            if (character == 65) { // A (стрелка вверх)
+                            if (character == 65) { // A
                                 String previousCommand = commandHistory.getPrevious();
                                 if (previousCommand != null) {
                                     System.out.print("\r\033[K");
@@ -60,7 +60,7 @@ public class AdvancedConsole extends StandartConsole {
                                     input.append(previousCommand);
                                     System.out.print(PROMPT + previousCommand);
                                 }
-                            } else if (character == 66) { // B (стрелка вниз)
+                            } else if (character == 66) { // B
                                 String nextCommand = commandHistory.getNext();
                                 if (nextCommand != null) {
                                     System.out.print("\r\033[K");
@@ -89,9 +89,7 @@ public class AdvancedConsole extends StandartConsole {
                 commandStatus = invoker.execute(command);
                 println(commandStatus.getMessage().substring(0, commandStatus.getMessage().length() - 1));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 
     @Override
