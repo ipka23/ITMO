@@ -79,7 +79,7 @@ public class AdvancedConsole extends StandartConsole {
                         info.append((char) character);
                     }
                 }
-                println(info.toString());
+//                println(info.toString());
                 String[] command = (input.toString().trim() + " ").split(" ", 2);
                 if (command[0].equals("exit")) break;
                 if (command[0].isEmpty()) continue;
