@@ -6,12 +6,15 @@ import utility.Invoker;
 import utility.interfaces.Console;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 //Console, CollectionManager
 public class CommandManager {
     private Map<String, Command> commandsMap = new HashMap<>();
     private Console console;
     private CollectionManager collectionManager;
+    private LinkedList<String> history = new LinkedList<>();
+    private int historyIndex = -1;
 
     public CommandManager(Console console, CollectionManager collectionManager) {
         this.console = console;
@@ -57,6 +60,33 @@ public class CommandManager {
 
     public Map<String, Command> getCommandsMap() {
         return commandsMap;
+    }
+
+    public String getPreviousCommand() {
+        if (historyIndex > 0) {
+            historyIndex--;
+            return history.get(historyIndex);
+        }
+        return null;
+    }
+
+    public String getNextCommand() {
+        if (historyIndex < history.size() - 1) {
+            historyIndex++;
+            return history.get(historyIndex);
+        } else if (historyIndex == history.size() - 1) {
+            historyIndex++;
+        }
+        return null;
+    }
+
+    public void addToHistory(String userCommand) {
+        history.add(userCommand.trim());
+        historyIndex = history.size();
+    }
+
+    public void resetHistoryIndex() {
+        historyIndex = history.size();
     }
 
 }
