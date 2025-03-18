@@ -49,6 +49,9 @@ public class MusicBand implements Comparable<MusicBand> {
         this.bestAlbum = bestAlbum;
     }
 
+    public MusicBand(String name) {
+        this.name = name;
+    }
     public void setId(long id) {
         this.id = id;
     }

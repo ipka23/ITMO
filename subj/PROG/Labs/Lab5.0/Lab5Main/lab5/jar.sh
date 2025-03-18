@@ -1,1 +1,0 @@
-java -jar target/lab5-1.0.0.jar MusicBands.json
