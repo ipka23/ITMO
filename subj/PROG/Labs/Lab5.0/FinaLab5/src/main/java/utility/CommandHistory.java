@@ -1,6 +1,7 @@
 package utility;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 
 public class CommandHistory {
@@ -26,6 +27,7 @@ public class CommandHistory {
         }
         return null;
     }
+
 
     public void resetIterator() {
         iterator = history.listIterator(history.size());
