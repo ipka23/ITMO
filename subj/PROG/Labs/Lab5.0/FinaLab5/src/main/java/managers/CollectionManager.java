@@ -2,6 +2,7 @@ package managers;
 
 import entities.MusicBand;
 import utility.CollectionType;
+import utility.exceptions.ExitException;
 import utility.interfaces.Console;
 
 import java.time.LocalDate;
@@ -101,30 +102,35 @@ public class CollectionManager {
 
     public void chooseTypeOfCollection() {
         String userCommand = "";
-        while (true) {
-            console.print(CollectionType.choosingTypePrompt());
-            userCommand = console.nextLine();
-            userCommand = userCommand.toLowerCase().trim();
-            switch (userCommand) {
-                case "exit":
-                    return;
-                case "":
-                    continue;
-                case "1", "hashset":
-                    fileManager.setHashSet();
-                    console.println("Тип коллекции - HashSet");
-                    collection = new HashSet<>();
-                    break;
-                case "2", "linkedlist":
-                    fileManager.setLinkedList();
-                    console.println("Тип коллекции - LinkedList");
-                    collection = new LinkedList<>();
-                    break;
-                default:
-                    continue;
+        try {
+            while (true) {
+                console.print(CollectionType.choosingTypePrompt());
+                userCommand = console.nextLine();
+                userCommand = userCommand.toLowerCase().trim();
+                switch (userCommand) {
+                    case "exit":
+                        throw new ExitException();
+                    case "":
+                        continue;
+                    case "1", "hashset":
+                        fileManager.setHashSet();
+                        console.println("Тип коллекции - HashSet");
+                        collection = new HashSet<>();
+                        break;
+                    case "2", "linkedlist":
+                        fileManager.setLinkedList();
+                        console.println("Тип коллекции - LinkedList");
+                        collection = new LinkedList<>();
+                        break;
+                    default:
+                        continue;
+                }
+                fileManager.loadCollectionFromFile();
+                break;
             }
-            fileManager.loadCollectionFromFile();
-            break;
+        } catch (ExitException e) {
+            console.println(e.getMessage());
+            System.exit(0);
         }
     }
     /**

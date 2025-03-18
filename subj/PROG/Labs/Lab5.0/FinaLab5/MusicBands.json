@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "name": "name",
+    "coordinates": {
+      "x": 700,
+      "y": 650.0
+    },
+    "creationDate": "18-03-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 1,
+    "establishmentDate": "03-03-2004",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "skwrd",
+      "tracks": 10,
+      "length": 10,
+      "sales": 10000.0
+    }
+  },
+  {
+    "id": 5,
+    "name": "name",
+    "coordinates": {
+      "x": 700,
+      "y": 650.0
+    },
+    "creationDate": "18-03-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 1,
+    "establishmentDate": "03-03-2004",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "skwrd",
+      "tracks": 10,
+      "length": 10,
+      "sales": 10000.0
+    }
+  },
+  {
+    "id": 4,
+    "name": "name",
+    "coordinates": {
+      "x": 700,
+      "y": 650.0
+    },
+    "creationDate": "18-03-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 1,
+    "establishmentDate": "03-03-2004",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "skwrd",
+      "tracks": 10,
+      "length": 10,
+      "sales": 10000.0
+    }
+  },
+  {
+    "id": 3,
+    "name": "name",
+    "coordinates": {
+      "x": 700,
+      "y": 650.0
+    },
+    "creationDate": "18-03-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 1,
+    "establishmentDate": "03-03-2004",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "skwrd",
+      "tracks": 10,
+      "length": 10,
+      "sales": 10000.0
+    }
+  },
+  {
+    "id": 2,
+    "name": "name",
+    "coordinates": {
+      "x": 700,
+      "y": 650.0
+    },
+    "creationDate": "18-03-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 1,
+    "establishmentDate": "03-03-2004",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "skwrd",
+      "tracks": 10,
+      "length": 10,
+      "sales": 10000.0
+    }
+  }
+]

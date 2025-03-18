@@ -4,6 +4,7 @@ import managers.CollectionManager;
 import utility.CommandHistory;
 import utility.ExecutionResponse;
 import utility.Invoker;
+import utility.exceptions.ExitException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,18 +56,16 @@ public class AdvancedConsole extends StandartConsole {
                             if (character == 65) { // A
                                 String previousCommand = commandHistory.getPrevious();
                                 if (previousCommand != null) {
-                                    System.out.print("\r\033[K");
                                     input.setLength(0);
                                     input.append(previousCommand);
-                                    System.out.print(PROMPT + previousCommand);
+                                    System.out.print(PROMPT + previousCommand + "\n");
                                 }
                             } else if (character == 66) { // B
                                 String nextCommand = commandHistory.getNext();
                                 if (nextCommand != null) {
-                                    System.out.print("\r\033[K");
                                     input.setLength(0);
                                     input.append(nextCommand);
-                                    System.out.print(PROMPT + nextCommand);
+                                    System.out.print(PROMPT + nextCommand + "\n");
                                 }
                             } else {
                                 reader.reset();
@@ -79,17 +78,17 @@ public class AdvancedConsole extends StandartConsole {
                         info.append((char) character);
                     }
                 }
-//                println(info.toString());
                 String[] command = (input.toString().trim() + " ").split(" ", 2);
-                if (command[0].equals("exit")) break;
                 if (command[0].isEmpty()) continue;
 
                 commandHistory.push(command[0] + " " + command[1]);
-
+                commandHistory.resetIterator();
                 commandStatus = invoker.execute(command);
                 println(commandStatus.getMessage().substring(0, commandStatus.getMessage().length() - 1));
             }
-        } catch (IOException e) {}
+        } catch (IOException | ExitException e) {
+            print(e.getMessage());
+        }
     }
 
     @Override

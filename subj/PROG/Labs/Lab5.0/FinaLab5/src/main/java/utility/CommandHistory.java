@@ -11,7 +11,6 @@ public class CommandHistory {
 
     public void push(String command) {
         history.addLast(command);
-        resetIterator();
     }
 
     public String getPrevious() {

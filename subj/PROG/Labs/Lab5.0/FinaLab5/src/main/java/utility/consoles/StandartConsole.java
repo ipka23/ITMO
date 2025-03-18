@@ -4,10 +4,12 @@ import managers.CollectionManager;
 import managers.CommandManager;
 import utility.ExecutionResponse;
 import utility.Invoker;
+import utility.exceptions.ExitException;
 import utility.interfaces.Console;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
 //Invoker, CollectionManager
 public class StandartConsole implements Console {
     protected Scanner scanner;// = new Scanner(System.in);
@@ -26,11 +28,6 @@ public class StandartConsole implements Console {
 
     }
 
-
-    @Override
-    public Scanner getScanner() {
-        return scanner;
-    }
 
     @Override
     public String nextLine() {
@@ -61,6 +58,7 @@ public class StandartConsole implements Console {
     public void setInvoker(Invoker invoker) {
         this.invoker = invoker;
     }
+
     @Override
     public void setCollectionManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
@@ -90,14 +88,15 @@ public class StandartConsole implements Console {
                 printPrompt();
                 String input = nextLine();
                 if (input.trim().isEmpty()) continue;
-                if (input.equals("exit")) break;
                 String[] command = (input + " ").split(" ", 2);
                 command[0] = command[0].toLowerCase().trim();
                 command[1] = command[1].toLowerCase().trim();
                 ExecutionResponse commandStatus = invoker.execute(command);
                 print(commandStatus.getMessage());
             }
-        } catch (NoSuchElementException e) {}
+        } catch (ExitException e) {
+            print(e.getMessage());
+        }
     }
 
 }

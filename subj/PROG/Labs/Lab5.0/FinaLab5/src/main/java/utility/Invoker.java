@@ -11,6 +11,7 @@ public class Invoker implements Executable {
         this.commandManager = commandManager;
         this.console = console;
     }
+
     public Invoker() {
     }
 

@@ -1,6 +1,7 @@
 package commands;
 
 import utility.Command;
+import utility.exceptions.ExitException;
 import utility.interfaces.Console;
 import utility.ExecutionResponse;
 
@@ -25,6 +26,6 @@ public class Exit extends Command {
      */
     @Override
     public ExecutionResponse execute(String[] command) {
-        return null;
+        throw new ExitException();
     }
 }
