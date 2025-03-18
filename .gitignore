@@ -1,5 +1,5 @@
-subj\COMMUNICATIONS
-subj\ENGLISH
-subj\HISTORY
-subj\LIFESAFETY
+subj/COMMUNICATIONS/
+subj/ENGLISH/
+subj/HISTORY/
+subj/LIFESAFETY/
 **/*.DS_Store
