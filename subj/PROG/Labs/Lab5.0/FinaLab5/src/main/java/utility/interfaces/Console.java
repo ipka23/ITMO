@@ -18,6 +18,5 @@ public interface Console {
     void setCollectionManager(CollectionManager collectionManager);
     void setCommandManager(CommandManager commandManager);
     void setScanner(Scanner scanner);
-    Scanner getScanner();
     String getScriptPrompt();
 }

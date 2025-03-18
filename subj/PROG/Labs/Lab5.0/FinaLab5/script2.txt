@@ -12,5 +12,4 @@ skwrd
 10
 10000
 save
-execute_script D:\ITMO_D\subj\PROG\Labs\Lab5.0\FinaLab5\script3.txt
-/execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script3.txt
+execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script3.txt

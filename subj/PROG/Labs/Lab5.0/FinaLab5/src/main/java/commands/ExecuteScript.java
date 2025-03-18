@@ -3,6 +3,7 @@ package commands;
 import utility.Command;
 import utility.ExecutionResponse;
 import utility.Invoker;
+import utility.exceptions.ExitException;
 import utility.exceptions.RecursionDepthExceedException;
 import utility.exceptions.ScriptExecutionException;
 import utility.interfaces.Console;
@@ -12,14 +13,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Objects;
 import java.util.Scanner;
-
+// execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\FinaLab5\script.txt
+// execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script.txt
 public class ExecuteScript extends Command {
     private Console console;
     private final Invoker invoker;
     private static final int MAX_RECURSION_DEPTH = 3;
     private static int currentDepth = -1;
     private String scriptName;
-    private int d;
 
     public ExecuteScript(Console console, Invoker invoker) throws RecursionDepthExceedException {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
@@ -29,7 +30,6 @@ public class ExecuteScript extends Command {
 
     public ExecutionResponse runScript(String fileName) {
         currentDepth++;
-        d = currentDepth;
         if (currentDepth / 2 > MAX_RECURSION_DEPTH) {
             currentDepth = 0;
             throw new RecursionDepthExceedException();
@@ -58,15 +58,13 @@ public class ExecuteScript extends Command {
                 if (command[0].equals("execute_script")) {
                     if (scriptName.equals(command[1])) throw new RecursionDepthExceedException();
                     currentDepth++;
-                    d = currentDepth;
                     runScript(command[1]);
                 }
-                if (command[0].equals("exit")) break;
             }
         } catch (FileNotFoundException e) {
             console.setScanner(new Scanner(System.in));
             return new ExecutionResponse(false, "Файл: \"" + fileName + "\" не найден!");
-        } catch (RecursionDepthExceedException | ScriptExecutionException e) {
+        } catch (RecursionDepthExceedException | ScriptExecutionException | ExitException e) {
             console.setScanner(new Scanner(System.in));
             return new ExecutionResponse(false, "\n" + e.getMessage());
         }
