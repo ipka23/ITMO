@@ -1,0 +1,1 @@
+execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script2.txt
