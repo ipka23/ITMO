@@ -24,11 +24,14 @@ public class Serv implements Runnable {
 
     @Override
     public void run() {
-        logger.info("Server has started on port = {}", PORT);
+        logger.info("Server has started on port: {}", PORT);
         try {
-            serverSocket = new ServerSocket(PORT);
-            socket = serverSocket.accept();
-            logger.info("Client has connected!");
+            while (true) {
+                serverSocket = new ServerSocket(PORT);
+                socket = serverSocket.accept();
+                logger.info("Client has connected!");
+                break;
+            }
 
             while (true) {
                 inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
