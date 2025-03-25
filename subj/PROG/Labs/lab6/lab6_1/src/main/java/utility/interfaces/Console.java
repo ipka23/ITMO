@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public interface Console {
     String nextLine();
-    boolean hasNextLine();
     void launch();
     void println(Object o);
     void print(Object o);

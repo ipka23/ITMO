@@ -14,7 +14,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-    public static int PORT = 1234;
+    public static int PORT = 2223;
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static Scanner userInput;
@@ -22,21 +22,21 @@ public class Client {
     private static BufferedWriter outToServer;
 
     public static void main(String[] args) {
-//        if (args.length == 0) {
-//            System.out.println("Введите имя файла как аргумент командной строки!");
-//            System.exit(2);
-//        } else if (!new File(args[0]).exists()) {
-//            System.out.print("Файл \"" + args[0] + "\" не найден!");
-//            System.exit(2);
-//        } else if (!new File(args[0]).canRead()) {
-//            System.out.print("Нет прав на чтение файла \"" + args[0] + "\"!");
-//            System.exit(2);
-//        }
+        if (args.length == 0) {
+            System.out.println("Введите имя файла как аргумент командной строки!");
+            System.exit(2);
+        } else if (!new File(args[0]).exists()) {
+            System.out.print("Файл \"" + args[0] + "\" не найден!");
+            System.exit(2);
+        } else if (!new File(args[0]).canRead()) {
+            System.out.print("Нет прав на чтение файла \"" + args[0] + "\"!");
+            System.exit(2);
+        }
 
         Console console = new StandartConsole();
 
         FileManager fileManager = new FileManager();
-//        fileManager.setFile(args[0]);
+        fileManager.setFile(args[0]);
 
         CollectionManager collectionManager = new CollectionManager(fileManager);
 
@@ -57,9 +57,6 @@ public class Client {
         collectionManager.setConsole(console);
 
         run();
-        console.launch();
-
-
     }
 
     public static void run() {

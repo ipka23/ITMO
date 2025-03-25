@@ -34,10 +34,6 @@ public class StandartConsole implements Console {
         return scanner.nextLine();
     }
 
-    @Override
-    public boolean hasNextLine() {
-        return scanner.hasNextLine();
-    }
 
     @Override
     public void println(Object o) {
