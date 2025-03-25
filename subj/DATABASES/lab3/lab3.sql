@@ -95,10 +95,9 @@ drop trigger if exists check_action on Event;
 
 
 create or replace function check_character_action()
-returns trigger as
-$$
+returns trigger as $$
 begin
-   if (new.Action_id = 1 and new.character_type = 'Robot-security') then raise exception 'Робот-охранник не может выполнять действие "Пылесосить"!';
+   if (new.Action_id = 1 and new.character_type = 'Robot-security' ) then raise exception 'Робот-охранник не может выполнять действие "Пылесосить"!';
    elsif (new.Action_id = 2 and new.character_type = 'Robot-security') then raise exception 'Робот-охранник не может выполнять действие "Кушать"!';
    elsif (new.Action_id = 2 and new.character_type = 'Robot-helper') then raise exception 'Робот-помощник не может выполнять действие "Кушать"!';
    elsif (new.Action_id = 3 and new.character_type = 'Robot-security') then raise exception 'Робот-охранник не может выполнять действие "Курить"!';
