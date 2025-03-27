@@ -23,8 +23,8 @@ public class Cli implements Runnable {
         System.out.println("App started!");
 
         try {
+            declare();
             while (true) {
-                declare();
                 sendMessage();
             }
         } catch (IOException e) {
@@ -47,6 +47,7 @@ public class Cli implements Runnable {
             outToServer.write(input());
             outToServer.newLine();
             outToServer.flush();
+
             String response = inFromServer.readLine();
             System.out.println(response);
         } catch (ExitTestException e) {

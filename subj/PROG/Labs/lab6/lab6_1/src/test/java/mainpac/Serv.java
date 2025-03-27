@@ -26,8 +26,8 @@ public class Serv implements Runnable {
     public void run() {
         logger.info("Server has started on port: {}", PORT);
         try {
+            serverSocket = new ServerSocket(PORT);
             while (true) {
-                serverSocket = new ServerSocket(PORT);
                 socket = serverSocket.accept();
                 logger.info("Client has connected!");
                 break;

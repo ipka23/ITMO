@@ -14,7 +14,7 @@ symbol_1:       IN 3
                 AND #0x40
                 BEQ symbol_1
                 LD (current_symbol)+
-                ST (encoded_string)
+                ST encoded_string
                 SWAB
                 AND mask
                 CMP stop_symbol

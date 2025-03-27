@@ -23,12 +23,9 @@ public class Invoker implements Executable {
         this.console = console;
     }
 
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
+
     @Override
     public ExecutionResponse execute(String[] command) {
-        if (command[0].isEmpty()) {}
         if (commandManager.getCommand(command[0].trim()) == null) {
             return new ExecutionResponse(false, "Команда \"" + command[0].trim() + "\" не найдена!\nНаберите \"help\" для справки!");
         }
