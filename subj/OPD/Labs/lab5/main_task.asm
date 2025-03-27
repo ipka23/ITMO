@@ -18,7 +18,7 @@ symbol_1:       IN 3
                 SWAB
                 AND mask
                 CMP stop_symbol
-                BEQ end
+                BEQ end_program
                 OUT 2
 
 symbol_2:       IN 3
@@ -27,7 +27,7 @@ symbol_2:       IN 3
                 LD encoded_string
                 AND mask
                 CMP stop_symbol
-                BEQ end
+                BEQ end_program
                 OUT 2
                 JUMP start
 
