@@ -31,6 +31,6 @@ symbol_2:       IN 3
                 OUT 2
                 JUMP start
 
-end:            LD word_beginning
+end_program:    LD word_beginning
                 ST current_symbol
                 HLT

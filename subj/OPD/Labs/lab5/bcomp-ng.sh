@@ -1,1 +1,1 @@
-java -jar -Dmode=gui -Dcode=data.txt bcomp-ng.jar
+java -jar -Dmode=dual -Dcode=data.asm bcomp-ng.jar
