@@ -1,0 +1,38 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <option name="scopesOrder">
+      <list>
+        <option value="All Changed Files" />
+        <option value="Open Files" />
+        <option value="Project Files" />
+        <option value="Scratches and Consoles" />
+      </list>
+    </option>
+    <inspection_tool class="CustomRegExpInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myConfigurations">
+        <list>
+          <RegExpInspectionConfiguration>
+            <option name="name" value="asm" />
+            <option name="uuid" value="ad8868b5-9d3e-371c-ada2-f790544a0b7e" />
+            <option name="patterns">
+              <list>
+                <InspectionPattern>
+                  <option name="regExp" value="#...." />
+                  <option name="_fileType" value="Assembly file" />
+                  <option name="searchContext" value="ANY" />
+                </InspectionPattern>
+              </list>
+            </option>
+          </RegExpInspectionConfiguration>
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="ad8868b5-9d3e-371c-ada2-f790544a0b7e" enabled="false" level="WARNING" enabled_by_default="false" editorAttributes="WARNING_ATTRIBUTES">
+      <scope name="All Changed Files" level="WARNING" enabled="false" editorAttributes="WARNING_ATTRIBUTES" />
+      <scope name="Open Files" level="WARNING" enabled="false" editorAttributes="WARNING_ATTRIBUTES" />
+      <scope name="Project Files" level="r" enabled="false" />
+      <scope name="Scratches and Consoles" level="WARNING" enabled="false" editorAttributes="WARNING_ATTRIBUTES" />
+    </inspection_tool>
+  </profile>
+</component>
