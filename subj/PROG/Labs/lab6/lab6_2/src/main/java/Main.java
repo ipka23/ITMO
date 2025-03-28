@@ -4,12 +4,14 @@ import managers.CommandManager;
 import managers.FileManager;
 import utility.Invoker;
 import utility.consoles.AdvancedConsole;
+import utility.consoles.StandartConsole;
 import utility.interfaces.Console;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Введите имя файла как аргумент командной строки!");
@@ -22,33 +24,20 @@ public class Main {
             System.exit(2);
         }
 
-        Console console = new AdvancedConsole();
 
-        FileManager fileManager = new FileManager();
-        fileManager.setFile(args[0]);
-
-        CollectionManager collectionManager = new CollectionManager(fileManager);
+        Console console = new StandartConsole();
+        FileManager fileManager = new FileManager(null, console, args[0]);
+        CollectionManager collectionManager = new CollectionManager(fileManager, console);
+        CommandManager commandManager = new CommandManager(console, collectionManager);
+        Invoker invoker = new Invoker(commandManager, console);
 
         fileManager.setCollectionManager(collectionManager);
-
-        Invoker invoker = new Invoker(null, console);
-
-        CommandManager commandManager = new CommandManager(console, collectionManager);
+        console.setCollectionManager(collectionManager);
+        console.setInvoker(invoker);
 
         commandManager.addCommand("execute_script", new ExecuteScript(console, invoker));
 
-        invoker.setCommandManager(commandManager);
-        console.setCommandManager(commandManager);
-        console.setInvoker(invoker);
-
-        console.setCollectionManager(collectionManager);
-        console.setScanner(new Scanner(System.in));
-
-        collectionManager.setConsole(console);
         console.launch();
 
-//        Client.main(new String[]{"MusicBands.json"});
-
-//        Server server = new Server()
     }
 }
