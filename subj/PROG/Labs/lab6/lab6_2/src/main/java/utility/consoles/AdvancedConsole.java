@@ -16,11 +16,11 @@ public class AdvancedConsole extends StandartConsole {
     private CommandHistory commandHistory;
     private StringBuilder info = new StringBuilder();
 
-    public AdvancedConsole(CollectionManager collectionManager, Invoker invoker) {
-        super(invoker, collectionManager);
-        this.invoker = invoker;
-        this.commandHistory = new CommandHistory();
-    }
+//    public AdvancedConsole(CollectionManager collectionManager, Invoker invoker) {
+//        super(invoker, collectionManager);
+//        this.invoker = invoker;
+//        this.commandHistory = new CommandHistory();
+//    }
 
     public AdvancedConsole() {
         this.commandHistory = new CommandHistory();

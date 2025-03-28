@@ -18,13 +18,15 @@ public class StandartConsole implements Console {
     protected CollectionManager collectionManager;
     protected CommandManager commandManager;
 
-    public StandartConsole(Invoker invoker, CollectionManager collectionManager) {
+    public StandartConsole(Invoker invoker, CollectionManager collectionManager, CommandManager commandManager) {
         this.invoker = invoker;
         this.collectionManager = collectionManager;
+        this.commandManager = commandManager;
+        setScanner(new Scanner(System.in));
     }
 
     public StandartConsole() {
-
+        setScanner(new Scanner(System.in));
     }
 
 

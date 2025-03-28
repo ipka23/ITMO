@@ -31,6 +31,10 @@ public class CollectionManager {
         initTime = LocalDateTime.now();
     }
 
+    public CollectionManager() {
+
+    }
+
     public void setMusicBandsMap(Map<Long, MusicBand> musicBandsMap) {
         this.musicBandsMap = musicBandsMap;
     }
