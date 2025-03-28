@@ -1,5 +1,6 @@
 import utility.exceptions.ExitException;
 
+import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -38,10 +39,10 @@ public class Client {
         System.out.println("App started!");
 
         try {
-            while (true) {
-                declare();
-                sendMessage();
-            }
+            socket = new Socket("localhost", PORT);
+            userInput = new Scanner(System.in);
+
+            sendMessage();
         } catch (IOException e) {
             System.out.println("Client_Даун1");
         } finally {
@@ -57,13 +58,39 @@ public class Client {
         }
     }
 
+    private void sendFile(String file) throws IOException {
+        inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        while (true) {
+            System.out.print("Введите название файла: ");
+            userInput = new Scanner(System.in);
+            if (userInput.nextLine().trim().matches("^\\b.*\\.txt$")) {
+                Client.file = userInput.nextLine().trim();
+                outToServer.write(file);
+                outToServer.flush();
+                break;
+            } else {
+                System.out.println("Введите название txt файла (example_file.txt)!");
+            }
+        }
+
+
+
+
+    }
+
     private static void sendMessage() throws IOException {
         try {
-            outToServer.write(input());
-            outToServer.newLine();
-            outToServer.flush();
-            String response = inFromServer.readLine();
-            System.out.println(response);
+
+            while (true) {
+                inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                outToServer.write(input());
+                outToServer.newLine();
+                outToServer.flush();
+                String response = inFromServer.readLine();
+                System.out.println(response);
+            }
         } catch (ExitException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
@@ -72,12 +99,7 @@ public class Client {
     }
 
 
-    private static void declare() throws IOException {
-        socket = new Socket("localhost", PORT);
-        userInput = new Scanner(System.in);
-        inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-    }
+
 
 
     public static String input() {
