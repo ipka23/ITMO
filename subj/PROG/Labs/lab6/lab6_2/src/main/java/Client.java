@@ -16,7 +16,7 @@ public class Client {
     private static String file;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length == 0) {
             System.out.println("Введите имя файла как аргумент командной строки!");
             System.exit(2);
@@ -30,9 +30,10 @@ public class Client {
             System.exit(2);
         }
         file = args[0];
-
-
         run();
+//        sendFile(file);
+
+
     }
 
     public static void run() {
@@ -45,46 +46,27 @@ public class Client {
             sendMessage();
         } catch (IOException e) {
             System.out.println("Client_Даун1");
-        } finally {
-            try {
-                userInput.close();
-                inFromServer.close();
-                outToServer.close();
-                socket.close();
-                serverSocket.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
-    private void sendFile(String file) throws IOException {
-        inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        while (true) {
-            System.out.print("Введите название файла: ");
-            userInput = new Scanner(System.in);
-            if (userInput.nextLine().trim().matches("^\\b.*\\.txt$")) {
-                Client.file = userInput.nextLine().trim();
-                outToServer.write(file);
-                outToServer.flush();
-                break;
-            } else {
-                System.out.println("Введите название txt файла (example_file.txt)!");
-            }
-        }
-
-
-
-
-    }
+//    private static void sendFile(String file) throws IOException {
+//        inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//        outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+//        outToServer.write(file);
+//        outToServer.newLine();
+//        outToServer.flush();
+//        System.out.println(inFromServer.readLine());
+//    }
 
     private static void sendMessage() throws IOException {
         try {
-
+            inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            outToServer.write(file);
+            outToServer.newLine();
+            outToServer.flush();
+            System.out.println(inFromServer.readLine());
             while (true) {
-                inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 outToServer.write(input());
                 outToServer.newLine();
                 outToServer.flush();
@@ -108,7 +90,6 @@ public class Client {
             String line = userInput.nextLine().trim();
             if (line.isEmpty()) continue;
             if (line.equals("exit")) {
-                System.exit(0);
                 throw new ExitException();
             }
             return line;
