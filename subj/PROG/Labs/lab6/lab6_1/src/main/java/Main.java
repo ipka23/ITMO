@@ -44,8 +44,8 @@ public class Main {
         console.setScanner(new Scanner(System.in));
 
         collectionManager.setConsole(console);
-
-
         console.launch();
+
+//        Client.main(new String[]{"MusicBands.json"});
     }
 }

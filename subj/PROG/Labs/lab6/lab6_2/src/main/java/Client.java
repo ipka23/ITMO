@@ -1,12 +1,4 @@
-import commands.ExecuteScript;
-import managers.CollectionManager;
-import managers.CommandManager;
-import managers.FileManager;
-import utility.Invoker;
-import utility.consoles.AdvancedConsole;
-import utility.consoles.StandartConsole;
 import utility.exceptions.ExitException;
-import utility.interfaces.Console;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -20,18 +12,23 @@ public class Client {
     private static Scanner userInput;
     private static BufferedReader inFromServer;
     private static BufferedWriter outToServer;
+    private static String file;
+
 
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Введите имя файла как аргумент командной строки!");
             System.exit(2);
         } else if (!new File(args[0]).exists()) {
-            System.out.print("Файл \"" + args[0] + "\" не найден!");
+            file = args[0];
+            System.out.print("Файл \"" + file + "\" не найден!");
             System.exit(2);
         } else if (!new File(args[0]).canRead()) {
-            System.out.print("Нет прав на чтение файла \"" + args[0] + "\"!");
+            file = args[0];
+            System.out.print("Нет прав на чтение файла \"" + file + "\"!");
             System.exit(2);
         }
+        file = args[0];
 
 
         run();
