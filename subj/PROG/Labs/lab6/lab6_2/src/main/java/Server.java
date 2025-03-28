@@ -20,7 +20,7 @@ public class Server {
     private static Socket socket;
     private static BufferedReader inFromClient;
     private static BufferedWriter outToClient;
-//    private static final Logger logger = LoggerFactory.getLogger(Server.class);
+    //    private static final Logger logger = LoggerFactory.getLogger(Server.class);
     private static Invoker invoker;
     private static CommandManager commandManager;
     private static String file;
@@ -38,11 +38,11 @@ public class Server {
         Server.invoker = invoker;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Console console = new StandartConsole();
 
         FileManager fileManager = new FileManager();
-        fileManager.setFile(args[0]);
+        fileManager.setFile(getFile());
 
         CollectionManager collectionManager = new CollectionManager(fileManager);
 
@@ -74,6 +74,7 @@ public class Server {
 //                logger.info("Client has connected!");
                 break;
             }
+            getFile();
             responseClient();
         } catch (IOException e) {
             System.out.println("Server_Даун1");
@@ -89,6 +90,12 @@ public class Server {
         }
     }
 
+    private static String getFile() throws IOException {
+        inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        outToClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        file = inFromClient.readLine();
+        return file;
+    }
 
     private static void responseClient() throws IOException {
         while (true) {
@@ -100,9 +107,8 @@ public class Server {
             command[0] = command[0].toLowerCase().trim();
             command[1] = command[1].toLowerCase().trim();
             if (!commandManager.getCommandsMap().containsKey(command[0])) {
-                 executionResponse = new ExecutionResponse(false, "Команда \"" + command[0] + "\" не найдена!\nНаберите \"help\" для справки!");
-            }
-            else {
+                executionResponse = new ExecutionResponse(false, "Команда \"" + command[0] + "\" не найдена!\nНаберите \"help\" для справки!");
+            } else {
                 executionResponse = invoker.execute(command);
             }
 
