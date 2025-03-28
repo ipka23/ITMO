@@ -22,18 +22,16 @@ public class FileManager {
     private CollectionManager collectionManager;
     private Console console;
     private String fileName;
-    private Type collectionType;
+    private Type collectionType; //= new TypeToken<LinkedList<MusicBand>>(){}.getType();
 
 
     public FileManager(CollectionManager collectionManager, Console console, String fileName) {
         this.collectionManager = collectionManager;
         this.console = console;
         this.fileName = fileName;
-        loadCollectionFromFile();
     }
 
     public FileManager() {
-
     }
 
     public void setConsole(Console console) {
@@ -95,7 +93,7 @@ public class FileManager {
         this.collectionType = new TypeToken<LinkedList<MusicBand>>(){}.getType();
     }
 
-    public void loadCollectionFromFile() {
+    public void loadCollectionFromFile(String fileName) {
         try (Scanner scanner = new Scanner(new FileReader(fileName))) {
             StringBuilder jsonString = new StringBuilder();
             while (scanner.hasNextLine()) {

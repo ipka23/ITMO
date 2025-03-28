@@ -126,7 +126,7 @@ public class CollectionManager {
                     default:
                         continue;
                 }
-                fileManager.loadCollectionFromFile();
+                fileManager.loadCollectionFromFile("MusicBands.json");
                 break;
             }
         } catch (ExitException e) {
