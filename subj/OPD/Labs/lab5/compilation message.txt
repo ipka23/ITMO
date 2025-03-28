@@ -1,0 +1,31 @@
+Start compilation at Thu Mar 27 18:53:23 MSK 2025
+Finish compilation at Thu Mar 27 18:53:23 MSK 2025
+
+228| word_beginning: WORD  0x552
+229| encoded_string: WORD  0x0
+22a| stop_symbol: WORD  0xd
+22b| current_symbol: WORD  0x552
+22c| mask: WORD  0xff
+22d| START: CLA  	; type=NONADDR value=0x200
+22e| symbol_1: IN  	; type=IO value=0x1203
+22f| AND #64 	; type=ADDR value=0x2f40
+230| BEQ  label=symbol_1 	; type=BRANCH value=0xf0fd
+231| LD (current_symbol)+ 	; type=ADDR value=0xaaf9
+232| ST (encoded_string) 	; type=ADDR value=0xe8f6
+233| SWAB  	; type=NONADDR value=0x680
+234| AND mask 	; type=ADDR value=0x2ef7
+235| CMP stop_symbol 	; type=ADDR value=0x7ef4
+236| BEQ  label=end_program 	; type=BRANCH value=0xf00a
+237| OUT  	; type=IO value=0x1302
+238| symbol_2: IN  	; type=IO value=0x1203
+239| AND #64 	; type=ADDR value=0x2f40
+23a| BEQ  label=symbol_2 	; type=BRANCH value=0xf0fd
+23b| LD encoded_string 	; type=ADDR value=0xaeed
+23c| AND mask 	; type=ADDR value=0x2eef
+23d| CMP stop_symbol 	; type=ADDR value=0x7eec
+23e| BEQ  label=end_program 	; type=BRANCH value=0xf002
+23f| OUT  	; type=IO value=0x1302
+240| JUMP start 	; type=ADDR value=0xceec
+241| end_program: LD word_beginning 	; type=ADDR value=0xaee6
+242| ST current_symbol 	; type=ADDR value=0xeee8
+243| HLT  	; type=NONADDR value=0x100
