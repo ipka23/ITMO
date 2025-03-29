@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-    public static int PORT = 2223;
+    public static int PORT = 1123;
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static Scanner userInput;
@@ -36,17 +36,17 @@ public class Client {
 
     }
 
-    public static void run() {
+    public static void run() throws IOException {
         System.out.println("App started!");
 
-        try {
+//        try {
             socket = new Socket("localhost", PORT);
             userInput = new Scanner(System.in);
 
             sendMessage();
-        } catch (IOException e) {
-            System.out.println("Client_Даун1");
-        }
+//        } catch (IOException e) {
+////            System.out.println("Client_Даун1");
+//        }
     }
 
 //    private static void sendFile(String file) throws IOException {
