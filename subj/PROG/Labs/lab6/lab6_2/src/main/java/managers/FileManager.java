@@ -29,6 +29,7 @@ public class FileManager {
         this.collectionManager = collectionManager;
         this.console = console;
         this.fileName = fileName;
+        loadCollectionFromFile(fileName);
     }
 
     public FileManager() {
