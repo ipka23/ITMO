@@ -19,7 +19,7 @@ public class Server {
     private static Socket socket;
     private static BufferedReader inFromClient;
     private static ObjectOutputStream outToClient;
-    private static final Logger logger = LoggerFactory.getLogger(Server1.class);
+    private static final Logger logger = LoggerFactory.getLogger(Server.class);
     private static String file;
 
     private static Invoker invoker;
@@ -30,7 +30,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         console = new StandartConsole();
-        fileManager = new FileManager(null, console, "MusicBands.json");
+        fileManager = new FileManager(null, console, null);
         collectionManager = new CollectionManager(fileManager, console);
         commandManager = new CommandManager(console, collectionManager);
         invoker = new Invoker(commandManager, console);
@@ -41,11 +41,9 @@ public class Server {
 
         commandManager.addCommand("execute_script", new ExecuteScript(console, invoker));
 
-//        console.launch();
         run();
     }
     public static void run() throws IOException {
-//        fileManager.setFile(getFile());
         logger.info("Server has started on port: {}", PORT);
         try {
             serverSocket = new ServerSocket(PORT);
@@ -54,26 +52,39 @@ public class Server {
                 logger.info("Client has connected!");
                 inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 outToClient = new ObjectOutputStream(socket.getOutputStream());
+                fileManager.setFile(getFile());
                 break;
             }
-            file = getFile();
             responseClient();
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Server_Даун1");
+            System.out.println(e.getMessage());
         }
     }
 
     private static String getFile() throws IOException {
         file = inFromClient.readLine();
-        logger.info("File received: {}", file);
-        outToClient.writeObject("Файл получен на сервер успешно!");
-        outToClient.flush();
+        ExecutionResponse response;
+        try {
+            if (file.isEmpty()) {
+                response = new ExecutionResponse(false, "Введите имя файла как аргумент командной строки!");
+            } else if (!new File(file).exists()) {
+                response = new ExecutionResponse(false, "Файл \"" + file + "\" не найден!!!!");
+            } else if (!new File(file).canRead()) {
+                response = new ExecutionResponse(false, "Нет прав на чтение файла \"" + file + "\"!");
+            } else {
+                response = new ExecutionResponse(true);
+                logger.info("File received: {}", file);
+            }
+            outToClient.writeObject(response);
+            outToClient.flush();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return file;
     }
 
     private static void responseClient() throws IOException, ClassNotFoundException {
         while (true) {
-
             String message = inFromClient.readLine();
             ExecutionResponse executionResponse;
             String[] command = (message + " ").split(" ", 2);

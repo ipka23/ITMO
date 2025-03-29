@@ -29,7 +29,7 @@ public class FileManager {
         this.collectionManager = collectionManager;
         this.console = console;
         this.fileName = fileName;
-        loadCollectionFromFile(fileName);
+
     }
 
     public FileManager() {
@@ -41,6 +41,7 @@ public class FileManager {
 
     public void setFile(String fileName) {
         this.fileName = fileName;
+        loadCollectionFromFile();
     }
 
     public void setCollectionManager(CollectionManager collectionManager) {
@@ -94,7 +95,7 @@ public class FileManager {
         this.collectionType = new TypeToken<LinkedList<MusicBand>>(){}.getType();
     }
 
-    public void loadCollectionFromFile(String fileName) {
+    public void loadCollectionFromFile() {
         try (Scanner scanner = new Scanner(new FileReader(fileName))) {
             StringBuilder jsonString = new StringBuilder();
             while (scanner.hasNextLine()) {
@@ -112,7 +113,7 @@ public class FileManager {
                     .registerTypeAdapter(Date.class, new DateAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                     .create();
-            collectionManager.setCollection(gson.fromJson(json, collectionType));
+            collectionManager.setCollection(gson.fromJson(json, new TypeToken<HashSet<MusicBand>>(){}.getType()));
         } catch (FileNotFoundException e) {
             System.out.print("Файл \"" + fileName + "\" не найден!");
             System.exit(2);

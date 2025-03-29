@@ -2,6 +2,7 @@ package managers;
 
 import entities.MusicBand;
 import utility.CollectionType;
+import utility.ExecutionResponse;
 import utility.exceptions.ExitException;
 import utility.interfaces.Console;
 
@@ -105,8 +106,9 @@ public class CollectionManager {
         collection.remove(band);
     }
 
-    public void chooseTypeOfCollection() {
+    public ExecutionResponse chooseTypeOfCollection() {
         String userCommand = "";
+        ExecutionResponse response = null;
         try {
             while (true) {
                 console.print(CollectionType.choosingTypePrompt());
@@ -119,24 +121,22 @@ public class CollectionManager {
                         continue;
                     case "1", "hashset":
                         fileManager.setHashSet();
-                        console.println("Тип коллекции - HashSet");
                         collection = new HashSet<>();
-                        break;
+                        fileManager.loadCollectionFromFile();
+                        response = new ExecutionResponse(true, "Тип коллекции - HashSet");
                     case "2", "linkedlist":
                         fileManager.setLinkedList();
-                        console.println("Тип коллекции - LinkedList");
                         collection = new LinkedList<>();
-                        break;
+                        fileManager.loadCollectionFromFile();
+                        response = new ExecutionResponse(true, "Тип коллекции - LinkedList");
                     default:
                         continue;
                 }
-                fileManager.loadCollectionFromFile("MusicBands.json");
-                break;
             }
         } catch (ExitException e) {
-            console.println(e.getMessage());
             System.exit(0);
         }
+        return response;
     }
     /**
      * Метод для получения информации о коллекции

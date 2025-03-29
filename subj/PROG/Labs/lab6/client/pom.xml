@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.ipka23.itmo.prog.labs.lab6</groupId>
-    <artifactId>server</artifactId>
+    <artifactId>client</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

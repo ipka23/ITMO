@@ -1,6 +1,5 @@
 import utility.exceptions.ExitException;
 
-import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -37,15 +36,13 @@ public class Client {
     }
 
     public static void run() throws IOException {
-        System.out.println("App started!");
-
 //        try {
             socket = new Socket("localhost", PORT);
             userInput = new Scanner(System.in);
 
             sendMessage();
 //        } catch (IOException e) {
-////            System.out.println("Client_Даун1");
+////            System.out.println("Client_error_1");
 //        }
     }
 
@@ -65,7 +62,6 @@ public class Client {
             outToServer.write(file);
             outToServer.newLine();
             outToServer.flush();
-            System.out.println(inFromServer.readObject());
             while (true) {
                 outToServer.write(input());
                 outToServer.newLine();
@@ -76,7 +72,7 @@ public class Client {
         } catch (ExitException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println("Client_Даун2");
+            System.out.println("Client_error_2");
         }
     }
 
