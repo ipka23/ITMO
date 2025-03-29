@@ -11,7 +11,7 @@ public class Client {
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static Scanner userInput;
-    private static BufferedReader inFromServer;
+    private static ObjectInputStream inFromServer;
     private static BufferedWriter outToServer;
     private static String file;
 
@@ -60,17 +60,17 @@ public class Client {
 
     private static void sendMessage() throws IOException {
         try {
-            inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            inFromServer = new ObjectInputStream(socket.getInputStream());
             outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             outToServer.write(file);
             outToServer.newLine();
             outToServer.flush();
-            System.out.println(inFromServer.readLine());
+            System.out.println(inFromServer.readObject());
             while (true) {
                 outToServer.write(input());
                 outToServer.newLine();
                 outToServer.flush();
-                String response = inFromServer.readLine();
+                String response = (String) inFromServer.readObject();
                 System.out.println(response);
             }
         } catch (ExitException e) {

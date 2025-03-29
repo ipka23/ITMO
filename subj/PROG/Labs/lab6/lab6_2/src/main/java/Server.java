@@ -18,7 +18,7 @@ public class Server {
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static BufferedReader inFromClient;
-    private static BufferedWriter outToClient;
+    private static ObjectOutputStream outToClient;
     private static final Logger logger = LoggerFactory.getLogger(Server1.class);
     private static String file;
 
@@ -53,12 +53,12 @@ public class Server {
                 socket = serverSocket.accept();
                 logger.info("Client has connected!");
                 inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                outToClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                outToClient = new ObjectOutputStream(socket.getOutputStream());
                 break;
             }
             file = getFile();
             responseClient();
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             System.out.println("Server_Даун1");
         }
     }
@@ -66,13 +66,12 @@ public class Server {
     private static String getFile() throws IOException {
         file = inFromClient.readLine();
         logger.info("File received: {}", file);
-        outToClient.write("Файл получен на сервер успешно!");
-        outToClient.newLine();
+        outToClient.writeObject("Файл получен на сервер успешно!");
         outToClient.flush();
         return file;
     }
 
-    private static void responseClient() throws IOException {
+    private static void responseClient() throws IOException, ClassNotFoundException {
         while (true) {
 
             String message = inFromClient.readLine();
@@ -86,9 +85,8 @@ public class Server {
                 executionResponse = invoker.execute(command);
             }
             logger.info("Response: {}", executionResponse);
-
-            outToClient.write(executionResponse.getMessage());
-            outToClient.newLine();
+            String responseMessage = executionResponse.getMessage();
+            outToClient.writeObject(responseMessage.substring(0, responseMessage.length() - 1));
             outToClient.flush();
         }
     }
