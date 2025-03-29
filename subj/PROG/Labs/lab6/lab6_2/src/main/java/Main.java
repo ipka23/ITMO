@@ -8,7 +8,6 @@ import utility.consoles.StandartConsole;
 import utility.interfaces.Console;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class Main {
 
