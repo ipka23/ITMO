@@ -6,6 +6,7 @@ import utility.interfaces.Executable;
 public abstract class Command implements Executable {
     private String name;
     private String description;
+//    private boolean hasArguments;  boolean hasArguments
 
     public Command(String name, String description) {
         this.name = name;

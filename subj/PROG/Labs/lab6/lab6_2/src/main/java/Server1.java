@@ -70,7 +70,7 @@ public class Server1 {
 
         fileManager.setCollectionManager(collectionManager);
         fileManager.setConsole(console);
-        fileManager.loadCollectionFromFile("MusicBands.json");
+        fileManager.loadCollectionFromFile();
         invoker = new Invoker(null, console);
 
 
