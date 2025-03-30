@@ -1,4 +1,3 @@
-import entities.MusicBand;
 
 import java.io.Serializable;
 
