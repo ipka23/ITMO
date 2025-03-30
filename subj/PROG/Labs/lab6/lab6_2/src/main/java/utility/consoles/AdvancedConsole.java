@@ -1,6 +1,5 @@
 package utility.consoles;
 
-import managers.CollectionManager;
 import utility.CommandHistory;
 import utility.ExecutionResponse;
 import utility.Invoker;
