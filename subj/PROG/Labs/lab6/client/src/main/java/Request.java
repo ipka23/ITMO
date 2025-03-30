@@ -1,4 +1,6 @@
 
+import entities.MusicBand;
+
 import java.io.Serializable;
 
 public class Request implements Serializable {
