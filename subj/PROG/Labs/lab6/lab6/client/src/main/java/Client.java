@@ -1,7 +1,10 @@
+import common_utility.exceptions.ExitClientException;
 import common_utility.ExecutionResponse;
-import common_utility.exceptions.ExitException;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -79,7 +82,7 @@ public class Client {
             String line = userInput.nextLine().trim();
             if (line.isEmpty()) continue;
             if (line.equals("exit")) {
-                throw new ExitException();
+                throw new ExitClientException();
             }
             return line;
         }

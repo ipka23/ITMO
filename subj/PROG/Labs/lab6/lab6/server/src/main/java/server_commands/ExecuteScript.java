@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_utility.ExecutionResponse;
-import common_utility.exceptions.ExitException;
+import common_utility.exceptions.ExitClientException;
 import server_utility.Command;
 import server_utility.Invoker;
 import server_utility.exceptions.RecursionDepthExceedException;
@@ -62,9 +62,11 @@ public class ExecuteScript extends Command {
         } catch (FileNotFoundException e) {
             console.setScanner(new Scanner(System.in));
             return new ExecutionResponse(false, "Файл: \"" + fileName + "\" не найден!");
-        } catch (RecursionDepthExceedException | ScriptExecutionException | ExitException e) {
+        } catch (RecursionDepthExceedException | ScriptExecutionException e) {
             console.setScanner(new Scanner(System.in));
             return new ExecutionResponse(false, "\n" + e.getMessage());
+        } catch (ExitClientException e) {
+            return new ExecutionResponse(true, "\n" + e.getMessage());
         }
         console.setScanner(new Scanner(System.in));
         return new ExecutionResponse(false, scriptFileContent.substring(0, scriptFileContent.length() - 1));

@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_utility.ExecutionResponse;
-import common_utility.exceptions.ExitException;
+import common_utility.exceptions.ExitClientException;
 import server_utility.Command;
 
 /**
@@ -25,6 +25,6 @@ public class Exit extends Command {
      */
     @Override
     public ExecutionResponse execute(String[] command) {
-        throw new ExitException();
+        throw new ExitClientException();
     }
 }

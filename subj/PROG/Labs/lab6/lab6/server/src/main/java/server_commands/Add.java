@@ -36,7 +36,7 @@ public class Add extends Command {
         return new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
     }
 
-    private String inputName() {
+    protected String inputName() {
         String name;
         while (true) {
             console.print("name: ");
@@ -49,7 +49,7 @@ public class Add extends Command {
         return name;
     }
 
-    private Coordinates inputCoordinates() {
+    protected Coordinates inputCoordinates() {
         Integer x;
         float y;
         while (true) {
@@ -82,7 +82,7 @@ public class Add extends Command {
         return new Coordinates(x, y);
     }
 
-    private Long inputNumberOfParticipants() {
+    protected Long inputNumberOfParticipants() {
         Long numberOfParticipants;
         while (true) {
             console.print("numberOfParticipants: ");
@@ -102,7 +102,7 @@ public class Add extends Command {
         return numberOfParticipants;
     }
 
-    private Long inputSinglesCount() {
+    protected Long inputSinglesCount() {
         Long singlesCount;
         while (true) {
             console.print("singlesCount: ");
@@ -122,7 +122,7 @@ public class Add extends Command {
         return singlesCount;
     }
 
-    private Date inputEstablishmentDate() {
+    protected Date inputEstablishmentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date establishmentDate;
         while (true) {
@@ -140,7 +140,7 @@ public class Add extends Command {
         return establishmentDate;
     }
 
-    private MusicGenre inputMusicGenre() {
+    protected MusicGenre inputMusicGenre() {
         MusicGenre musicGenre;
         while (true) {
             console.print("musicGenre (" + MusicGenre.names() + "): ");
@@ -157,7 +157,7 @@ public class Add extends Command {
         return musicGenre;
     }
 
-    private Album inputAlbum() {
+    protected Album inputAlbum() {
         String name;
         Long tracks;
         long length;
