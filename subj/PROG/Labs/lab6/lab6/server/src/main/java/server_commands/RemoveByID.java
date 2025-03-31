@@ -47,6 +47,6 @@ public class RemoveByID extends Command {
             return new ExecutionResponse(false, "В коллекции нет элемента с таким id!");
         }
         collectionManager.removeByID(id);
-        return new ExecutionResponse(true, "Элемент с id = " + id + " был удален из коллекции!");
+        return new ExecutionResponse(false, "Элемент с id = " + id + " был удален из коллекции!");
     }
 }

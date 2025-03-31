@@ -47,13 +47,13 @@ public class AddIfMax extends Command {
             MusicBand newBand = add.inputMusicBand();
             if (newBand.getSales() > collectionManager.getMax().getSales()) {
                 collectionManager.addMusicBand(newBand);
-                return new ExecutionResponse(true, "В коллекцию был добавлен элемент album.sales которого превышают элемент с максимальным album.sales!");
+                return new ExecutionResponse(false, "В коллекцию был добавлен элемент album.sales которого превышают элемент с максимальным album.sales!");
             } else {
                 collectionManager.removeByID(id);
-                return new ExecutionResponse(true, "Элемент не был добавлен в коллекцию, т. к. его album.sales не превышают элемент с максимальным album.sales!");
+                return new ExecutionResponse(false, "Элемент не был добавлен в коллекцию, т. к. его album.sales не превышают элемент с максимальным album.sales!");
             }
         } catch (InputBreakException e) {
-            return new ExecutionResponse(false, e.getMessage());
+            return new ExecutionResponse(true, e.getMessage());
         }
     }
 }

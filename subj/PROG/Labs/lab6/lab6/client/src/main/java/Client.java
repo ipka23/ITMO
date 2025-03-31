@@ -24,22 +24,17 @@ public class Client {
             file = args[0];
         }
         run();
-//        sendFile(file);
 
 
     }
 
     public static void run() throws IOException, ClassNotFoundException {
-//        try {
         socket = new Socket("localhost", PORT);
         userInput = new Scanner(System.in);
         inFromServer = new ObjectInputStream(socket.getInputStream());
         outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         sendFile(file);
         sendMessage();
-//        } catch (IOException e) {
-////            System.out.println("Client_error_1");
-//        }
     }
 
     private static void sendFile(String file) throws IOException, ClassNotFoundException {
@@ -47,11 +42,9 @@ public class Client {
         outToServer.newLine();
         outToServer.flush();
         ExecutionResponse response = (ExecutionResponse) inFromServer.readObject();
-        if (!response.isCompleted()) {
-            System.out.print(response.getMessage());
-            System.exit(322);
-        } else {
-            System.out.println(response.getMessage());
+        if (response.getExitStatus()) {
+            System.out.print(response);
+            System.exit(222);
         }
     }
 
@@ -63,11 +56,11 @@ public class Client {
                 outToServer.flush();
                 ExecutionResponse response = (ExecutionResponse) inFromServer.readObject();
 
-                if (response.isCompleted()) {
-                    System.out.print(response.getMessage());
-                    System.exit(1);
+                if (response.getExitStatus()) {
+                    System.out.print(response);
+                    System.exit(333);
                 } else {
-                    System.out.println(response.getMessage());
+                    System.out.println(response);
                 }
 
             }

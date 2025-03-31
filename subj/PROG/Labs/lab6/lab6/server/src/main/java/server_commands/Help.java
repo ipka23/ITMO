@@ -41,6 +41,6 @@ public class Help extends Command {
         for (Command userCommand : commandManager.getCommandsMap().values()) {
             s.append(userCommand.getName()).append(": ").append(userCommand.getDescription()).append("\n");
         }
-        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+        return new ExecutionResponse(false, s.substring(0, s.length() - 1));
     }
 }

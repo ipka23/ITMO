@@ -62,7 +62,7 @@ public class Server {
     }
 
     private static String getFile() throws IOException {
-        file = inFromClient.readLine();
+        file = inFromClient.readLine().trim();
         ExecutionResponse response;
         try {
             if (file.isEmpty()) {
@@ -91,13 +91,13 @@ public class Server {
             command[0] = command[0].toLowerCase().trim();
             command[1] = command[1].toLowerCase().trim();
             if (!commandManager.getCommandsMap().containsKey(command[0])) {
-                executionResponse = new ExecutionResponse(false, "Команда \"" + command[0] + "\" не найдена! Наберите \"help\" для справки!");
+                executionResponse = new ExecutionResponse(true, "Команда \"" + command[0] + "\" не найдена! Наберите \"help\" для справки!");
             } else {
                 executionResponse = invoker.execute(command);
             }
             logger.info("Response: {}", executionResponse);
-            String responseMessage = executionResponse.getMessage();
-            outToClient.writeObject(responseMessage.substring(0, responseMessage.length() - 1));
+            ExecutionResponse response = executionResponse;
+            outToClient.writeObject(response);
             outToClient.flush();
         }
     }

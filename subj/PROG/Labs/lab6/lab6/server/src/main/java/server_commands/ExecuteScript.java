@@ -67,7 +67,7 @@ public class ExecuteScript extends Command {
             return new ExecutionResponse(false, "\n" + e.getMessage());
         }
         console.setScanner(new Scanner(System.in));
-        return new ExecutionResponse(true, scriptFileContent.substring(0, scriptFileContent.length() - 1));
+        return new ExecutionResponse(false, scriptFileContent.substring(0, scriptFileContent.length() - 1));
     }
 
     @Override

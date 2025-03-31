@@ -42,6 +42,6 @@ public class MaxByBestBestAlbum extends Command {
         StringBuilder message = new StringBuilder();
         message.append("MusicBand с максимальным количеством album.sales:").append("\n");
         message.append(bestBand.toString());
-        return new ExecutionResponse(true, message.toString());
+        return new ExecutionResponse(false, message.toString());
     }
 }
