@@ -53,9 +53,9 @@ public class RemoveGreater extends Command {
                     iterator.remove();
                 }
             }
-            return new ExecutionResponse(true, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
+            return new ExecutionResponse(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
         } catch (InputBreakException e) {
-            return new ExecutionResponse(false, e.getMessage());
+            return new ExecutionResponse(true, e.getMessage());
         }
     }
 }

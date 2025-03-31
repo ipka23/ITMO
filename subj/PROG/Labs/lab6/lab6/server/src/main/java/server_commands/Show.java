@@ -36,6 +36,6 @@ public class Show extends Command {
     public ExecutionResponse execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        return new ExecutionResponse(true, collectionManager.toString());
+        return new ExecutionResponse(false, collectionManager.toString());
     }
 }

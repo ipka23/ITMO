@@ -56,6 +56,6 @@ public class Update extends Command {
             return new ExecutionResponse(true, "Отмена ввода...");
         }
         band.update(newBand);
-        return new ExecutionResponse(true, "Элемент с id = " + id + " был обновлён!");
+        return new ExecutionResponse(false, "Элемент с id = " + id + " был обновлён!");
     }
 }

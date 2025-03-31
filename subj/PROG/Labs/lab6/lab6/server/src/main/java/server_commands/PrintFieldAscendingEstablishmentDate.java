@@ -52,7 +52,7 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
             s.append(formatter.format(date)).append("\n");
         }
         if (s.isEmpty()) return new ExecutionResponse(false, "Коллекция пуста!");
-        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+        return new ExecutionResponse(false, s.substring(0, s.length() - 1));
 
 
     }

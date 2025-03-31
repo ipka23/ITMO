@@ -3,17 +3,18 @@ package common_utility;
 import java.io.Serializable;
 
 public class ExecutionResponse implements Serializable {
-    private boolean isCompleted;
+    private boolean exitClient;
     private String message;
-    public ExecutionResponse(boolean isCompleted, String message) {
-        this.isCompleted = isCompleted;
+    public ExecutionResponse(boolean exitClient, String message) {
+        this.exitClient = exitClient;
         this.message = message;
     }
-    public ExecutionResponse(boolean isCompleted) {
-        this.isCompleted = isCompleted;
+    public ExecutionResponse(boolean exitClient) {
+        this.exitClient = exitClient;
+        this.message = "";
     }
-    public boolean isCompleted() {
-        return isCompleted;
+    public boolean getExitStatus() {
+        return exitClient;
     }
 
 

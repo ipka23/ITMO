@@ -225,9 +225,9 @@ public class Add extends Command {
         try {
             MusicBand musicBand = inputMusicBand();
             collectionManager.addMusicBand(musicBand);
-            return new ExecutionResponse(true, "MusicBand была успешно добавлена!");
+            return new ExecutionResponse(false, "MusicBand была успешно добавлена!");
         } catch (InputBreakException e) {
-            return new ExecutionResponse(false, e.getMessage());
+            return new ExecutionResponse(true, e.getMessage());
         }
     }
 }

@@ -45,13 +45,13 @@ public class AddIfMin extends Command {
             MusicBand newBand = add.inputMusicBand();
             if (newBand.getSales() < collectionManager.getMin().getSales()) {
                 collectionManager.addMusicBand(newBand);
-                return new ExecutionResponse(true, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
+                return new ExecutionResponse(false, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
             } else {
                 collectionManager.removeByID(id);
                 return new ExecutionResponse(false, "Элемент не был добавлен в коллекцию, т. к. его album.sales превышают элемент с минимальным album.sales!");
             }
         } catch (InputBreakException e) {
-            return new ExecutionResponse(false, e.getMessage());
+            return new ExecutionResponse(true, e.getMessage());
         }
     }
 }

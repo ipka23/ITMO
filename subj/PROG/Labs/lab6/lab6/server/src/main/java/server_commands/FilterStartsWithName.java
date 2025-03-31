@@ -48,6 +48,6 @@ public class FilterStartsWithName extends Command {
         }
         if (s.isEmpty())
             return new ExecutionResponse(false, "Нет MusicBands у которых имя начинается с " + command[1] + "!");
-        return new ExecutionResponse(true, s.substring(0, s.length() - 1));
+        return new ExecutionResponse(false, s.substring(0, s.length() - 1));
     }
 }
