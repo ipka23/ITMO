@@ -7,13 +7,15 @@ import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
 import server_utility.interfaces.Console;
 
+import java.io.IOException;
+
 /**
  * Данный класс отвечает за выполнение команды "update"
  *
  * @author ipka23
  */
 public class Update extends Command {
-    private final Console CONSOLE;
+    private final Console console;
     private final CollectionManager collectionManager;
     private final Add add;
     /**
@@ -24,7 +26,7 @@ public class Update extends Command {
      */
     public Update(Console console, CollectionManager collectionManager) {
         super("update id", "обновить значение элемента коллекции, id которого равен заданному");
-        this.CONSOLE = console;
+        this.console = console;
         this.collectionManager = collectionManager;
         this.add = new Add(console, collectionManager);
     }
@@ -50,10 +52,12 @@ public class Update extends Command {
         }
         MusicBand newBand;
         try {
-            CONSOLE.println("--------------------------------Введите новые данные для MusicBand--------------------------------");
+            console.println("--------------------------------Введите новые данные для MusicBand--------------------------------");
             newBand = add.inputMusicBand();
         } catch (InputBreakException e) {
             return new ExecutionResponse(true, "Отмена ввода...");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         band.update(newBand);
         return new ExecutionResponse(false, "Элемент с id = " + id + " был обновлён!");

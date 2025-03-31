@@ -1,10 +1,11 @@
+import common_utility.ExecutionResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import server_commands.Add;
 import server_commands.ExecuteScript;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_managers.FileManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import common_utility.ExecutionResponse;
 import server_utility.Invoker;
 import server_utility.consoles.StandartConsole;
 import server_utility.interfaces.Console;
@@ -41,6 +42,7 @@ public class Server {
 
         commandManager.addCommand("execute_script", new ExecuteScript(console, invoker));
 
+
         run();
     }
     public static void run() throws IOException {
@@ -53,8 +55,10 @@ public class Server {
                 inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 outToClient = new ObjectOutputStream(socket.getOutputStream());
                 fileManager.setFile(getFile());
+                commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
                 break;
             }
+
             responseClient();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -72,7 +76,7 @@ public class Server {
             } else if (!new File(file).canRead()) {
                 response = new ExecutionResponse(false, "Нет прав на чтение файла \"" + file + "\"!");
             } else {
-                response = new ExecutionResponse(true);
+                response = new ExecutionResponse(false);
                 logger.info("File received: {}", file);
             }
             outToClient.writeObject(response);
@@ -91,7 +95,7 @@ public class Server {
             command[0] = command[0].toLowerCase().trim();
             command[1] = command[1].toLowerCase().trim();
             if (!commandManager.getCommandsMap().containsKey(command[0])) {
-                executionResponse = new ExecutionResponse(true, "Команда \"" + command[0] + "\" не найдена! Наберите \"help\" для справки!");
+                executionResponse = new ExecutionResponse(false, "Команда \"" + command[0] + "\" не найдена! Наберите \"help\" для справки!");
             } else {
                 executionResponse = invoker.execute(command);
             }

@@ -11,21 +11,33 @@ import server_utility.exceptions.InputBreakException;
 import server_utility.exceptions.InputException;
 import server_utility.interfaces.Console;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Add extends Command {
+    private static BufferedReader inFromClient;
+    private static ObjectOutputStream outToClient;
     private Console console;
     private CollectionManager collectionManager;
 
     public Add(Console console, CollectionManager collectionManager) {
-        super("add", "добавить новый элемент в коллекцию");
+        super("add {element}", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
     }
+    public Add(Console console, CollectionManager collectionManager, BufferedReader inFromClient, ObjectOutputStream outToClient) {
+        super("add {element}", "добавить новый элемент в коллекцию");
+        this.console = console;
+        this.collectionManager = collectionManager;
+        Add.inFromClient = inFromClient;
+        Add.outToClient = outToClient;
+    }
 
-    public MusicBand inputMusicBand() {
+    public MusicBand inputMusicBand() throws IOException {
         String name = inputName();
         Coordinates coordinates = inputCoordinates();
         Long numberOfParticipants = inputNumberOfParticipants();
@@ -36,11 +48,13 @@ public class Add extends Command {
         return new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
     }
 
-    protected String inputName() {
+    protected String inputName() throws IOException {
         String name;
         while (true) {
-            console.print("name: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(new ExecutionResponse(false, "name: "));
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
+
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             name = input;
@@ -48,25 +62,28 @@ public class Add extends Command {
         }
         return name;
     }
-
-    protected Coordinates inputCoordinates() {
+    protected Coordinates inputCoordinates() throws IOException {
         Integer x;
         float y;
+        ExecutionResponse response = new ExecutionResponse(false,"coordinates.x: ");
         while (true) {
-            console.print("coordinates.x: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
                 x = Integer.parseInt(input);
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             }
         }
+        response = new ExecutionResponse(false,"coordinates.y: ");
         while (true) {
-            console.print("coordinates.y: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -74,19 +91,20 @@ public class Add extends Command {
                 if (y > 751) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Максимальное значение поля \"y\" = 751!\n");
+                response = new ExecutionResponse(false,"Максимальное значение поля \"y\" = 751!");
             }
         }
         return new Coordinates(x, y);
     }
-
-    protected Long inputNumberOfParticipants() {
+    protected Long inputNumberOfParticipants() throws IOException {
         Long numberOfParticipants;
+        ExecutionResponse response = new ExecutionResponse(false,"numberOfParticipants: ");
         while (true) {
-            console.print("numberOfParticipants: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -94,19 +112,20 @@ public class Add extends Command {
                 if (numberOfParticipants < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-            console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Значение поля \"numberOfParticipants\" должно быть больше 0!\n");
+                response = new ExecutionResponse(false,"Значение поля \"numberOfParticipants\" должно быть больше 0!");
             }
         }
         return numberOfParticipants;
     }
 
-    protected Long inputSinglesCount() {
+    protected Long inputSinglesCount() throws IOException {
         Long singlesCount;
+        ExecutionResponse response = new ExecutionResponse(false,"singlesCount: ");
         while (true) {
-            console.print("singlesCount: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -114,65 +133,70 @@ public class Add extends Command {
                 if (singlesCount < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Значение поля \"singlesCount\" должно быть больше 0!\n");
+                response = new ExecutionResponse(false,"Значение поля \"singlesCount\" должно быть больше 0!");
             }
         }
         return singlesCount;
     }
-
-    protected Date inputEstablishmentDate() {
+    protected Date inputEstablishmentDate() throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date establishmentDate;
+        ExecutionResponse response = new ExecutionResponse(false,"establishmentDate (dd-MM-yyyy): ");
         while (true) {
-            console.print("establishmentDate (dd-MM-yyyy): ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
                 establishmentDate = dateFormat.parse(input);
                 break;
             } catch (ParseException e) {
-                console.print("Неверный формат даты!\n");
+                response = new ExecutionResponse(false,"Неверный формат даты!");
             }
         }
         return establishmentDate;
     }
-
-    protected MusicGenre inputMusicGenre() {
+    protected MusicGenre inputMusicGenre() throws IOException {
         MusicGenre musicGenre;
+        ExecutionResponse response = new ExecutionResponse(false,"musicGenre (" + MusicGenre.names() + "): ");
         while (true) {
-            console.print("musicGenre (" + MusicGenre.names() + "): ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
                 musicGenre = MusicGenre.valueOf(input.toUpperCase());
                 break;
             } catch (IllegalArgumentException e) {
-                console.print("Нет такого MusicGenre!\n");
+                response = new ExecutionResponse(false,"Нет такого MusicGenre!");
             }
         }
         return musicGenre;
     }
-
-    protected Album inputAlbum() {
+    protected Album inputAlbum() throws IOException {
         String name;
         Long tracks;
         long length;
         Double sales;
+        ExecutionResponse response = new ExecutionResponse(false,"album.name: ");
         while (true) {
-            console.print("album.name: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             name = input;
             break;
         }
+        response = new ExecutionResponse(false,"album.tracks: ");
         while (true) {
-            console.print("album.tracks: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -180,14 +204,16 @@ public class Add extends Command {
                 if (tracks < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Значение поля \"tracks\" должно быть больше 0!\n");
+                response = new ExecutionResponse(false,"Значение поля \"tracks\" должно быть больше 0!");
             }
         }
+        response = new ExecutionResponse(false,"album.length: ");
         while (true) {
-            console.print("album.length: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -195,14 +221,16 @@ public class Add extends Command {
                 if (length < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Значение поля \"length\" должно быть больше 0!\n");
+                response = new ExecutionResponse(false, "Значение поля \"length\" должно быть больше 0!");
             }
         }
+        response = new ExecutionResponse(false,"album.sales: ");
         while (true) {
-            console.print("album.sales: ");
-            String input = console.nextLine().trim();
+            outToClient.writeObject(response);
+            outToClient.flush();
+            String input = inFromClient.readLine().trim();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
@@ -210,9 +238,9 @@ public class Add extends Command {
                 if (sales < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                console.print("Введите число!\n");
+                response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                console.print("Значение поля \"sales\" должно быть больше 0!\n");
+                response = new ExecutionResponse(false,"Значение поля \"sales\" должно быть больше 0!");
             }
         }
         return new Album(name, tracks, length, sales);
@@ -226,8 +254,8 @@ public class Add extends Command {
             MusicBand musicBand = inputMusicBand();
             collectionManager.addMusicBand(musicBand);
             return new ExecutionResponse(false, "MusicBand была успешно добавлена!");
-        } catch (InputBreakException e) {
-            return new ExecutionResponse(true, e.getMessage());
+        } catch (InputBreakException | IOException e) {
+            return new ExecutionResponse(false, e.getMessage());
         }
     }
 }

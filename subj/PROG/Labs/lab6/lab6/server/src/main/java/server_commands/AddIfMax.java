@@ -7,6 +7,8 @@ import common_utility.ExecutionResponse;
 import server_utility.exceptions.InputBreakException;
 import server_utility.interfaces.Console;
 
+import java.io.IOException;
+
 /**
  * Данный класс отвечает за выполнение команды "add_if_max"
  *
@@ -54,6 +56,8 @@ public class AddIfMax extends Command {
             }
         } catch (InputBreakException e) {
             return new ExecutionResponse(true, e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
