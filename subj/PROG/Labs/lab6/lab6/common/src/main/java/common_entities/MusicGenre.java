@@ -1,4 +1,4 @@
-package entities;
+package common_entities;
 
 /**
  * Данный класс enum представляет доступные жанры музыки

@@ -1,3 +1,5 @@
+package common_utility;
+
 import java.io.Serializable;
 
 public class ExecutionResponse implements Serializable {
@@ -15,14 +17,8 @@ public class ExecutionResponse implements Serializable {
     }
 
 
-    public boolean isSuccess() {
-        return isCompleted;
-    }
     public String getMessage() {
         return message;
-    }
-    public boolean getExecutionResult() {
-        return isCompleted;
     }
     @Override
     public String toString() {
