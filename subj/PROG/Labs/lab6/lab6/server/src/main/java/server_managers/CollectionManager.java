@@ -1,9 +1,9 @@
 package server_managers;
 
 import common_entities.MusicBand;
-import server_utility.CollectionType;
 import common_utility.ExecutionResponse;
-import common_utility.exceptions.ExitException;
+import common_utility.exceptions.ExitClientException;
+import server_utility.CollectionType;
 import server_utility.interfaces.Console;
 
 import java.time.LocalDate;
@@ -116,7 +116,7 @@ public class CollectionManager {
                 userCommand = userCommand.toLowerCase().trim();
                 switch (userCommand) {
                     case "exit":
-                        throw new ExitException();
+                        throw new ExitClientException();
                     case "":
                         continue;
                     case "1", "hashset":
@@ -133,8 +133,8 @@ public class CollectionManager {
                         continue;
                 }
             }
-        } catch (ExitException e) {
-            System.exit(0);
+        } catch (ExitClientException e) {
+            response = new ExecutionResponse(true, "\n" + e.getMessage());
         }
         return response;
     }
