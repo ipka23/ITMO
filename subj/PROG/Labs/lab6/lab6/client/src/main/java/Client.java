@@ -1,20 +1,15 @@
-import common_utility.exceptions.ExitClientException;
 import common_utility.ExecutionResponse;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
     public static int PORT = 1123;
-    private static ServerSocket serverSocket;
     private static Socket socket;
     private static Scanner userInput;
     private static ObjectInputStream inFromServer;
+    private static PrintStream printOutFromServer;
     private static BufferedWriter outToServer;
     private static String file;
 
@@ -51,10 +46,17 @@ public class Client {
         }
     }
 
-    private static void sendMessage() throws IOException {
+    private static void sendMessage() throws IOException, ClassNotFoundException {
         try {
             while (true) {
-                outToServer.write(input());
+                String message = input();
+//                if (message.equals("add")) {
+//                    outToServer.write(message);
+//                    outToServer.newLine();
+//                    outToServer.flush();
+//                    printOutFromServer = inFromServer;
+//                }
+                outToServer.write(message);
                 outToServer.newLine();
                 outToServer.flush();
                 ExecutionResponse response = (ExecutionResponse) inFromServer.readObject();
@@ -81,9 +83,7 @@ public class Client {
             System.out.print("$ ");
             String line = userInput.nextLine().trim();
             if (line.isEmpty()) continue;
-            if (line.equals("exit")) {
-                throw new ExitClientException();
-            }
+
             return line;
         }
     }

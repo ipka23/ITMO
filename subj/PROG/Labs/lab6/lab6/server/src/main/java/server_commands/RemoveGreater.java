@@ -7,6 +7,7 @@ import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
 import server_utility.interfaces.Console;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -56,6 +57,8 @@ public class RemoveGreater extends Command {
             return new ExecutionResponse(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
         } catch (InputBreakException e) {
             return new ExecutionResponse(true, e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
