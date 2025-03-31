@@ -83,7 +83,6 @@ public class Client {
             System.out.print("$ ");
             String line = userInput.nextLine().trim();
             if (line.isEmpty()) continue;
-
             return line;
         }
     }
