@@ -11,8 +11,7 @@ import server_utility.interfaces.Console;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
-// execute_script C:\Users\ilyai\OneDrive\Рабочий стол\ITMO\subj\PROG\Labs\Lab5.0\FinaLab5\script.txt
-// execute_script /Users/ipka23/Desktop/ITMO/Subj/PROG/Labs/Lab5.0/FinaLab5/script.txt
+
 public class ExecuteScript extends Command {
     private Console console;
     private final Invoker invoker;
