@@ -3,7 +3,7 @@ package server_commands;
 import common_entities.MusicBand;
 import server_managers.CollectionManager;
 import server_utility.Command;
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import server_utility.exceptions.InputBreakException;
 import server_utility.interfaces.Console;
 

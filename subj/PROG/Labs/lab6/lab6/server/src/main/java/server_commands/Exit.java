@@ -1,7 +1,6 @@
 package server_commands;
 
-import common_utility.ExecutionResponse;
-import common_utility.exceptions.ExitClientException;
+import common_utility.network.ExecutionResponse;
 import server_utility.Command;
 
 /**
@@ -25,6 +24,6 @@ public class Exit extends Command {
      */
     @Override
     public ExecutionResponse execute(String[] command) {
-        throw new ExitClientException();
+        return new ExecutionResponse(true, "Завершение работы клиента...");
     }
 }

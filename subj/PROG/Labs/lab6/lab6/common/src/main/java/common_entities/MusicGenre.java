@@ -17,9 +17,12 @@ public enum MusicGenre {
      */
     public static String names() {
         StringBuilder nameList = new StringBuilder();
-        for (var musicGenre : values()) {
-            nameList.append(musicGenre.name()).append(", ");
+        for (int i = 0 ; i < MusicGenre.values().length ; i++) {
+            nameList.append(i).append(" - ").append(MusicGenre.values()[i]).append(";").append("\n");
         }
-        return nameList.substring(0, nameList.length() - 2);
+        nameList = new StringBuilder(nameList.substring(0, nameList.length() - 2));
+        nameList.append(".");
+        return nameList.toString();
     }
+
 }

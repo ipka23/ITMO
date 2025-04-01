@@ -1,4 +1,4 @@
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server_commands.Add;
@@ -13,13 +13,12 @@ import server_utility.interfaces.Console;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Server {
     public static int PORT = 1123;
     private static ServerSocket serverSocket;
     private static Socket socket;
-    private static Scanner scanner = new Scanner(System.in);
+//    private static Scanner scanner = new Scanner(System.in);
     private static BufferedReader inFromClient;
     private static ObjectOutputStream outToClient;
     private static final Logger logger = LoggerFactory.getLogger(Server.class);

@@ -1,6 +1,6 @@
 package server_commands;
 
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;

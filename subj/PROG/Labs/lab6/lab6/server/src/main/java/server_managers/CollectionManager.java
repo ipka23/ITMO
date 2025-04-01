@@ -1,7 +1,7 @@
 package server_managers;
 
 import common_entities.MusicBand;
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import common_utility.exceptions.ExitClientException;
 import server_utility.CollectionType;
 import server_utility.interfaces.Console;
