@@ -1,6 +1,6 @@
 package server_commands;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_utility.Command;
 
 /**
@@ -23,7 +23,7 @@ public class Exit extends Command {
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
     @Override
-    public ExecutionResponse execute(String[] command) {
-        return new ExecutionResponse(true, "Завершение работы клиента...");
+    public Response execute(String[] command) {
+        return new Response(true, "Завершение работы клиента...");
     }
 }

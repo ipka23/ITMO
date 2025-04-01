@@ -1,6 +1,6 @@
 package server_commands;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
@@ -32,21 +32,21 @@ public class RemoveByID extends Command {
      * @param command команда введенная пользователем
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (command[1].trim().isEmpty()) {
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
         long id;
         try {
             id = Long.parseLong(command[1].trim());
         } catch (NumberFormatException e) {
-            return new ExecutionResponse(false, "Неверный формат id!");
+            return new Response(false, "Неверный формат id!");
         }
         var band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new ExecutionResponse(false, "В коллекции нет элемента с таким id!");
+            return new Response(false, "В коллекции нет элемента с таким id!");
         }
         collectionManager.removeByID(id);
-        return new ExecutionResponse(false, "Элемент с id = " + id + " был удален из коллекции!");
+        return new Response(false, "Элемент с id = " + id + " был удален из коллекции!");
     }
 }

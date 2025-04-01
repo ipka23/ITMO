@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
@@ -34,14 +34,14 @@ public class MaxByBestBestAlbum extends Command {
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         MusicBand bestBand;
         bestBand = collectionManager.getMax();
         StringBuilder message = new StringBuilder();
         message.append("MusicBand с максимальным количеством album.sales:").append("\n");
         message.append(bestBand.toString());
-        return new ExecutionResponse(false, message.toString());
+        return new Response(false, message.toString());
     }
 }

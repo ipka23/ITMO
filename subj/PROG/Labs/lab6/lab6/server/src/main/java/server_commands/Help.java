@@ -1,6 +1,6 @@
 package server_commands;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CommandManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
@@ -33,14 +33,14 @@ public class Help extends Command {
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         StringBuilder s = new StringBuilder();
         if (!command[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         s.append("--------------------------------Доступные команды--------------------------------\n");
         for (Command userCommand : commandManager.getCommandsMap().values()) {
             s.append(userCommand.getName()).append(": ").append(userCommand.getDescription()).append("\n");
         }
-        return new ExecutionResponse(false, s.substring(0, s.length() - 1));
+        return new Response(false, s.substring(0, s.length() - 1));
     }
 }

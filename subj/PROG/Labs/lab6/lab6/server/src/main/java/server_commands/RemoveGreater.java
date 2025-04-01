@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
@@ -40,23 +40,23 @@ public class RemoveGreater extends Command {
      * @param command команда введенная пользователем
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         Collection<MusicBand> collection = collectionManager.getCollection();
 
         try {
             MusicBand newBand = add.inputMusicBand();
             Iterator<MusicBand> iterator = collection.iterator();
-            if (collection.isEmpty()) return new ExecutionResponse(false, "Коллекция пуста!");
+            if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
             while (iterator.hasNext()) {
                 if (iterator.next().getSales() > newBand.getSales()) {
                     iterator.remove();
                 }
             }
-            return new ExecutionResponse(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
+            return new Response(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
         } catch (InputBreakException e) {
-            return new ExecutionResponse(true, e.getMessage());
+            return new Response(true, e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

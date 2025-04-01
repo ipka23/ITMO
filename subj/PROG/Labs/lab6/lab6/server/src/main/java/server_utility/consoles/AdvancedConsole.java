@@ -1,6 +1,6 @@
 package server_utility.consoles;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import common_utility.exceptions.ExitException;
 import server_utility.CommandHistory;
 import server_utility.Invoker;
@@ -37,7 +37,7 @@ public class AdvancedConsole extends StandartConsole {
     public void launch() {
         collectionManager.chooseTypeOfCollection();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            ExecutionResponse commandStatus;
+            Response commandStatus;
             StringBuilder input = new StringBuilder();
             int character;
 

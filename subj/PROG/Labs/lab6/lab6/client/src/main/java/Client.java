@@ -1,7 +1,11 @@
-import common_utility.network.ExecutionResponse;
+import common_entities.MusicBand;
+import common_utility.network.Request;
+import common_utility.network.Response;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Client {
@@ -9,10 +13,9 @@ public class Client {
     private static Socket socket;
     private static Scanner userInput;
     private static ObjectInputStream inFromServer;
-    private static PrintStream printOutFromServer;
-    private static BufferedWriter outToServer;
+    private static ObjectOutputStream outToServer;
     private static String file;
-
+    private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
@@ -30,36 +33,38 @@ public class Client {
         socket = new Socket("localhost", PORT);
         userInput = new Scanner(System.in);
         inFromServer = new ObjectInputStream(socket.getInputStream());
-        outToServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        outToServer = new ObjectOutputStream(socket.getOutputStream());
         sendFile(file);
         sendMessage();
     }
 
     private static void sendFile(String file) throws IOException, ClassNotFoundException {
-        outToServer.write(file);
-        outToServer.newLine();
+        outToServer.writeChars(file);
         outToServer.flush();
-        ExecutionResponse response = (ExecutionResponse) inFromServer.readObject();
+        Response response = (Response) inFromServer.readObject();
         if (response.getExitStatus()) {
             System.out.print(response);
             System.exit(222);
         }
+        System.out.println(response);
+
     }
 
-    private static void sendMessage() throws IOException, ClassNotFoundException {
+    private static void sendMessage() {
         try {
             while (true) {
                 String message = input();
+                Request request = new Request(message);
+
 //                if (message.equals("add")) {
 //                    outToServer.write(message);
 //                    outToServer.newLine();
 //                    outToServer.flush();
 //                    printOutFromServer = inFromServer;
 //                }
-                outToServer.write(message);
-                outToServer.newLine();
+                outToServer.writeObject(request);
                 outToServer.flush();
-                ExecutionResponse response = (ExecutionResponse) inFromServer.readObject();
+                Response response = (Response) inFromServer.readObject();
 
                 if (response.getExitStatus()) {
                     System.out.print(response);
@@ -73,8 +78,6 @@ public class Client {
             System.out.println(e.getMessage());
         }
     }
-
-
 
 
 

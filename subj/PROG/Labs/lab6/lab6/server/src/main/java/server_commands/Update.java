@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
@@ -37,29 +37,29 @@ public class Update extends Command {
      * @param command команда введенная пользователем
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (command[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         long id;
         try {
             id = Long.parseLong(command[1].trim());
         } catch (NumberFormatException e) {
-            return new ExecutionResponse(false, "Неверный формат id!");
+            return new Response(false, "Неверный формат id!");
         }
         MusicBand band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new ExecutionResponse(false, "В коллекции нет элемента с таким id!");
+            return new Response(false, "В коллекции нет элемента с таким id!");
         }
         MusicBand newBand;
         try {
             console.println("--------------------------------Введите новые данные для MusicBand--------------------------------");
             newBand = add.inputMusicBand();
         } catch (InputBreakException e) {
-            return new ExecutionResponse(true, "Отмена ввода...");
+            return new Response(true, "Отмена ввода...");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         band.update(newBand);
-        return new ExecutionResponse(false, "Элемент с id = " + id + " был обновлён!");
+        return new Response(false, "Элемент с id = " + id + " был обновлён!");
     }
 }

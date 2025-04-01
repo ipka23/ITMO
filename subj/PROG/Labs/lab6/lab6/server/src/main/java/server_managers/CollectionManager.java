@@ -1,7 +1,7 @@
 package server_managers;
 
 import common_entities.MusicBand;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import common_utility.exceptions.ExitClientException;
 import server_utility.CollectionType;
 import server_utility.interfaces.Console;
@@ -106,9 +106,9 @@ public class CollectionManager {
         collection.remove(band);
     }
 
-    public ExecutionResponse chooseTypeOfCollection() {
+    public Response chooseTypeOfCollection() {
         String userCommand = "";
-        ExecutionResponse response = null;
+        Response response = null;
         try {
             while (true) {
                 console.print(CollectionType.choosingTypePrompt());
@@ -123,18 +123,18 @@ public class CollectionManager {
                         fileManager.setHashSet();
                         collection = new HashSet<>();
                         fileManager.loadCollectionFromFile();
-                        response = new ExecutionResponse(true, "Тип коллекции - HashSet");
+                        response = new Response(true, "Тип коллекции - HashSet");
                     case "2", "linkedlist":
                         fileManager.setLinkedList();
                         collection = new LinkedList<>();
                         fileManager.loadCollectionFromFile();
-                        response = new ExecutionResponse(true, "Тип коллекции - LinkedList");
+                        response = new Response(true, "Тип коллекции - LinkedList");
                     default:
                         continue;
                 }
             }
         } catch (ExitClientException e) {
-            response = new ExecutionResponse(true, "\n" + e.getMessage());
+            response = new Response(true, "\n" + e.getMessage());
         }
         return response;
     }

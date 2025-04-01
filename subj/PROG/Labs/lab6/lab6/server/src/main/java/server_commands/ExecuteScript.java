@@ -1,6 +1,6 @@
 package server_commands;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import common_utility.exceptions.ExitClientException;
 import server_utility.Command;
 import server_utility.Invoker;
@@ -25,7 +25,7 @@ public class ExecuteScript extends Command {
         this.invoker = invoker;
     }
 
-    public ExecutionResponse runScript(String fileName) {
+    public Response runScript(String fileName) {
         currentDepth++;
         if (currentDepth / 2 > MAX_RECURSION_DEPTH) {
             currentDepth = 0;
@@ -45,7 +45,7 @@ public class ExecuteScript extends Command {
 
                 String[] command = (line + " ").split(" ", 2);
 
-                ExecutionResponse response = invoker.execute(command);
+                Response response = invoker.execute(command);
 
                 if (response == null) {
                     console.setScanner(new Scanner(System.in));
@@ -60,21 +60,21 @@ public class ExecuteScript extends Command {
             }
         } catch (FileNotFoundException e) {
             console.setScanner(new Scanner(System.in));
-            return new ExecutionResponse(false, "Файл: \"" + fileName + "\" не найден!");
+            return new Response(false, "Файл: \"" + fileName + "\" не найден!");
         } catch (RecursionDepthExceedException | ScriptExecutionException e) {
             console.setScanner(new Scanner(System.in));
-            return new ExecutionResponse(false, "\n" + e.getMessage());
+            return new Response(false, "\n" + e.getMessage());
         } catch (ExitClientException e) {
-            return new ExecutionResponse(true, "\n" + e.getMessage());
+            return new Response(true, "\n" + e.getMessage());
         }
         console.setScanner(new Scanner(System.in));
-        return new ExecutionResponse(false, scriptFileContent.substring(0, scriptFileContent.length() - 1));
+        return new Response(false, scriptFileContent.substring(0, scriptFileContent.length() - 1));
     }
 
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (command[1].trim().isEmpty()) {
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
         scriptName = command[1].trim();
         return runScript(scriptName);
