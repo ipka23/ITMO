@@ -1,39 +1,36 @@
 ORG 0x2A6
 
-X: WORD 0x0001
-Y: WORD 0xFECB
-Z: WORD 0x0E74
-A: WORD 0x0E3A
-B: WORD 0x00A1
-R: WORD ?
-
-
 START:          CLA
                 ST R
                 LD Z
                 INC
                 PUSH
-                CALL $FOO
+                CALL $FUNC
                 POP
                 SUB R
                 ST R
                 LD Y
                 DEC
-                CALL $FOO
+                PUSH
+                CALL $FUNC
                 POP
                 ADD R
                 ST R
                 LD X
                 PUSH
-                CALL $FOO
+                CALL $FUNC
                 POP
                 ADD R
                 ST R
 END_PROGRAM:    HLT
 
+Z: WORD 0x0E74
+Y: WORD 0xFEC8
+X: WORD 0x0001
+R: WORD ?
 
-
-FOO:    LD &1
+ORG 0x688
+FUNC:   LD &1
         BMI LOAD_A
         BEQ LOAD_A
         CMP A
@@ -45,3 +42,5 @@ FOO:    LD &1
 LOAD_A: LD A
 RES:    ST &1
         RET
+A: WORD 0x0E3A
+B: WORD 0x00A1

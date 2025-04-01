@@ -1,7 +1,5 @@
-ORG 0x228
-
+ORG 0x223
 word_beginning: WORD 0x552
-
 encoded_string: WORD ?
 stop_symbol:    WORD 0x000D
 current_symbol: WORD 0x552
@@ -34,3 +32,9 @@ symbol_2:       IN 3
 end_program:    LD word_beginning
                 ST current_symbol
                 HLT
+
+
+ORG 0x552
+WORD 0xCECF ; О, П
+ORG 0x553
+WORD 0xC40D ; Д, СТОП_СИМВ
