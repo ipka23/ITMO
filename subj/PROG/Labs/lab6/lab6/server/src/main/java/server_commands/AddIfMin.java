@@ -1,7 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
@@ -39,21 +39,21 @@ public class AddIfMin extends Command {
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         try {
             if (!command[1].isEmpty())
-                return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+                return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
             long id = collectionManager.getFreeId();
             MusicBand newBand = add.inputMusicBand();
             if (newBand.getSales() < collectionManager.getMin().getSales()) {
                 collectionManager.addMusicBand(newBand);
-                return new ExecutionResponse(false, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
+                return new Response(false, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
             } else {
                 collectionManager.removeByID(id);
-                return new ExecutionResponse(false, "Элемент не был добавлен в коллекцию, т. к. его album.sales превышают элемент с минимальным album.sales!");
+                return new Response(false, "Элемент не был добавлен в коллекцию, т. к. его album.sales превышают элемент с минимальным album.sales!");
             }
         } catch (InputBreakException e) {
-            return new ExecutionResponse(true, e.getMessage());
+            return new Response(true, e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

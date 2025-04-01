@@ -1,6 +1,6 @@
 package server_utility.consoles;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import common_utility.exceptions.ExitException;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
@@ -88,7 +88,7 @@ public class StandartConsole implements Console {
                 String[] command = (input + " ").split(" ", 2);
                 command[0] = command[0].toLowerCase().trim();
                 command[1] = command[1].toLowerCase().trim();
-                ExecutionResponse commandStatus = invoker.execute(command);
+                Response commandStatus = invoker.execute(command);
                 print(commandStatus.getMessage());
             }
         } catch (ExitException e) {

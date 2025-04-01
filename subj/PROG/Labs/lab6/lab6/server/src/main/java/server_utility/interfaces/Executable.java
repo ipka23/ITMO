@@ -1,7 +1,7 @@
 package server_utility.interfaces;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 
 public interface Executable {
-    ExecutionResponse execute(String[] command);
+    Response execute(String[] command);
 }

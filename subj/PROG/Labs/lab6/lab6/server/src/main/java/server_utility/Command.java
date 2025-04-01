@@ -1,6 +1,6 @@
 package server_utility;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_utility.interfaces.Executable;
 
 
@@ -22,5 +22,5 @@ public abstract class Command implements Executable {
         return description;
     }
 
-    public abstract ExecutionResponse execute(String[] command);
+    public abstract Response execute(String[] command);
 }

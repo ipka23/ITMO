@@ -1,6 +1,6 @@
 package server_utility;
 
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_managers.CommandManager;
 import server_utility.interfaces.Console;
 import server_utility.interfaces.Executable;
@@ -26,9 +26,9 @@ public class Invoker implements Executable {
 
 
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (commandManager.getCommand(command[0].trim()) == null) {
-            return new ExecutionResponse(false, "Команда \"" + command[0].trim() + "\" не найдена!\nНаберите \"help\" для справки!");
+            return new Response(false, "Команда \"" + command[0].trim() + "\" не найдена!\nНаберите \"help\" для справки!");
         }
         return commandManager.getCommand(command[0]).execute(command);
     }

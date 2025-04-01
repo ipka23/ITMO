@@ -3,7 +3,7 @@ package server_commands;
 import common_entities.MusicBand;
 import server_managers.CollectionManager;
 import server_utility.Command;
-import common_utility.network.ExecutionResponse;
+import common_utility.network.Response;
 import server_utility.interfaces.Console;
 
 import java.text.SimpleDateFormat;
@@ -37,9 +37,9 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
      * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
      */
     @Override
-    public ExecutionResponse execute(String[] command) {
+    public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
-            return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         Collection<MusicBand> collection = collectionManager.getCollection();
         StringBuilder s = new StringBuilder();
         List<Date> dates = new ArrayList<>();
@@ -51,8 +51,8 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
         for (Date date : dates) {
             s.append(formatter.format(date)).append("\n");
         }
-        if (s.isEmpty()) return new ExecutionResponse(false, "Коллекция пуста!");
-        return new ExecutionResponse(false, s.substring(0, s.length() - 1));
+        if (s.isEmpty()) return new Response(false, "Коллекция пуста!");
+        return new Response(false, s.substring(0, s.length() - 1));
 
 
     }
