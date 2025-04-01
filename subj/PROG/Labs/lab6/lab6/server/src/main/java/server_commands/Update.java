@@ -56,7 +56,7 @@ public class Update extends Command {
             newBand = add.inputMusicBand();
         } catch (InputBreakException e) {
             return new Response(true, "Отмена ввода...");
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         band.update(newBand);
