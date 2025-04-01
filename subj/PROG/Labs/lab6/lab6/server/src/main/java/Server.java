@@ -17,11 +17,11 @@ import java.net.Socket;
 
 public class Server {
     public static int PORT = 1123;
-    private static ServerSocket serverSocket;
-    private static Socket socket;
+    private static ServerSocket serverSocket = null;
+    private static Socket socket = null;
 //    private static Scanner scanner = new Scanner(System.in);
-    private static ObjectInputStream inFromClient;
-    private static ObjectOutputStream outToClient;
+    private static ObjectInputStream inFromClient = null;
+    private static ObjectOutputStream outToClient = null;
     private static final Logger logger = LoggerFactory.getLogger(Server.class);
     private static String collectionFileName;
 
@@ -54,8 +54,10 @@ public class Server {
             while (true) {
                 socket = serverSocket.accept();
                 logger.info("Client has connected!");
-                inFromClient = new ObjectInputStream(socket.getInputStream());
-                outToClient = new ObjectOutputStream(socket.getOutputStream());
+                outToClient = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+                outToClient.flush();
+                inFromClient = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+                logger.info("Successfully declared in & out streams");
                 fileManager.setFile(getFile());
                 commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
                 break;
@@ -68,11 +70,8 @@ public class Server {
     }
 
     private static String getFile() throws IOException, ClassNotFoundException {
-        StringBuilder f = new StringBuilder();
-        for (int i = 0; i < inFromClient.available() ; i++) {
-            f.append(inFromClient.readChar());
-        }
-        collectionFileName = f.toString();
+        Request request = (Request) inFromClient.readObject();
+        collectionFileName = request.getMessage();
         Response response;
         try {
             if (collectionFileName.isEmpty()) {
@@ -82,7 +81,7 @@ public class Server {
             } else if (!new File(collectionFileName).canRead()) {
                 response = new Response(true, "Нет прав на чтение файла \"" + collectionFileName + "\"!");
             } else {
-                response = new Response(false, "Файл получен");
+                response = new Response(false);
                 logger.info("File received: {}", collectionFileName);
             }
             outToClient.writeObject(response);

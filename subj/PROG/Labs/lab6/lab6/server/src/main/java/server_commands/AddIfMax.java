@@ -56,7 +56,7 @@ public class AddIfMax extends Command {
             }
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

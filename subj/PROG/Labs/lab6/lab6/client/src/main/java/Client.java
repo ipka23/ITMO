@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 public class Client {
     public static int PORT = 1123;
-    private static Socket socket;
+    private static Socket socket = null;
     private static Scanner userInput;
-    private static ObjectInputStream inFromServer;
-    private static ObjectOutputStream outToServer;
+    private static ObjectInputStream inFromServer = null;
+    private static ObjectOutputStream outToServer = null;
     private static String file;
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
@@ -24,29 +24,40 @@ public class Client {
         } else {
             file = args[0];
         }
-        run();
+
+        try {
+            run();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            socket.close();
+            inFromServer.close();
+            outToServer.close();
+            userInput.close();
+        }
 
 
     }
 
     public static void run() throws IOException, ClassNotFoundException {
         socket = new Socket("localhost", PORT);
-        userInput = new Scanner(System.in);
-        inFromServer = new ObjectInputStream(socket.getInputStream());
-        outToServer = new ObjectOutputStream(socket.getOutputStream());
+        outToServer = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+        outToServer.flush();
+        inFromServer = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
         sendFile(file);
+        userInput = new Scanner(System.in);
         sendMessage();
     }
 
     private static void sendFile(String file) throws IOException, ClassNotFoundException {
-        outToServer.writeChars(file);
+        outToServer.flush();
+        outToServer.writeObject(new Request(file));
         outToServer.flush();
         Response response = (Response) inFromServer.readObject();
         if (response.getExitStatus()) {
             System.out.print(response);
             System.exit(222);
         }
-        System.out.println(response);
 
     }
 
@@ -54,16 +65,20 @@ public class Client {
         try {
             while (true) {
                 String message = input();
+                if (message.isEmpty()) {
+                    System.out.println(inFromServer.readObject());
+                    message = input();
+                }
                 Request request = new Request(message);
 
-//                if (message.equals("add")) {
-//                    outToServer.write(message);
-//                    outToServer.newLine();
-//                    outToServer.flush();
-//                    printOutFromServer = inFromServer;
-//                }
+
                 outToServer.writeObject(request);
                 outToServer.flush();
+//                System.out.println(message);
+
+//                else {
+//                    System.out.println("$ ");
+//                }
                 Response response = (Response) inFromServer.readObject();
 
                 if (response.getExitStatus()) {
@@ -81,7 +96,7 @@ public class Client {
 
 
 
-    public static String input() {
+    public static String input() throws IOException, ClassNotFoundException {
         while (true) {
             System.out.print("$ ");
             String line = userInput.nextLine().trim();

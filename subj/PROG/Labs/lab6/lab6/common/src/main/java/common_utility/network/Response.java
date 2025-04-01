@@ -23,7 +23,7 @@ public class Response implements Serializable {
 
     public Response(boolean exitClient) {
         this.exitClient = exitClient;
-        this.message = "";
+        this.message = null;
     }
 
     public Response(boolean exitClient, String message, Collection<MusicBand> musicBandsCollection) {

@@ -57,7 +57,7 @@ public class RemoveGreater extends Command {
             return new Response(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
