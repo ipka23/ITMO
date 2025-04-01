@@ -1,6 +1,6 @@
 package server_utility.consoles;
 
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import common_utility.exceptions.ExitException;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;

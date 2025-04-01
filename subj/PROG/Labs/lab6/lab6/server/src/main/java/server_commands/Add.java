@@ -4,7 +4,7 @@ import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
 import common_entities.MusicGenre;
-import common_utility.ExecutionResponse;
+import common_utility.network.ExecutionResponse;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.exceptions.InputBreakException;
@@ -25,12 +25,12 @@ public class Add extends Command {
     private CollectionManager collectionManager;
 
     public Add(Console console, CollectionManager collectionManager) {
-        super("add {element}", "добавить новый элемент в коллекцию");
+        super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
     }
     public Add(Console console, CollectionManager collectionManager, BufferedReader inFromClient, ObjectOutputStream outToClient) {
-        super("add {element}", "добавить новый элемент в коллекцию");
+        super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
         Add.inFromClient = inFromClient;
@@ -51,7 +51,7 @@ public class Add extends Command {
     protected String inputName() throws IOException {
         String name;
         while (true) {
-            outToClient.writeObject(new ExecutionResponse(false, "name: "));
+            outToClient.writeObject(new ExecutionResponse(false, "Введите название музыкальной банды"));
             outToClient.flush();
             String input = inFromClient.readLine().trim();
 
@@ -65,7 +65,7 @@ public class Add extends Command {
     protected Coordinates inputCoordinates() throws IOException {
         Integer x;
         float y;
-        ExecutionResponse response = new ExecutionResponse(false,"coordinates.x: ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите координату \"x\"");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -79,7 +79,7 @@ public class Add extends Command {
                 response = new ExecutionResponse(false,"Введите число!");
             }
         }
-        response = new ExecutionResponse(false,"coordinates.y: ");
+        response = new ExecutionResponse(false,"Введите координату \"y\"");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -100,7 +100,7 @@ public class Add extends Command {
     }
     protected Long inputNumberOfParticipants() throws IOException {
         Long numberOfParticipants;
-        ExecutionResponse response = new ExecutionResponse(false,"numberOfParticipants: ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите количество участников");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -114,7 +114,7 @@ public class Add extends Command {
             } catch (NumberFormatException e) {
                 response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                response = new ExecutionResponse(false,"Значение поля \"numberOfParticipants\" должно быть больше 0!");
+                response = new ExecutionResponse(false,"Количество участников не может быть меньше 0!");
             }
         }
         return numberOfParticipants;
@@ -122,7 +122,7 @@ public class Add extends Command {
 
     protected Long inputSinglesCount() throws IOException {
         Long singlesCount;
-        ExecutionResponse response = new ExecutionResponse(false,"singlesCount: ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите количество синглов");
         while (true) {
             outToClient.writeObject(response);
             String input = inFromClient.readLine().trim();
@@ -135,7 +135,7 @@ public class Add extends Command {
             } catch (NumberFormatException e) {
                 response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                response = new ExecutionResponse(false,"Значение поля \"singlesCount\" должно быть больше 0!");
+                response = new ExecutionResponse(false,"Количество синглов не может быть меньше 0!");
             }
         }
         return singlesCount;
@@ -143,7 +143,7 @@ public class Add extends Command {
     protected Date inputEstablishmentDate() throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date establishmentDate;
-        ExecutionResponse response = new ExecutionResponse(false,"establishmentDate (dd-MM-yyyy): ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите дату создания музыкальной банды в формате \"dd-MM-yyyy\"");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -161,7 +161,8 @@ public class Add extends Command {
     }
     protected MusicGenre inputMusicGenre() throws IOException {
         MusicGenre musicGenre;
-        ExecutionResponse response = new ExecutionResponse(false,"musicGenre (" + MusicGenre.names() + "): ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите музыкальный жанр из списка\n" + MusicGenre.names());
+        Integer ordinal;
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -172,7 +173,14 @@ public class Add extends Command {
                 musicGenre = MusicGenre.valueOf(input.toUpperCase());
                 break;
             } catch (IllegalArgumentException e) {
-                response = new ExecutionResponse(false,"Нет такого MusicGenre!");
+
+            }
+            try {
+                ordinal = Integer.parseInt(input);
+                musicGenre = MusicGenre.values()[ordinal];
+                break;
+            } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+                response = new ExecutionResponse(false,"Введите музыкальный жанр из списка!");
             }
         }
         return musicGenre;
@@ -182,7 +190,7 @@ public class Add extends Command {
         Long tracks;
         long length;
         Double sales;
-        ExecutionResponse response = new ExecutionResponse(false,"album.name: ");
+        ExecutionResponse response = new ExecutionResponse(false,"Введите имя альбома");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -192,7 +200,7 @@ public class Add extends Command {
             name = input;
             break;
         }
-        response = new ExecutionResponse(false,"album.tracks: ");
+        response = new ExecutionResponse(false,"Введите количество треков альбома");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -206,10 +214,10 @@ public class Add extends Command {
             } catch (NumberFormatException e) {
                 response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                response = new ExecutionResponse(false,"Значение поля \"tracks\" должно быть больше 0!");
+                response = new ExecutionResponse(false,"Количество треков альбома не может быть меньше 0!");
             }
         }
-        response = new ExecutionResponse(false,"album.length: ");
+        response = new ExecutionResponse(false,"Введите длину альбома");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -223,10 +231,10 @@ public class Add extends Command {
             } catch (NumberFormatException e) {
                 response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                response = new ExecutionResponse(false, "Значение поля \"length\" должно быть больше 0!");
+                response = new ExecutionResponse(false, "Длина альбома не может быть меньше 0!");
             }
         }
-        response = new ExecutionResponse(false,"album.sales: ");
+        response = new ExecutionResponse(false,"Введите количество продаж альбома");
         while (true) {
             outToClient.writeObject(response);
             outToClient.flush();
@@ -240,7 +248,7 @@ public class Add extends Command {
             } catch (NumberFormatException e) {
                 response = new ExecutionResponse(false,"Введите число!");
             } catch (InputException e) {
-                response = new ExecutionResponse(false,"Значение поля \"sales\" должно быть больше 0!");
+                response = new ExecutionResponse(false,"Количество продаж альбома не может быть меньше 0!");
             }
         }
         return new Album(name, tracks, length, sales);
