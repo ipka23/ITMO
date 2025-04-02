@@ -13,7 +13,6 @@ symbol_1:       IN 3
                 BEQ symbol_1
                 LD (current_symbol)+
                 ST encoded_string
-                SWAB
                 AND mask
                 CMP stop_symbol
                 BEQ end_program
@@ -23,6 +22,7 @@ symbol_2:       IN 3
                 AND #0x40
                 BEQ symbol_2
                 LD encoded_string
+                SWAB
                 AND mask
                 CMP stop_symbol
                 BEQ end_program
@@ -35,6 +35,6 @@ end_program:    LD word_beginning
 
 
 ORG 0x552
-WORD 0xCECF ; О, П
+WORD 0xCFCE ; П, О
 ORG 0x553
-WORD 0xC40D ; Д, СТОП_СИМВ
+WORD 0x0DC4 ; СТОП_СИМВ, Д
