@@ -30,12 +30,13 @@ public class Client {
             run();
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        } finally {
-            socket.close();
-            inFromServer.close();
-            outToServer.close();
-            userInput.close();
         }
+//        finally {
+//            socket.close();
+//            inFromServer.close();
+//            outToServer.close();
+//            userInput.close();
+//        }
 
 
     }
@@ -51,7 +52,7 @@ public class Client {
     }
 
     private static void sendFile(String file) throws IOException, ClassNotFoundException {
-        outToServer.flush();
+//        outToServer.flush();
         outToServer.writeObject(new Request(file));
         outToServer.flush();
         Response response = (Response) inFromServer.readObject();
@@ -64,33 +65,19 @@ public class Client {
 
     private static void sendMessage() {
         try {
+
             while (true) {
-
-//                System.out.print("$ ");
-//                String message = userInput.nextLine().trim();
-//                if (message.isEmpty()) {
-//                    System.out.print("$ ");
-//                    System.out.println(inFromServer.readObject());
-//                    continue;
-//                }
-
-//                String message = input();
-                System.out.print(PROMPT);
+                String prompt = (String) inFromServer.readObject();
+                System.out.print(prompt);
                 String message = userInput.nextLine().trim();
-                if (message.isEmpty()) continue;
+//                if (message.isEmpty()) continue;
                 Request request = new Request(message);
-//                message = userInput.nextLine().trim();
-
-
                 outToServer.writeObject(request);
                 outToServer.flush();
-                Response response = (Response) inFromServer.readObject();
-//                if (message.isEmpty()) {
-//                    System.out.println(PROMPT);
-//                    System.out.println(response);
-//                    continue;
-//                }
 
+                if (message.isEmpty()) continue;
+
+                Response response = (Response) inFromServer.readObject();
                 if (response.getExitStatus()) {
                     System.out.print(response);
                     System.exit(333);
@@ -104,10 +91,4 @@ public class Client {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-//    public static String input() {
-//        return userInput.nextLine().trim();
-//    }
 }

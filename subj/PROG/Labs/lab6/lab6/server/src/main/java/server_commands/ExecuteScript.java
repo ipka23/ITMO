@@ -1,25 +1,25 @@
 package server_commands;
 
-import common_utility.network.Response;
 import common_utility.exceptions.ExitClientException;
+import common_utility.network.Response;
 import server_utility.Command;
 import server_utility.Invoker;
+import server_utility.consoles.StandartConsole;
 import server_utility.exceptions.RecursionDepthExceedException;
 import server_utility.exceptions.ScriptExecutionException;
-import server_utility.interfaces.Console;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
 public class ExecuteScript extends Command {
-    private Console console;
+    private StandartConsole console;
     private final Invoker invoker;
     private static final int MAX_RECURSION_DEPTH = 3;
     private static int currentDepth = -1;
     private String scriptName;
 
-    public ExecuteScript(Console console, Invoker invoker) throws RecursionDepthExceedException {
+    public ExecuteScript(StandartConsole console, Invoker invoker) throws RecursionDepthExceedException {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.console = console;
         this.invoker = invoker;

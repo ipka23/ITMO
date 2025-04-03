@@ -4,8 +4,9 @@ import common_entities.MusicBand;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.consoles.ClientConsole;
+import server_utility.consoles.StandartConsole;
 import server_utility.exceptions.InputBreakException;
-import server_utility.interfaces.Console;
 
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author ipka23
  */
 public class Update extends Command {
-    private final Console console;
+    private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
     /**
@@ -24,7 +25,7 @@ public class Update extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public Update(Console console, CollectionManager collectionManager) {
+    public Update(ClientConsole console, CollectionManager collectionManager) {
         super("update id", "обновить значение элемента коллекции, id которого равен заданному");
         this.console = console;
         this.collectionManager = collectionManager;

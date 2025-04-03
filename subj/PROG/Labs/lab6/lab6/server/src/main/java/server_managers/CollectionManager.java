@@ -1,10 +1,10 @@
 package server_managers;
 
 import common_entities.MusicBand;
-import common_utility.network.Response;
 import common_utility.exceptions.ExitClientException;
+import common_utility.network.Response;
 import server_utility.CollectionType;
-import server_utility.interfaces.Console;
+import server_utility.consoles.StandartConsole;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,10 +17,10 @@ public class CollectionManager {
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
     private FileManager fileManager;
-    private Console console;
+    private StandartConsole console;
     private long free_id;
 
-    public CollectionManager(FileManager fileManager, Console console) {
+    public CollectionManager(FileManager fileManager, StandartConsole console) {
         this.fileManager = fileManager;
         this.console = console;
         free_id = 1;
@@ -169,7 +169,7 @@ public class CollectionManager {
         return s.substring(0, s.length() - 2);
     }
 
-    public void setConsole(Console console) {
+    public void setConsole(StandartConsole console) {
         this.console = console;
     }
 }
