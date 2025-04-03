@@ -6,22 +6,23 @@ import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_utility.Invoker;
 import server_utility.interfaces.Console;
+import server_utility.interfaces.Launchable;
+import server_utility.interfaces.Printable;
+import server_utility.interfaces.ScriptExecutable;
 
 import java.util.Scanner;
 
 //Invoker, CollectionManager
-public class StandartConsole implements Console {
+public class StandartConsole implements Console, Launchable, Printable, ScriptExecutable {
     protected Scanner scanner;// = new Scanner(System.in);
     private final String PROMPT = ">";
     private final String SCRIPT_PROMPT = "# ";
     protected Invoker invoker;
     protected CollectionManager collectionManager;
-    protected CommandManager commandManager;
 
-    public StandartConsole(Invoker invoker, CollectionManager collectionManager, CommandManager commandManager) {
+    public StandartConsole(Invoker invoker, CommandManager commandManager) {
         this.invoker = invoker;
         this.collectionManager = collectionManager;
-        this.commandManager = commandManager;
         setScanner(new Scanner(System.in));
     }
 
@@ -73,14 +74,9 @@ public class StandartConsole implements Console {
     }
 
     @Override
-    public void setCommandManager(CommandManager commandManager) {
-        this.commandManager = commandManager;
-    }
-
-    @Override
     public void launch() {
         try {
-            collectionManager.chooseTypeOfCollection();
+//            collectionManager.chooseTypeOfCollection();
             while (true) {
                 printPrompt();
                 String input = nextLine();

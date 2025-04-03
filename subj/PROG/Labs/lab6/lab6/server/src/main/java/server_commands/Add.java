@@ -8,9 +8,9 @@ import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 import server_utility.exceptions.InputException;
-import server_utility.interfaces.Console;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,15 +22,15 @@ import java.util.Date;
 public class Add extends Command {
     private static ObjectInputStream inFromClient;
     private static ObjectOutputStream outToClient;
-    private Console console;
+    private ClientConsole console;
     private CollectionManager collectionManager;
 
-    public Add(Console console, CollectionManager collectionManager) {
+    public Add(ClientConsole console, CollectionManager collectionManager) {
         super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
     }
-    public Add(Console console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
+    public Add(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -39,6 +39,7 @@ public class Add extends Command {
     }
 
     public MusicBand inputMusicBand() throws IOException, ClassNotFoundException {
+
         String name = inputName();
         Coordinates coordinates = inputCoordinates();
         Long numberOfParticipants = inputNumberOfParticipants();
@@ -53,17 +54,12 @@ public class Add extends Command {
         String name;
         Response response = new Response(false, "Введите название музыкальной банды");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
 
             Request request = (Request) inFromClient.readObject();
 
             String input = request.getMessage();
-            if (input.isEmpty()) {
-                outToClient.writeObject("Введите название музыкальной банды");
-                outToClient.flush();
-            }
-
+            if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             name = input;
             break;
@@ -75,8 +71,7 @@ public class Add extends Command {
         float y;
         Response response = new Response(false,"Введите координату \"x\"");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -90,8 +85,7 @@ public class Add extends Command {
         }
         response = new Response(false,"Введите координату \"y\" (\"y\" <= 751)");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -112,8 +106,7 @@ public class Add extends Command {
         Long numberOfParticipants;
         Response response = new Response(false,"Введите количество участников");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -135,7 +128,7 @@ public class Add extends Command {
         Long singlesCount;
         Response response = new Response(false,"Введите количество синглов");
         while (true) {
-            outToClient.writeObject(response);
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -157,8 +150,7 @@ public class Add extends Command {
         Date establishmentDate;
         Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"dd-MM-yyyy\"");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -177,8 +169,7 @@ public class Add extends Command {
         Response response = new Response(false,"Введите музыкальный жанр из списка\n" + MusicGenre.names());
         Integer ordinal;
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -206,8 +197,7 @@ public class Add extends Command {
         Double sales;
         Response response = new Response(false,"Введите имя альбома");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -217,8 +207,7 @@ public class Add extends Command {
         }
         response = new Response(false,"Введите количество треков альбома");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -235,8 +224,7 @@ public class Add extends Command {
         }
         response = new Response(false,"Введите длину альбома");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -253,8 +241,7 @@ public class Add extends Command {
         }
         response = new Response(false,"Введите количество продаж альбома");
         while (true) {
-            outToClient.writeObject(response);
-            outToClient.flush();
+            console.write(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;

@@ -4,6 +4,7 @@ import common_entities.MusicBand;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 import server_utility.interfaces.Console;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author ipka23
  */
 public class AddIfMin extends Command {
-    private final Console console;
+    private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
 
@@ -25,7 +26,7 @@ public class AddIfMin extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public AddIfMin(Console console, CollectionManager collectionManager) {
+    public AddIfMin(ClientConsole console, CollectionManager collectionManager) {
         super("add_if_min", "добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции");
         this.console = console;
         this.collectionManager = collectionManager;

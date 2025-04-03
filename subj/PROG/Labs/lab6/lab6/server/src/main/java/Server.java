@@ -8,8 +8,7 @@ import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_managers.FileManager;
 import server_utility.Invoker;
-import server_utility.consoles.StandartConsole;
-import server_utility.interfaces.Console;
+import server_utility.consoles.ClientConsole;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -26,21 +25,22 @@ public class Server {
     private static String collectionFileName;
 
     private static Invoker invoker;
-    private static Console console;
+    private static ClientConsole console;
     private static FileManager fileManager;
     private static CollectionManager collectionManager;
     private static CommandManager commandManager;
 
     public static void main(String[] args) {
-        console = new StandartConsole();
+
         fileManager = new FileManager(null, console, null);
         collectionManager = new CollectionManager(fileManager, console);
         commandManager = new CommandManager(console, collectionManager);
         invoker = new Invoker(commandManager, console);
 
+        console = new ClientConsole(invoker);
+
         fileManager.setCollectionManager(collectionManager);
         console.setCollectionManager(collectionManager);
-        console.setInvoker(invoker);
 
         commandManager.addCommand("execute_script", new ExecuteScript(console, invoker));
 
@@ -56,14 +56,16 @@ public class Server {
                 logger.info("Client has connected!");
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                 outToClient.flush();
+                console.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+                console.setObjectInputStream(inFromClient);
                 logger.info("Successfully declared in & out streams");
-                fileManager.setFile(getFile());
+                collectionFileName = getFile();
+                fileManager.setFile(collectionFileName);
                 commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
                 break;
             }
-
-            responseClient();
+            console.launch();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -92,22 +94,4 @@ public class Server {
         return collectionFileName;
     }
 
-    private static void responseClient() throws IOException, ClassNotFoundException {
-        while (true) {
-            Request request = (Request) inFromClient.readObject();
-            Response executionResponse;
-            String[] command = (request.getMessage() + " ").split(" ", 2);
-            command[0] = command[0].toLowerCase().trim();
-            command[1] = command[1].toLowerCase().trim();
-            if (!commandManager.getCommandsMap().containsKey(command[0])) {
-                executionResponse = new Response(false, "Команда \"" + command[0] + "\" не найдена! Наберите \"help\" для справки!");
-            } else {
-                executionResponse = invoker.execute(command);
-            }
-            logger.info("Response: {}", executionResponse);
-            Response response = executionResponse;
-            outToClient.writeObject(response);
-            outToClient.flush();
-        }
-    }
 }

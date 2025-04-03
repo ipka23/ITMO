@@ -2,7 +2,7 @@ package server_managers;
 
 import server_commands.*;
 import server_utility.Command;
-import server_utility.interfaces.Console;
+import server_utility.consoles.ClientConsole;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,12 +10,12 @@ import java.util.Map;
 //Console, CollectionManager
 public class CommandManager {
     private Map<String, Command> commandsMap = new HashMap<>();
-    private Console console;
+    private ClientConsole console;
     private CollectionManager collectionManager;
     private LinkedList<String> history = new LinkedList<>();
     private int historyIndex = -1;
 
-    public CommandManager(Console console, CollectionManager collectionManager) {
+    public CommandManager(ClientConsole console, CollectionManager collectionManager) {
         this.console = console;
         this.collectionManager = collectionManager;
         commandsMap.put("add", new Add(console, collectionManager));
@@ -56,7 +56,7 @@ public class CommandManager {
         this.commandsMap = commandsMap;
     }
 
-    public void setConsole(Console console) {
+    public void setConsole(ClientConsole console) {
         this.console = console;
     }
 
