@@ -16,6 +16,7 @@ public class Client {
     private static ObjectOutputStream outToServer = null;
     private static String file;
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
+    private static final String PROMPT = "$ ";
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
@@ -64,27 +65,37 @@ public class Client {
     private static void sendMessage() {
         try {
             while (true) {
-                String message = input();
-                if (message.isEmpty()) {
-                    System.out.println(inFromServer.readObject());
-                    message = input();
-                }
+
+//                System.out.print("$ ");
+//                String message = userInput.nextLine().trim();
+//                if (message.isEmpty()) {
+//                    System.out.print("$ ");
+//                    System.out.println(inFromServer.readObject());
+//                    continue;
+//                }
+
+//                String message = input();
+                System.out.print(PROMPT);
+                String message = userInput.nextLine().trim();
+                if (message.isEmpty()) continue;
                 Request request = new Request(message);
+//                message = userInput.nextLine().trim();
 
 
                 outToServer.writeObject(request);
                 outToServer.flush();
-//                System.out.println(message);
-
-//                else {
-//                    System.out.println("$ ");
-//                }
                 Response response = (Response) inFromServer.readObject();
+//                if (message.isEmpty()) {
+//                    System.out.println(PROMPT);
+//                    System.out.println(response);
+//                    continue;
+//                }
 
                 if (response.getExitStatus()) {
                     System.out.print(response);
                     System.exit(333);
-                } else {
+                }
+                else {
                     System.out.println(response);
                 }
 
@@ -96,12 +107,7 @@ public class Client {
 
 
 
-    public static String input() throws IOException, ClassNotFoundException {
-        while (true) {
-            System.out.print("$ ");
-            String line = userInput.nextLine().trim();
-            if (line.isEmpty()) continue;
-            return line;
-        }
-    }
+//    public static String input() {
+//        return userInput.nextLine().trim();
+//    }
 }
