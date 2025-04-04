@@ -65,7 +65,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
 
 
 
-    public void write(Object o) {
+    public void send(Object o) {
         try {
             outToClient.writeObject(o);
             outToClient.flush();
@@ -74,9 +74,9 @@ public class ClientConsole extends StandartConsole implements Networkable {
         }
     }
 
-    public void writePrompt() {
+    public void sendPrompt() {
         try {
-            outToClient.writeObject(PROMPT);
+            outToClient.writeObject(new Response(false, PROMPT));
             outToClient.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -90,7 +90,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
         try {
 //            collectionManager.chooseTypeOfCollection();
             while (true) {
-                writePrompt();
+                sendPrompt();
                 Request request = (Request) inFromClient.readObject();
                 String input = request.getMessage();
                 if (input.trim().isEmpty()) continue;
@@ -99,7 +99,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
                 command[1] = command[1].toLowerCase().trim();
                 Response response = invoker.execute(command);
 
-                write(response);
+                send(response);
             }
         } catch (ExitException e) {
             print(e);

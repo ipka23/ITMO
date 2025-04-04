@@ -31,12 +31,12 @@ public class Client {
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-//        finally {
-//            socket.close();
-//            inFromServer.close();
-//            outToServer.close();
-//            userInput.close();
-//        }
+        finally {
+            socket.close();
+            inFromServer.close();
+            outToServer.close();
+            userInput.close();
+        }
 
 
     }
@@ -64,10 +64,10 @@ public class Client {
     }
 
     private static void sendMessage() {
+        Response response = null;
         try {
-
             while (true) {
-                String prompt = (String) inFromServer.readObject();
+                Response prompt = (Response) inFromServer.readObject();
                 System.out.print(prompt);
                 String message = userInput.nextLine().trim();
 //                if (message.isEmpty()) continue;
@@ -76,8 +76,8 @@ public class Client {
                 outToServer.flush();
 
                 if (message.isEmpty()) continue;
-
-                Response response = (Response) inFromServer.readObject();
+                response = (Response) inFromServer.readObject();
+                if (response == null) continue;
                 if (response.getExitStatus()) {
                     System.out.print(response);
                     System.exit(333);
@@ -85,6 +85,7 @@ public class Client {
                 else {
                     System.out.println(response);
                 }
+
 
             }
         } catch (Exception e) {
