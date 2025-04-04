@@ -86,6 +86,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
 
     @Override
     public void launch() {
+
         try {
 //            collectionManager.chooseTypeOfCollection();
             while (true) {
