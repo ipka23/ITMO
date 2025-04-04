@@ -62,10 +62,11 @@ public class Server {
                 logger.info("Successfully declared in & out streams");
                 collectionFileName = getFile();
                 fileManager.setFile(collectionFileName);
-                commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
                 break;
             }
+            commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
             console.launch();
+
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }

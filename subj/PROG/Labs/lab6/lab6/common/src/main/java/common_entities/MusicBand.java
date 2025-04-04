@@ -11,6 +11,7 @@ import java.util.Objects;
  *
  * @author ipka23
  */
+
 public class MusicBand implements Comparable<MusicBand> {
 
 
