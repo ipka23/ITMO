@@ -24,6 +24,7 @@ public class Add extends Command {
     private static ObjectOutputStream outToClient;
     private ClientConsole console;
     private CollectionManager collectionManager;
+    private String ADD_PROMPT = "* ";
 
     public Add(ClientConsole console, CollectionManager collectionManager) {
         super("add", "добавить новый элемент в коллекцию");
@@ -52,14 +53,16 @@ public class Add extends Command {
 
     protected String inputName() throws IOException, ClassNotFoundException {
         String name;
-        Response response = new Response(false, "Введите название музыкальной банды");
+        Response response = new Response(false, "Введите название музыкальной банды\n* ");
+//        outToClient.writeObject(null);
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
 
             Request request = (Request) inFromClient.readObject();
 
             String input = request.getMessage();
-            if (input.isEmpty()) continue;
+            if (input.trim().isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             name = input;
             break;
@@ -69,9 +72,10 @@ public class Add extends Command {
     protected Coordinates inputCoordinates() throws IOException, ClassNotFoundException {
         Integer x;
         float y;
-        Response response = new Response(false,"Введите координату \"x\"");
+        Response response = new Response(false,"Введите координату \"x\"\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -80,12 +84,14 @@ public class Add extends Command {
                 x = Integer.parseInt(input);
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             }
         }
-        response = new Response(false,"Введите координату \"y\" (\"y\" <= 751)");
+        response = new Response(false,"Введите координату \"y\" (\"y\" <= 751)\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -95,18 +101,21 @@ public class Add extends Command {
                 if (y > 751) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false,"Максимальное значение поля \"y\" = 751!");
+                response = new Response(false,"Максимальное значение поля \"y\" = 751!\n* ");
+                console.send(null);
             }
         }
         return new Coordinates(x, y);
     }
     protected Long inputNumberOfParticipants() throws IOException, ClassNotFoundException {
         Long numberOfParticipants;
-        Response response = new Response(false,"Введите количество участников");
+        Response response = new Response(false,"Введите количество участников\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -116,9 +125,11 @@ public class Add extends Command {
                 if (numberOfParticipants < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false,"Количество участников не может быть меньше 0!");
+                response = new Response(false,"Количество участников не может быть меньше 0!\n* ");
+                console.send(null);
             }
         }
         return numberOfParticipants;
@@ -126,9 +137,10 @@ public class Add extends Command {
 
     protected Long inputSinglesCount() throws IOException, ClassNotFoundException {
         Long singlesCount;
-        Response response = new Response(false,"Введите количество синглов");
+        Response response = new Response(false,"Введите количество синглов\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -138,9 +150,11 @@ public class Add extends Command {
                 if (singlesCount < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false,"Количество синглов не может быть меньше 0!");
+                response = new Response(false,"Количество синглов не может быть меньше 0!\n* ");
+                console.send(null);
             }
         }
         return singlesCount;
@@ -148,9 +162,10 @@ public class Add extends Command {
     protected Date inputEstablishmentDate() throws IOException, ClassNotFoundException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date establishmentDate;
-        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"dd-MM-yyyy\"");
+        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"dd-MM-yyyy\"\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -159,17 +174,19 @@ public class Add extends Command {
                 establishmentDate = dateFormat.parse(input);
                 break;
             } catch (ParseException e) {
-                response = new Response(false,"Неверный формат даты!");
+                response = new Response(false,"Неверный формат даты!\n* ");
+                console.send(null);
             }
         }
         return establishmentDate;
     }
     protected MusicGenre inputMusicGenre() throws IOException, ClassNotFoundException {
         MusicGenre musicGenre;
-        Response response = new Response(false,"Введите музыкальный жанр из списка\n" + MusicGenre.names());
+        Response response = new Response(false,"Введите музыкальный жанр из списка\n" + MusicGenre.names() + "\n* ");
         Integer ordinal;
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -178,14 +195,14 @@ public class Add extends Command {
                 musicGenre = MusicGenre.valueOf(input.toUpperCase());
                 break;
             } catch (IllegalArgumentException e) {
-
             }
             try {
                 ordinal = Integer.parseInt(input);
                 musicGenre = MusicGenre.values()[ordinal];
                 break;
             } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
-                response = new Response(false,"Введите музыкальный жанр из списка!");
+                response = new Response(false,"Такого музыкального жанра нет в списке!\n" + MusicGenre.names() + "\n* ");
+                console.send(null);
             }
         }
         return musicGenre;
@@ -195,9 +212,10 @@ public class Add extends Command {
         Long tracks;
         long length;
         Double sales;
-        Response response = new Response(false,"Введите имя альбома");
+        Response response = new Response(false,"Введите имя альбома\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -205,9 +223,10 @@ public class Add extends Command {
             name = input;
             break;
         }
-        response = new Response(false,"Введите количество треков альбома");
+        response = new Response(false,"Введите количество треков альбома\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -217,14 +236,17 @@ public class Add extends Command {
                 if (tracks < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false,"Количество треков альбома не может быть меньше 0!");
+                response = new Response(false,"Количество треков альбома не может быть меньше 0!\n* ");
+                console.send(null);
             }
         }
-        response = new Response(false,"Введите длину альбома");
+        response = new Response(false,"Введите длину альбома\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -234,14 +256,17 @@ public class Add extends Command {
                 if (length < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false, "Длина альбома не может быть меньше 0!");
+                response = new Response(false, "Длина альбома не может быть меньше 0!\n* ");
+                console.send(null);
             }
         }
-        response = new Response(false,"Введите количество продаж альбома");
+        response = new Response(false,"Введите количество продаж альбома\n* ");
+        console.send(null);
         while (true) {
-            console.write(response);
+            console.send(response);
             Request request = (Request) inFromClient.readObject();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -251,9 +276,11 @@ public class Add extends Command {
                 if (sales < 0) throw new InputException();
                 break;
             } catch (NumberFormatException e) {
-                response = new Response(false,"Введите число!");
+                response = new Response(false,"Введите число!\n* ");
+                console.send(null);
             } catch (InputException e) {
-                response = new Response(false,"Количество продаж альбома не может быть меньше 0!");
+                response = new Response(false,"Количество продаж альбома не может быть меньше 0!\n* ");
+                console.send(null);
             }
         }
         return new Album(name, tracks, length, sales);
