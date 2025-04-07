@@ -7,13 +7,47 @@ import java.io.Serializable;
 import java.util.Collection;
 
 public class Request implements Serializable {
+    private String[] userCommand;
     private String message;
     private MusicBand musicBand;
-    private Collection<MusicBand> musicBandsCollection;
+    private String command;
+    private String arg;
     private File scriptFile;
+    private Collection<MusicBand> musicBandsCollection;
 
     public Request(String message) {
         this.message = message;
+    }
+
+    public Request(String[] userCommand) {
+        this.userCommand = userCommand;
+    }
+
+    public Request(String command, String arg, File scriptFile) {
+        this.command = command;
+        this.arg = arg;
+        this.scriptFile = scriptFile;
+    }
+
+    public Request(String[] message, File scriptFile) {
+        this.scriptFile = scriptFile;
+    }
+
+    public Request(String command, String arg) {
+        this.command = command;
+        this.arg = arg;
+    }
+
+    public String[] getUserCommand() {
+        return userCommand;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public String getArg() {
+        return arg;
     }
 
     public void setMessage(String message) {

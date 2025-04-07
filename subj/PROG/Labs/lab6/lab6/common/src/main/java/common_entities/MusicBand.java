@@ -5,13 +5,13 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+
 /**
  * Данный класс представляет музыкальную группу и реализует интерфейс Validatable для проверки корректности данных;
  * Содержит информацию о музыкальной группе: id, название, координаты, дату создания, количество участников, количество синглов, дату основания, жанр музыки и лучший альбом
  *
  * @author ipka23
  */
-
 public class MusicBand implements Comparable<MusicBand> {
 
 
@@ -48,6 +48,7 @@ public class MusicBand implements Comparable<MusicBand> {
         this.establishmentDate = establishmentDate;
         this.genre = genre;
         this.bestAlbum = bestAlbum;
+
     }
 
     public MusicBand(String name) {
@@ -249,4 +250,3 @@ public class MusicBand implements Comparable<MusicBand> {
         return Objects.equals(id, band.id);
     }
 }
-

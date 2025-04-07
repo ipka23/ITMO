@@ -4,6 +4,9 @@ import common_utility.network.Response;
 import server_managers.CommandManager;
 import server_utility.interfaces.Console;
 import server_utility.interfaces.Executable;
+
+import java.io.IOException;
+
 // CommandManager, Console
 public class Invoker implements Executable {
     private CommandManager commandManager;
@@ -26,7 +29,7 @@ public class Invoker implements Executable {
 
 
     @Override
-    public Response execute(String[] command) {
+    public Response execute(String[] command) throws IOException, ClassNotFoundException {
         if (commandManager.getCommand(command[0].trim()) == null) {
             return new Response(false, "Команда \"" + command[0].trim() + "\" не найдена!\nНаберите \"help\" для справки!");
         }

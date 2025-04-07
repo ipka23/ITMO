@@ -15,10 +15,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+
     public static int PORT = 1123;
     private static ServerSocket serverSocket = null;
     private static Socket socket = null;
-//    private static Scanner scanner = new Scanner(System.in);
+    //    private static Scanner scanner = new Scanner(System.in);
     private static ObjectInputStream inFromClient = null;
     private static ObjectOutputStream outToClient = null;
     private static final Logger logger = LoggerFactory.getLogger(Server.class);
@@ -42,11 +43,10 @@ public class Server {
         fileManager.setCollectionManager(collectionManager);
         console.setCollectionManager(collectionManager);
 
-        commandManager.addCommand("execute_script", new ExecuteScript(console, invoker));
-
 
         run();
     }
+
     public static void run() {
         logger.info("Server has started on port: {}", PORT);
         try {
@@ -65,6 +65,7 @@ public class Server {
                 break;
             }
             commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
+            commandManager.addCommand("execute_script", new ExecuteScript(console, invoker, inFromClient, outToClient));
             console.launch();
 
         } catch (IOException | ClassNotFoundException e) {
