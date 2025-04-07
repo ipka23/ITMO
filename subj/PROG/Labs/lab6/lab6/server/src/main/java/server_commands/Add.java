@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class Add extends Command {
     private static ObjectInputStream inFromClient;
     private static ObjectOutputStream outToClient;
@@ -54,14 +55,14 @@ public class Add extends Command {
     protected String inputName() throws IOException, ClassNotFoundException {
         String name;
         Response response = new Response(false, "Введите название музыкальной банды\n* ");
-//        outToClient.writeObject(null);
         console.send(null);
         while (true) {
             console.send(response);
 
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
 
             String input = request.getMessage();
+
             if (input.trim().isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             name = input;
@@ -76,7 +77,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -116,7 +117,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -141,7 +142,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -166,7 +167,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -187,7 +188,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -216,7 +217,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -227,7 +228,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -247,7 +248,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
@@ -267,7 +268,7 @@ public class Add extends Command {
         console.send(null);
         while (true) {
             console.send(response);
-            Request request = (Request) inFromClient.readObject();
+            Request request = console.getRequest();
             String input = request.getMessage();
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();

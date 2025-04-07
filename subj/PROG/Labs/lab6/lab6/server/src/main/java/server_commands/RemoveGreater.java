@@ -6,7 +6,6 @@ import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
-import server_utility.interfaces.Console;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -51,7 +50,7 @@ public class RemoveGreater extends Command {
             Iterator<MusicBand> iterator = collection.iterator();
             if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
             while (iterator.hasNext()) {
-                if (iterator.next().getSales() > newBand.getSales()) {
+                if (iterator.next().getBestAlbum().getSales() > newBand.getBestAlbum().getSales()) {
                     iterator.remove();
                 }
             }

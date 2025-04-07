@@ -3,6 +3,10 @@ package server_managers;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import common_entities.MusicBand;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import server_utility.interfaces.Console;
 
 import java.io.*;
@@ -16,7 +20,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Scanner;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 //CollectionManager, Console, String filename
 public class FileManager {
     private CollectionManager collectionManager;
@@ -32,21 +39,13 @@ public class FileManager {
 
     }
 
-    public FileManager() {
-    }
 
-    public void setConsole(Console console) {
-        this.console = console;
-    }
 
     public void setFile(String fileName) {
         this.fileName = fileName;
         loadCollectionFromFile();
     }
 
-    public void setCollectionManager(CollectionManager collectionManager) {
-        this.collectionManager = collectionManager;
-    }
 
     public static class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
         private final DateFormat dateFormat;

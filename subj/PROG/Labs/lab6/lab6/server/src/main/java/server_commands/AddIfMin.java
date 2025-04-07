@@ -6,7 +6,6 @@ import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
-import server_utility.interfaces.Console;
 
 import java.io.IOException;
 
@@ -46,7 +45,7 @@ public class AddIfMin extends Command {
                 return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
             long id = collectionManager.getFreeId();
             MusicBand newBand = add.inputMusicBand();
-            if (newBand.getSales() < collectionManager.getMin().getSales()) {
+            if (newBand.getBestAlbum().getSales() < collectionManager.getMin().getBestAlbum().getSales()) {
                 collectionManager.addMusicBand(newBand);
                 return new Response(false, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
             } else {
