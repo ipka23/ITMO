@@ -3,6 +3,10 @@ package server_managers;
 import common_entities.MusicBand;
 import common_utility.exceptions.ExitClientException;
 import common_utility.network.Response;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import server_utility.CollectionType;
 import server_utility.consoles.StandartConsole;
 
@@ -10,7 +14,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
 // FileManager, Console
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CollectionManager {
     private Collection<MusicBand> collection = new HashSet<>();
     private Map<Long, MusicBand> musicBandsMap = new HashMap<>();
@@ -18,46 +27,20 @@ public class CollectionManager {
     private LocalDateTime lastSaveTime;
     private FileManager fileManager;
     private StandartConsole console;
-    private long free_id;
+    private long freeId;
+
 
     public CollectionManager(FileManager fileManager, StandartConsole console) {
         this.fileManager = fileManager;
         this.console = console;
-        free_id = 1;
+        freeId = 1;
         initTime = LocalDateTime.now();
     }
+
     public CollectionManager(FileManager fileManager) {
         this.fileManager = fileManager;
-        free_id = 1;
+        freeId = 1;
         initTime = LocalDateTime.now();
-    }
-
-    public CollectionManager() {
-
-    }
-
-    public void setMusicBandsMap(Map<Long, MusicBand> musicBandsMap) {
-        this.musicBandsMap = musicBandsMap;
-    }
-
-    public void setInitTime(LocalDateTime initTime) {
-        this.initTime = initTime;
-    }
-
-    public void setLastSaveTime(LocalDateTime lastSaveTime) {
-        this.lastSaveTime = lastSaveTime;
-    }
-
-    public void setFree_id(long free_id) {
-        this.free_id = free_id;
-    }
-
-    public void setFileManager(FileManager fileManager) {
-        this.fileManager = fileManager;
-    }
-    public long getFreeId() {
-        while (musicBandsMap.get(free_id) != null) free_id++;
-        return free_id;
     }
 
 
@@ -66,7 +49,7 @@ public class CollectionManager {
         lastSaveTime = LocalDateTime.now();
     }
 
-    public void addMusicBand(MusicBand musicBand){
+    public void addMusicBand(MusicBand musicBand) {
         long id = getFreeId();
         musicBandsMap.put(id, musicBand);
         musicBand.setCreationDate(LocalDate.now());
@@ -75,9 +58,6 @@ public class CollectionManager {
         saveCollection();
     }
 
-    public Collection<MusicBand> getCollection() {
-        return collection;
-    }
 
     public MusicBand getMax() {
         return Collections.max(collection);
@@ -138,6 +118,7 @@ public class CollectionManager {
         }
         return response;
     }
+
     /**
      * Метод для получения информации о коллекции
      *
@@ -163,13 +144,11 @@ public class CollectionManager {
     public String toString() {
         if (collection.isEmpty()) return "Коллекция пуста!";
         StringBuilder s = new StringBuilder();
+
         for (MusicBand band : collection) {
             s.append(band).append("\n");
         }
         return s.substring(0, s.length() - 2);
     }
 
-    public void setConsole(StandartConsole console) {
-        this.console = console;
-    }
 }
