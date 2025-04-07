@@ -1,5 +1,9 @@
 package server_managers;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import server_commands.*;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
@@ -8,6 +12,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 //Console, CollectionManager
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CommandManager {
     private Map<String, Command> commandsMap = new HashMap<>();
     private ClientConsole console;
@@ -34,74 +42,11 @@ public class CommandManager {
         commandsMap.put("update", new Update(console, collectionManager));
     }
 
-    public CommandManager() {
-        commandsMap.put("add", new Add(console, collectionManager));
-        commandsMap.put("add_if_max", new AddIfMax(console, collectionManager));
-        commandsMap.put("add_if_min", new AddIfMin(console, collectionManager));
-        commandsMap.put("clear", new Clear(console, collectionManager));
-        commandsMap.put("exit", new Exit());
-        commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
-        commandsMap.put("help", new Help(console, this));
-        commandsMap.put("info", new Info(console, collectionManager));
-        commandsMap.put("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
-        commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
-        commandsMap.put("remove_by_id", new RemoveByID(console, collectionManager));
-        commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager));
-        commandsMap.put("show", new Show(console, collectionManager));
-        commandsMap.put("update", new Update(console, collectionManager));
-    }
-
-
-    public void setCommandsMap(Map<String, Command> commandsMap) {
-        this.commandsMap = commandsMap;
-    }
-
-    public void setConsole(ClientConsole console) {
-        this.console = console;
-    }
-
-
-    public void addCommand(String name, Command command) {
-        commandsMap.put(name, command);
-    }
-
-    public void setCollectionManager(CollectionManager collectionManager) {
-        this.collectionManager = collectionManager;
-    }
-
     public Command getCommand(String commandName) {
         return commandsMap.get(commandName);
     }
 
-    public Map<String, Command> getCommandsMap() {
-        return commandsMap;
+    public void addCommand(String commandName, Command command) {
+        commandsMap.put(commandName, command);
     }
-
-    public String getPreviousCommand() {
-        if (historyIndex > 0) {
-            historyIndex--;
-            return history.get(historyIndex);
-        }
-        return null;
-    }
-
-    public String getNextCommand() {
-        if (historyIndex < history.size() - 1) {
-            historyIndex++;
-            return history.get(historyIndex);
-        } else if (historyIndex == history.size() - 1) {
-            historyIndex++;
-        }
-        return null;
-    }
-
-    public void addToHistory(String userCommand) {
-        history.add(userCommand.trim());
-        historyIndex = history.size();
-    }
-
-    public void resetHistoryIndex() {
-        historyIndex = history.size();
-    }
-
 }

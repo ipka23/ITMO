@@ -1,7 +1,6 @@
 import common_utility.network.Request;
 import common_utility.network.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import server_commands.Add;
 import server_commands.ExecuteScript;
 import server_managers.CollectionManager;
@@ -14,17 +13,16 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+@Slf4j
 public class Server {
 
     public static int PORT = 1123;
-    private static ServerSocket serverSocket = null;
-    private static Socket socket = null;
-    //    private static Scanner scanner = new Scanner(System.in);
-    private static ObjectInputStream inFromClient = null;
-    private static ObjectOutputStream outToClient = null;
-    private static final Logger logger = LoggerFactory.getLogger(Server.class);
+    private static ServerSocket serverSocket;
+    private static Socket socket;
+    private static ObjectInputStream inFromClient;
+    private static ObjectOutputStream outToClient;
     private static String collectionFileName;
-
+//    private static Logger log = LoggerFactory.getLogger(Server.class);
     private static Invoker invoker;
     private static ClientConsole console;
     private static FileManager fileManager;
@@ -48,18 +46,18 @@ public class Server {
     }
 
     public static void run() {
-        logger.info("Server has started on port: {}", PORT);
+        log.info("Server has started on port: {}", PORT);
         try {
             serverSocket = new ServerSocket(PORT);
             while (true) {
                 socket = serverSocket.accept();
-                logger.info("Client has connected!");
+                log.info("Client has connected!");
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                 outToClient.flush();
                 console.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
                 console.setObjectInputStream(inFromClient);
-                logger.info("Successfully declared in & out streams");
+                log.info("Successfully declared in & out streams");
                 collectionFileName = getFile();
                 fileManager.setFile(collectionFileName);
                 break;
@@ -86,7 +84,7 @@ public class Server {
                 response = new Response(true, "Нет прав на чтение файла \"" + collectionFileName + "\"!");
             } else {
                 response = new Response(false);
-                logger.info("File received: {}", collectionFileName);
+                log.info("File received: {}", collectionFileName);
             }
             outToClient.writeObject(response);
             outToClient.flush();

@@ -1,12 +1,11 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
-import common_utility.network.Response;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
-import server_utility.interfaces.Console;
 
 import java.io.IOException;
 
@@ -48,7 +47,7 @@ public class AddIfMax extends Command {
             long id = collectionManager.getFreeId();
 
             MusicBand newBand = add.inputMusicBand();
-            if (newBand.getSales() > collectionManager.getMax().getSales()) {
+            if (newBand.getBestAlbum().getSales() > collectionManager.getMax().getBestAlbum().getSales()) {
                 collectionManager.addMusicBand(newBand);
                 return new Response(false, "В коллекцию был добавлен элемент album.sales которого превышают элемент с максимальным album.sales!");
             } else {
