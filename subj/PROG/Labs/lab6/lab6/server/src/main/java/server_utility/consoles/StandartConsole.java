@@ -10,6 +10,7 @@ import server_utility.interfaces.Launchable;
 import server_utility.interfaces.Printable;
 import server_utility.interfaces.ScriptExecutable;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 //Invoker, CollectionManager
@@ -89,6 +90,10 @@ public class StandartConsole implements Console, Launchable, Printable, ScriptEx
             }
         } catch (ExitException e) {
             print(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

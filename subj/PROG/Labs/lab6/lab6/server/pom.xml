@@ -22,6 +22,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- Актуальная версия (проверь на Maven Central) -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.ipka23.itmo.prog.labs.lab6</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>

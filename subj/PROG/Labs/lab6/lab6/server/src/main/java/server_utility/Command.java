@@ -3,6 +3,8 @@ package server_utility;
 import common_utility.network.Response;
 import server_utility.interfaces.Executable;
 
+import java.io.IOException;
+
 
 public abstract class Command implements Executable {
     private String name;
@@ -22,5 +24,5 @@ public abstract class Command implements Executable {
         return description;
     }
 
-    public abstract Response execute(String[] command);
+    public abstract Response execute(String[] command) throws IOException, ClassNotFoundException;
 }

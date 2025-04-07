@@ -92,12 +92,10 @@ public class ClientConsole extends StandartConsole implements Networkable {
             while (true) {
                 sendPrompt();
                 Request request = (Request) inFromClient.readObject();
-                String input = request.getMessage();
-                if (input.trim().isEmpty()) continue;
-                String[] command = (input + " ").split(" ", 2);
-                command[0] = command[0].toLowerCase().trim();
-                command[1] = command[1].toLowerCase().trim();
-                Response response = invoker.execute(command);
+                String command = request.getCommand();
+                String arg = request.getArg();
+                if (command.isEmpty()) continue;
+                Response response = invoker.execute(new String[]{command, arg});
 
                 send(response);
             }
