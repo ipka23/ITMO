@@ -14,9 +14,9 @@ symbol_1:       IN 3
                 LD (current_symbol)+
                 ST encoded_string
                 AND mask
+                OUT 2
                 CMP stop_symbol
                 BEQ end_program
-                OUT 2
 
 symbol_2:       IN 3
                 AND #0x40
@@ -24,9 +24,9 @@ symbol_2:       IN 3
                 LD encoded_string
                 SWAB
                 AND mask
+                OUT 2
                 CMP stop_symbol
                 BEQ end_program
-                OUT 2
                 JUMP start
 
 end_program:    LD word_beginning
@@ -35,6 +35,10 @@ end_program:    LD word_beginning
 
 
 ORG 0x552
-WORD 0xCFCE ; П, О
+WORD 0xD1DF ; С, Я
 ORG 0x553
-WORD 0x0DC4 ; СТОП_СИМВ, Д
+WORD 0xCDC5 ; Н, Е
+ORG 0x554
+WORD 0x0DDC ; СТОП_СИМВ, Ь
+
+
