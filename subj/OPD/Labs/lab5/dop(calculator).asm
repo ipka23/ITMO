@@ -17,18 +17,21 @@
 
 
 
-minus: word 0xA ; "-"
+
 _START:
+    jump sign_input_1
+
+minus: word 0xA ; "-"
+a:  word ?
 sign_input_1:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
-    bne a_input       ; если не "-", то знак не меняем
+    bne skip_in_a       ; если не "-", то знак не меняем
     cmc               ; меняем флаг C который указвает на знак цифры
 
-    jump a_input
-a:  word ?
 a_input:
     in 0x1C           ; ввод с цифровой клавиатуры
+skip_in_a:
     cmp #0x0          ; начало проверки на a_input в {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
     beq break_a_input
     cmp #0x1
@@ -64,17 +67,17 @@ multiply_input:
 
 
 
-
+b: word ?
 sign_input_2:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
-    bne b_input       ; если не "-", то знак не меняем
+    bne skip_in_b       ; если не "-", то знак не меняем
     cmc               ; меняем флаг C который указвает на знак цифры
 
-jump b_input
-b: word ?
+
 b_input:
     in 0x1C           ; ввод с цифровой клавиатуры
+skip_in_b:
     cmp #0x0          ; начало проверки на b_input в {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
     beq break_b_input
     cmp #0x1
@@ -104,39 +107,15 @@ break_b_input:
 jump equate_input
 equate: word 0xF ; "="
 equate_input:
-    in 0x1C    ; ввод с клавиатуры
+    in 0x1C
     cmp equate
-    beq sign_input_2
-    jump multiply_input
-
-
-
-
-
-
-
-
-
+    beq _FINISH
+    jump equate_input
 
 _FINISH:
     hlt
 
-
-save_second:
-
-
-signed:
-    cmc
-    ret
-
-
 to_decimal:
-
-
-
-
-
-
 
 multiply_X1:
 multiply_X2:
