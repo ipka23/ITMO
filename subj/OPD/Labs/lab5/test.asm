@@ -48,3 +48,18 @@ a_input:
 break_a:
     st a
     hlt
+
+
+
+; ввод "*"
+
+
+multiply:   word 0xD ; "*"
+multiply_input:
+    in 0x1C    ; ввод с клавиатуры
+    cmp multiply
+    beq break
+    jump multiply_input
+break:
+    hlt
+
