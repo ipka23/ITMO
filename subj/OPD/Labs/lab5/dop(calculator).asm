@@ -17,17 +17,17 @@
 
 
 
-
-_START:
-    jump sign_input_1
-
+org 0x100
 minus: word 0xA ; "-"
 a:  word ?
+_START: cla
+
 sign_input_1:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
     bne skip_in_a       ; если не "-", то знак не меняем
     cmc               ; меняем флаг C который указвает на знак цифры
+
 
 a_input:
     in 0x1C           ; ввод с цифровой клавиатуры
@@ -55,6 +55,7 @@ skip_in_a:
     jump a_input
 break_a_input:
     st a ; сохраняем первый символ - a
+    out 0x14
 
 
 jump multiply_input
@@ -101,6 +102,7 @@ skip_in_b:
     jump b_input
 break_b_input:
     st b ; сохраняем второй символ - b
+    out 0x14
 
 
 
