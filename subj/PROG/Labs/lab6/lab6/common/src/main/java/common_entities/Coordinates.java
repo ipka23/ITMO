@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * Данный класс представляет координаты и реализует интерфейс Validatable для проверки корректности данных;
  * Содержит информацию о координатах x и y
@@ -16,7 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Coordinates {
+public class Coordinates implements Serializable {
     private Integer x; //Поле не может быть null
     private float y; //Максимальное значение поля: 751
 

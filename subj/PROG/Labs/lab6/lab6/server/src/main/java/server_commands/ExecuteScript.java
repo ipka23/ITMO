@@ -7,7 +7,6 @@ import server_utility.Command;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.RecursionDepthExceedException;
-import server_utility.exceptions.ScriptExecutionException;
 
 import java.io.*;
 import java.util.Scanner;
@@ -52,17 +51,17 @@ public class ExecuteScript extends Command {
                 String[] command = (line + " ").split(" ", 2);
 
                 Response response = invoker.execute(command);
-
-                if (response == null) {
-                    console.setScanner(new Scanner(System.in));
-                    throw new ScriptExecutionException();
-                }
+//
+//                if (response == null) {
+//                    console.setScanner(new Scanner(System.in));
+//                    throw new ScriptExecutionException();
+//                }
                 scriptFileContent.append(response.getMessage()).append("\n");
 
             }
         } catch (FileNotFoundException e) {
             return new Response(false, "Файл: \"" + scriptFile.getName() + "\" не найден!");
-        } catch (RecursionDepthExceedException | ScriptExecutionException e) {
+        } catch (RecursionDepthExceedException e) {
             return new Response(false, "\n" + e.getMessage());
         } catch (ExitClientException e) {
             return new Response(true, "\n" + e.getMessage());

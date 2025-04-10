@@ -1,420 +1,382 @@
 [
   {
-    "id": 2,
-    "name": "name",
-    "coordinates": {
-      "x": 700,
-      "y": 650.0
-    },
-    "creationDate": "18-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 1,
-    "establishmentDate": "03-03-2004",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "skwrd",
-      "tracks": 10,
-      "length": 10,
-      "sales": 10000.0
-    }
-  },
-  {
-    "id": 7,
-    "name": "nam333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333",
-    "coordinates": {
-      "x": 1,
-      "y": 1.0
-    },
-    "creationDate": "22-03-2025",
-    "numberOfParticipants": 1,
-    "singlesCount": 1,
-    "establishmentDate": "01-01-0001",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "sdmfa",
-      "tracks": 222222222222222,
-      "length": 2222222222222222222,
-      "sales": 2.2222222222222222E23
-    }
-  },
-  {
-    "id": 10,
-    "name": "das",
-    "coordinates": {
-      "x": 3,
-      "y": 3.0
-    },
-    "creationDate": "31-03-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 3,
-    "establishmentDate": "03-06-3002",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "qsdf",
-      "tracks": 3,
-      "length": 3,
-      "sales": 2.0
-    }
-  },
-  {
-    "id": 19,
-    "name": "asdf",
-    "coordinates": {
-      "x": 43,
-      "y": 3.0
-    },
-    "creationDate": "05-04-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 3,
-    "establishmentDate": "04-09-0010",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "wer",
-      "tracks": 2,
-      "length": 1,
-      "sales": 2.0
-    }
-  },
-  {
-    "id": 11,
-    "name": "fwrehjkhndsalkdfhjnasdfklhjfkljadlskjflkjdsafkljfklasjfklsajfkljasdfkjadsfkljfdkljdaslfjskajdf",
-    "coordinates": {
-      "x": 1,
-      "y": 1.0
-    },
-    "creationDate": "31-03-2025",
-    "numberOfParticipants": 1,
-    "singlesCount": 1,
-    "establishmentDate": "01-01-0001",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "r",
-      "tracks": 3,
-      "length": 3,
-      "sales": 2.0
-    }
-  },
-  {
-    "id": 9,
-    "name": "fasd",
-    "coordinates": {
-      "x": 1,
-      "y": 1.0
-    },
-    "creationDate": "29-03-2025",
-    "numberOfParticipants": 2,
-    "singlesCount": 32,
-    "establishmentDate": "03-03-0003",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "sdjgf",
-      "tracks": 234,
-      "length": 123,
-      "sales": 1.0
-    }
-  },
-  {
-    "id": 4,
-    "name": "name",
-    "coordinates": {
-      "x": 700,
-      "y": 650.0
-    },
-    "creationDate": "18-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 1,
-    "establishmentDate": "03-03-2004",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "skwrd",
-      "tracks": 10,
-      "length": 10,
-      "sales": 10000.0
-    }
-  },
-  {
-    "id": 21,
-    "name": "fa",
-    "coordinates": {
-      "x": 3,
-      "y": 3.0
-    },
-    "creationDate": "05-04-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 2,
-    "establishmentDate": "04-08-0007",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "pop",
-      "tracks": 3,
-      "length": 2,
-      "sales": 2.0
-    }
-  },
-  {
-    "id": 12,
-    "name": "sc",
-    "coordinates": {
-      "x": -12321,
-      "y": 2.0
-    },
-    "creationDate": "31-03-2025",
-    "numberOfParticipants": 43525,
-    "singlesCount": 243,
-    "establishmentDate": "04-04-0004",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "pop",
-      "tracks": 3,
-      "length": 3,
-      "sales": 4.0
-    }
-  },
-  {
-    "id": 18,
-    "name": "asdf",
-    "coordinates": {
-      "x": 3,
-      "y": 2.0
-    },
-    "creationDate": "05-04-2025",
-    "numberOfParticipants": 2,
-    "singlesCount": 2,
-    "establishmentDate": "05-05-0005",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "reawf",
-      "tracks": 234,
-      "length": 4,
-      "sales": 34.0
-    }
-  },
-  {
-    "id": 22,
-    "name": "11111111111111111111!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-    "coordinates": {
-      "x": 2,
-      "y": 3.0
-    },
-    "creationDate": "07-04-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 1,
-    "establishmentDate": "01-01-0001",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "asdfvk",
-      "tracks": 99999,
-      "length": 1,
-      "sales": 1.0
-    }
-  },
-  {
-    "id": 1,
-    "name": "name",
-    "coordinates": {
-      "x": 700,
-      "y": 650.0
-    },
-    "creationDate": "18-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 1,
-    "establishmentDate": "03-03-2004",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "skwrd",
-      "tracks": 10,
-      "length": 10,
-      "sales": 10000.0
-    }
-  },
-  {
-    "id": 16,
-    "name": "dsa",
-    "coordinates": {
-      "x": 3,
-      "y": 2.0
-    },
-    "creationDate": "01-04-2025",
-    "numberOfParticipants": 23,
-    "singlesCount": 2231,
-    "establishmentDate": "02-02-0002",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "qqqqqqqqqqqqqqqqqqqq",
-      "tracks": 33,
-      "length": 2,
-      "sales": 3.0
-    }
-  },
-  {
-    "id": 13,
-    "name": "asdf",
-    "coordinates": {
-      "x": 412,
-      "y": 34.0
-    },
-    "creationDate": "31-03-2025",
-    "numberOfParticipants": 342,
-    "singlesCount": 23,
-    "establishmentDate": "02-02-0002",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "sfarjk",
-      "tracks": 243,
-      "length": 234,
-      "sales": 234.0
-    }
-  },
-  {
-    "id": 6,
-    "name": "dasv",
-    "coordinates": {
-      "x": 2,
-      "y": 4.0
-    },
-    "creationDate": "22-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 4,
-    "establishmentDate": "01-01-0001",
-    "genre": "HIP_HOP",
-    "bestAlbum": {
-      "name": "asfdj",
-      "tracks": 2,
-      "length": 22,
-      "sales": 2.0
-    }
-  },
-  {
-    "id": 14,
-    "name": "3",
-    "coordinates": {
-      "x": 13,
-      "y": 3.0
-    },
-    "creationDate": "01-04-2025",
-    "numberOfParticipants": 313,
-    "singlesCount": 3,
-    "establishmentDate": "01-01-1999",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "salix",
-      "tracks": 3,
-      "length": 3,
-      "sales": 3000.0
-    }
-  },
-  {
-    "id": 3,
-    "name": "name",
-    "coordinates": {
-      "x": 700,
-      "y": 650.0
-    },
-    "creationDate": "18-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 1,
-    "establishmentDate": "03-03-2004",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "skwrd",
-      "tracks": 10,
-      "length": 10,
-      "sales": 10000.0
-    }
-  },
-  {
-    "id": 15,
-    "name": "sfdsfa",
-    "coordinates": {
-      "x": 32,
-      "y": 241.0
-    },
-    "creationDate": "01-04-2025",
-    "numberOfParticipants": 23,
-    "singlesCount": 2,
-    "establishmentDate": "04-04-0047",
-    "genre": "HIP_HOP",
-    "bestAlbum": {
-      "name": "142",
-      "tracks": 42,
-      "length": 2,
-      "sales": 21.0
-    }
-  },
-  {
-    "id": 8,
-    "name": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
-    "coordinates": {
-      "x": 2,
-      "y": 2.0
-    },
-    "creationDate": "22-03-2025",
-    "numberOfParticipants": 2,
-    "singlesCount": 2,
-    "establishmentDate": "02-02-0002",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "edaflj",
-      "tracks": 12,
-      "length": 1,
-      "sales": 1.0
-    }
-  },
-  {
-    "id": 20,
-    "name": "asdf",
-    "coordinates": {
-      "x": 2,
-      "y": 2.0
-    },
-    "creationDate": "05-04-2025",
-    "numberOfParticipants": 2,
-    "singlesCount": 24,
-    "establishmentDate": "05-05-0001",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "erw",
-      "tracks": 3,
-      "length": 4,
-      "sales": 6.0
-    }
-  },
-  {
     "id": 5,
-    "name": "name",
+    "name": "Nirvana",
     "coordinates": {
-      "x": 700,
-      "y": 650.0
+      "x": 50,
+      "y": 100.0
     },
-    "creationDate": "18-03-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 1,
-    "establishmentDate": "03-03-2004",
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 3,
+    "singlesCount": 20,
+    "establishmentDate": "01-01-1987",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "skwrd",
-      "tracks": 10,
-      "length": 10,
-      "sales": 10000.0
+      "name": "Nevermind",
+      "tracks": 13,
+      "length": 49,
+      "sales": 3.0E7
     }
   },
   {
     "id": 17,
-    "name": "asdf",
+    "name": "Guns N\u0027 Roses",
     "coordinates": {
-      "x": 3,
-      "y": 2.0
+      "x": 170,
+      "y": 400.0
     },
-    "creationDate": "05-04-2025",
-    "numberOfParticipants": 23,
-    "singlesCount": 23,
-    "establishmentDate": "01-01-0001",
-    "genre": "HIP_HOP",
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 25,
+    "establishmentDate": "01-01-1985",
+    "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "1",
-      "tracks": 1,
-      "length": 1,
-      "sales": 1.0
+      "name": "Appetite for Destruction",
+      "tracks": 12,
+      "length": 54,
+      "sales": 3.0E7
+    }
+  },
+  {
+    "id": 6,
+    "name": "Radiohead",
+    "coordinates": {
+      "x": 60,
+      "y": 700.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 18,
+    "establishmentDate": "01-01-1985",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "OK Computer",
+      "tracks": 12,
+      "length": 53,
+      "sales": 5800000.0
+    }
+  },
+  {
+    "id": 7,
+    "name": "The Rolling Stones",
+    "coordinates": {
+      "x": 70,
+      "y": 650.5
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 56,
+    "establishmentDate": "12-04-1962",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Sticky Fingers",
+      "tracks": 10,
+      "length": 46,
+      "sales": 3000000.0
+    }
+  },
+  {
+    "id": 12,
+    "name": "The Doors",
+    "coordinates": {
+      "x": 120,
+      "y": 150.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 15,
+    "establishmentDate": "01-01-1965",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "L.A. Woman",
+      "tracks": 10,
+      "length": 48,
+      "sales": 2000000.0
+    }
+  },
+  {
+    "id": 4,
+    "name": "Led Zeppelin",
+    "coordinates": {
+      "x": 40,
+      "y": 200.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 30,
+    "establishmentDate": "25-10-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "IV",
+      "tracks": 8,
+      "length": 42,
+      "sales": 3.7E7
+    }
+  },
+  {
+    "id": 18,
+    "name": "The Beach Boys",
+    "coordinates": {
+      "x": 180,
+      "y": 300.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 55,
+    "establishmentDate": "01-01-1961",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Pet Sounds",
+      "tracks": 13,
+      "length": 36,
+      "sales": 2500000.0
+    }
+  },
+  {
+    "id": 16,
+    "name": "Genesis",
+    "coordinates": {
+      "x": 160,
+      "y": 500.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 35,
+    "establishmentDate": "01-01-1967",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Selling England by the Pound",
+      "tracks": 11,
+      "length": 53,
+      "sales": 5000000.0
+    }
+  },
+  {
+    "id": 11,
+    "name": "Black Sabbath",
+    "coordinates": {
+      "x": 110,
+      "y": 250.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Paranoid",
+      "tracks": 8,
+      "length": 42,
+      "sales": 4500000.0
+    }
+  },
+  {
+    "id": 2,
+    "name": "Pink Floyd",
+    "coordinates": {
+      "x": 20,
+      "y": 400.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 25,
+    "establishmentDate": "01-01-1965",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "The Dark Side of the Moon",
+      "tracks": 10,
+      "length": 43,
+      "sales": 4.5E7
+    }
+  },
+  {
+    "id": 20,
+    "name": "Deep Purple",
+    "coordinates": {
+      "x": 200,
+      "y": 100.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Machine Head",
+      "tracks": 7,
+      "length": 37,
+      "sales": 1.0E7
+    }
+  },
+  {
+    "id": 3,
+    "name": "Queen",
+    "coordinates": {
+      "x": 30,
+      "y": 300.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 45,
+    "establishmentDate": "27-07-1970",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "A Night at the Opera",
+      "tracks": 12,
+      "length": 43,
+      "sales": 6000000.0
+    }
+  },
+  {
+    "id": 1,
+    "name": "The Beatles",
+    "coordinates": {
+      "x": 10,
+      "y": 500.5
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 63,
+    "establishmentDate": "06-07-1960",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Abbey Road",
+      "tracks": 17,
+      "length": 47,
+      "sales": 3.1E7
+    }
+  },
+  {
+    "id": 8,
+    "name": "U2",
+    "coordinates": {
+      "x": 80,
+      "y": 550.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 50,
+    "establishmentDate": "25-09-1976",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "The Joshua Tree",
+      "tracks": 11,
+      "length": 50,
+      "sales": 2.5E7
+    }
+  },
+  {
+    "id": 19,
+    "name": "The Who",
+    "coordinates": {
+      "x": 190,
+      "y": 200.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 40,
+    "establishmentDate": "01-01-1964",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Who\u0027s Next",
+      "tracks": 9,
+      "length": 43,
+      "sales": 5000000.0
+    }
+  },
+  {
+    "id": 14,
+    "name": "ABBA",
+    "coordinates": {
+      "x": 140,
+      "y": 750.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 50,
+    "establishmentDate": "01-01-1972",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Arrival",
+      "tracks": 9,
+      "length": 37,
+      "sales": 2.0E7
+    }
+  },
+  {
+    "id": 13,
+    "name": "Fleetwood Mac",
+    "coordinates": {
+      "x": 130,
+      "y": 50.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 40,
+    "establishmentDate": "01-01-1967",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Rumours",
+      "tracks": 11,
+      "length": 39,
+      "sales": 4.0E7
+    }
+  },
+  {
+    "id": 10,
+    "name": "Red Hot Chili Peppers",
+    "coordinates": {
+      "x": 100,
+      "y": 350.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 42,
+    "establishmentDate": "01-01-1983",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Californication",
+      "tracks": 15,
+      "length": 56,
+      "sales": 1.6E7
+    }
+  },
+  {
+    "id": 15,
+    "name": "Eagles",
+    "coordinates": {
+      "x": 150,
+      "y": 600.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1971",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Hotel California",
+      "tracks": 9,
+      "length": 43,
+      "sales": 4.2E7
+    }
+  },
+  {
+    "id": 9,
+    "name": "Coldplay",
+    "coordinates": {
+      "x": 90,
+      "y": 450.0
+    },
+    "creationDate": "10-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 45,
+    "establishmentDate": "08-09-1996",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "A Rush of Blood to the Head",
+      "tracks": 11,
+      "length": 54,
+      "sales": 1.5E7
     }
   }
 ]

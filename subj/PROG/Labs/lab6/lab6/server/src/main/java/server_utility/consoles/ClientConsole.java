@@ -5,6 +5,7 @@ import common_utility.network.Request;
 import common_utility.network.Response;
 import lombok.Getter;
 import lombok.Setter;
+import server_commands.ExecuteScript;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_utility.Invoker;
@@ -76,7 +77,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
             }
         } else {
             tmp = new StringBuilder();
-            tmp.append(o.toString());
+            tmp.append(o.toString());   //TODO
         }
     }
 
@@ -85,6 +86,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
         if (!scriptMode) {
             return (Request) inFromClient.readObject();
         } else {
+            ExecuteScript executeScript = new ExecuteScript(this, invoker, inFromClient, outToClient);
             return null; //TODO
         }
     }
