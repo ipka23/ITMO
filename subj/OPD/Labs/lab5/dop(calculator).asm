@@ -15,11 +15,11 @@
 ;sign:                    word ?
 
 ; TODO реализовать умножение на 0 и добавить проверку на 0 в каждом умножении
-jump _START
+jump START
 minus: word 0xA ; "-"
 a:  word ?
 sign: word 0x0
-_START:
+START:
 ; сброс разрядов индикатора
     ld #0x002B
     out 0x14
@@ -81,7 +81,7 @@ b: word ?
 sign_input_2:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
-    bne skip_in_b     ; если не "-", то знак не меняем
+    bne skip_in_b     ; если не "-", то проверяем цифра ли это
     ;cmc               ; меняем флаг C который указвает на знак цифры
     ld sign
     not
@@ -135,15 +135,19 @@ multiply:
     pop
     st res ; результат умножения записываем в res
 
-_FINISH:
+
+
+
+
+
+FINISH:
     ld sign
-    ror
-    bcs negative_num
+    rol
     ld res
+    bcs negative_num ; я не знаю почему bcc а не bcs но оно работает, а нет не работает
     out 0x14
     hlt
 negative_num:
-    ld res
     out 0x14   ; вывод res на позицию №0
     ld #0x001A ;
     out 0x14   ; вывод "-" на позицию №1 на 7-сегментном индикаторе
