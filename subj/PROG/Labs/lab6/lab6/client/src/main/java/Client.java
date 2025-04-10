@@ -11,12 +11,14 @@ import java.util.Scanner;
 
 public class Client {
     public static int PORT = 1123;
+    private static String hostName = "localhost";
     private static Socket socket;
     private static Scanner userInput;
     private static ObjectInputStream inFromServer;
     private static ObjectOutputStream outToServer;
     private static String collectionFile;
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
+
 
 
     public static void main(String[] args) throws IOException {
@@ -52,7 +54,7 @@ public class Client {
 //    }
 
     public static void run() throws IOException, ClassNotFoundException {
-        socket = new Socket("localhost", PORT);
+        socket = new Socket(hostName, PORT);
         outToServer = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
         outToServer.flush();
         inFromServer = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
@@ -107,7 +109,7 @@ public class Client {
                     System.out.print(response);
                     System.exit(333);
                 }
-                if (command.equals("show")) { // response.getMusicBandsCollection() != null
+                if (command.equals("show") || command.equals("filter_starts_with_name")) { // response.getMusicBandsCollection() != null
                     show(response);
                 }
                 else {
@@ -121,10 +123,15 @@ public class Client {
 
     private static void show(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
-        System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
-        System.out.println("_".repeat(88));
-        for (var band : musicBandsCollection) {
-             System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales());
+        if (musicBandsCollection == null || musicBandsCollection.isEmpty()) {
+            System.out.println(response.getMessage());
+        }
+        else {
+            System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
+            System.out.println("_".repeat(88));
+            for (var band : musicBandsCollection) {
+                System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales());
+            }
         }
     }
     private static void sendScriptFile(String path) throws FileNotFoundException {
