@@ -14,19 +14,29 @@
 ;mask_for_sign_definiton: word 0x7fff
 ;sign:                    word ?
 
-
-
-
-org 0x100
+; TODO реализовать умножение на 0 и добавить проверку на 0 в каждом умножении
+jump _START
 minus: word 0xA ; "-"
 a:  word ?
-_START: cla
-
+sign: word 0
+_START:
+; сброс разрядов индикатора
+    ld #0x002B
+    out 0x14
+    ld #0x001B
+    out 0x14
+    ld #0x000B
+    out 0x14
+    ;clc
 sign_input_1:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
+    ;clc                ; т.к. при cmp если символ не равен "-" то при AC - m => С=1
     bne skip_in_a       ; если не "-", то знак не меняем
-    cmc               ; меняем флаг C который указвает на знак цифры
+    ;cmc               ; меняем флаг C который указвает на знак цифры
+    ld negative
+    not
+    st sign
 
 
 a_input:
@@ -55,14 +65,13 @@ skip_in_a:
     jump a_input
 break_a_input:
     st a ; сохраняем первый символ - a
-    out 0x14
 
 
 jump multiply_input
-multiply:   word 0xD ; "*"
+multiplication:   word 0xD ; "*"
 multiply_input:
     in 0x1C    ; ввод с клавиатуры
-    cmp multiply
+    cmp multiplication
     beq sign_input_2
     jump multiply_input
 
@@ -72,9 +81,11 @@ b: word ?
 sign_input_2:
     in 0x1C           ; ввод с цифровой клавиатуры
     cmp minus         ; символ == "-"?
-    bne skip_in_b       ; если не "-", то знак не меняем
-    cmc               ; меняем флаг C который указвает на знак цифры
-
+    bne skip_in_b     ; если не "-", то знак не меняем
+    ;cmc               ; меняем флаг C который указвает на знак цифры
+    ld sign
+    not
+    st sign
 
 b_input:
     in 0x1C           ; ввод с цифровой клавиатуры
@@ -102,7 +113,6 @@ skip_in_b:
     jump b_input
 break_b_input:
     st b ; сохраняем второй символ - b
-    out 0x14
 
 
 
@@ -111,14 +121,59 @@ equate: word 0xF ; "="
 equate_input:
     in 0x1C
     cmp equate
-    beq _FINISH
+    beq multiply
     jump equate_input
 
+res: word ?
+multiply:
+    ld a
+    push
+    ld b
+    push
+    call $func
+    pop
+    pop
+    st res ; результат умножения записываем в res
+
 _FINISH:
+    ld sign
+    ror
+    bcs negative_num
+    ld res
+    out 0x14
+    hlt
+negative_num:
+    ld res
+    out 0x14   ; вывод res на позицию №0
+    ld #0x001A ;
+    out 0x14   ; вывод "-" на позицию №1 на 7-сегментном индикаторе
     hlt
 
-to_decimal:
 
+org 0x200
+func:
+    ld &2 ; a -> AC
+    cmp #0x1
+    beq multiply_X1
+    ld &1 ; b -> AC
+    cmp #0x1
+    beq multiply_X1
+
+
+; a = &2 - первый множитель, b = &1 - второй множитель
 multiply_X1:
+    ld &1 ; в AC записываем b
+    cmp #0x1
+    beq return_a
+    st &2 ; если b != 1, то записываем его в &2
+    ret   ; и делаем ret (return b)
+return_a:
+    ret
+
+
+
 multiply_X2:
 multiply_X3:
+
+
+to_decimal:

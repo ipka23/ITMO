@@ -61,5 +61,17 @@ multiply_input:
     beq break
     jump multiply_input
 break:
-    hlt
+    hl
 
+; вывод "-" на позицию №1 на 7-сегментном индикаторе
+ld #0x001A
+out 0x14
+hlt
+; сброс разряда
+ld #0x007F
+out 0x14
+ld #0x001B
+out 0x14
+ld #0x000B
+out 0x14
+hlt
