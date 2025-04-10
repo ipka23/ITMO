@@ -27,6 +27,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
     private static ObjectInputStream inFromClient;
     private static ObjectOutputStream outToClient;
     @Setter
+    @Getter
     private boolean scriptMode = false;
     @Getter
     private StringBuilder tmp;

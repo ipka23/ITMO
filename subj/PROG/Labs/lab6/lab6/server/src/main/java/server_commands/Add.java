@@ -18,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class Add extends Command {
@@ -54,19 +55,33 @@ public class Add extends Command {
 
     protected String inputName() throws IOException, ClassNotFoundException {
         String name;
-        Response response = new Response(false, "Введите название музыкальной банды\n* ");
-        console.send(null);
-        while (true) {
-            console.send(response);
+        Request request;
+        String input;
+        Response response = new Response(false, "Введите название музыкальной группы\n* ");
+        if (!console.isScriptMode()) {
+            console.send(null);
+            while (true) {
+                console.send(response);
+                request = console.getRequest();
+                input = request.getMessage();
 
-            Request request = console.getRequest();
-
-            String input = request.getMessage();
-
-            if (input.trim().isEmpty()) continue;
-            if (input.equals("exit")) throw new InputBreakException();
-            name = input;
-            break;
+                if (input.trim().isEmpty()) continue;
+                if (input.equals("exit")) throw new InputBreakException();
+                name = input;
+                break;
+            }
+        }
+        else {
+            while (true) {
+                request = console.getRequest();
+                input = request.getMessage();
+                Scanner tmpScan = new Scanner(input);
+                tmpScan.nextLine();
+                if (input.trim().isEmpty()) continue;
+                if (input.equals("exit")) throw new InputBreakException();
+                name = input;
+                break;
+            }
         }
         return name;
     }

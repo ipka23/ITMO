@@ -19,6 +19,7 @@ public class ExecuteScript extends Command {
     private ObjectInputStream inFromClient;
     private ObjectOutputStream outToClient;
     private Request request;
+    private String scriptContent;
 
 
     public ExecuteScript(ClientConsole console, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
@@ -47,7 +48,15 @@ public class ExecuteScript extends Command {
                 scriptFileContent.append(console.getScriptPrompt()).append(line).append("\n");
 
                 if (line.isEmpty()) continue;
-
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) { //TODO
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String s;
+                    while ((s = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    stringBuilder = new StringBuilder(stringBuilder.substring(0, stringBuilder.toString().length() - 1));
+                    scriptContent = stringBuilder.toString();
+                } catch (FileNotFoundException e) {}
                 String[] command = (line + " ").split(" ", 2);
 
                 Response response = invoker.execute(command);
