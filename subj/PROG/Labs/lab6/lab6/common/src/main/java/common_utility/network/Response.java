@@ -1,10 +1,17 @@
 package common_utility.network;
 
 import common_entities.MusicBand;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Collection;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Response implements Serializable {
     private boolean exitClient;
     private String message;
@@ -37,20 +44,8 @@ public class Response implements Serializable {
     }
 
 
-    public String getMessage() {
-        return message;
-    }
-
-    public Collection<MusicBand> getMusicBandsCollection() {
-        return musicBandsCollection;
-    }
-
-    public MusicBand getBand() {
-        return band;
-    }
-
-    @Override
-    public String toString() {
-        return message;
-    }
+//    @Override
+//    public String toString() {
+//        return message;
+//    }
 }

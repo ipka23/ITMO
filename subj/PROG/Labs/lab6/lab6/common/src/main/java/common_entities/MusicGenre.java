@@ -1,11 +1,13 @@
 package common_entities;
 
+import java.io.Serializable;
+
 /**
  * Данный класс enum представляет доступные жанры музыки
  *
  * @author ipka23
  */
-public enum MusicGenre {
+public enum MusicGenre implements Serializable {
     PROGRESSIVE_ROCK,
     HIP_HOP,
     POP;

@@ -17,8 +17,7 @@ public class Client {
     private static ObjectOutputStream outToServer;
     private static String collectionFile;
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
-    private static String command;
-    private static String arg;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -76,16 +75,58 @@ public class Client {
 
 
 
-//    private static void sendScriptFile(File file) throws IOException, ClassNotFoundException {
-//        outToServer.writeObject(new Request(command, arg, file));
-//        outToServer.flush();
-//        Response response = (Response) inFromServer.readObject();
-//        if (response.getExitStatus()) {
-//            System.out.print(response);
-//            System.exit(222);
-//        }
-//    }
 
+    private static void sendMessage() {
+        Response response;
+        Request request;
+        String command;
+        String arg;
+        try {
+            while (true) {
+                Response prompt = (Response) inFromServer.readObject();
+                System.out.print(prompt.getMessage());
+                String message = userInput.nextLine().trim();
+                
+                command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
+                arg = (message + " ").split(" ", 2)[1].trim();
+
+                request = new Request(command, arg);
+
+
+                outToServer.writeObject(request);
+                outToServer.flush();
+
+                if (command.equals("execute_script")) {
+                    sendScriptFile(arg);
+                }
+
+                if (message.isEmpty()) continue;
+                response = (Response) inFromServer.readObject();
+                if (response == null) continue;
+                else if (response.getExitStatus()) {
+                    System.out.print(response);
+                    System.exit(333);
+                }
+                if (command.equals("show")) { // response.getMusicBandsCollection() != null
+                    show(response);
+                }
+                else {
+                    System.out.println(response.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void show(Response response) {
+        musicBandsCollection = response.getMusicBandsCollection();
+        System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
+        System.out.println("_".repeat(88));
+        for (var band : musicBandsCollection) {
+             System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales());
+        }
+    }
     private static void sendScriptFile(String path) throws FileNotFoundException {
         File scriptFile = new File(path);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) {
@@ -101,49 +142,6 @@ public class Client {
             outToServer.writeObject(request);
             outToServer.flush();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-    private static void sendMessage() {
-        Response response;
-        try {
-            while (true) {
-                Request request;
-                Response prompt = (Response) inFromServer.readObject();
-                System.out.print(prompt);
-                String message = userInput.nextLine().trim();
-
-                command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
-                arg = (message + " ").split(" ", 2)[1].trim();
-
-                request = new Request(command, arg);
-
-
-                outToServer.writeObject(request);
-                outToServer.flush();
-
-
-
-
-                if (command.equals("execute_script")) {
-                    sendScriptFile(arg);
-                }
-
-
-                if (message.isEmpty()) continue;
-                response = (Response) inFromServer.readObject();
-                if (response == null) continue;
-                if (response.getExitStatus()) {
-                    System.out.print(response);
-                    System.exit(333);
-                }
-                else {
-                    System.out.println(response);
-                }
-            }
-        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
