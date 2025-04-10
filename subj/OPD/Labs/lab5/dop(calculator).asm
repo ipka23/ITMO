@@ -18,7 +18,7 @@
 jump _START
 minus: word 0xA ; "-"
 a:  word ?
-sign: word ?
+sign: word 0x0
 _START:
 ; сброс разрядов индикатора
     ld #0x002B
