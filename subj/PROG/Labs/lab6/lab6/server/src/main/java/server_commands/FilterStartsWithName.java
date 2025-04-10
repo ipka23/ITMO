@@ -7,6 +7,7 @@ import server_utility.Command;
 import server_utility.interfaces.Console;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Данный класс отвечает за выполнение команды "filter_starts_with_name"
@@ -41,13 +42,15 @@ public class FilterStartsWithName extends Command {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         StringBuilder s = new StringBuilder();
         Collection<MusicBand> collection = collectionManager.getCollection();
+        Collection<MusicBand> collectionWithFilter = new HashSet<>();
         for (MusicBand band : collection) {
-            if (band.getName().startsWith(command[1].trim())) {
+            if (band.getName().toLowerCase().startsWith(command[1].trim().toLowerCase())) {
+                collectionWithFilter.add(band);
                 s.append(band).append("\n");
             }
         }
-        if (s.isEmpty())
+        if (collectionWithFilter.isEmpty())
             return new Response(false, "Нет MusicBands у которых имя начинается с " + command[1] + "!");
-        return new Response(false, s.substring(0, s.length() - 1));
+        return new Response(false, s.substring(0, s.length() - 1), collectionWithFilter);
     }
 }
