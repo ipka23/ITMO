@@ -18,7 +18,7 @@
 jump _START
 minus: word 0xA ; "-"
 a:  word ?
-sign: word 0
+sign: word ?
 _START:
 ; сброс разрядов индикатора
     ld #0x002B
@@ -34,7 +34,7 @@ sign_input_1:
     ;clc                ; т.к. при cmp если символ не равен "-" то при AC - m => С=1
     bne skip_in_a       ; если не "-", то знак не меняем
     ;cmc               ; меняем флаг C который указвает на знак цифры
-    ld negative
+    ld sign
     not
     st sign
 
