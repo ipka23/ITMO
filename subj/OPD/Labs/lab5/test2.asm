@@ -11,7 +11,7 @@ START:
     out 0x14
     ld #0x000B
     out 0x14
-    ; цикл ввода
+    ; цикл ввода a
 input_a:
     in 0x1C
     in 0x1C
@@ -42,15 +42,15 @@ save_sign:
 FINISH:
     ld sign
     cmp #0x1
-    beq negative_a
+    beq negative_res
 
-    ld a
+    ld res
     out 0x14         ; выводим цифру на позицию 0
     hlt
 
-negative_a:
+negative_res:
     ld #0x001A
     out 0x14         ; выводим "-" на позицию 1
-    ld a
+    ld res
     out 0x14         ; выводим цифру на позицию 0
     hlt
