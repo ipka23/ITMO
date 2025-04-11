@@ -26,12 +26,6 @@ public class Info extends Command {
         this.collectionManager = collectionManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
     @Override
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())

@@ -123,6 +123,4 @@ public class ClientConsole extends StandartConsole implements Networkable {
             throw new RuntimeException(e);
         }
     }
-
-
 }

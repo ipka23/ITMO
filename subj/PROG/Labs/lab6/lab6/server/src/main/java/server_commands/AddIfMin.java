@@ -32,12 +32,7 @@ public class AddIfMin extends Command {
         this.add = new Add(console, collectionManager);
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
+
     @Override
     public Response execute(String[] command) {
         try {
@@ -47,10 +42,10 @@ public class AddIfMin extends Command {
             MusicBand newBand = add.inputMusicBand();
             if (newBand.getBestAlbum().getSales() < collectionManager.getMin().getBestAlbum().getSales()) {
                 collectionManager.addMusicBand(newBand);
-                return new Response(false, "В коллекцию был добавлен элемент album.sales которого меньше чем у элемента с минимальным album.sales!");
+                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой меньше чем у группы с минимальным количеством продаж!");
             } else {
                 collectionManager.removeByID(id);
-                return new Response(false, "Элемент не был добавлен в коллекцию, т. к. его album.sales превышают элемент с минимальным album.sales!");
+                return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома больше чем у группы с минимальным количеством продаж!");
             }
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());

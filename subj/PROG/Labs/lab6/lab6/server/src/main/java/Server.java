@@ -1,19 +1,18 @@
 import common_utility.network.Request;
 import common_utility.network.Response;
-import lombok.extern.slf4j.Slf4j;
-import server_commands.Add;
-import server_commands.ExecuteScript;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
+import server_utility.consoles.ServerConsole;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-@Slf4j
 public class Server {
 
     public static int PORT = 1123;
@@ -22,24 +21,24 @@ public class Server {
     private static ObjectInputStream inFromClient;
     private static ObjectOutputStream outToClient;
     private static String collectionFileName;
-//    private static Logger log = LoggerFactory.getLogger(Server.class);
     private static Invoker invoker;
-    private static ClientConsole console;
+    private static ClientConsole clientConsole;
     private static FileManager fileManager;
     private static CollectionManager collectionManager;
     private static CommandManager commandManager;
+    private static Logger log = LoggerFactory.getLogger("ServerConsole");
 
     public static void main(String[] args) {
 
-        fileManager = new FileManager(null, console, null);
-        collectionManager = new CollectionManager(fileManager, console);
-        commandManager = new CommandManager(console, collectionManager);
-        invoker = new Invoker(commandManager, console);
+        fileManager = new FileManager(null, clientConsole, null);
+        collectionManager = new CollectionManager(fileManager, clientConsole);
+        commandManager = new CommandManager();
+        invoker = new Invoker(commandManager, clientConsole);
 
-        console = new ClientConsole(invoker);
+        clientConsole = new ClientConsole(invoker);
 
         fileManager.setCollectionManager(collectionManager);
-        console.setCollectionManager(collectionManager);
+        clientConsole.setCollectionManager(collectionManager);
 
 
         run();
@@ -54,22 +53,24 @@ public class Server {
                 log.info("Client has connected!");
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                 outToClient.flush();
-                console.setObjectOutputStream(outToClient);
+                clientConsole.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-                console.setObjectInputStream(inFromClient);
+                clientConsole.setObjectInputStream(inFromClient);
                 log.info("Successfully declared in & out streams");
                 collectionFileName = getFile();
                 fileManager.setFile(collectionFileName);
                 break;
             }
-            commandManager.addCommand("add", new Add(console, collectionManager, inFromClient, outToClient));
-            commandManager.addCommand("execute_script", new ExecuteScript(console, invoker, inFromClient, outToClient));
-            console.launch();
+            commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient);
+            Runnable serverConsole = new ServerConsole(collectionManager);
+            new Thread(serverConsole).start();
+            clientConsole.launch();
 
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
+
 
     private static String getFile() throws IOException, ClassNotFoundException {
         Request request = (Request) inFromClient.readObject();

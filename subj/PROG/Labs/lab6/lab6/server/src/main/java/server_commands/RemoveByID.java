@@ -26,12 +26,7 @@ public class RemoveByID extends Command {
         this.collectionManager = collectionManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
+
     public Response execute(String[] command) {
         if (command[1].trim().isEmpty()) {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
@@ -44,9 +39,9 @@ public class RemoveByID extends Command {
         }
         var band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new Response(false, "В коллекции нет элемента с таким id!");
+            return new Response(false, "В коллекции нет музыкальной группы с таким id!");
         }
         collectionManager.removeByID(id);
-        return new Response(false, "Элемент с id = " + id + " был удален из коллекции!");
+        return new Response(false, "Музыкальная группа с id = " + id + " была удалена из коллекции!");
     }
 }

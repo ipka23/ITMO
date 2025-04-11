@@ -1,9 +1,13 @@
 package server_commands;
 
+import common_entities.MusicBand;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
+
+import java.util.Collection;
+import java.util.Comparator;
 
 /**
  * Данный класс отвечает за выполнение команды "show"
@@ -26,16 +30,12 @@ public class Show extends Command {
         this.collectionManager = collectionManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
     @Override
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        return new Response(false, collectionManager.toString(), collectionManager.getCollection());
+        Collection<MusicBand> collection = collectionManager.getCollection();
+        collection = collection.stream().sorted(Comparator.comparing(MusicBand::getName)).toList();
+        return new Response(false, collectionManager.toString(), collection);
     }
 }
