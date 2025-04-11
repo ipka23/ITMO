@@ -8,6 +8,8 @@ import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -20,26 +22,24 @@ public class RemoveGreater extends Command {
     private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
-
+    private ObjectInputStream inFromClient;
+    private ObjectOutputStream outToClient;
     /**
      * Конструктор
      *
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public RemoveGreater(ClientConsole console, CollectionManager collectionManager) {
+    public RemoveGreater(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         super("remove_greater", "удалить из коллекции все элементы, превышающие заданный");
         this.console = console;
         this.collectionManager = collectionManager;
         this.add = new Add(console, collectionManager);
+        this.inFromClient = inFromClient;
+        this.outToClient = outToClient;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
+
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
@@ -54,7 +54,7 @@ public class RemoveGreater extends Command {
                     iterator.remove();
                 }
             }
-            return new Response(false, "Из коллекции были удалены все элементы превышающие данный по параметру album.sales");
+            return new Response(false, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома");
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {

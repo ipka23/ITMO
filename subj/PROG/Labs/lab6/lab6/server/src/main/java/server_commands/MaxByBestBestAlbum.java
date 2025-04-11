@@ -27,12 +27,6 @@ public class MaxByBestBestAlbum extends Command {
         this.collectionManager= collectionManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
     @Override
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
@@ -40,7 +34,7 @@ public class MaxByBestBestAlbum extends Command {
         MusicBand bestBand;
         bestBand = collectionManager.getMax();
         StringBuilder message = new StringBuilder();
-        message.append("MusicBand с максимальным количеством album.sales:").append("\n");
+        message.append("Музыкальная группа с максимальным количеством продаж лучшего альбома:").append("\n");
         message.append(bestBand.toString());
         return new Response(false, message.toString());
     }

@@ -1,9 +1,12 @@
 package server_commands;
 
+import common_entities.MusicBand;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
+
+import java.util.Collection;
 
 /**
  * Данный класс отвечает за выполнение команды "clear"
@@ -26,17 +29,13 @@ public class Clear extends Command {
         this.collectionManager = collectionManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
+
     @Override
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        collectionManager.getCollection().clear();
-        return new Response(false, "Коллекция была очищена!");
+        Collection<MusicBand> collection = collectionManager.getCollection();
+        collection.clear();
+        return new Response(false, "Коллекция была очищена!", collection);
     }
 }

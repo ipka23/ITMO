@@ -6,6 +6,7 @@ import common_entities.MusicBand;
 import common_entities.MusicGenre;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import lombok.Setter;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
@@ -22,7 +23,9 @@ import java.util.Scanner;
 
 
 public class Add extends Command {
+    @Setter
     private static ObjectInputStream inFromClient;
+    @Setter
     private static ObjectOutputStream outToClient;
     private ClientConsole console;
     private CollectionManager collectionManager;
@@ -190,7 +193,7 @@ public class Add extends Command {
                 establishmentDate = dateFormat.parse(input);
                 break;
             } catch (ParseException e) {
-                response = new Response(false,"Неверный формат даты!\n* ");
+                response = new Response(false,"Неверный формат даты!\nВведите дату в формате \"dd-MM-yyyy\"\n*");
                 console.send(null);
             }
         }

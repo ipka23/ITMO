@@ -26,12 +26,7 @@ public class Help extends Command {
         this.commandManager = commandManager;
     }
 
-    /**
-     * Метод для выполнения команды
-     *
-     * @param command команда введенная пользователем
-     * @return объект utility.ExecutionResponse, содержащий результат выполнения команды
-     */
+
     @Override
     public Response execute(String[] command) {
         StringBuilder s = new StringBuilder();
