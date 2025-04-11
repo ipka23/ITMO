@@ -15,7 +15,6 @@
 ;sign:                    word ?
 
 ; TODO реализовать умножение на 0 и добавить проверку на 0 в каждом умножении
-jump START
 minus: word 0xA ; "-"
 a:  word ?
 sign: word 0x0
