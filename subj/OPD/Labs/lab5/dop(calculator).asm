@@ -164,9 +164,11 @@ done:
 
 ; вывод цифры
 one_digit:
-    ld #0x002B  ;
+    ld #0x002B
     out 0x14    ; сброс 2 разряда индикатора
-
+    ld res
+    cmp #0x0
+    beq zero_out
 
     ld sign
     cmp #0x1
@@ -226,7 +228,12 @@ negative_res_two_digits:
     out 0x14
     jump START
 
-
+zero_out:
+    ld #0x001B  ;
+    out 0x14    ; сброс 1 разряда индикатора
+    ld #0x0     ; костыль
+    out 0x14
+    hlt         ; костыль
 
 
 
@@ -236,23 +243,61 @@ negative_res_two_digits:
 ; функция умножения
 org 0x200
 func:  ; TODO вот тут надо вспомнить/разобраться
-    ld &2           ; a -> AC
+    ld &2            ; a -> AC
+    cmp #0
+    beq multiply_X0
     cmp #0x1
     beq multiply_X1
     cmp #0x2
     beq multiply_X2
     cmp #0x3
     beq multiply_X3
-    ld &1           ; b -> AC
+    cmp #0x4
+    beq multiply_X4
+    cmp #0x5
+    beq multiply_X5
+    cmp #0x6
+    beq multiply_X6
+    cmp #0x7
+    beq multiply_X7
+    cmp #0x8
+    beq multiply_X8
+    cmp #0x9
+    beq multiply_X9
+
+    ld &1            ; b -> AC
+    cmp #0
+    beq multiply_X0
     cmp #0x1
     beq multiply_X1
     cmp #0x2
     beq multiply_X2
     cmp #0x3
     beq multiply_X3
+    cmp #0x4
+    beq multiply_X4
+    cmp #0x5
+    beq multiply_X5
+    cmp #0x6
+    beq multiply_X6
+    cmp #0x7
+    beq multiply_X7
+    cmp #0x8
+    beq multiply_X8
+    cmp #0x9
+    beq multiply_X9
+
 
 
 ; a = &2 - первый множитель, b = &1 - второй множитель
+
+
+
+multiply_X0:
+    ld #0x0
+    st &2
+    ret
+
 multiply_X1:
     ld &1 ; в AC записываем b
     cmp #0x1
@@ -282,12 +327,121 @@ multiply_X3:
     ld &1 ; в AC записываем b
     cmp #0x3
     beq return_aX3
-    asl   ;
+    asl
     add &1
     st &2 ; если b != 3, то умножаем его на 3, записываем в 7FF = &2
     ret   ; и делаем ret (return b)
 return_aX3:
     ld &2
+    asl
+    add &2
+    st &2
+    ret
+
+
+multiply_X4:
+    ld &1 ; в AC записываем b
+    cmp #0x4
+    beq return_aX4
+    asl
+    asl
+    st &2 ; если b != 4, то умножаем его на 4, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX4:
+    ld &2
+    asl
+    asl
+    st &2
+    ret
+
+
+multiply_X5:
+    ld &1 ; в AC записываем b
+    cmp #0x5
+    beq return_aX5
+    asl
+    asl
+    add &1
+    st &2 ; если b != 5, то умножаем его на 5, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX5:
+    ld &2
+    asl
+    asl
+    add &2
+    st &2
+    ret
+
+
+multiply_X6:
+    ld &1 ; в AC записываем b
+    cmp #0x6
+    beq return_aX6
+    asl
+    add &1
+    asl
+    st &2 ; если b != 6, то умножаем его на 6, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX6:
+    ld &2
+    asl
+    add &2
+    asl
+    st &2
+    ret
+
+
+multiply_X7:
+    ld &1 ; в AC записываем b
+    cmp #0x7
+    beq return_aX7
+    asl
+    add &1
+    asl
+    add &1
+    st &2 ; если b != 7, то умножаем его на 7, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX7:
+    ld &2
+    asl
+    add &2
+    asl
+    add &2
+    st &2
+    ret
+
+
+multiply_X8:
+    ld &1 ; в AC записываем b
+    cmp #0x8
+    beq return_aX8
+    asl
+    asl
+    asl
+    st &2 ; если b != 8, то умножаем его на 8, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX8:
+    ld &2
+    asl
+    asl
+    asl
+    st &2
+    ret
+
+multiply_X9:
+    ld &1 ; в AC записываем b
+    cmp #0x8
+    beq return_aX9
+    asl
+    asl
+    asl
+    add &1
+    st &2 ; если b != 9, то умножаем его на 9, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX9:
+    ld &2
+    asl
+    asl
     asl
     add &2
     st &2
