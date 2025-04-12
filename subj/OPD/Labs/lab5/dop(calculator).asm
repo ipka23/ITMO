@@ -3,18 +3,6 @@
 ;Ввод пары чисел с ВУ-9 (цифровая клавиатура), разделитель чисел - операция умножения.
 ;По нажатию "=" вывод результата на ВУ-7 (семисегментный индикатор).
 
-; a - first symbol
-; b - second symbol
-; 0xA - "-"
-; 0xD - "*"
-; 0xF - "="
-
-;signed: word 0x1000
-;unsigned: word 0x0000
-;mask_for_sign_definiton: word 0x7fff
-;sign:                    word ?
-;
-
 a:                word 0x0 ; первый множитель
 b:                word 0x0 ; второй множитель
 res:              word 0x0 ; резульат умножения
@@ -24,30 +12,21 @@ minus:            word 0xA ; код символа "-"
 equate:           word 0xF ; код символа "="
 multiplication:   word 0xD ; код символа "*"
 
-count_of_tens:  word 0x0   ; количество десятков в числе TODO заменить на t
+t:  word 0x0   ; количество десятков в числе
 START:
     cla
-    ; сброс разрядов индикатора
-    ;ld #0x002B
-    ;out 0x14
-    ;ld #0x001B
-    ;out 0x14
-    ;ld #0x000B
-    ;out 0x14
-
     ; очистка значений
     ld sign
     cla
     st sign
-    ld count_of_tens
+    ld t
     cla
-    st count_of_tens
+    st t
 
 
 
 ; цикл ввода a
 input_a:
-    in 0x1C
     in 0x1C
     cmp minus
     beq handle_minus_a
@@ -83,7 +62,6 @@ multiply_input:
 ; цикл ввода b
 input_b:
     in 0x1C
-    in 0x1C
     cmp minus
     beq handle_minus_b ;
     cmp #0x0
@@ -111,7 +89,6 @@ save_sign_b:          ; сохранение знака переход к вво
 
 ; цикл ввода "="
 equate_input:
-    in 0x1C
     in 0x1C
     cmp equate
     bne input_b
@@ -142,13 +119,13 @@ hex_to_bcd:
     blt done          ; если res < 10 то завершаем подсчёт десятков
     sub #0x000A
     st res
-    ld count_of_tens
+    ld t
     inc
-    st count_of_tens  ; иначе вычитаем из него 10 и увеличиваем счетчик десятков на 1
+    st t  ; иначе вычитаем из него 10 и увеличиваем счетчик десятков на 1
     jump FINISH       ; переходим к следующей итерации
 
 done:
-    ld count_of_tens  ; обл. опред.: count_of_tens E[0x0000, 0x0009]
+    ld t  ; обл. опред.: t E[0x0000, 0x0009]
     asl
     asl
     asl
@@ -174,7 +151,7 @@ one_digit:
     cmp #0x1
     beq negative_res_one_digit  ; если "-" то переходим к выводу цифры с минусом
 
-    ld #0x001B  ;
+    ld #0x001B
     out 0x14    ; сброс 1 разряда индикатора
     ld res
     out 0x14                    ; иначе выводим цифру на позицию 0 и завершаем программу
@@ -187,7 +164,7 @@ two_digits:
     beq negative_res_two_digits  ; если "-" то переходим к выводу числа с минусом
 
 
-    ld #0x002B  ;
+    ld #0x002B
     out 0x14    ; сброс 2 разряда индикатора
 
     ld res
@@ -242,7 +219,7 @@ zero_out:
 
 ; функция умножения
 org 0x200
-func:  ; TODO вот тут надо вспомнить/разобраться
+func:
     ld &2            ; a -> AC
     cmp #0x0
     beq multiply_X0
@@ -265,34 +242,10 @@ func:  ; TODO вот тут надо вспомнить/разобраться
     cmp #0x9
     beq multiply_X9
 
-    ld &1            ; b -> AC
-    cmp #0x0
-    beq multiply_X0
-    cmp #0x1
-    beq multiply_X1
-    cmp #0x2
-    beq multiply_X2
-    cmp #0x3
-    beq multiply_X3
-    cmp #0x4
-    beq multiply_X4
-    cmp #0x5
-    beq multiply_X5
-    cmp #0x6
-    beq multiply_X6
-    cmp #0x7
-    beq multiply_X7
-    cmp #0x8
-    beq multiply_X8
-    cmp #0x9
-    beq multiply_X9
 
 
 
 ; a = &2 - первый множитель, b = &1 - второй множитель
-
-
-
 multiply_X0:
     ld #0x0
     st &2
