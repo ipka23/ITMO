@@ -7,12 +7,14 @@ a:                word 0x0 ; первый множитель
 b:                word 0x0 ; второй множитель
 res:              word 0x0 ; резульат умножения
 
+t:                word 0x0 ; количество десятков в числе
+
 sign:             word 0x0 ; знак результата
 minus:            word 0xA ; код символа "-"
 equate:           word 0xF ; код символа "="
 multiplication:   word 0xD ; код символа "*"
 
-t:  word 0x0   ; количество десятков в числе
+
 START:
     cla
     ; очистка значений
@@ -125,7 +127,7 @@ hex_to_bcd:
     jump FINISH       ; переходим к следующей итерации
 
 done:
-    ld t  ; обл. опред.: t E[0x0000, 0x0009]
+    ld t              ; t E[0x0000, 0x0009]
     asl
     asl
     asl
