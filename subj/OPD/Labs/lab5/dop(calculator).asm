@@ -165,9 +165,16 @@ done:
 
 ; вывод цифры
 one_digit:
+    ld #0x002B  ;
+    out 0x14    ; сброс 2 разряда индикатора
+
+
     ld sign
     cmp #0x1
     beq negative_res_one_digit  ; если "-" то переходим к выводу цифры с минусом
+
+    ld #0x001B  ;
+    out 0x14    ; сброс 1 разряда индикатора
     ld res
     out 0x14                    ; иначе выводим цифру на позицию 0 и завершаем программу
     jump START
@@ -177,6 +184,10 @@ two_digits:
     ld sign
     cmp #0x1
     beq negative_res_two_digits  ; если "-" то переходим к выводу числа с минусом
+
+
+    ld #0x002B  ;
+    out 0x14    ; сброс 2 разряда индикатора
 
     ld res
     asr
