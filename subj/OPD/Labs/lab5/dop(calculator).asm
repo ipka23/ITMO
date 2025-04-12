@@ -13,7 +13,7 @@
 ;unsigned: word 0x0000
 ;mask_for_sign_definiton: word 0x7fff
 ;sign:                    word ?
-; TODO реализовать умножение на 0 и добавить проверку на 0 в каждом умножении
+;
 
 a:                word 0x0 ; первый множитель
 b:                word 0x0 ; второй множитель
@@ -51,7 +51,7 @@ input_a:
     in 0x1C
     cmp minus
     beq handle_minus_a
-    cmp #0x1
+    cmp #0x0
     blt input_a   ; если in < 0 то не цифра
     cmp #0xB
     bge input_a   ; если in >= B то не цифра и не минус
@@ -86,7 +86,7 @@ input_b:
     in 0x1C
     cmp minus
     beq handle_minus_b ;
-    cmp #0x1
+    cmp #0x0
     blt input_b   ; если in < 0 то не цифра
     cmp #0xB
     bge input_b   ; если in >= B то не цифра и не минус
@@ -231,9 +231,9 @@ negative_res_two_digits:
 zero_out:
     ld #0x001B  ;
     out 0x14    ; сброс 1 разряда индикатора
-    ld #0x0     ; костыль
+    ld #0x0
     out 0x14
-    hlt         ; костыль
+    hlt
 
 
 
@@ -244,7 +244,7 @@ zero_out:
 org 0x200
 func:  ; TODO вот тут надо вспомнить/разобраться
     ld &2            ; a -> AC
-    cmp #0
+    cmp #0x0
     beq multiply_X0
     cmp #0x1
     beq multiply_X1
@@ -266,7 +266,7 @@ func:  ; TODO вот тут надо вспомнить/разобраться
     beq multiply_X9
 
     ld &1            ; b -> AC
-    cmp #0
+    cmp #0x0
     beq multiply_X0
     cmp #0x1
     beq multiply_X1
