@@ -24,7 +24,7 @@ minus:            word 0xA ; код символа "-"
 equate:           word 0xF ; код символа "="
 multiplication:   word 0xD ; код символа "*"
 
-count_of_tens:  word 0x0   ; количество десятков в числе
+count_of_tens:  word 0x0   ; количество десятков в числе TODO заменить на t
 START:
     cla
     ; сброс разрядов индикатора
@@ -120,12 +120,12 @@ equate_input:
 ; умножение
 multiply:
     ld a
-    push
+    push   ; кладем а на стек => a = &2
     ld b
-    push
+    push   ; кладем b на стек => b = &1
     call $func
     pop
-    pop
+    pop    ; res -> AC
     st res ; результат умножения записываем в res
 
 
@@ -135,23 +135,25 @@ multiply:
 ; вывод результата
 FINISH:
     ld res
+
+; первод числа из 16 СС в 2-10 СС
 hex_to_bcd:
     cmp #0x000A
-    blt done
+    blt done          ; если res < 10 то завершаем подсчёт десятков
     sub #0x000A
     st res
     ld count_of_tens
     inc
-    st count_of_tens
-    jump FINISH
+    st count_of_tens  ; иначе вычитаем из него 10 и увеличиваем счетчик десятков на 1
+    jump FINISH       ; переходим к следующей итерации
 
 done:
-    ld count_of_tens
+    ld count_of_tens  ; обл. опред.: count_of_tens E[0x0000, 0x0009]
     asl
     asl
     asl
-    asl
-    or res
+    asl               ; сдвигаем количество десятков из 1 тетрады во 2
+    or res            ; объединяем с количеством единиц
     st res
 
     and #0x00f0               ; маска для сравнения 2 тетрады
@@ -190,11 +192,11 @@ two_digits:
     asr
     asr
     asr
-    asr
-    or #0x0010
+    asr             ; сдвигаем на 4 бита вправо => кол-во десятков t в первой тетраде => AC = 0x000t
+    or #0x0010      ; объединяем t и 0x0010 для вывода на 1 позицию индикатора => AC = 0x001t
     out 0x14
     ld res
-    and #0x000f
+    and #0x000f     ; оставляем только 1 тетраду res (кол-во единиц) и выводим на 0 позицию индикатора
     out 0x14
     jump START
 
@@ -226,19 +228,28 @@ negative_res_two_digits:
 
 
 
+
+
+
+
+
 ; функция умножения
 org 0x200
-func:
-    ld &2 ; a -> AC
+func:  ; TODO вот тут надо вспомнить/разобраться
+    ld &2           ; a -> AC
     cmp #0x1
     beq multiply_X1
     cmp #0x2
     beq multiply_X2
-    ld &1 ; b -> AC
+    cmp #0x3
+    beq multiply_X3
+    ld &1           ; b -> AC
     cmp #0x1
     beq multiply_X1
     cmp #0x2
     beq multiply_X2
+    cmp #0x3
+    beq multiply_X3
 
 
 ; a = &2 - первый множитель, b = &1 - второй множитель
@@ -258,10 +269,26 @@ multiply_X2:
     cmp #0x2
     beq return_aX2
     asl   ;
-    st &2 ; если b != 2, то умножаем его на 2 и записываем в 7FF = &2
+    st &2 ; если b != 2, то умножаем его на 2, записываем в 7FF = &2
     ret   ; и делаем ret (return b)
 return_aX2:
     ld &2
     asl
+    st &2
+    ret
+
+
+multiply_X3:
+    ld &1 ; в AC записываем b
+    cmp #0x3
+    beq return_aX3
+    asl   ;
+    add &1
+    st &2 ; если b != 3, то умножаем его на 3, записываем в 7FF = &2
+    ret   ; и делаем ret (return b)
+return_aX3:
+    ld &2
+    asl
+    add &2
     st &2
     ret
