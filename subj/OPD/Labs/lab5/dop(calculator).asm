@@ -76,9 +76,7 @@ save_sign_a:        ; сохранение знака переход к ввод
 multiply_input:
     in 0x1C    ; ввод с клавиатуры
     cmp multiplication
-    bne multiply_input
-    beq input_b
-
+    bne input_a
 
 
 
@@ -116,8 +114,7 @@ equate_input:
     in 0x1C
     in 0x1C
     cmp equate
-    beq multiply
-    bne equate_input
+    bne input_b
 
 
 ; умножение
