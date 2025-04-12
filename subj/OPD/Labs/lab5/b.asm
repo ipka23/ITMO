@@ -25,23 +25,17 @@ equate:           word 0xF ; код символа "="
 multiplication:   word 0xD ; код символа "*"
 
 count_of_tens:  word 0x0   ; количество десятков в числе
+
 START:
     cla
     ; сброс разрядов индикатора
-    ;ld #0x002B
-    ;out 0x14
-    ;ld #0x001B
-    ;out 0x14
-    ;ld #0x000B
-    ;out 0x14
+    ld #0x002B
+    out 0x14
+    ld #0x001B
+    out 0x14
+    ld #0x000B
+    out 0x14
 
-    ; очистка значений
-    ld sign
-    cla
-    st sign
-    ld count_of_tens
-    cla
-    st count_of_tens
 
 
 
@@ -138,6 +132,32 @@ multiply:
 ; вывод результата
 FINISH:
     ld res
+    and #0x00f0               ; маска для сравнения 2 тетрады
+    cmp #0x0010
+    bge two_digits            ; если во второй тетраде число >= 1, значит двузначное число
+    blt one_digit             ; если во второй тетраде число < 1, значит цифра
+
+
+
+
+
+
+
+; вывод цифры
+one_digit:
+    ld sign
+    cmp #0x1
+    beq negative_res_one_digit  ; если "-" то переходим к выводу цифры с минусом
+    ld res
+    out 0x14                    ; иначе выводим цифру на позицию 0 и завершаем программу //TODO можно в теории потом просто добавить jump START чтобы калькулятор работал без остановки, но тогда нужно будет еще обнулять знак и count_of_tens
+    hlt
+
+; вывод двузначного числа
+two_digits:
+    ld sign
+    cmp #0x1
+    beq negative_res_two_digits  ; если "-" то переходим к выводу числа с минусом
+
 hex_to_bcd:
     cmp #0x000A
     blt done
@@ -157,26 +177,6 @@ done:
     or res
     st res
 
-    and #0x00f0               ; маска для сравнения 2 тетрады
-    cmp #0x0010
-    bge two_digits            ; если во второй тетраде число >= 1, значит двузначное число
-    blt one_digit             ; если во второй тетраде число < 1, значит цифра
-
-
-; вывод цифры
-one_digit:
-    ld sign
-    cmp #0x1
-    beq negative_res_one_digit  ; если "-" то переходим к выводу цифры с минусом
-    ld res
-    out 0x14                    ; иначе выводим цифру на позицию 0 и завершаем программу
-    jump START
-
-; вывод двузначного числа
-two_digits:
-    ld sign
-    cmp #0x1
-    beq negative_res_two_digits  ; если "-" то переходим к выводу числа с минусом
 
     ld res
     asr
@@ -186,9 +186,8 @@ two_digits:
     or #0x0010
     out 0x14
     ld res
-    and #0x000f
+    and #000f
     out 0x14
-    jump START
 
 
 
@@ -198,12 +197,32 @@ negative_res_one_digit:
     out 0x14         ; выводим "-" на позицию 1
     ld res
     out 0x14         ; выводим цифру на позицию 0
-    jump START
+    hlt
 
 ; вывод двузначного числа с минусом
 negative_res_two_digits:
     ld #0x002A
     out 0x14         ; выводим "-" на позицию 2
+
+hex_to_bcd_2:
+    cmp #0x000A
+    blt done
+    sub #0x000A
+    st res
+    ld count_of_tens
+    inc
+    st count_of_tens
+    jump FINISH
+
+done_2:
+    ld count_of_tens
+    asl
+    asl
+    asl
+    asl
+    or res
+    st res
+
     ld res
     asr
     asr
@@ -212,9 +231,8 @@ negative_res_two_digits:
     or #0x0010
     out 0x14
     ld res
-    and #0x000f
+    and #000f
     out 0x14
-    jump START
 
 
 
