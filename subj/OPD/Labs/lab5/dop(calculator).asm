@@ -254,24 +254,24 @@ multiply_X0:
     ret
 
 multiply_X1:
-    ld &1 ; в AC записываем b
+    ld &1   ; в AC записываем b
     cmp #0x1
     beq return_aX1
-    st &2 ; если b != 1, то записываем его в &2
-    ret   ; и делаем ret (return b)
+    st &2   ; если b != 1, то записываем его в &2
+    ret     ; и делаем ret (return b)
 return_aX1:
     ret
 
 
 
 multiply_X2:
-    ld &1 ; в AC записываем b
+    ld &1   ; в AC записываем b
     cmp #0x2
     beq return_aX2
-    asl   ;
-    st &2 ; если b != 2, то умножаем его на 2, записываем в 7FF = &2
-    ret   ; и делаем ret (return b)
-return_aX2:
+    asl
+    st &2   ; если b != 2, то умножаем его на 2, записываем в 7FF = &2
+    ret     ; и делаем ret (return b)
+return_aX2: ; иначе умножаем a на 2, записываем в 7FF = &2 и ret
     ld &2
     asl
     st &2
