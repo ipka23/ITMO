@@ -1,1 +1,1 @@
-java -jar -Dmode=dual -Dcode=data.asm bcomp-ng.jar
+java -jar -Dmode=dual -Dcode=main_task.asm bcomp-ng.jar

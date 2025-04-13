@@ -1,1 +1,1 @@
-java -jar -Dmode=gui -Dcode=data.asm bcomp.jar
+java -jar -Dmode=gui -Dcode=main_task.asm bcomp.jar
