@@ -40,5 +40,3 @@ ORG 0x553
 WORD 0xCDC5 ; Н, Е
 ORG 0x554
 WORD 0x0DDC ; СТОП_СИМВ, Ь
-
-
