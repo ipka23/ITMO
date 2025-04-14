@@ -1,119 +1,5 @@
 [
   {
-    "id": 3,
-    "name": "Queen",
-    "coordinates": {
-      "x": 30,
-      "y": 300.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 45,
-    "establishmentDate": "27-07-1970",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "A Night at the Opera",
-      "tracks": 12,
-      "length": 43,
-      "sales": 6000000.0
-    }
-  },
-  {
-    "id": 11,
-    "name": "Black Sabbath",
-    "coordinates": {
-      "x": 110,
-      "y": 250.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 30,
-    "establishmentDate": "01-01-1968",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "Paranoid",
-      "tracks": 8,
-      "length": 42,
-      "sales": 4500000.0
-    }
-  },
-  {
-    "id": 14,
-    "name": "ABBA",
-    "coordinates": {
-      "x": 140,
-      "y": 750.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 50,
-    "establishmentDate": "01-01-1972",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Arrival",
-      "tracks": 9,
-      "length": 37,
-      "sales": 2.0E7
-    }
-  },
-  {
-    "id": 1,
-    "name": "The Beatles",
-    "coordinates": {
-      "x": 10,
-      "y": 500.5
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 63,
-    "establishmentDate": "06-07-1960",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Abbey Road",
-      "tracks": 17,
-      "length": 47,
-      "sales": 3.1E7
-    }
-  },
-  {
-    "id": 12,
-    "name": "The Doors",
-    "coordinates": {
-      "x": 120,
-      "y": 150.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 15,
-    "establishmentDate": "01-01-1965",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "L.A. Woman",
-      "tracks": 10,
-      "length": 48,
-      "sales": 2000000.0
-    }
-  },
-  {
-    "id": 16,
-    "name": "Genesis",
-    "coordinates": {
-      "x": 160,
-      "y": 500.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 35,
-    "establishmentDate": "01-01-1967",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "Selling England by the Pound",
-      "tracks": 11,
-      "length": 53,
-      "sales": 5000000.0
-    }
-  },
-  {
     "id": 6,
     "name": "Radiohead",
     "coordinates": {
@@ -130,44 +16,6 @@
       "tracks": 12,
       "length": 53,
       "sales": 5800000.0
-    }
-  },
-  {
-    "id": 18,
-    "name": "The Beach Boys",
-    "coordinates": {
-      "x": 180,
-      "y": 300.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 55,
-    "establishmentDate": "01-01-1961",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Pet Sounds",
-      "tracks": 13,
-      "length": 36,
-      "sales": 2500000.0
-    }
-  },
-  {
-    "id": 7,
-    "name": "The Rolling Stones",
-    "coordinates": {
-      "x": 70,
-      "y": 650.5
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 56,
-    "establishmentDate": "12-04-1962",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Sticky Fingers",
-      "tracks": 10,
-      "length": 46,
-      "sales": 3000000.0
     }
   },
   {
@@ -190,22 +38,41 @@
     }
   },
   {
-    "id": 5,
-    "name": "Nirvana",
+    "id": 13,
+    "name": "Fleetwood Mac",
     "coordinates": {
-      "x": 50,
-      "y": 100.0
+      "x": 130,
+      "y": 50.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 20,
-    "establishmentDate": "01-01-1987",
-    "genre": "PROGRESSIVE_ROCK",
+    "numberOfParticipants": 5,
+    "singlesCount": 40,
+    "establishmentDate": "01-01-1967",
+    "genre": "POP",
     "bestAlbum": {
-      "name": "Nevermind",
+      "name": "Rumours",
+      "tracks": 11,
+      "length": 39,
+      "sales": 4.0E7
+    }
+  },
+  {
+    "id": 18,
+    "name": "The Beach Boys",
+    "coordinates": {
+      "x": 180,
+      "y": 300.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 55,
+    "establishmentDate": "01-01-1961",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Pet Sounds",
       "tracks": 13,
-      "length": 49,
-      "sales": 3.0E7
+      "length": 36,
+      "sales": 2500000.0
     }
   },
   {
@@ -228,22 +95,22 @@
     }
   },
   {
-    "id": 4,
-    "name": "Led Zeppelin",
+    "id": 11,
+    "name": "Black Sabbath",
     "coordinates": {
-      "x": 40,
-      "y": 200.0
+      "x": 110,
+      "y": 250.0
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 4,
     "singlesCount": 30,
-    "establishmentDate": "25-10-1968",
+    "establishmentDate": "01-01-1968",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "IV",
+      "name": "Paranoid",
       "tracks": 8,
       "length": 42,
-      "sales": 3.7E7
+      "sales": 4500000.0
     }
   },
   {
@@ -266,6 +133,25 @@
     }
   },
   {
+    "id": 14,
+    "name": "ABBA",
+    "coordinates": {
+      "x": 140,
+      "y": 750.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 50,
+    "establishmentDate": "01-01-1972",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Arrival",
+      "tracks": 9,
+      "length": 37,
+      "sales": 2.0E7
+    }
+  },
+  {
     "id": 9,
     "name": "Coldplay",
     "coordinates": {
@@ -285,22 +171,60 @@
     }
   },
   {
-    "id": 20,
-    "name": "Deep Purple",
+    "id": 2,
+    "name": "Pink Floyd",
     "coordinates": {
-      "x": 200,
-      "y": 100.0
+      "x": 20,
+      "y": 400.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 30,
-    "establishmentDate": "01-01-1968",
+    "numberOfParticipants": 4,
+    "singlesCount": 25,
+    "establishmentDate": "01-01-1965",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "Machine Head",
-      "tracks": 7,
-      "length": 37,
-      "sales": 1.0E7
+      "name": "The Dark Side of the Moon",
+      "tracks": 10,
+      "length": 43,
+      "sales": 4.5E7
+    }
+  },
+  {
+    "id": 3,
+    "name": "Queen",
+    "coordinates": {
+      "x": 30,
+      "y": 300.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 45,
+    "establishmentDate": "27-07-1970",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "A Night at the Opera",
+      "tracks": 12,
+      "length": 43,
+      "sales": 6000000.0
+    }
+  },
+  {
+    "id": 4,
+    "name": "Led Zeppelin",
+    "coordinates": {
+      "x": 40,
+      "y": 200.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 30,
+    "establishmentDate": "25-10-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "IV",
+      "tracks": 8,
+      "length": 42,
+      "sales": 3.7E7
     }
   },
   {
@@ -323,6 +247,101 @@
     }
   },
   {
+    "id": 1,
+    "name": "The Beatles",
+    "coordinates": {
+      "x": 10,
+      "y": 500.5
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 63,
+    "establishmentDate": "06-07-1960",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Abbey Road",
+      "tracks": 17,
+      "length": 47,
+      "sales": 3.1E7
+    }
+  },
+  {
+    "id": 20,
+    "name": "Deep Purple",
+    "coordinates": {
+      "x": 200,
+      "y": 100.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Machine Head",
+      "tracks": 7,
+      "length": 37,
+      "sales": 1.0E7
+    }
+  },
+  {
+    "id": 12,
+    "name": "The Doors",
+    "coordinates": {
+      "x": 120,
+      "y": 150.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 15,
+    "establishmentDate": "01-01-1965",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "L.A. Woman",
+      "tracks": 10,
+      "length": 48,
+      "sales": 2000000.0
+    }
+  },
+  {
+    "id": 5,
+    "name": "Nirvana",
+    "coordinates": {
+      "x": 50,
+      "y": 100.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 3,
+    "singlesCount": 20,
+    "establishmentDate": "01-01-1987",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Nevermind",
+      "tracks": 13,
+      "length": 49,
+      "sales": 3.0E7
+    }
+  },
+  {
+    "id": 16,
+    "name": "Genesis",
+    "coordinates": {
+      "x": 160,
+      "y": 500.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 35,
+    "establishmentDate": "01-01-1967",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Selling England by the Pound",
+      "tracks": 11,
+      "length": 53,
+      "sales": 5000000.0
+    }
+  },
+  {
     "id": 10,
     "name": "Red Hot Chili Peppers",
     "coordinates": {
@@ -342,41 +361,22 @@
     }
   },
   {
-    "id": 13,
-    "name": "Fleetwood Mac",
+    "id": 7,
+    "name": "The Rolling Stones",
     "coordinates": {
-      "x": 130,
-      "y": 50.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 40,
-    "establishmentDate": "01-01-1967",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Rumours",
-      "tracks": 11,
-      "length": 39,
-      "sales": 4.0E7
-    }
-  },
-  {
-    "id": 2,
-    "name": "Pink Floyd",
-    "coordinates": {
-      "x": 20,
-      "y": 400.0
+      "x": 70,
+      "y": 650.5
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 4,
-    "singlesCount": 25,
-    "establishmentDate": "01-01-1965",
-    "genre": "PROGRESSIVE_ROCK",
+    "singlesCount": 56,
+    "establishmentDate": "12-04-1962",
+    "genre": "POP",
     "bestAlbum": {
-      "name": "The Dark Side of the Moon",
+      "name": "Sticky Fingers",
       "tracks": 10,
-      "length": 43,
-      "sales": 4.5E7
+      "length": 46,
+      "sales": 3000000.0
     }
   }
 ]
