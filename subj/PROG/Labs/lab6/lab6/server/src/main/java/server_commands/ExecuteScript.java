@@ -1,14 +1,21 @@
 package server_commands;
 
+import common_entities.Album;
+import common_entities.Coordinates;
+import common_entities.MusicBand;
+import common_entities.MusicGenre;
 import common_utility.exceptions.ExitClientException;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.RecursionDepthExceedException;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ExecuteScript extends Command {
@@ -20,18 +27,22 @@ public class ExecuteScript extends Command {
     private ObjectOutputStream outToClient;
     private Request request;
     private String scriptContent;
+    private CollectionManager collectionManager;
 
 
-    public ExecuteScript(ClientConsole console, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
+    public ExecuteScript(ClientConsole console, Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
         super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.console = console;
         this.invoker = invoker;
         this.inFromClient = inFromClient;
         this.outToClient = outToClient;
+//        collectionManager = console.getCollectionManager();
+        this.collectionManager = collectionManager;
     }
 
     public Response runScript(File scriptFile) {
         console.setScriptMode(true);
+        console.setScriptFile(scriptFile);
         currentDepth++;
         if (currentDepth / 2 > MAX_RECURSION_DEPTH) {
             currentDepth = 0;
@@ -39,33 +50,25 @@ public class ExecuteScript extends Command {
         }
 
         StringBuilder scriptFileContent = new StringBuilder();
-        scriptFileContent.append("--------------------------------История выполнения команд из скрипта \"").append(scriptFile.getName()).append("\"--------------------------------\n");
+        scriptFileContent.append("--------------------------------История выполнения скрипта \"").append(scriptFile.getName()).append("\" --------------------------------\n");
+
         try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
             console.setScanner(fileScanner);
 
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
-                scriptFileContent.append(console.getScriptPrompt()).append(line).append("\n");
-
                 if (line.isEmpty()) continue;
-                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) { //TODO
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String s;
-                    while ((s = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    stringBuilder = new StringBuilder(stringBuilder.substring(0, stringBuilder.toString().length() - 1));
-                    scriptContent = stringBuilder.toString();
-                } catch (FileNotFoundException e) {}
-                String[] command = (line + " ").split(" ", 2);
+                scriptFileContent.append("КОМАНДА: ").append(line).append("\n");
 
-                Response response = invoker.execute(command);
-//
-//                if (response == null) {
-//                    console.setScanner(new Scanner(System.in));
-//                    throw new ScriptExecutionException();
-//                }
-                scriptFileContent.append(response.getMessage()).append("\n");
+
+                Response executionResponse;
+                String[] command = (line + " ").split(" ", 2);
+                if (line.startsWith("add")){
+                    executionResponse = executeAdd(fileScanner, line);
+                } else {
+                    executionResponse = invoker.execute(command);
+                }
+                scriptFileContent.append(executionResponse.getMessage()).append("\n");
 
             }
         } catch (FileNotFoundException e) {
@@ -88,7 +91,6 @@ public class ExecuteScript extends Command {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))) {
 
-
             bufferedWriter.write(request.getMessage());
             bufferedWriter.newLine();
 
@@ -97,6 +99,46 @@ public class ExecuteScript extends Command {
         }
         return new File(fileName);
     }
+
+    private Response executeAdd(Scanner fileScanner, String line) {
+        Response executionResponse = null;
+        try {
+            String name = fileScanner.nextLine().trim();
+
+            int x = Integer.parseInt(fileScanner.nextLine().trim());
+
+            float y = Float.parseFloat(fileScanner.nextLine().trim());
+
+            long numberOfParticipants = Long.parseLong(fileScanner.nextLine().trim());
+
+            long singlesCount = Long.parseLong(fileScanner.nextLine().trim());
+
+            Date establishmentDate = new SimpleDateFormat("dd-MM-yyyy").parse(fileScanner.nextLine().trim());
+
+            MusicGenre musicGenre = MusicGenre.valueOf(fileScanner.nextLine().trim().toUpperCase());
+
+            String albumName = fileScanner.nextLine().trim();
+
+            long tracks = Long.parseLong(fileScanner.nextLine().trim());
+
+            long length = Long.parseLong(fileScanner.nextLine().trim());
+
+            double sales = Double.parseDouble(fileScanner.nextLine().trim());
+
+            Album album = new Album(albumName, tracks, length, sales);
+            Coordinates coordinates = new Coordinates(x, y);
+            MusicBand musicBand = new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, album);
+
+            if (line.equals("add")) executionResponse =  collectionManager.addMusicBand(musicBand);
+            else if (line.equals("add_if_min")) executionResponse =  collectionManager.addMusicBandIfMin(musicBand);
+            else if (line.equals("add_if_max")) executionResponse = collectionManager.addMusicBandIfMax(musicBand);
+
+        } catch (Exception e) {
+            return new Response(false, "Ошибка при выполнении команды add");
+        }
+        return executionResponse;
+    }
+
 
     @Override
     public Response execute(String[] command) throws IOException, ClassNotFoundException {

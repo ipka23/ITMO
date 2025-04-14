@@ -49,15 +49,44 @@ public class CollectionManager {
         lastSaveTime = LocalDateTime.now();
     }
 
-    public void addMusicBand(MusicBand musicBand) {
+    public Response addMusicBand(MusicBand musicBand) {
         long id = getFreeId();
+        if (musicBandsMap.containsValue(musicBand)) {
+            return new Response(true, "Музыкальная группа не была добавлена, т.к. такая группа уже есть в коллекции!");
+        }
         musicBandsMap.put(id, musicBand);
         musicBand.setCreationDate(LocalDate.now());
         musicBand.setId(id);
         collection.add(musicBand);
         saveCollection();
+        return new Response(false, "Музыкальная группа была успешно добавлена!");
     }
 
+    public Response addMusicBandIfMin(MusicBand newBand) {
+        if (newBand.getBestAlbum().getSales() < getMin().getBestAlbum().getSales()) {
+            if (!addMusicBand(newBand).getExitStatus()) {
+                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой меньше чем у группы с минимальным количеством продаж!");
+            } else return addMusicBand(newBand);
+        } else {
+            return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома больше чем у группы с минимальным количеством продаж!");
+        }
+    }
+
+    public Response addMusicBandIfMax(MusicBand newBand) {
+        if (newBand.getBestAlbum().getSales() > getMax().getBestAlbum().getSales()) {
+            if (!addMusicBand(newBand).getExitStatus()) {
+                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой больше чем у группы с максимальным количеством продаж!");
+            } else return addMusicBand(newBand);
+        } else {
+            return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома меньше чем у группы с максимальным количеством продаж!");
+        }
+    }
+
+
+    public long getFreeId() {
+        while (musicBandsMap.get(freeId) != null) freeId++;
+        return freeId;
+    }
 
     public MusicBand getMax() {
         return Collections.max(collection);
@@ -150,6 +179,7 @@ public class CollectionManager {
         }
         return s.substring(0, s.length() - 2);
     }
+
 
 
 }

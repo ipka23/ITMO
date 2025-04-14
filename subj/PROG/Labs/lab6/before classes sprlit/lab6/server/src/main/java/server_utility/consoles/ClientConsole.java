@@ -109,7 +109,7 @@ public class ClientConsole extends StandartConsole implements Networkable {
 //            collectionManager.chooseTypeOfCollection();
             while (true) {
                 sendPrompt();
-                Request request = (Request) inFromClient.readObject();
+                Request request = getRequest();
                 String command = request.getCommand();
                 String arg = request.getArg();
                 if (command.isEmpty()) continue;

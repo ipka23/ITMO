@@ -56,7 +56,7 @@ public class RemoveGreater extends Command {
             }
             return new Response(false, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома");
         } catch (InputBreakException e) {
-            return new Response(true, e.getMessage());
+            return new Response(false, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

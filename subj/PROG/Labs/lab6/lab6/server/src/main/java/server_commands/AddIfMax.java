@@ -26,7 +26,7 @@ public class AddIfMax extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public AddIfMax(ClientConsole console, CollectionManager collectionManager) {
+    public AddIfMax(ClientConsole console, CollectionManager collectionManager)  {
         super("add_if_max", "добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -39,16 +39,9 @@ public class AddIfMax extends Command {
         try {
             if (!command[1].trim().isEmpty())
                 return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-            long id = collectionManager.getFreeId();
 
             MusicBand newBand = add.inputMusicBand();
-            if (newBand.getBestAlbum().getSales() > collectionManager.getMax().getBestAlbum().getSales()) {
-                collectionManager.addMusicBand(newBand);
-                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой больше чем у группы с максимальным количеством продаж!");
-            } else {
-                collectionManager.removeByID(id);
-                return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома меньше чем у группы с максимальным количеством продаж!");
-            }
+            return collectionManager.addMusicBandIfMax(newBand);
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {
