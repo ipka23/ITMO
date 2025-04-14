@@ -29,7 +29,7 @@ public class Update extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public Update(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
+    public Update(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient)  {
         super("update id", "обновить значение элемента коллекции, id которого равен заданному");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -37,7 +37,7 @@ public class Update extends Command {
         this.inFromClient = inFromClient;
         this.outToClient = outToClient;
     }
-
+    @Override
     public Response execute(String[] command) {
         if (command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
@@ -53,10 +53,10 @@ public class Update extends Command {
         }
         MusicBand newBand;
         try {
-            console.println("--------------------------------Введите новые данные музыкальной группы--------------------------------");
+            console.send(new Response(false, "--------------------------------Введите новые данные музыкальной группы--------------------------------"));
             newBand = add.inputMusicBand();
         } catch (InputBreakException e) {
-            return new Response(true, "Отмена ввода...");
+            return new Response(false, "Отмена ввода...");
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

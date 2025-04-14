@@ -20,8 +20,16 @@ public class RequestSender {
         String arg;
         try {
             while (true) {
+//                Response prompt = inFromServer.readObject() == null ? new Response(false, ">") : (Response) inFromServer.readObject();
+//                Response nul = (Response) inFromServer.readObject();
                 Response prompt = (Response) inFromServer.readObject();
-                System.out.print(prompt.getMessage());
+                if (prompt != null) {
+                    System.out.print(prompt.getMessage());
+                } else {
+                    Response response1 = (Response) inFromServer.readObject();
+                    System.out.print(response1.getMessage());
+                }
+
                 String message = userInput.nextLine().trim();
 
                 command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
@@ -63,9 +71,8 @@ public class RequestSender {
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
             System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
             System.out.println("_".repeat(88));
-            for (var band : musicBandsCollection) {
-                System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales());
-            }
+            musicBandsCollection.forEach(band -> System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales()));
+
         } else {
             System.out.println(response.getMessage());
         }

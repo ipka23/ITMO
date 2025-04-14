@@ -5,23 +5,21 @@ import common_utility.network.Request;
 import common_utility.network.Response;
 import lombok.Getter;
 import lombok.Setter;
-import server_commands.ExecuteScript;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_utility.Invoker;
-import server_utility.interfaces.Networkable;
+import server_utility.interfaces.ObjectStreamsWorkable;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 //Invoker, CollectionManager
-public class ClientConsole extends StandartConsole implements Networkable {
+public class ClientConsole extends StandartConsole implements ObjectStreamsWorkable {
     protected Scanner scanner;// = new Scanner(System.in);
     private final String PROMPT = ">";
     private final String SCRIPT_PROMPT = "# ";
     protected Invoker invoker;
+    @Getter
     protected CollectionManager collectionManager;
     protected CommandManager commandManager;
     private static ObjectInputStream inFromClient;
@@ -31,6 +29,9 @@ public class ClientConsole extends StandartConsole implements Networkable {
     private boolean scriptMode = false;
     @Getter
     private StringBuilder tmp;
+    @Setter
+    @Getter
+    private File scriptFile;
 
     public ClientConsole(Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         this.invoker = invoker;
@@ -69,26 +70,26 @@ public class ClientConsole extends StandartConsole implements Networkable {
 
 
     public void send(Object o) {
-        if (!scriptMode) {
-            try {
-                outToClient.writeObject(o);
-                outToClient.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            tmp = new StringBuilder();
-            tmp.append(o.toString());   //TODO
+        try {
+            outToClient.writeObject(o);
+            outToClient.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     public Request getRequest() throws IOException, ClassNotFoundException {
+        StringBuilder scriptFileContent = new StringBuilder();
         if (!scriptMode) {
             return (Request) inFromClient.readObject();
         } else {
-            ExecuteScript executeScript = new ExecuteScript(this, invoker, inFromClient, outToClient);
-            return null; //TODO
+            String currentLine;
+            try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
+                currentLine = fileScanner.nextLine();
+            }
+//            String s = scriptFileContent.substring(0, scriptFileContent.length() - 1);
+            return new Request(currentLine);
         }
     }
 

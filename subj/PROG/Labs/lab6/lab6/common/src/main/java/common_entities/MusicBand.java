@@ -96,6 +96,6 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MusicBand band = (MusicBand) o;
-        return Objects.equals(id, band.id);
+        return Objects.equals(name, band.name);
     }
 }

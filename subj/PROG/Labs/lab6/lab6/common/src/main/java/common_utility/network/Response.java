@@ -13,34 +13,34 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Response implements Serializable {
-    private boolean exitClient;
+    private boolean exitStatus;
     private String message;
     private MusicBand band;
     private Collection<MusicBand> musicBandsCollection;
 
-    public Response(boolean exitClient, String message) {
-        this.exitClient = exitClient;
+    public Response(boolean exitStatus, String message) {
+        this.exitStatus = exitStatus;
         this.message = message;
     }
     public Response(boolean exitClient, String message, MusicBand band) {
-        this.exitClient = exitClient;
+        this.exitStatus = exitClient;
         this.message = message;
         this.band = band;
     }
 
-    public Response(boolean exitClient) {
-        this.exitClient = exitClient;
+    public Response(boolean exitStatus) {
+        this.exitStatus = exitStatus;
         this.message = null;
     }
 
     public Response(boolean exitClient, String message, Collection<MusicBand> musicBandsCollection) {
-        this.exitClient = exitClient;
+        this.exitStatus = exitClient;
         this.message = message;
         this.musicBandsCollection = musicBandsCollection;
     }
 
     public boolean getExitStatus() {
-        return exitClient;
+        return exitStatus;
     }
 
 

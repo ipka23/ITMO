@@ -57,6 +57,8 @@ public class ExecuteScript extends Command {
                     stringBuilder = new StringBuilder(stringBuilder.substring(0, stringBuilder.toString().length() - 1));
                     scriptContent = stringBuilder.toString();
                 } catch (FileNotFoundException e) {}
+
+
                 String[] command = (line + " ").split(" ", 2);
 
                 Response response = invoker.execute(command);

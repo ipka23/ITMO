@@ -39,6 +39,7 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
         Collection<MusicBand> collection = collectionManager.getCollection();
         StringBuilder s = new StringBuilder();
         List<Date> dates = new ArrayList<>();
+        collection.forEach(band -> dates.add(band.getEstablishmentDate()));
         for (MusicBand band : collection) {
             dates.add(band.getEstablishmentDate());
         }
