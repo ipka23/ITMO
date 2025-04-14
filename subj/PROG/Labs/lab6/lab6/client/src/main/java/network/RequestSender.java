@@ -71,7 +71,14 @@ public class RequestSender {
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
             System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
             System.out.println("_".repeat(88));
-            musicBandsCollection.forEach(band -> System.out.printf("|%-30s | %-30s | %-20.0f|%n", band.getName(), band.getBestAlbum().getName(), band.getBestAlbum().getSales()));
+            musicBandsCollection
+                    .stream()
+                    .forEach(band -> System.out.printf(
+                            "|%-30s | %-30s | %-20.0f|%n",
+                            band.getName(),
+                            band.getBestAlbum().getName(),
+                            band.getBestAlbum().getSales())
+                    );
 
         } else {
             System.out.println(response.getMessage());

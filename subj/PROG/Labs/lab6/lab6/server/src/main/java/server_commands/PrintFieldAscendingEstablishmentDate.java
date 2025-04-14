@@ -39,15 +39,15 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
         Collection<MusicBand> collection = collectionManager.getCollection();
         StringBuilder s = new StringBuilder();
         List<Date> dates = new ArrayList<>();
+
         collection.forEach(band -> dates.add(band.getEstablishmentDate()));
-        for (MusicBand band : collection) {
-            dates.add(band.getEstablishmentDate());
-        }
-        Collections.sort(dates);
+
+        dates.sort(Comparator.naturalOrder());
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        for (Date date : dates) {
-            s.append(formatter.format(date)).append("\n");
-        }
+
+        dates.forEach(date -> s.append(formatter.format(date)).append("\n"));
+
         if (s.isEmpty()) return new Response(false, "Коллекция пуста!");
         return new Response(false, s.substring(0, s.length() - 1));
 

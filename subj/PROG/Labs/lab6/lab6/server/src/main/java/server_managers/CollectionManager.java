@@ -99,9 +99,10 @@ public class CollectionManager {
     public void setCollection(Collection<MusicBand> collection) {
         this.collection = collection;
         musicBandsMap.clear();
-        for (MusicBand band : collection) {
-            musicBandsMap.put(band.getId(), band);
-        }
+        collection.stream().forEach(band -> musicBandsMap.put(band.getId(), band));
+//        for (MusicBand band : collection) {
+//            musicBandsMap.put(band.getId(), band);
+//        }
     }
 
 
@@ -173,10 +174,7 @@ public class CollectionManager {
     public String toString() {
         if (collection.isEmpty()) return "Коллекция пуста!";
         StringBuilder s = new StringBuilder();
-
-        for (MusicBand band : collection) {
-            s.append(band).append("\n");
-        }
+        collection.stream().forEach(band -> s.append(band.toString()).append("\n"));
         return s.substring(0, s.length() - 2);
     }
 
