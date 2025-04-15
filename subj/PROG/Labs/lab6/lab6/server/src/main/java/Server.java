@@ -7,6 +7,7 @@ import server_managers.CommandManager;
 import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
+import server_utility.consoles.ServerConsole;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -16,24 +17,30 @@ import java.util.concurrent.Executors;
 
 public class Server {
 
-    public static int PORT = 1123;
-    private static ServerSocket serverSocket;
-    private static Socket socket;
-    private static ObjectInputStream inFromClient;
-    private static ObjectOutputStream outToClient;
-    private static String collectionFileName;
-    private static Invoker invoker;
-    private static ClientConsole clientConsole;
-    private static FileManager fileManager;
-    private static CollectionManager collectionManager;
-    private static CommandManager commandManager;
-    private static Logger log = LoggerFactory.getLogger("ServerConsole");
+    public int PORT = 1123;
+    private  Socket clientSocket;
+    private  ObjectInputStream inFromClient;
+    private  ObjectOutputStream outToClient;
+    private  String collectionFileName;
+    private  Invoker invoker;
+    private  ClientConsole clientConsole;
+    private  FileManager fileManager;
+    private  CollectionManager collectionManager;
+    private  CommandManager commandManager;
+    private  Logger log = LoggerFactory.getLogger("ServerConsole");
     private final static ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
+        Server server = new Server();
+        server.initializeServer();
+        server.run();
 
+    }
+
+    private void initializeServer() {
         fileManager = new FileManager(null, clientConsole, null);
         collectionManager = new CollectionManager(fileManager, clientConsole);
+
         commandManager = new CommandManager();
         invoker = new Invoker(commandManager, clientConsole);
 
@@ -43,39 +50,53 @@ public class Server {
         clientConsole.setCollectionManager(collectionManager);
 
 
-        run();
+
     }
 
-    public static void run() {
+    public void run() {
         log.info("Server has started on port: {}", PORT);
-        try {
-            serverSocket = new ServerSocket(PORT);
+        try (ServerSocket serverSocket = new ServerSocket(PORT)){
             while (true) {
-                socket = serverSocket.accept();
-                log.info("Client has connected!");
-                outToClient = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-                outToClient.flush();
-                clientConsole.setObjectOutputStream(outToClient);
-                inFromClient = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-                clientConsole.setObjectInputStream(inFromClient);
-                log.info("Successfully declared in & out streams");
-                collectionFileName = getFile();
-                fileManager.setFile(collectionFileName);
-                commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient);
-                clientConsole.launch();
+                clientSocket = serverSocket.accept();
+                executor.submit(() -> {
+                    try {
+                        handleClient(clientSocket);
+                    } catch (IOException | ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
             }
 
-//            Runnable serverConsole = new ServerConsole(collectionManager);
-//            new Thread(serverConsole).start();
 
 
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            log.error("Server error", e);
+        }
+        executor.shutdown();
+    }
+
+    private void handleClient(Socket clientSocket) throws IOException, ClassNotFoundException {
+        while (!Thread.currentThread().isInterrupted()) {
+            log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
+            outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
+            outToClient.flush();
+            clientConsole.setObjectOutputStream(outToClient);
+            inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+            clientConsole.setObjectInputStream(inFromClient);
+            log.info("Successfully declared in & out streams");
+            collectionFileName = getFile();
+            fileManager.setFile(collectionFileName);
+            commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
+            Runnable serverConsole = new ServerConsole(collectionManager);
+            new Thread(serverConsole).start();
+            clientConsole.launch();
+
         }
     }
 
 
-    private static String getFile() throws IOException, ClassNotFoundException {
+    private String getFile() throws IOException, ClassNotFoundException {
         Request request = (Request) inFromClient.readObject();
         collectionFileName = request.getMessage();
         Response response;
