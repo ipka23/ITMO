@@ -94,7 +94,8 @@ public class ExecuteScript extends Command {
             bufferedWriter.write(request.getMessage());
             bufferedWriter.newLine();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
         return new File(fileName);
@@ -145,7 +146,11 @@ public class ExecuteScript extends Command {
         if (command[1].trim().isEmpty()) {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
-        request = (Request) inFromClient.readObject();
+        if (request != null) {
+            request = (Request) inFromClient.readObject();
+        } else {
+            return new Response(false, ">");
+        }
         File scriptFile = recieveScriptFile(request.getFileName());
 //        File scriptFile = request.getScriptFile();
         return runScript(scriptFile);

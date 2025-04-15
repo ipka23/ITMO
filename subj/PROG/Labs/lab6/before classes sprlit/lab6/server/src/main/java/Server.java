@@ -16,7 +16,7 @@ import java.net.Socket;
 @Slf4j
 public class Server {
 
-    public static int PORT = 1123;
+    public static int PORT = 1231;
     private static ServerSocket serverSocket;
     private static Socket socket;
     private static ObjectInputStream inFromClient;

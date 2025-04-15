@@ -1,21 +1,40 @@
 [
   {
-    "id": 6,
-    "name": "Radiohead",
+    "id": 9,
+    "name": "Coldplay",
     "coordinates": {
-      "x": 60,
-      "y": 700.0
+      "x": 90,
+      "y": 450.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 45,
+    "establishmentDate": "08-09-1996",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "A Rush of Blood to the Head",
+      "tracks": 11,
+      "length": 54,
+      "sales": 1.5E7
+    }
+  },
+  {
+    "id": 15,
+    "name": "Eagles",
+    "coordinates": {
+      "x": 150,
+      "y": 600.0
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 5,
-    "singlesCount": 18,
-    "establishmentDate": "01-01-1985",
-    "genre": "PROGRESSIVE_ROCK",
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1971",
+    "genre": "POP",
     "bestAlbum": {
-      "name": "OK Computer",
-      "tracks": 12,
-      "length": 53,
-      "sales": 5800000.0
+      "name": "Hotel California",
+      "tracks": 9,
+      "length": 43,
+      "sales": 4.2E7
     }
   },
   {
@@ -38,155 +57,60 @@
     }
   },
   {
-    "id": 13,
-    "name": "Fleetwood Mac",
+    "id": 4,
+    "name": "Led Zeppelin",
     "coordinates": {
-      "x": 130,
-      "y": 50.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 40,
-    "establishmentDate": "01-01-1967",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Rumours",
-      "tracks": 11,
-      "length": 39,
-      "sales": 4.0E7
-    }
-  },
-  {
-    "id": 18,
-    "name": "The Beach Boys",
-    "coordinates": {
-      "x": 180,
-      "y": 300.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 55,
-    "establishmentDate": "01-01-1961",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Pet Sounds",
-      "tracks": 13,
-      "length": 36,
-      "sales": 2500000.0
-    }
-  },
-  {
-    "id": 17,
-    "name": "Guns N\u0027 Roses",
-    "coordinates": {
-      "x": 170,
-      "y": 400.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 5,
-    "singlesCount": 25,
-    "establishmentDate": "01-01-1985",
-    "genre": "PROGRESSIVE_ROCK",
-    "bestAlbum": {
-      "name": "Appetite for Destruction",
-      "tracks": 12,
-      "length": 54,
-      "sales": 3.0E7
-    }
-  },
-  {
-    "id": 11,
-    "name": "Black Sabbath",
-    "coordinates": {
-      "x": 110,
-      "y": 250.0
+      "x": 40,
+      "y": 200.0
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 4,
     "singlesCount": 30,
-    "establishmentDate": "01-01-1968",
+    "establishmentDate": "25-10-1968",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "Paranoid",
+      "name": "IV",
       "tracks": 8,
       "length": 42,
-      "sales": 4500000.0
+      "sales": 3.7E7
     }
   },
   {
-    "id": 8,
-    "name": "U2",
+    "id": 6,
+    "name": "Radiohead",
     "coordinates": {
-      "x": 80,
-      "y": 550.0
+      "x": 60,
+      "y": 700.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 50,
-    "establishmentDate": "25-09-1976",
-    "genre": "POP",
+    "numberOfParticipants": 5,
+    "singlesCount": 18,
+    "establishmentDate": "01-01-1985",
+    "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "The Joshua Tree",
-      "tracks": 11,
-      "length": 50,
-      "sales": 2.5E7
+      "name": "OK Computer",
+      "tracks": 12,
+      "length": 53,
+      "sales": 5800000.0
     }
   },
   {
-    "id": 14,
-    "name": "ABBA",
+    "id": 12,
+    "name": "The Doors",
     "coordinates": {
-      "x": 140,
-      "y": 750.0
+      "x": 120,
+      "y": 150.0
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 4,
-    "singlesCount": 50,
-    "establishmentDate": "01-01-1972",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Arrival",
-      "tracks": 9,
-      "length": 37,
-      "sales": 2.0E7
-    }
-  },
-  {
-    "id": 9,
-    "name": "Coldplay",
-    "coordinates": {
-      "x": 90,
-      "y": 450.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 45,
-    "establishmentDate": "08-09-1996",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "A Rush of Blood to the Head",
-      "tracks": 11,
-      "length": 54,
-      "sales": 1.5E7
-    }
-  },
-  {
-    "id": 2,
-    "name": "Pink Floyd",
-    "coordinates": {
-      "x": 20,
-      "y": 400.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 25,
+    "singlesCount": 15,
     "establishmentDate": "01-01-1965",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "The Dark Side of the Moon",
+      "name": "L.A. Woman",
       "tracks": 10,
-      "length": 43,
-      "sales": 4.5E7
+      "length": 48,
+      "sales": 2000000.0
     }
   },
   {
@@ -209,41 +133,79 @@
     }
   },
   {
-    "id": 4,
-    "name": "Led Zeppelin",
+    "id": 5,
+    "name": "Nirvana",
     "coordinates": {
-      "x": 40,
-      "y": 200.0
+      "x": 50,
+      "y": 100.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 30,
-    "establishmentDate": "25-10-1968",
+    "numberOfParticipants": 3,
+    "singlesCount": 20,
+    "establishmentDate": "01-01-1987",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "IV",
-      "tracks": 8,
-      "length": 42,
-      "sales": 3.7E7
+      "name": "Nevermind",
+      "tracks": 13,
+      "length": 49,
+      "sales": 3.0E7
     }
   },
   {
-    "id": 15,
-    "name": "Eagles",
+    "id": 18,
+    "name": "The Beach Boys",
     "coordinates": {
-      "x": 150,
-      "y": 600.0
+      "x": 180,
+      "y": 300.0
     },
     "creationDate": "14-04-2025",
     "numberOfParticipants": 5,
-    "singlesCount": 30,
-    "establishmentDate": "01-01-1971",
+    "singlesCount": 55,
+    "establishmentDate": "01-01-1961",
     "genre": "POP",
     "bestAlbum": {
-      "name": "Hotel California",
-      "tracks": 9,
-      "length": 43,
-      "sales": 4.2E7
+      "name": "Pet Sounds",
+      "tracks": 13,
+      "length": 36,
+      "sales": 2500000.0
+    }
+  },
+  {
+    "id": 10,
+    "name": "Red Hot Chili Peppers",
+    "coordinates": {
+      "x": 100,
+      "y": 350.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 42,
+    "establishmentDate": "01-01-1983",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Californication",
+      "tracks": 15,
+      "length": 56,
+      "sales": 1.6E7
+    }
+  },
+  {
+    "id": 21,
+    "name": "WSTR",
+    "coordinates": {
+      "x": 10,
+      "y": 50.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 15,
+    "establishmentDate": "01-01-2012",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Identity Crisis",
+      "tracks": 12,
+      "length": 32,
+      "sales": 500000.0
     }
   },
   {
@@ -285,41 +247,60 @@
     }
   },
   {
-    "id": 12,
-    "name": "The Doors",
+    "id": 17,
+    "name": "Guns N\u0027 Roses",
     "coordinates": {
-      "x": 120,
-      "y": 150.0
+      "x": 170,
+      "y": 400.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 15,
-    "establishmentDate": "01-01-1965",
+    "numberOfParticipants": 5,
+    "singlesCount": 25,
+    "establishmentDate": "01-01-1985",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "L.A. Woman",
-      "tracks": 10,
-      "length": 48,
-      "sales": 2000000.0
+      "name": "Appetite for Destruction",
+      "tracks": 12,
+      "length": 54,
+      "sales": 3.0E7
     }
   },
   {
-    "id": 5,
-    "name": "Nirvana",
+    "id": 2,
+    "name": "Pink Floyd",
     "coordinates": {
-      "x": 50,
-      "y": 100.0
+      "x": 20,
+      "y": 400.0
     },
     "creationDate": "14-04-2025",
-    "numberOfParticipants": 3,
-    "singlesCount": 20,
-    "establishmentDate": "01-01-1987",
+    "numberOfParticipants": 4,
+    "singlesCount": 25,
+    "establishmentDate": "01-01-1965",
     "genre": "PROGRESSIVE_ROCK",
     "bestAlbum": {
-      "name": "Nevermind",
-      "tracks": 13,
-      "length": 49,
-      "sales": 3.0E7
+      "name": "The Dark Side of the Moon",
+      "tracks": 10,
+      "length": 43,
+      "sales": 4.5E7
+    }
+  },
+  {
+    "id": 11,
+    "name": "Black Sabbath",
+    "coordinates": {
+      "x": 110,
+      "y": 250.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 30,
+    "establishmentDate": "01-01-1968",
+    "genre": "PROGRESSIVE_ROCK",
+    "bestAlbum": {
+      "name": "Paranoid",
+      "tracks": 8,
+      "length": 42,
+      "sales": 4500000.0
     }
   },
   {
@@ -342,25 +323,6 @@
     }
   },
   {
-    "id": 10,
-    "name": "Red Hot Chili Peppers",
-    "coordinates": {
-      "x": 100,
-      "y": 350.0
-    },
-    "creationDate": "14-04-2025",
-    "numberOfParticipants": 4,
-    "singlesCount": 42,
-    "establishmentDate": "01-01-1983",
-    "genre": "POP",
-    "bestAlbum": {
-      "name": "Californication",
-      "tracks": 15,
-      "length": 56,
-      "sales": 1.6E7
-    }
-  },
-  {
     "id": 7,
     "name": "The Rolling Stones",
     "coordinates": {
@@ -377,6 +339,63 @@
       "tracks": 10,
       "length": 46,
       "sales": 3000000.0
+    }
+  },
+  {
+    "id": 8,
+    "name": "U2",
+    "coordinates": {
+      "x": 80,
+      "y": 550.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 50,
+    "establishmentDate": "25-09-1976",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "The Joshua Tree",
+      "tracks": 11,
+      "length": 50,
+      "sales": 2.5E7
+    }
+  },
+  {
+    "id": 14,
+    "name": "ABBA",
+    "coordinates": {
+      "x": 140,
+      "y": 750.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 4,
+    "singlesCount": 50,
+    "establishmentDate": "01-01-1972",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Arrival",
+      "tracks": 9,
+      "length": 37,
+      "sales": 2.0E7
+    }
+  },
+  {
+    "id": 13,
+    "name": "Fleetwood Mac",
+    "coordinates": {
+      "x": 130,
+      "y": 50.0
+    },
+    "creationDate": "14-04-2025",
+    "numberOfParticipants": 5,
+    "singlesCount": 40,
+    "establishmentDate": "01-01-1967",
+    "genre": "POP",
+    "bestAlbum": {
+      "name": "Rumours",
+      "tracks": 11,
+      "length": 39,
+      "sales": 4.0E7
     }
   }
 ]
