@@ -41,14 +41,7 @@ public class RequestSender {
 
 
                 if (command.equals("execute_script")) {
-
-                    if (!FileSender.sendScriptFile(arg, outToServer)) {
-                        System.out.print(">");
-                        message = userInput.nextLine().trim();
-                        request = new Request(message);
-                        outToServer.writeObject(request);
-                        outToServer.flush();
-                    }
+                    FileSender.sendScriptFile(arg, outToServer);
                 }
 
                 if (message.isEmpty()) continue;

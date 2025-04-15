@@ -21,5 +21,7 @@ public class Request implements Serializable {
     }
 
 
-
+//    public Request(String arg, String command) {
+//        this.arg =
+//    }
 }
