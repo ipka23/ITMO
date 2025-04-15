@@ -35,14 +35,20 @@ public class RequestSender {
                 command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
                 arg = (message + " ").split(" ", 2)[1].trim();
 
-                request = new Request(command, arg);
-
-
+                request = new Request(message);
                 outToServer.writeObject(request);
                 outToServer.flush();
 
+
                 if (command.equals("execute_script")) {
-                    FileSender.sendScriptFile(arg, outToServer);
+
+                    if (!FileSender.sendScriptFile(arg, outToServer)) {
+                        System.out.print(">");
+                        message = userInput.nextLine().trim();
+                        request = new Request(message);
+                        outToServer.writeObject(request);
+                        outToServer.flush();
+                    }
                 }
 
                 if (message.isEmpty()) continue;

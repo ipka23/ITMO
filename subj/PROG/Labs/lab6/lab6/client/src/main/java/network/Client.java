@@ -3,7 +3,6 @@ package network;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.IOException;
 import java.net.Socket;
 
 @Getter
@@ -14,11 +13,10 @@ public class Client {
     private Socket socket;
     private String collectionFile;
 
-    public Client(int port, String hostName, String collectionFile) throws IOException {
+    public Client(int port, String hostName, Socket socket, String collectionFile)  {
         this.port = port;
         this.hostName = hostName;
         this.collectionFile = collectionFile;
-        this.socket = new Socket(hostName, port);
-
+        this.socket = socket;
     }
 }

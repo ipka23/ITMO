@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 public class Client {
-    public static int PORT = 1123;
+    public static int PORT = 1231;
     private static String hostName = "localhost";
     private static Socket socket;
     private static Scanner userInput;

@@ -22,25 +22,17 @@ public class Main {
         } else {
             collectionFile = args[0];
         }
-        Client client = new Client(port, hostName, collectionFile);
+        socket = new Socket(hostName, port);
+        Client client = new Client(port, hostName, socket, collectionFile);
         try {
             Runner.run(client);
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         finally {
-            if (socket != null) {
-                socket.close();
-            }
-            if (inFromServer != null) {
-                inFromServer.close();
-            }
-            if (outToServer != null) {
-                outToServer.close();
-            }
-            if (inFromServer != null) {
-                inFromServer.close();
-            }
+            socket.close();
+            inFromServer.close();
+            outToServer.close();
         }
     }
 }

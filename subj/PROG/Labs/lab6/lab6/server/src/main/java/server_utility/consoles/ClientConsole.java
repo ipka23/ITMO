@@ -111,8 +111,8 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
             while (true) {
                 sendPrompt();
                 Request request = (Request) inFromClient.readObject();
-                String command = request.getCommand();
-                String arg = request.getArg();
+                String command = (request.getMessage() + " ").split(" ", 2)[0];
+                String arg =(request.getMessage() + " ").split(" ", 2)[1];;
                 if (command.isEmpty()) continue;
                 Response response = invoker.execute(new String[]{command, arg});
 

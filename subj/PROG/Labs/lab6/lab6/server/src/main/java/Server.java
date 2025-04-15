@@ -7,11 +7,12 @@ import server_managers.CommandManager;
 import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
-import server_utility.consoles.ServerConsole;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
 
@@ -27,6 +28,7 @@ public class Server {
     private static CollectionManager collectionManager;
     private static CommandManager commandManager;
     private static Logger log = LoggerFactory.getLogger("ServerConsole");
+    private final static ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
 
@@ -59,12 +61,13 @@ public class Server {
                 log.info("Successfully declared in & out streams");
                 collectionFileName = getFile();
                 fileManager.setFile(collectionFileName);
-                break;
+                commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient);
+                clientConsole.launch();
             }
-            commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient);
-            Runnable serverConsole = new ServerConsole(collectionManager);
-            new Thread(serverConsole).start();
-            clientConsole.launch();
+
+//            Runnable serverConsole = new ServerConsole(collectionManager);
+//            new Thread(serverConsole).start();
+
 
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
