@@ -8,7 +8,7 @@ import java.io.*;
 public class FileSender {
 
 
-    public static boolean sendScriptFile(String filename, ObjectOutputStream outToServer) {
+    public static void sendScriptFile(String filename, ObjectOutputStream outToServer) {
         File scriptFile = new File(filename);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) {
             StringBuilder scriptContent = new StringBuilder();
@@ -25,12 +25,9 @@ public class FileSender {
         } catch (FileNotFoundException e) {
             System.out.println("Файл \"" + filename + "\" не найден!");
 //            System.exit(1);
-            return false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            return false;
         }
-        return true;
     }
 
     public static void sendCollectionFile(String file, ObjectOutputStream outToServer, ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {

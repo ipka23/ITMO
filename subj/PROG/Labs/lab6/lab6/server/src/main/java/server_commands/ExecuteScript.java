@@ -146,11 +146,7 @@ public class ExecuteScript extends Command {
         if (command[1].trim().isEmpty()) {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
-        if (request != null) {
-            request = (Request) inFromClient.readObject();
-        } else {
-            return new Response(false, ">");
-        }
+        request = (Request) inFromClient.readObject();
         File scriptFile = recieveScriptFile(request.getFileName());
 //        File scriptFile = request.getScriptFile();
         return runScript(scriptFile);

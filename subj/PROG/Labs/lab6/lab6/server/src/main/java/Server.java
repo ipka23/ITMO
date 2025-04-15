@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 public class Server {
 
-    public int PORT = 1123;
+    public int PORT = 1232;
     private  Socket clientSocket;
     private  ObjectInputStream inFromClient;
     private  ObjectOutputStream outToClient;
@@ -91,7 +91,6 @@ public class Server {
             Runnable serverConsole = new ServerConsole(collectionManager);
             new Thread(serverConsole).start();
             clientConsole.launch();
-
         }
     }
 

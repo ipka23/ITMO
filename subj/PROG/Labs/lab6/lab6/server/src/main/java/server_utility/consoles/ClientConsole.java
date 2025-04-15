@@ -80,7 +80,6 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
 
     public Request getRequest() throws IOException, ClassNotFoundException {
-        StringBuilder scriptFileContent = new StringBuilder();
         if (!scriptMode) {
             return (Request) inFromClient.readObject();
         } else {

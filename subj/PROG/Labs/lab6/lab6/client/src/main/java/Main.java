@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Main {
-    public static int port = 1123;
+    public static int port = 1232;
     private static String hostName = "localhost";
     private static Socket socket;
     private static Scanner userInput;
