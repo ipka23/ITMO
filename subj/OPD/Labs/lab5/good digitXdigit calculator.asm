@@ -211,7 +211,7 @@ multiply_func:
 org 0x250
 ; первод числа из 16 СС в 2-10 СС
 hex_to_bcd:
-    ld &2             ; ld res
+    ld &2             ; ldres
     cmp #0x000A
     blt done          ; если res < 10 то завершаем подсчёт десятков
     sub #0x000A
