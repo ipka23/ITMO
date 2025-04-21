@@ -28,6 +28,7 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="SqlNoDataSourceInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ad8868b5-9d3e-371c-ada2-f790544a0b7e" enabled="false" level="WARNING" enabled_by_default="false" editorAttributes="WARNING_ATTRIBUTES">
       <scope name="All Changed Files" level="WARNING" enabled="false" editorAttributes="WARNING_ATTRIBUTES" />
       <scope name="Open Files" level="WARNING" enabled="false" editorAttributes="WARNING_ATTRIBUTES" />
