@@ -8,6 +8,7 @@ import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.consoles.ServerConsole;
+import server_utility.database.DBHandler;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -18,26 +19,27 @@ import java.util.concurrent.Executors;
 public class Server {
 
     public int PORT = 1232;
-    private  Socket clientSocket;
-    private  ObjectInputStream inFromClient;
-    private  ObjectOutputStream outToClient;
-    private  String collectionFileName;
-    private  Invoker invoker;
-    private  ClientConsole clientConsole;
-    private  FileManager fileManager;
-    private  CollectionManager collectionManager;
-    private  CommandManager commandManager;
-    private  Logger log = LoggerFactory.getLogger("ServerConsole");
+    private Socket clientSocket;
+    private ObjectInputStream inFromClient;
+    private ObjectOutputStream outToClient;
+    private String collectionFileName;
+    private Invoker invoker;
+    private ClientConsole clientConsole;
+    private FileManager fileManager;
+    private CollectionManager collectionManager;
+    private CommandManager commandManager;
+    private DBHandler dbHandler;
+    private Logger log = LoggerFactory.getLogger("ServerConsole");
     private final static ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
         Server server = new Server();
         server.initializeServer();
         server.run();
-
     }
 
     private void initializeServer() {
+//        dbHandler = new DBHandler("")
         fileManager = new FileManager(null, clientConsole, null);
         collectionManager = new CollectionManager(fileManager, clientConsole);
 
@@ -50,12 +52,11 @@ public class Server {
         clientConsole.setCollectionManager(collectionManager);
 
 
-
     }
 
     public void run() {
         log.info("Server has started on port: {}", PORT);
-        try (ServerSocket serverSocket = new ServerSocket(PORT)){
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 clientSocket = serverSocket.accept();
                 executor.submit(() -> {
@@ -67,7 +68,6 @@ public class Server {
                 });
 
             }
-
 
 
         } catch (Exception e) {
