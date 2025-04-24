@@ -7,6 +7,7 @@ import common_utility.network.Response;
 import server_utility.interfaces.Console;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -38,7 +39,7 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         Collection<MusicBand> collection = collectionManager.getCollection();
         StringBuilder s = new StringBuilder();
-        List<Date> dates = new ArrayList<>();
+        List<LocalDate> dates = new ArrayList<>();
 
         collection.forEach(band -> dates.add(band.getEstablishmentDate()));
 

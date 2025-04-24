@@ -123,4 +123,9 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
             throw new RuntimeException(e);
         }
     }
+    //TODO
+    // Организовать возможность регистрации и авторизации пользователей.
+    // У пользователя есть возможность указать пароль.
+    // То есть при запуске консоли сначала выводится
+    // Для регистрации/входа введите команду - "reg"/"auth"
 }

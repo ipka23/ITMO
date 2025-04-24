@@ -24,11 +24,11 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private Long numberOfParticipants; //Поле может быть null, Значение поля должно быть больше 0
     private Long singlesCount; //Поле не может быть null, Значение поля должно быть больше 0
-    private Date establishmentDate; //Поле может быть null
+    private LocalDate establishmentDate; //Поле может быть null
     private MusicGenre genre; //Поле не может быть null
     private Album bestAlbum; //Поле не может быть null
 
-    public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, Date establishmentDate, MusicGenre musicGenre, Album bestAlbum) {
+    public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, LocalDate establishmentDate, MusicGenre musicGenre, Album bestAlbum) {
         this.name = name;
         this.coordinates = coordinates;
         this.numberOfParticipants = numberOfParticipants;
