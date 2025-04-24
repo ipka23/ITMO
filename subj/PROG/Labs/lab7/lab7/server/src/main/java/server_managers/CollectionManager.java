@@ -7,10 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.extern.java.Log;
 import server_utility.CollectionType;
 import server_utility.consoles.StandartConsole;
-import server_utility.database.DatabaseManager;
 import server_utility.database.StatementValue;
 
 import java.sql.PreparedStatement;

@@ -8,7 +8,7 @@ import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.consoles.ServerConsole;
-import server_utility.database.DatabaseManager;
+import server_managers.DatabaseManager;
 
 import java.io.*;
 import java.net.ServerSocket;

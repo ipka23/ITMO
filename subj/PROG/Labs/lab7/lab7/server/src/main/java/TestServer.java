@@ -1,10 +1,9 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import server_utility.database.DatabaseManager;
+import server_managers.DatabaseManager;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class TestServer {
