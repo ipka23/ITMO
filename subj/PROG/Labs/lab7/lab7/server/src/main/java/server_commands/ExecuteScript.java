@@ -15,6 +15,7 @@ import server_utility.exceptions.RecursionDepthExceedException;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -114,7 +115,7 @@ public class ExecuteScript extends Command {
 
             long singlesCount = Long.parseLong(fileScanner.nextLine().trim());
 
-            Date establishmentDate = new SimpleDateFormat("dd-MM-yyyy").parse(fileScanner.nextLine().trim());
+            LocalDate establishmentDate = LocalDate.parse(fileScanner.nextLine().trim());
 
             MusicGenre musicGenre = MusicGenre.valueOf(fileScanner.nextLine().trim().toUpperCase());
 

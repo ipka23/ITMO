@@ -7,13 +7,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 import server_utility.CollectionType;
 import server_utility.consoles.StandartConsole;
+import server_utility.database.DatabaseManager;
+import server_utility.database.StatementValue;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.logging.Logger;
 
 // FileManager, Console
 @Getter
@@ -26,26 +32,41 @@ public class CollectionManager {
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
     private FileManager fileManager;
+    private DatabaseManager databaseManager;
     private StandartConsole console;
-    private long freeId;
+    private Logger log = Logger.getLogger(CollectionManager.class.getName());
+    private long freeId = 1;
 
 
     public CollectionManager(FileManager fileManager, StandartConsole console) {
         this.fileManager = fileManager;
         this.console = console;
-        freeId = 1;
         initTime = LocalDateTime.now();
     }
 
     public CollectionManager(FileManager fileManager) {
         this.fileManager = fileManager;
-        freeId = 1;
         initTime = LocalDateTime.now();
+    }
+
+    public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
+        this.databaseManager = databaseManager;
+        this.console = console;
+        databaseManager.loadCollectionFromDB();
+    }
+
+    public CollectionManager(StandartConsole console) {
+        this.console = console;
+    }
+
+    public void setDatabaseManager(DatabaseManager databaseManager) {
+        this.databaseManager = databaseManager;
+        databaseManager.loadCollectionFromDB();
     }
 
 
     public void saveCollection() {
-        fileManager.saveCollectionToFile();
+        databaseManager.saveCollectionToDB();
         lastSaveTime = LocalDateTime.now();
     }
 
@@ -111,43 +132,18 @@ public class CollectionManager {
     }
 
     public void removeByID(long id) {
-        MusicBand band = getMusicBandById(id);
-        musicBandsMap.remove(id);
-        collection.remove(band);
+        try {
+            MusicBand band = getMusicBandById(id);
+            musicBandsMap.remove(id);
+            collection.remove(band);
+            PreparedStatement ps = databaseManager.getConnection().prepareStatement(StatementValue.REMOVE_MUSIC_BAND_BY_ID.toString());
+            ps.setLong(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            log.info(e.getMessage());
+        }
     }
 
-    public Response chooseTypeOfCollection() {
-        String userCommand = "";
-        Response response = null;
-        try {
-            while (true) {
-                console.print(CollectionType.choosingTypePrompt());
-                userCommand = console.nextLine();
-                userCommand = userCommand.toLowerCase().trim();
-                switch (userCommand) {
-                    case "exit":
-                        throw new ExitClientException();
-                    case "":
-                        continue;
-                    case "1", "hashset":
-                        fileManager.setHashSet();
-                        collection = new HashSet<>();
-                        fileManager.loadCollectionFromFile();
-                        response = new Response(true, "Тип коллекции - HashSet");
-                    case "2", "linkedlist":
-                        fileManager.setLinkedList();
-                        collection = new LinkedList<>();
-                        fileManager.loadCollectionFromFile();
-                        response = new Response(true, "Тип коллекции - LinkedList");
-                    default:
-                        continue;
-                }
-            }
-        } catch (ExitClientException e) {
-            response = new Response(true, "\n" + e.getMessage());
-        }
-        return response;
-    }
 
     /**
      * Метод для получения информации о коллекции
@@ -180,4 +176,38 @@ public class CollectionManager {
 
 
 
+    /** @deprecated */
+    @Deprecated
+    public Response chooseTypeOfCollection() {
+        String userCommand = "";
+        Response response = null;
+        try {
+            while (true) {
+                console.print(CollectionType.choosingTypePrompt());
+                userCommand = console.nextLine();
+                userCommand = userCommand.toLowerCase().trim();
+                switch (userCommand) {
+                    case "exit":
+                        throw new ExitClientException();
+                    case "":
+                        continue;
+                    case "1", "hashset":
+                        fileManager.setHashSet();
+                        collection = new HashSet<>();
+                        fileManager.loadCollectionFromFile();
+                        response = new Response(true, "Тип коллекции - HashSet");
+                    case "2", "linkedlist":
+                        fileManager.setLinkedList();
+                        collection = new LinkedList<>();
+                        fileManager.loadCollectionFromFile();
+                        response = new Response(true, "Тип коллекции - LinkedList");
+                    default:
+                        continue;
+                }
+            }
+        } catch (ExitClientException e) {
+            response = new Response(true, "\n" + e.getMessage());
+        }
+        return response;
+    }
 }

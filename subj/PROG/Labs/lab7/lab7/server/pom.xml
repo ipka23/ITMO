@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.github.ipka23.itmo.prog.labs</groupId>
-        <artifactId>lab6</artifactId>
+        <artifactId>lab7</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.4</version>
+            <version>42.7.5</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

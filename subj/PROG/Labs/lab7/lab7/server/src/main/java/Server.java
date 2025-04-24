@@ -8,11 +8,12 @@ import server_managers.FileManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.consoles.ServerConsole;
-import server_utility.database.DBHandler;
+import server_utility.database.DatabaseManager;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,8 +29,11 @@ public class Server {
     private FileManager fileManager;
     private CollectionManager collectionManager;
     private CommandManager commandManager;
-    private DBHandler dbHandler;
     private Logger log = LoggerFactory.getLogger("ServerConsole");
+    private StringBuilder credentials = new StringBuilder();
+    private String username = null;
+    private String password = null;
+    private String url = "jdbc:postgresql://localhost:15432/studs";
     private final static ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
@@ -41,7 +45,7 @@ public class Server {
     private void initializeServer() {
 //        dbHandler = new DBHandler("")
         fileManager = new FileManager(null, clientConsole, null);
-        collectionManager = new CollectionManager(fileManager, clientConsole);
+        collectionManager = new CollectionManager(clientConsole);
 
         commandManager = new CommandManager();
         invoker = new Invoker(commandManager, clientConsole);
@@ -88,6 +92,7 @@ public class Server {
             collectionFileName = getFile();
             fileManager.setFile(collectionFileName);
             commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
+            connect();
             Runnable serverConsole = new ServerConsole(collectionManager);
             new Thread(serverConsole).start();
             clientConsole.launch();
@@ -117,5 +122,29 @@ public class Server {
         }
         return collectionFileName;
     }
-
+    public void connect() {
+        try (Scanner scanner = new Scanner(new FileReader("credentials.txt"))) {
+            String line = scanner.nextLine().trim();
+            while (scanner.hasNextLine()){
+                if (!line.isEmpty()) {
+                    username = line;
+                    line = scanner.nextLine().trim();
+                }
+                if (!line.isEmpty()) {
+                    password = line;
+                }
+                log.info("Credentials have been received!");
+                DatabaseManager dbManager = new DatabaseManager(url, username, password);
+                dbManager.setCollectionManager(collectionManager);
+                collectionManager.setDatabaseManager(dbManager);
+                dbManager.connectToDB();
+            }
+        } catch (FileNotFoundException e) {
+            log.error("Database credentials file not found!");
+            System.exit(1);
+        } catch (NullPointerException e) {
+            log.error("Incorrect database credentials!");
+            System.exit(1);
+        }
+    }
 }

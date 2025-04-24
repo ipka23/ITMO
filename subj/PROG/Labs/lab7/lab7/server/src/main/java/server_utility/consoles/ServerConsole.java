@@ -23,7 +23,7 @@ public class ServerConsole implements Runnable {
             if (input.isEmpty()) continue;
             if (!input.equals("save")) continue;
             collectionManager.saveCollection();
-            log.info("Saved collection");
+            log.info("Collection was saved!");
         }
     }
 }

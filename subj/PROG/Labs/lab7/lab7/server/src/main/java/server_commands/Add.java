@@ -19,6 +19,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -54,7 +55,7 @@ public class Add extends Command {
         Coordinates coordinates = inputCoordinates();
         Long numberOfParticipants = inputNumberOfParticipants();
         Long singlesCount = inputSinglesCount();
-        Date establishmentDate = inputEstablishmentDate();
+        LocalDate establishmentDate = inputEstablishmentDate();
         MusicGenre musicGenre = inputMusicGenre();
         Album bestAlbum = inputAlbum();
         return new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
@@ -173,10 +174,10 @@ public class Add extends Command {
         }
         return singlesCount;
     }
-    protected Date inputEstablishmentDate() throws IOException, ClassNotFoundException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date establishmentDate;
-        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"dd-MM-yyyy\"\n* ");
+    protected LocalDate inputEstablishmentDate() throws IOException, ClassNotFoundException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate establishmentDate;
+        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"yyyy-dd-MM\"\n* ");
         console.send(null);
         while (true) {
             console.send(response);
@@ -185,10 +186,10 @@ public class Add extends Command {
             if (input.isEmpty()) continue;
             if (input.equals("exit")) throw new InputBreakException();
             try {
-                establishmentDate = dateFormat.parse(input);
+                establishmentDate = LocalDate.parse(input);
                 break;
-            } catch (ParseException e) {
-                response = new Response(false,"Неверный формат даты!\nВведите дату в формате \"dd-MM-yyyy\"\n*");
+            } catch (Exception e) {
+                response = new Response(false,"Неверный формат даты!\nВведите дату в формате \"yyyy-MM-dd\"\n*");
                 console.send(null);
             }
         }
