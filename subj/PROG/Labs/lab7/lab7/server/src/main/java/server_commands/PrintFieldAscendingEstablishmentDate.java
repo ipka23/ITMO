@@ -45,9 +45,7 @@ public class PrintFieldAscendingEstablishmentDate extends Command {
 
         dates.sort(Comparator.naturalOrder());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
-        dates.forEach(date -> s.append(formatter.format(date)).append("\n"));
+        dates.forEach(date -> s.append(date).append("\n"));
 
         if (s.isEmpty()) return new Response(false, "Коллекция пуста!");
         return new Response(false, s.substring(0, s.length() - 1));

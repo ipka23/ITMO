@@ -51,9 +51,9 @@ public class RequestSender {
                     System.out.print(response.getMessage());
                     System.exit(333);
                 }
-//                if (command.equals("show") || command.equals("filter_starts_with_name")) {
-//                    printCollection(response);
-//                }
+                if (command.equals("show") || command.equals("filter_starts_with_name")) {
+                    printCollection(response);
+                }
                 else {
                     musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());

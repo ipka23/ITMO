@@ -12,6 +12,7 @@ import server_utility.consoles.StandartConsole;
 import server_utility.database.StatementValue;
 
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -71,7 +72,7 @@ public class CollectionManager {
     public Response addMusicBand(MusicBand musicBand) {
         long id = getFreeId();
         if (musicBandsMap.containsValue(musicBand)) {
-            return new Response(true, "Музыкальная группа не была добавлена, т.к. такая группа уже есть в коллекции!");
+            return new Response(false, "Музыкальная группа не была добавлена, т.к. такая группа уже есть в коллекции!");
         }
         musicBandsMap.put(id, musicBand);
         musicBand.setCreationDate(LocalDate.now());
@@ -104,13 +105,23 @@ public class CollectionManager {
 
 
     public long getFreeId() {
+//        freeId = 0;
         Connection connection =  databaseManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            stmt.execute(StatementValue.SET_MAX_ID.toString());
+            stmt.execute(StatementValue.GET_MAX_ID.toString());
             ResultSet rs = stmt.getResultSet();
             rs.next();
             freeId = rs.getLong(1) + 1;
+
+
+            if (freeId != 1){
+                PreparedStatement ps = connection.prepareStatement(StatementValue.SYNC_SEQUENCE_ID.toString());
+                ps.setLong(1, freeId - 1);
+                ps.executeUpdate();
+            } else {
+                connection.createStatement().execute(StatementValue.RESTART_ID_SEQ.toString());
+            }
         } catch (SQLException e) {
             log.info(e.getMessage());
         }
@@ -217,5 +228,38 @@ public class CollectionManager {
             response = new Response(true, "\n" + e.getMessage());
         }
         return response;
+    }
+
+    public void clearCollection() {
+        collection.clear();
+        try {
+            Connection connection =  databaseManager.getConnection();
+            connection.createStatement().execute(StatementValue.TRUNCATE_MUSIC_BANDS.toString());
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    public void updateMusicBand(MusicBand band, long id) {
+        try {
+            Connection connection =  databaseManager.getConnection();
+            PreparedStatement ps = connection.prepareStatement(StatementValue.UPDATE_MUSIC_BAND.toString());
+            ps.setString(1, band.getName());
+            ps.setInt(2, band.getCoordinates().getX());
+            ps.setFloat(3, band.getCoordinates().getY());
+            ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
+            ps.setLong(5, band.getNumberOfParticipants());
+            ps.setLong(6, band.getSinglesCount());
+            ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
+            ps.setString(8, band.getGenre().toString());
+            ps.setString(9, band.getBestAlbum().getName());
+            ps.setLong(10, band.getBestAlbum().getTracks());
+            ps.setLong(11, band.getBestAlbum().getLength());
+            ps.setDouble(12, band.getBestAlbum().getSales());
+            ps.setLong(13, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
     }
 }
