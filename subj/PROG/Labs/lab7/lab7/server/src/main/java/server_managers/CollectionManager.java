@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,23 +31,18 @@ public class CollectionManager {
     private Map<Long, MusicBand> musicBandsMap = new HashMap<>();
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
-    private FileManager fileManager;
     private DatabaseManager databaseManager;
+    private UserManager userManager;
     private StandartConsole console;
     private Logger log = LoggerFactory.getLogger("CollectionManager");
     private long freeId;
 
 
-    public CollectionManager(FileManager fileManager, StandartConsole console) {
-        this.fileManager = fileManager;
+    public CollectionManager(StandartConsole console) {
         this.console = console;
         initTime = LocalDateTime.now();
     }
 
-    public CollectionManager(FileManager fileManager) {
-        this.fileManager = fileManager;
-        initTime = LocalDateTime.now();
-    }
 
     public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
         this.databaseManager = databaseManager;
@@ -54,9 +50,6 @@ public class CollectionManager {
         collection = databaseManager.loadCollectionFromDB();
     }
 
-    public CollectionManager(StandartConsole console) {
-        this.console = console;
-    }
 
     public void setDatabaseManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
@@ -69,7 +62,9 @@ public class CollectionManager {
 
         lastSaveTime = LocalDateTime.now();
     }
+
     public Response addMusicBand(MusicBand musicBand) {
+
         long id = getFreeId();
         if (musicBandsMap.containsValue(musicBand)) {
             return new Response(false, "Музыкальная группа не была добавлена, т.к. такая группа уже есть в коллекции!");
@@ -105,7 +100,7 @@ public class CollectionManager {
 
 
     public long getFreeId() {
-        Connection connection =  databaseManager.getConnection();
+        Connection connection = databaseManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
             stmt.execute(StatementValue.GET_MAX_ID.toString());
@@ -114,17 +109,18 @@ public class CollectionManager {
             freeId = rs.getLong(1) + 1;
 
 
-            if (freeId != 1){
+            if (freeId != 1) {
                 PreparedStatement ps = connection.prepareStatement(StatementValue.SYNC_SEQUENCE_ID.toString());
                 ps.setLong(1, freeId - 1);
                 ps.executeUpdate();
+                rs.close();
             } else {
                 connection.createStatement().execute(StatementValue.RESTART_ID_SEQ.toString());
             }
         } catch (SQLException e) {
             log.info(e.getMessage());
         }
-         return freeId;
+        return freeId;
     }
 
     public MusicBand getMax() {
@@ -192,47 +188,10 @@ public class CollectionManager {
         return s.substring(0, s.length() - 2);
     }
 
-
-
-    /** @deprecated */
-    @Deprecated
-    public Response chooseTypeOfCollection() {
-        String userCommand = "";
-        Response response = null;
-        try {
-            while (true) {
-                console.print(CollectionType.choosingTypePrompt());
-                userCommand = console.nextLine();
-                userCommand = userCommand.toLowerCase().trim();
-                switch (userCommand) {
-                    case "exit":
-                        throw new ExitClientException();
-                    case "":
-                        continue;
-                    case "1", "hashset":
-                        fileManager.setHashSet();
-                        collection = new HashSet<>();
-                        fileManager.loadCollectionFromFile();
-                        response = new Response(true, "Тип коллекции - HashSet");
-                    case "2", "linkedlist":
-                        fileManager.setLinkedList();
-                        collection = new LinkedList<>();
-                        fileManager.loadCollectionFromFile();
-                        response = new Response(true, "Тип коллекции - LinkedList");
-                    default:
-                        continue;
-                }
-            }
-        } catch (ExitClientException e) {
-            response = new Response(true, "\n" + e.getMessage());
-        }
-        return response;
-    }
-
     public void clearCollection() {
         collection.clear();
         try {
-            Connection connection =  databaseManager.getConnection();
+            Connection connection = databaseManager.getConnection();
             connection.createStatement().execute(StatementValue.TRUNCATE_MUSIC_BANDS.toString());
         } catch (SQLException e) {
             log.error(e.getMessage());

@@ -13,10 +13,9 @@ public class Client {
     private Socket socket;
     private String collectionFile;
 
-    public Client(int port, String hostName, Socket socket, String collectionFile)  {
+    public Client(int port, String hostName, Socket socket)  {
         this.port = port;
         this.hostName = hostName;
-        this.collectionFile = collectionFile;
         this.socket = socket;
     }
 }

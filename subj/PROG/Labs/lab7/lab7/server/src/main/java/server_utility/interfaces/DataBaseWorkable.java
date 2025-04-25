@@ -1,6 +1,7 @@
 package server_utility.interfaces;
 
 import common_entities.MusicBand;
+import server_utility.database.User;
 
 import java.util.HashSet;
 
@@ -9,6 +10,6 @@ public interface DataBaseWorkable {
     HashSet<MusicBand> loadCollectionFromDB();
     void insertIntoDB(MusicBand band);
     void updateDB(MusicBand band, long id);
-    void registerUser(String username, String password);
+    void registerUser(User user);
     void declareTables();
 }

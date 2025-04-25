@@ -1,11 +1,11 @@
-package server_utility.database;
+package server_managers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import server_managers.DatabaseManager;
+import server_utility.database.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,6 +33,16 @@ public class UserManager {
         users.add(user);
         userHashMap.put(id, user);
     }
+
+    public void registerUser(User user) {
+        addUser(user);
+        dbManager.registerUser(user);
+    }
+
+    public void authenticateUser(User user) {
+
+    }
+
 
     public long getFreeId() {
         Connection connection =  dbManager.getConnection();

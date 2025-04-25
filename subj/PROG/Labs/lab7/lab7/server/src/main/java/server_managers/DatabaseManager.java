@@ -9,12 +9,13 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server_utility.database.StatementValue;
-import server_utility.database.UserManager;
+import server_utility.database.User;
 import server_utility.interfaces.DataBaseWorkable;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -32,8 +33,14 @@ public class DatabaseManager implements DataBaseWorkable {
     @Setter
     private CollectionManager collectionManager;
     private UserManager userManager;
-    private String salt = "&^(*hed@#E";
-    private String pepper = "2(^&*l_d(3!#";
+    private String chrs = "0123456789abcdefghijklmnopqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private SecureRandom secureRandom = new SecureRandom();
+    private String salt = secureRandom
+            .ints(12, 0, chrs.length())
+            .mapToObj(i -> chrs.charAt(i))
+            .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+            .toString();
+    private String pepper = "mCf-zNiWJPyv";
     // пул потоков для обработки клиентов
     private ExecutorService clientThreadPool = Executors.newCachedThreadPool();
 
@@ -54,19 +61,10 @@ public class DatabaseManager implements DataBaseWorkable {
             if (!connection.isClosed()) {
                 log.info("Connection to the database is established!");
                 declareTables();
-                registerUser(username, password);
             }
         } catch (SQLException e) {
             log.error("Database connection failed!");
         }
-//        finally {
-//            try {
-//                connection.close();
-//            } catch (SQLException e) {
-//                log.error("Database connection failed!");
-//            }
-//            log.info("Database connection is closed!");
-//        }
     }
 
     @Override
@@ -97,18 +95,18 @@ public class DatabaseManager implements DataBaseWorkable {
 
     public MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
         long id = rs.getLong(1);
-        String name = rs.getString(2);
-        Integer x = rs.getInt(3);
-        float y = rs.getInt(4);
-        LocalDate creationDate = rs.getDate(5).toLocalDate();
-        Long numberOfParticipants = rs.getLong(6);
-        Long singlesCount = rs.getLong(7);
-        LocalDate establishmentDate = rs.getDate(8).toLocalDate();
-        MusicGenre genre = MusicGenre.valueOf(rs.getString(9));
-        String album_name = rs.getString(10);
-        Long tracks = rs.getLong(11);
-        long length = rs.getLong(12);
-        Double sales = rs.getDouble(13);
+        String name = rs.getString(3);
+        Integer x = rs.getInt(4);
+        float y = rs.getInt(5);
+        LocalDate creationDate = rs.getDate(6).toLocalDate();
+        Long numberOfParticipants = rs.getLong(7);
+        Long singlesCount = rs.getLong(8);
+        LocalDate establishmentDate = rs.getDate(9).toLocalDate();
+        MusicGenre genre = MusicGenre.valueOf(rs.getString(10));
+        String album_name = rs.getString(11);
+        Long tracks = rs.getLong(12);
+        long length = rs.getLong(13);
+        Double sales = rs.getDouble(14);
         return new MusicBand(id, name, new Coordinates(x, y), creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, new Album(album_name, tracks, length, sales));
     }
 
@@ -160,18 +158,15 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
     @Override
-    public void registerUser(String username, String password) {
+    public void registerUser(User user) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());) {
-            ps.setString(1, username);
-            ps.setBytes(2, encryptPassword(password, salt));
+            ps.setString(1, user.getUsername());
+            ps.setBytes(2, encryptPassword(user.getPassword(), salt));
             ps.setString(3, salt);
             ps.executeUpdate();
         } catch (SQLException e) {
             log.error("Username already exists!");
         }
-//        catch (UnsupportedEncodingException e) {
-//            log.error("Unsupported encoding!");
-//        }
     }
 
     public byte[] encryptPassword(String password, String salt) {
