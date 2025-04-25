@@ -8,7 +8,7 @@ public interface DataBaseWorkable {
     void connectToDB();
     HashSet<MusicBand> loadCollectionFromDB();
     void insertIntoDB(MusicBand band);
-    void updateDB();
+    void updateDB(MusicBand band, long id);
     void registerUser(String username, String password);
     void declareTables();
 }
