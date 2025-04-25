@@ -62,7 +62,7 @@ public class Update extends Command {
             throw new RuntimeException(e);
         }
         band.update(newBand);
-        collectionManager.updateMusicBand(newBand, id);
+        collectionManager.getDatabaseManager().updateDB(newBand, id);
         return new Response(false, "Элемент с id = " + id + " был обновлён!");
     }
 }

@@ -51,7 +51,7 @@ public class CollectionManager {
     public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
         this.databaseManager = databaseManager;
         this.console = console;
-        databaseManager.loadCollectionFromDB();
+        collection = databaseManager.loadCollectionFromDB();
     }
 
     public CollectionManager(StandartConsole console) {
@@ -60,7 +60,7 @@ public class CollectionManager {
 
     public void setDatabaseManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
-        databaseManager.loadCollectionFromDB();
+        collection = databaseManager.loadCollectionFromDB();
     }
 
 
@@ -240,26 +240,5 @@ public class CollectionManager {
         }
     }
 
-    public void updateMusicBand(MusicBand band, long id) {
-        try {
-            Connection connection =  databaseManager.getConnection();
-            PreparedStatement ps = connection.prepareStatement(StatementValue.UPDATE_MUSIC_BAND.toString());
-            ps.setString(1, band.getName());
-            ps.setInt(2, band.getCoordinates().getX());
-            ps.setFloat(3, band.getCoordinates().getY());
-            ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
-            ps.setLong(5, band.getNumberOfParticipants());
-            ps.setLong(6, band.getSinglesCount());
-            ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
-            ps.setString(8, band.getGenre().toString());
-            ps.setString(9, band.getBestAlbum().getName());
-            ps.setLong(10, band.getBestAlbum().getTracks());
-            ps.setLong(11, band.getBestAlbum().getLength());
-            ps.setDouble(12, band.getBestAlbum().getSales());
-            ps.setLong(13, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-        }
-    }
+
 }
