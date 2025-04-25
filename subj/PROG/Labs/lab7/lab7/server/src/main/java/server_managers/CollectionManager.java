@@ -20,7 +20,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// FileManager, Console
+// FileManager, Console, DatabaseManager
 @Getter
 @Setter
 @AllArgsConstructor
@@ -105,7 +105,6 @@ public class CollectionManager {
 
 
     public long getFreeId() {
-//        freeId = 0;
         Connection connection =  databaseManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
