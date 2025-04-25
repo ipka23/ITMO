@@ -23,6 +23,7 @@ import java.util.concurrent.Executors;
 
 public class DatabaseManager implements DataBaseWorkable {
     private String url;
+    @Getter
     private String username;
     private String password;
     private Logger log = LoggerFactory.getLogger("DatabaseManager");
@@ -114,18 +115,19 @@ public class DatabaseManager implements DataBaseWorkable {
     @Override
     public void insertIntoDB(MusicBand band) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
-            ps.setString(1, band.getName());
-            ps.setInt(2, band.getCoordinates().getX());
-            ps.setFloat(3, band.getCoordinates().getY());
-            ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
-            ps.setLong(5, band.getNumberOfParticipants());
-            ps.setLong(6, band.getSinglesCount());
-            ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
-            ps.setString(8, band.getGenre().toString());
-            ps.setString(9, band.getBestAlbum().getName());
-            ps.setLong(10, band.getBestAlbum().getTracks());
-            ps.setLong(11, band.getBestAlbum().getLength());
-            ps.setDouble(12, band.getBestAlbum().getSales());
+            ps.setString(1, username);
+            ps.setString(2, band.getName());
+            ps.setInt(3, band.getCoordinates().getX());
+            ps.setFloat(4, band.getCoordinates().getY());
+            ps.setDate(5, java.sql.Date.valueOf(band.getCreationDate()));
+            ps.setLong(6, band.getNumberOfParticipants());
+            ps.setLong(7, band.getSinglesCount());
+            ps.setDate(8, java.sql.Date.valueOf(band.getEstablishmentDate()));
+            ps.setString(9, band.getGenre().toString());
+            ps.setString(10, band.getBestAlbum().getName());
+            ps.setLong(11, band.getBestAlbum().getTracks());
+            ps.setLong(12, band.getBestAlbum().getLength());
+            ps.setDouble(13, band.getBestAlbum().getSales());
             ps.executeUpdate();
         } catch (SQLException e) {
             log.error(e.getMessage());

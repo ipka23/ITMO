@@ -1,12 +1,19 @@
 package server_utility.database;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@AllArgsConstructor
+@Getter
+@Setter
 public class User {
-    private int id;
+    private long id;
     private String username;
     private String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     @Override
     public String toString(){

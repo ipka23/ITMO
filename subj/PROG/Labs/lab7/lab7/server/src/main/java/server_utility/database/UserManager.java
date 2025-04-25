@@ -3,7 +3,11 @@ package server_utility.database;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import server_managers.DatabaseManager;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,17 +19,40 @@ import java.util.Map;
 public class UserManager {
     private List<User> users = new ArrayList<>();
     private Map<Long, User> userHashMap = new HashMap<>();
-    private Long freeId;
+    private long freeId;
+    private DatabaseManager dbManager;
+    private Logger log = LoggerFactory.getLogger("UserManager");
 
-//    public long getFreeId() {
-//        while (userHashMap.get(freeId) != null) freeId++;
-//        return freeId;
-//    }
+    public UserManager(DatabaseManager dbManager) {
+        this.dbManager = dbManager;
+    }
 
-//    private void addUser(User user) {
-//        users.add(user);
-//        userHashMap.put(getFreeId(), user);
-//    }
+    public void addUser(User user) {
+        long id = getFreeId();
+        user.setId(id);
+        users.add(user);
+        userHashMap.put(id, user);
+    }
 
+    public long getFreeId() {
+        Connection connection =  dbManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute("SELECT COALESCE(MAX(id), 0) FROM users");
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            freeId = rs.getLong(1) + 1;
 
+            if (freeId != 1){
+                PreparedStatement ps = connection.prepareStatement("SELECT setval(user_id_seq, ?)");
+                ps.setLong(1, freeId - 1);
+                ps.executeUpdate();
+            } else {
+                connection.createStatement().execute("ALTER SEQUENCE user_id_seq RESTART WITH 1");
+            }
+        } catch (SQLException e) {
+            log.info(e.getMessage());
+        }
+        return freeId;
+    }
 }

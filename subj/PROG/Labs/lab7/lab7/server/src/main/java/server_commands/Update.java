@@ -5,11 +5,15 @@ import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
+import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Данный класс отвечает за выполнение команды "update"
@@ -61,8 +65,21 @@ public class Update extends Command {
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        band.update(newBand);
-        collectionManager.getDatabaseManager().updateDB(newBand, id);
-        return new Response(false, "Элемент с id = " + id + " был обновлён!");
+        long curr_id = band.getId();
+        String ownerFromCollection = collectionManager.getDatabaseManager().getUsername();
+        String ownerFromDb;
+        try (PreparedStatement ps = collectionManager.getDatabaseManager().getConnection().prepareStatement(StatementValue.GET_OWNER.toString());) {
+            ps.setLong(1, curr_id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            ownerFromDb = rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (ownerFromCollection.equals(ownerFromDb)) {
+            band.update(newBand);
+            collectionManager.getDatabaseManager().updateDB(newBand, id);
+            return new Response(false, "Элемент с id = " + id + " был обновлён!");
+        } else return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
     }
 }

@@ -30,14 +30,14 @@ public class FileSender {
         }
     }
 
-    public static void sendCollectionFile(String file, ObjectOutputStream outToServer, ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
-        outToServer.writeObject(new Request(file));
-        outToServer.flush();
-
-        Response response = (Response) inFromServer.readObject();
-        if (response.getExitStatus()) {
-            System.out.print(response.getMessage());
-            System.exit(222);
-        }
-    }
+//    public static void sendCollectionFile(String file, ObjectOutputStream outToServer, ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
+//        outToServer.writeObject(new Request(file));
+//        outToServer.flush();
+//
+//        Response response = (Response) inFromServer.readObject();
+//        if (response.getExitStatus()) {
+//            System.out.print(response.getMessage());
+//            System.exit(222);
+//        }
+//    }
 }
