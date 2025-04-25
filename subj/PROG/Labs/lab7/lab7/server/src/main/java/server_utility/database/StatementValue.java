@@ -20,7 +20,7 @@ public enum StatementValue {
             
                     CREATE TABLE IF NOT EXISTS MusicBands(
                         id BIGINT PRIMARY KEY DEFAULT nextval('musicBand_id_seq'),
-                        owner varchar(40) UNIQUE,
+                        owner varchar(40),
                         name VARCHAR(40) UNIQUE,
                         coordinates_x INT,
                         coordinates_y REAL,

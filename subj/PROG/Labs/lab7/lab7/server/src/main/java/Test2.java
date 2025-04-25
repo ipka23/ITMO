@@ -1,25 +1,16 @@
+import java.security.SecureRandom;
 import java.sql.*;
 
 
 public class Test2 {
+    private String chrs = "0123456789abcdefghijklmnopqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private SecureRandom secureRandom = new SecureRandom();
+    private String customTag = secureRandom
+            .ints(12, 0, chrs.length()) // 9 is the length of the string you want
+            .mapToObj(i -> chrs.charAt(i))
+            .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+            .toString();
     public static void main(String[] args) {
-        Connection connection;
-        try {
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:15432/studs", "s467204", "8S268WDKoQNNirxx");
-            Statement statement = connection.createStatement();
-            statement.execute("SELECT * FROM musicBands");
-            ResultSet rs = statement.getResultSet();
-            while (rs.next()) {
-                if (rs.getString("name").equals("U2")){
-                    System.out.println(rs.getString("name"));
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            System.out.println("Не удалось подключить драйвер PostgreSQL!");
-            System.exit(1);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(new Test2().customTag);
     }
 }

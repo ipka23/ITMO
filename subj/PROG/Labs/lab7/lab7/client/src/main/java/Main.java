@@ -13,17 +13,11 @@ public class Main {
     private static Scanner userInput;
     private static ObjectInputStream inFromServer;
     private static ObjectOutputStream outToServer;
-    private static String collectionFile;
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length == 0) {
-            System.exit(1);
-        } else {
-            collectionFile = args[0];
-        }
         socket = new Socket(hostName, port);
-        Client client = new Client(port, hostName, socket, collectionFile);
+        Client client = new Client(port, hostName, socket);
         try {
             Runner.run(client);
         } catch (IOException | ClassNotFoundException e) {

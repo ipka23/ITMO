@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
-
+//TODO сделать обработку авторизации/регистрации
 public class RequestSender {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
@@ -20,8 +20,6 @@ public class RequestSender {
         String arg;
         try {
             while (true) {
-//                Response prompt = inFromServer.readObject() == null ? new Response(false, ">") : (Response) inFromServer.readObject();
-//                Response nul = (Response) inFromServer.readObject();
                 Response prompt = (Response) inFromServer.readObject();
                 if (prompt != null) {
                     System.out.print(prompt.getMessage());
@@ -53,8 +51,7 @@ public class RequestSender {
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name")) {
                     printCollection(response);
-                }
-                else {
+                } else {
                     musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());
                 }

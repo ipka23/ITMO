@@ -14,8 +14,6 @@ public class Runner {
 
         ObjectInputStream inFromServer = new ObjectInputStream(new BufferedInputStream(client.getSocket().getInputStream()));
 
-//        FileSender.sendCollectionFile(client.getCollectionFile(), outToServer, inFromServer);
-
         Scanner userInput = new Scanner(System.in);
 
         RequestSender.sendMessage(outToServer, inFromServer, userInput);
