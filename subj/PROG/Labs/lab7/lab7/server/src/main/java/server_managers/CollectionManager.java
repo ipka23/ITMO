@@ -11,13 +11,13 @@ import server_utility.CollectionType;
 import server_utility.consoles.StandartConsole;
 import server_utility.database.StatementValue;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // FileManager, Console
 @Getter
@@ -32,8 +32,8 @@ public class CollectionManager {
     private FileManager fileManager;
     private DatabaseManager databaseManager;
     private StandartConsole console;
-    private Logger log = Logger.getLogger(CollectionManager.class.getName());
-    private long freeId = 1;
+    private Logger log = LoggerFactory.getLogger("CollectionManager");
+    private long freeId;
 
 
     public CollectionManager(FileManager fileManager, StandartConsole console) {
@@ -64,10 +64,10 @@ public class CollectionManager {
 
 
     public void saveCollection() {
-        databaseManager.saveCollectionToDB();
+//        databaseManager.saveCollectionToDB();
+
         lastSaveTime = LocalDateTime.now();
     }
-
     public Response addMusicBand(MusicBand musicBand) {
         long id = getFreeId();
         if (musicBandsMap.containsValue(musicBand)) {
@@ -77,6 +77,7 @@ public class CollectionManager {
         musicBand.setCreationDate(LocalDate.now());
         musicBand.setId(id);
         collection.add(musicBand);
+        databaseManager.insertIntoDB(musicBand);
         saveCollection();
         return new Response(false, "Музыкальная группа была успешно добавлена!");
     }
@@ -103,8 +104,17 @@ public class CollectionManager {
 
 
     public long getFreeId() {
-        while (musicBandsMap.get(freeId) != null) freeId++;
-        return freeId;
+        Connection connection =  databaseManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.execute(StatementValue.SET_MAX_ID.toString());
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            freeId = rs.getLong(1) + 1;
+        } catch (SQLException e) {
+            log.info(e.getMessage());
+        }
+         return freeId;
     }
 
     public MusicBand getMax() {

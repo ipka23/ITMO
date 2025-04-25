@@ -25,7 +25,7 @@ public class DatabaseManager implements DataBaseWorkable {
     private String url;
     private String username ;
     private String password;
-    private Logger log = LoggerFactory.getLogger(DatabaseManager.class);
+    private Logger log = LoggerFactory.getLogger("DatabaseManager");
     @Getter
     private Connection connection;
     @Setter
@@ -87,7 +87,6 @@ public class DatabaseManager implements DataBaseWorkable {
             while (rs.next()) {
                 MusicBand musicBand = getMusicBandFromResultSet(rs);
                 collection.add(musicBand);
-
             }
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -114,9 +113,27 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
     @Override
-    public void insertIntoDB() {
+    public void insertIntoDB(MusicBand band) {
+        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())){
+                ps.setString(1, band.getName());
+                ps.setInt(2, band.getCoordinates().getX());
+                ps.setFloat(3, band.getCoordinates().getY());
+                ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
+                ps.setLong(5, band.getNumberOfParticipants());
+                ps.setLong(6, band.getSinglesCount());
+                ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
+                ps.setString(8, band.getGenre().toString());
+                ps.setString(9, band.getBestAlbum().getName());
+                ps.setLong(10, band.getBestAlbum().getTracks());
+                ps.setLong(11, band.getBestAlbum().getLength());
+                ps.setDouble(12, band.getBestAlbum().getSales());
+                ps.executeUpdate();
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
 
     }
+
 
     @Override
     public void updateDB() {
@@ -125,8 +142,7 @@ public class DatabaseManager implements DataBaseWorkable {
 
     @Override
     public void registerUser(String username, String password) {
-        try {
-            PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());
+        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());) {
             ps.setString(1, username);
             ps.setBytes(2, encryptPassword(password, salt));
             ps.setString(3, salt);
@@ -165,30 +181,74 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
 
+//    public void saveCollectionToDB() {
+//        Map<Long, MusicBand> musicBandMap = collectionManager.getMusicBandsMap();
+//        try {
+//            Statement stmt = connection.createStatement();
+//            stmt.execute(StatementValue.SELECT_MUSIC_BAND.toString());
+//            ResultSet rs = stmt.getResultSet();
+//            outerLoop:
+//            while (rs.next()) {
+//                for (MusicBand mb : collectionManager.getCollection()) {
+//                    Long id = rs.getLong("id");
+//                    if (musicBandMap.containsKey(id)) { //musicBandHashMap.containsKey(rs.getLong("id"))
+//                        log.info("{}: {} = {}: {}",rs.getString("name"), rs.getLong("id"), mb.getName(), mb.getId());
+//                        continue outerLoop;
+//                    }
+//                    PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString());
+//                    ps.setString(1, mb.getName());
+//                    ps.setInt(2, mb.getCoordinates().getX());
+//                    ps.setFloat(3, mb.getCoordinates().getY());
+//                    ps.setDate(4, java.sql.Date.valueOf(mb.getCreationDate()));
+//                    ps.setLong(5, mb.getNumberOfParticipants());
+//                    ps.setLong(6, mb.getSinglesCount());
+//                    ps.setDate(7, java.sql.Date.valueOf(mb.getEstablishmentDate()));
+//                    ps.setString(8, mb.getGenre().toString());
+//                    ps.setString(9, mb.getBestAlbum().getName());
+//                    ps.setLong(10, mb.getBestAlbum().getTracks());
+//                    ps.setLong(11, mb.getBestAlbum().getLength());
+//                    ps.setDouble(12, mb.getBestAlbum().getSales());
+//                    ps.executeUpdate();
+//                }
+//            }
+//
+//        } catch (SQLException e) {
+//            log.error(e.getMessage());
+//        }
+//    }
+
     public void saveCollectionToDB() {
         try {
-            for (MusicBand mb : collectionManager.getCollection()) {
-                ResultSet rs = connection.createStatement().executeQuery(StatementValue.SELECT_MUSIC_BAND.toString());
-                while (rs.next()) {
-                    if (collectionManager.getMusicBandsMap().containsValue(rs.getString("name"))) continue;
-                    PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString());
-                    ps.setString(1, mb.getName());
-                    ps.setInt(2, mb.getCoordinates().getX());
-                    ps.setFloat(3, mb.getCoordinates().getY());
-                    ps.setDate(4, java.sql.Date.valueOf(mb.getCreationDate()));
-                    ps.setLong(5, mb.getNumberOfParticipants());
-                    ps.setLong(6, mb.getSinglesCount());
-                    ps.setDate(7, java.sql.Date.valueOf(mb.getEstablishmentDate()));
-                    ps.setString(8, mb.getGenre().toString());
-                    ps.setString(9, mb.getBestAlbum().getName());
-                    ps.setLong(10, mb.getBestAlbum().getTracks());
-                    ps.setLong(11, mb.getBestAlbum().getLength());
-                    ps.setDouble(12, mb.getBestAlbum().getSales());
-                    ps.executeUpdate();
-                }
+            Set<Long> ids = new HashSet<>();
+            Statement statement = connection.createStatement();
+            statement.execute(StatementValue.SELECT_ID.toString());
+            ResultSet rs = statement.getResultSet();
+            while (rs.next()) {
+                ids.add(rs.getLong("id"));
+            }
+
+            try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())){
+                for (MusicBand band : collectionManager.getCollection()) {
+                    if (ids.contains(band.getId())) continue;
+                    ps.setString(1, band.getName());
+                    ps.setInt(2, band.getCoordinates().getX());
+                    ps.setFloat(3, band.getCoordinates().getY());
+                    ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
+                    ps.setLong(5, band.getNumberOfParticipants());
+                    ps.setLong(6, band.getSinglesCount());
+                    ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
+                    ps.setString(8, band.getGenre().toString());
+                    ps.setString(9, band.getBestAlbum().getName());
+                    ps.setLong(10, band.getBestAlbum().getTracks());
+                    ps.setLong(11, band.getBestAlbum().getLength());
+                    ps.setDouble(12, band.getBestAlbum().getSales());
+                    ps.addBatch();
+            }
+                ps.executeBatch();
             }
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
+
     }
 }

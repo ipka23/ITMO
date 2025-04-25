@@ -40,6 +40,9 @@ public enum StatementValue {
     ADD_MUSIC_BAND("INSERT INTO musicBands(name, coordinates_x, coordinates_y, creationdate, numberofparticipants, singlescount, establishmentdate, genre, album_name, album_tracks, album_length, album_sales) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"),
     CHECK_MUSIC_BAND_EXISTS("SELECT COUNT(*) FROM musicBands WHERE name = ?"),
     REMOVE_MUSIC_BAND_BY_ID("DELETE FROM musicBands WHERE id = ?"),
+    SELECT_MAX_ID("SELECT MAX(id) FROM musicBands"),
+    SELECT_ID("SELECT id FROM musicBands"),
+    SET_MAX_ID("SELECT setval('musicBand_id_seq', (SELECT MAX(id) FROM musicbands))")
     ;
 
     private String statement;
