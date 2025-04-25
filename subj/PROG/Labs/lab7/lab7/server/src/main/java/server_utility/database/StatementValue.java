@@ -61,8 +61,7 @@ public enum StatementValue {
                     album_length = ?,
                     album_sales = ?
                     WHERE id = ?
-                    """),
-    ;
+                    """);
 
     private String statement;
 
