@@ -55,12 +55,14 @@ public class Update extends Command {
         try {
             console.send(new Response(false, "--------------------------------Введите новые данные музыкальной группы--------------------------------"));
             newBand = add.inputMusicBand();
+            newBand.setCreationDate(band.getCreationDate());
         } catch (InputBreakException e) {
             return new Response(false, "Отмена ввода...");
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         band.update(newBand);
+        collectionManager.updateMusicBand(newBand, id);
         return new Response(false, "Элемент с id = " + id + " был обновлён!");
     }
 }

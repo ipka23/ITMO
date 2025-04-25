@@ -34,8 +34,7 @@ public class Clear extends Command {
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        Collection<MusicBand> collection = collectionManager.getCollection();
-        collection.clear();
-        return new Response(false, "Коллекция была очищена!", collection);
+        collectionManager.clearCollection();
+        return new Response(false, "Коллекция была очищена!", collectionManager.getCollection());
     }
 }

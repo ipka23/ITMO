@@ -42,7 +42,26 @@ public enum StatementValue {
     REMOVE_MUSIC_BAND_BY_ID("DELETE FROM musicBands WHERE id = ?"),
     SELECT_MAX_ID("SELECT MAX(id) FROM musicBands"),
     SELECT_ID("SELECT id FROM musicBands"),
-    SET_MAX_ID("SELECT setval('musicBand_id_seq', (SELECT MAX(id) FROM musicbands))")
+    GET_MAX_ID("SELECT COALESCE(MAX(id), 0) FROM musicbands"),
+    TRUNCATE_MUSIC_BANDS("TRUNCATE TABLE musicbands"),
+    SYNC_SEQUENCE_ID("SELECT setval('musicBand_id_seq', ?)"),
+    RESTART_ID_SEQ("ALTER SEQUENCE musicBand_id_seq RESTART WITH 1"),
+    UPDATE_MUSIC_BAND("""
+                    UPDATE musicBands SET
+                    name = ?,
+                    coordinates_x = ?,
+                    coordinates_y = ?,
+                    creationDate = ?,
+                    numberOfParticipants = ?,
+                    singlesCount = ?,
+                    establishmentDate = ?,
+                    genre = ?,
+                    album_name = ?,
+                    album_tracks = ?,
+                    album_length = ?,
+                    album_sales = ?
+                    WHERE id = ?
+                    """),
     ;
 
     private String statement;

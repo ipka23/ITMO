@@ -47,7 +47,6 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     public void update(MusicBand band) {
         this.name = band.getName();
         this.coordinates = band.getCoordinates();
-        this.creationDate = LocalDate.now();
         this.numberOfParticipants = band.getNumberOfParticipants();
         this.singlesCount = band.getSinglesCount();
         this.establishmentDate = band.getEstablishmentDate();
