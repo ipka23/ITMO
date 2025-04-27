@@ -24,9 +24,9 @@ public class Main {
             throw new RuntimeException(e);
         }
         finally {
-            socket.close();
-            inFromServer.close();
-            outToServer.close();
+//            socket.close();
+//            inFromServer.close();
+//            outToServer.close();
         }
     }
 }

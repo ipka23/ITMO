@@ -1,3 +1,4 @@
+/*
 package network;
 
 import common_entities.MusicBand;
@@ -10,11 +11,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-//TODO сделать обработку авторизации/регистрации
-public class RequestSender {
+public class ReqSen implements Runnable {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
     public static void sendMessage(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner userInput) {
@@ -116,19 +115,19 @@ public class RequestSender {
                         System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
                         continue;
                     }
-                        password = secondInput;
-                        send(new Request("register", new User(username, password)), outToServer);
-                        Response response = (Response) inFromServer.readObject();
-                        if (!response.getExitStatus()) {
-                            String message = response.getMessage();
-                            System.out.print("Ошибка регистрации: " + message);
-                            continue; // todo fix
-                        } else {
-                            System.out.println("Регистрация успешно выполнена!");
-                        }
-                        break;
+                    password = secondInput;
+                    send(new Request("register", new User(username, password)), outToServer);
+                    Response response = (Response) inFromServer.readObject();
+                    if (!response.getExitStatus()) {
+                        String message = response.getMessage();
+                        System.out.print("Ошибка регистрации: " + message);
+                        continue; // todo fix
+                    } else {
+                        System.out.println("Регистрация успешно выполнена!");
                     }
+                    break;
                 }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -158,4 +157,56 @@ public class RequestSender {
         outToServer.flush();
     }
 
+    @Override
+    public void run() {
+        Response response;
+        Request request;
+        String command;
+        String arg;
+        try {
+            // авторизация
+            authentication(outToServer, inFromServer, userInput);
+            // основная программа
+            while (true) {
+                Response prompt = (Response) inFromServer.readObject();
+                if (prompt != null) {
+                    System.out.print(prompt.getMessage());
+                } else {
+                    Response response1 = (Response) inFromServer.readObject();
+                    System.out.print(response1.getMessage());
+                }
+
+                String message = userInput.nextLine().trim();
+
+                command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
+                arg = (message + " ").split(" ", 2)[1].trim();
+
+                request = new Request(message);
+                send(request, outToServer);
+
+
+                if (command.equals("execute_script")) {
+                    FileSender.sendScriptFile(arg, outToServer);
+                }
+
+                if (message.isEmpty()) continue;
+                response = (Response) inFromServer.readObject();
+                if (response == null) {
+                    continue;
+                } else if (response.getExitStatus()) {
+                    System.out.print(response.getMessage());
+                    System.exit(333);
+                }
+                if (command.equals("show") || command.equals("filter_starts_with_name")) {
+                    printCollection(response);
+                } else {
+                    musicBandsCollection = response.getMusicBandsCollection();
+                    System.out.println(response.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
+*/

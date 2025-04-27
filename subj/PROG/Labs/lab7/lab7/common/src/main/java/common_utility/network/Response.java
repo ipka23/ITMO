@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Collection;
+
 @Getter
 @Setter
 
@@ -13,6 +14,7 @@ public class Response implements Serializable {
     private boolean exitStatus;
     private String message;
     private Collection<MusicBand> musicBandsCollection;
+    private static final long serialVersionUID = 8318430527895954400L;
 
     public Response(boolean exitStatus, String message) {
         this.exitStatus = exitStatus;
@@ -24,8 +26,8 @@ public class Response implements Serializable {
         this.message = null;
     }
 
-    public Response(boolean exitClient, String message, Collection<MusicBand> musicBandsCollection) {
-        this.exitStatus = exitClient;
+    public Response(boolean exitStatus, String message, Collection<MusicBand> musicBandsCollection) {
+        this.exitStatus = exitStatus;
         this.message = message;
         this.musicBandsCollection = musicBandsCollection;
     }
@@ -34,9 +36,4 @@ public class Response implements Serializable {
         return exitStatus;
     }
 
-
-//    @Override
-//    public String toString() {
-//        return message;
-//    }
 }

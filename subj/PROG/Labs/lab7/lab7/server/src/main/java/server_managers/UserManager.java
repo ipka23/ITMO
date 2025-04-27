@@ -1,11 +1,12 @@
 package server_managers;
 
+import common_utility.network.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import server_utility.database.User;
+import common_utility.database.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -34,13 +35,22 @@ public class UserManager {
         userHashMap.put(id, user);
     }
 
-    public void registerUser(User user) {
-        addUser(user);
-        dbManager.registerUser(user);
+    public boolean registerUser(User user) {
+        if (dbManager.registerUser(user)) {
+            addUser(user);
+            dbManager.setUser(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void authenticateUser(User user) {
-
+    public boolean logInUser(User user) throws SQLException {
+        if (dbManager.validatePassword(user.getUsername(), user.getPassword())) {
+            dbManager.setUser(user);
+            return true;
+        }
+        return false;
     }
 
 

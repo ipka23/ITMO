@@ -9,7 +9,7 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server_utility.database.StatementValue;
-import server_utility.database.User;
+import common_utility.database.User;
 import server_utility.interfaces.DataBaseWorkable;
 
 import java.nio.charset.StandardCharsets;
@@ -25,14 +25,16 @@ import java.util.concurrent.Executors;
 public class DatabaseManager implements DataBaseWorkable {
     private String url;
     @Getter
-    private String username;
-    private String password;
+    private final String DB_OWNER_USERNAME;
+    private final String PASSWORD;
     private Logger log = LoggerFactory.getLogger("DatabaseManager");
     @Getter
     private Connection connection;
     @Setter
     private CollectionManager collectionManager;
     private UserManager userManager;
+    @Getter @Setter
+    private User user;
     private String chrs = "0123456789abcdefghijklmnopqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private SecureRandom secureRandom = new SecureRandom();
     private String salt = secureRandom
@@ -44,12 +46,12 @@ public class DatabaseManager implements DataBaseWorkable {
     // пул потоков для обработки клиентов
     private ExecutorService clientThreadPool = Executors.newCachedThreadPool();
 
-    public DatabaseManager(String url, String username, String password) {
+    public DatabaseManager(String url, String DB_OWNER_USERNAME, String PASSWORD) {
         this.url = url;
-        this.username = username;
-        this.password = password;
+        this.DB_OWNER_USERNAME = DB_OWNER_USERNAME;
+        this.PASSWORD = PASSWORD;
         try {
-            connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection(url, DB_OWNER_USERNAME, PASSWORD);
         } catch (SQLException e) {
             log.error("Database connection failed!");
         }
@@ -113,7 +115,7 @@ public class DatabaseManager implements DataBaseWorkable {
     @Override
     public void insertIntoDB(MusicBand band) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
-            ps.setString(1, username);
+            ps.setString(1, user.getUsername()); // todo fix скорее всего это не будет работать с многопоточкой, хз
             ps.setString(2, band.getName());
             ps.setInt(3, band.getCoordinates().getX());
             ps.setFloat(4, band.getCoordinates().getY());
@@ -158,7 +160,7 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
     @Override
-    public void registerUser(User user) {
+    public boolean registerUser(User user) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());) {
             ps.setString(1, user.getUsername());
             ps.setBytes(2, encryptPassword(user.getPassword(), salt));
@@ -166,7 +168,9 @@ public class DatabaseManager implements DataBaseWorkable {
             ps.executeUpdate();
         } catch (SQLException e) {
             log.error("Username already exists!");
+            return false;
         }
+        return true;
     }
 
     public byte[] encryptPassword(String password, String salt) {
@@ -196,7 +200,7 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
 
-    public void saveCollectionToDB() {
+    /*public void saveCollectionToDB() {
         try {
             Set<Long> ids = new HashSet<>();
             Statement statement = connection.createStatement();
@@ -228,6 +232,5 @@ public class DatabaseManager implements DataBaseWorkable {
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
-
-    }
+    }*/
 }

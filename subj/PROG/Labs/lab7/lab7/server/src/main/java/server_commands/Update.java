@@ -66,7 +66,7 @@ public class Update extends Command {
             throw new RuntimeException(e);
         }
         long curr_id = band.getId();
-        String ownerFromCollection = collectionManager.getDatabaseManager().getUsername();
+        String ownerFromCollection = collectionManager.getDatabaseManager().getUser().getUsername();
         String ownerFromDb;
         try (PreparedStatement ps = collectionManager.getDatabaseManager().getConnection().prepareStatement(StatementValue.GET_OWNER.toString());) {
             ps.setLong(1, curr_id);

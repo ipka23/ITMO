@@ -6,7 +6,6 @@ import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
 import server_utility.consoles.ServerConsole;
 import server_managers.DatabaseManager;
-import server_utility.database.User;
 import server_managers.UserManager;
 
 import java.io.*;
@@ -16,7 +15,7 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Server {
+public class Server implements Runnable {
 
     public int PORT = 1232;
     private Socket clientSocket;
@@ -29,9 +28,7 @@ public class Server {
     private CommandManager commandManager;
     private Logger log = LoggerFactory.getLogger("ServerConsole");
     private StringBuilder credentials = new StringBuilder();
-    private String username = null;
-    private String password = null;
-    private final static ExecutorService executor = Executors.newFixedThreadPool(10);
+    private final static ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public static void main(String[] args) {
         Server server = new Server();
@@ -50,33 +47,35 @@ public class Server {
         clientConsole.setCollectionManager(collectionManager);
     }
 
+    @Override
     public void run() {
         log.info("Server has started on port: {}", PORT);
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 clientSocket = serverSocket.accept();
-                executor.submit(() -> {
+                /*executor.submit(() -> {
                     try {
                         handleClient(clientSocket);
                     } catch (IOException | ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
-                });
+                });*/
 
+                handleClient(clientSocket);
             }
 
 
         } catch (Exception e) {
             log.error("Server error", e);
         }
-        executor.shutdown();
+//        executor.shutdown();
     }
 
     private void handleClient(Socket clientSocket) throws IOException, ClassNotFoundException {
         while (!Thread.currentThread().isInterrupted()) {
             log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
             outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
-//            outToClient.flush();
+            outToClient.flush();
             clientConsole.setObjectOutputStream(outToClient);
             inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
             clientConsole.setObjectInputStream(inFromClient);
@@ -86,6 +85,7 @@ public class Server {
 
             Runnable serverConsole = new ServerConsole(collectionManager);
             new Thread(serverConsole).start();
+            /*executor.submit(() -> clientConsole.launch());*/
             clientConsole.launch();
         }
     }
