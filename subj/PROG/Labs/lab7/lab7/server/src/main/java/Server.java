@@ -53,7 +53,7 @@ public class Server implements Runnable {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 clientSocket = serverSocket.accept();
-                /*executor.submit(() -> {
+                /*executor.submit(() -> { //todo
                     try {
                         handleClient(clientSocket);
                     } catch (IOException | ClassNotFoundException e) {
@@ -68,7 +68,7 @@ public class Server implements Runnable {
         } catch (Exception e) {
             log.error("Server error", e);
         }
-//        executor.shutdown();
+        /*executor.shutdown();*/
     }
 
     private void handleClient(Socket clientSocket) throws IOException, ClassNotFoundException {
@@ -85,7 +85,7 @@ public class Server implements Runnable {
 
             Runnable serverConsole = new ServerConsole(collectionManager);
             new Thread(serverConsole).start();
-            /*executor.submit(() -> clientConsole.launch());*/
+            /*executor.submit(() -> clientConsole.launch());*/ //todo
             clientConsole.launch();
         }
     }
@@ -113,8 +113,6 @@ public class Server implements Runnable {
                 collectionManager.setDatabaseManager(dbManager);
                 UserManager userManager = new UserManager(dbManager);
                 clientConsole.setUserManager(userManager);
-//                collectionManager.setUserManager(userManager);
-//                userManager.addUser(new User(username, password));
                 dbManager.connectToDB();
             }
         } catch (FileNotFoundException e) {

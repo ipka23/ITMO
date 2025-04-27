@@ -77,7 +77,7 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
 
     public void send(Object o) {
-        /*executor.submit(() -> {*/
+        /*executor.submit(() -> {*/ //todo
             try {
                 outToClient.writeObject(o);
                 outToClient.flush();
@@ -88,7 +88,7 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
     public void sendPrompt() {
-        /*executor.submit(() -> {*/
+        /*executor.submit(() -> {*/ //todo
             try {
                 outToClient.writeObject(new Response(false, PROMPT));
                 outToClient.flush();
