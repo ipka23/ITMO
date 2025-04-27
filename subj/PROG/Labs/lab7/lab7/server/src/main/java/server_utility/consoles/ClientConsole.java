@@ -1,20 +1,21 @@
 package server_utility.consoles;
 
+import common_utility.database.User;
 import common_utility.exceptions.ExitException;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import lombok.Getter;
 import lombok.Setter;
 import server_managers.CollectionManager;
-import server_managers.CommandManager;
 import server_managers.UserManager;
 import server_utility.Invoker;
-import server_utility.database.User;
 import server_utility.interfaces.ObjectStreamsWorkable;
 
 import java.io.*;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 //Invoker, CollectionManager
 public class ClientConsole extends StandartConsole implements ObjectStreamsWorkable {
@@ -26,14 +27,18 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     protected CollectionManager collectionManager;
     private static ObjectInputStream inFromClient;
     private static ObjectOutputStream outToClient;
-    @Setter @Getter
+    @Setter
+    @Getter
     private boolean scriptMode = false;
     @Getter
     private StringBuilder tmp;
-    @Setter @Getter
+    @Setter
+    @Getter
     private File scriptFile;
-    @Getter @Setter
+    @Getter
+    @Setter
     private UserManager userManager;
+    private ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public ClientConsole(Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         this.invoker = invoker;
@@ -72,14 +77,30 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
 
     public void send(Object o) {
-        try {
-            outToClient.writeObject(o);
-            outToClient.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        /*executor.submit(() -> {*/
+            try {
+                outToClient.writeObject(o);
+                outToClient.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        /*});*/
     }
 
+    public void sendPrompt() {
+        /*executor.submit(() -> {*/
+            try {
+                outToClient.writeObject(new Response(false, PROMPT));
+                outToClient.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        /*});*/
+    }
+
+    public Request read() throws IOException, ClassNotFoundException {
+        return (Request) inFromClient.readObject();
+    }
 
     public Request getRequest() throws IOException, ClassNotFoundException {
         if (!scriptMode) {
@@ -93,59 +114,21 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         }
     }
 
-    public void sendPrompt() {
-        try {
-            outToClient.writeObject(new Response(false, PROMPT));
-            outToClient.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
+
 
 
     @Override
-    public void launch() {;
-        String username;
-        String password;
+    public void launch() {
         try {
-            while (true) {
-                send(new Response(false, "===========================\n||   Добро пожаловать!   ||\n===========================\nДля авторизации введите - 1\nДля регистрации введите - 2\n~ "));
-                Request request = (Request) inFromClient.readObject();
-                if (request.getMessage().isEmpty()) continue;
-                if (request.getMessage().trim().equals("1")){
-                    send(new Response(false, "Введите имя пользователя: "));
-                    username = ((Request) inFromClient.readObject()).getMessage().trim();
-                    send(new Response(false, "Введите пароль: "));
-                    password = ((Request) inFromClient.readObject()).getMessage().trim();
-                    while (!collectionManager.getDatabaseManager().validatePassword(username, password)){
-                        send(new Response(false, "Неверный пароль!\nВведите еще раз: "));
-                        password = ((Request) inFromClient.readObject()).getMessage().trim();
-                    }
-                    userManager.authenticateUser(new User(username, password));
-                    break;
-                }
-                else if (request.getMessage().trim().equals("2")){
-                    send(new Response(false, "Введите имя пользователя: "));
-                    username = ((Request) inFromClient.readObject()).getMessage().trim();
-                    send(new Response(false, "Придумайте пароль: "));
-                    String firstInput = ((Request) inFromClient.readObject()).getMessage().trim();
-                    send(new Response(false, "Повторите пароль: "));
-                    String secondInput = ((Request) inFromClient.readObject()).getMessage().trim();
-                    while (!firstInput.equals(secondInput)){
-                        send(new Response(false, "Пароли не совпадают!\nПридумайте пароль снова: "));
-                        firstInput = ((Request) inFromClient.readObject()).getMessage().trim();
-                        send(new Response(false, "Повторите пароль: "));
-                        secondInput = ((Request) inFromClient.readObject()).getMessage().trim();
-                    }
-                    password = secondInput;
-                    userManager.registerUser(new User(username, password));
-                }
-            }
+            authentication();
             while (true) {
                 sendPrompt();
-                Request request = (Request) inFromClient.readObject();
+                Request request = read();
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
-                String arg =(request.getMessage() + " ").split(" ", 2)[1];;
+                String arg = (request.getMessage() + " ").split(" ", 2)[1];
+
                 if (command.isEmpty()) continue;
                 Response response = invoker.execute(new String[]{command, arg});
 
@@ -153,15 +136,25 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
             }
         } catch (ExitException e) {
             print(e);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (IOException | ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    //TODO
-    // Организовать возможность регистрации и авторизации пользователей.
-    // У пользователя есть возможность указать пароль.
-    // То есть при запуске консоли сначала выводится
-    // Для регистрации/входа введите команду - "reg"/"auth"
+
+    private void authentication() throws IOException, ClassNotFoundException, SQLException {
+
+        Request request = read();
+        User user = request.getUser();
+        String message = request.getMessage();
+        if (message.equals("login")) {
+            if (userManager.logInUser(user)) {
+                send(new Response(true)); // было outToClient.writeObject
+            } else send(new Response(false));
+        } else if (message.equals("register")) {
+            if (userManager.registerUser(user)) {
+                send(new Response(true));
+            } else send(new Response(false, "Непредвиденная ошибка!"));
+        }
+    }
+
 }

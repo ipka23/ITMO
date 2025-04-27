@@ -1,11 +1,13 @@
-package server_utility.database;
+package common_utility.database;
 
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class User {
+public class User implements Serializable {
     private long id;
     private String username;
     private String password;
