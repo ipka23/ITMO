@@ -10,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 //TODO сделать обработку авторизации/регистрации
@@ -27,11 +26,11 @@ public class RequestSender {
             authentication(outToServer, inFromServer, userInput);
             // основная программа
             while (true) {
-                Response prompt = (Response) inFromServer.readObject();
+                Response prompt = getResponse(inFromServer);
                 if (prompt != null) {
                     System.out.print(prompt.getMessage());
                 } else {
-                    Response response1 = (Response) inFromServer.readObject();
+                    Response response1 = getResponse(inFromServer);
                     System.out.print(response1.getMessage());
                 }
 
@@ -41,7 +40,7 @@ public class RequestSender {
                 arg = (message + " ").split(" ", 2)[1].trim();
 
                 request = new Request(message);
-                send(request, outToServer);
+                sendRequest(request, outToServer);
 
 
                 if (command.equals("execute_script")) {
@@ -49,7 +48,7 @@ public class RequestSender {
                 }
 
                 if (message.isEmpty()) continue;
-                response = (Response) inFromServer.readObject();
+                response = getResponse(inFromServer);
                 if (response == null) {
                     continue;
                 } else if (response.getExitStatus()) {
@@ -96,8 +95,8 @@ public class RequestSender {
                     String input = scanner.nextLine().trim();
                     if (input.isEmpty()) continue;
                     password = input;
-                    send(new Request("login", new User(username, password)), outToServer);
-                    Response response = (Response) inFromServer.readObject();
+                    sendRequest(new Request("login", new User(username, password)), outToServer);
+                    Response response = getResponse(inFromServer);
                     if (!response.getExitStatus()) {
                         System.out.print("Неверный пароль!\n"); // todo fix повторный ввод правильного пароля неверный, сделать обработку ситуаций когда пользователя нет в системе и выдавать соответствующую ошибку
 
@@ -106,8 +105,7 @@ public class RequestSender {
                         System.out.println("Вход успешно выполнен!");
                     }
                     break;
-                }
-                else {
+                } else {
                     System.out.print("Придумайте пароль\n~ ");
                     String firstInput = scanner.nextLine().trim();
                     System.out.print("Повторите пароль\n~ ");
@@ -116,19 +114,19 @@ public class RequestSender {
                         System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
                         continue;
                     }
-                        password = secondInput;
-                        send(new Request("register", new User(username, password)), outToServer);
-                        Response response = (Response) inFromServer.readObject();
-                        if (!response.getExitStatus()) {
-                            String message = response.getMessage();
-                            System.out.print("Ошибка регистрации: " + message);
-                            continue; // todo fix
-                        } else {
-                            System.out.println("Регистрация успешно выполнена!");
-                        }
-                        break;
+                    password = secondInput;
+                    sendRequest(new Request("register", new User(username, password)), outToServer);
+                    Response response = getResponse(inFromServer);
+                    if (!response.getExitStatus()) {
+                        String message = response.getMessage();
+                        System.out.print("Ошибка регистрации: " + message);
+                        continue; // todo fix
+                    } else {
+                        System.out.println("Регистрация успешно выполнена!");
                     }
+                    break;
                 }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -153,9 +151,14 @@ public class RequestSender {
             System.out.println(response.getMessage());
         }
     }
-    private static void send(Object o, ObjectOutputStream outToServer) throws IOException {
+
+    private static void sendRequest(Object o, ObjectOutputStream outToServer) throws IOException {
         outToServer.writeObject(o);
         outToServer.flush();
+    }
+
+    private static Response getResponse(ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
+        return (Response) inFromServer.readObject();
     }
 
 }
