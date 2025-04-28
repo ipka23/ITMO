@@ -84,7 +84,7 @@ public class RequestSender {
                 break;
             }
             while (true) {
-                System.out.print("Введите имя пользователя: ");
+                System.out.print("Введите имя пользователя\n~ ");
                 String input = scanner.nextLine().trim();
                 if (input.isEmpty()) continue;
                 username = input;
@@ -92,7 +92,7 @@ public class RequestSender {
             }
             while (true) {
                 if (loggedIn) {
-                    System.out.print("Введите пароль: ");
+                    System.out.print("Введите пароль\n~ ");
                     String input = scanner.nextLine().trim();
                     if (input.isEmpty()) continue;
                     password = input;
@@ -108,9 +108,9 @@ public class RequestSender {
                     break;
                 }
                 else {
-                    System.out.print("Придумайте пароль: ");
+                    System.out.print("Придумайте пароль\n~ ");
                     String firstInput = scanner.nextLine().trim();
-                    System.out.print("Повторите пароль: ");
+                    System.out.print("Повторите пароль\n~ ");
                     String secondInput = scanner.nextLine().trim();
                     if (!firstInput.equals(secondInput)) {
                         System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");

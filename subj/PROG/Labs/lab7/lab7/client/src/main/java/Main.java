@@ -10,9 +10,7 @@ public class Main {
     public static int port = 1232;
     private static String hostName = "localhost";
     private static Socket socket;
-    private static Scanner userInput;
-    private static ObjectInputStream inFromServer;
-    private static ObjectOutputStream outToServer;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -24,9 +22,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         finally {
-//            socket.close();
-//            inFromServer.close();
-//            outToServer.close();
+            socket.close();
         }
     }
 }
