@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DatabaseManager implements DataBaseWorkable {
-    private String url;
+    private String URL;
     @Getter
     private final String DB_OWNER_USERNAME;
     private final String PASSWORD;
@@ -43,15 +43,14 @@ public class DatabaseManager implements DataBaseWorkable {
             .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
             .toString();
     private String pepper = "mCf-zNiWJPyv";
-    // пул потоков для обработки клиентов
-    private ExecutorService clientThreadPool = Executors.newCachedThreadPool();
 
-    public DatabaseManager(String url, String DB_OWNER_USERNAME, String PASSWORD) {
-        this.url = url;
+
+    public DatabaseManager(String URL, String DB_OWNER_USERNAME, String PASSWORD) {
+        this.URL = URL;
         this.DB_OWNER_USERNAME = DB_OWNER_USERNAME;
         this.PASSWORD = PASSWORD;
         try {
-            connection = DriverManager.getConnection(url, DB_OWNER_USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URL, DB_OWNER_USERNAME, PASSWORD);
         } catch (SQLException e) {
             log.error("Database connection failed!");
         }
@@ -79,20 +78,24 @@ public class DatabaseManager implements DataBaseWorkable {
         }
     }
 
+
     @Override
-    public HashSet<MusicBand> loadCollectionFromDB() {
+    public void loadCollectionFromDB() {
         HashSet<MusicBand> collection = new HashSet<>();
+        HashMap<Long, MusicBand> musicBandHashMap = new HashMap<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(StatementValue.SELECT_MUSIC_BAND.toString());
             while (rs.next()) {
                 MusicBand musicBand = getMusicBandFromResultSet(rs);
                 collection.add(musicBand);
+                musicBandHashMap.put(musicBand.getId(), musicBand);
             }
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
-        return collection;
+        collectionManager.setCollection(collection);
+        collectionManager.setMusicBandsMap(musicBandHashMap);
     }
 
     public MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
@@ -115,7 +118,7 @@ public class DatabaseManager implements DataBaseWorkable {
     @Override
     public void insertIntoDB(MusicBand band) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
-            ps.setString(1, user.getUsername()); // todo fix скорее всего это не будет работать с многопоточкой, хз
+            ps.setString(1, user.getUsername());
             ps.setString(2, band.getName());
             ps.setInt(3, band.getCoordinates().getX());
             ps.setFloat(4, band.getCoordinates().getY());
@@ -161,7 +164,7 @@ public class DatabaseManager implements DataBaseWorkable {
 
     @Override
     public boolean registerUser(User user) {
-        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());) {
+        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString())) {
             ps.setString(1, user.getUsername());
             ps.setBytes(2, encryptPassword(user.getPassword(), salt));
             ps.setString(3, salt);
@@ -199,38 +202,4 @@ public class DatabaseManager implements DataBaseWorkable {
         return false;
     }
 
-
-    /*public void saveCollectionToDB() {
-        try {
-            Set<Long> ids = new HashSet<>();
-            Statement statement = connection.createStatement();
-            statement.execute(StatementValue.SELECT_ID.toString());
-            ResultSet rs = statement.getResultSet();
-            while (rs.next()) {
-                ids.add(rs.getLong("id"));
-            }
-
-            try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
-                for (MusicBand band : collectionManager.getCollection()) {
-                    if (ids.contains(band.getId())) continue;
-                    ps.setString(1, band.getName());
-                    ps.setInt(2, band.getCoordinates().getX());
-                    ps.setFloat(3, band.getCoordinates().getY());
-                    ps.setDate(4, java.sql.Date.valueOf(band.getCreationDate()));
-                    ps.setLong(5, band.getNumberOfParticipants());
-                    ps.setLong(6, band.getSinglesCount());
-                    ps.setDate(7, java.sql.Date.valueOf(band.getEstablishmentDate()));
-                    ps.setString(8, band.getGenre().toString());
-                    ps.setString(9, band.getBestAlbum().getName());
-                    ps.setLong(10, band.getBestAlbum().getTracks());
-                    ps.setLong(11, band.getBestAlbum().getLength());
-                    ps.setDouble(12, band.getBestAlbum().getSales());
-                    ps.addBatch();
-                }
-                ps.executeBatch();
-            }
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-        }
-    }*/
 }

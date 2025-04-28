@@ -9,7 +9,6 @@ import lombok.Setter;
 import server_managers.CollectionManager;
 import server_managers.UserManager;
 import server_utility.Invoker;
-import server_utility.interfaces.ObjectStreamsWorkable;
 
 import java.io.*;
 import java.sql.SQLException;
@@ -18,34 +17,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //Invoker, CollectionManager
-public class ClientConsole extends StandartConsole implements ObjectStreamsWorkable {
-    protected Scanner scanner;// = new Scanner(System.in);
+public class ClientConsole extends StandartConsole  {
     private final String PROMPT = ">";
-    private final String SCRIPT_PROMPT = "# ";
     protected Invoker invoker;
     @Getter
     protected CollectionManager collectionManager;
-    /*private static ObjectInputStream inFromClient;
-    private static ObjectOutputStream outToClient;*/
-    @Setter
-    @Getter
+    @Setter @Getter
     private boolean scriptMode = false;
-    @Getter
-    private StringBuilder tmp;
-    @Setter
-    @Getter
+    @Setter @Getter
     private File scriptFile;
-    @Getter
-    @Setter
+    @Setter @Getter
     private UserManager userManager;
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
-    private final ExecutorService cachedThreadPull = Executors.newCachedThreadPool();
 
-    public ClientConsole(Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
+    public ClientConsole(Invoker invoker, CollectionManager collectionManager) {
         this.invoker = invoker;
         this.collectionManager = collectionManager;
-//        ClientConsole.inFromClient = inFromClient;
-//        ClientConsole.outToClient = outToClient;
 
         setScanner(new Scanner(System.in));
     }
@@ -55,19 +42,11 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
 
-    @Override
-    public void setObjectInputStream(ObjectInputStream in) {
-//        ClientConsole.inFromClient = in;
-    }
 
-    @Override
-    public void setObjectOutputStream(ObjectOutputStream out) {
-//        ClientConsole.outToClient = out;
-    }
 
 
     public void sendResponse(Object o, ObjectOutputStream outToClient) {
-        executor.submit(() -> { //todo
+        executor.submit(() -> {
             synchronized (outToClient) {
                 try {
                     outToClient.writeObject(o);
@@ -96,7 +75,7 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
     public void sendPrompt(ObjectOutputStream outToClient) {
-        executor.submit(() -> { //todo
+        executor.submit(() -> {
             synchronized (outToClient) {
                 try {
                     outToClient.writeObject(new Response(false, PROMPT));
@@ -109,13 +88,8 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
 
-
-
-
     public void run(ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
-
         try {
-//            outToClient.flush();
             authentication(outToClient, inFromClient);
             while (true) {
                 sendPrompt(outToClient);

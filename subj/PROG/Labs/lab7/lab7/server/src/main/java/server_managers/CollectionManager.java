@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 @NoArgsConstructor
 public class CollectionManager {
     private Collection<MusicBand> collection = new HashSet<>();
-    private ConcurrentMap<Long, MusicBand> musicBandsMap = new ConcurrentHashMap<>();
+    private Map<Long, MusicBand> musicBandsMap = new HashMap<>();
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
     private DatabaseManager databaseManager;
@@ -49,19 +49,18 @@ public class CollectionManager {
     public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
         this.databaseManager = databaseManager;
         this.console = console;
-        collection = databaseManager.loadCollectionFromDB();
+        databaseManager.loadCollectionFromDB();
     }
 
 
     public void setDatabaseManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
-        collection = databaseManager.loadCollectionFromDB();
+        databaseManager.loadCollectionFromDB();
     }
 
-
+    //todo
     public void saveCollection() {
 //        databaseManager.saveCollectionToDB();
-
         lastSaveTime = LocalDateTime.now();
     }
 
