@@ -17,16 +17,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //Invoker, CollectionManager
-public class ClientConsole extends StandartConsole  {
+public class ClientConsole extends StandartConsole {
     private final String PROMPT = ">";
     protected Invoker invoker;
     @Getter
     protected CollectionManager collectionManager;
-    @Setter @Getter
+    @Setter
+    @Getter
     private boolean scriptMode = false;
-    @Setter @Getter
+    @Setter
+    @Getter
     private File scriptFile;
-    @Setter @Getter
+    @Setter
+    @Getter
     private UserManager userManager;
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
 
@@ -40,9 +43,6 @@ public class ClientConsole extends StandartConsole  {
     public ClientConsole(Invoker invoker) {
         this.invoker = invoker;
     }
-
-
-
 
 
     public void sendResponse(Object o, ObjectOutputStream outToClient) {
@@ -116,18 +116,13 @@ public class ClientConsole extends StandartConsole  {
         if (message.equals("login")) {
             if (userManager.logInUser(user)) {
                 sendResponse(new Response(true), outToClient);
-//                synchronized (outToClient) {outToClient.writeObject(new Response(true));}
             } else
                 sendResponse(new Response(false), outToClient);
-//                synchronized (outToClient) {outToClient.writeObject(new Response(false));}
         } else if (message.equals("register")) {
             if (userManager.registerUser(user)) {
                 sendResponse(new Response(true), outToClient);
-//                synchronized (outToClient) {outToClient.writeObject(new Response(true));}
             } else
                 sendResponse(new Response(false, "Непредвиденная ошибка!"), outToClient);
-//            synchronized (outToClient) {outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));}
-
         }
     }
 

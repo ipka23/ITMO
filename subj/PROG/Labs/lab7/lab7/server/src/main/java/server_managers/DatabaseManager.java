@@ -19,8 +19,6 @@ import java.security.SecureRandom;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class DatabaseManager implements DataBaseWorkable {
     private String URL;
@@ -100,6 +98,7 @@ public class DatabaseManager implements DataBaseWorkable {
 
     public MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
         long id = rs.getLong(1);
+        String owner = rs.getString(2);
         String name = rs.getString(3);
         Integer x = rs.getInt(4);
         float y = rs.getInt(5);
@@ -112,25 +111,26 @@ public class DatabaseManager implements DataBaseWorkable {
         Long tracks = rs.getLong(12);
         long length = rs.getLong(13);
         Double sales = rs.getDouble(14);
-        return new MusicBand(id, name, new Coordinates(x, y), creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, new Album(album_name, tracks, length, sales));
+        return new MusicBand(id, owner, name, new Coordinates(x, y), creationDate, numberOfParticipants, singlesCount, establishmentDate, genre, new Album(album_name, tracks, length, sales));
     }
 
     @Override
     public void insertIntoDB(MusicBand band) {
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
             ps.setString(1, user.getUsername());
-            ps.setString(2, band.getName());
-            ps.setInt(3, band.getCoordinates().getX());
-            ps.setFloat(4, band.getCoordinates().getY());
-            ps.setDate(5, java.sql.Date.valueOf(band.getCreationDate()));
-            ps.setLong(6, band.getNumberOfParticipants());
-            ps.setLong(7, band.getSinglesCount());
-            ps.setDate(8, java.sql.Date.valueOf(band.getEstablishmentDate()));
-            ps.setString(9, band.getGenre().toString());
-            ps.setString(10, band.getBestAlbum().getName());
-            ps.setLong(11, band.getBestAlbum().getTracks());
-            ps.setLong(12, band.getBestAlbum().getLength());
-            ps.setDouble(13, band.getBestAlbum().getSales());
+            ps.setString(2, band.getOwner());
+            ps.setString(3, band.getName());
+            ps.setInt(4, band.getCoordinates().getX());
+            ps.setFloat(5, band.getCoordinates().getY());
+            ps.setDate(6, java.sql.Date.valueOf(band.getCreationDate()));
+            ps.setLong(7, band.getNumberOfParticipants());
+            ps.setLong(8, band.getSinglesCount());
+            ps.setDate(9, java.sql.Date.valueOf(band.getEstablishmentDate()));
+            ps.setString(10, band.getGenre().toString());
+            ps.setString(11, band.getBestAlbum().getName());
+            ps.setLong(12, band.getBestAlbum().getTracks());
+            ps.setLong(13, band.getBestAlbum().getLength());
+            ps.setDouble(14, band.getBestAlbum().getSales());
             ps.executeUpdate();
         } catch (SQLException e) {
             log.error(e.getMessage());

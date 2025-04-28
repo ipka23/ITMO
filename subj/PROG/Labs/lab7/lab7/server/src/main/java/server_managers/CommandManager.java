@@ -40,7 +40,7 @@ public class CommandManager {
         commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("clear", new Clear(console, collectionManager));
-        commandsMap.put("exit", new Exit(collectionManager, log));
+        commandsMap.put("exit", new Exit(collectionManager));
         commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandsMap.put("help", new Help(console, this));
         commandsMap.put("info", new Info(console, collectionManager));
