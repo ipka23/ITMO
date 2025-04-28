@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -19,6 +20,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Album implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 5626076749192873217L;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Long tracks; //Поле не может быть null, Значение поля должно быть больше 0
     private long length; //Значение поля должно быть больше 0

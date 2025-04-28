@@ -66,46 +66,50 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
 
-
-    public void send(Object o) {
+    public void sendResponse(Object o) {
         executor.submit(() -> { //todo
-            try {
-                outToClient.writeObject(o);
-                outToClient.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            synchronized (outToClient) {
+                try {
+                    outToClient.writeObject(o);
+                    outToClient.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
-    public Request read() throws IOException, ClassNotFoundException {
-        return (Request) inFromClient.readObject();
+    public Request getRequest() throws IOException, ClassNotFoundException {
+        if (!scriptMode) {
+            synchronized (inFromClient) {
+                return (Request) inFromClient.readObject();
+            }
+        } else {
+            synchronized (inFromClient) {
+                String currentLine;
+                try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
+                    currentLine = fileScanner.nextLine();
+                }
+                return new Request(currentLine);
+            }
+        }
     }
 
     public void sendPrompt() {
         executor.submit(() -> { //todo
-            try {
-                outToClient.writeObject(new Response(false, PROMPT));
-                outToClient.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            synchronized (outToClient) {
+                try {
+                    outToClient.writeObject(new Response(false, PROMPT));
+                    outToClient.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
 
 
-    public Request getRequest() throws IOException, ClassNotFoundException {
-        if (!scriptMode) {
-            return (Request) inFromClient.readObject();
-        } else {
-            String currentLine;
-            try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
-                currentLine = fileScanner.nextLine();
-            }
-            return new Request(currentLine);
-        }
-    }
 
 
     @Override
@@ -113,21 +117,20 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         try {
             /*cachedThreadPull.submit(() -> {
                 try {*/
-            authentication();
-                /*} catch (IOException | ClassNotFoundException | SQLException e) {
+                    authentication();
+               /* } catch (IOException | ClassNotFoundException | SQLException e) {
                     throw new RuntimeException(e);
                 }
             });*/
             while (true) {
                 sendPrompt();
-                Request request = read();
+                Request request;
+                request = getRequest();
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
                 String arg = (request.getMessage() + " ").split(" ", 2)[1];
-
                 if (command.isEmpty()) continue;
                 Response response = invoker.execute(new String[]{command, arg});
-
-                send(response);
+                sendResponse(response);
             }
         } catch (ExitException e) {
             print(e);
@@ -138,17 +141,23 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
     private void authentication() throws IOException, ClassNotFoundException, SQLException {
 
-        Request request = read();
+        Request request = getRequest();
         User user = request.getUser();
         String message = request.getMessage();
         if (message.equals("login")) {
             if (userManager.logInUser(user)) {
-                /*send(new Response(true));*/ outToClient.writeObject(new Response(true));
-            } else /*send(new Response(false));*/ outToClient.writeObject(new Response(false));
+                sendResponse(new Response(true));
+//                outToClient.writeObject(new Response(true));
+            } else
+                sendResponse(new Response(false));
+//            outToClient.writeObject(new Response(false));
         } else if (message.equals("register")) {
             if (userManager.registerUser(user)) {
-                /*send(new Response(true));*/ outToClient.writeObject(new Response(true));
-            } else /*send(new Response(false, "Непредвиденная ошибка!"));*/ outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));
+                sendResponse(new Response(true));
+//                outToClient.writeObject(new Response(true));
+            } else
+                sendResponse(new Response(false, "Непредвиденная ошибка!"));
+//                outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));
         }
     }
 

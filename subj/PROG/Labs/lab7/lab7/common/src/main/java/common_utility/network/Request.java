@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.File;
+import java.io.Serial;
 import java.io.Serializable;
 
 @Getter
@@ -14,6 +15,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Request implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -3953205064390766513L;
     private String message;
     private String fileName;
     private File scriptFile;
