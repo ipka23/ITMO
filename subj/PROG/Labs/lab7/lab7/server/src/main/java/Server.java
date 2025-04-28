@@ -4,7 +4,6 @@ import server_managers.CollectionManager;
 import server_managers.CommandManager;
 import server_utility.Invoker;
 import server_utility.consoles.ClientConsole;
-import server_utility.consoles.ServerConsole;
 import server_managers.DatabaseManager;
 import server_managers.UserManager;
 
@@ -27,8 +26,6 @@ public class Server {
     private CollectionManager collectionManager;
     private CommandManager commandManager;
     private Logger log = LoggerFactory.getLogger("Server");
-    private StringBuilder credentials = new StringBuilder();
-    private final static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
     private static final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
     public static void main(String[] args) {
@@ -55,13 +52,12 @@ public class Server {
             while (true) {
                 clientSocket = serverSocket.accept();
                 cachedThreadPool.submit(() -> handleClient(clientSocket));
-//                handleClient(clientSocket);
             }
 
         } catch (Exception e) {
             log.error(e.getMessage());
         }
-//        cachedThreadPool.shutdown();
+        cachedThreadPool.shutdown();
     }
 
     private void handleClient(Socket clientSocket) {
@@ -71,21 +67,11 @@ public class Server {
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
                 synchronized (outToClient) {
                     outToClient.flush();  // чтобы не возникала блокировка потока со стороны клиента
-//                    outToClient.writeObject(null);
-//                    outToClient.flush();
                 }
-//                clientConsole.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
-//                clientConsole.setObjectInputStream(inFromClient);
                 log.info("Successfully declared in & out streams");
                 commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
                 connect();
-//                cachedThreadPool.submit(this::connect);
-
-//            Runnable serverConsole = new ServerConsole(collectionManager);
-//            cachedThreadPool.submit(serverConsole);
-//            new Thread(serverConsole).start();
-//            cachedThreadPool.submit(() -> clientConsole.launch()); //todo
                 clientConsole.run(inFromClient, outToClient);
             }
         } catch (IOException e) {
@@ -114,6 +100,7 @@ public class Server {
 
                 collectionManager.setDatabaseManager(dbManager);
                 UserManager userManager = new UserManager(dbManager);
+                collectionManager.setUserManager(userManager);
                 clientConsole.setUserManager(userManager);
                 dbManager.connectToDB();
             }

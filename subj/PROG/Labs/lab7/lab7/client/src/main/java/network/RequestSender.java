@@ -53,7 +53,7 @@ public class RequestSender {
                     continue;
                 } else if (response.getExitStatus()) {
                     System.out.print(response.getMessage());
-                    System.exit(333);
+                    System.exit(1);
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name")) {
                     printCollection(response);
@@ -74,7 +74,7 @@ public class RequestSender {
         boolean loggedIn;
         try {
             while (true) {
-                System.out.print("===========================\n::   Добро пожаловать!   ::\n===========================\nДля входа/регистрации введите - (1/2)\n~ ");
+                System.out.print("=====================\n: Добро пожаловать! :\n=====================\nДля входа/регистрации введите - (1/2)\n~ ");
                 String input = scanner.nextLine().trim();
                 if (input.isEmpty()) continue;
                 if (input.equals("1")) loggedIn = true;
@@ -136,12 +136,14 @@ public class RequestSender {
     public static void printCollection(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
-            System.out.printf("|%-30s | %-30s | %-20s|%n", "Название группы", "Лучший альбом", "Количество продаж");
-            System.out.println("_".repeat(88));
+            System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы","Название группы", "Лучший альбом", "Количество продаж");
+            System.out.println("-" + "-".repeat(15) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(20) + "-");
             musicBandsCollection
                     .stream()
                     .forEach(band -> System.out.printf(
-                            "|%-30s | %-30s | %-20.0f|%n",
+                            "|%-15s|%-30s|%-30s|%-30s|%-20s|%n",
+                            band.getId(),
+                            band.getOwner(),
                             band.getName(),
                             band.getBestAlbum().getName(),
                             band.getBestAlbum().getSales())

@@ -1,24 +1,21 @@
 package server_managers;
 
 import common_entities.MusicBand;
-import common_utility.exceptions.ExitClientException;
 import common_utility.network.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import server_utility.CollectionType;
 import server_utility.consoles.StandartConsole;
 import server_utility.database.StatementValue;
 
 import java.sql.*;
-import java.sql.Date;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +59,10 @@ public class CollectionManager {
     public void saveCollection() {
 //        databaseManager.saveCollectionToDB();
         lastSaveTime = LocalDateTime.now();
+    }
+
+    public Long getCurrentId() {
+        return freeId;
     }
 
     public Response addMusicBand(MusicBand musicBand) {
@@ -136,9 +137,6 @@ public class CollectionManager {
         this.collection = collection;
         musicBandsMap.clear();
         collection.stream().forEach(band -> musicBandsMap.put(band.getId(), band));
-//        for (MusicBand band : collection) {
-//            musicBandsMap.put(band.getId(), band);
-//        }
     }
 
 
@@ -168,7 +166,7 @@ public class CollectionManager {
     public String info() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         StringBuilder info = new StringBuilder();
-        info.append("============================\n:: Информация о коллекции ::\n============================\n");
+        info.append("==========================\n: Информация о коллекции :\n==========================\n");
         info.append("Тип коллекции: ").append(collection.getClass()).append("\n");
         info.append("Дата инициализации: ").append(initTime != null ? initTime.format(formatter) : "null").append("\n");
         info.append("Дата последнего сохранения: ").append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");

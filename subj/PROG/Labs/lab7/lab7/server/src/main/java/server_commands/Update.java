@@ -33,7 +33,7 @@ public class Update extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public Update(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient)  {
+    public Update(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         super("update id", "обновить значение элемента коллекции, id которого равен заданному");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -41,8 +41,8 @@ public class Update extends Command {
         this.inFromClient = inFromClient;
         this.outToClient = outToClient;
     }
-    //TODO
-    // fix update
+
+
     @Override
     public Response execute(String[] command) {
         if (command[1].trim().isEmpty())
@@ -57,31 +57,24 @@ public class Update extends Command {
         if (band == null || !collectionManager.getCollection().contains(band)) {
             return new Response(false, "В коллекции нет музыкальной группы с таким id!");
         }
-        MusicBand newBand;
-        try {
-            console.sendResponse(new Response(false, "--------------------------------Введите новые данные музыкальной группы--------------------------------"), outToClient);
-            newBand = add.inputMusicBand();
-            newBand.setCreationDate(band.getCreationDate());
-        } catch (InputBreakException e) {
-            return new Response(false, "Отмена ввода...");
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        long curr_id = band.getId();
-        String ownerFromCollection = collectionManager.getDatabaseManager().getUser().getUsername();
-        String ownerFromDb;
-        try (PreparedStatement ps = collectionManager.getDatabaseManager().getConnection().prepareStatement(StatementValue.GET_OWNER.toString());) {
-            ps.setLong(1, curr_id);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            ownerFromDb = rs.getString(1);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        if (ownerFromCollection.equals(ownerFromDb)) {
+        String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
+        String owner = band.getOwner();
+        if (!current_user.equals(owner)) {
+            return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
+        } else {
+            MusicBand newBand;
+            try {
+                console.sendResponse(new Response(false, "===========================================\n: Введите новые данные музыкальной группы :\n==========================================="), outToClient);
+                newBand = add.inputMusicBand();
+                newBand.setCreationDate(band.getCreationDate());
+            } catch (InputBreakException e) {
+                return new Response(false, "Отмена ввода...");
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             band.update(newBand);
             collectionManager.getDatabaseManager().updateDB(newBand, id);
             return new Response(false, "Элемент с id = " + id + " был обновлён!");
-        } else return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
+        }
     }
 }

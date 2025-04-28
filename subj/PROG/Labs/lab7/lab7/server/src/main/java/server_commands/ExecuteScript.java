@@ -129,7 +129,8 @@ public class ExecuteScript extends Command {
 
             Album album = new Album(albumName, tracks, length, sales);
             Coordinates coordinates = new Coordinates(x, y);
-            MusicBand musicBand = new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, album);
+            String owner = collectionManager.getDatabaseManager().getUser().getUsername();
+            MusicBand musicBand = new MusicBand(owner, name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, album);
 
             if (line.equals("add")) executionResponse =  collectionManager.addMusicBand(musicBand);
             else if (line.equals("add_if_min")) executionResponse =  collectionManager.addMusicBandIfMin(musicBand);

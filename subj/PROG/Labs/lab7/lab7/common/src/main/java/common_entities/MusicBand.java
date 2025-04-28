@@ -14,14 +14,12 @@ import java.util.Objects;
 
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class MusicBand implements Comparable<MusicBand>, Serializable {
     @Serial
     private static final long serialVersionUID = -4996185941494329657L;
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private String owner;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -31,7 +29,8 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     private MusicGenre genre; //Поле не может быть null
     private Album bestAlbum; //Поле не может быть null
 
-    public MusicBand(String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, LocalDate establishmentDate, MusicGenre musicGenre, Album bestAlbum) {
+    public MusicBand(String owner, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, LocalDate establishmentDate, MusicGenre musicGenre, Album bestAlbum) {
+        this.owner = owner;
         this.name = name;
         this.coordinates = coordinates;
         this.numberOfParticipants = numberOfParticipants;

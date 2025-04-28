@@ -56,7 +56,8 @@ public class Add extends Command {
         LocalDate establishmentDate = inputEstablishmentDate();
         MusicGenre musicGenre = inputMusicGenre();
         Album bestAlbum = inputAlbum();
-        return new MusicBand(name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
+        String owner = collectionManager.getDatabaseManager().getUser().getUsername();
+        return new MusicBand(owner, name, coordinates, numberOfParticipants, singlesCount, establishmentDate, musicGenre, bestAlbum);
     }
 
     protected String inputName() throws IOException, ClassNotFoundException {
