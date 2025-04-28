@@ -17,6 +17,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +30,7 @@ import org.slf4j.LoggerFactory;
 @NoArgsConstructor
 public class CollectionManager {
     private Collection<MusicBand> collection = new HashSet<>();
-    private Map<Long, MusicBand> musicBandsMap = new HashMap<>();
+    private ConcurrentMap<Long, MusicBand> musicBandsMap = new ConcurrentHashMap<>();
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
     private DatabaseManager databaseManager;

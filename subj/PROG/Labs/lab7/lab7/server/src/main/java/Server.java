@@ -28,7 +28,7 @@ public class Server {
     private CommandManager commandManager;
     private Logger log = LoggerFactory.getLogger("Server");
     private StringBuilder credentials = new StringBuilder();
-    private final static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+    private final static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
     private static final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
     public static void main(String[] args) {
@@ -61,7 +61,7 @@ public class Server {
         } catch (Exception e) {
             log.error(e.getMessage());
         }
-        cachedThreadPool.shutdown();
+//        cachedThreadPool.shutdown();
     }
 
     private void handleClient(Socket clientSocket) {
@@ -71,6 +71,8 @@ public class Server {
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
                 synchronized (outToClient) {
                     outToClient.flush();  // чтобы не возникала блокировка потока со стороны клиента
+//                    outToClient.writeObject(null);
+//                    outToClient.flush();
                 }
                 clientConsole.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
@@ -78,12 +80,13 @@ public class Server {
                 log.info("Successfully declared in & out streams");
                 commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
                 connect();
+//                cachedThreadPool.submit(this::connect);
 
 //            Runnable serverConsole = new ServerConsole(collectionManager);
 //            cachedThreadPool.submit(serverConsole);
 //            new Thread(serverConsole).start();
 //            cachedThreadPool.submit(() -> clientConsole.launch()); //todo
-                clientConsole.launch();
+                clientConsole.run(inFromClient, outToClient);
             }
         } catch (IOException e) {
             log.error(e.getMessage());

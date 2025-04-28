@@ -32,7 +32,7 @@ public class CommandManager {
         commandsMap.put(commandName, command);
     }
 
-    public void declareCommands(ClientConsole console, CollectionManager collectionManager, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient, Logger log)   {
+    public void declareCommands(ClientConsole console, CollectionManager collectionManager, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient, Logger log) {
         commandsMap.put("add", new Add(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("add_if_max", new AddIfMax(console, collectionManager));
         commandsMap.put("add_if_min", new AddIfMin(console, collectionManager));

@@ -25,8 +25,8 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     protected Invoker invoker;
     @Getter
     protected CollectionManager collectionManager;
-    private static ObjectInputStream inFromClient;
-    private static ObjectOutputStream outToClient;
+    /*private static ObjectInputStream inFromClient;
+    private static ObjectOutputStream outToClient;*/
     @Setter
     @Getter
     private boolean scriptMode = false;
@@ -38,14 +38,14 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     @Getter
     @Setter
     private UserManager userManager;
-    private final ExecutorService executor = Executors.newFixedThreadPool(5);
+    private final ExecutorService executor = Executors.newFixedThreadPool(10);
     private final ExecutorService cachedThreadPull = Executors.newCachedThreadPool();
 
     public ClientConsole(Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         this.invoker = invoker;
         this.collectionManager = collectionManager;
-        ClientConsole.inFromClient = inFromClient;
-        ClientConsole.outToClient = outToClient;
+//        ClientConsole.inFromClient = inFromClient;
+//        ClientConsole.outToClient = outToClient;
 
         setScanner(new Scanner(System.in));
     }
@@ -57,16 +57,16 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
     @Override
     public void setObjectInputStream(ObjectInputStream in) {
-        ClientConsole.inFromClient = in;
+//        ClientConsole.inFromClient = in;
     }
 
     @Override
     public void setObjectOutputStream(ObjectOutputStream out) {
-        ClientConsole.outToClient = out;
+//        ClientConsole.outToClient = out;
     }
 
 
-    public void sendResponse(Object o) {
+    public void sendResponse(Object o, ObjectOutputStream outToClient) {
         executor.submit(() -> { //todo
             synchronized (outToClient) {
                 try {
@@ -79,7 +79,7 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         });
     }
 
-    public Request getRequest() throws IOException, ClassNotFoundException {
+    public Request getRequest(ObjectInputStream inFromClient) throws IOException, ClassNotFoundException {
         if (!scriptMode) {
             synchronized (inFromClient) {
                 return (Request) inFromClient.readObject();
@@ -95,7 +95,7 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         }
     }
 
-    public void sendPrompt() {
+    public void sendPrompt(ObjectOutputStream outToClient) {
         executor.submit(() -> { //todo
             synchronized (outToClient) {
                 try {
@@ -112,25 +112,20 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
 
 
 
-    @Override
-    public void launch() {
+    public void run(ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
+
         try {
-            /*cachedThreadPull.submit(() -> {
-                try {*/
-                    authentication();
-               /* } catch (IOException | ClassNotFoundException | SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            });*/
+//            outToClient.flush();
+            authentication(outToClient, inFromClient);
             while (true) {
-                sendPrompt();
+                sendPrompt(outToClient);
                 Request request;
-                request = getRequest();
+                request = getRequest(inFromClient);
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
                 String arg = (request.getMessage() + " ").split(" ", 2)[1];
                 if (command.isEmpty()) continue;
                 Response response = invoker.execute(new String[]{command, arg});
-                sendResponse(response);
+                sendResponse(response, outToClient);
             }
         } catch (ExitException e) {
             print(e);
@@ -139,25 +134,26 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         }
     }
 
-    private void authentication() throws IOException, ClassNotFoundException, SQLException {
+    private void authentication(ObjectOutputStream outToClient, ObjectInputStream inFromClient) throws IOException, ClassNotFoundException, SQLException {
 
-        Request request = getRequest();
+        Request request = getRequest(inFromClient);
         User user = request.getUser();
         String message = request.getMessage();
         if (message.equals("login")) {
             if (userManager.logInUser(user)) {
-                sendResponse(new Response(true));
-//                outToClient.writeObject(new Response(true));
+                sendResponse(new Response(true), outToClient);
+//                synchronized (outToClient) {outToClient.writeObject(new Response(true));}
             } else
-                sendResponse(new Response(false));
-//            outToClient.writeObject(new Response(false));
+                sendResponse(new Response(false), outToClient);
+//                synchronized (outToClient) {outToClient.writeObject(new Response(false));}
         } else if (message.equals("register")) {
             if (userManager.registerUser(user)) {
-                sendResponse(new Response(true));
-//                outToClient.writeObject(new Response(true));
+                sendResponse(new Response(true), outToClient);
+//                synchronized (outToClient) {outToClient.writeObject(new Response(true));}
             } else
-                sendResponse(new Response(false, "Непредвиденная ошибка!"));
-//                outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));
+                sendResponse(new Response(false, "Непредвиденная ошибка!"), outToClient);
+//            synchronized (outToClient) {outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));}
+
         }
     }
 
