@@ -38,7 +38,8 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     @Getter
     @Setter
     private UserManager userManager;
-    private ExecutorService executor = Executors.newFixedThreadPool(5);
+    private final ExecutorService executor = Executors.newFixedThreadPool(5);
+    private final ExecutorService cachedThreadPull = Executors.newCachedThreadPool();
 
     public ClientConsole(Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         this.invoker = invoker;
@@ -65,42 +66,34 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
 
-    public String getClientMessage() {
-        Request request;
-        try {
-            request = (Request) inFromClient.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return request.getMessage();
-    }
-
 
     public void send(Object o) {
-        /*executor.submit(() -> {*/ //todo
+        executor.submit(() -> { //todo
             try {
                 outToClient.writeObject(o);
                 outToClient.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        /*});*/
+        });
+    }
+
+    public Request read() throws IOException, ClassNotFoundException {
+        return (Request) inFromClient.readObject();
     }
 
     public void sendPrompt() {
-        /*executor.submit(() -> {*/ //todo
+        executor.submit(() -> { //todo
             try {
                 outToClient.writeObject(new Response(false, PROMPT));
                 outToClient.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        /*});*/
+        });
     }
 
-    public Request read() throws IOException, ClassNotFoundException {
-        return (Request) inFromClient.readObject();
-    }
+
 
     public Request getRequest() throws IOException, ClassNotFoundException {
         if (!scriptMode) {
@@ -115,14 +108,16 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
     }
 
 
-
-
-
-
     @Override
     public void launch() {
         try {
+            /*cachedThreadPull.submit(() -> {
+                try {*/
             authentication();
+                /*} catch (IOException | ClassNotFoundException | SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });*/
             while (true) {
                 sendPrompt();
                 Request request = read();
@@ -148,12 +143,12 @@ public class ClientConsole extends StandartConsole implements ObjectStreamsWorka
         String message = request.getMessage();
         if (message.equals("login")) {
             if (userManager.logInUser(user)) {
-                send(new Response(true)); // было outToClient.writeObject
-            } else send(new Response(false));
+                /*send(new Response(true));*/ outToClient.writeObject(new Response(true));
+            } else /*send(new Response(false));*/ outToClient.writeObject(new Response(false));
         } else if (message.equals("register")) {
             if (userManager.registerUser(user)) {
-                send(new Response(true));
-            } else send(new Response(false, "Непредвиденная ошибка!"));
+                /*send(new Response(true));*/ outToClient.writeObject(new Response(true));
+            } else /*send(new Response(false, "Непредвиденная ошибка!"));*/ outToClient.writeObject(new Response(false, "Непредвиденная ошибка!"));
         }
     }
 

@@ -15,7 +15,7 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Server implements Runnable {
+public class Server {
 
     public int PORT = 1232;
     private Socket clientSocket;
@@ -26,9 +26,10 @@ public class Server implements Runnable {
     private ClientConsole clientConsole;
     private CollectionManager collectionManager;
     private CommandManager commandManager;
-    private Logger log = LoggerFactory.getLogger("ServerConsole");
+    private Logger log = LoggerFactory.getLogger("Server");
     private StringBuilder credentials = new StringBuilder();
-    private final static ExecutorService executor = Executors.newFixedThreadPool(5);
+    private final static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+    private static final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
     public static void main(String[] args) {
         Server server = new Server();
@@ -47,49 +48,44 @@ public class Server implements Runnable {
         clientConsole.setCollectionManager(collectionManager);
     }
 
-    @Override
+
     public void run() {
         log.info("Server has started on port: {}", PORT);
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
                 clientSocket = serverSocket.accept();
-                /*executor.submit(() -> { //todo
-                    try {
-                        handleClient(clientSocket);
-                    } catch (IOException | ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
-                });*/
-
-                handleClient(clientSocket);
+                cachedThreadPool.submit(() -> handleClient(clientSocket));
             }
 
-
         } catch (Exception e) {
-            log.error("Server error", e);
+            log.error(e.getMessage());
         }
-        /*executor.shutdown();*/
+        cachedThreadPool.shutdown();
     }
 
-    private void handleClient(Socket clientSocket) throws IOException, ClassNotFoundException {
-        while (!Thread.currentThread().isInterrupted()) {
-            log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
-            outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
-            outToClient.flush();
-            clientConsole.setObjectOutputStream(outToClient);
-            inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
-            clientConsole.setObjectInputStream(inFromClient);
-            log.info("Successfully declared in & out streams");
-            commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
-            connect();
+    private void handleClient(Socket clientSocket) {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
+                outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
+                outToClient.flush(); // чтобы не возникала блокировка потока со стороны клиента
+                clientConsole.setObjectOutputStream(outToClient);
+                inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+                clientConsole.setObjectInputStream(inFromClient);
+                log.info("Successfully declared in & out streams");
+                commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
+                connect();
 
-            Runnable serverConsole = new ServerConsole(collectionManager);
-            new Thread(serverConsole).start();
-            /*executor.submit(() -> clientConsole.launch());*/ //todo
-            clientConsole.launch();
+//            Runnable serverConsole = new ServerConsole(collectionManager);
+//            cachedThreadPool.submit(serverConsole);
+//            new Thread(serverConsole).start();
+//            cachedThreadPool.submit(() -> clientConsole.launch()); //todo
+                clientConsole.launch();
+            }
+        } catch (IOException e) {
+            log.error(e.getMessage());
         }
     }
-
 
 
     public void connect() {
