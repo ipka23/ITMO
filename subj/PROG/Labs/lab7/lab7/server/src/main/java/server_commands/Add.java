@@ -174,7 +174,6 @@ public class Add extends Command {
         return singlesCount;
     }
     protected LocalDate inputEstablishmentDate() throws IOException, ClassNotFoundException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         LocalDate establishmentDate;
         Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"yyyy-dd-MM\"\n* ");
         console.sendResponse(null, outToClient);
