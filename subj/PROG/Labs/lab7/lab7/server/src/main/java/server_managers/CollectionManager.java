@@ -69,7 +69,7 @@ public class CollectionManager {
 
         long id = getFreeId();
         if (musicBandsMap.containsValue(musicBand)) {
-            return new Response(false, "Музыкальная группа не была добавлена, т.к. такая группа уже есть в коллекции!");
+            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" не была добавлена, т.к. такая группа уже есть в коллекции!");
         }
         musicBandsMap.put(id, musicBand);
         musicBand.setCreationDate(LocalDate.now());
@@ -77,26 +77,26 @@ public class CollectionManager {
         collection.add(musicBand);
         databaseManager.insertIntoDB(musicBand);
         saveCollection();
-        return new Response(false, "Музыкальная группа была успешно добавлена!");
+        return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" была успешно добавлена!");
     }
 
     public Response addMusicBandIfMin(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() < getMin().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой меньше чем у группы с минимальным количеством продаж!");
+                return new Response(false, "В коллекцию была добавлена музыкальная группа \"" + newBand.getName() + "\", количество продаж её лучшего альбома меньше чем у группы с минимальным количеством продаж!");
             } else return addMusicBand(newBand);
         } else {
-            return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома больше чем у группы с минимальным количеством продаж!");
+            return new Response(false, "Музыкальная группа \"" + newBand.getName() + "\" не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома больше чем у группы с минимальным количеством продаж!");
         }
     }
 
     public Response addMusicBandIfMax(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() > getMax().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, "В коллекцию была добавлена музыкальная группа, количество продаж лучшего альбома которой больше чем у группы с максимальным количеством продаж!");
+                return new Response(false, "В коллекцию была добавлена музыкальная группа \"" + newBand.getName() + "\" , количество продаж лучшего альбома которой больше чем у группы с максимальным количеством продаж!");
             } else return addMusicBand(newBand);
         } else {
-            return new Response(false, "Музыкальная группа не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома меньше чем у группы с максимальным количеством продаж!");
+            return new Response(false, "Музыкальная группа \"" + newBand.getName() + "\" не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома меньше чем у группы с максимальным количеством продаж!");
         }
     }
 
