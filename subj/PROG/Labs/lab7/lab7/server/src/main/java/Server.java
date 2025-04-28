@@ -74,9 +74,9 @@ public class Server {
 //                    outToClient.writeObject(null);
 //                    outToClient.flush();
                 }
-                clientConsole.setObjectOutputStream(outToClient);
+//                clientConsole.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
-                clientConsole.setObjectInputStream(inFromClient);
+//                clientConsole.setObjectInputStream(inFromClient);
                 log.info("Successfully declared in & out streams");
                 commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
                 connect();
@@ -95,7 +95,7 @@ public class Server {
 
 
     public void connect() {
-        try (Scanner scanner = new Scanner(new FileReader("credentials.txt"))) {
+        try (Scanner scanner = new Scanner(new FileReader("D:\\ITMO\\subj\\PROG\\Labs\\lab7\\lab7\\server\\src\\test\\resources\\credentials.txt"))) {
             String DB_USERNAME = "";
             String DB_URL = "jdbc:postgresql://localhost:15432/studs";
             String DB_PASSWORD = "";

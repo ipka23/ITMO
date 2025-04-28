@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public interface DataBaseWorkable {
     void connectToDB();
-    HashSet<MusicBand> loadCollectionFromDB();
+    void loadCollectionFromDB();
     void insertIntoDB(MusicBand band);
     void updateDB(MusicBand band, long id);
     boolean registerUser(User user);
