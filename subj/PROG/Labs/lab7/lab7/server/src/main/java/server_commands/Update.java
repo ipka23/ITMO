@@ -57,7 +57,7 @@ public class Update extends Command {
         }
         MusicBand newBand;
         try {
-            console.send(new Response(false, "--------------------------------Введите новые данные музыкальной группы--------------------------------"));
+            console.sendResponse(new Response(false, "--------------------------------Введите новые данные музыкальной группы--------------------------------"));
             newBand = add.inputMusicBand();
             newBand.setCreationDate(band.getCreationDate());
         } catch (InputBreakException e) {

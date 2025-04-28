@@ -55,6 +55,7 @@ public class Server {
             while (true) {
                 clientSocket = serverSocket.accept();
                 cachedThreadPool.submit(() -> handleClient(clientSocket));
+//                handleClient(clientSocket);
             }
 
         } catch (Exception e) {
@@ -68,7 +69,9 @@ public class Server {
             while (!Thread.currentThread().isInterrupted()) {
                 log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
                 outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
-                outToClient.flush(); // чтобы не возникала блокировка потока со стороны клиента
+                synchronized (outToClient) {
+                    outToClient.flush();  // чтобы не возникала блокировка потока со стороны клиента
+                }
                 clientConsole.setObjectOutputStream(outToClient);
                 inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
                 clientConsole.setObjectInputStream(inFromClient);

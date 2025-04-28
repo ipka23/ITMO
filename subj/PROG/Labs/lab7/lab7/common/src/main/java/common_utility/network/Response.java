@@ -4,6 +4,7 @@ import common_entities.MusicBand;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -11,10 +12,11 @@ import java.util.Collection;
 @Setter
 
 public class Response implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -2026450900467574978L;
     private boolean exitStatus;
     private String message;
     private Collection<MusicBand> musicBandsCollection;
-    private static final long serialVersionUID = 8318430527895954400L;
 
     public Response(boolean exitStatus, String message) {
         this.exitStatus = exitStatus;
