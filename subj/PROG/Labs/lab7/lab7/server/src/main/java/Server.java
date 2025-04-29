@@ -81,7 +81,7 @@ public class Server {
 
 
     public void connect() {
-        try (Scanner scanner = new Scanner(new FileReader("D:\\ITMO\\subj\\PROG\\Labs\\lab7\\lab7\\server\\src\\test\\resources\\credentials.txt"))) {
+        try (Scanner scanner = new Scanner(new FileReader("/Users/ipka23/Desktop/ITMO/subj/PROG/Labs/lab7/lab7/server/src/test/resources/credentials.txt"))) {
             String DB_USERNAME = "";
             String DB_URL = "jdbc:postgresql://localhost:15432/studs";
             String DB_PASSWORD = "";
@@ -104,6 +104,7 @@ public class Server {
                 clientConsole.setUserManager(userManager);
                 dbManager.connectToDB();
             }
+
         } catch (FileNotFoundException e) {
             log.error("Database credentials file not found!");
             System.exit(1);

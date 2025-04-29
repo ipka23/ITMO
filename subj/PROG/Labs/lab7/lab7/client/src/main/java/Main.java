@@ -22,7 +22,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         finally {
-//            socket.close();
+            socket.close();
         }
     }
 }
