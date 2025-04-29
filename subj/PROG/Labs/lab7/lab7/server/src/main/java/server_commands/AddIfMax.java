@@ -8,6 +8,8 @@ import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * Данный класс отвечает за выполнение команды "add_if_max"
@@ -26,11 +28,11 @@ public class AddIfMax extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public AddIfMax(ClientConsole console, CollectionManager collectionManager)  {
+    public AddIfMax(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient)  {
         super("add_if_max", "добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции");
         this.console = console;
         this.collectionManager = collectionManager;
-        this.add = new Add(console, collectionManager);
+        this.add = new Add(console, collectionManager, inFromClient, outToClient);
     }
 
 

@@ -18,9 +18,9 @@ public class Server {
 
     public int PORT = 1232;
     private Socket clientSocket;
-    private ObjectInputStream inFromClient;
-    private ObjectOutputStream outToClient;
-    private String collectionFileName;
+//    private ObjectInputStream inFromClient;
+//    private ObjectOutputStream outToClient;
+
     private Invoker invoker;
     private ClientConsole clientConsole;
     private CollectionManager collectionManager;
@@ -30,7 +30,6 @@ public class Server {
 
     public static void main(String[] args) {
         Server server = new Server();
-        server.initializeServer();
         server.run();
     }
 
@@ -49,8 +48,10 @@ public class Server {
     public void run() {
         log.info("Server has started on port: {}", PORT);
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+
             while (true) {
                 clientSocket = serverSocket.accept();
+                log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
                 cachedThreadPool.submit(() -> handleClient(clientSocket));
             }
 
@@ -61,16 +62,17 @@ public class Server {
     }
 
     private void handleClient(Socket clientSocket) {
-        try {
+        try (ObjectInputStream inFromClient = new ObjectInputStream(clientSocket.getInputStream());
+             ObjectOutputStream outToClient = new ObjectOutputStream(clientSocket.getOutputStream())) {
             while (!Thread.currentThread().isInterrupted()) {
-                log.info("Client has connected! Host: {}", clientSocket.getInetAddress().getHostAddress());
-                outToClient = new ObjectOutputStream(new BufferedOutputStream(clientSocket.getOutputStream()));
+
                 synchronized (outToClient) {
                     outToClient.flush();  // чтобы не возникала блокировка потока со стороны клиента
                 }
-                inFromClient = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+                initializeServer();
                 log.info("Successfully declared in & out streams");
-                commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient, log);
+
+                commandManager.declareCommands(clientConsole, collectionManager, invoker, inFromClient, outToClient);
                 connect();
                 clientConsole.run(inFromClient, outToClient);
             }
@@ -81,7 +83,7 @@ public class Server {
 
 
     public void connect() {
-        try (Scanner scanner = new Scanner(new FileReader("/Users/ipka23/Desktop/ITMO/subj/PROG/Labs/lab7/lab7/server/src/test/resources/credentials.txt"))) {
+        try (Scanner scanner = new Scanner(new FileReader("src/test/resources/credentials.txt"))) {
             String DB_USERNAME = "";
             String DB_URL = "jdbc:postgresql://localhost:15432/studs";
             String DB_PASSWORD = "";

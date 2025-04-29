@@ -22,8 +22,7 @@ public class RemoveGreater extends Command {
     private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
-    private ObjectInputStream inFromClient;
-    private ObjectOutputStream outToClient;
+
     /**
      * Конструктор
      *
@@ -34,9 +33,7 @@ public class RemoveGreater extends Command {
         super("remove_greater", "удалить из коллекции все элементы, превышающие заданный");
         this.console = console;
         this.collectionManager = collectionManager;
-        this.add = new Add(console, collectionManager);
-        this.inFromClient = inFromClient;
-        this.outToClient = outToClient;
+        this.add = new Add(console, collectionManager, inFromClient, outToClient);
     }
 
 
