@@ -11,22 +11,22 @@ v7: word $default, 0x180
 org 0x00f
 default: iret
 
-org 0x01b
-x:   word 0x0    ; x E[-52, 50]
-min: word 0xfffc ; -52
-max: word 0x0032 ;  50
+org 0x04b
+x:   word 0x0    ; x E[-65, 62]
+min: word 0xffbf ; -65
+max: word 0x003e ;  62
 
 START:
     cla
-    ld #9 ;
-    out 7 ; устанавливаем вектор int1 в MR(#7) ВУ-3 <=> 1001 -> MR(#7)
-    ld #0xA ;
-    out 5 ; устанавливаем вектор int2 в MR(#5) ВУ-2 <=> 1010 -> MR(#5)
+    ld #9
+    out 3   ; устанавливаем вектор int1 в MR(#3) ВУ-1 <=> 1001 -> MR(#3)
+    ld #0xA
+    out 7   ; устанавливаем вектор int2 в MR(#7) ВУ-3 <=> 1010 -> MR(#7)
 
 main:
-    di                  ; по умолчанию прерывания и так запрещены, это нужно для реентерабельности
+    di                 ; по умолчанию прерывания и так запрещены, это нужно для реентерабельности
     ld x
-    add #2
+    inc
     push
     call $check_value
     pop
@@ -35,23 +35,19 @@ main:
     jump main
 
 
-
-int1:           ; вычисление f(x) = -5x-5
+int1:           ; вычисление f(x) = -4x-8 и вывод результата f(x) на DR(#2) ВУ-1 по нажатию кнопки готовности SR(#3) ВУ-1
     ld x
     hlt         ; для отладки
     asl
     asl
-    add x
     neg
-    sub #5
-    out 6
+    sub #8
+    out 2
     hlt         ; для отладки
     iret
 
-int2:           ; изменение знака x по нажатию кнопки готовности SR(#5) ВУ-2
-    ld x
-    hlt         ; для отладки
-    neg
+int2:           ; запись содержимого DR(#6) ВУ-3 в x по нажатию кнопки готовности SR(#7) ВУ-3
+    in 6
     st x
     hlt         ; для отладки
     iret
@@ -59,16 +55,16 @@ int2:           ; изменение знака x по нажатию кнопк
 
 
 
-check_value: ; функция проверки ОДЗ
+check_value:    ; функция проверки ОДЗ
     ld &1
     cmp $min
     blt reset_x
-    dec             ; x + 1 т.к. bge
+    dec         ; x + 1 т.к. bge
     cmp $max
     bge reset_x
     inc
     ret
-reset_x:
+reset_x:        ; запись в x минимального значения x по ОДЗ
     ld $min
     st &1
     ret

@@ -8,7 +8,7 @@ main:
 	st x
 	hlt
 
-iter: word 0x5
+iter: word 0x4
 tmp:  word 0x0
 func:
     ld &1
@@ -18,6 +18,6 @@ func:
     jump func
     ld tmp
     neg
-    sub #0x5
+    sub #0x8
     st &1
     ret
