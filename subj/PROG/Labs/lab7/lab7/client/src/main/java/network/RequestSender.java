@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
 
-//TODO сделать обработку авторизации/регистрации
 public class RequestSender {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
@@ -67,7 +66,6 @@ public class RequestSender {
         }
     }
 
-    //todo вынести в отдельный класс, добавить exit
     private static void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner scanner) {
         String username;
         String password;
