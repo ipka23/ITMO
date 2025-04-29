@@ -8,7 +8,6 @@ public class Main {
     private static String hostName = "localhost";
     private static Socket socket;
 
-
     public static void main(String[] args) throws IOException {
 
         socket = new Socket(hostName, port);

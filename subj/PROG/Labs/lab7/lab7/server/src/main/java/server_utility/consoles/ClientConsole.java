@@ -22,14 +22,11 @@ public class ClientConsole extends StandartConsole {
     protected Invoker invoker;
     @Getter
     protected CollectionManager collectionManager;
-    @Setter
-    @Getter
+    @Setter @Getter
     private boolean scriptMode = false;
-    @Setter
-    @Getter
+    @Setter @Getter
     private File scriptFile;
-    @Setter
-    @Getter
+    @Setter @Getter
     private UserManager userManager;
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
 

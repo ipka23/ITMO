@@ -1,5 +1,6 @@
 package server_commands;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
@@ -17,33 +18,33 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+
 
 
 public class Add extends Command {
     @Setter
-    private static ObjectInputStream inFromClient;
+    private ObjectInputStream inFromClient;
     @Setter
-    private static ObjectOutputStream outToClient;
+    private ObjectOutputStream outToClient;
     private ClientConsole console;
     private CollectionManager collectionManager;
     private String ADD_PROMPT = "* ";
     @Setter
     private File scriptFile;
 //    private Scanner scriptScanner = new Scanner(scriptFile);
-    public Add(ClientConsole console, CollectionManager collectionManager) {
+    /*public Add(ClientConsole console, CollectionManager collectionManager) {
         super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
         this.scriptFile = console.getScriptFile();
-    }
+    }*/
     public Add(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient)  {
         super("add", "добавить новый элемент в коллекцию");
         this.console = console;
         this.collectionManager = collectionManager;
-        Add.inFromClient = inFromClient;
-        Add.outToClient = outToClient;
+        this.inFromClient = inFromClient;
+        this.outToClient = outToClient;
         this.scriptFile = console.getScriptFile();
     }
 

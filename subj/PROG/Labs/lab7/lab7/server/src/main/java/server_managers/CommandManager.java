@@ -32,10 +32,10 @@ public class CommandManager {
         commandsMap.put(commandName, command);
     }
 
-    public void declareCommands(ClientConsole console, CollectionManager collectionManager, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient, Logger log) {
+    public void declareCommands(ClientConsole console, CollectionManager collectionManager, Invoker invoker, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         commandsMap.put("add", new Add(console, collectionManager, inFromClient, outToClient));
-        commandsMap.put("add_if_max", new AddIfMax(console, collectionManager));
-        commandsMap.put("add_if_min", new AddIfMin(console, collectionManager));
+        commandsMap.put("add_if_max", new AddIfMax(console, collectionManager, inFromClient, outToClient));
+        commandsMap.put("add_if_min", new AddIfMin(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("execute_script", new ExecuteScript(console, invoker, collectionManager, inFromClient, outToClient));
         commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager, inFromClient, outToClient));

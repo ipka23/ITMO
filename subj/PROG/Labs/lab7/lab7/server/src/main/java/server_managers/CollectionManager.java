@@ -55,15 +55,12 @@ public class CollectionManager {
         databaseManager.loadCollectionFromDB();
     }
 
-    //todo
+
     public void saveCollection() {
 //        databaseManager.saveCollectionToDB();
         lastSaveTime = LocalDateTime.now();
     }
 
-    public Long getCurrentId() {
-        return freeId;
-    }
 
     public Response addMusicBand(MusicBand musicBand) {
 
