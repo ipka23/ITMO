@@ -1,7 +1,7 @@
 org 0x010
-x:   word 0x0032 ; 50
-min: word 0xfffc ; -52
-max: word 0x0032 ;  50
+x:   word 0x001f    ; x E[-33, 30]
+min: word 0xffdf ; -33
+max: word 0x001e ;  30
 
 START:
     ld x
@@ -15,7 +15,7 @@ check_value:
     ld &1
     cmp $min
     blt reset_x
-    dec             ; x + 1 т.к. bge
+    dec             ; т.к. bge
     cmp $max
     bge reset_x
     inc
