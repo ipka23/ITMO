@@ -20,7 +20,6 @@ max: word 0x001e ;  30
 
 START:
     cla
-
     ld #9
     out 3    ; устанавливаем вектор int1 в MR(#3) КВУ-1 <=> 1001 -> MR(#3)
     ld #0xA
@@ -35,6 +34,7 @@ main:
     call $check_value
     pop
     st x
+    hlt
     ei
     jump main
 
@@ -52,6 +52,9 @@ int1:           ; вычисление f(x) = -4x-8 и вывод результ
 
 int2:           ; запись содержимого DR(#6) КВУ-3 в x по нажатию кнопки готовности SR(#7) КВУ-3
     in 6
+    push
+    call $check_value
+    pop
     st x
     hlt         ; для отладки
     iret
