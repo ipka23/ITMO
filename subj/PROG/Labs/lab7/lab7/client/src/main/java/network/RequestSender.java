@@ -2,18 +2,26 @@ package network;
 
 import common_entities.MusicBand;
 import common_utility.database.User;
+import common_utility.exceptions.ExitClientException;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.sql.SQLOutput;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
 
+
 public class RequestSender {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
+    private Logger logger = LoggerFactory.getLogger("RequestSender");
 
     public static void sendMessage(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner userInput) {
         Response response;
@@ -26,12 +34,7 @@ public class RequestSender {
             // основная программа
             while (true) {
                 Response prompt = getResponse(inFromServer);
-                if (prompt != null) {
-                    System.out.print(prompt.getMessage());
-                } else {
-                    Response response1 = getResponse(inFromServer);
-                    System.out.print(response1.getMessage());
-                }
+                System.out.print(prompt.getMessage());
 
                 String message = userInput.nextLine().trim();
 
@@ -56,10 +59,28 @@ public class RequestSender {
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name")) {
                     printCollection(response);
+                    continue;
+                }
+                if (command.equals("add") || command.equals("update")) {
+                    System.out.print(response.getMessage());
+                    while (true) {
+
+                        String input = userInput.nextLine();
+                        sendRequest(new Request(input), outToServer);
+                        response = getResponse(inFromServer);
+                        if (response.getExitStatus()) {
+                            System.out.println(response.getMessage());
+                            break;
+                        } else System.out.print(response.getMessage());
+
+                    }
                 } else {
                     musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());
                 }
+
+
+
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -74,55 +95,54 @@ public class RequestSender {
             while (true) {
                 System.out.print("=====================\n: Добро пожаловать! :\n=====================\nДля входа/регистрации введите - (1/2)\n~ ");
                 String input = scanner.nextLine().trim();
-                if (input.isEmpty()) continue;
-                if (input.equals("1")) loggedIn = true;
+                if (input.equals("exit")) throw new ExitClientException();
+                else if (input.isEmpty()) continue;
+                else if (input.equals("1")) loggedIn = true;
                 else if (input.equals("2")) loggedIn = false;
                 else continue;
                 break;
             }
+            outerLoop:
             while (true) {
                 System.out.print("Введите имя пользователя\n~ ");
                 String input = scanner.nextLine().trim();
-                if (input.isEmpty()) continue;
+                if (input.equals("exit")) throw new ExitClientException();
+                else if (input.isEmpty()) continue;
                 username = input;
-                break;
-            }
-            while (true) {
-                if (loggedIn) {
-                    System.out.print("Введите пароль\n~ ");
-                    String input = scanner.nextLine().trim();
-                    if (input.isEmpty()) continue;
-                    password = input;
-                    sendRequest(new Request("login", new User(username, password)), outToServer);
-                    Response response = getResponse(inFromServer);
-                    if (!response.getExitStatus()) {
-                        System.out.print("Неверный пароль!\n"); // todo fix повторный ввод правильного пароля неверный, сделать обработку ситуаций когда пользователя нет в системе и выдавать соответствующую ошибку
-
-                        continue;
+                while (true) {
+                    if (loggedIn) {
+                        System.out.print("Введите пароль\n~ ");
+                        String input1 = scanner.nextLine().trim();
+                        if (input1.isEmpty()) continue;
+                        password = input1;
+                        sendRequest(new Request("login", new User(username, password)), outToServer);
+                        Response response = getResponse(inFromServer);
+                        if (!response.getExitStatus()) {
+                            System.out.println(response.getMessage());
+                        } else {
+                            System.out.println(response.getMessage());
+                            break outerLoop;
+                        }
                     } else {
-                        System.out.println("Вход успешно выполнен!");
+                        System.out.print("Придумайте пароль\n~ ");
+                        String firstInput = scanner.nextLine().trim();
+                        System.out.print("Повторите пароль\n~ ");
+                        String secondInput = scanner.nextLine().trim();
+                        if (!firstInput.equals(secondInput)) {
+                            System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
+                            continue;
+                        }
+                        password = secondInput;
+                        sendRequest(new Request("register", new User(username, password)), outToServer);
+                        Response response = getResponse(inFromServer);
+                        if (!response.getExitStatus()) {
+                            System.out.println(response.getMessage());
+                            continue outerLoop;
+                        } else {
+                            System.out.println(response.getMessage());
+                            break outerLoop;
+                        }
                     }
-                    break;
-                } else {
-                    System.out.print("Придумайте пароль\n~ ");
-                    String firstInput = scanner.nextLine().trim();
-                    System.out.print("Повторите пароль\n~ ");
-                    String secondInput = scanner.nextLine().trim();
-                    if (!firstInput.equals(secondInput)) {
-                        System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
-                        continue;
-                    }
-                    password = secondInput;
-                    sendRequest(new Request("register", new User(username, password)), outToServer);
-                    Response response = getResponse(inFromServer);
-                    if (!response.getExitStatus()) {
-                        String message = response.getMessage();
-                        System.out.print("Ошибка регистрации: " + message);
-                        continue; // todo fix
-                    } else {
-                        System.out.println("Регистрация успешно выполнена!");
-                    }
-                    break;
                 }
             }
         } catch (Exception e) {
@@ -134,7 +154,7 @@ public class RequestSender {
     public static void printCollection(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
-            System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы","Название группы", "Лучший альбом", "Количество продаж");
+            System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы", "Название группы", "Лучший альбом", "Количество продаж");
             System.out.println("-" + "-".repeat(15) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(20) + "-");
             musicBandsCollection
                     .stream()
@@ -152,8 +172,8 @@ public class RequestSender {
         }
     }
 
-    private static void sendRequest(Object o, ObjectOutputStream outToServer) throws IOException {
-        outToServer.writeObject(o);
+    private static void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
+        outToServer.writeObject(r);
         outToServer.flush();
     }
 

@@ -46,35 +46,35 @@ public class Update extends Command {
     @Override
     public Response execute(String[] command) {
         if (command[1].trim().isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"\n");
         long id;
         try {
             id = Long.parseLong(command[1].trim());
         } catch (NumberFormatException e) {
-            return new Response(false, "Неверный формат id!");
+            return new Response(false, "Неверный формат id!\n");
         }
         MusicBand band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new Response(false, "В коллекции нет музыкальной группы с таким id!");
+            return new Response(false, "В коллекции нет музыкальной группы с таким id!\n");
         }
         String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
         String owner = band.getOwner();
         if (!current_user.equals(owner)) {
-            return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
+            return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!\n");
         } else {
             MusicBand newBand;
             try {
-                console.sendResponse(new Response(false, "===========================================\n: Введите новые данные музыкальной группы :\n==========================================="), outToClient);
+                console.write("===========================================\n: Введите новые данные музыкальной группы :\n===========================================\n");
                 newBand = add.inputMusicBand();
                 newBand.setCreationDate(band.getCreationDate());
             } catch (InputBreakException e) {
-                return new Response(false, "Отмена ввода...");
+                return new Response(true, "Отмена ввода...\n");
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
             band.update(newBand);
             collectionManager.getDatabaseManager().updateDB(newBand, id);
-            return new Response(false, "Элемент с id = " + id + " был обновлён!");
+            return new Response(true, "Элемент с id = " + id + " был обновлён!\n");
         }
     }
 }

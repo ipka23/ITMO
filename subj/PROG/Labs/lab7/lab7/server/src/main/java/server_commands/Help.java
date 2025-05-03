@@ -32,7 +32,7 @@ public class Help extends Command {
         StringBuilder s = new StringBuilder();
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        s.append("--------------------------------Доступные команды--------------------------------\n");
+        s.append("=====================\n: Доступные команды :\n=====================");
         for (Command userCommand : commandManager.getCommandsMap().values()) {
             s.append(userCommand.getName()).append(": ").append(userCommand.getDescription()).append("\n");
         }

@@ -11,7 +11,6 @@ import server_managers.UserManager;
 import server_utility.Invoker;
 
 import java.io.*;
-import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,11 +28,12 @@ public class ClientConsole extends StandartConsole {
     @Setter @Getter
     private UserManager userManager;
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
+    @Getter
+    private StringBuilder tmp;
 
     public ClientConsole(Invoker invoker, CollectionManager collectionManager) {
         this.invoker = invoker;
         this.collectionManager = collectionManager;
-
         setScanner(new Scanner(System.in));
     }
 
@@ -42,6 +42,10 @@ public class ClientConsole extends StandartConsole {
     }
 
 
+    public void write(String text) {
+        tmp = new StringBuilder();
+        tmp.append(text);
+    }
     public void sendResponse(Object o, ObjectOutputStream outToClient) {
         executor.submit(() -> {
             synchronized (outToClient) {
@@ -100,27 +104,44 @@ public class ClientConsole extends StandartConsole {
             }
         } catch (ExitException e) {
             print(e);
-        } catch (IOException | ClassNotFoundException | SQLException e) {
+        }
+        catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void authentication(ObjectOutputStream outToClient, ObjectInputStream inFromClient) throws IOException, ClassNotFoundException, SQLException {
+    private void authentication(ObjectOutputStream outToClient, ObjectInputStream inFromClient) throws IOException, ClassNotFoundException {
+            Request request = getRequest(inFromClient);
+            User user = request.getUser();
+            String message = request.getMessage();
+            Response response;
+            if (message.equals("login")) {
+                while (true) {
+                    response = userManager.logInUser(user);
+                    if (response.getExitStatus()) {
+                        sendResponse(response, outToClient);
+                        break;
+                    } else {
+                        sendResponse(response, outToClient);
+                        request = getRequest(inFromClient);
+                        user = request.getUser();
+                    }
+                }
 
-        Request request = getRequest(inFromClient);
-        User user = request.getUser();
-        String message = request.getMessage();
-        if (message.equals("login")) {
-            if (userManager.logInUser(user)) {
-                sendResponse(new Response(true), outToClient);
-            } else
-                sendResponse(new Response(false), outToClient);
-        } else if (message.equals("register")) {
-            if (userManager.registerUser(user)) {
-                sendResponse(new Response(true), outToClient);
-            } else
-                sendResponse(new Response(false, "Непредвиденная ошибка!"), outToClient);
-        }
+            } else if (message.equals("register")) {
+                while (true) {
+                    response = userManager.registerUser(user);
+                    if (response.getExitStatus()) {
+                        sendResponse(response, outToClient);
+                        break;
+                    } else {
+                        sendResponse(response, outToClient);
+                        request = getRequest(inFromClient);
+                        user = request.getUser();
+                    }
+
+                }
+            }
     }
 
 }

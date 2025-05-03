@@ -63,18 +63,24 @@ public class CollectionManager {
 
 
     public Response addMusicBand(MusicBand musicBand) {
+        try (PreparedStatement ps = databaseManager.getConnection().prepareStatement("SELECT id FROM musicbands WHERE name = ?")) {
+            databaseManager.insertIntoDB(musicBand);
+            ps.setString(1, musicBand.getName());
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            rs.next();
+            long id = rs.getLong(1);
+            musicBand.setId(id);
 
-        long id = getFreeId();
-        if (musicBandsMap.containsValue(musicBand)) {
-            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" не была добавлена, т.к. такая группа уже есть в коллекции!");
+
+            musicBandsMap.put(id, musicBand);
+            collection.add(musicBand);
+
+            saveCollection();
+            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" была успешно добавлена!");
+        } catch (SQLException e) {
+            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" не была добавлена: " + e.getMessage());
         }
-        musicBandsMap.put(id, musicBand);
-        musicBand.setCreationDate(LocalDate.now());
-        musicBand.setId(id);
-        collection.add(musicBand);
-        databaseManager.insertIntoDB(musicBand);
-        saveCollection();
-        return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" была успешно добавлена!");
     }
 
     public Response addMusicBandIfMin(MusicBand newBand) {
@@ -97,30 +103,6 @@ public class CollectionManager {
         }
     }
 
-
-    public long getFreeId() {
-        Connection connection = databaseManager.getConnection();
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.execute(StatementValue.GET_MAX_ID.toString());
-            ResultSet rs = stmt.getResultSet();
-            rs.next();
-            freeId = rs.getLong(1) + 1;
-
-
-            if (freeId != 1) {
-                PreparedStatement ps = connection.prepareStatement(StatementValue.SYNC_SEQUENCE_ID.toString());
-                ps.setLong(1, freeId - 1);
-                ps.executeUpdate();
-                rs.close();
-            } else {
-                connection.createStatement().execute(StatementValue.RESTART_ID_SEQ.toString());
-            }
-        } catch (SQLException e) {
-            log.info(e.getMessage());
-        }
-        return freeId;
-    }
 
     public MusicBand getMax() {
         return Collections.max(collection);
