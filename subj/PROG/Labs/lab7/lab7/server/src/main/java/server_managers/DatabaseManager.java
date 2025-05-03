@@ -4,6 +4,7 @@ import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
 import common_entities.MusicGenre;
+import common_utility.network.Response;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -31,7 +32,8 @@ public class DatabaseManager implements DataBaseWorkable {
     @Setter
     private CollectionManager collectionManager;
     private UserManager userManager;
-    @Getter @Setter
+    @Getter
+    @Setter
     private User user;
     private String chrs = "0123456789abcdefghijklmnopqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private SecureRandom secureRandom = new SecureRandom();
@@ -110,26 +112,24 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
     @Override
-    public void insertIntoDB(MusicBand band) {
-        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString())) {
-            ps.setString(1, band.getOwner());
-            ps.setString(2, band.getName());
-            ps.setInt(3, band.getCoordinates().getX());
-            ps.setFloat(4, band.getCoordinates().getY());
-            ps.setDate(5, java.sql.Date.valueOf(band.getCreationDate()));
-            ps.setLong(6, band.getNumberOfParticipants());
-            ps.setLong(7, band.getSinglesCount());
-            ps.setDate(8, java.sql.Date.valueOf(band.getEstablishmentDate()));
-            ps.setString(9, band.getGenre().toString());
-            ps.setString(10, band.getBestAlbum().getName());
-            ps.setLong(11, band.getBestAlbum().getTracks());
-            ps.setLong(12, band.getBestAlbum().getLength());
-            ps.setDouble(13, band.getBestAlbum().getSales());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-        }
+    public void insertIntoDB(MusicBand band) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_MUSIC_BAND.toString());
+        ps.setString(1, band.getOwner());
+        ps.setString(2, band.getName());
+        ps.setInt(3, band.getCoordinates().getX());
+        ps.setFloat(4, band.getCoordinates().getY());
+        ps.setDate(5, java.sql.Date.valueOf(LocalDate.now()));  // err
+        ps.setLong(6, band.getNumberOfParticipants());
+        ps.setLong(7, band.getSinglesCount());
+        ps.setDate(8, java.sql.Date.valueOf(band.getEstablishmentDate()));
+        ps.setString(9, band.getGenre().toString());
+        ps.setString(10, band.getBestAlbum().getName());
+        ps.setLong(11, band.getBestAlbum().getTracks());
+        ps.setLong(12, band.getBestAlbum().getLength());
+        ps.setDouble(13, band.getBestAlbum().getSales());
+        ps.executeUpdate();
 
+        ps.close();
     }
 
 
@@ -157,22 +157,18 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
     @Override
-    public boolean registerUser(User user) {
+    public void registerUser(User user) throws SQLException {
         String salt = secureRandom
                 .ints(12, 0, chrs.length())
                 .mapToObj(i -> chrs.charAt(i))
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
                 .toString();
-        try (PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString())) {
-            ps.setString(1, user.getUsername());
-            ps.setBytes(2, encryptPassword(user.getPassword(), salt));
-            ps.setString(3, salt);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            log.error("Username already exists!");
-            return false;
-        }
-        return true;
+        PreparedStatement ps = connection.prepareStatement(StatementValue.ADD_USER.toString());
+        ps.setString(1, user.getUsername());
+        ps.setBytes(2, encryptPassword(user.getPassword(), salt));
+        ps.setString(3, salt);
+        ps.executeUpdate();
+        ps.close();
     }
 
     public byte[] encryptPassword(String password, String salt) {
@@ -188,17 +184,21 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
 
-    public boolean validatePassword(String username, String inputPassword) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(StatementValue.SELECT_PASSWORD_AND_SALT.toString());
-        ps.setString(1, username);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            byte[] hashedPassword = rs.getBytes("password");
-            String salt = rs.getString("salt");
-            byte[] inputHash = encryptPassword(inputPassword, salt);
-            return Arrays.equals(inputHash, hashedPassword);
+    public boolean validatePassword(String username, String inputPassword)  {
+        try {
+            PreparedStatement ps = connection.prepareStatement(StatementValue.SELECT_PASSWORD_AND_SALT.toString());
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                byte[] hashedPassword = rs.getBytes("password");
+                String salt = rs.getString("salt");
+                byte[] inputHash = encryptPassword(inputPassword, salt);
+                return Arrays.equals(inputHash, hashedPassword);
+            }
+            throw new RuntimeException();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return false;
     }
 
 }
