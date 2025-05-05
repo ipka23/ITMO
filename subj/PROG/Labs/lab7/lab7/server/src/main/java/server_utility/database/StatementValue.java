@@ -62,6 +62,7 @@ public enum StatementValue {
     SYNC_SEQUENCE_ID("SELECT setval('musicBand_id_seq', ?)"),
     RESTART_ID_SEQ("ALTER SEQUENCE musicBand_id_seq RESTART WITH 1"),
     GET_OWNER("SELECT owner FROM musicBands WHERE id = ?"),
+    SELECT_USER("SELECT * FROM users WHERE username = ?")
     ;
 
     private String statement;

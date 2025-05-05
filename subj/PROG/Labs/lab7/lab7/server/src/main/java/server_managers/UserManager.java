@@ -40,7 +40,7 @@ public class UserManager {
             users.add(user);
             userHashMap.put(id, user);
         } catch (SQLException e) {
-            System.out.println("User ");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -57,14 +57,19 @@ public class UserManager {
 
     public Response logInUser(User user) {
         try {
-            if (dbManager.validatePassword(user.getUsername(), user.getPassword())) {
+            if (dbManager.checkUserExists(user.getUsername())) {
                 dbManager.setUser(user);
-                return new Response(true, "Вход выполнен!");
+                if (dbManager.validatePassword(user.getUsername(), user.getPassword())) {
+                    return new Response(true, "Вход выполнен!");
+                } else {
+                    return new Response(false, "Неверный пароль!");
+                }
             } else {
-                return new Response(false, "Неверный пароль!");
+                return new Response(false, "Такого пользователя нет в базе данных!");
             }
-        } catch (RuntimeException e) {
-            return new Response(false, e.getMessage());
+
+        } catch (SQLException e) {
+            return new Response(false, "Ошибка входа: " + e.getMessage());
         }
     }
 
