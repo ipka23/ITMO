@@ -72,7 +72,6 @@ public class Add extends Command {
         while (true) {
             console.sendResponse(response, outToClient);
             response = new Response(false, "Введите название музыкальной группы\n* ");
-            log.info("Response sent: {}", response.getMessage());
             request = console.getRequest(inFromClient);
             input = request.getMessage();
 
@@ -94,7 +93,6 @@ public class Add extends Command {
         Response response = new Response(false, "Введите координату \"x\"\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -109,7 +107,6 @@ public class Add extends Command {
         response = new Response(false, "Введите координату \"y\" (\"y\" <= 751)\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = (Request) inFromClient.readObject();
             input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -134,7 +131,6 @@ public class Add extends Command {
         Response response = new Response(false,"Введите количество участников\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -157,7 +153,6 @@ public class Add extends Command {
         Response response = new Response(false,"Введите количество синглов\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -179,7 +174,6 @@ public class Add extends Command {
         Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"yyyy-dd-MM\"\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -199,7 +193,6 @@ public class Add extends Command {
         Integer ordinal;
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -227,7 +220,6 @@ public class Add extends Command {
         Response response = new Response(false,"Введите имя альбома\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -256,7 +248,6 @@ public class Add extends Command {
         response = new Response(false,"Введите длину альбома\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
-            log.info("Response sent: {}", response.getMessage());
             Request request = console.getRequest(inFromClient);
             String input = request.getMessage();
             if (input.isEmpty()) continue;
@@ -295,7 +286,7 @@ public class Add extends Command {
     @Override
     public Response execute(String[] command) {
         if (!command[1].isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         try {
             MusicBand musicBand = inputMusicBand();
             Response response =  collectionManager.addMusicBand(musicBand);

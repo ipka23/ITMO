@@ -42,25 +42,25 @@ public class Update extends Command {
         this.outToClient = outToClient;
     }
 
-
+//todo fix
     @Override
     public Response execute(String[] command) {
         if (command[1].trim().isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"\n");
+            return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         long id;
         try {
             id = Long.parseLong(command[1].trim());
         } catch (NumberFormatException e) {
-            return new Response(false, "Неверный формат id!\n");
+            return new Response(true, "Неверный формат id!");
         }
         MusicBand band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new Response(false, "В коллекции нет музыкальной группы с таким id!\n");
+            return new Response(true, "В коллекции нет музыкальной группы с таким id!");
         }
         String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
         String owner = band.getOwner();
         if (!current_user.equals(owner)) {
-            return new Response(false, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!\n");
+            return new Response(true, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
         } else {
             MusicBand newBand;
             try {
@@ -68,7 +68,7 @@ public class Update extends Command {
                 newBand = add.inputMusicBand();
                 newBand.setCreationDate(band.getCreationDate());
             } catch (InputBreakException e) {
-                return new Response(true, "Отмена ввода...\n");
+                return new Response(true, e.getMessage());
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }

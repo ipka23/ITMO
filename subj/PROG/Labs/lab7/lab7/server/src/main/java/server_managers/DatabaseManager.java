@@ -93,6 +93,13 @@ public class DatabaseManager implements DataBaseWorkable {
         collectionManager.setMusicBandsMap(musicBandHashMap);
     }
 
+    public boolean checkUserExists(String username) throws SQLException {
+        PreparedStatement ps = getConnection().prepareStatement(StatementValue.SELECT_USER.toString());
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery();
+        return rs.next();
+    }
+
     public MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
         long id = rs.getLong(1);
         String owner = rs.getString(2);
@@ -184,21 +191,17 @@ public class DatabaseManager implements DataBaseWorkable {
     }
 
 
-    public boolean validatePassword(String username, String inputPassword)  {
-        try {
-            PreparedStatement ps = connection.prepareStatement(StatementValue.SELECT_PASSWORD_AND_SALT.toString());
-            ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                byte[] hashedPassword = rs.getBytes("password");
-                String salt = rs.getString("salt");
-                byte[] inputHash = encryptPassword(inputPassword, salt);
-                return Arrays.equals(inputHash, hashedPassword);
-            }
-            throw new RuntimeException();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public boolean validatePassword(String username, String inputPassword) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement(StatementValue.SELECT_PASSWORD_AND_SALT.toString());
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            byte[] hashedPassword = rs.getBytes("password");
+            String salt = rs.getString("salt");
+            byte[] inputHash = encryptPassword(inputPassword, salt);
+            return Arrays.equals(inputHash, hashedPassword);
         }
+        return false;
     }
 
 }

@@ -32,6 +32,7 @@ public class RequestSender {
             // авторизация
             authentication(outToServer, inFromServer, userInput);
             // основная программа
+            outerLoop:
             while (true) {
                 Response prompt = getResponse(inFromServer);
                 System.out.print(prompt.getMessage());
@@ -53,18 +54,22 @@ public class RequestSender {
                 response = getResponse(inFromServer);
                 if (response == null) {
                     continue;
-                } else if (response.getExitStatus()) {
-                    System.out.print(response.getMessage());
-                    System.exit(1);
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name")) {
                     printCollection(response);
                     continue;
                 }
                 if (command.equals("add") || command.equals("update")) {
+                    /*if (response.getExitStatus()) {
+                        System.out.println(response.getMessage());
+                        continue;
+                    }*/
+                    if (response.getExitStatus()) {
+                        System.out.println(response.getMessage());
+                        continue;
+                    }
                     System.out.print(response.getMessage());
                     while (true) {
-
                         String input = userInput.nextLine();
                         sendRequest(new Request(input), outToServer);
                         response = getResponse(inFromServer);
@@ -77,6 +82,10 @@ public class RequestSender {
                 } else {
                     musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());
+                }
+                if (response.getExitStatus() && !response.getMessage().equals("Отмена ввода...")) {
+                    System.out.print(response.getMessage());
+                    System.exit(1);
                 }
 
 
@@ -113,12 +122,14 @@ public class RequestSender {
                     if (loggedIn) {
                         System.out.print("Введите пароль\n~ ");
                         String input1 = scanner.nextLine().trim();
+                        if (input1.equals("exit")) throw new ExitClientException();
                         if (input1.isEmpty()) continue;
                         password = input1;
                         sendRequest(new Request("login", new User(username, password)), outToServer);
                         Response response = getResponse(inFromServer);
                         if (!response.getExitStatus()) {
                             System.out.println(response.getMessage());
+                            continue outerLoop;
                         } else {
                             System.out.println(response.getMessage());
                             break outerLoop;
@@ -126,8 +137,12 @@ public class RequestSender {
                     } else {
                         System.out.print("Придумайте пароль\n~ ");
                         String firstInput = scanner.nextLine().trim();
+                        if (firstInput.equals("exit")) throw new ExitClientException();
+                        if (firstInput.isEmpty()) continue;
                         System.out.print("Повторите пароль\n~ ");
                         String secondInput = scanner.nextLine().trim();
+                        if (secondInput.equals("exit")) throw new ExitClientException();
+                        if (secondInput.isEmpty()) continue;
                         if (!firstInput.equals(secondInput)) {
                             System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
                             continue;
