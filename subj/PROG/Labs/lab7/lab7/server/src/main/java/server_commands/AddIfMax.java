@@ -40,10 +40,12 @@ public class AddIfMax extends Command {
     public Response execute(String[] command) {
         try {
             if (!command[1].trim().isEmpty())
-                return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+                return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
 
             MusicBand newBand = add.inputMusicBand();
-            return collectionManager.addMusicBandIfMax(newBand);
+            Response response = collectionManager.addMusicBandIfMax(newBand);
+            response.setExitStatus(true);
+            return response;
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {

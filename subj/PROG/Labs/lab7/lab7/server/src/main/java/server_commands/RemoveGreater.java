@@ -39,19 +39,29 @@ public class RemoveGreater extends Command {
 
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\""); //todo fix
         Collection<MusicBand> collection = collectionManager.getCollection();
 
         try {
             MusicBand newBand = add.inputMusicBand();
+            Response response = collectionManager.addMusicBand(newBand);
+            response.setExitStatus(true);
             Iterator<MusicBand> iterator = collection.iterator();
             if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
+            String owner = newBand.getOwner();
             while (iterator.hasNext()) {
+                String current_user;
                 if (iterator.next().getBestAlbum().getSales() > newBand.getBestAlbum().getSales()) {
-                    iterator.remove();
+                    current_user = iterator.next().getOwner();
+                    if (current_user.equals(owner)) {
+                        iterator.remove();
+                    } else iterator.next();
                 }
             }
-            return new Response(false, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома");
+            //todo
+
+            collectionManager.setCollection(collection);
+            return new Response(true, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома", collectionManager.getCollection());
         } catch (InputBreakException e) {
             return new Response(false, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {

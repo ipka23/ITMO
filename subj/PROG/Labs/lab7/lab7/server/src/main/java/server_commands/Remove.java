@@ -10,7 +10,7 @@ import server_utility.interfaces.Console;
  *
  * @author ipka23
  */
-public class RemoveByID extends Command {
+public class Remove extends Command {
     private final Console console;
     private final CollectionManager collectionManager;
 
@@ -20,7 +20,7 @@ public class RemoveByID extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public RemoveByID(Console console, CollectionManager collectionManager) {
+    public Remove(Console console, CollectionManager collectionManager) {
         super("remove id", "удалить элемент из коллекции по его id");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -40,6 +40,11 @@ public class RemoveByID extends Command {
         var band = collectionManager.getMusicBandById(id);
         if (band == null || !collectionManager.getCollection().contains(band)) {
             return new Response(false, "В коллекции нет музыкальной группы с таким id!");
+        }
+        String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
+        String owner = band.getOwner();
+        if (!current_user.equals(owner)){
+            return new Response(false, "Вы не можете удалить музыкальную группу с id = " + id + " т.к. не являетесь ее владельцем!");
         }
         collectionManager.removeByID(id);
         return new Response(false, "Музыкальная группа с id = " + id + " была удалена из коллекции!");

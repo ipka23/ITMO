@@ -72,14 +72,12 @@ public class ExecuteScript extends Command {
                 scriptFileContent.append(executionResponse.getMessage()).append("\n");
 
             }
-        } catch (FileNotFoundException e) {
-            return new Response(false, "Файл: \"" + scriptFile.getName() + "\" не найден!");
         } catch (RecursionDepthExceedException e) {
             return new Response(false, "\n" + e.getMessage());
         } catch (ExitClientException e) {
             return new Response(true, "\n" + e.getMessage());
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            return new Response(false, "Непредвиденная ошибка!");
         } finally {
             console.setScanner(new Scanner(System.in));
             console.setScriptMode(false);
@@ -137,7 +135,7 @@ public class ExecuteScript extends Command {
             else if (line.equals("add_if_max")) executionResponse = collectionManager.addMusicBandIfMax(musicBand);
 
         } catch (Exception e) {
-            return new Response(false, "Ошибка при выполнении команды add");
+            return new Response(false, "Ошибка при выполнении команды add!");
         }
         return executionResponse;
     }
@@ -149,8 +147,8 @@ public class ExecuteScript extends Command {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         }
         request = (Request) inFromClient.readObject();
+        if (!request.isFlag()) return new Response(false, "Файл \"" + request.getFileName() + "\" не найден!");
         File scriptFile = recieveScriptFile(request.getFileName());
-//        File scriptFile = request.getScriptFile();
         return runScript(scriptFile);
     }
 }

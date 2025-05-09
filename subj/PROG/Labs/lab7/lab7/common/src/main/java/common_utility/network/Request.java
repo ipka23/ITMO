@@ -21,16 +21,16 @@ public class Request implements Serializable {
     private String fileName;
     private File scriptFile;
     private User user;
+    @Getter
+    private boolean flag = true;
+
     public Request(String message) {
         this.message = message;
     }
+
     public Request(String message, User user) {
         this.message = message;
         this.user = user;
     }
 
-
-//    public Request(String arg, String command) {
-//        this.arg =
-//    }
 }

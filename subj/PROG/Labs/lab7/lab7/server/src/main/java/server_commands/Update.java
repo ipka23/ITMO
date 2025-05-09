@@ -73,8 +73,10 @@ public class Update extends Command {
                 throw new RuntimeException(e);
             }
             band.update(newBand);
+
+
             collectionManager.getDatabaseManager().updateDB(newBand, id);
-            return new Response(true, "Элемент с id = " + id + " был обновлён!\n");
+            return new Response(true, "Элемент с id = " + id + " был обновлён!", collectionManager.getCollection());
         }
     }
 }

@@ -12,11 +12,12 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.Socket;
-import java.sql.SQLOutput;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 
 public class RequestSender {
@@ -36,8 +37,11 @@ public class RequestSender {
             while (true) {
                 Response prompt = getResponse(inFromServer);
                 System.out.print(prompt.getMessage());
-
                 String message = userInput.nextLine().trim();
+
+
+
+
 
                 command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
                 arg = (message + " ").split(" ", 2)[1].trim();
@@ -45,6 +49,18 @@ public class RequestSender {
                 request = new Request(message);
                 sendRequest(request, outToServer);
 
+
+                if (command.equals("show_scripts")) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("=====================\n: Доступные скрипты :\n=====================\n");
+                    try (Stream<Path> files = Files.walk(Path.of("src\\main\\resources"))){
+                        files.skip(1).forEach(file -> sb.append(file.getFileName()).append("\n"));
+                        System.out.println(sb.substring(0, sb.toString().lastIndexOf("\n")));
+
+                    }catch (IOException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
 
                 if (command.equals("execute_script")) {
                     FileSender.sendScriptFile(arg, outToServer);
@@ -57,9 +73,8 @@ public class RequestSender {
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name")) {
                     printCollection(response);
-                    continue;
                 }
-                if (command.equals("add") || command.equals("update")) {
+                else if (command.startsWith("add") || command.equals("update") || command.equals("remove_greater")) {
                     /*if (response.getExitStatus()) {
                         System.out.println(response.getMessage());
                         continue;
@@ -77,15 +92,16 @@ public class RequestSender {
                             System.out.println(response.getMessage());
                             break;
                         } else System.out.print(response.getMessage());
-
                     }
-                } else {
                     musicBandsCollection = response.getMusicBandsCollection();
-                    System.out.println(response.getMessage());
                 }
-                if (response.getExitStatus() && !response.getMessage().equals("Отмена ввода...")) {
+                else if (response.getExitStatus()/* && !response.getMessage().equals("Отмена ввода...")*/) {
                     System.out.print(response.getMessage());
                     System.exit(1);
+                }
+                else {
+                    musicBandsCollection = response.getMusicBandsCollection();
+                    System.out.println(response.getMessage());
                 }
 
 

@@ -290,7 +290,7 @@ public class Add extends Command {
         try {
             MusicBand musicBand = inputMusicBand();
             Response response =  collectionManager.addMusicBand(musicBand);
-            response.setExitStatus(true);
+            response.setExitStatus(true); // конец ввода банды
             return response;
         } catch (InputBreakException | IOException e) {
             return new Response(true, e.getMessage());
