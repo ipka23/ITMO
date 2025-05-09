@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.slf4j.Logger;
 import server_commands.*;
 import server_utility.Command;
 import server_utility.Invoker;
@@ -46,7 +45,8 @@ public class CommandManager {
         commandsMap.put("info", new Info(console, collectionManager));
         commandsMap.put("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
         commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
-        commandsMap.put("remove_by_id", new RemoveByID(console, collectionManager));
+        commandsMap.put("remove", new Remove(console, collectionManager));
         commandsMap.put("show", new Show(console, collectionManager));
+//        commandsMap.put("show_scripts", new ShowScripts());
     }
 }

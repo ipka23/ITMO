@@ -1,14 +1,14 @@
 package network;
 
 import common_utility.network.Request;
-import common_utility.network.Response;
 
+import java.awt.desktop.PreferencesEvent;
 import java.io.*;
 
 public class FileSender {
 
 
-    public static void sendScriptFile(String filename, ObjectOutputStream outToServer) {
+    public static void sendScriptFile(String filename, ObjectOutputStream outToServer) throws IOException {
         File scriptFile = new File(filename);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) {
             StringBuilder scriptContent = new StringBuilder();
@@ -23,8 +23,15 @@ public class FileSender {
             outToServer.writeObject(request);
             outToServer.flush();
         } catch (FileNotFoundException e) {
-            System.out.println("Файл \"" + filename + "\" не найден!");
-//            System.exit(1);
+
+            Request request = new Request();
+            request.setFlag(false);
+            request.setFileName(filename);
+            request.setScriptFile(scriptFile);
+
+            outToServer.writeObject(request);
+            outToServer.flush();
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -7,6 +7,7 @@ import server_utility.consoles.ClientConsole;
 import server_managers.DatabaseManager;
 import server_managers.UserManager;
 
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -15,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Server {
-
+//todo fix update, remove, max_by_best_album, сделать потокобезопасную коллекцию
     public int PORT = 1232;
     private Socket clientSocket;
 //    private ObjectInputStream inFromClient;
@@ -83,7 +84,7 @@ public class Server {
 
 
     public void connect() {
-        try (Scanner scanner = new Scanner(new FileReader("src/test/resources/credentials.txt"))) {
+        try (Scanner scanner = new Scanner(new FileReader("src\\test\\resources\\credentials.txt"))) {/*"D:\\ITMO\\subj\\PROG\\Labs\\lab7\\lab7\\server\\src\\test\\resources\\credentials.txt"*/
             String DB_USERNAME = "";
             String DB_URL = "jdbc:postgresql://localhost:15432/studs";
             String DB_PASSWORD = "";

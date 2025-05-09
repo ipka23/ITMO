@@ -38,10 +38,13 @@ public class AddIfMin extends Command {
     @Override
     public Response execute(String[] command) {
         try {
-            if (!command[1].isEmpty())
-                return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            if (!command[1].isEmpty()) {
+                return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+            }
             MusicBand newBand = add.inputMusicBand();
-            return collectionManager.addMusicBandIfMin(newBand);
+            Response response = collectionManager.addMusicBandIfMin(newBand);
+            response.setExitStatus(true);
+            return response;
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {
