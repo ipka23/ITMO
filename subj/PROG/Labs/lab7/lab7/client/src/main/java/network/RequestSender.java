@@ -188,6 +188,9 @@ public class RequestSender {
         if (message.equals("max_by_best_album")){
             System.out.println("========================================================================\n: Музыкальная группа с максимальным количеством продаж лучшего альбома :\n========================================================================");
         }
+        if (message.startsWith("Нет MusicBands у которых имя начинается с ")) {
+            System.out.println(message);
+        }
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
             System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы", "Название группы", "Лучший альбом", "Количество продаж");
             System.out.println("-" + "-".repeat(15) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(20) + "-");
