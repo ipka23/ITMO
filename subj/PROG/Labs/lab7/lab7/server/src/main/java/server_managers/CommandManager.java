@@ -47,6 +47,6 @@ public class CommandManager {
         commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
         commandsMap.put("remove", new Remove(console, collectionManager));
         commandsMap.put("show", new Show(console, collectionManager));
-//        commandsMap.put("show_scripts", new ShowScripts());
+        commandsMap.put("show_scripts", new ShowScripts());
     }
 }

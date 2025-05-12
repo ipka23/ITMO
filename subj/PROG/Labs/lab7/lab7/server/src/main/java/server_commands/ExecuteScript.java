@@ -14,9 +14,7 @@ import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.RecursionDepthExceedException;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ExecuteScript extends Command {
@@ -27,8 +25,8 @@ public class ExecuteScript extends Command {
     private ObjectInputStream inFromClient;
     private ObjectOutputStream outToClient;
     private Request request;
-    private String scriptContent;
     private CollectionManager collectionManager;
+    private String innerFile;
 
 
     public ExecuteScript(ClientConsole console, Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
@@ -51,7 +49,7 @@ public class ExecuteScript extends Command {
         }
 
         StringBuilder scriptFileContent = new StringBuilder();
-        scriptFileContent.append("--------------------------------История выполнения скрипта \"").append(scriptFile.getName()).append("\" --------------------------------\n");
+        scriptFileContent.append("=================================\n: История выполнения скрипта \"").append(scriptFile.getName()).append("\":\n=================================\n");
 
         try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
             console.setScanner(fileScanner);
@@ -64,6 +62,10 @@ public class ExecuteScript extends Command {
 
                 Response executionResponse;
                 String[] command = (line + " ").split(" ", 2);
+                if (line.startsWith("execute")) {
+                    innerFile = line.split(" ")[1];
+                    scriptFileContent.append(runScript(new File(innerFile)).getMessage()).append("\n");
+                }
                 if (line.startsWith("add")){
                     executionResponse = executeAdd(fileScanner, line);
                 } else {

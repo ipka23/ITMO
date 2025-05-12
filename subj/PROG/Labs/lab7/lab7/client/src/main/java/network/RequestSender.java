@@ -38,10 +38,6 @@ public class RequestSender {
                 System.out.print(prompt.getMessage());
                 String message = userInput.nextLine().trim();
 
-
-
-
-
                 command = (message + " ").split(" ", 2)[0].trim().toLowerCase();
                 arg = (message + " ").split(" ", 2)[1].trim();
 
@@ -52,11 +48,11 @@ public class RequestSender {
                 if (command.equals("show_scripts")) {
                     StringBuilder sb = new StringBuilder();
                     sb.append("=====================\n: Доступные скрипты :\n=====================\n");
-                    try (Stream<Path> files = Files.walk(Path.of("src\\main\\resources"))){
+                    try (Stream<Path> files = Files.walk(Path.of("sr/main/resources"))) {
                         files.skip(1).forEach(file -> sb.append(file.getFileName()).append("\n"));
                         System.out.println(sb.substring(0, sb.toString().lastIndexOf("\n")));
 
-                    }catch (IOException e){
+                    } catch (IOException e) {
                         System.out.println(e.getMessage());
                     }
                 }
@@ -72,12 +68,7 @@ public class RequestSender {
                 }
                 if (command.equals("show") || command.equals("filter_starts_with_name") || command.equals("max_by_best_album")) {
                     printCollection(response);
-                }
-                else if (command.startsWith("add") || command.equals("update") || command.equals("remove_greater")) {
-                    /*if (response.getExitStatus()) {
-                        System.out.println(response.getMessage());
-                        continue;
-                    }*/
+                } else if (command.startsWith("add") || command.equals("update") || command.equals("remove_greater")) {
                     if (response.getExitStatus()) {
                         System.out.println(response.getMessage());
                         continue;
@@ -96,12 +87,10 @@ public class RequestSender {
                             System.out.print(response.getMessage());
                         }
                     }
-                }
-                else if (response.getExitStatus()/* && !response.getMessage().equals("Отмена ввода...")*/) {
+                } else if (response.getExitStatus()/* && !response.getMessage().equals("Отмена ввода...")*/) {
                     System.out.print(response.getMessage());
                     System.exit(1);
-                }
-                else {
+                } else {
 //                    musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());
                 }
@@ -185,11 +174,8 @@ public class RequestSender {
     public static void printCollection(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
         String message = response.getMessage();
-        if (message.equals("max_by_best_album")){
+        if (message.equals("max_by_best_album")) {
             System.out.println("========================================================================\n: Музыкальная группа с максимальным количеством продаж лучшего альбома :\n========================================================================");
-        }
-        if (message.startsWith("Нет MusicBands у которых имя начинается с ")) {
-            System.out.println(message);
         }
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
             System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы", "Название группы", "Лучший альбом", "Количество продаж");

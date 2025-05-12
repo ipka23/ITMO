@@ -10,7 +10,8 @@ public class FileSender {
 
     public static void sendScriptFile(String filename, ObjectOutputStream outToServer) throws IOException {
         File scriptFile = new File(filename);
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(scriptFile))) {
+        if (filename.isEmpty()) return;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/" + filename.trim()))) {
             StringBuilder scriptContent = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
