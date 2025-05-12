@@ -84,7 +84,7 @@ public class Server {
 
 
     public void connect() {
-        try (Scanner scanner = new Scanner(new FileReader("src\\test\\resources\\credentials.txt"))) {/*"D:\\ITMO\\subj\\PROG\\Labs\\lab7\\lab7\\server\\src\\test\\resources\\credentials.txt"*/
+        try (Scanner scanner = new Scanner(new FileReader("src/test/resources/1credentials.txt"))) {/*"D:\\ITMO\\subj\\PROG\\Labs\\lab7\\lab7\\server\\src\\test\\resources\\credentials.txt"*/
             String DB_USERNAME = "";
             String DB_URL = "jdbc:postgresql://localhost:15432/studs";
             String DB_PASSWORD = "";
