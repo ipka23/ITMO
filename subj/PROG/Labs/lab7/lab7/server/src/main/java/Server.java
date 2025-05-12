@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Server {
-//todo fix update, remove, max_by_best_album, сделать потокобезопасную коллекцию
+//todo fix  max_by_best_album
     public int PORT = 1232;
     private Socket clientSocket;
 //    private ObjectInputStream inFromClient;

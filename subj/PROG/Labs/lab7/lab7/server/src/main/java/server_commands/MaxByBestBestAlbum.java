@@ -6,6 +6,9 @@ import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  * Данный класс отвечает за выполнение команды "max_by_best_album"
  *
@@ -33,9 +36,8 @@ public class MaxByBestBestAlbum extends Command {
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         MusicBand bestBand;
         bestBand = collectionManager.getMax();
-        StringBuilder message = new StringBuilder();
-        message.append("Музыкальная группа с максимальным количеством продаж лучшего альбома:").append("\n");
-        message.append(bestBand.toString());
-        return new Response(false, message.toString());
+        Collection<MusicBand> newCollection = new HashSet<>();
+        newCollection.add(bestBand);
+        return new Response(false, "max_by_best_album", newCollection);
     }
 }

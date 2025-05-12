@@ -22,7 +22,6 @@ import java.util.stream.Stream;
 
 public class RequestSender {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
-    private Logger logger = LoggerFactory.getLogger("RequestSender");
 
     public static void sendMessage(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner userInput) {
         Response response;
@@ -62,7 +61,7 @@ public class RequestSender {
                     }
                 }
 
-                if (command.equals("execute_script")) {
+                if (command.equals("execute")) {
                     FileSender.sendScriptFile(arg, outToServer);
                 }
 
@@ -71,7 +70,7 @@ public class RequestSender {
                 if (response == null) {
                     continue;
                 }
-                if (command.equals("show") || command.equals("filter_starts_with_name")) {
+                if (command.equals("show") || command.equals("filter_starts_with_name") || command.equals("max_by_best_album")) {
                     printCollection(response);
                 }
                 else if (command.startsWith("add") || command.equals("update") || command.equals("remove_greater")) {
@@ -89,22 +88,23 @@ public class RequestSender {
                         sendRequest(new Request(input), outToServer);
                         response = getResponse(inFromServer);
                         if (response.getExitStatus()) {
+                            musicBandsCollection = response.getMusicBandsCollection();
                             System.out.println(response.getMessage());
                             break;
-                        } else System.out.print(response.getMessage());
+                        } else {
+                            musicBandsCollection = response.getMusicBandsCollection();
+                            System.out.print(response.getMessage());
+                        }
                     }
-                    musicBandsCollection = response.getMusicBandsCollection();
                 }
                 else if (response.getExitStatus()/* && !response.getMessage().equals("Отмена ввода...")*/) {
                     System.out.print(response.getMessage());
                     System.exit(1);
                 }
                 else {
-                    musicBandsCollection = response.getMusicBandsCollection();
+//                    musicBandsCollection = response.getMusicBandsCollection();
                     System.out.println(response.getMessage());
                 }
-
-
 
             }
         } catch (Exception e) {
@@ -184,6 +184,10 @@ public class RequestSender {
 
     public static void printCollection(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
+        String message = response.getMessage();
+        if (message.equals("max_by_best_album")){
+            System.out.println("========================================================================\n: Музыкальная группа с максимальным количеством продаж лучшего альбома :\n========================================================================");
+        }
         if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
             System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы", "Название группы", "Лучший альбом", "Количество продаж");
             System.out.println("-" + "-".repeat(15) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(20) + "-");

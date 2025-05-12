@@ -74,7 +74,6 @@ public class Update extends Command {
             }
             band.update(newBand);
 
-
             collectionManager.getDatabaseManager().updateDB(newBand, id);
             return new Response(true, "Элемент с id = " + id + " был обновлён!", collectionManager.getCollection());
         }

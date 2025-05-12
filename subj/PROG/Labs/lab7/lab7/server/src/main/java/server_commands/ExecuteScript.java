@@ -32,7 +32,7 @@ public class ExecuteScript extends Command {
 
 
     public ExecuteScript(ClientConsole console, Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
-        super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
+        super("execute file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
         this.console = console;
         this.invoker = invoker;
         this.inFromClient = inFromClient;

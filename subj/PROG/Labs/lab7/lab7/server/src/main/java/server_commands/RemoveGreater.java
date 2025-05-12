@@ -3,13 +3,18 @@ package server_commands;
 import common_entities.MusicBand;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
+import server_managers.DatabaseManager;
 import server_utility.Command;
 import server_utility.consoles.ClientConsole;
+import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -41,31 +46,27 @@ public class RemoveGreater extends Command {
         if (!command[1].trim().isEmpty())
             return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\""); //todo fix
         Collection<MusicBand> collection = collectionManager.getCollection();
-
-        try {
+        DatabaseManager dbManager = collectionManager.getDatabaseManager();
+        Connection connection = dbManager.getConnection();
+        try (PreparedStatement ps = connection.prepareStatement(StatementValue.REMOVE_BANDS.toString())) {
             MusicBand newBand = add.inputMusicBand();
+            String owner = newBand.getOwner();
             Response response = collectionManager.addMusicBand(newBand);
             response.setExitStatus(true);
-            Iterator<MusicBand> iterator = collection.iterator();
             if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
-            String owner = newBand.getOwner();
-            while (iterator.hasNext()) {
-                String current_user;
-                if (iterator.next().getBestAlbum().getSales() > newBand.getBestAlbum().getSales()) {
-                    current_user = iterator.next().getOwner();
-                    if (current_user.equals(owner)) {
-                        iterator.remove();
-                    } else iterator.next();
-                }
-            }
-            //todo
+            ps.setString(1, owner);
+            ps.setDouble(2, newBand.getBestAlbum().getSales());
+            ps.executeUpdate();
 
-            collectionManager.setCollection(collection);
+            dbManager.loadCollectionFromDB();
+
             return new Response(true, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома", collectionManager.getCollection());
         } catch (InputBreakException e) {
             return new Response(false, e.getMessage());
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            return new Response(false, "Ошибка: " + e.getMessage());
         }
     }
 }

@@ -30,5 +30,3 @@ CREATE TABLE IF NOT EXISTS MusicBands(
     album_length BIGINT,
     album_sales DOUBLE PRECISION
                                      );
-
---todo добавить проверки CHECK в MusicBands и заменить genre на еnum

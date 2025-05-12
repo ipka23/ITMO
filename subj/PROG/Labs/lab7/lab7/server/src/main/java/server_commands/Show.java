@@ -34,6 +34,7 @@ public class Show extends Command {
     public Response execute(String[] command) {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
+        collectionManager.getDatabaseManager().loadCollectionFromDB();
         Collection<MusicBand> collection = collectionManager.getCollection();
         collection = collection.stream().sorted(Comparator.comparing(MusicBand::getId)).toList();
         return new Response(false, collectionManager.toString(), collection);
