@@ -1,12 +1,12 @@
 org 0x0ff
 
 ; ячейки для хранения результата теста 1 - успешно 0 - ошибка
-check1: word 0x0
-check2: word 0x0
-check3: word 0x0
+check1: word 0xffff
+check2: word 0xffff
+check3: word 0xffff
 
 ; ячейка для хранения результата всех тестов 1 - все были выполненны успешно 0 - не все были выполненны успешно
-check_all: word 0x1
+check_all: word 0xffff
 
 ; переменные для проверки SHL
 t1: word 0xffff ; shl(ffff) = fffe
