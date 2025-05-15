@@ -39,3 +39,20 @@ m2:
   word 0xfff4 ; -12
 m3:
   word 0x007e ; 126
+
+
+
+
+min: word 0x8000
+x: word 0xffff
+ld min
+cmp x
+bge stop
+cla
+st x
+hlt
+
+stop:
+ld #0x1
+st x
+hlt
