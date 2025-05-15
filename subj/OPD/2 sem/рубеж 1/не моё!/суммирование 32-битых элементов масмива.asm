@@ -1,0 +1,36 @@
+ORG 0x00
+RESULT: WORD 0x0000, 0x0000 ; 0x0, 0x1
+RESULT_ADDR: WORD 0x0
+
+ARR:
+WORD 0xFFFE, 0xFFFF
+WORD 0x0001, 0x0001
+WORD 0xFFFE, 0xFFFF
+WORD 0x0001, 0x0001
+WORD 0xFFFE, 0xFFFF
+
+
+COUNTER: WORD 0x005
+POINTER: WORD $ARR
+
+
+START:
+
+ARR_LOOP:
+LD (POINTER)+
+LD (RESULT_ADDR)+
+
+LD (POINTER) ; Загрузили младший байт
+ADD (RESULT_ADDR) ; Добавили младший байт результата
+ST (RESULT_ADDR)
+
+LD -(POINTER) ; Загрузили старший байт
+ADC -(RESULT_ADDR) ; Добавили старший байт результата
+ST (RESULT_ADDR)
+
+LD (POINTER)+
+LD (POINTER)+
+
+LOOP $COUNTER
+JUMP $ARR_LOOP
+HLT
