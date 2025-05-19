@@ -98,7 +98,7 @@ public class RequestSender {
         }
     }
 
-    private static void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner scanner) {
+    public static void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner scanner) {
         String username;
         String password;
         boolean loggedIn;
@@ -193,12 +193,12 @@ public class RequestSender {
         }
     }
 
-    private static void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
+    public static void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
         outToServer.writeObject(r);
         outToServer.flush();
     }
 
-    private static Response getResponse(ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
+    public static Response getResponse(ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
         return (Response) inFromServer.readObject();
     }
 
