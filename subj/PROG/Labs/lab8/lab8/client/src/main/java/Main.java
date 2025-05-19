@@ -16,8 +16,7 @@ public class Main {
             Runner.run(client);
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             socket.close();
         }
     }
