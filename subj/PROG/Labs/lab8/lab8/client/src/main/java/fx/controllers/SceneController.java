@@ -23,6 +23,7 @@ import network.RequestSender;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ResourceBundle;
 
 public class SceneController {
     private Stage stage;
@@ -31,7 +32,7 @@ public class SceneController {
     private RequestSender rs;
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
-
+//    private ResourceBundle r = ResourceBundle.getBundle("GuiLabels");
     @FXML
     private TextField usernameLogIn;
     @FXML
