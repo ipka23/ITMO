@@ -12,13 +12,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import lombok.NoArgsConstructor;
 import network.RequestSender;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.security.Key;
 
+@NoArgsConstructor
 public class SceneController {
     private Stage stage;
     private Scene scene;
@@ -43,9 +47,10 @@ public class SceneController {
 
     @FXML
     public void onLoginButtonClick(ActionEvent event) throws IOException {
-        String username = usernameLogIn.getText();
-        String password = logInPassword.getText();
-        RequestSender.sendRequest(new Request("login", new User(username, password)), outToServer);
+//        String username = usernameLogIn.getText();
+//        String password = logInPassword.getText();
+//        System.out.printf("%s %s", username, password);
+//        RequestSender.sendRequest(new Request("login", new User(username, password)), outToServer);
         root = FXMLLoader.load(getClass().getResource("/fx/login.fxml"));
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
@@ -56,9 +61,11 @@ public class SceneController {
 
     @FXML
     public void onRegisterButtonClick(ActionEvent event) throws IOException {
-        String username = usernameRegister.getText();
-        String password_1 = registerPassword_1.getText();
-        String password_2 = registerPassword_2.getText();
+//        String username = usernameRegister.getText();
+//        String password_1 = registerPassword_1.getText();
+//        String password_2 = registerPassword_2.getText();
+//        System.out.printf("%s %s %s", username, password_1, password_2);
+//        registerPassword_1.getOnKeyPressed().handle;
         root = FXMLLoader.load(getClass().getResource("/fx/register.fxml"));
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
