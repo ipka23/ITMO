@@ -3,11 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="334.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
+<AnchorPane prefHeight="334.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
    <children>
       <Label layoutX="187.0" layoutY="100.0" text="Имя пользователя" />
-      <TextField fx:id="usernameLogIn" layoutX="163.0" layoutY="123.0" />
+      <TextField fx:id="usernameLogIn" layoutX="164.0" layoutY="124.0" />
       <PasswordField fx:id="logInPassword" layoutX="164.0" layoutY="183.0" />
-      <Label layoutX="217.0" layoutY="159.0" text="Пароль" />
+      <Label layoutX="216.0" layoutY="159.0" text="Пароль" />
+      <Button fx:id="backFromLogInButton" layoutX="404.0" layoutY="276.0" mnemonicParsing="false" onAction="#backFromLogin" text="Назад" />
+      <Button fx:id="completeLoginButton" layoutX="212.0" layoutY="221.0" mnemonicParsing="false" onAction="#completeLogin" text="Войти" />
+      <Label fx:id="logInMessage" layoutX="109.0" layoutY="71.0" prefHeight="17.0" prefWidth="256.0" />
    </children>
 </AnchorPane>

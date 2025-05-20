@@ -8,6 +8,6 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Button fx:id="logIn" onAction="#onLoginButtonClick" prefHeight="34.0" prefWidth="85.0" text="Войти" />
-   <Button fx:id="reg" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="35.0" prefWidth="169.0" text="Зарегистрироваться" />
+    <Button fx:id="logInButton" onAction="#onLoginButtonClick" prefHeight="34.0" prefWidth="85.0" text="Войти" />
+   <Button fx:id="registerButton" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="35.0" prefWidth="169.0" text="Зарегистрироваться" />
 </VBox>

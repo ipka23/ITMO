@@ -1,8 +1,8 @@
+import fx.controllers.SceneController;
 import network.Client;
 import network.RequestSender;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Runner {
 
@@ -12,13 +12,15 @@ public class Runner {
             outToServer.flush();
 
             ObjectInputStream inFromServer = new ObjectInputStream(new BufferedInputStream(client.getSocket().getInputStream()));
+            RequestSender requestSender = new RequestSender(outToServer, inFromServer);
+            SceneController sceneController = new SceneController();
+            sceneController.setRequestSender(requestSender);
 
-            Scanner userInput = new Scanner(System.in);
 
-            RequestSender.sendMessage(outToServer, inFromServer, userInput);
+            requestSender.authentication(outToServer, inFromServer);
+            requestSender.sendMessage();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
         }
     }
 }
