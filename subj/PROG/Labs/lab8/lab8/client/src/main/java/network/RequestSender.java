@@ -5,6 +5,9 @@ import common_utility.database.User;
 import common_utility.exceptions.ExitClientException;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import fx.controllers.SceneController;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,21 +19,31 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-
+@Getter
+@Setter
 public class RequestSender {
     private static Collection<MusicBand> musicBandsCollection = new HashSet<>();
 
-    public static void sendMessage(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner userInput) {
+    private ObjectOutputStream outToServer;
+    private ObjectInputStream inFromServer;
+
+    public RequestSender(ObjectOutputStream outToServer, ObjectInputStream inFromServer) throws IOException {
+//        authentication(outToServer, inFromServer);
+//        sendMessage();
+        this.outToServer = outToServer;
+        this.inFromServer = inFromServer;
+    }
+    public void sendMessage() throws IOException {
+
         Response response;
         Request request;
         String command;
         String arg;
         try {
-            // авторизация
-            authentication(outToServer, inFromServer, userInput);
+
             // основная программа
-            outerLoop:
-            while (true) {
+
+            /*while (true) {
                 Response prompt = getResponse(inFromServer);
                 System.out.print(prompt.getMessage());
                 String message = userInput.nextLine().trim();
@@ -84,7 +97,7 @@ public class RequestSender {
                             System.out.print(response.getMessage());
                         }
                     }
-                } else if (response.getExitStatus()/* && !response.getMessage().equals("Отмена ввода...")*/) {
+                } else if (response.getExitStatus()*//* && !response.getMessage().equals("Отмена ввода...")*//*) {
                     System.out.print(response.getMessage());
                     System.exit(1);
                 } else {
@@ -92,75 +105,33 @@ public class RequestSender {
                     System.out.println(response.getMessage());
                 }
 
-            }
+            }*/
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer, Scanner scanner) {
-        String username;
-        String password;
-        boolean loggedIn;
+    public void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer) {
+        String username = "";
+        String password = "";
         try {
             while (true) {
-                System.out.print("=====================\n: Добро пожаловать! :\n=====================\nДля входа/регистрации введите - (1/2)\n~ ");
-                String input = scanner.nextLine().trim();
-                if (input.equals("exit")) throw new ExitClientException();
-                else if (input.isEmpty()) continue;
-                else if (input.equals("1")) loggedIn = true;
-                else if (input.equals("2")) loggedIn = false;
-                else continue;
-                break;
-            }
-            outerLoop:
-            while (true) {
-                System.out.print("Введите имя пользователя\n~ ");
-                String input = scanner.nextLine().trim();
-                if (input.equals("exit")) throw new ExitClientException();
-                else if (input.isEmpty()) continue;
-                username = input;
-                while (true) {
-                    if (loggedIn) {
-                        System.out.print("Введите пароль\n~ ");
-                        String input1 = scanner.nextLine().trim();
-                        if (input1.equals("exit")) throw new ExitClientException();
-                        if (input1.isEmpty()) continue;
-                        password = input1;
                         sendRequest(new Request("login", new User(username, password)), outToServer);
                         Response response = getResponse(inFromServer);
                         if (!response.getExitStatus()) {
                             System.out.println(response.getMessage());
-                            continue outerLoop;
-                        } else {
-                            System.out.println(response.getMessage());
-                            break outerLoop;
-                        }
-                    } else {
-                        System.out.print("Придумайте пароль\n~ ");
-                        String firstInput = scanner.nextLine().trim();
-                        if (firstInput.equals("exit")) throw new ExitClientException();
-                        if (firstInput.isEmpty()) continue;
-                        System.out.print("Повторите пароль\n~ ");
-                        String secondInput = scanner.nextLine().trim();
-                        if (secondInput.equals("exit")) throw new ExitClientException();
-                        if (secondInput.isEmpty()) continue;
-                        if (!firstInput.equals(secondInput)) {
-                            System.out.print("Пароли не совпадают;\nВведите пароль снова!\n");
                             continue;
-                        }
-                        password = secondInput;
-                        sendRequest(new Request("register", new User(username, password)), outToServer);
-                        Response response = getResponse(inFromServer);
-                        if (!response.getExitStatus()) {
-                            System.out.println(response.getMessage());
-                            continue outerLoop;
                         } else {
                             System.out.println(response.getMessage());
-                            break outerLoop;
+                            break;
                         }
-                    }
-                }
+//                        sendRequest(new Request("register", new User(username, password)), outToServer);
+//                        Response response1 = getResponse(inFromServer);
+//                        if (!response.getExitStatus()) {
+//                            System.out.println(response.getMessage());
+//                        } else {
+//                            System.out.println(response.getMessage());
+//                        }
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -168,7 +139,7 @@ public class RequestSender {
     }
 
 
-    public static void printCollection(Response response) {
+    public void printCollection(Response response) {
         musicBandsCollection = response.getMusicBandsCollection();
         String message = response.getMessage();
         if (message.equals("max_by_best_album")) {
@@ -193,12 +164,12 @@ public class RequestSender {
         }
     }
 
-    public static void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
+    public void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
         outToServer.writeObject(r);
         outToServer.flush();
     }
 
-    public static Response getResponse(ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
+    public Response getResponse(ObjectInputStream inFromServer) throws IOException, ClassNotFoundException {
         return (Response) inFromServer.readObject();
     }
 

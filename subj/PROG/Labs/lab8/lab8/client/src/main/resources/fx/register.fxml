@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
    <children>
       <TextField fx:id="usernameRegister" layoutX="206.0" layoutY="145.0" />
       <PasswordField fx:id="registerPassword_1" layoutX="206.0" layoutY="200.0" />
@@ -11,5 +11,8 @@
       <Label layoutX="208.0" layoutY="121.0" text="Введите имя пользователя" />
       <Label layoutX="237.0" layoutY="176.0" text="Введите пароль" />
       <Label layoutX="224.0" layoutY="236.0" text="Подтвердите пароль" />
+      <Button layoutX="508.0" layoutY="343.0" mnemonicParsing="false" onAction="#backFromRegister" text="Назад" />
+      <Button fx:id="completeRegisterButton" layoutX="217.0" layoutY="296.0" mnemonicParsing="false" onAction="#completeRegister" text="Зарегистрироваться" />
+      <Label fx:id="registerMessage" layoutX="133.0" layoutY="74.0" prefHeight="17.0" prefWidth="335.0" AnchorPane.bottomAnchor="309.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="74.0" />
    </children>
 </AnchorPane>
