@@ -1,6 +1,7 @@
 package server_managers;
 
 
+import common_utility.localization.LanguageManager;
 import common_utility.network.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +11,7 @@ import org.slf4j.LoggerFactory;
 import common_utility.database.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @AllArgsConstructor
 @Getter
@@ -24,6 +22,7 @@ public class UserManager {
     private long freeId;
     private DatabaseManager dbManager;
     private Logger log = LoggerFactory.getLogger("UserManager");
+    private ResourceBundle r;
 
     public UserManager(DatabaseManager dbManager) {
         this.dbManager = dbManager;
@@ -56,11 +55,12 @@ public class UserManager {
     }
 
     public Response logInUser(User user) {
+        r = ResourceBundle.getBundle("strings", user.getLocale());
         try {
             if (dbManager.checkUserExists(user.getUsername())) {
                 dbManager.setUser(user);
                 if (dbManager.validatePassword(user.getUsername(), user.getPassword())) {
-                    return new Response(true, "Вход выполнен!");
+                    return new Response(true, r.getString("successLogin"));
                 } else {
                     return new Response(false, "Неверный пароль!");
                 }
@@ -72,7 +72,5 @@ public class UserManager {
             return new Response(false, "Ошибка входа: " + e.getMessage());
         }
     }
-
-
 
 }

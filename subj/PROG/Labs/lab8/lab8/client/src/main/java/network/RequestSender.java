@@ -2,22 +2,17 @@ package network;
 
 import common_entities.MusicBand;
 import common_utility.database.User;
-import common_utility.exceptions.ExitClientException;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
-import fx.controllers.SceneController;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Scanner;
-import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -116,7 +111,7 @@ public class RequestSender {
         String password = "";
         try {
             while (true) {
-                        sendRequest(new Request("login", new User(username, password)), outToServer);
+                        sendRequest(new Request("login", new User(username, password, LanguageManager.getBundle().getLocale())), outToServer);
                         Response response = getResponse(inFromServer);
                         if (!response.getExitStatus()) {
                             System.out.println(response.getMessage());

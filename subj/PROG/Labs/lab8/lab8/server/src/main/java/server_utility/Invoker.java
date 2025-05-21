@@ -11,13 +11,12 @@ import java.io.IOException;
 public class Invoker implements Executable {
     private CommandManager commandManager;
     private Console console;
+
     public Invoker(CommandManager commandManager, Console console) {
         this.commandManager = commandManager;
         this.console = console;
     }
 
-    public Invoker() {
-    }
 
     public void setCommandManager(CommandManager commandManager) {
         this.commandManager = commandManager;

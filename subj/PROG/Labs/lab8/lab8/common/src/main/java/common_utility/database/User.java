@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Getter
 @Setter
@@ -14,10 +16,11 @@ public class User implements Serializable {
     private long id;
     private String username;
     private String password;
-
-    public User(String username, String password) {
+    private Locale locale;
+    public User(String username, String password, Locale locale) {
         this.username = username;
         this.password = password;
+        this.locale = locale;
     }
 
     @Override

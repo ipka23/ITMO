@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fx.controllers.SceneController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
+   <left>
+      <ScrollPane maxHeight="500" maxWidth="1918.0" prefHeight="375.0" prefWidth="1112.0" BorderPane.alignment="CENTER">
+         <content>
+            <TreeTableView fx:id="treeTable" maxHeight="500" maxWidth="1857.0">
+              <columns>
+                <TreeTableColumn fx:id="id" prefWidth="32.0" text="ID" />
+                <TreeTableColumn fx:id="owner" prefWidth="69.0" text="Владелец" />
+                  <TreeTableColumn fx:id="name" prefWidth="146.0" text="Название" />
+                  <TreeTableColumn fx:id="coordinates_x" minWidth="0.0" prefWidth="91.0" text="координата X" />
+                  <TreeTableColumn fx:id="coordinates_y" prefWidth="96.0" text="координата Y" />
+                  <TreeTableColumn fx:id="creationdate" prefWidth="118.0" text="Дата создания" />
+                  <TreeTableColumn fx:id="numberofparticipants" prefWidth="159.0" text="Количество участников" />
+                  <TreeTableColumn fx:id="singlescount" minWidth="0.0" prefWidth="134.0" text="Количество синглов" />
+                  <TreeTableColumn fx:id="establishmentdate" minWidth="0.0" prefWidth="114.0" text="Дата основания" />
+                  <TreeTableColumn fx:id="genre" minWidth="0.0" prefWidth="153.0" text="Жанр" />
+                  <TreeTableColumn fx:id="album_name" prefWidth="223.0" text="Название альбома" />
+                  <TreeTableColumn fx:id="album_tracks" minWidth="0.0" prefWidth="189.0" text="Количество треков в альбоме" />
+                  <TreeTableColumn fx:id="album_length" minWidth="0.0" prefWidth="146.0" text="Длина альбома" />
+                  <TreeTableColumn fx:id="album_sales" prefWidth="177.0" text="Количество продаж" />
+              </columns>
+            </TreeTableView>
+         </content></ScrollPane>
+   </left>
+   <top>
+      <ComboBox fx:id="languageBox" prefWidth="150.0" BorderPane.alignment="TOP_LEFT" />
+   </top>
+</BorderPane>

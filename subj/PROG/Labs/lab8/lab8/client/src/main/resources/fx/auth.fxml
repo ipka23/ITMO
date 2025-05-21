@@ -4,10 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="194.0" prefWidth="248.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
+<VBox alignment="CENTER" prefHeight="329.0" prefWidth="461.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.SceneController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <Button fx:id="logInButton" onAction="#onLoginButtonClick" prefHeight="34.0" prefWidth="85.0" text="Войти" />
-   <Button fx:id="registerButton" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="35.0" prefWidth="169.0" text="Зарегистрироваться" />
+   <Button fx:id="registerButton" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="35.0" prefWidth="169.0" text="Регистрация" />
+   <ComboBox fx:id="languageBox" prefWidth="150.0" promptText="Русский" />
 </VBox>
