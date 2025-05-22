@@ -23,9 +23,15 @@ public class UserManager {
     private DatabaseManager dbManager;
     private Logger log = LoggerFactory.getLogger("UserManager");
     private ResourceBundle r;
+    private CollectionManager collectionManager;
 
     public UserManager(DatabaseManager dbManager) {
         this.dbManager = dbManager;
+    }
+
+    public UserManager(DatabaseManager dbManager, CollectionManager collectionManager) {
+        this.dbManager = dbManager;
+        this.collectionManager = collectionManager;
     }
 
     public void addUser(User user) {
@@ -60,7 +66,7 @@ public class UserManager {
             if (dbManager.checkUserExists(user.getUsername())) {
                 dbManager.setUser(user);
                 if (dbManager.validatePassword(user.getUsername(), user.getPassword())) {
-                    return new Response(true, r.getString("successLogin"));
+                    return new Response(true, r.getString("successLogin"), collectionManager.getCollection());
                 } else {
                     return new Response(false, "Неверный пароль!");
                 }

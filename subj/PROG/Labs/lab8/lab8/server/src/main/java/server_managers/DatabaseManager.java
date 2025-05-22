@@ -90,6 +90,7 @@ public class DatabaseManager implements DataBaseWorkable {
             log.error(e.getMessage());
         }
         collectionManager.setCollection(collection);
+
         collectionManager.setMusicBandsMap(musicBandHashMap);
     }
 
@@ -100,7 +101,7 @@ public class DatabaseManager implements DataBaseWorkable {
         return rs.next();
     }
 
-    public MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
+    private MusicBand getMusicBandFromResultSet(ResultSet rs) throws SQLException {
         long id = rs.getLong(1);
         String owner = rs.getString(2);
         String name = rs.getString(3);
