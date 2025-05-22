@@ -37,44 +37,6 @@ import java.util.logging.Logger;
 
 public class SceneController implements Initializable {
     @FXML
-    private Button logoutButton;
-    @FXML
-    private Label username;
-    @FXML
-    private Label current_user;
-    /// table
-    @FXML
-    private TableView<MusicBand> table;
-    @FXML
-    private TableColumn<MusicBand, Double> album_sales;
-    @FXML
-    private TableColumn<MusicBand, Long> album_length;
-    @FXML
-    private TableColumn<MusicBand, Long> album_tracks;
-    @FXML
-    private TableColumn<MusicBand, String> album_name;
-    @FXML
-    private TableColumn<MusicBand, MusicGenre> genre;
-    @FXML
-    private TableColumn<MusicBand, LocalDate> establishmentdate;
-    @FXML
-    private TableColumn<MusicBand, Long> singlescount;
-    @FXML
-    private TableColumn<MusicBand, Long> numberofparticipants;
-    @FXML
-    private TableColumn<MusicBand, LocalDate> creationdate;
-    @FXML
-    private TableColumn<MusicBand, Float> coordinates_y;
-    @FXML
-    private TableColumn<MusicBand, Integer> coordinates_x;
-    @FXML
-    private TableColumn<MusicBand, String> name;
-    @FXML
-    private TableColumn<MusicBand, String> owner;
-    @FXML
-    private TableColumn<MusicBand, Long> id;
-    ///
-    @FXML
     private Button logInButton;
     @FXML
     private Button registerButton;
@@ -112,32 +74,25 @@ public class SceneController implements Initializable {
     private Button completeRegisterButton;
     @FXML
     public ComboBox<String> languageBox;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     private RequestSender rs;
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
-    private SceneController current_controller;
-    private static Collection<MusicBand> collection;
     private String current_username;
 
     private void startMainApp(ActionEvent event) throws IOException {
-        changeScene(event, "/fx/main.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fx/main.fxml"));
+        Parent root = loader.load();
+        MainController controller = loader.getController();
+        controller.username.setText(current_username);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        controller.setLanguageBox();
+        controller.changeLanguage(LanguageManager.getCurrentLanguage());
 
     }
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(getResource().getString("exit"));
-        alert.setHeaderText(getResource().getString("logout?"));
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.OK) {
-            /*rs.sendRequest(new Request("logout"), outToServer);*/
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-        }
-    }
+
     private ResourceBundle getResource() {
         return LanguageManager.getBundle();
     }
@@ -153,28 +108,8 @@ public class SceneController implements Initializable {
         if (enterUsernameLabel != null) enterUsernameLabel.setText(getResource().getString("enterUsernameLabel"));
         if (enterPasswordLabel_1 != null) enterPasswordLabel_1.setText(getResource().getString("enterPasswordLabel_1"));
         if (enterPasswordLabel_2 != null) enterPasswordLabel_2.setText(getResource().getString("enterPasswordLabel_2"));
-        if (backFromRegisterButton != null)
-            backFromRegisterButton.setText(getResource().getString("backFromRegisterButton"));
-        if (completeRegisterButton != null)
-            completeRegisterButton.setText(getResource().getString("completeRegisterButton"));
-        if (current_user != null) current_user.setText(getResource().getString("current_user"));
-        if (logoutButton != null) logoutButton.setText(getResource().getString("logoutButton"));
-
-        //table
-        if (id != null) id.setText(getResource().getString("id"));
-        if (owner != null) owner.setText(getResource().getString("owner"));
-        if (name != null) name.setText(getResource().getString("name"));
-        if (coordinates_x != null) coordinates_x.setText(getResource().getString("coordinates_x"));
-        if (coordinates_y != null) coordinates_y.setText(getResource().getString("coordinates_y"));
-        if (creationdate != null) creationdate.setText(/*LocalDate TODO*/getResource().getString("creationdate"));
-        if (numberofparticipants != null) numberofparticipants.setText(getResource().getString("numberofparticipants"));
-        if (singlescount != null) singlescount.setText(getResource().getString("singlescount"));
-        if (establishmentdate != null) establishmentdate.setText(getResource().getString("establishmentdate"));
-        if (genre != null) genre.setText(getResource().getString("genre"));
-        if (album_name != null) album_name.setText(getResource().getString("album_name"));
-        if (album_tracks != null) album_tracks.setText(getResource().getString("album_tracks"));
-        if (album_length != null) album_length.setText(getResource().getString("album_length"));
-        if (album_sales != null) album_sales.setText(getResource().getString("album_sales"));
+        if (backFromRegisterButton != null) backFromRegisterButton.setText(getResource().getString("backFromRegisterButton"));
+        if (completeRegisterButton != null) completeRegisterButton.setText(getResource().getString("completeRegisterButton"));
     }
 
     public void setRequestSender(RequestSender rs) {
@@ -206,23 +141,15 @@ public class SceneController implements Initializable {
 
     private void changeScene(ActionEvent event, String url) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url), LanguageManager.getBundle());
-        root = loader.load();
-        current_controller = loader.getController();
+        Parent root = loader.load();
+        SceneController current_controller = loader.getController();
         current_controller.setRequestSender(rs);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 //        stage.setResizable(false);
-        if (url.equals("/fx/main.fxml")) {
-            stage.setMinHeight(500);
-            stage.setMinWidth(800);
-//            stage.setFullScreen(true);
-            stage.setResizable(true);
-            current_controller.username.setText(current_username);
-        }
         current_controller.changeLanguage(LanguageManager.getCurrentLanguage());
         current_controller.setLanguageBox();
     }
@@ -230,10 +157,11 @@ public class SceneController implements Initializable {
     @FXML
     private void completeLogin(ActionEvent event) throws IOException, ClassNotFoundException {
         current_username = usernameLogIn.getText();
+
         String password = logInPassword.getText();
         rs.sendRequest(new Request("login", new User(current_username, password, LanguageManager.getBundle().getLocale())), outToServer);
         Response response = rs.getResponse(inFromServer);
-        collection = response.getMusicBandsCollection();
+        MainController.collection = response.getMusicBandsCollection();
         if (!response.getExitStatus()) {
             logInMessage.setText(response.getMessage());
             logInPassword.setText("");
@@ -272,36 +200,6 @@ public class SceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         languageBox.setValue(LanguageManager.getCurrentLanguage());
-
-        if (table != null) {
-            table.setPrefSize(960, 360);
-            /*Collection<MusicBand> collection;
-            try {
-                collection = rs.getResponse(inFromServer).getMusicBandsCollection();
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }*/
-
-            id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
-            name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getName()));
-            owner.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getOwner()));
-            coordinates_x.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getX()));
-            coordinates_y.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getY()));
-            creationdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCreationDate()));
-            numberofparticipants.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNumberOfParticipants()));
-            singlescount.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getSinglesCount()));
-            establishmentdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEstablishmentDate()));
-            genre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getGenre()));
-            album_name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getName()));
-            album_tracks.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getTracks()));
-            album_length.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getLength()));
-            album_sales.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getSales()));
-            ObservableList<MusicBand> observableList = FXCollections.observableArrayList(collection);
-//            observableList.addListener(); todo
-            table.setItems(observableList);
-            System.out.println(table.getItems());
-        }
-
     }
 
 
@@ -309,7 +207,7 @@ public class SceneController implements Initializable {
         ObservableList<String> languages = FXCollections.observableList(List.of("Русский", "English", "Deutsch", "Български"));
         languageBox.setItems(languages);
         languageBox.setOnAction(event -> {
-            String current_language = (String) languageBox.getValue();
+            String current_language = languageBox.getValue();
             switch (current_language) {
                 case "English":
                     LanguageManager.setBundle(LanguageManager.getEn_bundle());
@@ -334,34 +232,5 @@ public class SceneController implements Initializable {
             }
         });
     }
-    @FXML
-    private void add(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void addIfMax(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void addIfMin(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void clear(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void executeScript(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void showScripts(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void help(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void info(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void remove(ActionEvent actionEvent) {
-    }
-    @FXML
-    private void removeGreater(ActionEvent actionEvent) {
-    }
+
 }
