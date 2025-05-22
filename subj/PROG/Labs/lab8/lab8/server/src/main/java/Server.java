@@ -102,7 +102,7 @@ public class Server {
                 dbManager.setCollectionManager(collectionManager);
 
                 collectionManager.setDatabaseManager(dbManager);
-                UserManager userManager = new UserManager(dbManager);
+                UserManager userManager = new UserManager(dbManager, collectionManager);
                 collectionManager.setUserManager(userManager);
                 clientConsole.setUserManager(userManager);
                 dbManager.connectToDB();

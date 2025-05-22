@@ -28,7 +28,7 @@ public class RequestSender {
         this.outToServer = outToServer;
         this.inFromServer = inFromServer;
     }
-    public void sendMessage() throws IOException {
+    /*public void sendMessage() throws IOException {
 
         Response response;
         Request request;
@@ -38,7 +38,7 @@ public class RequestSender {
 
             // основная программа
 
-            /*while (true) {
+            while (true) {
                 Response prompt = getResponse(inFromServer);
                 System.out.print(prompt.getMessage());
                 String message = userInput.nextLine().trim();
@@ -92,7 +92,7 @@ public class RequestSender {
                             System.out.print(response.getMessage());
                         }
                     }
-                } else if (response.getExitStatus()*//* && !response.getMessage().equals("Отмена ввода...")*//*) {
+                } else if (response.getExitStatus()*//**//* && !response.getMessage().equals("Отмена ввода...")*//**//*) {
                     System.out.print(response.getMessage());
                     System.exit(1);
                 } else {
@@ -100,11 +100,11 @@ public class RequestSender {
                     System.out.println(response.getMessage());
                 }
 
-            }*/
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 
     public void authentication(ObjectOutputStream outToServer, ObjectInputStream inFromServer) {
         String username = "";
@@ -134,30 +134,6 @@ public class RequestSender {
     }
 
 
-    public void printCollection(Response response) {
-        musicBandsCollection = response.getMusicBandsCollection();
-        String message = response.getMessage();
-        if (message.equals("max_by_best_album")) {
-            System.out.println("========================================================================\n: Музыкальная группа с максимальным количеством продаж лучшего альбома :\n========================================================================");
-        }
-        if (musicBandsCollection != null && !musicBandsCollection.isEmpty()) {
-            System.out.printf("|%-15s|%-30s|%-30s|%-30s|%-20s|%n", "ID группы", "Владелец группы", "Название группы", "Лучший альбом", "Количество продаж");
-            System.out.println("-" + "-".repeat(15) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(30) + "+" + "-".repeat(20) + "-");
-            musicBandsCollection
-                    .stream()
-                    .forEach(band -> System.out.printf(
-                            "|%-15s|%-30s|%-30s|%-30s|%-20s|%n",
-                            band.getId(),
-                            band.getOwner(),
-                            band.getName(),
-                            band.getBestAlbum().getName(),
-                            band.getBestAlbum().getSales())
-                    );
-
-        } else {
-            System.out.println(response.getMessage());
-        }
-    }
 
     public void sendRequest(Request r, ObjectOutputStream outToServer) throws IOException {
         outToServer.writeObject(r);

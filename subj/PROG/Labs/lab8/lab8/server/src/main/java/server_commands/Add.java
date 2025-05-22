@@ -171,7 +171,7 @@ public class Add extends Command {
     }
     protected LocalDate inputEstablishmentDate() throws IOException, ClassNotFoundException {
         LocalDate establishmentDate;
-        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"yyyy-dd-MM\"\n* ");
+        Response response = new Response(false,"Введите дату создания музыкальной банды в формате \"yyyy-MM-dd\"\n* ");
         while (true) {
             console.sendResponse(response, outToClient);
             Request request = console.getRequest(inFromClient);

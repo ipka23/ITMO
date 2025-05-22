@@ -28,7 +28,7 @@ public class MainApp extends Application {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
     private volatile SceneController sceneController;
-    private RequestSender requestSender;
+    private RequestSender rs;
     @Override
     public void start(Stage stage) throws IOException {
         try {
@@ -59,10 +59,8 @@ public class MainApp extends Application {
                 outToServer.flush();
 
                 ObjectInputStream inFromServer = new ObjectInputStream(new BufferedInputStream(client.getSocket().getInputStream()));
-                requestSender = new RequestSender(outToServer, inFromServer);
-                Platform.runLater(() -> {
-                    sceneController.setRequestSender(requestSender);
-                });
+                rs = new RequestSender(outToServer, inFromServer);
+                Platform.runLater(() -> sceneController.setRequestSender(rs));
 
 
 //                requestSender.authentication(outToServer, inFromServer);

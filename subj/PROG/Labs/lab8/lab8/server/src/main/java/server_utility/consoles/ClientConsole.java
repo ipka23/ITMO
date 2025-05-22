@@ -99,6 +99,9 @@ public class ClientConsole extends StandartConsole {
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
                 String arg = (request.getMessage() + " ").split(" ", 2)[1];
                 if (command.isEmpty()) continue;
+                /*if (command.equals("logout")){
+                todo
+                }*/
                 Response response = invoker.execute(new String[]{command, arg});
                 sendResponse(response, outToClient);
             }
