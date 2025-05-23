@@ -69,7 +69,7 @@ public class Add extends RCommand {
             response.setMusicBandsCollection(collection);
             response.setMusicBand(response.getMusicBand());
             //response.setExitStatus(true); // конец ввода банды
-             for (ObjectOutputStream out : Server.outputStreams) {
+             /*for (ObjectOutputStream out : Server.outputStreams) {
                     try {
                         synchronized (out) {
                             out.writeObject(new Response(false, "refresh", response.getMusicBandsCollection()));
@@ -78,7 +78,7 @@ public class Add extends RCommand {
                     } catch (IOException e) {
                         Server.outputStreams.remove(out);
                     }
-                }
+                }*/
             return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {}
         return new Response(true, collectionManager.getString("error"));
