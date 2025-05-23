@@ -97,6 +97,7 @@ public class SceneController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(true);
         controller.setLanguageBox();
         controller.changeLanguage(LanguageManager.getCurrentLanguage());
 //        MainController.setCollection(collection);

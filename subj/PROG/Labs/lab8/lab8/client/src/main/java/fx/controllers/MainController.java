@@ -133,12 +133,11 @@ public class MainController extends SceneController implements Initializable {
         outToServer = rs.getOutToServer();
 
         observableList.setAll(collection);
-        System.out.println("observableList: " + System.identityHashCode(observableList));
 //        table.setItems(observableList);
-       /* if (handler == null) {
+        if (handler == null) {
             handler = new ResponseHandler(inFromServer, observableList);
             handler.start();
-        }*/
+        }
     }
 
     public void changeLanguage(String lang) {
@@ -291,9 +290,10 @@ public class MainController extends SceneController implements Initializable {
                     // TODO (отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу)
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
                     rs.sendRequest(new Request("add", currentUser, band), outToServer);
-//                    Response response = rs.getResponse(inFromServer);
-//                    Response response = handler.getResponse(); todo
-                    Response response = (Response) inFromServer.readObject();
+
+                    Response response = handler.getResponse();
+
+
 
                     /*while (response.getMessage().equals("refresh")) {
                         Collection<MusicBand> collection = response.getMusicBandsCollection();
@@ -305,7 +305,7 @@ public class MainController extends SceneController implements Initializable {
                         errorAlert(response);
                     } else {
                         infoAlert(response);
-                        observableList.add(response.getMusicBand());
+//                        observableList.add(response.getMusicBand());
                         System.out.println(response.getMusicBand());
                     }
                 } catch (Exception e) {
