@@ -10,13 +10,14 @@ import java.util.Collection;
 
 @Getter
 @Setter
-
 public class Response implements Serializable {
     @Serial
     private static final long serialVersionUID = -2026450900467574978L;
     private boolean exitStatus;
     private String message;
     private Collection<MusicBand> musicBandsCollection;
+    private MusicBand musicBand;
+
 
     public Response(boolean exitStatus, String message) {
         this.exitStatus = exitStatus;
@@ -38,4 +39,8 @@ public class Response implements Serializable {
         return exitStatus;
     }
 
+    @Override
+    public String toString() {
+        return "Response [\nexitStatus=" + exitStatus + ",\nmessage=" + message + ",\nmusicBandsCollection=" + musicBandsCollection + "\n]";
+    }
 }

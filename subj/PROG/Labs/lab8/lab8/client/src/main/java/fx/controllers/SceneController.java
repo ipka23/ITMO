@@ -79,7 +79,7 @@ public class SceneController implements Initializable {
     private ObjectInputStream inFromServer;
     private User currentUser;
     private String current_username;
-
+    private static Collection<MusicBand> collection;
     private void startMainApp(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fx/main.fxml"));
         Parent root = loader.load();
@@ -88,16 +88,19 @@ public class SceneController implements Initializable {
         controller.setRs(rs);
         controller.setInFromServer(inFromServer);
         controller.setOutToServer(outToServer);
-        controller.setCurrent_username(current_username);
+//        controller.setCurrent_username(current_username);
         controller.setCurrentUser(currentUser);
-
         controller.username.setText(current_username);
+        controller.init(collection);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         controller.setLanguageBox();
         controller.changeLanguage(LanguageManager.getCurrentLanguage());
+//        MainController.setCollection(collection);
+
 
     }
 
@@ -169,7 +172,7 @@ public class SceneController implements Initializable {
         currentUser = new User(current_username, password, LanguageManager.getBundle().getLocale());
         rs.sendRequest(new Request("login", currentUser), outToServer);
         Response response = rs.getResponse(inFromServer);
-        MainController.collection = response.getMusicBandsCollection();
+        collection = response.getMusicBandsCollection();
         if (!response.getExitStatus()) {
             logInMessage.setText(response.getMessage());
             logInPassword.setText("");

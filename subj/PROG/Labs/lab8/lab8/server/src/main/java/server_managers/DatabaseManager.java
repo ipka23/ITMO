@@ -126,7 +126,7 @@ public class DatabaseManager implements DataBaseWorkable {
         ps.setString(2, band.getName());
         ps.setInt(3, band.getCoordinates().getX());
         ps.setFloat(4, band.getCoordinates().getY());
-        ps.setDate(5, java.sql.Date.valueOf(LocalDate.now()));  // err
+        ps.setDate(5, java.sql.Date.valueOf(band.getCreationDate()));  // err
         ps.setLong(6, band.getNumberOfParticipants());
         ps.setLong(7, band.getSinglesCount());
         ps.setDate(8, java.sql.Date.valueOf(band.getEstablishmentDate()));

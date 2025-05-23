@@ -70,7 +70,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Server</mainClass>
+                            <mainClass>server_utility.Server</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -60,7 +60,7 @@ public class MainApp extends Application {
 
                 ObjectInputStream inFromServer = new ObjectInputStream(new BufferedInputStream(client.getSocket().getInputStream()));
                 rs = new RequestSender(outToServer, inFromServer);
-                Platform.runLater(() -> sceneController.setRequestSender(rs));
+                Platform.runLater(() -> sceneController.setRequestSender(rs)); // чтобы rs поставился текущему контроллеру, а не предыдущему
 
 
 //                requestSender.authentication(outToServer, inFromServer);

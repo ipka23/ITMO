@@ -22,7 +22,6 @@ import java.util.Map;
 public class CommandManager {
     private Map<String, Command> commandsMap = new HashMap<>();
 
-
     public Command getCommand(String commandName) {
         return commandsMap.get(commandName);
     }
@@ -39,7 +38,7 @@ public class CommandManager {
         commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("clear", new Clear(console, collectionManager));
-        commandsMap.put("exit", new Exit(collectionManager));
+        commandsMap.put("exit", new Exit(collectionManager, outToClient));
         commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandsMap.put("help", new Help(console, this));
         commandsMap.put("info", new Info(console, collectionManager));

@@ -10,6 +10,7 @@ import lombok.Setter;
 import server_utility.consoles.StandartConsole;
 import server_utility.database.StatementValue;
 
+import java.io.ObjectOutputStream;
 import java.sql.*;
 
 import java.time.LocalDate;
@@ -37,7 +38,6 @@ public class CollectionManager {
     private StandartConsole console;
     private Logger log = LoggerFactory.getLogger("CollectionManager");
     private long freeId;
-
 
     public CollectionManager(StandartConsole console) {
         this.console = console;
@@ -79,9 +79,11 @@ public class CollectionManager {
             collection.add(musicBand);
 
             saveCollection();
-            return new Response(false, getString("bandAdded"));
+            Response response = new Response(true, getString("bandAdded"));
+            response.setMusicBand(musicBand);
+            return response;
         } catch (SQLException e) {
-            return new Response(false, getString("bandNotAdded") + e.getMessage());
+            return new Response(false, getString("bandNotAdded"));
         }
     }
 
@@ -92,7 +94,7 @@ public class CollectionManager {
     public Response addMusicBandIfMin(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() < getMin().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, getString("lowerBandAdd"));
+                return new Response(true, getString("lowerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
             return new Response(false, getString("lowerBandNotAdd"));
@@ -102,7 +104,7 @@ public class CollectionManager {
     public Response addMusicBandIfMax(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() > getMax().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, getString("biggerBandAdd"));
+                return new Response(true, getString("biggerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
             return new Response(false, getString("biggerBandNotAdd"));

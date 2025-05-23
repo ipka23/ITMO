@@ -1,10 +1,12 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_managers.DatabaseManager;
 import server_utility.Command;
+import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
@@ -23,7 +25,7 @@ import java.util.Iterator;
  *
  * @author ipka23
  */
-public class RemoveGreater extends Command {
+public class RemoveGreater extends RCommand {
     private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
@@ -41,15 +43,19 @@ public class RemoveGreater extends Command {
         this.add = new Add(console, collectionManager, inFromClient, outToClient);
     }
 
-
-    public Response execute(String[] command) {
+    @Override
+    public Response execute(String[] command) throws IOException, ClassNotFoundException {
+        return null;
+    }
+    @Override
+    public Response execute(String[] command, Request request) {
         if (!command[1].trim().isEmpty())
             return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\""); //todo fix
         Collection<MusicBand> collection = collectionManager.getCollection();
         DatabaseManager dbManager = collectionManager.getDatabaseManager();
         Connection connection = dbManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.REMOVE_BANDS.toString())) {
-            MusicBand newBand = add.inputMusicBand();
+            MusicBand newBand = add.getBandFromRequest(request);
             String owner = newBand.getOwner();
             Response response = collectionManager.addMusicBand(newBand);
             response.setExitStatus(true);
@@ -69,4 +75,5 @@ public class RemoveGreater extends Command {
             return new Response(false, "Ошибка: " + e.getMessage());
         }
     }
+
 }

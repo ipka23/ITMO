@@ -4,7 +4,6 @@ import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
 import common_entities.MusicGenre;
-import common_utility.exceptions.ExitClientException;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
@@ -76,9 +75,9 @@ public class ExecuteScript extends Command {
             }
         } catch (RecursionDepthExceedException e) {
             return new Response(false, "\n" + e.getMessage());
-        } catch (ExitClientException e) {
+        } /*catch (ExitClientException e) {
             return new Response(true, "\n" + e.getMessage());
-        } catch (IOException | ClassNotFoundException e) {
+        }*/ catch (IOException | ClassNotFoundException e) {
             return new Response(false, "Непредвиденная ошибка!");
         } finally {
             console.setScanner(new Scanner(System.in));
