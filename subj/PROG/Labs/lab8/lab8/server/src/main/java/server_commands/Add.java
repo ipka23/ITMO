@@ -62,23 +62,27 @@ public class Add extends RCommand {
         try {
             MusicBand musicBand = getBandFromRequest(request);
             musicBand.setCreationDate(LocalDate.now());
-            System.out.println("size before add: " + collectionManager.getCollection().size());
+//            System.out.println("size before add: " + collectionManager.getCollection().size());
             response =  collectionManager.addMusicBand(musicBand);
-            System.out.println("size after add: " + collectionManager.getCollection().size());
+//            System.out.println("size after add: " + collectionManager.getCollection().size());
             Collection<MusicBand> collection = collectionManager.getCollection();
             response.setMusicBandsCollection(collection);
             response.setMusicBand(response.getMusicBand());
             //response.setExitStatus(true); // конец ввода банды
-             /*for (ObjectOutputStream out : Server.outputStreams) {
+             for (ObjectOutputStream out : Server.outputStreams) {
                     try {
                         synchronized (out) {
-                            out.writeObject(new Response(false, "refresh", response.getMusicBandsCollection()));
-                            out.flush();
+                            if (collection.contains(musicBand)) {
+                                System.out.println("Collection:   "+collection);
+                                out.reset(); // из-за этой строчки я потерял почти все нервные клетки
+                                out.writeObject(new Response(false, "refresh", collection, musicBand));
+                                out.flush();
+                            }
                         }
                     } catch (IOException e) {
                         Server.outputStreams.remove(out);
                     }
-                }*/
+                }
             return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {}
         return new Response(true, collectionManager.getString("error"));
