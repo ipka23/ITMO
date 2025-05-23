@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import server_utility.interfaces.Executable;
+import server_utility.interfaces.RExecutable;
 
 import java.io.IOException;
 
@@ -14,10 +15,11 @@ import java.io.IOException;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Command implements Executable {
+public abstract class RCommand extends Command implements RExecutable {
     private String name;
     private String description;
 //    private boolean hasArguments;  boolean hasArguments
 
-    public abstract Response execute(String[] command) throws IOException, ClassNotFoundException;
+    public abstract Response execute(String[] command, Request request) throws IOException, ClassNotFoundException;
 }
+

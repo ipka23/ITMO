@@ -8,13 +8,14 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import fx.ResponseHandler;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -23,14 +24,12 @@ import javafx.stage.Stage;
 import lombok.Setter;
 import network.RequestSender;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController extends SceneController implements Initializable {
@@ -74,6 +73,7 @@ public class MainController extends SceneController implements Initializable {
     @FXML
     private TableColumn<MusicBand, Long> id;
     ///
+    @Setter
     public static Collection<MusicBand> collection;
     @Setter
     private RequestSender rs;
@@ -83,16 +83,18 @@ public class MainController extends SceneController implements Initializable {
     private ObjectInputStream inFromServer;
     @Setter
     private User currentUser;
-    @Setter
-    private String current_username;
+    private ObservableList<MusicBand> observableList;
+    private ResponseHandler handler;
+
     @FXML
-    private void logout(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        addIcon(alert, new Image("images/exit.png"));
         alert.setTitle(getResource().getString("exit"));
         alert.setHeaderText(getResource().getString("logout?"));
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
-            /*rs.sendRequest(new Request("logout"), outToServer);*/
+            rs.sendRequest(new Request("exit"), outToServer);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
         }
@@ -117,14 +119,27 @@ public class MainController extends SceneController implements Initializable {
         album_tracks.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getTracks()));
         album_length.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getLength()));
         album_sales.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getSales()));
-        ObservableList<MusicBand> observableList = FXCollections.observableArrayList(collection);
-//            observableList.addListener(); todo
+//        observableList = FXCollections.observableArrayList(collection);
+//        table.setItems(observableList);
+        observableList = FXCollections.observableArrayList();
         table.setItems(observableList);
-        System.out.println(table.getItems());
 
+//        System.out.println(table.getItems());
 
     }
 
+    public void init(Collection<MusicBand> collection) {
+        inFromServer = rs.getInFromServer();
+        outToServer = rs.getOutToServer();
+
+        observableList.setAll(collection);
+        System.out.println("observableList: " + System.identityHashCode(observableList));
+//        table.setItems(observableList);
+        if (handler == null) {
+            handler = new ResponseHandler(inFromServer, observableList);
+            handler.start();
+        }
+    }
 
     public void changeLanguage(String lang) {
         if (current_user != null) current_user.setText(getResource().getString("current_user"));
@@ -148,28 +163,32 @@ public class MainController extends SceneController implements Initializable {
     }
 
 
-
     private void addIcon(Dialog<MusicBand> dialog, Image icon) {
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(icon);
     }
+
     private void addIcon(Alert alert, Image icon) {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(icon);
     }
 
-    private void errorAlert() throws IOException, ClassNotFoundException {
+    private void errorAlert(Response response) throws IOException, ClassNotFoundException {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(rs.getResponse(inFromServer).getMessage());
+        addIcon(alert, new Image("images/angry.png"));
+        alert.setTitle(getResource().getString("error"));
+        alert.setHeaderText(response.getMessage());
         alert.show();
     }
-    private void infoAlert() throws IOException, ClassNotFoundException {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(rs.getResponse(inFromServer).getMessage());
+
+    private void infoAlert(Response response) throws IOException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        addIcon(alert, new Image("images/pikachu.png"));
+        alert.setTitle(getResource().getString("success"));
+        alert.setHeaderText(response.getMessage());
         alert.show();
     }
+
     @FXML
     private void add(ActionEvent event) {
         Dialog<MusicBand> dialog = new Dialog<>();
@@ -272,10 +291,19 @@ public class MainController extends SceneController implements Initializable {
                     // TODO (отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу)
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
                     rs.sendRequest(new Request("add", currentUser, band), outToServer);
-                    Response response = rs.getResponse(inFromServer);
-                    if (response.getExitStatus()){
-                        errorAlert();
-                    } else infoAlert();
+//                    Response response = rs.getResponse(inFromServer);
+                    Response response = handler.getResponse();
+                    /*while (response.getMessage().equals("refresh")) {
+                        Collection<MusicBand> collection = response.getMusicBandsCollection();
+                        Platform.runLater(() -> observableList.setAll(collection));
+                        response = rs.getResponse(inFromServer);
+                    }*/
+                    if (!response.getExitStatus()) {
+                        errorAlert(response);
+                    } else {
+                        infoAlert(response);
+                        System.out.println(response.getMusicBand());
+                    }
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle(getResource().getString("error"));
@@ -283,19 +311,8 @@ public class MainController extends SceneController implements Initializable {
                     addIcon(alert, icon2);
                     alert.setHeaderText(getResource().getString("errorMessage"));
                     alert.show();
-                    /*nameTF.setText("");
-                    coordinates_xTF.setText("");
-                    coordinates_yTF.setText("");
-                    numberofparticipantsTF.setText("");
-                    singlescountTF.setText("");
-                    establishmentdateTF.setText("");
-                    genreTF.setText("");
-                    album_nameTF.setText("");
-                    album_tracksTF.setText("");
-                    album_lengthTF.setText("");
-                    album_salesTF.setText("");*/
+                    e.printStackTrace();
                 }
-                if (band != null) System.out.println(band);
             }
             return null;
         });

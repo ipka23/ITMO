@@ -1,14 +1,15 @@
 package server_utility.consoles;
 
 import common_utility.database.User;
-import common_utility.exceptions.ExitException;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import server_managers.CollectionManager;
 import server_managers.UserManager;
 import server_utility.Invoker;
+import server_utility.Server;
 
 import java.io.*;
 import java.util.Scanner;
@@ -16,11 +17,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //Invoker, CollectionManager
+@Slf4j
 public class ClientConsole extends StandartConsole {
     private final String PROMPT = ">";
     protected Invoker invoker;
-    @Getter
-    protected CollectionManager collectionManager;
     @Setter @Getter
     private boolean scriptMode = false;
     @Setter @Getter
@@ -31,15 +31,10 @@ public class ClientConsole extends StandartConsole {
     @Getter
     private StringBuilder tmp;
 
-    public ClientConsole(Invoker invoker, CollectionManager collectionManager) {
+    public ClientConsole(Invoker invoker ) {
         this.invoker = invoker;
-        this.collectionManager = collectionManager;
-        setScanner(new Scanner(System.in));
     }
 
-    public ClientConsole(Invoker invoker) {
-        this.invoker = invoker;
-    }
 
 
     public void write(String text) {
@@ -93,9 +88,12 @@ public class ClientConsole extends StandartConsole {
         try {
             authentication(outToClient, inFromClient);
             while (true) {
-                /*sendPrompt(outToClient);*/
+//                sendPrompt(outToClient);
                 Request request;
                 request = getRequest(inFromClient);
+
+                log.info(request.toString());
+
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
                 String arg = (request.getMessage() + " ").split(" ", 2)[1];
                 if (command.isEmpty()) continue;
@@ -104,10 +102,11 @@ public class ClientConsole extends StandartConsole {
                 }*/
                 Response response = invoker.execute(new String[]{command, arg}, request);
                 sendResponse(response, outToClient);
+
             }
-        } catch (ExitException e) {
+        } /*catch (ExitException e) {
             print(e);
-        }
+        }*/
         catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

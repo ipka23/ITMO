@@ -1,9 +1,11 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
@@ -20,7 +22,7 @@ import java.sql.SQLException;
  *
  * @author ipka23
  */
-public class Update extends Command {
+public class Update extends RCommand {
     private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
@@ -42,9 +44,8 @@ public class Update extends Command {
         this.outToClient = outToClient;
     }
 
-//todo fix
     @Override
-    public Response execute(String[] command) {
+    public Response execute(String[] command, Request request) {
         if (command[1].trim().isEmpty())
             return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         long id;
@@ -65,7 +66,7 @@ public class Update extends Command {
             MusicBand newBand;
             try {
                 console.write("===========================================\n: Введите новые данные музыкальной группы :\n===========================================\n");
-                newBand = add.inputMusicBand();
+                newBand = add.getBandFromRequest(request);
                 newBand.setCreationDate(band.getCreationDate());
             } catch (InputBreakException e) {
                 return new Response(true, e.getMessage());
@@ -77,5 +78,10 @@ public class Update extends Command {
             collectionManager.getDatabaseManager().updateDB(newBand, id);
             return new Response(true, "Элемент с id = " + id + " был обновлён!", collectionManager.getCollection());
         }
+    }
+
+    @Override
+    public Response execute(String[] command) throws IOException, ClassNotFoundException {
+        return null;
     }
 }

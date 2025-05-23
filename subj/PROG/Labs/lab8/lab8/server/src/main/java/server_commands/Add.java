@@ -12,6 +12,8 @@ import common_utility.network.Response;
 import lombok.Setter;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.RCommand;
+import server_utility.Server;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 import server_utility.exceptions.InputException;
@@ -21,10 +23,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 
 
 @Slf4j
-public class Add extends Command {
+public class Add extends RCommand {
     @Setter
     private ObjectInputStream inFromClient;
     @Setter
@@ -43,12 +47,10 @@ public class Add extends Command {
         this.outToClient = outToClient;
         this.scriptFile = console.getScriptFile();
     }
-    public MusicBand inputMusicBand(Request request) throws IOException, ClassNotFoundException {
+    public MusicBand getBandFromRequest(Request request) throws IOException, ClassNotFoundException {
         return request.getMusicBand();
     }
-    public MusicBand inputMusicBand() throws IOException, ClassNotFoundException {
-        return null; // todo
-    }
+
     @Override
     public Response execute(String[] command) throws IOException, ClassNotFoundException {
         return null;
@@ -56,13 +58,29 @@ public class Add extends Command {
 
     @Override
     public Response execute(String[] command, Request request) {
-        Response response = null;
+        Response response;
         try {
-            MusicBand musicBand = inputMusicBand(request);
+            MusicBand musicBand = getBandFromRequest(request);
+            musicBand.setCreationDate(LocalDate.now());
+            System.out.println("size before add: " + collectionManager.getCollection().size());
             response =  collectionManager.addMusicBand(musicBand);
-            response.setExitStatus(true); // конец ввода банды
+            System.out.println("size after add: " + collectionManager.getCollection().size());
+            Collection<MusicBand> collection = collectionManager.getCollection();
+            response.setMusicBandsCollection(collection);
+            response.setMusicBand(response.getMusicBand());
+            //response.setExitStatus(true); // конец ввода банды
+             for (ObjectOutputStream out : Server.outputStreams) {
+                    try {
+                        synchronized (out) {
+                            out.writeObject(new Response(false, "refresh", response.getMusicBandsCollection()));
+                            out.flush();
+                        }
+                    } catch (IOException e) {
+                        Server.outputStreams.remove(out);
+                    }
+                }
+            return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {}
-        if (response != null) return response;
         return new Response(true, collectionManager.getString("error"));
     }
 }

@@ -41,4 +41,8 @@ public class Request implements Serializable {
         this.user = currentUser;
         this.musicBand = band;
     }
+    @Override
+    public String toString() {
+        return "\nRequest [\nmessage=" + message + ",\nfileName=" + fileName + ",\nscriptFile=" + scriptFile + ",\nuser=" + user+ ",\nmusicBand=" + musicBand + "\n]";
+    }
 }

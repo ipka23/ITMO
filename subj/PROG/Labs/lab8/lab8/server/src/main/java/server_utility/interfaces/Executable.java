@@ -7,5 +7,4 @@ import java.io.IOException;
 
 public interface Executable {
     Response execute(String[] command) throws IOException, ClassNotFoundException;
-    Response execute(String[] command, Request request) throws IOException, ClassNotFoundException;
 }

@@ -1,9 +1,11 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
 
@@ -16,7 +18,7 @@ import java.io.ObjectOutputStream;
  *
  * @author ipka23
  */
-public class AddIfMax extends Command {
+public class AddIfMax extends RCommand {
     private final ClientConsole console;
     private final CollectionManager collectionManager;
     private final Add add;
@@ -35,16 +37,19 @@ public class AddIfMax extends Command {
         this.add = new Add(console, collectionManager, inFromClient, outToClient);
     }
 
+    @Override
+    public Response execute(String[] command) throws IOException, ClassNotFoundException {
+        return null;
+    }
 
     @Override
-    public Response execute(String[] command) {
+    public Response execute(String[] command, Request request) {
         try {
             if (!command[1].trim().isEmpty())
                 return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
 
-            MusicBand newBand = add.inputMusicBand();
+            MusicBand newBand = add.getBandFromRequest(request);
             Response response = collectionManager.addMusicBandIfMax(newBand);
-            response.setExitStatus(true);
             return response;
         } catch (InputBreakException e) {
             return new Response(true, e.getMessage());

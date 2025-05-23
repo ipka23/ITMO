@@ -36,8 +36,4 @@ public class Info extends Command {
         return new Response(false, collectionManager.info());
     }
 
-    @Override
-    public Response execute(String[] command, Request request) throws IOException, ClassNotFoundException {
-        return null;
-    }
 }

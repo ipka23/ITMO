@@ -1,6 +1,5 @@
 package server_utility.consoles;
 
-import common_utility.exceptions.ExitException;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_managers.CommandManager;
@@ -88,9 +87,9 @@ public class StandartConsole implements Console, Launchable, Printable, ScriptEx
                 Response commandStatus = invoker.execute(command);
                 print(commandStatus.getMessage());
             }
-        } catch (ExitException e) {
+        } /*catch (ExitException e) {
             print(e.getMessage());
-        } catch (IOException e) {
+        }*/ catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
