@@ -1,9 +1,12 @@
 package server_commands;
 
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
 import server_utility.interfaces.Console;
+
+import java.io.IOException;
 
 /**
  * Данный класс отвечает за выполнение команды "info"
@@ -31,5 +34,10 @@ public class Info extends Command {
         if (!command[1].trim().isEmpty())
             return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         return new Response(false, collectionManager.info());
+    }
+
+    @Override
+    public Response execute(String[] command, Request request) throws IOException, ClassNotFoundException {
+        return null;
     }
 }

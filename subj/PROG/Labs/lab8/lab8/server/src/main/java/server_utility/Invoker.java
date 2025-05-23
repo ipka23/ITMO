@@ -1,5 +1,6 @@
 package server_utility;
 
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CommandManager;
 import server_utility.interfaces.Console;
@@ -29,9 +30,11 @@ public class Invoker implements Executable {
 
     @Override
     public Response execute(String[] command) throws IOException, ClassNotFoundException {
-        if (commandManager.getCommand(command[0].trim()) == null) {
-            return new Response(false, "Команда \"" + command[0].trim() + "\" не найдена!\nНаберите \"help\" для справки!");
-        }
+        return commandManager.getCommand(command[0]).execute(command);
+    }
+
+    @Override
+    public Response execute(String[] command, Request request) throws IOException, ClassNotFoundException {
         return commandManager.getCommand(command[0]).execute(command);
     }
 }

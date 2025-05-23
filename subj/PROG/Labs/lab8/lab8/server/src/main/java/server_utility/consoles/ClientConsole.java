@@ -93,7 +93,7 @@ public class ClientConsole extends StandartConsole {
         try {
             authentication(outToClient, inFromClient);
             while (true) {
-                sendPrompt(outToClient);
+                /*sendPrompt(outToClient);*/
                 Request request;
                 request = getRequest(inFromClient);
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
@@ -102,7 +102,7 @@ public class ClientConsole extends StandartConsole {
                 /*if (command.equals("logout")){
                 todo
                 }*/
-                Response response = invoker.execute(new String[]{command, arg});
+                Response response = invoker.execute(new String[]{command, arg}, request);
                 sendResponse(response, outToClient);
             }
         } catch (ExitException e) {
