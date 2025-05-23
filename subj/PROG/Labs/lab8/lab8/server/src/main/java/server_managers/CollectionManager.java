@@ -1,6 +1,7 @@
 package server_managers;
 
 import common_entities.MusicBand;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -78,29 +79,33 @@ public class CollectionManager {
             collection.add(musicBand);
 
             saveCollection();
-            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" была успешно добавлена!");
+            return new Response(false, getString("bandAdded"));
         } catch (SQLException e) {
-            return new Response(false, "Музыкальная группа \"" + musicBand.getName() + "\" не была добавлена: " + e.getMessage());
+            return new Response(false, getString("bandNotAdded") + e.getMessage());
         }
+    }
+
+    public String getString(String key) {
+        return LanguageManager.getBundle().getString(key);
     }
 
     public Response addMusicBandIfMin(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() < getMin().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, "В коллекцию была добавлена музыкальная группа \"" + newBand.getName() + "\", количество продаж её лучшего альбома меньше чем у группы с минимальным количеством продаж!");
+                return new Response(false, getString("lowerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
-            return new Response(false, "Музыкальная группа \"" + newBand.getName() + "\" не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома больше чем у группы с минимальным количеством продаж!");
+            return new Response(false, getString("lowerBandNotAdd"));
         }
     }
 
     public Response addMusicBandIfMax(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() > getMax().getBestAlbum().getSales()) {
             if (!addMusicBand(newBand).getExitStatus()) {
-                return new Response(false, "В коллекцию была добавлена музыкальная группа \"" + newBand.getName() + "\" , количество продаж лучшего альбома которой больше чем у группы с максимальным количеством продаж!");
+                return new Response(false, getString("biggerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
-            return new Response(false, "Музыкальная группа \"" + newBand.getName() + "\" не была добавлена в коллекцию, т. к. количество продаж её лучшего альбома меньше чем у группы с максимальным количеством продаж!");
+            return new Response(false, getString("biggerBandNotAdd"));
         }
     }
 
@@ -146,11 +151,11 @@ public class CollectionManager {
     public String info() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         StringBuilder info = new StringBuilder();
-        info.append("==========================\n: Информация о коллекции :\n==========================\n");
-        info.append("Тип коллекции: ").append(collection.getClass()).append("\n");
-        info.append("Дата инициализации: ").append(initTime != null ? initTime.format(formatter) : "null").append("\n");
-        info.append("Дата последнего сохранения: ").append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");
-        info.append("Количество элементов: ").append(collection.size());
+        /*info.append("==========================\n: Информация о коллекции :\n==========================\n");*/ // todo т.к. в DialogPane setTitle info
+        info.append(getString("collectionType")).append(collection.getClass()).append("\n");
+        info.append(getString("initializationDate")).append(initTime != null ? initTime.format(formatter) : "null").append("\n");
+        info.append(getString("lastSaveDate")).append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");
+        info.append(getString("elementsCount")).append(collection.size());
         return info.toString();
     }
 
@@ -161,7 +166,7 @@ public class CollectionManager {
      */
     @Override
     public String toString() {
-        if (collection.isEmpty()) return "Коллекция пуста!";
+        if (collection.isEmpty()) return getString("collectionIsEmpty");
         StringBuilder s = new StringBuilder();
         collection.stream().forEach(band -> s.append(band.toString()).append("\n"));
         return s.substring(0, s.length() - 2);

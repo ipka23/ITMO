@@ -77,12 +77,20 @@ public class SceneController implements Initializable {
     private RequestSender rs;
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
+    private User currentUser;
     private String current_username;
 
     private void startMainApp(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fx/main.fxml"));
         Parent root = loader.load();
+
         MainController controller = loader.getController();
+        controller.setRs(rs);
+        controller.setInFromServer(inFromServer);
+        controller.setOutToServer(outToServer);
+        controller.setCurrent_username(current_username);
+        controller.setCurrentUser(currentUser);
+
         controller.username.setText(current_username);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -93,7 +101,7 @@ public class SceneController implements Initializable {
 
     }
 
-    private ResourceBundle getResource() {
+    protected ResourceBundle getResource() {
         return LanguageManager.getBundle();
     }
 
@@ -157,9 +165,9 @@ public class SceneController implements Initializable {
     @FXML
     private void completeLogin(ActionEvent event) throws IOException, ClassNotFoundException {
         current_username = usernameLogIn.getText();
-
         String password = logInPassword.getText();
-        rs.sendRequest(new Request("login", new User(current_username, password, LanguageManager.getBundle().getLocale())), outToServer);
+        currentUser = new User(current_username, password, LanguageManager.getBundle().getLocale());
+        rs.sendRequest(new Request("login", currentUser), outToServer);
         Response response = rs.getResponse(inFromServer);
         MainController.collection = response.getMusicBandsCollection();
         if (!response.getExitStatus()) {

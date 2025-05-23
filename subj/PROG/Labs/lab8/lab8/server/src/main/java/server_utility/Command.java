@@ -1,5 +1,6 @@
 package server_utility;
 
+import common_utility.network.Request;
 import common_utility.network.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,4 +20,5 @@ public abstract class Command implements Executable {
 //    private boolean hasArguments;  boolean hasArguments
 
     public abstract Response execute(String[] command) throws IOException, ClassNotFoundException;
+    public abstract Response execute(String[] command, Request request) throws IOException, ClassNotFoundException;
 }

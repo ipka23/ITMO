@@ -1,5 +1,6 @@
 package common_utility.network;
 
+import common_entities.MusicBand;
 import common_utility.database.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Request implements Serializable {
     private String fileName;
     private File scriptFile;
     private User user;
+    private MusicBand musicBand;
     @Getter
     private boolean flag = true;
 
@@ -33,4 +35,10 @@ public class Request implements Serializable {
         this.user = user;
     }
 
+
+    public Request(String message, User currentUser, MusicBand band) {
+        this.message = message;
+        this.user = currentUser;
+        this.musicBand = band;
+    }
 }

@@ -4,7 +4,10 @@ import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
 import common_entities.MusicGenre;
+import common_utility.database.User;
 import common_utility.localization.LanguageManager;
+import common_utility.network.Request;
+import common_utility.network.Response;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,16 +20,20 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import lombok.Setter;
+import network.RequestSender;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController extends SceneController implements Initializable {
     @FXML
     public ComboBox<String> languageBox;
     @FXML
@@ -68,7 +75,16 @@ public class MainController implements Initializable {
     private TableColumn<MusicBand, Long> id;
     ///
     public static Collection<MusicBand> collection;
-
+    @Setter
+    private RequestSender rs;
+    @Setter
+    private ObjectOutputStream outToServer;
+    @Setter
+    private ObjectInputStream inFromServer;
+    @Setter
+    private User currentUser;
+    @Setter
+    private String current_username;
     @FXML
     private void logout(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -109,35 +125,6 @@ public class MainController implements Initializable {
 
     }
 
-    public void setLanguageBox() {
-        ObservableList<String> languages = FXCollections.observableList(List.of("Русский", "English", "Deutsch", "Български"));
-        languageBox.setItems(languages);
-        languageBox.setOnAction(event -> {
-            String current_language = languageBox.getValue();
-            switch (current_language) {
-                case "English":
-                    LanguageManager.setBundle(LanguageManager.getEn_bundle());
-                    LanguageManager.setCurrentLanguage(current_language);
-                    changeLanguage(current_language);
-                    break;
-                case "Русский":
-                    LanguageManager.setBundle(LanguageManager.getRu_bundle());
-                    LanguageManager.setCurrentLanguage(current_language);
-                    changeLanguage(current_language);
-                    break;
-                case "Deutsch":
-                    LanguageManager.setBundle(LanguageManager.getDe_bundle());
-                    LanguageManager.setCurrentLanguage(current_language);
-                    changeLanguage(current_language);
-                    break;
-                case "Български":
-                    LanguageManager.setBundle(LanguageManager.getBg_bundle());
-                    LanguageManager.setCurrentLanguage(current_language);
-                    changeLanguage(current_language);
-                    break;
-            }
-        });
-    }
 
     public void changeLanguage(String lang) {
         if (current_user != null) current_user.setText(getResource().getString("current_user"));
@@ -160,9 +147,7 @@ public class MainController implements Initializable {
         if (album_sales != null) album_sales.setText(getResource().getString("album_sales"));
     }
 
-    private ResourceBundle getResource() {
-        return LanguageManager.getBundle();
-    }
+
 
     private void addIcon(Dialog<MusicBand> dialog, Image icon) {
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
@@ -173,6 +158,18 @@ public class MainController implements Initializable {
         stage.getIcons().add(icon);
     }
 
+    private void errorAlert() throws IOException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(rs.getResponse(inFromServer).getMessage());
+        alert.show();
+    }
+    private void infoAlert() throws IOException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(rs.getResponse(inFromServer).getMessage());
+        alert.show();
+    }
     @FXML
     private void add(ActionEvent event) {
         Dialog<MusicBand> dialog = new Dialog<>();
@@ -274,8 +271,12 @@ public class MainController implements Initializable {
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
                     // TODO (отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу)
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
-                    //
-                } catch (Exception ex) {
+                    rs.sendRequest(new Request("add", currentUser, band), outToServer);
+                    Response response = rs.getResponse(inFromServer);
+                    if (response.getExitStatus()){
+                        errorAlert();
+                    } else infoAlert();
+                } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle(getResource().getString("error"));
                     Image icon2 = new Image("images/angry.png");
