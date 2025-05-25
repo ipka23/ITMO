@@ -1,38 +1,48 @@
 package fx.controllers;
 
 import common_entities.MusicBand;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
+import java.sql.Time;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 public class VisualizationController {
     public static Map<String, Color> colorsMap = Collections.synchronizedMap(new HashMap<>());
 
-    double LOGICAL_WIDTH = 2000;
-    double LOGICAL_HEIGHT = 2000;
+    static double LOGICAL_WIDTH = 2000;
+    static double LOGICAL_HEIGHT = 2000;
 
-    double canvasWidth = 700;
-    double canvasHeight = 500;
+    static double canvasWidth = 700;
+    static double canvasHeight = 500;
     // коэффициенты масштабирования
-    double scaleX = canvasWidth / LOGICAL_WIDTH;
-    double scaleY = canvasHeight / LOGICAL_HEIGHT;
+    static double scaleX = canvasWidth / LOGICAL_WIDTH;
+    static double scaleY = canvasHeight / LOGICAL_HEIGHT;
 
     // Центр логической системы координат (в логических единицах)
-    double logicalCenterX = LOGICAL_WIDTH / 2;
-    double logicalCenterY = LOGICAL_HEIGHT / 2;
+    static double logicalCenterX = LOGICAL_WIDTH / 2;
+    static double logicalCenterY = LOGICAL_HEIGHT / 2;
 
     // Перевод логического центра в экранные координаты (пиксели)
-    double centerX = logicalCenterX * scaleX;
-    double centerY = logicalCenterY * scaleY;
-    Pane root = new Pane();
+    static double centerX = logicalCenterX * scaleX;
+    static double centerY = logicalCenterY * scaleY;
+    static Pane root = new Pane();
 
-    public Pane draw2DCoordinateSystem() {
+    public static Pane draw2DCoordinateSystem() {
 
         root = new Pane();
 
@@ -84,8 +94,7 @@ public class VisualizationController {
         return root;
     }
 
-    public void drawMusicBand(double x, double y, Color color) {
-
+    public static void drawMusicBand(double x, double y, Color color) {
         x = x * scaleX;
         y = y * scaleY;
 
@@ -93,13 +102,54 @@ public class VisualizationController {
         circle.setLayoutX(centerX + x);
         circle.setLayoutY(centerY - y);
         root.getChildren().add(circle);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), circle);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
     }
 
-    public Color getColor(MusicBand band) {
+    public static void eraseMusicBand(double x, double y, Color color) {
+        x = x * scaleX;
+        y = y * scaleY;
+        double layoutX = centerX + x;
+        double layoutY = centerY - y;
+
+        Circle circle = null;
+        for (Node node : root.getChildren()) {
+            if (node instanceof Circle) {
+                circle = (Circle) node;
+                if (circle.getFill().equals(color)) {
+                    if ((Math.abs(circle.getLayoutX() - layoutX) < 1e-3 && Math.abs(circle.getLayoutY() - layoutY) < 1e-3)) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), circle);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+//        fadeTransition.setOnFinished(e -> root.getChildren().remove(circle));
+        fadeTransition.play();
+
+
+    }
+
+    public static Color getColor(MusicBand band) {
         if (colorsMap.containsKey(band.getOwner())) {
             return colorsMap.get(band.getOwner());
         } else {
-            Color color = Color.color(Math.random(), Math.random(), Math.random());
+//            Color color = Color.color(Math.random(), Math.random(), Math.random());
+            Color color = null;
+            if (!colorsMap.containsValue(Color.GREEN)) {
+                color = Color.GREEN;
+            } else if (!colorsMap.containsValue(Color.RED)) {
+                color = Color.RED;
+            } else if (!colorsMap.containsValue(Color.BLUE)) {
+                color = Color.BLUE;
+            } else if (!colorsMap.containsValue(Color.PINK)) {
+                color = Color.PINK;
+            }
             colorsMap.put(band.getOwner(), color);
             return color;
         }

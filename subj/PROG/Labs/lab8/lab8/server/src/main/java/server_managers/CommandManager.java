@@ -33,7 +33,7 @@ public class CommandManager {
         commandsMap.put("add", new Add(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("add_if_max", new AddIfMax(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("add_if_min", new AddIfMin(console, collectionManager, inFromClient, outToClient));
-        commandsMap.put("execute", new ExecuteScript(console, invoker, collectionManager, inFromClient, outToClient));
+//        commandsMap.put("execute", new ExecuteScript(console, invoker, collectionManager, inFromClient, outToClient));
 //todo в фильтрации таблицы        commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("clear", new Clear(console, collectionManager));
@@ -45,6 +45,6 @@ public class CommandManager {
 //todo в фильтрации таблицы        commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
         commandsMap.put("remove", new Remove(console, collectionManager));
 //        commandsMap.put("show", new Show(console, collectionManager));
-        commandsMap.put("show_scripts", new ShowScripts());
+//        commandsMap.put("show_scripts", new ShowScripts());
     }
 }

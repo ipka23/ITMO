@@ -60,7 +60,7 @@ public class Clear extends RCommand {
         }
         dbManager.loadCollectionFromDB();
         Collection<MusicBand> collection = collectionManager.getCollection();
-        Refresher.refresh(collection);
+        Refresher.deleteRefresh(collection);
         return new Response(true, "Все банды принадлежащие вам были удалены из коллекции!", collection);
     }
 }

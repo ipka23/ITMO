@@ -56,7 +56,7 @@
                  <Button fx:id="add_if_max" mnemonicParsing="false" onAction="#addIfMax" prefHeight="40.0" prefWidth="130.0" text="Добавить если макс" />
                  <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" prefHeight="40.0" prefWidth="130.0" text="Добавить если мин" />
                  <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="130.0" text="Очистить" />
-                 <Button fx:id="remove" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="130.0" text="Удалить" />
+                 <Button fx:id="remove" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="Удалить" />
                  <Button fx:id="updateButton" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="130.0" text="Обновить" />
                  <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" prefHeight="40.0" prefWidth="130.0" text="Удалить большие" />
                  <Button fx:id="info" mnemonicParsing="false" onAction="#info" prefHeight="40.0" prefWidth="130.0" text="Информация" />

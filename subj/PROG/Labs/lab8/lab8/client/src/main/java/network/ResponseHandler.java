@@ -3,14 +3,17 @@ package network;
 
 import common_entities.MusicBand;
 import common_utility.network.Response;
+import fx.controllers.VisualizationController;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Collection;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.stream.Collectors;
 
 public class ResponseHandler extends Thread {
     private final ObjectInputStream in;
@@ -35,15 +38,25 @@ public class ResponseHandler extends Thread {
                 Collection<MusicBand> collection = response.getMusicBandsCollection();
                 if (response.getMessage().equals("refresh")) {
                     Platform.runLater(() -> {
+                        for (MusicBand band : collection) {
+                            VisualizationController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+                        }
                         observableList.setAll(collection);
-                        /*for (MusicBand band : collection) {
-                            visualController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), visualController.getColor(band));
-                        }*/
                     });
                 }
-               /* if (response.getMessage().equals("colorMap")) {
+                if (response.getMessage().equals("delete_refresh")) {
+                    System.out.println("observableList size: " + observableList.size());
+                    System.out.println("collection size: " + collection.size());
+                    Platform.runLater(() -> {
+                        for (MusicBand band : observableList) {
+                            if (!collection.contains(band)) {
+                                VisualizationController.eraseMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+                            }
+                        }
+                        observableList.setAll(collection);
+                    });
+                }
 
-                }*/
                 else {
 //                    System.out.println("bands: " + response.getMusicBandsCollection());
                     responses.put(response);
