@@ -1,13 +1,11 @@
 
-package fx;
+package network;
 
 import common_entities.MusicBand;
 import common_utility.network.Response;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Collection;
@@ -34,13 +32,18 @@ public class ResponseHandler extends Thread {
                 Response response = (Response) in.readObject();
                 System.out.println("Response message: " + response.getMessage());
                 System.out.println("Response collection: " + response.getMusicBandsCollection());
-                System.out.println("Response band: " + response.getMusicBand());
                 Collection<MusicBand> collection = response.getMusicBandsCollection();
                 if (response.getMessage().equals("refresh")) {
-                    Platform.runLater(() -> observableList.setAll(collection));
-                } else if (response.getMessage().equals("remove_refresh")) {
-                    Platform.runLater(() -> observableList.remove(response.getMusicBand()));
+                    Platform.runLater(() -> {
+                        observableList.setAll(collection);
+                        /*for (MusicBand band : collection) {
+                            visualController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), visualController.getColor(band));
+                        }*/
+                    });
                 }
+               /* if (response.getMessage().equals("colorMap")) {
+
+                }*/
                 else {
 //                    System.out.println("bands: " + response.getMusicBandsCollection());
                     responses.put(response);

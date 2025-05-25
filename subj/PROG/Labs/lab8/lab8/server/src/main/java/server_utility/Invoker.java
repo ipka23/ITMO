@@ -44,9 +44,9 @@ public class Invoker implements Executable, RExecutable {
         }
         Response response;
         RCommand current_command = (RCommand) commandManager.getCommand(command[0]);
-        if (current_command.getName().startsWith("add")) {
+        /*if (current_command.getName().startsWith("add")) {*/
             response = current_command.execute(command, request);
-        } else response = current_command.execute(command);
+        /*} else response = current_command.execute(command);*/
         return response;
     }
 }

@@ -41,4 +41,12 @@ public class Album implements Serializable {
                 "\"sales\": \"" + sales + "\"" +
                 "}";
     }
+
+    public boolean valdate() {
+        if (name == null || name.isEmpty()) return false;
+        if (tracks == null || tracks < 0) return false;
+        if (length < 0) return false;
+        if (sales == null || sales < 0) return false;
+        return true;
+    }
 }

@@ -1,16 +1,11 @@
 package fx.controllers;
 
-import common_entities.Album;
-import common_entities.Coordinates;
 import common_entities.MusicBand;
-import common_entities.MusicGenre;
 import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,13 +22,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class SceneController implements Initializable {
     @FXML
@@ -85,21 +76,21 @@ public class SceneController implements Initializable {
         Parent root = loader.load();
 
         MainController controller = loader.getController();
-        controller.setRs(rs);
+        controller.setSender(rs);
         controller.setInFromServer(inFromServer);
         controller.setOutToServer(outToServer);
 //        controller.setCurrent_username(current_username);
         controller.setCurrentUser(currentUser);
         controller.username.setText(current_username);
         controller.init(collection);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         stage.setResizable(true);
+        stage.setFullScreen(true);
         controller.setLanguageBox();
-        controller.changeLanguage(LanguageManager.getCurrentLanguage());
+//        controller.changeLanguage(LanguageManager.getCurrentLanguage());
 //        MainController.setCollection(collection);
 
 

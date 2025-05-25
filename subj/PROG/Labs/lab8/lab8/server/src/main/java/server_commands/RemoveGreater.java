@@ -1,6 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
@@ -37,7 +38,7 @@ public class RemoveGreater extends RCommand {
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
     public RemoveGreater(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
-        super("remove_greater", "удалить из коллекции все элементы, превышающие заданный");
+        super(LanguageManager.getBundle().getString("remove_greater"), LanguageManager.getBundle().getString("remove_greaterDescription"));
         this.console = console;
         this.collectionManager = collectionManager;
         this.add = new Add(console, collectionManager, inFromClient, outToClient);

@@ -36,4 +36,9 @@ public class Coordinates implements Serializable {
         return x + ";" + y;
     }
 
+    public boolean validate() {
+        if (x == null) return false;
+        if (y > 751) return false;
+        return true;
+    }
 }

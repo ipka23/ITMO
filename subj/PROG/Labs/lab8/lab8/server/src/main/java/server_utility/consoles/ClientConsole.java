@@ -1,5 +1,6 @@
 package server_utility.consoles;
 
+import common_entities.MusicBand;
 import common_utility.database.User;
 import common_utility.network.Request;
 import common_utility.network.Response;
@@ -12,6 +13,7 @@ import server_utility.Invoker;
 import server_utility.Server;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -100,8 +102,29 @@ public class ClientConsole extends StandartConsole {
                 /*if (command.equals("logout")){
                 todo
                 }*/
-                Response response = invoker.execute(new String[]{command, arg}, request);
-                sendResponse(response, outToClient);
+                if (command.startsWith("add") || command.equals("clear")){
+                    Response response = invoker.execute(new String[]{command, arg}, request);
+                    sendResponse(response, outToClient);
+                } else {
+                    Response response = invoker.execute(new String[]{command, arg});
+                    sendResponse(response, outToClient);
+                }
+                /*Collection<MusicBand> collection = collectionManager.getCollection();
+                MusicBand musicBand = request.getMusicBand();
+                for (ObjectOutputStream out : Server.outputStreams) {
+                    try {
+                        synchronized (out) {
+                            if (collection.contains(musicBand)) {
+//                                System.out.println("Collection:   "+collection);
+                                out.reset(); // из-за этой строчки я потерял почти все нервные клетки
+                                out.writeObject(new Response(false, "refresh", collection, musicBand));
+                                out.flush();
+                            }
+                        }
+                    } catch (IOException e) {
+                        Server.outputStreams.remove(out);
+                    }
+                }*/
 
             }
         } /*catch (ExitException e) {

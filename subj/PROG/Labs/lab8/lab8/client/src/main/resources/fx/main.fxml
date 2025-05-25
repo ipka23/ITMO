@@ -8,52 +8,63 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1374.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
-    <left>
-        <TableView fx:id="table" maxHeight="500" maxWidth="1857.0">
-            <columns>
-                <TableColumn fx:id="id" prefWidth="32.0" text="ID" />
-                <TableColumn fx:id="owner" prefWidth="69.0" text="Владелец" />
-                <TableColumn fx:id="name" prefWidth="146.0" text="Название" />
-                <TableColumn fx:id="coordinates_x" minWidth="0.0" prefWidth="91.0" text="координата X" />
-                <TableColumn fx:id="coordinates_y" prefWidth="96.0" text="координата Y" />
-                <TableColumn fx:id="creationdate" prefWidth="118.0" text="Дата создания" />
-                <TableColumn fx:id="numberofparticipants" prefWidth="159.0" text="Количество участников" />
-                <TableColumn fx:id="singlescount" minWidth="0.0" prefWidth="134.0" text="Количество синглов" />
-                <TableColumn fx:id="establishmentdate" minWidth="0.0" prefWidth="114.0" text="Дата основания" />
-                <TableColumn fx:id="genre" minWidth="0.0" prefWidth="153.0" text="Жанр" />
-                <TableColumn fx:id="album_name" prefWidth="223.0" text="Название альбома" />
-                <TableColumn fx:id="album_tracks" minWidth="0.0" prefWidth="189.0" text="Количество треков в альбоме" />
-                <TableColumn fx:id="album_length" minWidth="0.0" prefWidth="146.0" text="Длина альбома" />
-                <TableColumn fx:id="album_sales" prefWidth="177.0" text="Количество продаж" />
-            </columns>
-        </TableView>
-    </left>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
     <top>
-        <AnchorPane maxWidth="179.0" prefHeight="102.0" prefWidth="179.0" BorderPane.alignment="TOP_LEFT">
-            <children>
-                <ComboBox fx:id="languageBox" layoutY="2.0" prefWidth="150.0" />
-                <Label fx:id="current_user" layoutX="7.0" layoutY="27.0" prefHeight="21.0" prefWidth="94.0" text="Пользователь:" />
-                <Label fx:id="username" layoutX="7.0" layoutY="50.0" />
-                <Button fx:id="logoutButton" layoutY="74.0" mnemonicParsing="false" onAction="#logout" text="Выйти" />
-            </children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="399.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="399.0" BorderPane.alignment="TOP_LEFT">
+            <ComboBox fx:id="languageBox" layoutX="14.0" layoutY="11.0" prefWidth="150.0" />
+            <Label fx:id="current_user" layoutX="176.0" layoutY="13.0" prefHeight="21.0" prefWidth="94.0" text="Пользователь:" />
+            <Label fx:id="username" layoutX="269.0" layoutY="15.0" />
+            <Button fx:id="logoutButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#logout" text="Выйти" />
         </AnchorPane>
     </top>
-    <bottom>
-        <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="TOP_CENTER">
-            <children>
-                <Button fx:id="add" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="130.0" text="Добавить" />
-                <Button fx:id="add_if_max" mnemonicParsing="false" onAction="#addIfMax" prefHeight="40.0" prefWidth="130.0" text="Добавить если макс" />
-                <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" prefHeight="40.0" prefWidth="130.0" text="Добавить если мин" />
-                <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="130.0" text="Очистить" />
-                <Button fx:id="execute" mnemonicParsing="false" onAction="#executeScript" prefHeight="40.0" prefWidth="130.0" text="Выполнить скрипт" />
-                <Button fx:id="show_scripts" mnemonicParsing="false" onAction="#showScripts" prefHeight="40.0" prefWidth="130.0" text="Доступные скрипты" />
-                <Button fx:id="help" mnemonicParsing="false" onAction="#help" prefHeight="40.0" prefWidth="130.0" text="Памятка " />
-                <Button fx:id="info" mnemonicParsing="false" onAction="#info" prefHeight="40.0" prefWidth="130.0" text="Информация" />
-                <Button fx:id="remove" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="130.0" text="Удалить" />
-                <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" prefHeight="40.0" prefWidth="130.0" text="Удалить большие" />
-            </children>
-        </HBox>
-    </bottom>
+   <bottom>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+              <TableView fx:id="table" maxHeight="430" maxWidth="1920.0" minHeight="430.0" minWidth="1920.0" prefHeight="500.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                  <columns>
+                      <TableColumn fx:id="id" minWidth="20.0" prefWidth="40.0" text="ID" />
+                      <TableColumn fx:id="owner" minWidth="50.0" text="Владелец" />
+                      <TableColumn fx:id="name" minWidth="75.0" prefWidth="120.0" text="Название" />
+                      <TableColumn fx:id="coordinates_x" minWidth="30.0" prefWidth="91.0" text="координата X" />
+                      <TableColumn fx:id="coordinates_y" minWidth="30.0" prefWidth="96.0" text="координата Y" />
+                      <TableColumn fx:id="creationdate" minWidth="75.0" prefWidth="118.0" text="Дата создания" />
+                      <TableColumn fx:id="numberofparticipants" minWidth="75.0" prefWidth="159.0" text="Количество участников" />
+                      <TableColumn fx:id="singlescount" minWidth="75.0" prefWidth="134.0" text="Количество синглов" />
+                      <TableColumn fx:id="establishmentdate" minWidth="75.0" prefWidth="115.0" text="Дата основания" />
+                      <TableColumn fx:id="genre" minWidth="137.0" prefWidth="164.0" text="Жанр" />
+                      <TableColumn fx:id="album_name" minWidth="137.0" prefWidth="218.0" text="Название альбома" />
+                      <TableColumn fx:id="album_tracks" minWidth="137.0" prefWidth="190.0" text="Количество треков в альбоме" />
+                      <TableColumn fx:id="album_length" minWidth="137.0" prefWidth="203.0" text="Длина альбома" />
+                      <TableColumn fx:id="album_sales" minWidth="20.0" prefWidth="191.0" text="Количество продаж" />
+                  </columns>
+              </TableView>
+         </center>
+         <top>
+             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="44.0" prefWidth="1510.0" spacing="10.0" BorderPane.alignment="CENTER">
+                 <AnchorPane prefHeight="44.0" prefWidth="784.0">
+                    <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Фильтр по:" />
+                        <ComboBox fx:id="filterByBox" layoutX="83.0" layoutY="10.0" prefWidth="150.0" />
+                        <ComboBox fx:id="sortByBox" layoutX="366.0" layoutY="10.0" prefWidth="150.0" />
+                        <Button fx:id="help" layoutX="568.0" layoutY="10.0" mnemonicParsing="false" onAction="#help" prefHeight="25.0" prefWidth="174.0" text="Памятка по командам " />
+                        <Label layoutX="269.0" layoutY="14.0" text="Сортировка по:" />
+                    </children>
+                 </AnchorPane>
+                 <Button fx:id="add" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="Добавить" />
+                 <Button fx:id="add_if_max" mnemonicParsing="false" onAction="#addIfMax" prefHeight="40.0" prefWidth="130.0" text="Добавить если макс" />
+                 <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" prefHeight="40.0" prefWidth="130.0" text="Добавить если мин" />
+                 <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="130.0" text="Очистить" />
+                 <Button fx:id="remove" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="130.0" text="Удалить" />
+                 <Button fx:id="updateButton" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="130.0" text="Обновить" />
+                 <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" prefHeight="40.0" prefWidth="130.0" text="Удалить большие" />
+                 <Button fx:id="info" mnemonicParsing="false" onAction="#info" prefHeight="40.0" prefWidth="130.0" text="Информация" />
+             </HBox>
+         </top>
+      </BorderPane>
+   </bottom>
+   <center>
+      <StackPane fx:id="stackPane" prefHeight="500.0" prefWidth="700.0" maxHeight="700" maxWidth="700" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

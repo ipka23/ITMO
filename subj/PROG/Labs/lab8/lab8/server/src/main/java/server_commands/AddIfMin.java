@@ -1,6 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
@@ -8,10 +9,12 @@ import server_utility.Command;
 import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.exceptions.InputBreakException;
+import server_utility.multithreading.Refresher;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 
 /**
  * Данный класс отвечает за выполнение команды "add_if_min"
@@ -30,7 +33,7 @@ public class AddIfMin extends RCommand {
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
     public AddIfMin(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
-        super("add_if_min", "добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции");
+        super(LanguageManager.getBundle().getString("add_if_min"), LanguageManager.getBundle().getString("add_if_minDescription"));
         this.console = console;
         this.collectionManager = collectionManager;
         this.add = new Add(console, collectionManager, inFromClient, outToClient);
@@ -44,16 +47,17 @@ public class AddIfMin extends RCommand {
     @Override
     public Response execute(String[] command, Request request) {
         try {
-            if (!command[1].isEmpty()) {
-                return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-            }
+
             MusicBand newBand = add.getBandFromRequest(request);
+            if(!newBand.validate()) {
+                return new Response(false, collectionManager.getString("validationError"));
+            }
+            newBand.setCreationDate(LocalDate.now());
             Response response = collectionManager.addMusicBandIfMin(newBand);
+            Refresher.refresh(collectionManager.getCollection());
             return response;
-        } catch (InputBreakException e) {
-            return new Response(true, e.getMessage());
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (InputBreakException | IOException | ClassNotFoundException e) {
+            return new Response(false, collectionManager.getString("error"));
         }
     }
 }

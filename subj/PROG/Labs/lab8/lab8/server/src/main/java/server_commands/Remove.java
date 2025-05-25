@@ -1,5 +1,6 @@
 package server_commands;
 
+import common_utility.localization.LanguageManager;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
@@ -21,7 +22,7 @@ public class Remove extends Command {
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
     public Remove(Console console, CollectionManager collectionManager) {
-        super("remove id", "удалить элемент из коллекции по его id");
+        super(LanguageManager.getBundle().getString("remove"), LanguageManager.getBundle().getString("removeDescription"));
         this.console = console;
         this.collectionManager = collectionManager;
     }

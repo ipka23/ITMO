@@ -4,6 +4,7 @@ import common_entities.Album;
 import common_entities.Coordinates;
 import common_entities.MusicBand;
 import common_entities.MusicGenre;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
@@ -29,7 +30,7 @@ public class ExecuteScript extends Command {
 
 
     public ExecuteScript(ClientConsole console, Invoker invoker, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) throws RecursionDepthExceedException {
-        super("execute file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
+        super(LanguageManager.getBundle().getString("execute"), LanguageManager.getBundle().getString("executeDescription"));
         this.console = console;
         this.invoker = invoker;
         this.inFromClient = inFromClient;
