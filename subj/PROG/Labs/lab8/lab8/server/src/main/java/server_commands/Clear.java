@@ -1,13 +1,18 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.localization.LanguageManager;
+import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_managers.DatabaseManager;
 import server_utility.Command;
+import server_utility.RCommand;
 import server_utility.database.StatementValue;
 import server_utility.interfaces.Console;
+import server_utility.multithreading.Refresher;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,7 +25,7 @@ import java.util.Iterator;
  *
  * @author ipka23
  */
-public class Clear extends Command {
+public class Clear extends RCommand {
     private final Console console;
     private final CollectionManager collectionManager;
 
@@ -31,7 +36,7 @@ public class Clear extends Command {
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
     public Clear(Console console, CollectionManager collectionManager) {
-        super("clear", "очистить коллекцию");
+        super(LanguageManager.getBundle().getString("clear"), LanguageManager.getBundle().getString("clearDescription"));
         this.console = console;
         this.collectionManager = collectionManager;
     }
@@ -39,20 +44,23 @@ public class Clear extends Command {
 
     @Override
     public Response execute(String[] command) {
-        if (!command[1].trim().isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        Collection<MusicBand> collection = collectionManager.getCollection();
-        if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
+        return null;
+    }
+
+    @Override
+    public Response execute(String[] command, Request request) throws IOException, ClassNotFoundException {
         DatabaseManager dbManager = collectionManager.getDatabaseManager();
         Connection connection = dbManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.REMOVE_BANDS.toString())){
-            ps.setString(1, dbManager.getUser().getUsername());
+            ps.setString(1, request.getUser().getUsername());
             ps.setDouble(2, -1);
             ps.executeUpdate();
         } catch (SQLException e) {
-            return new Response(false, "Ошибка: " + e.getMessage());
+            return new Response(false, collectionManager.getString("error"));
         }
         dbManager.loadCollectionFromDB();
-        return new Response(false, "Все банды принадлежащие вам были удалены из коллекции!", collectionManager.getCollection());
+        Collection<MusicBand> collection = collectionManager.getCollection();
+        Refresher.refresh(collection);
+        return new Response(true, "Все банды принадлежащие вам были удалены из коллекции!", collection);
     }
 }

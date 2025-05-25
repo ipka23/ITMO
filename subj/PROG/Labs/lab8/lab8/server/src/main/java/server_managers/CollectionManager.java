@@ -93,7 +93,7 @@ public class CollectionManager {
 
     public Response addMusicBandIfMin(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() < getMin().getBestAlbum().getSales()) {
-            if (!addMusicBand(newBand).getExitStatus()) {
+            if (addMusicBand(newBand).getExitStatus()) {
                 return new Response(true, getString("lowerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
@@ -103,7 +103,7 @@ public class CollectionManager {
 
     public Response addMusicBandIfMax(MusicBand newBand) {
         if (newBand.getBestAlbum().getSales() > getMax().getBestAlbum().getSales()) {
-            if (!addMusicBand(newBand).getExitStatus()) {
+            if (addMusicBand(newBand).getExitStatus()) {
                 return new Response(true, getString("biggerBandAdd"));
             } else return addMusicBand(newBand);
         } else {
@@ -153,11 +153,11 @@ public class CollectionManager {
     public String info() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         StringBuilder info = new StringBuilder();
-        /*info.append("==========================\n: Информация о коллекции :\n==========================\n");*/ // todo т.к. в DialogPane setTitle info
-        info.append(getString("collectionType")).append(collection.getClass()).append("\n");
-        info.append(getString("initializationDate")).append(initTime != null ? initTime.format(formatter) : "null").append("\n");
-        info.append(getString("lastSaveDate")).append(lastSaveTime != null ? lastSaveTime.format(formatter) : "null").append("\n");
-        info.append(getString("elementsCount")).append(collection.size());
+        info.append("\n");
+        info.append(getString("collectionInfo") + " "); // todo т.к. в DialogPane setTitle info
+        info.append(getString("collectionType")+ " ").append(collection.getClass()).append("\n");
+        info.append(getString("initializationDate"+ " ")).append(initTime).append("\n");
+        info.append(getString("elementsCount")+ " ").append(collection.size());
         return info.toString();
     }
 

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javafx.scene.paint.Color;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -28,6 +29,18 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
     private LocalDate establishmentDate; //Поле может быть null
     private MusicGenre genre; //Поле не может быть null
     private Album bestAlbum; //Поле не может быть null
+//    private Color color;
+
+    public boolean validate() {
+        if (name == null || name.isEmpty()) return false;
+        if (coordinates == null || !coordinates.validate()) return false;
+        if (numberOfParticipants == null || numberOfParticipants < 0) return false;
+        if (singlesCount == null || singlesCount < 0) return false;
+        if (establishmentDate == null) return false;
+        if (genre == null) return false;
+        if (bestAlbum == null || !bestAlbum.valdate()) return false;
+        return true;
+    }
 
     public MusicBand(String owner, String name, Coordinates coordinates, Long numberOfParticipants, Long singlesCount, LocalDate establishmentDate, MusicGenre musicGenre, Album bestAlbum) {
         this.owner = owner;
@@ -39,7 +52,6 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         this.genre = musicGenre;
         this.bestAlbum = bestAlbum;
     }
-
 
     /**
      * Метод для обновления данных музыкальной группы
@@ -99,4 +111,6 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         MusicBand band = (MusicBand) o;
         return Objects.equals(name, band.name);
     }
+
+
 }

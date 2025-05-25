@@ -1,5 +1,6 @@
 package server_commands;
 
+import common_utility.localization.LanguageManager;
 import common_utility.network.Response;
 import server_managers.CommandManager;
 import server_utility.Command;
@@ -21,7 +22,7 @@ public class Help extends Command {
      * @param commandManager объект CommandManager для управления командами
      */
     public Help(Console console, CommandManager commandManager) {
-        super("help", "вывести справку по доступным командам");
+        super(LanguageManager.getBundle().getString("help"), LanguageManager.getBundle().getString("helpDescription"));
         this.console = console;
         this.commandManager = commandManager;
     }
@@ -30,12 +31,10 @@ public class Help extends Command {
     @Override
     public Response execute(String[] command) {
         StringBuilder s = new StringBuilder();
-        if (!command[1].trim().isEmpty())
-            return new Response(false, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
-        s.append("=====================\n: Доступные команды :\n=====================");
-        for (Command userCommand : commandManager.getCommandsMap().values()) {
+        s.append(LanguageManager.getBundle().getString("helpMessage") + "\n");
+        for (Command userCommand : CommandManager.commandsMap.values()) {
             s.append(userCommand.getName()).append(": ").append(userCommand.getDescription()).append("\n");
         }
-        return new Response(false, s.substring(0, s.length() - 1));
+        return new Response(true, s.substring(0, s.length() - 1));
     }
 }

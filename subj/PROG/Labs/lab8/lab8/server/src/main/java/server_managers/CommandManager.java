@@ -18,9 +18,8 @@ import java.util.Map;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class CommandManager {
-    private Map<String, Command> commandsMap = new HashMap<>();
+    public static final Map<String, Command> commandsMap = new HashMap<>();
 
     public Command getCommand(String commandName) {
         return commandsMap.get(commandName);
@@ -35,17 +34,17 @@ public class CommandManager {
         commandsMap.put("add_if_max", new AddIfMax(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("add_if_min", new AddIfMin(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("execute", new ExecuteScript(console, invoker, collectionManager, inFromClient, outToClient));
-        commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
+//todo в фильтрации таблицы        commandsMap.put("update", new Update(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("remove_greater", new RemoveGreater(console, collectionManager, inFromClient, outToClient));
         commandsMap.put("clear", new Clear(console, collectionManager));
-        commandsMap.put("exit", new Exit(collectionManager, outToClient));
-        commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
+//        commandsMap.put("exit", new Exit(collectionManager, outToClient));
+//todo в фильтрации таблицы        commandsMap.put("filter_starts_with_name", new FilterStartsWithName(console, collectionManager));
         commandsMap.put("help", new Help(console, this));
         commandsMap.put("info", new Info(console, collectionManager));
-        commandsMap.put("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
-        commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
+//todo в фильтрации таблицы        commandsMap.put("max_by_best_album", new MaxByBestBestAlbum(console, collectionManager));
+//todo в фильтрации таблицы        commandsMap.put("print_field_ascending_establishment_date", new PrintFieldAscendingEstablishmentDate(console, collectionManager));
         commandsMap.put("remove", new Remove(console, collectionManager));
-        commandsMap.put("show", new Show(console, collectionManager));
+//        commandsMap.put("show", new Show(console, collectionManager));
         commandsMap.put("show_scripts", new ShowScripts());
     }
 }

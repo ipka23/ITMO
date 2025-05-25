@@ -8,8 +8,7 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
-import fx.ResponseHandler;
-import javafx.application.Platform;
+import network.ResponseHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,8 +17,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import lombok.Setter;
 import network.RequestSender;
@@ -33,8 +37,27 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 public class MainController extends SceneController implements Initializable {
+
+    public Button add_if_max;
+    public Button add_if_min;
+    public Button help;
+    public Button clear;
+    public Button remove;
+    public Button updateButton;
+    public Button remove_greater;
+    public Button info;
+    @FXML
+    public StackPane stackPane;
+    @FXML
+    private BorderPane borderPane;
+    @FXML
+    private Button add;
     @FXML
     public ComboBox<String> languageBox;
+    @FXML
+    private ComboBox<String> filterByBox;
+    @FXML
+    private ComboBox<String> sortByBox;
     @FXML
     private Button logoutButton;
     @FXML
@@ -76,7 +99,7 @@ public class MainController extends SceneController implements Initializable {
     @Setter
     public static Collection<MusicBand> collection;
     @Setter
-    private RequestSender rs;
+    private RequestSender sender;
     @Setter
     private ObjectOutputStream outToServer;
     @Setter
@@ -85,6 +108,7 @@ public class MainController extends SceneController implements Initializable {
     private User currentUser;
     private ObservableList<MusicBand> observableList;
     private ResponseHandler handler;
+    private VisualizationController visualController;
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
@@ -94,7 +118,7 @@ public class MainController extends SceneController implements Initializable {
         alert.setHeaderText(getResource().getString("logout?"));
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
-            rs.sendRequest(new Request("exit"), outToServer);
+            sender.sendRequest(new Request("exit"), outToServer);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
         }
@@ -102,9 +126,9 @@ public class MainController extends SceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        languageBox.setValue(LanguageManager.getCurrentLanguage());
+        changeLanguage();
+        // привязка значений из musicBand к столбцам таблицы
         table.setPrefSize(960, 360);
-
         id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
         name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getName()));
         owner.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getOwner()));
@@ -119,46 +143,86 @@ public class MainController extends SceneController implements Initializable {
         album_tracks.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getTracks()));
         album_length.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getLength()));
         album_sales.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getSales()));
-//        observableList = FXCollections.observableArrayList(collection);
-//        table.setItems(observableList);
+
+        // привязываем нашу коллекцию в интерфейс
         observableList = FXCollections.observableArrayList();
         table.setItems(observableList);
+        add.setOnAction(event -> {
+            add(event, "add");
+        });
+        setFilterByBox();
+        setSortByBox();
+//        System2DController.colorsMap = new HashMap<>();
+//        Color color = Color;
+        TableRow<MusicBand> row = new TableRow<>();
+        row.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                //TODO
+            }
+        });
+//        Pane dpsk = draw2DCoordinateSystem();
+//        stackPane.getChildren().add(dpsk);
+        visualController = new VisualizationController();
+        Pane coordinateSystem = visualController.draw2DCoordinateSystem();
+        stackPane.getChildren().add(coordinateSystem);
+    }
 
-//        System.out.println(table.getItems());
+    private void setSortByBox() {
+        sortByBox.setValue(getResource().getString("id"));
+    }
 
+    private void setFilterByBox() {
     }
 
     public void init(Collection<MusicBand> collection) {
-        inFromServer = rs.getInFromServer();
-        outToServer = rs.getOutToServer();
+        inFromServer = sender.getInFromServer();
+        outToServer = sender.getOutToServer();
 
         observableList.setAll(collection);
-//        table.setItems(observableList);
-        if (handler == null) {
-            handler = new ResponseHandler(inFromServer, observableList);
-            handler.start();
+        handler = new ResponseHandler(inFromServer, observableList);
+        handler.start();
+
+        for (MusicBand band : collection) {
+            visualController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), visualController.getColor(band));
         }
+
     }
 
-    public void changeLanguage(String lang) {
-        if (current_user != null) current_user.setText(getResource().getString("current_user"));
-        if (logoutButton != null) logoutButton.setText(getResource().getString("logoutButton"));
+
+
+    public void changeLanguage() {
+        // top_left anchor
+        languageBox.setValue(LanguageManager.getCurrentLanguage());
+        current_user.setText(getResource().getString("current_user"));
+        logoutButton.setText(getResource().getString("logoutButton"));
 
         //table
-        if (id != null) id.setText(getResource().getString("id"));
-        if (owner != null) owner.setText(getResource().getString("owner"));
-        if (name != null) name.setText(getResource().getString("name"));
-        if (coordinates_x != null) coordinates_x.setText(getResource().getString("coordinates_x"));
-        if (coordinates_y != null) coordinates_y.setText(getResource().getString("coordinates_y"));
-        if (creationdate != null) creationdate.setText(/*LocalDate TODO*/getResource().getString("creationdate"));
-        if (numberofparticipants != null) numberofparticipants.setText(getResource().getString("numberofparticipants"));
-        if (singlescount != null) singlescount.setText(getResource().getString("singlescount"));
-        if (establishmentdate != null) establishmentdate.setText(getResource().getString("establishmentdate"));
-        if (genre != null) genre.setText(getResource().getString("genre"));
-        if (album_name != null) album_name.setText(getResource().getString("album_name"));
-        if (album_tracks != null) album_tracks.setText(getResource().getString("album_tracks"));
-        if (album_length != null) album_length.setText(getResource().getString("album_length"));
-        if (album_sales != null) album_sales.setText(getResource().getString("album_sales"));
+        id.setText(getResource().getString("id"));
+        owner.setText(getResource().getString("owner"));
+        name.setText(getResource().getString("name"));
+        coordinates_x.setText(getResource().getString("coordinates_x"));
+        coordinates_y.setText(getResource().getString("coordinates_y"));
+        creationdate.setText(/*LocalDate TODO*/getResource().getString("creationdate"));
+        numberofparticipants.setText(getResource().getString("numberofparticipants"));
+        singlescount.setText(getResource().getString("singlescount"));
+        establishmentdate.setText(getResource().getString("establishmentdate"));
+        genre.setText(getResource().getString("genre"));
+        album_name.setText(getResource().getString("album_name"));
+        album_tracks.setText(getResource().getString("album_tracks"));
+        album_length.setText(getResource().getString("album_length"));
+        album_sales.setText(getResource().getString("album_sales"));
+
+        // commands
+        add.setText(getResource().getString("add"));
+        add_if_max.setText(getResource().getString("add_if_max"));
+        add_if_min.setText(getResource().getString("add_if_min"));
+        help.setText(getResource().getString("help"));
+        clear.setText(getResource().getString("clear"));
+        remove.setText(getResource().getString("remove"));
+        remove_greater.setText(getResource().getString("remove_greater"));
+        updateButton.setText(getResource().getString("update"));
+        info.setText(getResource().getString("info"));
+
     }
 
 
@@ -188,8 +252,8 @@ public class MainController extends SceneController implements Initializable {
         alert.show();
     }
 
-    @FXML
-    private void add(ActionEvent event) {
+
+    private void add(ActionEvent event, String command) {
         Dialog<MusicBand> dialog = new Dialog<>();
         DialogPane pane = dialog.getDialogPane();
         Image icon = new Image("images/pikachu2.png");
@@ -271,7 +335,8 @@ public class MainController extends SceneController implements Initializable {
         ButtonType cancel = new ButtonType(getResource().getString("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
         pane.getButtonTypes().addAll(confirm, cancel);
         pane.setContent(grid);
-        dialog.setTitle(getResource().getString("add"));
+        dialog.setTitle(getResource().getString(command));
+        String finalCommand = command;
         dialog.setResultConverter(button -> {
             if (button == confirm) {
                 MusicBand band = null;
@@ -287,23 +352,18 @@ public class MainController extends SceneController implements Initializable {
                     Long album_tracks = Long.parseLong(album_tracksTF.getText());
                     Long album_length = Long.parseLong(album_lengthTF.getText());
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
-                    // TODO (отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу)
+                    // отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
-                    rs.sendRequest(new Request("add", currentUser, band), outToServer);
+                    sender.sendRequest(new Request(finalCommand, currentUser, band), outToServer);
 
                     Response response = handler.getResponse();
-
-
-
-                    /*while (response.getMessage().equals("refresh")) {
-                        Collection<MusicBand> collection = response.getMusicBandsCollection();
-                        Platform.runLater(() -> observableList.setAll(collection));
-                        response = rs.getResponse(inFromServer);
-                    }*/
 
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
+                        double x = Double.parseDouble(coordinates_xTF.getText());
+                        double y = Double.parseDouble(coordinates_yTF.getText());
+                        visualController.drawMusicBand(x, y, visualController.getColor(band));
                         infoAlert(response);
 //                        observableList.add(response.getMusicBand());
                         System.out.println(response.getMusicBand());
@@ -328,14 +388,32 @@ public class MainController extends SceneController implements Initializable {
 
     @FXML
     private void addIfMax(ActionEvent e) {
+        add(e, "add_if_max");
     }
 
     @FXML
     private void addIfMin(ActionEvent e) {
+        add(e, "add_if_min");
     }
 
     @FXML
-    private void clear(ActionEvent e) {
+    private void clear(ActionEvent e) throws IOException, ClassNotFoundException, InterruptedException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(getResource().getString("clear"));
+        Image icon = new Image("images/angry.png");
+        addIcon(alert, icon);
+        alert.setHeaderText(getResource().getString("clear?"));
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.OK) {
+            sender.sendRequest(new Request("clear", currentUser), outToServer);
+            Response response = handler.getResponse();
+            if (!response.getExitStatus()) {
+                errorAlert(response);
+            } else {
+                infoAlert(response);
+            }
+        }
+
     }
 
     @FXML
@@ -347,18 +425,39 @@ public class MainController extends SceneController implements Initializable {
     }
 
     @FXML
-    private void help(ActionEvent e) {
+    private void help(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
+        sender.sendRequest(new Request("help", currentUser), outToServer);
+        Response response = handler.getResponse();
+        infoAlert(response);
     }
 
     @FXML
-    private void info(ActionEvent e) {
+    private void info(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
+        sender.sendRequest(new Request("info", currentUser), outToServer);
+        Response response = handler.getResponse();
+        infoAlert(response);
     }
 
     @FXML
     private void remove(ActionEvent e) {
+
     }
 
     @FXML
     private void removeGreater(ActionEvent e) {
     }
+
+    @FXML
+    private void update(ActionEvent e) {
+
+    }
+
+    private void changeByClick() {
+
+    }
+
+    private void visualizeBand() {
+
+    }
+
 }
