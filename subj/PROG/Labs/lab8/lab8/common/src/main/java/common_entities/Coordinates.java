@@ -22,8 +22,8 @@ import java.io.Serializable;
 public class Coordinates implements Serializable {
     @Serial
     private static final long serialVersionUID = 8799597549969589219L;
-    private Integer x; //Поле не может быть null
-    private float y; //Максимальное значение поля: 751
+    private Integer x; //Поле не может быть null, Максимальное значение поля: 1000, Минимальное значение поля: -1000
+    private float y; //Максимальное значение поля: 1000, Минимальное значение поля: -1000
 
 
     /**
@@ -37,8 +37,8 @@ public class Coordinates implements Serializable {
     }
 
     public boolean validate() {
-        if (x == null) return false;
-        if (y > 751) return false;
+        if (x == null || x < -1000 || x > 1000) return false;
+        if (y < -1000 || y > 1000) return false;
         return true;
     }
 }

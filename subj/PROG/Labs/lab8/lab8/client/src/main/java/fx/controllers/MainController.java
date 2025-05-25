@@ -154,16 +154,39 @@ public class MainController extends SceneController implements Initializable {
         setSortByBox();
 //        System2DController.colorsMap = new HashMap<>();
 //        Color color = Color;
-        TableRow<MusicBand> row = new TableRow<>();
-        row.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                //TODO
+
+        remove.setOnAction(event -> {
+            MusicBand selected = table.getSelectionModel().getSelectedItem();
+            try {
+                if (selected == null) {
+                    errorAlert(getResource().getString("chooseBandToDelete"));
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    addIcon(alert, new Image("images/exit.png"));
+                    alert.setTitle(getResource().getString("remove"));
+                    alert.setHeaderText(getResource().getString("remove?"));
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        remove(event, selected);
+                    }
+                }
+            } catch (IOException | ClassNotFoundException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
+        updateButton.setOnAction(event -> {
+            try {
+                errorAlert(getResource().getString("chooseBandToUpdate"));
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
 //        Pane dpsk = draw2DCoordinateSystem();
 //        stackPane.getChildren().add(dpsk);
-        visualController = new VisualizationController();
-        Pane coordinateSystem = visualController.draw2DCoordinateSystem();
+//        visualController = new VisualizationController();
+        Pane coordinateSystem = VisualizationController.draw2DCoordinateSystem();
         stackPane.getChildren().add(coordinateSystem);
     }
 
@@ -183,7 +206,7 @@ public class MainController extends SceneController implements Initializable {
         handler.start();
 
         for (MusicBand band : collection) {
-            visualController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), visualController.getColor(band));
+            VisualizationController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
         }
 
     }
@@ -244,7 +267,15 @@ public class MainController extends SceneController implements Initializable {
         alert.show();
     }
 
-    private void infoAlert(Response response) throws IOException, ClassNotFoundException {
+    private void errorAlert(String message) throws IOException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        addIcon(alert, new Image("images/angry.png"));
+        alert.setTitle(getResource().getString("error"));
+        alert.setHeaderText(message);
+        alert.show();
+    }
+
+    private void infoAlert(Response response) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         addIcon(alert, new Image("images/pikachu.png"));
         alert.setTitle(getResource().getString("success"));
@@ -336,7 +367,6 @@ public class MainController extends SceneController implements Initializable {
         pane.getButtonTypes().addAll(confirm, cancel);
         pane.setContent(grid);
         dialog.setTitle(getResource().getString(command));
-        String finalCommand = command;
         dialog.setResultConverter(button -> {
             if (button == confirm) {
                 MusicBand band = null;
@@ -354,16 +384,18 @@ public class MainController extends SceneController implements Initializable {
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
                     // отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
-                    sender.sendRequest(new Request(finalCommand, currentUser, band), outToServer);
+                    sender.sendRequest(new Request(command, currentUser, band), outToServer);
 
                     Response response = handler.getResponse();
-
+                    while (response.getMessage().equals("refresh") || response.getMessage().equals("delete_refresh")) {
+                        response = handler.getResponse();
+                    }
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
                         double x = Double.parseDouble(coordinates_xTF.getText());
                         double y = Double.parseDouble(coordinates_yTF.getText());
-                        visualController.drawMusicBand(x, y, visualController.getColor(band));
+                        VisualizationController.drawMusicBand(x, y, VisualizationController.getColor(band));
                         infoAlert(response);
 //                        observableList.add(response.getMusicBand());
                         System.out.println(response.getMusicBand());
@@ -438,9 +470,17 @@ public class MainController extends SceneController implements Initializable {
         infoAlert(response);
     }
 
-    @FXML
-    private void remove(ActionEvent e) {
-
+    private void remove(ActionEvent e, MusicBand band) throws IOException, InterruptedException, ClassNotFoundException {
+        sender.sendRequest(new Request("remove " + band.getId()), outToServer);
+        Response r = handler.getResponse();
+        if (!r.getExitStatus()) {
+            errorAlert(r);
+        } else {
+            double x = band.getCoordinates().getX();
+            double y = band.getCoordinates().getY();
+            VisualizationController.eraseMusicBand(x, y, VisualizationController.getColor(band));
+            infoAlert(r);
+        }
     }
 
     @FXML
@@ -449,14 +489,6 @@ public class MainController extends SceneController implements Initializable {
 
     @FXML
     private void update(ActionEvent e) {
-
-    }
-
-    private void changeByClick() {
-
-    }
-
-    private void visualizeBand() {
 
     }
 

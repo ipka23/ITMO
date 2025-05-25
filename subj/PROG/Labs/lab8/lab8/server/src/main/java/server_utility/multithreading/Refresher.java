@@ -22,4 +22,19 @@ public class Refresher {
             }
         }
     }
+
+    public static void deleteRefresh(Collection<MusicBand> collection) {
+        for (ObjectOutputStream out : Server.outputStreams) {
+            try {
+                synchronized (out) {
+                    out.reset();
+                    out.writeObject(new Response(false, "delete_refresh", collection));
+                    System.out.println("size: " + collection.size());
+                    out.flush();
+                }
+            } catch (IOException e) {
+                Server.outputStreams.remove(out);
+            }
+        }
+    }
 }

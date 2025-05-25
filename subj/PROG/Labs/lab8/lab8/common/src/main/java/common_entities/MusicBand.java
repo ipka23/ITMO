@@ -112,5 +112,8 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         return Objects.equals(name, band.name);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
