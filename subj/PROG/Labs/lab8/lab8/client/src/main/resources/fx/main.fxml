@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
     <top>
-        <AnchorPane maxHeight="-Infinity" maxWidth="399.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="399.0" BorderPane.alignment="TOP_LEFT">
+        <AnchorPane maxHeight="-Infinity" maxWidth="399.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="399.0" BorderPane.alignment="TOP_LEFT">
             <ComboBox fx:id="languageBox" layoutX="14.0" layoutY="11.0" prefWidth="150.0" />
             <Label fx:id="current_user" layoutX="176.0" layoutY="13.0" prefHeight="21.0" prefWidth="94.0" text="Пользователь:" />
             <Label fx:id="username" layoutX="269.0" layoutY="15.0" />
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#logout" text="Выйти" />
+         <Button fx:id="refreshButton" layoutX="14.0" layoutY="87.0" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#refresh" prefHeight="48.0" prefWidth="48.0" />
         </AnchorPane>
     </top>
    <bottom>
@@ -65,6 +59,6 @@
       </BorderPane>
    </bottom>
    <center>
-      <StackPane fx:id="stackPane" prefHeight="500.0" prefWidth="700.0" maxHeight="700" maxWidth="700" BorderPane.alignment="CENTER" />
+      <StackPane fx:id="stackPane" maxHeight="700" maxWidth="700" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

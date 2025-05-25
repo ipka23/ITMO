@@ -39,7 +39,7 @@ public class ResponseHandler extends Thread {
                 if (response.getMessage().equals("refresh")) {
                     Platform.runLater(() -> {
                         for (MusicBand band : collection) {
-                            VisualizationController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+                            VisualizationController.drawMusicBand(band);
                         }
                         observableList.setAll(collection);
                     });

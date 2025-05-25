@@ -55,10 +55,11 @@ public class Add extends RCommand {
         Response response;
         try {
             MusicBand musicBand = getBandFromRequest(request);
+            musicBand.setCreationDate(LocalDate.now());
             if(!musicBand.validate()) {
                 return new Response(false, collectionManager.getString("validationError"));
             }
-            musicBand.setCreationDate(LocalDate.now());
+
 //            System.out.println("size before add: " + collectionManager.getCollection().size());
             response = collectionManager.addMusicBand(musicBand);
 //            System.out.println("size after add: " + collectionManager.getCollection().size());

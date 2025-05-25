@@ -11,6 +11,7 @@ import server_managers.CollectionManager;
 import server_managers.UserManager;
 import server_utility.Invoker;
 import server_utility.Server;
+import server_utility.multithreading.Refresher;
 
 import java.io.*;
 import java.util.Collection;
@@ -102,9 +103,14 @@ public class ClientConsole extends StandartConsole {
                 /*if (command.equals("logout")){
                 todo
                 }*/
-                if (command.startsWith("add") || command.equals("clear")){
+                if (command.startsWith("add") || command.equals("clear") || command.equals("remove_greater")){
                     Response response = invoker.execute(new String[]{command, arg}, request);
                     sendResponse(response, outToClient);
+                }
+                if (command.equals("refresh")) {
+//                    sendResponse(new Response(true, "refresh", collectionManager.getCollection()), outToClient);
+                    collectionManager.getDatabaseManager().loadCollectionFromDB();
+                    Refresher.refresh(collectionManager.getCollection());
                 } else {
                     Response response = invoker.execute(new String[]{command, arg});
                     sendResponse(response, outToClient);
