@@ -31,7 +31,7 @@ public class Server {
     private static final ClientConsole clientConsole = new ClientConsole(invoker);
     private static final Logger log = LoggerFactory.getLogger("server_utility.Server");
     private static final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-    public /*?????*/ static /*?????*/ final Set<ObjectOutputStream> outputStreams = ConcurrentHashMap.newKeySet();
+    public static final Set<ObjectOutputStream> outputStreams = ConcurrentHashMap.newKeySet();
     public static void main(String[] args) {
         Server server = new Server();
         server.run();
@@ -88,8 +88,6 @@ public class Server {
             }
         } catch (IOException e) {
             log.error(e.getMessage());
-        } finally {
-            if (outToClient != null) outputStreams.remove(outToClient);
         }
     }
 

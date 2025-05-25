@@ -11,13 +11,16 @@ import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
+import server_utility.multithreading.Refresher;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -50,30 +53,30 @@ public class RemoveGreater extends RCommand {
     }
     @Override
     public Response execute(String[] command, Request request) {
-        if (!command[1].trim().isEmpty())
-            return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\""); //todo fix
         Collection<MusicBand> collection = collectionManager.getCollection();
         DatabaseManager dbManager = collectionManager.getDatabaseManager();
         Connection connection = dbManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(StatementValue.REMOVE_BANDS.toString())) {
             MusicBand newBand = add.getBandFromRequest(request);
+            newBand.setCreationDate(LocalDate.now());
+            if(!newBand.validate()) {
+                return new Response(false, collectionManager.getString("validationError"));
+            }
             String owner = newBand.getOwner();
             Response response = collectionManager.addMusicBand(newBand);
             response.setExitStatus(true);
-            if (collection.isEmpty()) return new Response(false, "Коллекция пуста!");
             ps.setString(1, owner);
             ps.setDouble(2, newBand.getBestAlbum().getSales());
             ps.executeUpdate();
 
             dbManager.loadCollectionFromDB();
-
-            return new Response(true, "Из коллекции были удалены все музыкальные группы превышающие данный по количеству продаж лучшего альбома", collectionManager.getCollection());
-        } catch (InputBreakException e) {
-            return new Response(false, e.getMessage());
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            Collection<MusicBand> collection1 = collectionManager.getCollection();
+            Refresher.deleteRefresh(collection1);
+            return new Response(true, collectionManager.getString("removeGreaterMessage"), collectionManager.getCollection());
+        } catch (InputBreakException | IOException | ClassNotFoundException e) {
+            return new Response(false, collectionManager.getString("error"));
         } catch (SQLException e) {
-            return new Response(false, "Ошибка: " + e.getMessage());
+            return new Response(false, collectionManager.getString("error") + ": " + e.getMessage());
         }
     }
 

@@ -8,6 +8,7 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import javafx.scene.image.ImageView;
 import network.ResponseHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -47,7 +48,9 @@ public class MainController extends SceneController implements Initializable {
     public Button remove_greater;
     public Button info;
     @FXML
-    public StackPane stackPane;
+    private StackPane stackPane;
+    @FXML
+    private Button refreshButton;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -108,7 +111,6 @@ public class MainController extends SceneController implements Initializable {
     private User currentUser;
     private ObservableList<MusicBand> observableList;
     private ResponseHandler handler;
-    private VisualizationController visualController;
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
@@ -126,35 +128,27 @@ public class MainController extends SceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ImageView imageView = new ImageView("images/refresh.png");
+        imageView.setFitHeight(48);
+        imageView.setFitWidth(48);
+        refreshButton.setGraphic(imageView);
         changeLanguage();
-        // привязка значений из musicBand к столбцам таблицы
-        table.setPrefSize(960, 360);
-        id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
-        name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getName()));
-        owner.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getOwner()));
-        coordinates_x.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getX()));
-        coordinates_y.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getY()));
-        creationdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCreationDate()));
-        numberofparticipants.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNumberOfParticipants()));
-        singlescount.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getSinglesCount()));
-        establishmentdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEstablishmentDate()));
-        genre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getGenre()));
-        album_name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getName()));
-        album_tracks.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getTracks()));
-        album_length.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getLength()));
-        album_sales.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getSales()));
+        initTable();
+        setFilterByBox();
+        setSortByBox();
+        setButtonActions();
+        initCoordinateSystem();
+    }
 
-        // привязываем нашу коллекцию в интерфейс
-        observableList = FXCollections.observableArrayList();
-        table.setItems(observableList);
+    private void initCoordinateSystem() {
+        Pane coordinateSystem = VisualizationController.draw2DCoordinateSystem();
+        stackPane.getChildren().add(coordinateSystem);
+    }
+
+    private void setButtonActions() {
         add.setOnAction(event -> {
             add(event, "add");
         });
-        setFilterByBox();
-        setSortByBox();
-//        System2DController.colorsMap = new HashMap<>();
-//        Color color = Color;
-
         remove.setOnAction(event -> {
             MusicBand selected = table.getSelectionModel().getSelectedItem();
             try {
@@ -182,12 +176,29 @@ public class MainController extends SceneController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+    }
 
-//        Pane dpsk = draw2DCoordinateSystem();
-//        stackPane.getChildren().add(dpsk);
-//        visualController = new VisualizationController();
-        Pane coordinateSystem = VisualizationController.draw2DCoordinateSystem();
-        stackPane.getChildren().add(coordinateSystem);
+    private void initTable() {
+        // привязка значений из musicBand к столбцам таблицы
+        table.setPrefSize(960, 360);
+        id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getId()));
+        name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getName()));
+        owner.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getOwner()));
+        coordinates_x.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getX()));
+        coordinates_y.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCoordinates().getY()));
+        creationdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getCreationDate()));
+        numberofparticipants.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getNumberOfParticipants()));
+        singlescount.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getSinglesCount()));
+        establishmentdate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getEstablishmentDate()));
+        genre.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getGenre()));
+        album_name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getName()));
+        album_tracks.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getTracks()));
+        album_length.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getLength()));
+        album_sales.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBestAlbum().getSales()));
+
+        // привязываем нашу коллекцию в интерфейс
+        observableList = FXCollections.observableArrayList();
+        table.setItems(observableList);
     }
 
     private void setSortByBox() {
@@ -206,8 +217,9 @@ public class MainController extends SceneController implements Initializable {
         handler.start();
 
         for (MusicBand band : collection) {
-            VisualizationController.drawMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+            VisualizationController.drawMusicBand(band);
         }
+        VisualizationController.initCirclesAction();
 
     }
 
@@ -322,12 +334,6 @@ public class MainController extends SceneController implements Initializable {
         grid.setVgap(10);
 
 
-       /* genreCB.setOnAction(actionEvent -> {
-            switch (genreCB.getPromptText()){
-                case "PROGRESSIVE_ROCK":
-            }
-        });*/
-
         int row = 0;
         grid.add(Lname, 0, row);
         grid.add(nameTF, 1, row++);
@@ -393,12 +399,8 @@ public class MainController extends SceneController implements Initializable {
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
-                        double x = Double.parseDouble(coordinates_xTF.getText());
-                        double y = Double.parseDouble(coordinates_yTF.getText());
-                        VisualizationController.drawMusicBand(x, y, VisualizationController.getColor(band));
+                        VisualizationController.drawMusicBand(band);
                         infoAlert(response);
-//                        observableList.add(response.getMusicBand());
-                        System.out.println(response.getMusicBand());
                     }
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -462,7 +464,7 @@ public class MainController extends SceneController implements Initializable {
         Response response = handler.getResponse();
         infoAlert(response);
     }
-
+    // todo fix
     @FXML
     private void info(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
         sender.sendRequest(new Request("info", currentUser), outToServer);
@@ -484,7 +486,15 @@ public class MainController extends SceneController implements Initializable {
     }
 
     @FXML
-    private void removeGreater(ActionEvent e) {
+    private void removeGreater(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
+        add(e, "remove_greater");
+        /*sender.sendRequest(new Request("remove_greater"), outToServer);
+        Response r = handler.getResponse();
+        if (!r.getExitStatus()) {
+            errorAlert(r);
+        } else {
+            infoAlert(r);
+        }*/
     }
 
     @FXML
@@ -492,4 +502,9 @@ public class MainController extends SceneController implements Initializable {
 
     }
 
+    @FXML
+    private void refresh(ActionEvent e) throws IOException, ClassNotFoundException {
+        sender.sendRequest(new Request("refresh", currentUser), outToServer);
+        Response r = sender.getResponse(inFromServer);
+    }
 }
