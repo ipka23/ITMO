@@ -53,14 +53,13 @@ public class Update extends RCommand {
         id = Long.parseLong(command[1].trim());
         MusicBand band = collectionManager.getMusicBandById(id);
         MusicBand newBand;
-        Collection<MusicBand> collection;
+        Collection<MusicBand> collection = collectionManager.getCollection();;
         try {
             newBand = add.getBandFromRequest(request);
             newBand.setCreationDate(band.getCreationDate());
             band.update(newBand);
             collectionManager.getDatabaseManager().updateDB(newBand, id);
-            collection = collectionManager.getCollection();
-            Refresher.updateRefresh(band, newBand);
+            Refresher.updateRefresh(band, newBand, collection);
         } catch (InputBreakException | IOException | ClassNotFoundException e) {
             return new Response(false, collectionManager.getString("error"));
         }

@@ -10,12 +10,29 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Refresher {
+    public static void addRefresh(Collection<MusicBand> collection) {
+        for (ObjectOutputStream out : new HashSet<>(Server.outputStreams)) {
+            try {
+                Collection<MusicBand> copy = new HashSet<>(collection);
+                synchronized (out) {
+                    out.reset();
+                    out.writeObject(new Response(false, "add_refresh", copy));
+                    System.out.println("Response collection  (add): " + collection.size());
+                    out.flush();
+                }
+            } catch (IOException e) {
+                Server.outputStreams.remove(out);
+            }
+        }
+    }
     public static void refresh(Collection<MusicBand> collection) {
         for (ObjectOutputStream out : new HashSet<>(Server.outputStreams)) {
             try {
+                Collection<MusicBand> copy = new HashSet<>(collection);
                 synchronized (out) {
-                    out.reset(); // из-за этой строчки я потерял почти все нервные клетки
-                    out.writeObject(new Response(false, "refresh", collection));
+                    out.reset();
+                    out.writeObject(new Response(false, "refresh", copy));
+                    System.out.println("Response collection  (): " + collection.size());
                     out.flush();
                 }
             } catch (IOException e) {
@@ -24,13 +41,15 @@ public class Refresher {
         }
     }
 
+
     public static void deleteRefresh(Collection<MusicBand> collection) {
         for (ObjectOutputStream out : new HashSet<>(Server.outputStreams)) {
             try {
+                Collection<MusicBand> copy = new HashSet<>(collection);
                 synchronized (out) {
                     out.reset();
-                    out.writeObject(new Response(false, "delete_refresh", collection));
-                    System.out.println("size: " + collection.size());
+                    out.writeObject(new Response(false, "delete_refresh", copy));
+                    System.out.println("Response collection (del): " +collection.size());
                     out.flush();
                 }
             } catch (IOException e) {
@@ -38,12 +57,14 @@ public class Refresher {
             }
         }
     }
-    public static void updateRefresh(MusicBand oldBand, MusicBand newBand) {
+    public static void updateRefresh(MusicBand oldBand, MusicBand newBand, Collection<MusicBand> collection) {
         for (ObjectOutputStream out : new HashSet<>(Server.outputStreams)) {
             try {
+                Collection<MusicBand> copy = new HashSet<>(collection);
                 synchronized (out) {
                     out.reset();
-                    out.writeObject(new Response(false, "update_refresh", oldBand, newBand));
+                    out.writeObject(new Response(false, "update_refresh", oldBand, newBand, copy));
+                    System.out.println("Response collection  (updt): " + collection.size());
                     out.flush();
                 }
             } catch (IOException e) {

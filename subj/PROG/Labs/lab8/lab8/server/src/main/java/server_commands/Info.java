@@ -5,6 +5,7 @@ import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
 import server_utility.Command;
+import server_utility.consoles.ClientConsole;
 import server_utility.interfaces.Console;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author ipka23
  */
 public class Info extends Command {
-    private final Console console;
+    private final ClientConsole console;
     private final CollectionManager collectionManager;
 
     /**
@@ -24,7 +25,7 @@ public class Info extends Command {
      * @param console           интерфейс Console для взаимодействия с консолью
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
-    public Info(Console console, CollectionManager collectionManager) {
+    public Info(ClientConsole console, CollectionManager collectionManager) {
         super(LanguageManager.getBundle().getString("info"), LanguageManager.getBundle().getString("infoDescription"));
         this.console = console;
         this.collectionManager = collectionManager;

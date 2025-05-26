@@ -21,29 +21,32 @@ import java.util.concurrent.Executors;
 
 //Invoker, CollectionManager
 @Slf4j
-public class ClientConsole extends StandartConsole {
+public class ClientConsole {
     private final String PROMPT = ">";
     protected Invoker invoker;
-    @Setter @Getter
+    @Setter
+    @Getter
     private boolean scriptMode = false;
-    @Setter @Getter
+    @Setter
+    @Getter
     private File scriptFile;
-    @Setter @Getter
+    @Setter
+    @Getter
     private UserManager userManager;
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
     @Getter
     private StringBuilder tmp;
 
-    public ClientConsole(Invoker invoker ) {
+    public ClientConsole(Invoker invoker) {
         this.invoker = invoker;
     }
-
 
 
     public void write(String text) {
         tmp = new StringBuilder();
         tmp.append(text);
     }
+
     public void sendResponse(Object o, ObjectOutputStream outToClient) {
         executor.submit(() -> {
             synchronized (outToClient) {
@@ -95,7 +98,7 @@ public class ClientConsole extends StandartConsole {
                 Request request;
                 request = getRequest(inFromClient);
 
-                log.info(request.toString());
+//                log.info(request.toString());
 
                 String command = (request.getMessage() + " ").split(" ", 2)[0];
                 String arg = (request.getMessage() + " ").split(" ", 2)[1];
@@ -103,7 +106,7 @@ public class ClientConsole extends StandartConsole {
                 /*if (command.equals("logout")){
                 todo
                 }*/
-                if (command.startsWith("add") || command.equals("clear") || command.equals("remove_greater") || command.equals("update")){
+                if (command.startsWith("add") || command.equals("clear") || command.equals("remove_greater") || command.equals("update") || command.equals("remove")) {
                     Response response = invoker.execute(new String[]{command, arg}, request);
                     sendResponse(response, outToClient);
                 }
@@ -112,68 +115,51 @@ public class ClientConsole extends StandartConsole {
                     collectionManager.getDatabaseManager().loadCollectionFromDB();
                     sendResponse(new Response(true,"refresh", collectionManager.getCollection()), outToClient);
 //                    Refresher.refresh(collectionManager.getCollection());
-                }*/ else {
+                }*/
+                else {
                     Response response = invoker.execute(new String[]{command, arg});
                     sendResponse(response, outToClient);
                 }
-                /*Collection<MusicBand> collection = collectionManager.getCollection();
-                MusicBand musicBand = request.getMusicBand();
-                for (ObjectOutputStream out : Server.outputStreams) {
-                    try {
-                        synchronized (out) {
-                            if (collection.contains(musicBand)) {
-//                                System.out.println("Collection:   "+collection);
-                                out.reset(); // из-за этой строчки я потерял почти все нервные клетки
-                                out.writeObject(new Response(false, "refresh", collection, musicBand));
-                                out.flush();
-                            }
-                        }
-                    } catch (IOException e) {
-                        Server.outputStreams.remove(out);
-                    }
-                }*/
+//                Refresher.refresh(userManager.getCollectionManager().getCollection());
 
             }
-        } /*catch (ExitException e) {
-            print(e);
-        }*/
-        catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void authentication(ObjectOutputStream outToClient, ObjectInputStream inFromClient) throws IOException, ClassNotFoundException {
-            Request request = getRequest(inFromClient);
-            User user = request.getUser();
-            String message = request.getMessage();
-            Response response;
-            if (message.equals("login")) {
-                while (true) {
-                    response = userManager.logInUser(user);
-                    if (response.getExitStatus()) {
-                        sendResponse(response, outToClient);
-                        break;
-                    } else {
-                        sendResponse(response, outToClient);
-                        request = getRequest(inFromClient);
-                        user = request.getUser();
-                    }
-                }
-
-            } else if (message.equals("register")) {
-                while (true) {
-                    response = userManager.registerUser(user);
-                    if (response.getExitStatus()) {
-                        sendResponse(response, outToClient);
-                        break;
-                    } else {
-                        sendResponse(response, outToClient);
-                        request = getRequest(inFromClient);
-                        user = request.getUser();
-                    }
-
+        Request request = getRequest(inFromClient);
+        User user = request.getUser();
+        String message = request.getMessage();
+        Response response;
+        if (message.equals("login")) {
+            while (true) {
+                response = userManager.logInUser(user);
+                if (response.getExitStatus()) {
+                    sendResponse(response, outToClient);
+                    break;
+                } else {
+                    sendResponse(response, outToClient);
+                    request = getRequest(inFromClient);
+                    user = request.getUser();
                 }
             }
+
+        } else if (message.equals("register")) {
+            while (true) {
+                response = userManager.registerUser(user);
+                if (response.getExitStatus()) {
+                    sendResponse(response, outToClient);
+                    break;
+                } else {
+                    sendResponse(response, outToClient);
+                    request = getRequest(inFromClient);
+                    user = request.getUser();
+                }
+
+            }
+        }
     }
 
 }

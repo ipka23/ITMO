@@ -37,13 +37,12 @@ public class ResponseHandler extends Thread {
 //                System.out.println("Response message: " + response.getMessage());
 //                System.out.println("Response collection: " + response.getMusicBandsCollection());
                 Collection<MusicBand> collection = response.getMusicBandsCollection();
-                if (response.getMessage().equals("refresh")) {
+                if (response.getMessage().equals("add_refresh")) {
                     Platform.runLater(() -> {
                         for (MusicBand band :  new HashSet<>(observableList)) {
                             if (!collection.contains(band)) {
                                 VisualizationController.eraseMusicBand(
-                                        band.getCoordinates().getX(),
-                                        band.getCoordinates().getY(),
+                                        band,
                                         VisualizationController.getColor(band)
                                 );
                             }
@@ -73,7 +72,7 @@ public class ResponseHandler extends Thread {
                     Platform.runLater(() -> {
                         for (MusicBand band : new HashSet<>(observableList)) {
                             if (!collection.contains(band)) {
-                                VisualizationController.eraseMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+                                VisualizationController.eraseMusicBand(band, VisualizationController.getColor(band));
                             }
                         }
                         observableList.setAll(collection);

@@ -54,7 +54,7 @@ public class AddIfMin extends RCommand {
             }
             newBand.setCreationDate(LocalDate.now());
             Response response = collectionManager.addMusicBandIfMin(newBand);
-            Refresher.refresh(collectionManager.getCollection());
+            Refresher.addRefresh(collectionManager.getCollection());
             return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {
             return new Response(false, collectionManager.getString("error"));

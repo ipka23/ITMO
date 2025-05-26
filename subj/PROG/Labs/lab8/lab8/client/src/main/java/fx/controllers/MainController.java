@@ -229,73 +229,9 @@ public class MainController extends SceneController implements Initializable {
         for (MusicBand band : collection) {
             VisualizationController.drawMusicBand(band);
         }
-        VisualizationController.initCirclesAction();
-        new Thread(() -> {
-            ObservableList<MusicBand> observableList = FXCollections.observableArrayList(collection);
-            observableList.setAll(collection);
-//            BlockingQueue<Response> responses = new LinkedBlockingQueue<>();
-            try {
-                while (true) {
-                    Response response = (Response) inFromServer.readObject();
-    //                System.out.println("Response message: " + response.getMessage());
-    //                System.out.println("Response collection: " + response.getMusicBandsCollection());
-                    Collection<MusicBand> responseCollection = response.getMusicBandsCollection();
-                    if (response.getMessage().equals("refresh")) {
-                        Platform.runLater(() -> {
-                            for (MusicBand band :  new HashSet<>(observableList)) {
-                                if (!responseCollection.contains(band)) {
-                                    VisualizationController.eraseMusicBand(
-                                            band.getCoordinates().getX(),
-                                            band.getCoordinates().getY(),
-                                            VisualizationController.getColor(band)
-                                    );
-                                }
-                            }
-                            for (MusicBand band : responseCollection) {
-                                VisualizationController.drawMusicBand(band);
-                            }
-                            observableList.setAll(responseCollection);
-                        });
-                    }
-                    if (response.getMessage().equals("update_refresh")) {
-                        MusicBand oldBand = response.getOldBand();
-                        MusicBand newBand = response.getNewBand();
-                        Platform.runLater(() -> {
-                            VisualizationController.relocateMusicBand(
-                                    oldBand.getCoordinates().getX(),
-                                    oldBand.getCoordinates().getY(),
-                                    newBand.getCoordinates().getX(),
-                                    newBand.getCoordinates().getY(), VisualizationController.getColor(oldBand)
-                            );
-                            observableList.setAll(responseCollection);
-                        });
-                    }
-                    if (response.getMessage().equals("delete_refresh")) {
-    //                    System.out.println("observableList size: " + observableList.size());
-    //                    System.out.println("collection size: " + collection.size());
-                        Platform.runLater(() -> {
-                            for (MusicBand band : new HashSet<>(observableList)) {
-                                if (!responseCollection.contains(band)) {
-                                    VisualizationController.eraseMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
-                                }
-                            }
-                            observableList.setAll(responseCollection);
-                        });
-                    } else {
-                        getResponse(inFromServer);
-                    }
-                }
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 
 
-    public Response getResponse(ObjectInputStream in) throws IOException, ClassNotFoundException {
-
-        return (Response) in.readObject();
-    }
 
     public void changeLanguage() {
         // top_left anchor
@@ -465,7 +401,7 @@ public class MainController extends SceneController implements Initializable {
                     sender.sendRequest(new Request(command, currentUser, band), outToServer);
 
                     Response response = handler.getResponse();
-                    while (response.getMessage().equals("refresh") || response.getMessage().equals("delete_refresh") || response.getMessage().equals("update_refresh")) {
+                    while (response.getMessage().equals("add_refresh") || response.getMessage().equals("delete_refresh")) {
                         response = handler.getResponse();
                     }
                     if (!response.getExitStatus()) {
@@ -544,14 +480,12 @@ public class MainController extends SceneController implements Initializable {
     }
 
     private void remove(ActionEvent e, MusicBand band) throws IOException, InterruptedException, ClassNotFoundException {
-        sender.sendRequest(new Request("remove " + band.getId()), outToServer);
+        sender.sendRequest(new Request("remove", currentUser, band), outToServer);
         Response r = handler.getResponse();
         if (!r.getExitStatus()) {
             errorAlert(r);
         } else {
-            double x = band.getCoordinates().getX();
-            double y = band.getCoordinates().getY();
-            VisualizationController.eraseMusicBand(x, y, VisualizationController.getColor(band));
+            VisualizationController.eraseMusicBand(band, VisualizationController.getColor(band));
             infoAlert(r);
         }
     }
@@ -674,7 +608,6 @@ public class MainController extends SceneController implements Initializable {
                     Long album_tracks = Long.parseLong(album_tracksTF.getText());
                     Long album_length = Long.parseLong(album_lengthTF.getText());
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
-                    // отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
                     sender.sendRequest(new Request(command, currentUser, band), outToServer);
                     Response response = handler.getResponse();
@@ -703,14 +636,7 @@ public class MainController extends SceneController implements Initializable {
             }
             return null;
         });
-
         dialog.showAndWait();
 
-    }
-
-    @FXML
-    private void refresh(ActionEvent e) throws IOException {
-        sender.sendRequest(new Request("refresh", currentUser), outToServer);
-//        Response r = handler.getResponse();
     }
 }

@@ -3,6 +3,7 @@ package server_utility;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CommandManager;
+import server_utility.consoles.ClientConsole;
 import server_utility.interfaces.Console;
 import server_utility.interfaces.Executable;
 import server_utility.interfaces.RExecutable;
@@ -12,9 +13,9 @@ import java.io.IOException;
 // CommandManager, Console
 public class Invoker implements Executable, RExecutable {
     private CommandManager commandManager;
-    private Console console;
+    private ClientConsole console;
 
-    public Invoker(CommandManager commandManager, Console console) {
+    public Invoker(CommandManager commandManager, ClientConsole console) {
         this.commandManager = commandManager;
         this.console = console;
     }
@@ -24,7 +25,7 @@ public class Invoker implements Executable, RExecutable {
         this.commandManager = commandManager;
     }
 
-    public void setConsole(Console console) {
+    public void setConsole(ClientConsole console) {
         this.console = console;
     }
 
