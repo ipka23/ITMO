@@ -10,7 +10,6 @@
             <Label fx:id="current_user" layoutX="176.0" layoutY="13.0" prefHeight="21.0" prefWidth="94.0" text="Пользователь:" />
             <Label fx:id="username" layoutX="269.0" layoutY="15.0" />
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#logout" text="Выйти" />
-         <Button fx:id="refreshButton" layoutX="14.0" layoutY="87.0" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#refresh" prefHeight="48.0" prefWidth="48.0" />
         </AnchorPane>
     </top>
    <bottom>
@@ -31,7 +30,7 @@
                       <TableColumn fx:id="album_name" minWidth="137.0" prefWidth="218.0" text="Название альбома" />
                       <TableColumn fx:id="album_tracks" minWidth="137.0" prefWidth="190.0" text="Количество треков в альбоме" />
                       <TableColumn fx:id="album_length" minWidth="137.0" prefWidth="203.0" text="Длина альбома" />
-                      <TableColumn fx:id="album_sales" minWidth="20.0" prefWidth="191.0" text="Количество продаж" />
+                      <TableColumn fx:id="album_sales" minWidth="137.0" prefWidth="191.0" text="Количество продаж" />
                   </columns>
               </TableView>
          </center>
@@ -51,7 +50,7 @@
                  <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" prefHeight="40.0" prefWidth="130.0" text="Добавить если мин" />
                  <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" prefHeight="40.0" prefWidth="130.0" text="Очистить" />
                  <Button fx:id="remove" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="Удалить" />
-                 <Button fx:id="updateButton" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="130.0" text="Обновить" />
+                 <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="Обновить" />
                  <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" prefHeight="40.0" prefWidth="130.0" text="Удалить большие" />
                  <Button fx:id="info" mnemonicParsing="false" onAction="#info" prefHeight="40.0" prefWidth="130.0" text="Информация" />
              </HBox>

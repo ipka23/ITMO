@@ -5,6 +5,7 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import network.RequestSender;
 
@@ -91,6 +93,7 @@ public class SceneController implements Initializable {
         stage.setMaximized(true);
 //        stage.setFullScreen(true);
         controller.setLanguageBox();
+
 //        controller.changeLanguage(LanguageManager.getCurrentLanguage());
 //        MainController.setCollection(collection);
 
@@ -204,6 +207,22 @@ public class SceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         languageBox.setValue(LanguageManager.getCurrentLanguage());
+        /*Platform.runLater(() -> {
+            Stage stage = (Stage) languageBox.getScene().getWindow();
+            stage.setOnCloseRequest(e -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                Stage s = (Stage) alert.getDialogPane().getScene().getWindow();
+                s.getIcons().add(new Image("images/exit.png"));
+                alert.setTitle(getResource().getString("exit"));
+                alert.setHeaderText(getResource().getString("logout?"));
+                alert.showAndWait();
+                if (alert.getResult() == ButtonType.OK) {
+                    s.close();
+                } else {
+                    stage.showAndWait();
+                }
+            });
+        });*/
     }
 
 

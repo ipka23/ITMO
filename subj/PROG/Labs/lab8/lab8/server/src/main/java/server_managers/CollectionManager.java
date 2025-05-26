@@ -10,7 +10,7 @@ import lombok.Setter;
 import server_utility.consoles.StandartConsole;
 import server_utility.database.StatementValue;
 
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.sql.*;
 
 import java.time.LocalDate;
@@ -27,10 +27,9 @@ import org.slf4j.LoggerFactory;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class CollectionManager {
-    private volatile Collection<MusicBand> collection = ConcurrentHashMap.newKeySet();
-    private volatile Map<Long, MusicBand> musicBandsMap = new ConcurrentHashMap<>();
+    private Collection<MusicBand> collection = ConcurrentHashMap.newKeySet();
+    private Map<Long, MusicBand> musicBandsMap = new ConcurrentHashMap<>();
     private LocalDateTime initTime;
     private LocalDateTime lastSaveTime;
     private DatabaseManager databaseManager;
@@ -39,17 +38,51 @@ public class CollectionManager {
     private Logger log = LoggerFactory.getLogger("CollectionManager");
     private long freeId;
 
+    private static final String FILE_NAME = "iniTime";
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
     public CollectionManager(StandartConsole console) {
-        this.console = console;
-        initTime = LocalDateTime.now();
+        try {
+            this.console = console;
+            File initFile = new File(FILE_NAME);
+
+            if (!initFile.exists()) {
+                initFile.createNewFile();
+            }
+
+            try (Scanner sc = new Scanner(initFile)) {
+                if (sc.hasNextLine()) {
+                    String line = sc.nextLine().trim();
+                    if (!line.isEmpty()) {
+                        initTime = LocalDateTime.parse(line, formatter);
+                    } else {
+                        initTime = LocalDateTime.now();
+                        saveInitTime(initTime, initFile);
+                    }
+                } else {
+                    initTime = LocalDateTime.now();
+                    saveInitTime(initTime, initFile);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void saveInitTime(LocalDateTime time, File file) throws IOException {
+        try (PrintWriter writer = new PrintWriter(file)) {
+            writer.println(time.format(formatter));
+        }
     }
 
 
-    public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
+
+   /* public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
         this.databaseManager = databaseManager;
         this.console = console;
         databaseManager.loadCollectionFromDB();
-    }
+        initTime = LocalDateTime.now();
+    }*/
 
 
     public void setDatabaseManager(DatabaseManager databaseManager) {
@@ -154,9 +187,9 @@ public class CollectionManager {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         StringBuilder info = new StringBuilder();
         info.append("\n");
-        info.append(getString("collectionInfo") + " "); // todo т.к. в DialogPane setTitle info
+//        info.append(getString("collectionInfo") + " "); // todo т.к. в DialogPane setTitle info
         info.append(getString("collectionType")+ " ").append(collection.getClass()).append("\n");
-        info.append(getString("initializationDate"+ " ")).append(initTime).append("\n");
+        info.append(getString("initializationDate")+ " ").append(initTime != null ? initTime.format(formatter) : "null").append("\n");
         info.append(getString("elementsCount")+ " ").append(collection.size());
         return info.toString();
     }

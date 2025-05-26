@@ -2,7 +2,7 @@ package fx.controllers;
 
 import common_entities.MusicBand;
 import common_utility.localization.LanguageManager;
-import javafx.animation.FadeTransition;
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
@@ -12,6 +12,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
@@ -90,7 +91,7 @@ public class VisualizationController {
         return root;
     }
 
-    public static void drawMusicBand(MusicBand band) {
+    public static synchronized void drawMusicBand(MusicBand band) {
         double x = band.getCoordinates().getX();
         double y = band.getCoordinates().getY();
         Color color = VisualizationController.getColor(band);
@@ -104,13 +105,53 @@ public class VisualizationController {
         circle.setStrokeWidth(1.5);
         root.getChildren().add(circle);
         bandMap.put(circle, band);
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), circle);
-        fadeTransition.setFromValue(0);
-        fadeTransition.setToValue(1);
-        fadeTransition.play();
+        FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
+        transition.setFromValue(0);
+        transition.setToValue(1);
+        transition.play();
     }
 
-    public static void eraseMusicBand(double x, double y, Color color) {
+    public static synchronized void relocateMusicBand(double oldX, double oldY, double newX, double newY, Color color) {
+        oldX = oldX * scaleX;
+        oldY = oldY * scaleY;
+        double layoutOldX = centerX + oldX;
+        double layoutOldY = centerY - oldY;
+
+        newX = newX * scaleX;
+        newY = newY * scaleY;
+        double layoutNewX = centerX + newX;
+        double layoutNewY = centerY - newY;
+
+        Circle circle = null;
+        for (Node node : root.getChildren()) {
+            if (node instanceof Circle) {
+                circle = (Circle) node;
+                if (circle.getFill().equals(color)) {
+                    if ((Math.abs(circle.getLayoutX() - layoutOldX) < 1e-3 && Math.abs(circle.getLayoutY() - layoutOldY) < 1e-3)) {
+                        break;
+                    }
+                }
+            }
+        }
+        /*Line line = new Line(layoutOldX, layoutOldY, layoutNewX, layoutNewY);
+        PathTransition transition = new PathTransition(Duration.seconds(5), line, circle);
+        transition.play();*/
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0),
+                        new KeyValue(circle.layoutXProperty(), layoutOldX),
+                        new KeyValue(circle.layoutYProperty(), layoutOldY)
+                ),
+                new KeyFrame(Duration.seconds(3),
+                        new KeyValue(circle.layoutXProperty(), layoutNewX),
+                        new KeyValue(circle.layoutYProperty(), layoutNewY)
+                )
+        );
+        timeline.play();
+
+
+    }
+
+    public static synchronized void eraseMusicBand(double x, double y, Color color) {
         x = x * scaleX;
         y = y * scaleY;
         double layoutX = centerX + x;
@@ -128,13 +169,11 @@ public class VisualizationController {
             }
         }
 
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), circle);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
+        FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
+        transition.setFromValue(1);
+        transition.setToValue(0);
 //        fadeTransition.setOnFinished(e -> root.getChildren().remove(circle));
-        fadeTransition.play();
-
-
+        transition.play();
     }
     public static String getResource(String key) {
         return LanguageManager.getBundle().getString(key);

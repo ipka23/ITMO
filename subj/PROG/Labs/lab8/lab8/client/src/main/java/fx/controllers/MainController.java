@@ -8,6 +8,7 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
+import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import network.ResponseHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -35,7 +36,10 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class MainController extends SceneController implements Initializable {
 
@@ -49,8 +53,6 @@ public class MainController extends SceneController implements Initializable {
     public Button info;
     @FXML
     private StackPane stackPane;
-    @FXML
-    private Button refreshButton;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -113,25 +115,25 @@ public class MainController extends SceneController implements Initializable {
     private ResponseHandler handler;
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        addIcon(alert, new Image("images/exit.png"));
-        alert.setTitle(getResource().getString("exit"));
-        alert.setHeaderText(getResource().getString("logout?"));
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.OK) {
-            sender.sendRequest(new Request("exit"), outToServer);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
+    public void logout(ActionEvent event) {
+        try {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            addIcon(alert, new Image("images/exit.png"));
+            alert.setTitle(getResource().getString("exit"));
+            alert.setHeaderText(getResource().getString("logout?"));
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK) {
+                sender.sendRequest(new Request("exit"), outToServer);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ImageView imageView = new ImageView("images/refresh.png");
-        imageView.setFitHeight(48);
-        imageView.setFitWidth(48);
-        refreshButton.setGraphic(imageView);
         changeLanguage();
         initTable();
         setFilterByBox();
@@ -154,8 +156,9 @@ public class MainController extends SceneController implements Initializable {
             try {
                 if (selected == null) {
                     errorAlert(getResource().getString("chooseBandToDelete"));
-                }
-                else {
+                } else if (!selected.getOwner().equals(currentUser.getUsername())) {
+                    errorAlert(getResource().getString("deletePermissionDenied"));
+                } else {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     addIcon(alert, new Image("images/exit.png"));
                     alert.setTitle(getResource().getString("remove"));
@@ -171,7 +174,14 @@ public class MainController extends SceneController implements Initializable {
         });
         updateButton.setOnAction(event -> {
             try {
-                errorAlert(getResource().getString("chooseBandToUpdate"));
+                MusicBand selected = table.getSelectionModel().getSelectedItem();
+                if (selected == null) {
+                    errorAlert(getResource().getString("chooseBandToUpdate"));
+                } else if (!selected.getOwner().equals(currentUser.getUsername())) {
+                    errorAlert(getResource().getString("updatePermissionDenied"));
+                } else {
+                    update(event, selected);
+                }
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -220,10 +230,72 @@ public class MainController extends SceneController implements Initializable {
             VisualizationController.drawMusicBand(band);
         }
         VisualizationController.initCirclesAction();
-
+        new Thread(() -> {
+            ObservableList<MusicBand> observableList = FXCollections.observableArrayList(collection);
+            observableList.setAll(collection);
+//            BlockingQueue<Response> responses = new LinkedBlockingQueue<>();
+            try {
+                while (true) {
+                    Response response = (Response) inFromServer.readObject();
+    //                System.out.println("Response message: " + response.getMessage());
+    //                System.out.println("Response collection: " + response.getMusicBandsCollection());
+                    Collection<MusicBand> responseCollection = response.getMusicBandsCollection();
+                    if (response.getMessage().equals("refresh")) {
+                        Platform.runLater(() -> {
+                            for (MusicBand band :  new HashSet<>(observableList)) {
+                                if (!responseCollection.contains(band)) {
+                                    VisualizationController.eraseMusicBand(
+                                            band.getCoordinates().getX(),
+                                            band.getCoordinates().getY(),
+                                            VisualizationController.getColor(band)
+                                    );
+                                }
+                            }
+                            for (MusicBand band : responseCollection) {
+                                VisualizationController.drawMusicBand(band);
+                            }
+                            observableList.setAll(responseCollection);
+                        });
+                    }
+                    if (response.getMessage().equals("update_refresh")) {
+                        MusicBand oldBand = response.getOldBand();
+                        MusicBand newBand = response.getNewBand();
+                        Platform.runLater(() -> {
+                            VisualizationController.relocateMusicBand(
+                                    oldBand.getCoordinates().getX(),
+                                    oldBand.getCoordinates().getY(),
+                                    newBand.getCoordinates().getX(),
+                                    newBand.getCoordinates().getY(), VisualizationController.getColor(oldBand)
+                            );
+                            observableList.setAll(responseCollection);
+                        });
+                    }
+                    if (response.getMessage().equals("delete_refresh")) {
+    //                    System.out.println("observableList size: " + observableList.size());
+    //                    System.out.println("collection size: " + collection.size());
+                        Platform.runLater(() -> {
+                            for (MusicBand band : new HashSet<>(observableList)) {
+                                if (!responseCollection.contains(band)) {
+                                    VisualizationController.eraseMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
+                                }
+                            }
+                            observableList.setAll(responseCollection);
+                        });
+                    } else {
+                        getResponse(inFromServer);
+                    }
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
+    public Response getResponse(ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+        return (Response) in.readObject();
+    }
 
     public void changeLanguage() {
         // top_left anchor
@@ -271,7 +343,7 @@ public class MainController extends SceneController implements Initializable {
         stage.getIcons().add(icon);
     }
 
-    private void errorAlert(Response response) throws IOException, ClassNotFoundException {
+    private void errorAlert(Response response) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         addIcon(alert, new Image("images/angry.png"));
         alert.setTitle(getResource().getString("error"));
@@ -393,7 +465,7 @@ public class MainController extends SceneController implements Initializable {
                     sender.sendRequest(new Request(command, currentUser, band), outToServer);
 
                     Response response = handler.getResponse();
-                    while (response.getMessage().equals("refresh") || response.getMessage().equals("delete_refresh")) {
+                    while (response.getMessage().equals("refresh") || response.getMessage().equals("delete_refresh") || response.getMessage().equals("update_refresh")) {
                         response = handler.getResponse();
                     }
                     if (!response.getExitStatus()) {
@@ -450,13 +522,6 @@ public class MainController extends SceneController implements Initializable {
 
     }
 
-    @FXML
-    private void executeScript(ActionEvent e) {
-    }
-
-    @FXML
-    private void showScripts(ActionEvent e) {
-    }
 
     @FXML
     private void help(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
@@ -464,12 +529,18 @@ public class MainController extends SceneController implements Initializable {
         Response response = handler.getResponse();
         infoAlert(response);
     }
-    // todo fix
+
     @FXML
     private void info(ActionEvent e) throws IOException, InterruptedException, ClassNotFoundException {
         sender.sendRequest(new Request("info", currentUser), outToServer);
         Response response = handler.getResponse();
-        infoAlert(response);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(response.getMessage());
+        alert.setTitle(getResource().getString("info"));
+        alert.setHeaderText(getResource().getString("collectionInfo"));
+        addIcon(alert, new Image("images/info.png"));
+        alert.showAndWait();
+
     }
 
     private void remove(ActionEvent e, MusicBand band) throws IOException, InterruptedException, ClassNotFoundException {
@@ -497,14 +568,149 @@ public class MainController extends SceneController implements Initializable {
         }*/
     }
 
-    @FXML
-    private void update(ActionEvent e) {
+    private void update(ActionEvent e, MusicBand selected) {
+        String command = "update " + String.valueOf(selected.getId()).trim();
+        Dialog<MusicBand> dialog = new Dialog<>();
+        DialogPane pane = dialog.getDialogPane();
+        Image icon = new Image("images/pikachu2.png");
+        addIcon(dialog, icon);
+
+        Label Lname = new Label(getResource().getString("name"));
+        Label Lcoordinates_x = new Label(getResource().getString("coordinates_x"));
+        Label Lcoordinates_y = new Label(getResource().getString("coordinates_y"));
+        Label Lnumberofparticipants = new Label(getResource().getString("numberofparticipants"));
+        Label Lsinglescount = new Label(getResource().getString("singlescount"));
+        Label Lestablishmentdate = new Label(getResource().getString("establishmentdate"));
+        Label Lgenre = new Label(getResource().getString("genre"));
+        Label Lalbum_name = new Label(getResource().getString("album_name"));
+        Label Lalbum_tracks = new Label(getResource().getString("album_tracks"));
+        Label Lalbum_length = new Label(getResource().getString("album_length"));
+        Label Lalbum_sales = new Label(getResource().getString("album_sales"));
+
+        TextField nameTF = new TextField();
+        TextField coordinates_xTF = new TextField();
+        TextField coordinates_yTF = new TextField();
+        TextField numberofparticipantsTF = new TextField();
+        TextField singlescountTF = new TextField();
+        TextField establishmentdateTF = new TextField();
+
+        ComboBox<MusicGenre> genreCB = new ComboBox<>();
+        genreCB.setPromptText("POP");
+        genreCB.getItems().addAll(MusicGenre.values());
+
+        TextField album_nameTF = new TextField();
+        TextField album_tracksTF = new TextField();
+        TextField album_lengthTF = new TextField();
+        TextField album_salesTF = new TextField();
+
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+
+        int row = 0;
+        grid.add(Lname, 0, row);
+        grid.add(nameTF, 1, row++);
+
+        grid.add(Lcoordinates_x, 0, row);
+        grid.add(coordinates_xTF, 1, row++);
+
+        grid.add(Lcoordinates_y, 0, row);
+        grid.add(coordinates_yTF, 1, row++);
+
+        grid.add(Lnumberofparticipants, 0, row);
+        grid.add(numberofparticipantsTF, 1, row++);
+
+        grid.add(Lsinglescount, 0, row);
+        grid.add(singlescountTF, 1, row++);
+
+        grid.add(Lestablishmentdate, 0, row);
+        grid.add(establishmentdateTF, 1, row++);
+
+        grid.add(Lgenre, 0, row);
+        grid.add(genreCB, 1, row++);
+
+        grid.add(Lalbum_name, 0, row);
+        grid.add(album_nameTF, 1, row++);
+
+        grid.add(Lalbum_tracks, 0, row);
+        grid.add(album_tracksTF, 1, row++);
+
+        grid.add(Lalbum_length, 0, row);
+        grid.add(album_lengthTF, 1, row++);
+
+        grid.add(Lalbum_sales, 0, row);
+        grid.add(album_salesTF, 1, row++);
+
+        ButtonType confirm = new ButtonType(getResource().getString("confirm"), ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType(getResource().getString("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
+        pane.getButtonTypes().addAll(confirm, cancel);
+        pane.setContent(grid);
+        dialog.setTitle(getResource().getString("update"));
+
+        nameTF.setText(selected.getName());
+        coordinates_xTF.setText(String.valueOf(selected.getCoordinates().getX()));
+        coordinates_yTF.setText(String.valueOf(selected.getCoordinates().getY()));
+        numberofparticipantsTF.setText(String.valueOf(selected.getNumberOfParticipants()));
+        singlescountTF.setText(String.valueOf(selected.getSinglesCount()));
+        establishmentdateTF.setText(String.valueOf(selected.getEstablishmentDate()));
+        album_nameTF.setText(selected.getBestAlbum().getName());
+        album_tracksTF.setText(String.valueOf(selected.getBestAlbum().getTracks()));
+        album_lengthTF.setText(String.valueOf(selected.getBestAlbum().getLength()));
+        album_salesTF.setText(String.valueOf(selected.getBestAlbum().getSales()));
+        dialog.setResultConverter(button -> {
+            if (button == confirm) {
+                MusicBand band = null;
+                try {
+                    String name = nameTF.getText();
+                    Integer coordinates_x = Integer.parseInt(coordinates_xTF.getText());
+                    Float coordinates_y = Float.parseFloat(coordinates_yTF.getText());
+                    Long numberofparticipants = Long.parseLong(numberofparticipantsTF.getText());
+                    Long singlescount = Long.parseLong(singlescountTF.getText());
+                    LocalDate establishmentdate = LocalDate.parse(establishmentdateTF.getText());
+                    MusicGenre genre = MusicGenre.valueOf(genreCB.getPromptText());
+                    String album_name = album_nameTF.getText();
+                    Long album_tracks = Long.parseLong(album_tracksTF.getText());
+                    Long album_length = Long.parseLong(album_lengthTF.getText());
+                    Double album_sales = Double.parseDouble(album_salesTF.getText());
+                    // отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу
+                    band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
+                    sender.sendRequest(new Request(command, currentUser, band), outToServer);
+                    Response response = handler.getResponse();
+                    while (response.getMessage().equals("update_refresh")) {
+                        response = handler.getResponse();
+                    }
+                    if (!response.getExitStatus()) {
+                        errorAlert(response);
+                    } else {
+                        double oldX = selected.getCoordinates().getX();
+                        double oldY = selected.getCoordinates().getY();
+                        double newX = band.getCoordinates().getX();
+                        double newY = band.getCoordinates().getY();
+                        VisualizationController.relocateMusicBand(oldX, oldY, newX, newY, VisualizationController.getColor(band));
+                        infoAlert(response);
+                    }
+                } catch (Exception ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle(getResource().getString("error"));
+                    Image icon2 = new Image("images/angry.png");
+                    addIcon(alert, icon2);
+                    alert.setHeaderText(getResource().getString("errorMessage"));
+                    alert.show();
+                    ex.printStackTrace();
+                }
+            }
+            return null;
+        });
+
+        dialog.showAndWait();
 
     }
 
     @FXML
-    private void refresh(ActionEvent e) throws IOException, ClassNotFoundException {
+    private void refresh(ActionEvent e) throws IOException {
         sender.sendRequest(new Request("refresh", currentUser), outToServer);
-        Response r = sender.getResponse(inFromServer);
+//        Response r = handler.getResponse();
     }
 }
