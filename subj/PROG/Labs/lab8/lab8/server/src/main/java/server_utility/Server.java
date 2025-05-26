@@ -69,7 +69,7 @@ public class Server {
     }
 
     private void handleClient(Socket clientSocket) {
-        ObjectOutputStream outToClient = null;
+        ObjectOutputStream outToClient;
         try{
             outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
             synchronized (outToClient) {

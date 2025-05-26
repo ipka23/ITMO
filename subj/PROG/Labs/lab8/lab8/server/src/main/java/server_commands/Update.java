@@ -1,6 +1,7 @@
 package server_commands;
 
 import common_entities.MusicBand;
+import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
 import server_managers.CollectionManager;
@@ -9,6 +10,7 @@ import server_utility.RCommand;
 import server_utility.consoles.ClientConsole;
 import server_utility.database.StatementValue;
 import server_utility.exceptions.InputBreakException;
+import server_utility.multithreading.Refresher;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 
 /**
  * Данный класс отвечает за выполнение команды "update"
@@ -36,7 +39,7 @@ public class Update extends RCommand {
      * @param collectionManager объект CollectionManager для управления коллекцией
      */
     public Update(ClientConsole console, CollectionManager collectionManager, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
-        super("update id", "обновить значение элемента коллекции, id которого равен заданному");
+        super(LanguageManager.getBundle().getString("update"), LanguageManager.getBundle().getString("updateDescription"));
         this.console = console;
         this.collectionManager = collectionManager;
         this.add = new Add(console, collectionManager, inFromClient, outToClient);
@@ -46,38 +49,22 @@ public class Update extends RCommand {
 
     @Override
     public Response execute(String[] command, Request request) {
-        if (command[1].trim().isEmpty())
-            return new Response(true, "Неправильное количество аргументов!\nИспользование: \"" + getName() + "\"");
         long id;
-        try {
-            id = Long.parseLong(command[1].trim());
-        } catch (NumberFormatException e) {
-            return new Response(true, "Неверный формат id!");
-        }
+        id = Long.parseLong(command[1].trim());
         MusicBand band = collectionManager.getMusicBandById(id);
-        if (band == null || !collectionManager.getCollection().contains(band)) {
-            return new Response(true, "В коллекции нет музыкальной группы с таким id!");
-        }
-        String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
-        String owner = band.getOwner();
-        if (!current_user.equals(owner)) {
-            return new Response(true, "У вас нет прав на изменение этой музыкальной группы, т.к. вы не являетесь её владельцем!");
-        } else {
-            MusicBand newBand;
-            try {
-                console.write("===========================================\n: Введите новые данные музыкальной группы :\n===========================================\n");
-                newBand = add.getBandFromRequest(request);
-                newBand.setCreationDate(band.getCreationDate());
-            } catch (InputBreakException e) {
-                return new Response(true, e.getMessage());
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+        MusicBand newBand;
+        Collection<MusicBand> collection;
+        try {
+            newBand = add.getBandFromRequest(request);
+            newBand.setCreationDate(band.getCreationDate());
             band.update(newBand);
-
             collectionManager.getDatabaseManager().updateDB(newBand, id);
-            return new Response(true, "Элемент с id = " + id + " был обновлён!", collectionManager.getCollection());
+            collection = collectionManager.getCollection();
+            Refresher.updateRefresh(band, newBand);
+        } catch (InputBreakException | IOException | ClassNotFoundException e) {
+            return new Response(false, collectionManager.getString("error"));
         }
+        return new Response(true, collectionManager.getString("bandUpdated"), collection);
     }
 
     @Override

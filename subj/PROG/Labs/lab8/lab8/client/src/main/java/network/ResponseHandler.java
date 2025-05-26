@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -25,7 +26,7 @@ public class ResponseHandler extends Thread {
         setDaemon(true);
     }
 
-    public Response getResponse() throws InterruptedException, IOException, ClassNotFoundException {
+    public Response getResponse() throws InterruptedException {
         return responses.take();
     }
     @Override
@@ -33,32 +34,51 @@ public class ResponseHandler extends Thread {
         try {
             while (true) {
                 Response response = (Response) in.readObject();
-                System.out.println("Response message: " + response.getMessage());
-                System.out.println("Response collection: " + response.getMusicBandsCollection());
+//                System.out.println("Response message: " + response.getMessage());
+//                System.out.println("Response collection: " + response.getMusicBandsCollection());
                 Collection<MusicBand> collection = response.getMusicBandsCollection();
                 if (response.getMessage().equals("refresh")) {
                     Platform.runLater(() -> {
+                        for (MusicBand band :  new HashSet<>(observableList)) {
+                            if (!collection.contains(band)) {
+                                VisualizationController.eraseMusicBand(
+                                        band.getCoordinates().getX(),
+                                        band.getCoordinates().getY(),
+                                        VisualizationController.getColor(band)
+                                );
+                            }
+                        }
                         for (MusicBand band : collection) {
                             VisualizationController.drawMusicBand(band);
                         }
                         observableList.setAll(collection);
                     });
                 }
-                if (response.getMessage().equals("delete_refresh")) {
-                    System.out.println("observableList size: " + observableList.size());
-                    System.out.println("collection size: " + collection.size());
+                if (response.getMessage().equals("update_refresh")) {
+                    MusicBand oldBand = response.getOldBand();
+                    MusicBand newBand = response.getNewBand();
                     Platform.runLater(() -> {
-                        for (MusicBand band : observableList) {
+                        VisualizationController.relocateMusicBand(
+                                oldBand.getCoordinates().getX(),
+                                oldBand.getCoordinates().getY(),
+                                newBand.getCoordinates().getX(),
+                                newBand.getCoordinates().getY(), VisualizationController.getColor(oldBand)
+                        );
+                        observableList.setAll(collection);
+                    });
+                }
+                if (response.getMessage().equals("delete_refresh")) {
+//                    System.out.println("observableList size: " + observableList.size());
+//                    System.out.println("collection size: " + collection.size());
+                    Platform.runLater(() -> {
+                        for (MusicBand band : new HashSet<>(observableList)) {
                             if (!collection.contains(band)) {
                                 VisualizationController.eraseMusicBand(band.getCoordinates().getX(), band.getCoordinates().getY(), VisualizationController.getColor(band));
                             }
                         }
                         observableList.setAll(collection);
                     });
-                }
-
-                else {
-//                    System.out.println("bands: " + response.getMusicBandsCollection());
+                } else {
                     responses.put(response);
                 }
             }

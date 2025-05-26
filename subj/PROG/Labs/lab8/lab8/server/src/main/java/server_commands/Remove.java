@@ -32,7 +32,7 @@ public class Remove extends Command {
         this.collectionManager = collectionManager;
     }
 
-
+    //todo через Rcommand
     public Response execute(String[] command) {
         long id;
         try {
@@ -44,11 +44,7 @@ public class Remove extends Command {
         if (band == null || !collectionManager.getCollection().contains(band)) {
             return new Response(false, "В коллекции нет музыкальной группы с таким id!");
         }
-        String current_user = collectionManager.getDatabaseManager().getUser().getUsername();
-        String owner = band.getOwner();
-        if (!current_user.equals(owner)) {
-            return new Response(false, "Вы не можете удалить музыкальную группу с id = " + id + " т.к. не являетесь ее владельцем!");
-        } else {
+        else {
             collectionManager.removeByID(id);
             Collection<MusicBand> collection = collectionManager.getCollection();
             Refresher.deleteRefresh(collection);

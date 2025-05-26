@@ -103,15 +103,16 @@ public class ClientConsole extends StandartConsole {
                 /*if (command.equals("logout")){
                 todo
                 }*/
-                if (command.startsWith("add") || command.equals("clear") || command.equals("remove_greater")){
+                if (command.startsWith("add") || command.equals("clear") || command.equals("remove_greater") || command.equals("update")){
                     Response response = invoker.execute(new String[]{command, arg}, request);
                     sendResponse(response, outToClient);
                 }
-                if (command.equals("refresh")) {
+                /*if (command.equals("refresh")) {
 //                    sendResponse(new Response(true, "refresh", collectionManager.getCollection()), outToClient);
                     collectionManager.getDatabaseManager().loadCollectionFromDB();
-                    Refresher.refresh(collectionManager.getCollection());
-                } else {
+                    sendResponse(new Response(true,"refresh", collectionManager.getCollection()), outToClient);
+//                    Refresher.refresh(collectionManager.getCollection());
+                }*/ else {
                     Response response = invoker.execute(new String[]{command, arg});
                     sendResponse(response, outToClient);
                 }

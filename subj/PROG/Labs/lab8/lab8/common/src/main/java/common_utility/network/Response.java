@@ -17,7 +17,8 @@ public class Response implements Serializable {
     private String message;
     private Collection<MusicBand> musicBandsCollection;
     private MusicBand musicBand;
-
+    private MusicBand oldBand;
+    private MusicBand newBand;
 
     public Response(boolean exitStatus, String message) {
         this.exitStatus = exitStatus;
@@ -39,6 +40,13 @@ public class Response implements Serializable {
         this.message = message;
         this.musicBandsCollection = musicBandsCollection;
         this.musicBand = musicBand;
+    }
+
+    public Response(boolean exitStatus, String message, MusicBand oldBand, MusicBand newBand) {
+        this.exitStatus = exitStatus;
+        this.message = message;
+        this.oldBand = oldBand;
+        this.newBand = newBand;
     }
 
     public boolean getExitStatus() {
