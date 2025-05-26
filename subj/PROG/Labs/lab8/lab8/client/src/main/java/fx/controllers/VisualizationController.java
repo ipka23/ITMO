@@ -91,7 +91,7 @@ public class VisualizationController {
         return root;
     }
 
-    public static synchronized void drawMusicBand(MusicBand band) {
+    public static void drawMusicBand(MusicBand band) {
         double x = band.getCoordinates().getX();
         double y = band.getCoordinates().getY();
         Color color = VisualizationController.getColor(band);
@@ -109,9 +109,42 @@ public class VisualizationController {
         transition.setFromValue(0);
         transition.setToValue(1);
         transition.play();
+        setCircleEvents(circle, band);
+    }
+    public static void setCircleEvents(Circle circle, MusicBand band) {
+        circle.setOnMouseClicked(e -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Image icon = new Image("images/info.png");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(icon);
+
+            alert.setTitle(null);
+            StringBuilder s = new StringBuilder();
+            s.append(getResource("id")).append(": ").append(band.getId()).append("\n");
+            s.append(getResource("owner")).append(": ").append(band.getOwner()).append("\n");
+            s.append(getResource("name")).append(": ").append(band.getName()).append("\n");
+            s.append(getResource("coordinates_x")).append(": ").append(band.getCoordinates().getX()).append("\n");
+            s.append(getResource("coordinates_y")).append(": ").append(band.getCoordinates().getY()).append("\n");
+            s.append(getResource("creationdate")).append(": ").append(band.getCreationDate()).append("\n");
+            s.append(getResource("numberofparticipants")).append(": ").append(band.getNumberOfParticipants()).append("\n");
+            s.append(getResource("establishmentdate")).append(": ").append(band.getEstablishmentDate()).append("\n");
+            s.append(getResource("genre")).append(": ").append(band.getGenre()).append("\n");
+            s.append(getResource("album_name")).append(": ").append(band.getBestAlbum().getName()).append("\n");
+            s.append(getResource("album_tracks")).append(": ").append(band.getBestAlbum().getTracks()).append("\n");
+            s.append(getResource("album_length")).append(": ").append(band.getBestAlbum().getLength()).append("\n");
+            s.append(getResource("album_sales")).append(": ").append(band.getBestAlbum().getSales()).append("\n");
+//                    alert.setHeaderText(s.toString());
+            alert.setHeaderText(getResource("musicBandInfo"));
+            alert.setContentText(s.toString());
+            alert.showAndWait();
+        });
+        circle.setOnMouseEntered(e -> {
+            Tooltip tooltip = new Tooltip(getResource("id") + ": " + bandMap.get(circle).getId());
+            Tooltip.install(circle, tooltip);
+        });
     }
 
-    public static synchronized void relocateMusicBand(double oldX, double oldY, double newX, double newY, Color color) {
+    public static void relocateMusicBand(double oldX, double oldY, double newX, double newY, Color color) {
         oldX = oldX * scaleX;
         oldY = oldY * scaleY;
         double layoutOldX = centerX + oldX;
@@ -133,9 +166,8 @@ public class VisualizationController {
                 }
             }
         }
-        /*Line line = new Line(layoutOldX, layoutOldY, layoutNewX, layoutNewY);
-        PathTransition transition = new PathTransition(Duration.seconds(5), line, circle);
-        transition.play();*/
+
+
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0),
                         new KeyValue(circle.layoutXProperty(), layoutOldX),
@@ -147,11 +179,15 @@ public class VisualizationController {
                 )
         );
         timeline.play();
+//        timeline.setOnFinished(e -> {});
 
+        setCircleEvents(circle, bandMap.get(circle));
 
     }
 
-    public static synchronized void eraseMusicBand(double x, double y, Color color) {
+    public synchronized static void eraseMusicBand(MusicBand band, Color color) {
+        double x = band.getCoordinates().getX();
+        double y = band.getCoordinates().getY();
         x = x * scaleX;
         y = y * scaleY;
         double layoutX = centerX + x;
@@ -168,56 +204,20 @@ public class VisualizationController {
                 }
             }
         }
+        colorsMap.remove(band.getOwner(), color);
 
         FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
         transition.setFromValue(1);
         transition.setToValue(0);
-//        fadeTransition.setOnFinished(e -> root.getChildren().remove(circle));
+        Circle finalCircle = circle;
+        transition.setOnFinished(e -> root.getChildren().remove(finalCircle));
         transition.play();
     }
     public static String getResource(String key) {
         return LanguageManager.getBundle().getString(key);
     }
 
-    public static void initCirclesAction() {
-        for (Node node : root.getChildren()) {
-            if (node instanceof Circle) {
-                Circle circle = (Circle) node;
-                circle.setOnMouseClicked(e -> {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    Image icon = new Image("images/info.png");
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(icon);
 
-                    alert.setTitle(null);
-                    StringBuilder s = new StringBuilder();
-                    MusicBand band = bandMap.get(circle);
-                    s.append(getResource("id")).append(": ").append(band.getId()).append("\n");
-                    s.append(getResource("owner")).append(": ").append(band.getOwner()).append("\n");
-                    s.append(getResource("name")).append(": ").append(band.getName()).append("\n");
-                    s.append(getResource("coordinates_x")).append(": ").append(band.getCoordinates().getX()).append("\n");
-                    s.append(getResource("coordinates_y")).append(": ").append(band.getCoordinates().getY()).append("\n");
-                    s.append(getResource("creationdate")).append(": ").append(band.getCreationDate()).append("\n");
-                    s.append(getResource("numberofparticipants")).append(": ").append(band.getNumberOfParticipants()).append("\n");
-                    s.append(getResource("establishmentdate")).append(": ").append(band.getEstablishmentDate()).append("\n");
-                    s.append(getResource("genre")).append(": ").append(band.getGenre()).append("\n");
-                    s.append(getResource("album_name")).append(": ").append(band.getBestAlbum().getName()).append("\n");
-                    s.append(getResource("album_tracks")).append(": ").append(band.getBestAlbum().getTracks()).append("\n");
-                    s.append(getResource("album_length")).append(": ").append(band.getBestAlbum().getLength()).append("\n");
-                    s.append(getResource("album_sales")).append(": ").append(band.getBestAlbum().getSales()).append("\n");
-//                    alert.setHeaderText(s.toString());
-                    alert.setHeaderText(getResource("musicBandInfo"));
-                    alert.setContentText(s.toString());
-                    alert.showAndWait();
-                });
-                circle.setOnMouseEntered(e -> {
-                    Tooltip tooltip = new Tooltip(getResource("id") + ": " + bandMap.get(circle).getId());
-                    Tooltip.install(circle, tooltip);
-                });
-            }
-
-        }
-    }
     public static Color getColor(MusicBand band) {
         if (colorsMap.containsKey(band.getOwner())) {
             return colorsMap.get(band.getOwner());

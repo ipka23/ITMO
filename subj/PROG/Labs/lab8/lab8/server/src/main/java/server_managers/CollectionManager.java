@@ -76,6 +76,17 @@ public class CollectionManager {
     }
 
 
+    public void remove(MusicBand musicBand) {
+        try {
+            musicBandsMap.remove(musicBand.getId());
+            collection.remove(musicBand);
+            PreparedStatement ps = databaseManager.getConnection().prepareStatement(StatementValue.REMOVE_MUSIC_BAND_BY_ID.toString());
+            ps.setLong(1, musicBand.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            log.info(e.getMessage());
+        }
+    }
 
    /* public CollectionManager(DatabaseManager databaseManager, StandartConsole console) {
         this.databaseManager = databaseManager;

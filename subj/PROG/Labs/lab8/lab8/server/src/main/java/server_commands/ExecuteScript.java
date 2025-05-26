@@ -52,7 +52,7 @@ public class ExecuteScript extends Command {
         scriptFileContent.append("=================================\n: История выполнения скрипта \"").append(scriptFile.getName()).append("\":\n=================================\n");
 
         try (Scanner fileScanner = new Scanner(new FileReader(scriptFile))) {
-            console.setScanner(fileScanner);
+//            console.setScanner(fileScanner);
 
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
@@ -81,7 +81,7 @@ public class ExecuteScript extends Command {
         }*/ catch (IOException | ClassNotFoundException e) {
             return new Response(false, "Непредвиденная ошибка!");
         } finally {
-            console.setScanner(new Scanner(System.in));
+//            console.setScanner(new Scanner(System.in));
             console.setScriptMode(false);
             scriptFile.delete();
         }

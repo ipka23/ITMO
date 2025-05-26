@@ -42,11 +42,12 @@ public class Response implements Serializable {
         this.musicBand = musicBand;
     }
 
-    public Response(boolean exitStatus, String message, MusicBand oldBand, MusicBand newBand) {
+    public Response(boolean exitStatus, String message, MusicBand oldBand, MusicBand newBand, Collection<MusicBand> collection) {
         this.exitStatus = exitStatus;
         this.message = message;
         this.oldBand = oldBand;
         this.newBand = newBand;
+        this.musicBandsCollection = collection;
     }
 
     public boolean getExitStatus() {

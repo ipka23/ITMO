@@ -66,7 +66,7 @@ public class Add extends RCommand {
             Collection<MusicBand> collection = collectionManager.getCollection();
             response.setMusicBandsCollection(collection);
             response.setMusicBand(response.getMusicBand());
-            Refresher.refresh(collection);
+            Refresher.addRefresh(collection);
             return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {
             return new Response(false, collectionManager.getString("error"));
