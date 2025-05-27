@@ -33,11 +33,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class MainController extends SceneController implements Initializable {
+    @FXML
+    private Label filterByLabel;
     @FXML
     private Button reset;
     @FXML
@@ -66,8 +69,6 @@ public class MainController extends SceneController implements Initializable {
     public ComboBox<String> languageBox;
     @FXML
     private ComboBox<String> filterByBox;
-    @FXML
-    private ComboBox<String> sortByBox;
     @FXML
     private Button logoutButton;
     @FXML
@@ -140,12 +141,11 @@ public class MainController extends SceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setLanguageBox();
         changeLanguage();
         initTable();
         setFilterByBox();
-        setSortByBox();
         setButtonActions();
-
     }
 
     private void initCoordinateSystem(VisualizationController visualizationController) {
@@ -193,7 +193,35 @@ public class MainController extends SceneController implements Initializable {
             }
         });
     }
-
+    public void setLanguageBox() {
+        ObservableList<String> languages = FXCollections.observableList(List.of("Русский", "English", "Deutsch", "Български"));
+        languageBox.setItems(languages);
+        languageBox.setOnMouseClicked(event -> {
+            String current_language = languageBox.getValue();
+            switch (current_language) {
+                case "English":
+                    LanguageManager.setBundle(LanguageManager.getEn_bundle());
+                    LanguageManager.setCurrentLanguage(current_language);
+                    changeLanguage();
+                    break;
+                case "Русский":
+                    LanguageManager.setBundle(LanguageManager.getRu_bundle());
+                    LanguageManager.setCurrentLanguage(current_language);
+                    changeLanguage();
+                    break;
+                case "Deutsch":
+                    LanguageManager.setBundle(LanguageManager.getDe_bundle());
+                    LanguageManager.setCurrentLanguage(current_language);
+                    changeLanguage();
+                    break;
+                case "Български":
+                    LanguageManager.setBundle(LanguageManager.getBg_bundle());
+                    LanguageManager.setCurrentLanguage(current_language);
+                    changeLanguage();
+                    break;
+            }
+        });
+    }
     private void initTable() {
         // привязка значений из musicBand к столбцам таблицы
         table.setPrefSize(960, 360);
@@ -237,6 +265,7 @@ public class MainController extends SceneController implements Initializable {
 
 
     public void changeLanguage() {
+
         // top_left anchor
         languageBox.setValue(LanguageManager.getCurrentLanguage());
         current_user.setText(getResource().getString("current_user"));
@@ -249,7 +278,7 @@ public class MainController extends SceneController implements Initializable {
         coordinates_x.setText(getResource().getString("coordinates_x"));
         coordinates_y.setText(getResource().getString("coordinates_y"));
         creationdate.setText(/*LocalDate TODO*/getResource().getString("creationdate"));
-        numberofparticipants.setText(getResource().getString("numberofparticipants"));
+        numberofparticipants.setText(getResource().getString("numberOfParticipants"));
         singlescount.setText(getResource().getString("singlescount"));
         establishmentdate.setText(getResource().getString("establishmentdate"));
         genre.setText(getResource().getString("genre"));
@@ -268,7 +297,8 @@ public class MainController extends SceneController implements Initializable {
         remove_greater.setText(getResource().getString("remove_greater"));
         updateButton.setText(getResource().getString("update"));
         info.setText(getResource().getString("info"));
-
+        reset.setText(getResource().getString("reset"));
+        filterByLabel.setText(getResource().getString("filterByLabel"));
     }
 
 
@@ -315,7 +345,7 @@ public class MainController extends SceneController implements Initializable {
         Label Lname = new Label(getResource().getString("name"));
         Label Lcoordinates_x = new Label(getResource().getString("coordinates_x"));
         Label Lcoordinates_y = new Label(getResource().getString("coordinates_y"));
-        Label Lnumberofparticipants = new Label(getResource().getString("numberofparticipants"));
+        Label Lnumberofparticipants = new Label(getResource().getString("numberOfParticipants"));
         Label Lsinglescount = new Label(getResource().getString("singlescount"));
         Label Lestablishmentdate = new Label(getResource().getString("establishmentdate"));
         Label Lgenre = new Label(getResource().getString("genre"));
@@ -505,7 +535,7 @@ public class MainController extends SceneController implements Initializable {
     }
 
     private void update(ActionEvent e, MusicBand selected) {
-        String command = "update " + String.valueOf(selected.getId()).trim();
+        String command = "update";
         Dialog<MusicBand> dialog = new Dialog<>();
         DialogPane pane = dialog.getDialogPane();
         Image icon = new Image("images/pikachu2.png");
@@ -514,7 +544,7 @@ public class MainController extends SceneController implements Initializable {
         Label Lname = new Label(getResource().getString("name"));
         Label Lcoordinates_x = new Label(getResource().getString("coordinates_x"));
         Label Lcoordinates_y = new Label(getResource().getString("coordinates_y"));
-        Label Lnumberofparticipants = new Label(getResource().getString("numberofparticipants"));
+        Label Lnumberofparticipants = new Label(getResource().getString("numberOfParticipants"));
         Label Lsinglescount = new Label(getResource().getString("singlescount"));
         Label Lestablishmentdate = new Label(getResource().getString("establishmentdate"));
         Label Lgenre = new Label(getResource().getString("genre"));
@@ -611,7 +641,8 @@ public class MainController extends SceneController implements Initializable {
                     Long album_length = Long.parseLong(album_lengthTF.getText());
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
-                    sender.sendRequest(new Request(command, currentUser, band, selected), outToServer);
+                    band.setId(selected.getId());
+                    sender.sendRequest(new Request(command, currentUser, selected, band), outToServer);
                     Response response = handler.getResponse();
                     while (response.getMessage().equals("update_refresh") || response.getMessage().equals("add_refresh") ) {
                         response = handler.getResponse();
@@ -619,7 +650,7 @@ public class MainController extends SceneController implements Initializable {
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
-                        visualizationController.eraseMusicBand(selected, visualizationController.getColor(band));
+                        visualizationController.eraseMusicBand(selected, visualizationController.getColor(selected));
                         visualizationController.drawMusicBand(band);
                         infoAlert(response);
                     }
@@ -639,26 +670,6 @@ public class MainController extends SceneController implements Initializable {
 
     }
 
-    private void setSortByBox() {
-        sortByBox.setValue(getResource().getString("id"));
-        ObservableList<String> sortBy = FXCollections.observableList(List.of(
-                getResource().getString("id"),
-                getResource().getString("owner"),
-                getResource().getString("name"),
-                getResource().getString("coordinates_x"),
-                getResource().getString("coordinates_y"),
-                getResource().getString("creationdate"),
-                getResource().getString("numberofparticipants"),
-                getResource().getString("singlescount"),
-                getResource().getString("establishmentdate"),
-                getResource().getString("genre"),
-                getResource().getString("album_name"),
-                getResource().getString("album_tracks"),
-                getResource().getString("album_length"),
-                getResource().getString("album_sales")
-        ));
-        sortByBox.setItems(sortBy);
-    }
 
     private void setFilterByBox() {
         ObservableList<String> sortBy = FXCollections.observableList(List.of(
@@ -668,7 +679,7 @@ public class MainController extends SceneController implements Initializable {
                 getResource().getString("coordinates_x"),
                 getResource().getString("coordinates_y"),
                 getResource().getString("creationdate"),
-                getResource().getString("numberofparticipants"),
+                getResource().getString("numberOfParticipants"),
                 getResource().getString("singlescount"),
                 getResource().getString("establishmentdate"),
                 getResource().getString("genre"),
@@ -717,6 +728,186 @@ public class MainController extends SceneController implements Initializable {
                     }
                 }).collect(Collectors.toSet());
             }
+            if (filterBy.equals(getStr("name"))) {
+                value = textDialog("name");
+                String operator = value.split(" ", 3)[1];
+                String name = value.split(" ", 3)[2];
+                filtered = observableList.stream().filter(band -> {
+                    String bandName = band.getName();
+                    switch (operator) {
+                        case "=": return bandName.startsWith(name);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("coordinates_x"))) {
+                value = textDialog("coordinates_x");
+                String operator = value.split(" ", 3)[1];
+                Integer x = Integer.parseInt(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Integer bandX = band.getCoordinates().getX();
+                    switch (operator) {
+                        case "=": return bandX.equals(x);
+                        case "<": return bandX < x;
+                        case ">=": return bandX > x;
+                        case "<=": return bandX <= x;
+                        case ">": return bandX > x;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("coordinates_y"))) {
+                value = textDialog("coordinates_y");
+                String operator = value.split(" ", 3)[1];
+                Float y = Float.parseFloat(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Float bandY = band.getCoordinates().getY();
+                    switch (operator) {
+                        case "=": return bandY.equals(y);
+                        case "<": return bandY < y;
+                        case ">=": return bandY > y;
+                        case "<=": return bandY <= y;
+                        case ">": return bandY > y;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("creationdate"))) {
+                value = textDialog("creationdate");
+                String operator = value.split(" ", 3)[1];
+                LocalDate creationDate = LocalDate.parse(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    LocalDate bandCreationDate = band.getCreationDate();
+                    switch (operator) {
+                        case "=": return bandCreationDate.equals(creationDate);
+                        case ">": return bandCreationDate.isAfter(creationDate);
+                        case "<": return bandCreationDate.isBefore(creationDate);
+                        case "<=": return bandCreationDate.isBefore(creationDate) || bandCreationDate.equals(creationDate);
+                        case ">=": return bandCreationDate.isAfter(creationDate) || bandCreationDate.equals(creationDate);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("numberOfParticipants"))) {
+                value = textDialog("numberOfParticipants");
+                String operator = value.split(" ", 3)[1];
+                Long numberOfParticipants = Long.parseLong(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Long bandNumberOfParticipants = band.getNumberOfParticipants();
+                    switch (operator) {
+                        case "=": return bandNumberOfParticipants.equals(numberOfParticipants);
+                        case ">": return bandNumberOfParticipants > numberOfParticipants;
+                        case "<": return bandNumberOfParticipants < numberOfParticipants;
+                        case "<=": return bandNumberOfParticipants <= numberOfParticipants;
+                        case ">=": return bandNumberOfParticipants >= numberOfParticipants;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("singlescount"))) {
+                value = textDialog("singlescount");
+                String operator = value.split(" ", 3)[1];
+                Long singlesCount = Long.parseLong(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Long bandSinglesCount = band.getNumberOfParticipants();
+                    switch (operator) {
+                        case "=": return bandSinglesCount.equals(singlesCount);
+                        case ">": return bandSinglesCount > singlesCount;
+                        case "<": return bandSinglesCount < singlesCount;
+                        case "<=": return bandSinglesCount <= singlesCount;
+                        case ">=": return bandSinglesCount >= singlesCount;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("establishmentdate"))) {
+                value = textDialog("establishmentdate");
+                String operator = value.split(" ", 3)[1];
+                LocalDate establishmentDate = LocalDate.parse(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    LocalDate bandEstablishmentDate = band.getCreationDate();
+                    switch (operator) {
+                        case "=": return bandEstablishmentDate.equals(establishmentDate);
+                        case ">": return bandEstablishmentDate.isAfter(establishmentDate);
+                        case "<": return bandEstablishmentDate.isBefore(establishmentDate);
+                        case "<=": return bandEstablishmentDate.isBefore(establishmentDate) || bandEstablishmentDate.equals(establishmentDate);
+                        case ">=": return bandEstablishmentDate.isAfter(establishmentDate) || bandEstablishmentDate.equals(establishmentDate);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("genre"))) {
+                value = textDialog("genre");
+                String operator = value.split(" ", 3)[1];
+                MusicGenre genre = MusicGenre.valueOf(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    MusicGenre bandGenre = band.getGenre();
+                    switch (operator) {
+                        case "=": return bandGenre.equals(genre);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("album_name"))) {
+                value = textDialog("album_name");
+                String operator = value.split(" ", 3)[1];
+                String album_name = value.split(" ", 3)[2];
+                filtered = observableList.stream().filter(band -> {
+                    String bandAlbum_name = band.getBestAlbum().getName();
+                    switch (operator) {
+                        case "=": return bandAlbum_name.equals(album_name);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("album_tracks"))) {
+                value = textDialog("album_tracks");
+                String operator = value.split(" ", 3)[1];
+                Long album_tracks = Long.parseLong(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Long bandAlbum_tracks = band.getBestAlbum().getTracks();
+                    switch (operator) {
+                        case "=": return bandAlbum_tracks.equals(album_tracks);
+                        case ">": return bandAlbum_tracks > album_tracks;
+                        case "<": return bandAlbum_tracks < album_tracks;
+                        case "<=": return bandAlbum_tracks <= album_tracks;
+                        case ">=": return bandAlbum_tracks >= album_tracks;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("album_length"))) {
+                value = textDialog("album_length");
+                String operator = value.split(" ", 3)[1];
+                Long album_length = Long.parseLong(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Long bandAlbum_length = band.getBestAlbum().getLength();
+                    switch (operator) {
+                        case "=": return bandAlbum_length.equals(album_length);
+                        case ">": return bandAlbum_length > album_length;
+                        case "<": return bandAlbum_length < album_length;
+                        case "<=": return bandAlbum_length <= album_length;
+                        case ">=": return bandAlbum_length >= album_length;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            if (filterBy.equals(getStr("album_sales"))) {
+                value = textDialog("album_sales");
+                String operator = value.split(" ", 3)[1];
+                Double album_sales = Double.parseDouble(value.split(" ", 3)[2]);
+                filtered = observableList.stream().filter(band -> {
+                    Double bandAlbum_sales = band.getBestAlbum().getSales();
+                    switch (operator) {
+                        case "=": return bandAlbum_sales.equals(album_sales);
+                        case ">": return bandAlbum_sales > album_sales;
+                        case "<": return bandAlbum_sales < album_sales;
+                        case "<=": return bandAlbum_sales <= album_sales;
+                        case ">=": return bandAlbum_sales >= album_sales;
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
             observableList.setAll(filtered);
         });
     }
@@ -736,7 +927,7 @@ public class MainController extends SceneController implements Initializable {
         ComboBox<String> token = new ComboBox<>();
         token.setMinWidth(10);
         ObservableList<String> l = FXCollections.observableList(List.of(">", ">=", "<", "<=", "="));
-        token.setValue("=");
+        token.setValue(">");
         token.setItems(l);
         AtomicReference<String> operator = new AtomicReference<>();
         token.setOnAction(e -> {

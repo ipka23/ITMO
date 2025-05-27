@@ -38,11 +38,9 @@
              <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="44.0" prefWidth="1510.0" spacing="10.0" BorderPane.alignment="CENTER">
                  <AnchorPane prefHeight="44.0" prefWidth="784.0">
                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Фильтр по:" />
+                        <Label fx:id="filterByLabel" layoutX="14.0" layoutY="14.0" text="Фильтр по:" />
                         <ComboBox fx:id="filterByBox" layoutX="83.0" layoutY="10.0" prefWidth="150.0" />
-                        <ComboBox fx:id="sortByBox" layoutX="436.0" layoutY="10.0" prefHeight="25.0" prefWidth="109.0" />
                         <Button fx:id="help" layoutX="568.0" layoutY="10.0" mnemonicParsing="false" onAction="#help" prefHeight="25.0" prefWidth="174.0" text="Памятка по командам " />
-                        <Label layoutX="337.0" layoutY="14.0" text="Сортировка по:" />
                      <Button fx:id="reset" layoutX="254.0" layoutY="10.0" mnemonicParsing="false" onAction="#reset" text="Сброс" />
                     </children>
                  </AnchorPane>
