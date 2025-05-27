@@ -23,6 +23,7 @@ public class Request implements Serializable {
     private File scriptFile;
     private User user;
     private MusicBand musicBand;
+    private MusicBand band2;
     @Getter
     private boolean flag = true;
 
@@ -40,6 +41,12 @@ public class Request implements Serializable {
         this.message = message;
         this.user = currentUser;
         this.musicBand = band;
+    }
+    public Request(String message, User currentUser, MusicBand band, MusicBand band2) {
+        this.message = message;
+        this.user = currentUser;
+        this.musicBand = band;
+        this.band2 = band2;
     }
     @Override
     public String toString() {

@@ -19,10 +19,12 @@ import java.util.stream.Collectors;
 public class ResponseHandler extends Thread {
     private final ObjectInputStream in;
     private final ObservableList<MusicBand> observableList;
+    private VisualizationController visualizationController;
     private final BlockingQueue<Response> responses = new LinkedBlockingQueue<>();
-    public ResponseHandler(ObjectInputStream in, ObservableList<MusicBand> observableList) {
+    public ResponseHandler(ObjectInputStream in, ObservableList<MusicBand> observableList, VisualizationController visualizationController) {
         this.in = in;
         this.observableList = observableList;
+        this.visualizationController = visualizationController;
         setDaemon(true);
     }
 
@@ -41,14 +43,14 @@ public class ResponseHandler extends Thread {
                     Platform.runLater(() -> {
                         for (MusicBand band :  new HashSet<>(observableList)) {
                             if (!collection.contains(band)) {
-                                VisualizationController.eraseMusicBand(
+                                visualizationController.eraseMusicBand(
                                         band,
-                                        VisualizationController.getColor(band)
+                                        visualizationController.getColor(band)
                                 );
                             }
                         }
                         for (MusicBand band : collection) {
-                            VisualizationController.drawMusicBand(band);
+                            visualizationController.drawMusicBand(band);
                         }
                         observableList.setAll(collection);
                     });
@@ -57,12 +59,7 @@ public class ResponseHandler extends Thread {
                     MusicBand oldBand = response.getOldBand();
                     MusicBand newBand = response.getNewBand();
                     Platform.runLater(() -> {
-                        VisualizationController.relocateMusicBand(
-                                oldBand.getCoordinates().getX(),
-                                oldBand.getCoordinates().getY(),
-                                newBand.getCoordinates().getX(),
-                                newBand.getCoordinates().getY(), VisualizationController.getColor(oldBand)
-                        );
+
                         observableList.setAll(collection);
                     });
                 }
@@ -72,7 +69,7 @@ public class ResponseHandler extends Thread {
                     Platform.runLater(() -> {
                         for (MusicBand band : new HashSet<>(observableList)) {
                             if (!collection.contains(band)) {
-                                VisualizationController.eraseMusicBand(band, VisualizationController.getColor(band));
+                                visualizationController.eraseMusicBand(band, visualizationController.getColor(band));
                             }
                         }
                         observableList.setAll(collection);

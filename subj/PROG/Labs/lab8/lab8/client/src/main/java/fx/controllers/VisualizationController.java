@@ -19,27 +19,27 @@ import javafx.scene.image.Image;
 import java.util.*;
 
 public class VisualizationController {
-    public static Map<String, Color> colorsMap = Collections.synchronizedMap(new HashMap<>());
-    public static Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>()); // TODO сделать чтобы старые не оставались в мапе
-    static double LOGICAL_WIDTH = 2000;
-    static double LOGICAL_HEIGHT = 2000;
+    public Map<String, Color> colorsMap = Collections.synchronizedMap(new HashMap<>());
+    public Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>()); // TODO сделать чтобы старые не оставались в мапе
+    double LOGICAL_WIDTH = 2000;
+    double LOGICAL_HEIGHT = 2000;
 
-    static double canvasWidth = 700;
-    static double canvasHeight = 500;
+    double canvasWidth = 700;
+    double canvasHeight = 500;
     // коэффициенты масштабирования
-    static double scaleX = canvasWidth / LOGICAL_WIDTH;
-    static double scaleY = canvasHeight / LOGICAL_HEIGHT;
+    double scaleX = canvasWidth / LOGICAL_WIDTH;
+    double scaleY = canvasHeight / LOGICAL_HEIGHT;
 
     // Центр логической системы координат (в логических единицах)
-    static double logicalCenterX = LOGICAL_WIDTH / 2;
-    static double logicalCenterY = LOGICAL_HEIGHT / 2;
+    double logicalCenterX = LOGICAL_WIDTH / 2;
+    double logicalCenterY = LOGICAL_HEIGHT / 2;
 
     // Перевод логического центра в экранные координаты (пиксели)
-    static double centerX = logicalCenterX * scaleX;
-    static double centerY = logicalCenterY * scaleY;
-    static Pane root = new Pane();
+    double centerX = logicalCenterX * scaleX;
+    double centerY = logicalCenterY * scaleY;
+    Pane root = new Pane();
 
-    public static Pane draw2DCoordinateSystem() {
+    public Pane draw2DCoordinateSystem() {
 
         root = new Pane();
 
@@ -91,10 +91,10 @@ public class VisualizationController {
         return root;
     }
 
-    public static void drawMusicBand(MusicBand band) {
+    public void drawMusicBand(MusicBand band) {
         double x = band.getCoordinates().getX();
         double y = band.getCoordinates().getY();
-        Color color = VisualizationController.getColor(band);
+        Color color = this.getColor(band);
         x = x * scaleX;
         y = y * scaleY;
 
@@ -111,7 +111,7 @@ public class VisualizationController {
         transition.play();
         setCircleEvents(circle, band);
     }
-    public static void setCircleEvents(Circle circle, MusicBand band) {
+    public void setCircleEvents(Circle circle, MusicBand band) {
         circle.setOnMouseClicked(e -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             Image icon = new Image("images/info.png");
@@ -144,48 +144,8 @@ public class VisualizationController {
         });
     }
 
-    public static void relocateMusicBand(double oldX, double oldY, double newX, double newY, Color color) {
-        oldX = oldX * scaleX;
-        oldY = oldY * scaleY;
-        double layoutOldX = centerX + oldX;
-        double layoutOldY = centerY - oldY;
 
-        newX = newX * scaleX;
-        newY = newY * scaleY;
-        double layoutNewX = centerX + newX;
-        double layoutNewY = centerY - newY;
-
-        Circle circle = null;
-        for (Node node : root.getChildren()) {
-            if (node instanceof Circle) {
-                circle = (Circle) node;
-                if (circle.getFill().equals(color)) {
-                    if ((Math.abs(circle.getLayoutX() - layoutOldX) < 1e-3 && Math.abs(circle.getLayoutY() - layoutOldY) < 1e-3)) {
-                        break;
-                    }
-                }
-            }
-        }
-
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0),
-                        new KeyValue(circle.layoutXProperty(), layoutOldX),
-                        new KeyValue(circle.layoutYProperty(), layoutOldY)
-                ),
-                new KeyFrame(Duration.seconds(3),
-                        new KeyValue(circle.layoutXProperty(), layoutNewX),
-                        new KeyValue(circle.layoutYProperty(), layoutNewY)
-                )
-        );
-        timeline.play();
-//        timeline.setOnFinished(e -> {});
-
-        setCircleEvents(circle, bandMap.get(circle));
-
-    }
-
-    public synchronized static void eraseMusicBand(MusicBand band, Color color) {
+    public void eraseMusicBand(MusicBand band, Color color) {
         double x = band.getCoordinates().getX();
         double y = band.getCoordinates().getY();
         x = x * scaleX;
@@ -213,12 +173,12 @@ public class VisualizationController {
         transition.setOnFinished(e -> root.getChildren().remove(finalCircle));
         transition.play();
     }
-    public static String getResource(String key) {
+    public String getResource(String key) {
         return LanguageManager.getBundle().getString(key);
     }
 
 
-    public static Color getColor(MusicBand band) {
+    public Color getColor(MusicBand band) {
         if (colorsMap.containsKey(band.getOwner())) {
             return colorsMap.get(band.getOwner());
         } else {
