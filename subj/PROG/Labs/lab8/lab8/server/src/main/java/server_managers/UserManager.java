@@ -54,7 +54,7 @@ public class UserManager {
             dbManager.registerUser(user);
             addUser(user);
             dbManager.setUser(user);
-            return new Response(true, "Регистрация прошла успешно!");
+            return new Response(true, "Регистрация прошла успешно!", collectionManager.getCollection());
         } catch (SQLException e) {
             return new Response(false, "Ошибка регистрации: " + e.getMessage());
         }

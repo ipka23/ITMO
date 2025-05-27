@@ -126,7 +126,7 @@ public class VisualizationController {
             s.append(getResource("coordinates_x")).append(": ").append(band.getCoordinates().getX()).append("\n");
             s.append(getResource("coordinates_y")).append(": ").append(band.getCoordinates().getY()).append("\n");
             s.append(getResource("creationdate")).append(": ").append(band.getCreationDate()).append("\n");
-            s.append(getResource("numberofparticipants")).append(": ").append(band.getNumberOfParticipants()).append("\n");
+            s.append(getResource("numberOfParticipants")).append(": ").append(band.getNumberOfParticipants()).append("\n");
             s.append(getResource("establishmentdate")).append(": ").append(band.getEstablishmentDate()).append("\n");
             s.append(getResource("genre")).append(": ").append(band.getGenre()).append("\n");
             s.append(getResource("album_name")).append(": ").append(band.getBestAlbum().getName()).append("\n");

@@ -22,5 +22,5 @@ public class LanguageManager {
     @Getter
     private static ResourceBundle de_bundle = ResourceBundle.getBundle("strings", de);
     @Getter @Setter
-    private static ResourceBundle bundle = ru_bundle;
+    private static ResourceBundle bundle = ResourceBundle.getBundle("strings", ru);
 }

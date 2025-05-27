@@ -5,7 +5,6 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import network.RequestSender;
 
@@ -181,16 +179,18 @@ public class SceneController implements Initializable {
 
     @FXML
     private void completeRegister(ActionEvent event) throws IOException, ClassNotFoundException {
-        String username = usernameRegister.getText();
+        current_username = usernameRegister.getText();
         String password_1 = registerPassword_1.getText();
         String password_2 = registerPassword_2.getText();
+        currentUser =  new User(current_username, password_1, LanguageManager.getBundle().getLocale());
         if (!password_1.equals(password_2)) {
             registerMessage.setText(getResource().getString("passwords_dont_match"));
             registerPassword_1.setText("");
             registerPassword_2.setText("");
         } else {
-            rs.sendRequest(new Request("register", new User(username, password_1, LanguageManager.getBundle().getLocale())), outToServer);
+            rs.sendRequest(new Request("register",currentUser), outToServer);
             Response response = rs.getResponse(inFromServer);
+            collection = response.getMusicBandsCollection();
             if (!response.getExitStatus()) {
                 registerMessage.setText(response.getMessage());
                 usernameRegister.setText("");
@@ -206,7 +206,8 @@ public class SceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        languageBox.setValue(LanguageManager.getCurrentLanguage());
+//        setLanguageBox();
+//        languageBox.setValue(LanguageManager.getCurrentLanguage());
         /*Platform.runLater(() -> {
             Stage stage = (Stage) languageBox.getScene().getWindow();
             stage.setOnCloseRequest(e -> {
@@ -229,6 +230,7 @@ public class SceneController implements Initializable {
     public void setLanguageBox() {
         ObservableList<String> languages = FXCollections.observableList(List.of("Русский", "English", "Deutsch", "Български"));
         languageBox.setItems(languages);
+        languageBox.setValue(LanguageManager.getCurrentLanguage());
         languageBox.setOnAction(event -> {
             String current_language = languageBox.getValue();
             switch (current_language) {
