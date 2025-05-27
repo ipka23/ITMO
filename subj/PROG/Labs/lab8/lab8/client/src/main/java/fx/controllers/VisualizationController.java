@@ -16,11 +16,20 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.annotation.processing.Generated;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VisualizationController {
+    @Getter
     public Map<String, Color> colorsMap = Collections.synchronizedMap(new HashMap<>());
-    public Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>()); // TODO сделать чтобы старые не оставались в мапе
+    @Getter
+    public Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>());
+    @Getter
+    public Collection<MusicBand> collection = ConcurrentHashMap.newKeySet();
     double LOGICAL_WIDTH = 2000;
     double LOGICAL_HEIGHT = 2000;
 
@@ -105,6 +114,8 @@ public class VisualizationController {
         circle.setStrokeWidth(1.5);
         root.getChildren().add(circle);
         bandMap.put(circle, band);
+        colorsMap.put(band.getOwner(), color);
+        collection.add(band);
         FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
         transition.setFromValue(0);
         transition.setToValue(1);
@@ -154,18 +165,16 @@ public class VisualizationController {
         double layoutY = centerY - y;
 
         Circle circle = null;
-        for (Node node : root.getChildren()) {
-            if (node instanceof Circle) {
-                circle = (Circle) node;
-                if (circle.getFill().equals(color)) {
-                    if ((Math.abs(circle.getLayoutX() - layoutX) < 1e-3 && Math.abs(circle.getLayoutY() - layoutY) < 1e-3)) {
-                        break;
-                    }
-                }
+        for (Map.Entry<Circle, MusicBand> entry : bandMap.entrySet()) {
+            if (entry.getValue().equals(band)) {
+                circle = entry.getKey();
+                break;
             }
         }
+        if (circle == null) return;
         colorsMap.remove(band.getOwner(), color);
-
+        bandMap.remove(circle);
+        collection.remove(band);
         FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
         transition.setFromValue(1);
         transition.setToValue(0);

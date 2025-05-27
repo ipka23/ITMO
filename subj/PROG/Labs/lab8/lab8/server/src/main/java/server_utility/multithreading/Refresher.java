@@ -10,13 +10,13 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Refresher {
-    public static void addRefresh(Collection<MusicBand> collection) {
+    public static void addRefresh(Collection<MusicBand> collection, MusicBand band) {
         for (ObjectOutputStream out : new HashSet<>(Server.outputStreams)) {
             try {
                 Collection<MusicBand> copy = new HashSet<>(collection);
                 synchronized (out) {
                     out.reset();
-                    out.writeObject(new Response(false, "add_refresh", copy));
+                    out.writeObject(new Response(false, "add_refresh", copy, band));
                     System.out.println("Response collection  (add): " + collection.size());
                     out.flush();
                 }

@@ -6,11 +6,13 @@ import common_utility.network.Response;
 import fx.controllers.VisualizationController;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -41,17 +43,17 @@ public class ResponseHandler extends Thread {
                 Collection<MusicBand> collection = response.getMusicBandsCollection();
                 if (response.getMessage().equals("add_refresh")) {
                     Platform.runLater(() -> {
-                        for (MusicBand band :  new HashSet<>(observableList)) {
-                            if (!collection.contains(band)) {
+                        MusicBand band = response.getMusicBand();
+                        /*for (MusicBand visualBand : visualizationController.getCollection()) {
+                            if (!collection.contains(visualBand)) {
                                 visualizationController.eraseMusicBand(
-                                        band,
-                                        visualizationController.getColor(band)
+                                        visualBand,
+                                        visualizationController.getColor(visualBand)
                                 );
-                            }
-                        }
-                        for (MusicBand band : collection) {
-                            visualizationController.drawMusicBand(band);
-                        }
+                            } else {*/
+                                visualizationController.drawMusicBand(band);
+                            /*}
+                        }*/
                         observableList.setAll(collection);
                     });
                 }
@@ -59,8 +61,20 @@ public class ResponseHandler extends Thread {
                     MusicBand oldBand = response.getOldBand();
                     MusicBand newBand = response.getNewBand();
                     Platform.runLater(() -> {
-                        visualizationController.eraseMusicBand(oldBand, visualizationController.getColor(oldBand));  // TODO FIX
-                        visualizationController.drawMusicBand(newBand);
+//                        visualizationController.eraseMusicBand(oldBand, visualizationController.getColor(oldBand));  // TODO FIX
+//                        visualizationController.drawMusicBand(newBand);
+                        Collection<MusicBand> visualCollection = visualizationController.getCollection();
+                        for (MusicBand band : collection) {
+                            if (!visualCollection.contains(band)) {
+                                visualizationController.eraseMusicBand(
+                                        band,
+                                        visualizationController.getColor(band)
+                                );
+                            } else {
+                                visualizationController.drawMusicBand(band);
+                            }
+                        }
+                        observableList.setAll(collection);
 //                        observableList.remove(oldBand);
 //                        observableList.add(newBand);
                         observableList.setAll(collection);
@@ -70,9 +84,13 @@ public class ResponseHandler extends Thread {
 //                    System.out.println("observableList size: " + observableList.size());
 //                    System.out.println("collection size: " + collection.size());
                     Platform.runLater(() -> {
-                        for (MusicBand band : new HashSet<>(observableList)) {
-                            if (!collection.contains(band)) {
-                                visualizationController.eraseMusicBand(band, visualizationController.getColor(band));
+                        Collection<MusicBand> visualCollection = visualizationController.getCollection();
+                        for (MusicBand band : collection) {
+                            if (!visualCollection.contains(band)) {
+                                visualizationController.eraseMusicBand(
+                                        band,
+                                        visualizationController.getColor(band)
+                                );
                             }
                         }
                         observableList.setAll(collection);

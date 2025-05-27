@@ -56,7 +56,7 @@ public class AddIfMax extends RCommand {
 
             Response response = collectionManager.addMusicBandIfMax(newBand);
             response.setMusicBand(newBand);
-            Refresher.addRefresh(collectionManager.getCollection());
+            Refresher.addRefresh(collectionManager.getCollection(), newBand);
             return response;
         } catch (InputBreakException | IOException | ClassNotFoundException e) {
             return new Response(false, collectionManager.getString("error"));
