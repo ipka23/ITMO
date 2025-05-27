@@ -196,7 +196,7 @@ public class MainController extends SceneController implements Initializable {
     public void setLanguageBox() {
         ObservableList<String> languages = FXCollections.observableList(List.of("Русский", "English", "Deutsch", "Български"));
         languageBox.setItems(languages);
-        languageBox.setOnMouseClicked(event -> {
+        languageBox.setOnAction(event -> {
             String current_language = languageBox.getValue();
             switch (current_language) {
                 case "English":
