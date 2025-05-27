@@ -144,7 +144,6 @@ public class MainController extends SceneController implements Initializable {
         setLanguageBox();
         changeLanguage();
         initTable();
-        setFilterByBox();
         setButtonActions();
     }
 
@@ -299,6 +298,8 @@ public class MainController extends SceneController implements Initializable {
         info.setText(getResource().getString("info"));
         reset.setText(getResource().getString("reset"));
         filterByLabel.setText(getResource().getString("filterByLabel"));
+
+        setFilterByBox();
     }
 
 
@@ -670,8 +671,7 @@ public class MainController extends SceneController implements Initializable {
 
     }
 
-
-    private void setFilterByBox() {
+    public void setFilterByBox(){
         ObservableList<String> sortBy = FXCollections.observableList(List.of(
                 getResource().getString("id"),
                 getResource().getString("owner"),
@@ -911,7 +911,6 @@ public class MainController extends SceneController implements Initializable {
             observableList.setAll(filtered);
         });
     }
-
     public String getStr(String s) {
         return getResource().getString(s);
     }
