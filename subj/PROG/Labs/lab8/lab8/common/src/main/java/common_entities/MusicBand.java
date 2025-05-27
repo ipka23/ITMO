@@ -64,6 +64,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable {
         this.numberOfParticipants = band.getNumberOfParticipants();
         this.singlesCount = band.getSinglesCount();
         this.establishmentDate = band.getEstablishmentDate();
+        this.creationDate = band.getCreationDate();
         this.genre = band.getGenre();
         this.bestAlbum = band.getBestAlbum();
     }

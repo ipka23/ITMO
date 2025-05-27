@@ -59,7 +59,10 @@ public class ResponseHandler extends Thread {
                     MusicBand oldBand = response.getOldBand();
                     MusicBand newBand = response.getNewBand();
                     Platform.runLater(() -> {
-
+                        visualizationController.eraseMusicBand(oldBand, visualizationController.getColor(oldBand));  // TODO FIX
+                        visualizationController.drawMusicBand(newBand);
+//                        observableList.remove(oldBand);
+//                        observableList.add(newBand);
                         observableList.setAll(collection);
                     });
                 }

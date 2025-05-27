@@ -92,7 +92,7 @@ public class SceneController implements Initializable {
         stage.setResizable(true);
         stage.setMaximized(true);
 //        stage.setFullScreen(true);
-        controller.setLanguageBox();
+//        controller.setLanguageBox();
 
 //        controller.changeLanguage(LanguageManager.getCurrentLanguage());
 //        MainController.setCollection(collection);

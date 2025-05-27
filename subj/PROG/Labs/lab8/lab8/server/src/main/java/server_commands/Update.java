@@ -49,18 +49,23 @@ public class Update extends RCommand {
 
     @Override
     public Response execute(String[] command, Request request) {
-        long id;
-        id = Long.parseLong(command[1].trim());
-        MusicBand band = collectionManager.getMusicBandById(id);
-        MusicBand newBand;
-        Collection<MusicBand> collection = collectionManager.getCollection();;
+        MusicBand oldBand = request.getOldBand();
+        long id = oldBand.getId();
+        MusicBand newBand = request.getNewBand();
+
+        newBand.setId(id);
+        newBand.setCreationDate(oldBand.getCreationDate());
+
+        collectionManager.removeByID(id);
+        collectionManager.addMusicBand(newBand);
+
+        collectionManager.addMusicBand(newBand);
+        Collection<MusicBand> collection;
         try {
-            newBand = add.getBandFromRequest(request);
-            newBand.setCreationDate(band.getCreationDate());
-            band.update(newBand);
             collectionManager.getDatabaseManager().updateDB(newBand, id);
-            Refresher.updateRefresh(band, newBand, collection);
-        } catch (InputBreakException | IOException | ClassNotFoundException e) {
+            collection = collectionManager.getCollection();
+            Refresher.updateRefresh(oldBand, newBand, collection);
+        } catch (InputBreakException e) {
             return new Response(false, collectionManager.getString("error"));
         }
         return new Response(true, collectionManager.getString("bandUpdated"), collection);
