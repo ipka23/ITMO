@@ -688,8 +688,9 @@ public class MainController extends SceneController implements Initializable {
                 getResource().getString("album_length"),
                 getResource().getString("album_sales")
         ));
-        filterByBox.setValue(getResource().getString("album_sales"));
+        filterByBox.setOnAction(null);
         filterByBox.setItems(sortBy);
+        filterByBox.setValue(getResource().getString("album_sales"));
         filterByBox.setOnAction(event -> {
             String filterBy = filterByBox.getValue();
             Set<MusicBand> filtered = Set.of();
