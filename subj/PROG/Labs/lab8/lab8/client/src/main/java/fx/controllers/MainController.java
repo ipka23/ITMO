@@ -8,8 +8,7 @@ import common_utility.database.User;
 import common_utility.localization.LanguageManager;
 import common_utility.network.Request;
 import common_utility.network.Response;
-import javafx.application.Platform;
-import javafx.scene.image.ImageView;
+import javafx.geometry.HPos;
 import network.ResponseHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -25,7 +24,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import lombok.Setter;
 import network.RequestSender;
@@ -35,22 +33,29 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 public class MainController extends SceneController implements Initializable {
-
-    public Button add_if_max;
-    public Button add_if_min;
-    public Button help;
-    public Button clear;
-    public Button remove;
-    public Button updateButton;
-    public Button remove_greater;
-    public Button info;
+    @FXML
+    private Button reset;
+    @FXML
+    private Button add_if_max;
+    @FXML
+    private Button add_if_min;
+    @FXML
+    private Button help;
+    @FXML
+    private Button clear;
+    @FXML
+    private Button remove;
+    @FXML
+    private Button updateButton;
+    @FXML
+    private Button remove_greater;
+    @FXML
+    private Button info;
     @FXML
     private StackPane stackPane;
     @FXML
@@ -102,7 +107,7 @@ public class MainController extends SceneController implements Initializable {
     private TableColumn<MusicBand, Long> id;
     ///
     @Setter
-    public static Collection<MusicBand> collection;
+    public Collection<MusicBand> collection;
     @Setter
     private RequestSender sender;
     @Setter
@@ -113,7 +118,8 @@ public class MainController extends SceneController implements Initializable {
     private User currentUser;
     private ObservableList<MusicBand> observableList;
     private ResponseHandler handler;
-
+    private VisualizationController visualizationController;
+    private ObservableList<MusicBand> notFilteredList;
     @FXML
     public void logout(ActionEvent event) {
         try {
@@ -139,11 +145,11 @@ public class MainController extends SceneController implements Initializable {
         setFilterByBox();
         setSortByBox();
         setButtonActions();
-        initCoordinateSystem();
+
     }
 
-    private void initCoordinateSystem() {
-        Pane coordinateSystem = VisualizationController.draw2DCoordinateSystem();
+    private void initCoordinateSystem(VisualizationController visualizationController) {
+        Pane coordinateSystem = visualizationController.draw2DCoordinateSystem();
         stackPane.getChildren().add(coordinateSystem);
     }
 
@@ -211,26 +217,23 @@ public class MainController extends SceneController implements Initializable {
         table.setItems(observableList);
     }
 
-    private void setSortByBox() {
-        sortByBox.setValue(getResource().getString("id"));
-    }
-
-    private void setFilterByBox() {
-    }
 
     public void init(Collection<MusicBand> collection) {
         inFromServer = sender.getInFromServer();
         outToServer = sender.getOutToServer();
 
         observableList.setAll(collection);
-        handler = new ResponseHandler(inFromServer, observableList);
+        notFilteredList = FXCollections.observableArrayList(collection);
+        VisualizationController visualizationController = new VisualizationController();
+        this.visualizationController = visualizationController;
+        initCoordinateSystem(visualizationController);
+        handler = new ResponseHandler(inFromServer, observableList, visualizationController);
         handler.start();
 
         for (MusicBand band : collection) {
-            VisualizationController.drawMusicBand(band);
+            visualizationController.drawMusicBand(band);
         }
     }
-
 
 
     public void changeLanguage() {
@@ -302,7 +305,6 @@ public class MainController extends SceneController implements Initializable {
         alert.setHeaderText(response.getMessage());
         alert.show();
     }
-
 
     private void add(ActionEvent event, String command) {
         Dialog<MusicBand> dialog = new Dialog<>();
@@ -407,7 +409,7 @@ public class MainController extends SceneController implements Initializable {
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
-                        VisualizationController.drawMusicBand(band);
+                        visualizationController.drawMusicBand(band);
                         infoAlert(response);
                     }
                 } catch (Exception e) {
@@ -485,7 +487,7 @@ public class MainController extends SceneController implements Initializable {
         if (!r.getExitStatus()) {
             errorAlert(r);
         } else {
-            VisualizationController.eraseMusicBand(band, VisualizationController.getColor(band));
+            visualizationController.eraseMusicBand(band, visualizationController.getColor(band));
             infoAlert(r);
         }
     }
@@ -609,19 +611,16 @@ public class MainController extends SceneController implements Initializable {
                     Long album_length = Long.parseLong(album_lengthTF.getText());
                     Double album_sales = Double.parseDouble(album_salesTF.getText());
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
-                    sender.sendRequest(new Request(command, currentUser, band), outToServer);
+                    sender.sendRequest(new Request(command, currentUser, band, selected), outToServer);
                     Response response = handler.getResponse();
-                    while (response.getMessage().equals("update_refresh")) {
+                    while (response.getMessage().equals("update_refresh") || response.getMessage().equals("add_refresh") ) {
                         response = handler.getResponse();
                     }
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
-                        double oldX = selected.getCoordinates().getX();
-                        double oldY = selected.getCoordinates().getY();
-                        double newX = band.getCoordinates().getX();
-                        double newY = band.getCoordinates().getY();
-                        VisualizationController.relocateMusicBand(oldX, oldY, newX, newY, VisualizationController.getColor(band));
+                        visualizationController.eraseMusicBand(selected, visualizationController.getColor(band));
+                        visualizationController.drawMusicBand(band);
                         infoAlert(response);
                     }
                 } catch (Exception ex) {
@@ -639,4 +638,151 @@ public class MainController extends SceneController implements Initializable {
         dialog.showAndWait();
 
     }
+
+    private void setSortByBox() {
+        sortByBox.setValue(getResource().getString("id"));
+        ObservableList<String> sortBy = FXCollections.observableList(List.of(
+                getResource().getString("id"),
+                getResource().getString("owner"),
+                getResource().getString("name"),
+                getResource().getString("coordinates_x"),
+                getResource().getString("coordinates_y"),
+                getResource().getString("creationdate"),
+                getResource().getString("numberofparticipants"),
+                getResource().getString("singlescount"),
+                getResource().getString("establishmentdate"),
+                getResource().getString("genre"),
+                getResource().getString("album_name"),
+                getResource().getString("album_tracks"),
+                getResource().getString("album_length"),
+                getResource().getString("album_sales")
+        ));
+        sortByBox.setItems(sortBy);
+    }
+
+    private void setFilterByBox() {
+        ObservableList<String> sortBy = FXCollections.observableList(List.of(
+                getResource().getString("id"),
+                getResource().getString("owner"),
+                getResource().getString("name"),
+                getResource().getString("coordinates_x"),
+                getResource().getString("coordinates_y"),
+                getResource().getString("creationdate"),
+                getResource().getString("numberofparticipants"),
+                getResource().getString("singlescount"),
+                getResource().getString("establishmentdate"),
+                getResource().getString("genre"),
+                getResource().getString("album_name"),
+                getResource().getString("album_tracks"),
+                getResource().getString("album_length"),
+                getResource().getString("album_sales")
+        ));
+        filterByBox.setValue(getResource().getString("album_sales"));
+        filterByBox.setItems(sortBy);
+        filterByBox.setOnAction(event -> {
+            String filterBy = filterByBox.getValue();
+            Set<MusicBand> filtered = Set.of();
+            String value;
+//            String operator;
+            if (filterBy.equals(getStr("id").trim())) {
+                value = textDialog("id");
+//                System.out.println(Arrays.toString(value.split(" ", 3)));
+                String operator = value.split(" ", 3)[1];
+                Long id = Long.parseLong(value.split(" ", 3)[2]);
+                filtered = observableList
+                        .stream()
+                        .filter(band -> {
+                            Long bandId = band.getId();
+                            switch (operator) {
+                                case ">": return bandId > id;
+                                case "<": return bandId < id;
+                                case ">=": return bandId >= id;
+                                case "<=": return bandId <= id;
+                                case "=": return bandId.equals(id);
+                                default: return false;
+
+                            }
+                        }).collect(Collectors.toSet());
+                System.out.println(" " + operator + " " + id);
+            }
+            if (filterBy.equals(getStr("owner"))) {
+                value = textDialog("owner");
+                String operator = value.split(" ", 3)[1];
+                String owner = value.split(" ", 3)[2];
+                filtered = observableList.stream().filter(band -> {
+                    String bandOwner = band.getOwner();
+                    switch (operator) {
+                        case "=": return bandOwner.equals(owner);
+                        default: return false;
+                    }
+                }).collect(Collectors.toSet());
+            }
+            observableList.setAll(filtered);
+        });
+    }
+
+    public String getStr(String s) {
+        return getResource().getString(s);
+    }
+
+
+    private String textDialog(String key) {
+        Dialog<String> dialog = new Dialog<>();
+        DialogPane pane = dialog.getDialogPane();
+        dialog.setTitle(getStr(key));
+        Label label = new Label(getStr(key));
+        TextField textField = new TextField();
+        GridPane grid = new GridPane();
+        ComboBox<String> token = new ComboBox<>();
+        token.setMinWidth(10);
+        ObservableList<String> l = FXCollections.observableList(List.of(">", ">=", "<", "<=", "="));
+        token.setValue("=");
+        token.setItems(l);
+        AtomicReference<String> operator = new AtomicReference<>();
+        token.setOnAction(e -> {
+            String value = token.getValue();
+            switch (value) {
+                case ">":
+                    operator.set(value);
+                    break;
+                case "=":
+                    operator.set(value);
+                    break;
+                case ">=":
+                    operator.set(value);
+                    break;
+                case "<":
+                    operator.set(value);
+                    break;
+                case "<=":
+                    operator.set(value);
+                    break;
+            }
+        });
+        grid.setHgap(10);
+        grid.setVgap(10);
+//        grid.add(label, 0, 0);
+        grid.add(label, 1, 0);
+        grid.add(token, 1, 1);
+        grid.add(textField, 1, 2);
+        ButtonType confirm = new ButtonType(getResource().getString("confirm"), ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType(getResource().getString("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
+        pane.getButtonTypes().addAll(confirm, cancel);
+        pane.setContent(grid);
+        AtomicReference<String> s = new AtomicReference<>();
+        dialog.setResultConverter(button -> {
+            if (button == confirm) {
+                s.set("id " + operator + " " + textField.getText());
+            }
+            return String.valueOf(s);
+        });
+        dialog.showAndWait();
+        return String.valueOf(s);
+    }
+
+    @FXML
+    private void reset(){
+        if (notFilteredList != null) observableList.setAll(notFilteredList);
+    }
+
 }
