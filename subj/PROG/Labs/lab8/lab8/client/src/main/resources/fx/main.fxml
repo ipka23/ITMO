@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.MainController">
     <top>
-        <AnchorPane prefHeight="80.0" minWidth="0" prefWidth="400.0" BorderPane.alignment="TOP_LEFT">
+        <AnchorPane minWidth="0" prefHeight="80.0" prefWidth="400.0" BorderPane.alignment="TOP_LEFT">
             <children>
                 <ComboBox fx:id="languageBox" layoutX="14.0" layoutY="11.0" prefWidth="120.0" />
                 <Label fx:id="current_user" layoutX="145.0" layoutY="13.0" prefHeight="21.0" prefWidth="90.0" text="Пользователь:" />
                 <Label fx:id="username" layoutX="235.0" layoutY="15.0" />
-                <Button fx:id="logoutButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#logout" text="Выйти" prefWidth="80" />
+                <Button fx:id="logoutButton" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#logout" prefWidth="80" text="Выйти" />
             </children>
         </AnchorPane>
     </top>
@@ -18,17 +27,17 @@
         <VBox spacing="8.0" BorderPane.alignment="CENTER">
             <HBox alignment="CENTER" spacing="8.0">
                 <Label fx:id="filterByLabel" text="Фильтр по:" />
-                <ComboBox fx:id="filterByBox" prefWidth="120.0" />
-                <Button fx:id="help" mnemonicParsing="false" onAction="#help" text="Памятка" prefWidth="90"/>
-                <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Сброс" prefWidth="70"/>
-                <Button fx:id="add" mnemonicParsing="false" text="Добавить" prefWidth="90"/>
-                <Button fx:id="add_if_max" mnemonicParsing="false" onAction="#addIfMax" text="Добавить макс" prefWidth="105"/>
-                <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" text="Добавить мин" prefWidth="105"/>
-                <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" text="Очистить" prefWidth="90"/>
-                <Button fx:id="remove" mnemonicParsing="false" text="Удалить" prefWidth="80"/>
-                <Button fx:id="updateButton" mnemonicParsing="false" text="Обновить" prefWidth="90"/>
-                <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" text="Удалить >" prefWidth="90"/>
-                <Button fx:id="info" mnemonicParsing="false" onAction="#info" text="Инфо" prefWidth="70"/>
+                <ComboBox fx:id="filterByBox" prefHeight="26.0" prefWidth="160.0" />
+                <Button fx:id="reset" mnemonicParsing="false" onAction="#reset" prefWidth="70" text="Сброс" />
+                <Button fx:id="help" mnemonicParsing="false" onAction="#help" prefHeight="26.0" prefWidth="103.0" text="Памятка" />
+                <Button fx:id="add" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Добавить" />
+                <Button fx:id="add_if_max" mnemonicParsing="false" onAction="#addIfMax" prefHeight="26.0" prefWidth="134.0" text="Добавить макс" />
+                <Button fx:id="add_if_min" mnemonicParsing="false" onAction="#addIfMin" prefHeight="26.0" prefWidth="133.0" text="Добавить мин" />
+                <Button fx:id="clear" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="103.0" text="Очистить" />
+                <Button fx:id="remove" mnemonicParsing="false" prefWidth="80" text="Удалить" />
+                <Button fx:id="updateButton" mnemonicParsing="false" prefWidth="90" text="Обновить" />
+                <Button fx:id="remove_greater" mnemonicParsing="false" onAction="#removeGreater" prefHeight="26.0" prefWidth="125.0" text="Удалить большие" />
+                <Button fx:id="info" mnemonicParsing="false" onAction="#info" prefWidth="70" text="Инфо" />
             </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="260.0">
                 <content>
@@ -55,6 +64,6 @@
         </VBox>
     </bottom>
     <center>
-        <StackPane fx:id="stackPane" prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER"/>
+        <StackPane fx:id="stackPane" prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

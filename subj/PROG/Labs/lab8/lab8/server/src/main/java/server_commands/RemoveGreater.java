@@ -72,7 +72,7 @@ public class RemoveGreater extends RCommand {
             dbManager.loadCollectionFromDB();
             Collection<MusicBand> collection1 = collectionManager.getCollection();
             Refresher.deleteRefresh(collection1);
-            return new Response(true, collectionManager.getString("removeGreaterMessage"), collectionManager.getCollection());
+            return new Response(true, collectionManager.getString("removeGreaterMessage"), collection1);
         } catch (InputBreakException | IOException | ClassNotFoundException e) {
             return new Response(false, collectionManager.getString("error"));
         } catch (SQLException e) {

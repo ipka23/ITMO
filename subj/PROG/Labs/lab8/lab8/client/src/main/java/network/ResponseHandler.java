@@ -77,7 +77,8 @@ public class ResponseHandler extends Thread {
                         }
                         observableList.setAll(collection);
                     });
-                } else {
+                }
+                else {
                     responses.put(response);
                 }
             }

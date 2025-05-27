@@ -432,15 +432,24 @@ public class MainController extends SceneController implements Initializable {
                     // отправить на сервер, добавить в бд, если ошибка то вывод в Alert, иначе добавить в коллекцию и gui таблицу
                     band = new MusicBand(username.getText(), name, new Coordinates(coordinates_x, coordinates_y), numberofparticipants, singlescount, establishmentdate, genre, new Album(album_name, album_tracks, album_length, album_sales));
                     sender.sendRequest(new Request(command, currentUser, band), outToServer);
-
                     Response response = handler.getResponse();
+                    Collection<MusicBand> bands = response.getMusicBandsCollection();
                     while (response.getMessage().equals("add_refresh") || response.getMessage().equals("delete_refresh")) {
                         response = handler.getResponse();
                     }
                     if (!response.getExitStatus()) {
                         errorAlert(response);
                     } else {
-                        visualizationController.drawMusicBand(band);
+                        Collection<MusicBand> c = response.getMusicBandsCollection();
+                        for (MusicBand b : new HashSet<>(observableList)) {
+                            if (!observableList.contains(b)){
+                                visualizationController.eraseMusicBand(b, visualizationController.getColor(b));
+                            }
+                            for (MusicBand b2 : response.getMusicBandsCollection()) {
+                                visualizationController.drawMusicBand(b2);
+                            }
+                            observableList.setAll(c);
+                        }
                         infoAlert(response);
                     }
                 } catch (Exception e) {
@@ -482,6 +491,13 @@ public class MainController extends SceneController implements Initializable {
         if (alert.getResult() == ButtonType.OK) {
             sender.sendRequest(new Request("clear", currentUser), outToServer);
             Response response = handler.getResponse();
+            Collection<MusicBand> c = response.getMusicBandsCollection();
+            for (MusicBand b : new HashSet<>(observableList)) {
+                if (!observableList.contains(b)){
+                    visualizationController.eraseMusicBand(b, visualizationController.getColor(b));
+                }
+                observableList.setAll(c);
+            }
             if (!response.getExitStatus()) {
                 errorAlert(response);
             } else {
@@ -520,6 +536,7 @@ public class MainController extends SceneController implements Initializable {
         } else {
             visualizationController.eraseMusicBand(band, visualizationController.getColor(band));
             infoAlert(r);
+            observableList.remove(band);
         }
     }
 
