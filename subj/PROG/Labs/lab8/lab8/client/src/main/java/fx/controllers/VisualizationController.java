@@ -16,11 +16,16 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
+import lombok.Getter;
+
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VisualizationController {
     public Map<String, Color> colorsMap = Collections.synchronizedMap(new HashMap<>());
-    public Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>()); // TODO сделать чтобы старые не оставались в мапе
+    public Map<Circle, MusicBand> bandMap = Collections.synchronizedMap(new HashMap<>());
+    @Getter
+    public Collection<MusicBand> visualCollection = ConcurrentHashMap.newKeySet();
     double LOGICAL_WIDTH = 2000;
     double LOGICAL_HEIGHT = 2000;
 
@@ -105,6 +110,7 @@ public class VisualizationController {
         circle.setStrokeWidth(1.5);
         root.getChildren().add(circle);
         bandMap.put(circle, band);
+        colorsMap.put(band.getOwner(), color);
         FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
         transition.setFromValue(0);
         transition.setToValue(1);
@@ -165,7 +171,8 @@ public class VisualizationController {
             }
         }
         colorsMap.remove(band.getOwner(), color);
-
+        bandMap.remove(circle);
+        visualCollection.remove(band);
         FadeTransition transition = new FadeTransition(Duration.seconds(3), circle);
         transition.setFromValue(1);
         transition.setToValue(0);

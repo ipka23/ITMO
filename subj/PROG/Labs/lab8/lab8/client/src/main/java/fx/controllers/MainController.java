@@ -492,7 +492,8 @@ public class MainController extends SceneController implements Initializable {
             sender.sendRequest(new Request("clear", currentUser), outToServer);
             Response response = handler.getResponse();
             Collection<MusicBand> c = response.getMusicBandsCollection();
-            for (MusicBand b : new HashSet<>(observableList)) {
+            Collection<MusicBand> visualCollection = visualizationController.getVisualCollection();
+            for (MusicBand b : visualCollection) {
                 if (!observableList.contains(b)){
                     visualizationController.eraseMusicBand(b, visualizationController.getColor(b));
                 }
