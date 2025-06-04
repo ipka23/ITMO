@@ -33,15 +33,10 @@ check_sign:
 plus:
   ld l
   push
-  call $multiply_low
+  call $multiply
   pop
   st l
 
-  ld h
-  push
-  call $multiply_high
-  pop
-  st h
 
   ld l
   add const
@@ -54,19 +49,17 @@ plus:
 
 
 minus:
+  ld h
+  or extend_sign_high
+  st h
+
   ld l
   or extend_sign_low
   push
-  call $multiply_low
+  call $multiply
   pop
   st l
 
-  ld h
-  or extend_sign_high
-  push
-  call $multiply_high
-  pop
-  st h
 
   ld l
   add const
@@ -81,27 +74,22 @@ finish:
 
 t: word 0x0
 cnt: word 0xf
-multiply_low:
+multiply:
   ld &1
   add t
   st t
+
+  ld h
+  adc 0
+  st h
+
   loop cnt
-  jump multiply_low
+  jump multiply
   st &1
   ld #0xf
   st cnt
   ret
 
-multiply_high:
-  ld &1
-  adc t
-  st t
-  loop cnt
-  jump multiply_high
-  st &1
-  ld #0xf
-  st cnt
-  ret
 
 org 0x400
 new_arr:
@@ -129,24 +117,24 @@ new_arr:
 
 org 0x6ca
 arr:
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
-  word 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
+  word 0x1, 0x1
