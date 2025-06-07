@@ -19,7 +19,7 @@ extend_sign_high: word 0xffff ; or
 smask: word 0x2000 ; and
 l: word 0x0
 h: word 0x0
-const: word 0x11f2 ; 4594
+const: word 4594
 arr_len: word 0x0015 ; 21
 
 start:
@@ -60,7 +60,6 @@ minus:
   pop
   st l
 
-
   ld l
   add const
   st (new_p)+
@@ -70,6 +69,7 @@ minus:
   jump check_sign
 
 finish:
+
   hlt
 
 t: word 0x0
@@ -79,62 +79,40 @@ multiply:
   add t
   st t
 
-  ld h
-  adc 0
+  cla
+  adc h
   st h
 
   loop cnt
   jump multiply
+  ld t
   st &1
+  cla
+  st t
   ld #0xf
   st cnt
   ret
 
-
-org 0x400
-new_arr:
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-  word 0, 0
-
 org 0x6ca
 arr:
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
-  word 0x1, 0x1
+  word 0xfc18 ; -1000 ответ: -1000*15 + 4594 = -10406 = 0xffffd75a , в памяти d75a ffff
+  word 0xffff ; -1 ответ: -1*15 + 4594 = 4579 = 0x11e3
+  word 0x0001 ; 1 ответ: 1*15 + 4594 = 4609 = 0x1201
+  word 0xfffe ; -2 ответ: -2*15 + 4594 = 4564 = 0x11d4
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
+  word 0x1
