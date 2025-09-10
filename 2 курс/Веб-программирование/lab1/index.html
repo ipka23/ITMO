@@ -20,7 +20,9 @@
         .main {
         }
     </style>
+
 </head>
+<script src="index.js" defer></script>
 <body>
 <header class="header">
     Пчелкин Илья Игоревич, P3106, Вариант 467204
@@ -76,26 +78,26 @@
         <td>
             Введите X:
             <form class="coordinates">
-                <label><input type="radio">-2</label>
-                <label><input type="radio">-1.5</label>
-                <label><input type="radio">-1</label>
-                <label><input type="radio">-0.5</label>
-                <label><input type="radio">0</label>
-                <label><input type="radio">0.5</label>
-                <label><input type="radio">1</label>
-                <label><input type="radio">1.5</label>
-                <label><input type="radio">2</label>
+                <label><input id="x(-2)" type="radio">-2</label>
+                <label><input id="x(-1.5)" type="radio">-1.5</label>
+                <label><input id="x(-1)" type="radio">-1</label>
+                <label><input id="x(-0.5)" type="radio">-0.5</label>
+                <label><input id="x(0)" type="radio">0</label>
+                <label><input id="x(0.5)" type="radio">0.5</label>
+                <label><input id="x(1)" type="radio">1</label>
+                <label><input id="x(1.5)" type="radio">1.5</label>
+                <label><input id="x(2)" type="radio">2</label>
                 <br>
                 <br>
                 Введите Y(-3;3):
-                <label><input type="text"></label>
+                <label><input id="inputY" type="text"></label>
                 <br>
                 <br>
                 Введите R(2;5):
-                <label><input type="text"></label>
+                <label><input id="inputR" type="text"></label>
                 <br>
                 <br>
-                <button type="submit">Отправить</button>
+                <button id="submitButton" type="submit">Отправить</button>
             </form>
         </td>
         <th>X</th>
