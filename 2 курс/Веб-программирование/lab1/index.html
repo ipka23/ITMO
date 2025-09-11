@@ -10,14 +10,23 @@
             font-size: 24px;
             padding: 5%;
             font-family: fantasy;
-            background: url("https://avatars.mds.yandex.net/i?id=a7f07506b51bfd12bfc2dc1c4505afc70003fbda-16848981-images-thumbs&n=13");
-            /*background: #00BFFF;*/
+            /*background: url("https://avatars.mds.yandex.net/i?id=a7f07506b51bfd12bfc2dc1c4505afc70003fbda-16848981-images-thumbs&n=13");*/
+            background: #00BFFF;
             color: white;
             text-align: center;
-            margin-bottom: 7%;
+            margin-bottom: 3%;
         }
 
         .main {
+            margin-bottom: 3%;
+            width: 100%
+        }
+        .statsTable {
+            width: 100%;
+            border-color: #00BFFF;
+        }
+        .mainCell {
+            text-align: center;
         }
     </style>
 
@@ -27,9 +36,9 @@
 <header class="header">
     Пчелкин Илья Игоревич, P3106, Вариант 467204
 </header>
-<table class="main" cellpadding="40%" cellspacing="5%">
+<table class="main">
     <tr>
-        <td>
+        <td class="mainCell">
             <svg id="svg" width="300" height="300" viewBox="0 0 300 300">
                 <polygon points="
             150,200
@@ -73,22 +82,21 @@
                 <line x1="145" y1="100" x2="155" y2="100" fill="black" stroke="black"/>
                 <line x1="145" y1="200" x2="155" y2="200" fill="black" stroke="black"/>
                 <line x1="145" y1="250" x2="155" y2="250" fill="black" stroke="black"/>
-
-
+                <!--                <circle r="1%" cx="155" cy="153" fill="red"/>-->
             </svg>
         </td>
-        <td>
+        <td style="text-align: center">
             Введите X:
             <form id="form" class="coordinates">
-                <label><input id="x(-2)" type="radio" name="x" value="-2">-2</label>
-                <label><input id="x(-1.5)" type="radio" name="x" value="-1.5">-1.5</label>
-                <label><input id="x(-1)" type="radio" name="x" value="-1">-1</label>
-                <label><input id="x(-0.5)" type="radio" name="x" value="-0.5">-0.5</label>
-                <label><input id="x(0)" type="radio" name="x" value="0">0</label>
-                <label><input id="x(0.5)" type="radio" name="x" value="0.5">0.5</label>
-                <label><input id="x(1)" type="radio" name="x" value="1">1</label>
-                <label><input id="x(1.5)" type="radio" name="x" value="1.5">1.5</label>
-                <label><input id="x(2)" type="radio" name="x" value="2">2</label>
+                <label><input type="radio" name="x" value="-2">-2</label>
+                <label><input type="radio" name="x" value="-1.5">-1.5</label>
+                <label><input type="radio" name="x" value="-1">-1</label>
+                <label><input type="radio" name="x" value="-0.5">-0.5</label>
+                <label><input type="radio" name="x" value="0">0</label>
+                <label><input type="radio" name="x" value="0.5">0.5</label>
+                <label><input type="radio" name="x" value="1">1</label>
+                <label><input type="radio" name="x" value="1.5">1.5</label>
+                <label><input type="radio" name="x" value="2">2</label>
                 <br>
                 <br>
                 Введите Y(-3;3):
@@ -102,16 +110,23 @@
                 <button id="submitButton" type="submit">Отправить</button>
             </form>
         </td>
-        <th>X</th>
-        <th>Y</th>
-        <th>R</th>
-        <th>Попадание/промах</th>
-        <th>Текущее время</th>
-        <th>Время выполнения</th>
-    </tr>
-    <!--    <tr>-->
 
-    <!--    </tr>-->
+    </tr>
+    <tr>
+        <table id="statsTable" border="1" class="statsTable" >
+            <thead>
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Попадание/промах</th>
+            <th>Текущее время</th>
+            <th>Время выполнения</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </tr>
 </table>
 
 </body>
