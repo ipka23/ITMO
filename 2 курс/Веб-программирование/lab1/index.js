@@ -20,18 +20,22 @@ submitButton.onclick = function (e) {
     }
     y = +document.getElementById("inputY").value;
     r = +document.getElementById("inputR").value;
-    let currentTime = new Date()
-    if (isNaN(y) || isNaN(r)) {
-        console.log(`nums: ${y}, ${r}`)
-        alert("Введите число!")
-    } else if (-3 >= y && y >= 3) {
+    let currentTime = new Date().toLocaleString()
+    if (-3 >= y || y >= 3) {
         alert("Введите значение Y в пределах (-3;3)!")
-    } else if (2 >= r && r >= 5) {
+    } else if (2 >= r || r >= 5) {
         alert("Введите значение R в пределах (2;5)!")
     } else {
-        console.log(`nums: ${x}, ${y}, ${r}\ntime:${currentTime}`)
+        // console.log(`nums: ${x}, ${y}, ${r}\ntime:${currentTime}`)
         hit(x, y, r)
         updateTable(x, y, r, "попадание", "---")
+        fetch('/fcgi-bin/server.jar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `x=${x}&y=${y}&r=${r}`
+        }).then(response => response.text)
     }
 
     function hit(x, y, r) {
@@ -66,6 +70,7 @@ submitButton.onclick = function (e) {
         executionTimeCell.innerHTML = executionTime
     }
 }
+
 
 
 
