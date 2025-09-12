@@ -5,7 +5,6 @@ let r
 const form = document.getElementById("form")
 
 function radioClick(e) {
-    // console.log(e.target.value)
     x = +e.target.value
 }
 
@@ -20,22 +19,25 @@ submitButton.onclick = function (e) {
     }
     y = +document.getElementById("inputY").value;
     r = +document.getElementById("inputR").value;
-    let currentTime = new Date().toLocaleString()
-    if (-3 >= y || y >= 3) {
-        alert("Введите значение Y в пределах (-3;3)!")
-    } else if (2 >= r || r >= 5) {
-        alert("Введите значение R в пределах (2;5)!")
+    if (!(-3 <= y && y <= 3)) {
+        alert("Введите значение Y в пределах [-3;3]!")
+    } else if (!(2 <= r && r <= 5)) {
+        alert("Введите значение R в пределах [2;5]!")
     } else {
-        // console.log(`nums: ${x}, ${y}, ${r}\ntime:${currentTime}`)
         hit(x, y, r)
-        updateTable(x, y, r, "попадание", "---")
         fetch('/fcgi-bin/server.jar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: `x=${x}&y=${y}&r=${r}`
-        }).then(response => response.text)
+        }).then(response => response.text()).then(html => {
+            const parser = new DOMParser()
+            const doc = parser.parseFromString(html, "text/html")
+            const resultString = doc.querySelector('p').textContent;
+            updateTable(parseServerData(resultString))
+            // document.body.innerHTML = resultString
+        })
     }
 
     function hit(x, y, r) {
@@ -53,7 +55,18 @@ submitButton.onclick = function (e) {
         svg.appendChild(dot)
     }
 
-    function updateTable(x, y, r, status, executionTime) {
+    function parseServerData(str) {
+        var pairs = [''];
+        var dict = {}
+        pairs = str.split("\n")
+        for (var pair in pairs) {
+            var keyValue = pair.split(": ")
+            dict[keyValue[0]] = keyValue[1]
+        }
+        return dict
+    }
+
+    function updateTable(dict = {}) {
         const table = document.getElementById("statsTable")
         const row = table.insertRow()
         const xCell = row.insertCell(0)
@@ -62,12 +75,12 @@ submitButton.onclick = function (e) {
         const statusCell = row.insertCell(3)
         const dateCell = row.insertCell(4)
         const executionTimeCell = row.insertCell(5)
-        xCell.innerHTML = x
-        yCell.innerHTML = y
-        rCell.innerHTML = r
-        statusCell.innerHTML = status
-        dateCell.innerHTML = new Date().toLocaleString()
-        executionTimeCell.innerHTML = executionTime
+        xCell.textContent = dict["x"]
+        yCell.textContent = dict["y"]
+        rCell.textContent = dict["r"]
+        statusCell.textContent = dict["Статус"]
+        dateCell.textContent = dict["Текущее время"]
+        executionTimeCell.textContent = dict["Время выполнения"]
     }
 }
 
