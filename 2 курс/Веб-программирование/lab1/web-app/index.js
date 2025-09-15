@@ -35,6 +35,7 @@ submitButton.onclick = function (e) {
             const parser = new DOMParser()
             const doc = parser.parseFromString(html, "text/html")
             const resultString = doc.querySelector('p').textContent;
+            console.log(resultString)
             updateTable(parseServerData(resultString))
             // document.body.innerHTML = resultString
         })
@@ -83,7 +84,3 @@ submitButton.onclick = function (e) {
         executionTimeCell.textContent = dict["Время выполнения"]
     }
 }
-
-
-
-

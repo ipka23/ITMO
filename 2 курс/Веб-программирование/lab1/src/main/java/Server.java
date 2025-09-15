@@ -18,7 +18,6 @@ public class Server {
             var method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
             if (method.equals("POST")) {
                 String requestBody;
-
                 try {
                     requestBody = getRequestBody();
                 } catch (IOException e) {
@@ -38,7 +37,7 @@ public class Server {
                     var endTime = System.nanoTime();
 
                     Date currentDate = Calendar.getInstance().getTime();
-                    String executionTime = (endTime - startTime)/1_000_000 + "ms";
+                    String executionTime = (endTime - startTime) / 1_000_000 + "ms";
                     String s = "X: " + coords.get("x") +
                             "\nY: " + coords.get("y") +
                             "\nR: " + coords.get("r") +
@@ -57,18 +56,50 @@ public class Server {
         }
     }
 
+//    private static String getRequestBody() throws IOException {
+//        var contentLength = FCGIInterface.request.params.getProperty("CONTENT_LENGTH");
+//        try (InputStreamReader isr = new InputStreamReader(System.in, StandardCharsets.UTF_8);
+//             BufferedReader br = new BufferedReader(isr)) {
+//            StringBuilder buf = new StringBuilder(contentLength);
+//            int b;
+//            while ((b = br.read()) != -1) {
+//                buf.append((char) b);
+//            }
+//            return buf.toString();
+//        }
+//
+//    }
+
     private static String getRequestBody() throws IOException {
-        var contentLength = FCGIInterface.request.params.getProperty("CONTENT_LENGTH");
-        try (InputStreamReader isr = new InputStreamReader(System.in, StandardCharsets.UTF_8);
-             BufferedReader br = new BufferedReader(isr)) {
-            StringBuilder buf = new StringBuilder(contentLength);
-            int b;
-            while ((b = br.read()) != -1) {
-                buf.append((char) b);
-            }
-            return buf.toString();
+        var contentLengthStr = FCGIInterface.request.params.getProperty("CONTENT_LENGTH");
+        if (contentLengthStr == null || contentLengthStr.isEmpty()) {
+            return "";
         }
 
+        int contentLength;
+        try {
+            contentLength = Integer.parseInt(contentLengthStr);
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid Content-Length: " + contentLengthStr);
+            return "";
+        }
+
+        if (contentLength <= 0) {
+            return "";
+        }
+
+        char[] buffer = new char[contentLength];
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int totalRead = 0;
+        while (totalRead < contentLength) {
+            int read = reader.read(buffer, totalRead, contentLength - totalRead);
+            if (read == -1) {
+                break;
+            }
+            totalRead += read;
+        }
+
+        return new String(buffer, 0, totalRead);
     }
 
     private static String htmlSuccessResponse(String message) {
