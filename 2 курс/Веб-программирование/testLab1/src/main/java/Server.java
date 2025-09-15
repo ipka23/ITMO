@@ -1,0 +1,118 @@
+import com.fastcgi.FCGIInterface;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+public class Server {
+    public static void main(String[] args) {
+        var fcgiInterface = new FCGIInterface();
+        while (fcgiInterface.FCGIaccept() >= 0) {
+            var method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
+            Map<String, String> coords;
+            var startTime = System.nanoTime();
+            if (method.equals("GET")) {
+                var queryString = FCGIInterface.request.params.getProperty("QUERY_STRING");
+                coords = parseCoords(queryString);
+            } else if (method.equals("POST")) {
+                String requestBody;
+
+                try {
+                    requestBody = getRequestBody();
+                } catch (IOException e) {
+                    System.out.println(htmlErrorResponse("Ошибка ввода-вывода!"));
+                    continue;
+                }
+                coords = parseCoords(requestBody);
+            } else {
+                System.out.println("отправьте POST запрос вместо " + method + " запроса!");
+                continue;
+            }
+            ValidateResponse validateCoords = CoordinatesValidator.validate(coords);
+            if (validateCoords.getStatus()) {
+                String hit;
+                if (HitChecker.check(coords)) {
+                    hit = "Попадание";
+                } else hit = "Промах";
+
+                var endTime = System.nanoTime();
+                String executionTime = Long.toString(endTime - startTime);
+                Date currentDate = Calendar.getInstance().getTime();
+
+                String s = "X: " + coords.get("x") +
+                        "\nY: " + coords.get("y") +
+                        "\nR: " + coords.get("r") +
+                        "\nСтатус: " + hit +
+                        "\nТекущее время: " + currentDate +
+                        "\nВремя выполнения: " + executionTime;
+
+                System.out.println(htmlSuccessResponse(s));
+            } else {
+                System.out.println(htmlErrorResponse(validateCoords.getMessage()));
+            }
+
+        }
+    }
+
+    private static String getRequestBody() throws IOException {
+        var contentLength = FCGIInterface.request.params.getProperty("CONTENT_LENGTH");
+        try (InputStreamReader isr = new InputStreamReader(System.in, StandardCharsets.UTF_8);
+             BufferedReader br = new BufferedReader(isr)) {
+            StringBuilder buf = new StringBuilder(contentLength);
+            int b;
+            while ((b = br.read()) != -1) {
+                buf.append((char) b);
+            }
+            return buf.toString();
+        }
+
+    }
+
+    private static String htmlSuccessResponse(String message) {
+        return """
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Веб лаба 1</title>
+                </head>
+                <body>
+                    <h1 style="color: green">Результат выполнения</h1>
+                    <p>""" + message + """
+                </p>
+                </body>
+                </html>
+                """;
+    }
+
+    private static String htmlErrorResponse(String message) {
+        return """
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Веб лаба 1</title>
+                </head>
+                <body>
+                    <h1 style="color: red">Ошибка выполнения</h1>
+                    <p>Описание:""" + message + """
+                </p>
+                </body>
+                </html>
+                """;
+    }
+
+    private static Map<String, String> parseCoords(String s) {
+        Map<String, String> params = new HashMap<>();
+        String[] pairs = s.split("&");
+        for (String pair : pairs) {
+            String[] keyValue = pair.split("=", 2);
+            params.put(keyValue[0], keyValue[1]);
+        }
+        return params;
+    }
+}
