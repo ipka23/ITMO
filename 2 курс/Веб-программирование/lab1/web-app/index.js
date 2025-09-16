@@ -41,6 +41,7 @@ submitButton.onclick = function (e) {
         }).catch(error => {
             alert("Ошибка! " + error.toString())
         })
+
     }
 
     function hit(x, y, r) {

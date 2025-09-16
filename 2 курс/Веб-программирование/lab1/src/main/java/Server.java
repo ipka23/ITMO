@@ -19,56 +19,79 @@ public class Server {
 //        System.err.println("FCGI Interface created");
 //
         while (fcgiInterface.FCGIaccept() >= 0) {
+            boolean get = true;
 //
 //            System.err.println("Request accepted");
 //
             var startTime = System.nanoTime();
             var method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
 //
-            System.err.println("method: " + method);
+//            System.err.println("method: " + method);
+//
+            Map<String, String> coords;
             if (method.equals("POST")) {
+                get = false;
                 String requestBody;
                 try {
                     requestBody = getRequestBody();
 //
-                    System.err.println(requestBody);
+//                    System.err.println(requestBody);
 //
                 } catch (IOException e) {
                     System.out.println(jsonErrorResponse("Ошибка ввода-вывода!"));
                     continue;
                 }
+                coords = parseCoords(requestBody);
 //
-                Map<String, String> coords = parseCoords(requestBody);
-                for (Map.Entry<String, String> entry : coords.entrySet()) {
-                    System.out.println(entry.getKey() + ": " + entry.getValue());
-                }
+//                for (Map.Entry<String, String> entry : coords.entrySet()) {
+//                    System.out.println(entry.getKey() + ": " + entry.getValue());
+//                }
 //
-                ValidateResponse validateCoords = CoordinatesValidator.validate(coords);
-                if (validateCoords.getStatus()) {
-                    String hit;
-                    if (HitChecker.check(coords)) {
-                        hit = "Попадание";
-                    } else hit = "Промах";
+            } else if (method.equals("GET")) {
+                var queryString = FCGIInterface.request.params.getProperty("QUERY_STRING");
+                coords = parseCoords(queryString);
+            } else {
+                System.out.println(jsonErrorResponse("отправьте POST или GET запрос вместо " + method + " запроса!"));
+                continue;
+            }
+            ValidateResponse validateCoords = CoordinatesValidator.validate(coords);
+            if (validateCoords.getStatus()) {
+                String hit;
+                if (HitChecker.check(coords)) {
+                    hit = "Попадание";
+                } else hit = "Промах";
 
-                    var endTime = System.nanoTime();
+                var endTime = System.nanoTime();
 
-                    Date currentTime = Calendar.getInstance().getTime();
-                    String executionTime = (endTime - startTime) / 1_000_000 + "ms";
-                    String s = "{\"x\":\"" + coords.get("x") +
+                Date currentTime = Calendar.getInstance().getTime();
+                String executionTime = (endTime - startTime) / 1_000_000 + "ms";
+                String s;
+                if (!get) {
+                    s = "{\"x\":\"" + coords.get("x") +
                             "\",\"y\":\"" + coords.get("y") +
-                             "\",\"r\":\"" + coords.get("r") +
+                            "\",\"r\":\"" + coords.get("r") +
                             "\",\"status\":\"" + hit +
                             "\",\"currentTime\":\"" + currentTime +
                             "\",\"executionTime\":\"" + executionTime + "\"}";
-
                     System.out.println(jsonSuccessResponse(s));
-                } else {
-                    System.out.println(jsonErrorResponse(validateCoords.getMessage()));
+                }
+                else {
+                    s = "X: " + coords.get("x") +
+                            "\nY: " + coords.get("y") +
+                            "\nR: " + coords.get("r") +
+                            "\nСтатус: " + hit +
+                            "\nТекущее время: " + currentTime +
+                            "\nВремя выполнения: " + executionTime;
+                    System.out.println(htmlSuccessResponse(s));
                 }
             } else {
-                System.out.println(jsonErrorResponse("отправьте POST запрос вместо " + method + " запроса!"));
+                if (!get) {
+                    System.out.println(jsonErrorResponse(validateCoords.getMessage()));
+                }
+                else {
+                    System.out.println(htmlErrorResponse(validateCoords.getMessage()));
+                }
             }
-
         }
     }
 
@@ -120,7 +143,6 @@ public class Server {
 
     private static String jsonSuccessResponse(String jsonStr) {
         String s = "Content-Type: application/json\n" +
-                "Content-Length: " + jsonStr.getBytes(StandardCharsets.UTF_8).length +
                 "\r\n\r\n" + jsonStr;
 //
         System.err.println(s);
@@ -130,11 +152,51 @@ public class Server {
 
     private static String jsonErrorResponse(String message) {
         String s = "Content-Type: application/json\n" +
-                "Content-Length: " + message.getBytes(StandardCharsets.UTF_8).length +
                 "\r\n\r\n" + "{\"error\":\"" + message + "\"}";
 //
         System.err.println(s);
 //
+        return s;
+    }
+
+    private static String htmlSuccessResponse(String message) {
+        message = message.replace("\n", "<br>");
+        String s = "Content-Type: text/html\n" +
+                "\r\n\r\n" +
+                """
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Веб лаба 1</title>
+                </head>
+                <body>
+                    <h1 style="color: green">Результат выполнения</h1>
+                    <p>""" + message + """
+                </p>
+                </body>
+                </html>
+                """;
+        return s;
+    }
+
+    private static String htmlErrorResponse(String message) {
+        String s = "Content-Type: text/html\n" +
+                "\r\n\r\n" +
+                """
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Веб лаба 1</title>
+                </head>
+                <body>
+                    <h1 style="color: red">Ошибка выполнения</h1>
+                    <p>Описание:""" + message + """
+                </p>
+                </body>
+                </html>
+                """;
         return s;
     }
 

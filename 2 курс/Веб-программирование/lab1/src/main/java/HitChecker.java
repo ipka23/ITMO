@@ -1,5 +1,5 @@
 import java.util.Map;
-
+// todo fix
 public class HitChecker {
     public static boolean check(Map<String, String> coords) {
         double x = Double.parseDouble(coords.get("x"));
