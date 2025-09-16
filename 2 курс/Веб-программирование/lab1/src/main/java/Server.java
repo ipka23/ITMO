@@ -11,17 +11,16 @@ import java.util.Map;
 
 public class Server {
     public static void main(String[] args) {
-//
-        System.err.println("Java FCGI Server starting...");
-        System.err.println("Current dir: " + System.getProperty("user.dir"));
+//        System.err.println("Java FCGI Server starting...");
+//        System.err.println("Current dir: " + System.getProperty("user.dir"));
 //
         var fcgiInterface = new FCGIInterface();
 //
-        System.err.println("FCGI Interface created");
+//        System.err.println("FCGI Interface created");
 //
         while (fcgiInterface.FCGIaccept() >= 0) {
 //
-            System.err.println("Request accepted");
+//            System.err.println("Request accepted");
 //
             var startTime = System.nanoTime();
             var method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
