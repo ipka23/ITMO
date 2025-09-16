@@ -31,13 +31,15 @@ submitButton.onclick = function (e) {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: `x=${x}&y=${y}&r=${r}`
-        }).then(response => response.text()).then(html => {
-            const parser = new DOMParser()
-            const doc = parser.parseFromString(html, "text/html")
-            const resultString = doc.querySelector('p').textContent;
-            console.log(resultString)
-            updateTable(parseServerData(resultString))
-            // document.body.innerHTML = resultString
+        }).then(response => response.json()).then(data => {
+            console.log(data)
+            if (data.error != null) {
+                alert('error')
+            } else {
+                updateTable(parseServerData(data))
+            }
+        }).catch(error => {
+            alert("Ошибка! " + error.toString())
         })
     }
 
@@ -56,14 +58,14 @@ submitButton.onclick = function (e) {
         svg.appendChild(dot)
     }
 
-    function parseServerData(str) {
-        var pairs = [''];
-        var dict = {}
-        pairs = str.split("\n")
-        for (var pair in pairs) {
-            var keyValue = pair.split(": ")
-            dict[keyValue[0]] = keyValue[1]
-        }
+    function parseServerData(json) {
+        let dict = {}
+        dict["x"] = json.x
+        dict["y"] = json.y
+        dict["r"] = json.r
+        dict["status"] = json.status
+        dict["currentTime"] = json.currentTime
+        dict["executionTime"] = json.executionTime
         return dict
     }
 
@@ -79,8 +81,8 @@ submitButton.onclick = function (e) {
         xCell.textContent = dict["x"]
         yCell.textContent = dict["y"]
         rCell.textContent = dict["r"]
-        statusCell.textContent = dict["Статус"]
-        dateCell.textContent = dict["Текущее время"]
-        executionTimeCell.textContent = dict["Время выполнения"]
+        statusCell.textContent = dict["status"]
+        dateCell.textContent = dict["currentTime"]
+        executionTimeCell.textContent = dict["executionTime"]
     }
 }
