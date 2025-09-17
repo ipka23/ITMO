@@ -1,11 +1,11 @@
 import java.util.Map;
-// todo fix
 public class HitChecker {
     public static boolean check(Map<String, String> coords) {
         double x = Double.parseDouble(coords.get("x"));
         double y = Double.parseDouble(coords.get("y"));
         double r = Double.parseDouble(coords.get("r"));
         if (x < 0 && y < 0) return false;
+        if (x == 0 && y == 0) return true;
         return checkTriangle(x, y, r) || checkRectangle(x, y, r) || checkCircle(x, y, r);
     }
 
