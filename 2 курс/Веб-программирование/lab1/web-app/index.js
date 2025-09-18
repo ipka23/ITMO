@@ -12,18 +12,38 @@ for (let i = 0; i < form.x.length; i++) {
     form.x[i].addEventListener("click", radioClick)
 }
 
+function errorMessage(elementId, inputField, errorMessage) {
+    var error = document.getElementById(elementId)
+        error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
+        `${errorMessage}</span>`
+    if (errorMessage !== undefined) {
+        document.getElementById(inputField).value = ""
+    }
+}
+
 submitButton.onclick = function (e) {
     e.preventDefault()
     if (x === undefined) {
-        alert("Выберите X!")
+        errorMessage("xError", "Выберите X!")
     }
-    y = +document.getElementById("inputY").value;
-    r = +document.getElementById("inputR").value;
+
+    y = document.getElementById("inputY").value;
+    r = document.getElementById("inputR").value;
+
+    const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
+    if (!regexp.test(y) || y === undefined) {
+        errorMessage("yError", "inputY","Введите Y в правильном формате!")
+    }
+    if (!regexp.test(r) || r === undefined) {
+        errorMessage("rError", "inputR", "Введите R в правильном формате!")
+    }
     if (!(-3 <= y && y <= 3)) {
-        alert("Введите значение Y в пределах [-3;3]!")
-    } else if (!(2 <= r && r <= 5)) {
-        alert("Введите значение R в пределах [2;5]!")
-    } else {
+        errorMessage("yError",  "inputY", "Введите значение Y в пределах [-3;3]!")
+    }
+    if (!(2 <= r && r <= 5)) {
+        errorMessage("rError", "inputR", "Введите значение R в пределах [2;5]!")
+    }
+    else {
         hit(x, y, r)
         fetch('/fcgi-bin/server.jar', {
             method: 'POST',
@@ -33,13 +53,13 @@ submitButton.onclick = function (e) {
             body: `x=${x}&y=${y}&r=${r}`
         }).then(response => response.json()).then(data => {
             console.log(data)
-            if (data.error != null) {
-                alert('error')
-            } else {
+            if (data.error == null) {
                 updateTable(parseServerData(data))
+            } else {
+                // console.log(data.error)
             }
         }).catch(error => {
-            alert("Ошибка! " + error.toString())
+            alert("Ошибка сервера! " + error.toString())
         })
 
     }
@@ -85,5 +105,6 @@ submitButton.onclick = function (e) {
         statusCell.textContent = dict["status"]
         dateCell.textContent = dict["currentTime"]
         executionTimeCell.textContent = dict["executionTime"]
+        localStorage.key()
     }
 }
