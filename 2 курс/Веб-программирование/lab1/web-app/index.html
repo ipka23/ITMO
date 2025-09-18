@@ -7,9 +7,9 @@
     </title>
     <style>
         .header {
+            font-family: "fantasy";
             font-size: 24px;
             padding: 5%;
-            font-family: fantasy;
             /*background: url("https://avatars.mds.yandex.net/i?id=a7f07506b51bfd12bfc2dc1c4505afc70003fbda-16848981-images-thumbs&n=13");*/
             background: #00BFFF;
             color: white;
@@ -31,17 +31,40 @@
         }
         .statsTable {
             width: 100%;
-            border-color: #00BFFF;
+            border-color: black;
+            /*border-color: #00BFFF;*/
+            border-collapse: collapse;
         }
         .statsTableBody {
-            width: 100%;
-            overflow-y: auto;
-            border-color: #00BFFF;
+            text-align: center;
         }
-
+        button {
+            font-family: "fantasy";
+        }
+        span {
+            font-family: "fantasy";
+        }
+        td {
+            font-family: "fantasy";
+            text-align: center;
+        }
+        text {
+            font-family: "fantasy";
+        }
+        th {
+            font-family: "fantasy";
+            position: sticky;
+            top: 0;
+            background: #00BFFF;
+            color: white;
+        }
 
         .mainCell {
             text-align: center;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
     </style>
 
@@ -99,8 +122,8 @@
                 <line x1="145" y1="250" x2="155" y2="250" fill="black" stroke="black"/>
             </svg>
         </td>
-        <td style="text-align: center">
-            Введите X:
+        <td>
+            <span>Введите X:</span>
             <form id="form" class="coordinates">
                 <label><input type="radio" name="x" value="-2">-2</label>
                 <label><input type="radio" name="x" value="-1.5">-1.5</label>
@@ -112,14 +135,17 @@
                 <label><input type="radio" name="x" value="1.5">1.5</label>
                 <label><input type="radio" name="x" value="2">2</label>
                 <br>
+                <span id="xError" style="animation-duration: 2s"></span>
                 <br>
-                Введите Y[-3;3]:
+                <span>Введите Y[-3;3]:</span>
                 <label><input id="inputY" min="-3" max="3" type="number" step="any" maxlength="5"></label>
                 <br>
+                <span id="yError"></span>
                 <br>
-                Введите R[2;5]:
+                <span>Введите R[2;5]:</span>
                 <label><input id="inputR" min="2" max="5" type="number" step="any" maxlength="5"></label>
                 <br>
+                <span id="rError"></span>
                 <br>
                 <button id="submitButton" type="submit">Отправить</button>
             </form>
@@ -140,20 +166,19 @@
                             <th>Время выполнения</th>
                         </tr>
                     </thead>
-
-                    <tbody class="statsTableBody"></tbody>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
-
+                    <tbody class="statsTableBody">
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+                    </tbody>
                 </table>
             </div>
         </td>

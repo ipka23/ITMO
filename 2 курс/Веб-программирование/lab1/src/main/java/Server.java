@@ -20,16 +20,34 @@ public class Server {
                 String requestBody;
                 try {
                     requestBody = getRequestBody();
+                    if (requestBody.isEmpty()) {
+                        System.out.println(htmlErrorResponse("Введите не пустое тело запроса!"));
+                        continue;
+                    }
                 } catch (IOException e) {
-                    System.out.println(jsonErrorResponse("Ошибка ввода-вывода!"));
+                    System.out.println(htmlErrorResponse("Ошибка ввода-вывода!"));
                     continue;
                 }
                 coords = parseCoords(requestBody);
+                if (!coords.containsKey("x") ||!coords.containsKey("y") || !coords.containsKey("r")) {
+                    System.out.println(htmlErrorResponse("Неверное тело запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\""));
+                    continue;
+                }
             } else if (method.equals("GET")) {
                 var queryString = FCGIInterface.request.params.getProperty("QUERY_STRING");
-                coords = parseCoords(queryString);
+                if (queryString != null && !queryString.isEmpty()) {
+                    coords = parseCoords(queryString);
+                    if (!coords.containsKey("x") ||!coords.containsKey("y") || !coords.containsKey("r")) {
+                        System.out.println(htmlErrorResponse("Неверная строка запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\""));
+                        continue;
+                    }
+                } else {
+                    System.out.println(htmlErrorResponse("Введите не пустой запрос!"));
+                    continue;
+                }
+
             } else {
-                System.out.println(jsonErrorResponse("отправьте POST или GET запрос вместо " + method + " запроса!"));
+                System.out.println(htmlErrorResponse("отправьте POST или GET запрос вместо " + method + " запроса!"));
                 continue;
             }
             ValidateResponse validateCoords = CoordinatesValidator.validate(coords);
