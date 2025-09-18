@@ -14,17 +14,31 @@
             background: #00BFFF;
             color: white;
             text-align: center;
-            margin-bottom: 3%;
+            /*margin-bottom: 2%;*/
         }
 
         .main {
-            margin-bottom: 3%;
-            width: 100%
+            /*margin-bottom: 5%;*/
+            width: 100%;
+            padding: 3%;
+        }
+
+        .statsTableDiv {
+            margin-top: 3%;
+            width: 100%;
+            overflow-y: auto;
+            height: 215px
         }
         .statsTable {
             width: 100%;
             border-color: #00BFFF;
         }
+        .statsTableBody {
+            width: 100%;
+            overflow-y: auto;
+            border-color: #00BFFF;
+        }
+
 
         .mainCell {
             text-align: center;
@@ -113,21 +127,37 @@
 
     </tr>
     <tr>
-        <table id="statsTable" border="1" class="statsTable" >
-            <thead>
-            <th>X</th>
-            <th>Y</th>
-            <th>R</th>
-            <th>Попадание/промах</th>
-            <th>Текущее время</th>
-            <th>Время выполнения</th>
-            </thead>
-            <tbody class="statsTableBody">
+        <td colspan="2">
+            <div class="statsTableDiv">
+                <table id="statsTable" border="1" class="statsTable">
+                    <thead>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th>Попадание/промах</th>
+                            <th>Текущее время</th>
+                            <th>Время выполнения</th>
+                        </tr>
+                    </thead>
 
-            </tbody>
-        </table>
+                    <tbody class="statsTableBody"></tbody>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+                    <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>
+
+                </table>
+            </div>
+        </td>
     </tr>
 </table>
-
 </body>
 </html>
