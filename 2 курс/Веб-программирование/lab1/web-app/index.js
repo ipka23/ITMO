@@ -105,6 +105,5 @@ submitButton.onclick = function (e) {
         statusCell.textContent = dict["status"]
         dateCell.textContent = dict["currentTime"]
         executionTimeCell.textContent = dict["executionTime"]
-        localStorage.key()
     }
 }
