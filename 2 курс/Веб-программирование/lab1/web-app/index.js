@@ -24,7 +24,7 @@ function errorMessage(elementId, inputField, errorMessage) {
 submitButton.onclick = function (e) {
     e.preventDefault()
     if (x === undefined) {
-        errorMessage("xError", "Р’С‹Р±РµСЂРёС‚Рµ X!")
+        errorMessage("xError", "Выберите X!")
     }
 
     y = document.getElementById("inputY").value;
@@ -32,16 +32,16 @@ submitButton.onclick = function (e) {
 
     const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
     if (!regexp.test(y) || y === undefined) {
-        errorMessage("yError", "inputY","Р’РІРµРґРёС‚Рµ Y РІ РїСЂР°РІРёР»СЊРЅРѕРј С„РѕСЂРјР°С‚Рµ!")
+        errorMessage("yError", "inputY","Введите Y в правильном формате!")
     }
     if (!regexp.test(r) || r === undefined) {
-        errorMessage("rError", "inputR", "Р’РІРµРґРёС‚Рµ R РІ РїСЂР°РІРёР»СЊРЅРѕРј С„РѕСЂРјР°С‚Рµ!")
+        errorMessage("rError", "inputR", "Введите R в правильном формате!")
     }
     if (!(-3 <= y && y <= 3)) {
-        errorMessage("yError",  "inputY", "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Y РІ РїСЂРµРґРµР»Р°С… [-3;3]!")
+        errorMessage("yError",  "inputY", "Введите значение Y в пределах [-3;3]!")
     }
     if (!(2 <= r && r <= 5)) {
-        errorMessage("rError", "inputR", "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ R РІ РїСЂРµРґРµР»Р°С… [2;5]!")
+        errorMessage("rError", "inputR", "Введите значение R в пределах [2;5]!")
     }
     else {
         hit(x, y, r)
@@ -59,7 +59,7 @@ submitButton.onclick = function (e) {
                 // console.log(data.error)
             }
         }).catch(error => {
-            alert("РћС€РёР±РєР° СЃРµСЂРІРµСЂР°! " + error.toString())
+            alert("Ошибка сервера!: " + error.toString())
         })
 
     }
