@@ -3,7 +3,9 @@ let x
 let y
 let r
 const form = document.getElementById("form")
-loadTableFromLocalStorage()
+console.log("ll: " + localStorage.length)
+if (localStorage.length !== 0) loadTableFromLocalStorage()
+
 function radioClick(e) {
     x = +e.target.value
 }
@@ -16,34 +18,50 @@ function errorMessage(elementId, inputField, errorMessage) {
     let error = document.getElementById(elementId)
     error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
         `${errorMessage}</span>`
-    if (errorMessage !== undefined) {
+    if (errorMessage !== undefined && inputField !== "inputX") {
         document.getElementById(inputField).value = ""
     }
 }
 
 submitButton.onclick = function (e) {
     e.preventDefault()
-    if (x === undefined) {
-        errorMessage("xError", "Выберите X!")
-    }
-
+    const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
     y = document.getElementById("inputY").value;
     r = document.getElementById("inputR").value;
+    let successX = true
+    let successY = true
+    let successR = true
+    if (x === undefined) {
+        errorMessage("xError", "inputX", "Выберите X!")
+        successX = false
+    }
 
-    const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
-    if (!regexp.test(y) || y === undefined) {
-        errorMessage("yError", "inputY","Введите Y в правильном формате!")
+    if (y === undefined) {
+        errorMessage("yError", "inputY", "Введите Y!")
+        successY = false
     }
-    if (!regexp.test(r) || r === undefined) {
+    if (r === undefined) {
+        errorMessage("rError", "inputR", "Введите R!")
+        successR = false
+    }
+
+    if (!regexp.test(y) && successY) {
+        errorMessage("yError", "inputY", "Введите Y в правильном формате!")
+        successY = false
+    }
+    if (!regexp.test(r) && successR) {
         errorMessage("rError", "inputR", "Введите R в правильном формате!")
+        successR = false
     }
-    if (!(-3 <= y && y <= 3)) {
-        errorMessage("yError",  "inputY", "Введите значение Y в пределах [-3;3]!")
+
+    if (!(-3 <= y && y <= 3) && successY) {
+        errorMessage("yError", "inputY", "Введите значение Y в пределах [-3;3]!")
+        successY = false
     }
-    if (!(2 <= r && r <= 5)) {
+    if (!(2 <= r && r <= 5) && successR) {
         errorMessage("rError", "inputR", "Введите значение R в пределах [2;5]!")
-    }
-    else {
+        successR = false
+    } else if (successX && successY && successR) {
         hit(x, y, r)
         fetch('/fcgi-bin/server.jar', {
             method: 'POST',
@@ -54,7 +72,7 @@ submitButton.onclick = function (e) {
         }).then(response => response.json()).then(json => {
             console.log(json)
             if (json.error == null) {
-                updateTable(jsonToDict(json))
+                updateTable(jsonToDict(json), true)
             } else {
                 // console.log(data.error)
             }
@@ -62,8 +80,9 @@ submitButton.onclick = function (e) {
             alert("Ошибка сервера!: " + error.toString())
         })
 
-    }
+    } else alert("Непредвиденная ошибка!")
 }
+
 function hit(x, y, r) {
     const svg = document.getElementById("svg")
     const rPxSize = svg.clientWidth / 3
@@ -80,7 +99,7 @@ function hit(x, y, r) {
 }
 
 
-function updateTable(dict = {}) {
+function updateTable(dict, firstAdd) {
     const table = document.getElementById("statsTable")
     const row = table.insertRow()
     const xCell = row.insertCell(0)
@@ -95,27 +114,34 @@ function updateTable(dict = {}) {
     statusCell.textContent = dict["status"]
     dateCell.textContent = dict["currentTime"]
     executionTimeCell.textContent = dict["executionTime"]
-    updateLocalStorage(localStorage.length + 1, dictToString(dict))
-    console.log(`localStorage.length + 1: ${localStorage.length + 1}, stringItem ${dictToString(dict)}`)
+    if (firstAdd) updateLocalStorage(localStorage.length, dict)
+
 }
-function updateLocalStorage(index, dict){
-    localStorage.setItem(index.toString(), dictToString(dict))
+
+function updateLocalStorage(index, dict) {
+    let item = dictToString(dict)
+    console.log(`index: ${localStorage.length}\nitem: ${item}`)
+    localStorage.setItem(index.toString(), item)
 }
+
 function dictToString(dict) {
     return `x: ${dict["x"]},
-            y: ${dict["y"]}
-            r: ${dict["r"]}
-            status: ${dict["status"]}
-            currentTime: ${dict["currentTime"]}
+            y: ${dict["y"]},
+            r: ${dict["r"]},
+            status: ${dict["status"]},
+            currentTime: ${dict["currentTime"]},
             executionTime: ${dict["executionTime"]}
             `
 }
+
 function stringToDict(string) {
-    let statsDict = string.split(", ")
-    let dictItem = []
-    for (let pair in statsDict) {
-        let keyVal = pair.split(": ")
-        dictItem[keyVal[0]] = keyVal[1]
+    let statsList = string.split(",\n")
+    let dictItem = {}
+    for (let i = 0; i < statsList.length; i++) {
+        let keyVal = statsList[i].split(": ")
+        let key = keyVal[0].trim()
+        let value = keyVal[1].trim()
+        dictItem[key] = value
 
     }
     console.log(`parsedDictItem: ${dictItem}`)
@@ -133,12 +159,14 @@ function jsonToDict(json) {
     return dict
 }
 
-function loadTableFromLocalStorage(){
-    let localStorageTableLinesCount = window.localStorage.length
-    for (let i = 0; i < localStorageTableLinesCount; i++) {
+function loadTableFromLocalStorage() {
+    let storageLength = window.localStorage.length
+    for (let i = 0; i < storageLength; i++) {
         let item = window.localStorage.getItem(i.toString())
+        console.log(item)
         let dictItem = stringToDict(item)
-        updateTable(dictItem)
+        updateTable(dictItem, false)
+        hit(dictItem["x"], dictItem["y"], dictItem["r"])
         console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
     }
 }
