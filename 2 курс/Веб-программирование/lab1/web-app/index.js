@@ -13,7 +13,7 @@ for (let i = 0; i < form.x.length; i++) {
 }
 
 function errorMessage(elementId, inputField, errorMessage) {
-    var error = document.getElementById(elementId)
+    let error = document.getElementById(elementId)
     error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
         `${errorMessage}</span>`
     if (errorMessage !== undefined) {
