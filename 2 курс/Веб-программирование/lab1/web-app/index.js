@@ -2,9 +2,7 @@ const submitButton = document.getElementById("submitButton")
 let x
 let y
 let r
-const form = document.getElementById("form")
-console.log("ll: " + localStorage.length)
-if (localStorage.length !== 0) loadTableFromLocalStorage()
+let form = document.getElementById("form")
 
 function radioClick(e) {
     x = +e.target.value
@@ -13,6 +11,50 @@ function radioClick(e) {
 for (let i = 0; i < form.x.length; i++) {
     form.x[i].addEventListener("click", radioClick)
 }
+
+if (localStorage.length !== 0) {
+    loadTableFromLocalStorage()
+} else sendStorageLength()
+
+
+function sendStorageLength() {
+    makeFetch("GET", `storageLength=${localStorage.length}`)
+}
+
+function sendStorageItem(jsonItem) {
+    makeFetch('POST', jsonItem, 'application/json')
+}
+
+function makeFetch(method, body, contentType) {
+    if (method === "POST") {
+        fetch('/fcgi-bin/server.jar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': contentType,
+            },
+            body: body
+        }).then(response => response.json()).then(json => {
+            console.log(json)
+            if (json.error == null) {
+                updateTable(jsonToDict(json), true)
+            } else {
+                console.log(json.error)
+            }
+        }).catch(error => {
+            alert("Ошибка сервера!: " + error.toString())
+        })
+    } else if (method === "GET") {
+        fetch(`/fcgi-bin/server.jar?${body}`, {
+            method: "GET"
+        }).then(response => response.json()).then(json => {
+            console.log(json)
+        }).catch(error => {
+            alert("Ошибка сервера!: " + error.toString())
+        })
+    }
+
+}
+
 
 function errorMessage(elementId, inputField, errorMessage) {
     let error = document.getElementById(elementId)
@@ -63,24 +105,9 @@ submitButton.onclick = function (e) {
         successR = false
     } else if (successX && successY && successR) {
         hit(x, y, r)
-        fetch('/fcgi-bin/server.jar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `x=${x}&y=${y}&r=${r}`
-        }).then(response => response.json()).then(json => {
-            console.log(json)
-            if (json.error == null) {
-                updateTable(jsonToDict(json), true)
-            } else {
-                // console.log(data.error)
-            }
-        }).catch(error => {
-            alert("Ошибка сервера!: " + error.toString())
-        })
+        makeFetch("POST", `x=${x}&y=${y}&r=${r}`, 'application/x-www-form-urlencoded')
 
-    } else alert("Непредвиденная ошибка!")
+    }
 }
 
 function hit(x, y, r) {
@@ -108,14 +135,31 @@ function updateTable(dict, firstAdd) {
     const statusCell = row.insertCell(3)
     const dateCell = row.insertCell(4)
     const executionTimeCell = row.insertCell(5)
+    yCell.style.maxWidth = '15px'
+    rCell.style.maxWidth = '15px'
     xCell.textContent = dict["x"]
+
+    if (dict["y"].length > 5) {
+        yCell.title = dict["y"]
+        yCell.style.overflow = "hidden"
+        dict["y"] = dict["y"].substring(0, 5) + "..."
+    }
     yCell.textContent = dict["y"]
+
+    if (dict["r"].length > 5) {
+        rCell.title = dict["r"]
+        rCell.style.overflow = "hidden"
+        dict["r"] = dict["r"].substring(0, 5) + "..."
+    }
     rCell.textContent = dict["r"]
+
     statusCell.textContent = dict["status"]
     dateCell.textContent = dict["currentTime"]
     executionTimeCell.textContent = dict["executionTime"]
-    if (firstAdd) updateLocalStorage(localStorage.length, dict)
-
+    if (firstAdd) {
+        updateLocalStorage(localStorage.length, dict)
+        sendStorageLength()
+    }
 }
 
 function updateLocalStorage(index, dict) {
@@ -130,8 +174,7 @@ function dictToString(dict) {
             r: ${dict["r"]},
             status: ${dict["status"]},
             currentTime: ${dict["currentTime"]},
-            executionTime: ${dict["executionTime"]}
-            `
+            executionTime: ${dict["executionTime"]}`
 }
 
 function stringToDict(string) {
@@ -144,27 +187,38 @@ function stringToDict(string) {
         dictItem[key] = value
 
     }
-    console.log(`parsedDictItem: ${dictItem}`)
+    // console.log(`parsedDictItem: ${dictItem}`)
     return dictItem
 }
 
 function jsonToDict(json) {
     let dict = {}
-    dict["x"] = json.x
-    dict["y"] = json.y
-    dict["r"] = json.r
-    dict["status"] = json.status
-    dict["currentTime"] = json.currentTime
-    dict["executionTime"] = json.executionTime
+    dict["x"] = json.result.x
+    dict["y"] = json.result.y
+    dict["r"] = json.result.r
+    dict["status"] = json.result.status
+    dict["currentTime"] = json.result.currentTime
+    dict["executionTime"] = json.result.executionTime
     return dict
+}
+
+function dictToJson(dict) {
+    let json = JSON.stringify(dict)
+    console.log(json)
+    return json
 }
 
 function loadTableFromLocalStorage() {
     let storageLength = window.localStorage.length
     for (let i = 0; i < storageLength; i++) {
-        let item = window.localStorage.getItem(i.toString())
+        let index = i.toString()
+        let item = window.localStorage.getItem(index)
+
         console.log(item)
         let dictItem = stringToDict(item)
+        dictItem["index"] = index
+        // sendStorageItem(dictToJson(dictItem))
+
         updateTable(dictItem, false)
         hit(dictItem["x"], dictItem["y"], dictItem["r"])
         console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
