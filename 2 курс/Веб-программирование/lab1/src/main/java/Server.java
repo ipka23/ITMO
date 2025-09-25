@@ -8,39 +8,64 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Server {
+    static HashMap<String, Point> storageItems = new HashMap<>();
+    static String storageLength;
+
     public static void main(String[] args) {
         var fcgiInterface = new FCGIInterface();
         while (fcgiInterface.FCGIaccept() >= 0) {
             long startTime = System.nanoTime();
             boolean get = true;
             var method = FCGIInterface.request.params.getProperty("REQUEST_METHOD");
+            var contentType = FCGIInterface.request.params.getProperty("CONTENT_TYPE");
             Map<String, String> coords;
             if (method.equals("POST")) {
-                get = false;
-                String requestBody;
+                addToLog("method: POST");
                 try {
-                    requestBody = getRequestBody();
-                    if (requestBody.isEmpty()) {
-                        System.out.println(htmlErrorResponse("Введите не пустое тело запроса!"));
+                    String requestBody;
+                    if (contentType.equals("application/json")) {
+                        addToLog("contentType: application/json");
+                        requestBody = getRequestBody();
+                        addToLog("jsonRequestBody: " + requestBody);
+                        System.out.println(jsonResponse("success", "localStorage item получен успешно!", false));
                         continue;
+                    } else {
+                        get = false;
+
+                        requestBody = getRequestBody();
+                        if (requestBody.isEmpty()) {
+                            System.out.println(jsonResponse("success", "Введите не пустое тело запроса!", false));
+                            continue;
+                        }
+                        coords = parseCoords(requestBody);
+                        if (!coords.containsKey("x") || !coords.containsKey("y") || !coords.containsKey("r")) {
+                            System.out.println(jsonResponse("success", "Неверное тело запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\"", false));
+                            continue;
+                        }
                     }
                 } catch (IOException e) {
-                    System.out.println(htmlErrorResponse("Ошибка ввода-вывода!"));
+                    System.out.println(jsonResponse("error", "Ошибка ввода-вывода!", false));
                     continue;
                 }
-                coords = parseCoords(requestBody);
-                if (!coords.containsKey("x") ||!coords.containsKey("y") || !coords.containsKey("r")) {
-                    System.out.println(htmlErrorResponse("Неверное тело запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\""));
-                    continue;
-                }
+
             } else if (method.equals("GET")) {
                 var queryString = FCGIInterface.request.params.getProperty("QUERY_STRING");
                 if (queryString != null && !queryString.isEmpty()) {
-                    coords = parseCoords(queryString);
-                    if (!coords.containsKey("x") ||!coords.containsKey("y") || !coords.containsKey("r")) {
-                        System.out.println(htmlErrorResponse("Неверная строка запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\""));
+                    String[] qs = queryString.split("=", 2);
+                    addToLog("qs: " + queryString + "\nqs [] len: " + qs.length);
+                    if (qs.length == 2) {
+                        if (qs[0].equals("storageLength")) Server.storageLength = qs[1];
+//                        if (qs[0].equals("itemIndex"))TODO itemIndex
+                        System.out.println(jsonResponse("success", "localStorage.length получена успешно!", false));
                         continue;
+                    } else {
+                        coords = parseCoords(queryString);
+                        if (!coords.containsKey("x") || !coords.containsKey("y") || !coords.containsKey("r")) {
+                            System.out.println(htmlErrorResponse("Неверная строка запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\""));
+                            continue;
+                        }
                     }
+
                 } else {
                     System.out.println(htmlErrorResponse("Введите не пустой запрос!"));
                     continue;
@@ -53,27 +78,36 @@ public class Server {
             ValidateResponse validateCoords = CoordinatesValidator.validate(coords);
             if (validateCoords.getStatus()) {
                 String hit;
+                String x = coords.get("x");
+                String y = coords.get("y");
+                String r = coords.get("r");
                 if (HitChecker.check(coords)) {
                     hit = "Попадание";
                 } else hit = "Промах";
+
 
                 long endTime = System.nanoTime();
                 String currentTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
                 double t = (endTime - startTime) / 1_000_000d;
                 String executionTime = String.format("%.2fms", t);
                 String s;
+                Point point = new Point(x, y, r, hit, currentTime, executionTime);
+                Server.storageItems.put(Server.storageLength, point);
+//
+                addToLog("\nindex: " + Server.storageLength + "\npoint: " + point);
+
                 if (!get) {
-                    s = "{\"x\":\"" + coords.get("x") +
-                            "\",\"y\":\"" + coords.get("y") +
-                            "\",\"r\":\"" + coords.get("r") +
+                    s = "{\"x\":\"" + x +
+                            "\",\"y\":\"" + y +
+                            "\",\"r\":\"" + r +
                             "\",\"status\":\"" + hit +
                             "\",\"currentTime\":\"" + currentTime +
                             "\",\"executionTime\":\"" + executionTime + "\"}";
-                    System.out.println(jsonSuccessResponse(s));
+                    System.out.println(jsonResponse("success", s, true));
                 } else {
-                    s = "X: " + coords.get("x") +
-                            "\nY: " + coords.get("y") +
-                            "\nR: " + coords.get("r") +
+                    s = "X: " + x +
+                            "\nY: " + y +
+                            "\nR: " + r +
                             "\nСтатус: " + hit +
                             "\nТекущее время: " + currentTime +
                             "\nВремя выполнения: " + executionTime;
@@ -81,13 +115,14 @@ public class Server {
                 }
             } else {
                 if (!get) {
-                    System.out.println(jsonErrorResponse(validateCoords.getMessage()));
+                    System.out.println(jsonResponse("error", validateCoords.getMessage(), false));
                 } else {
                     System.out.println(htmlErrorResponse(validateCoords.getMessage()));
                 }
             }
         }
     }
+
 
     private static String getRequestBody() throws IOException {
         String contentLengthStr = FCGIInterface.request.params.getProperty("CONTENT_LENGTH");
@@ -113,20 +148,26 @@ public class Server {
             }
             totalRead += read;
         }
-        return new String(buffer, 0, totalRead);
-    }
-
-    private static String jsonSuccessResponse(String jsonStr) {
-        String s = "Content-Type: application/json\n" +
-                "\r\n\r\n" + jsonStr;
+        String s = new String(buffer, 0, totalRead);
+        addToLog("str: " + s);
         return s;
     }
 
-    private static String jsonErrorResponse(String message) {
-        String s = "Content-Type: application/json\n" +
-                "\r\n\r\n" + "{\"error\":\"" + message + "\"}";
+    private static String jsonResponse(String status, String message, boolean json) {
+        String s;
+        if (json) {
+            s = "Content-Type: application/json\n" +
+                    "\r\n\r\n" + "{\"status\":\"" + status + "\", " +
+                    "\"result\":" + message + "}";
+        } else {
+            s = "Content-Type: application/json\n" +
+                    "\r\n\r\n" + "{\"status\":\"" + status + "\", " +
+                    "\"result\":\"" + message + "\"}";
+        }
         return s;
     }
+
+
 
     private static String htmlSuccessResponse(String message) {
         message = message.replace("\n", "<br>");
@@ -184,7 +225,7 @@ public class Server {
             String time = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
             logger.println("[ " + time + " ]" + message);
         } catch (IOException e) {
-            System.out.println(jsonErrorResponse("Ошибка ввода-вывода!"));
+            System.out.println(jsonResponse("error", "Ошибка ввода-вывода!", false));
         }
     }
 }
