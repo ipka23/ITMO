@@ -8,27 +8,28 @@ import jakarta.servlet.http.HttpSession;
 import utility.HitChecker;
 import utility.Point;
 
-import java.io.IOException;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-@WebServlet(name = "areaCheckServlet", value = "/areaCheckServlet")
+@WebServlet(name = "AreaCheckServlet", value = "/checkArea")
 public class AreaCheckServlet extends HttpServlet {
-    private static ArrayList<Point> points = new ArrayList<>();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         long startTime = System.nanoTime();
         Point p = makePoint(request, startTime);
-        HttpSession httpSession = request.getSession();
-
-        points = (ArrayList<Point>) request.getAttribute("points");
-        if (httpSession.getAttribute("points") == null) {
-            httpSession.setAttribute("points", points);
-        }
-        points.add(p);
+        updatePoints(request, p);
+        String s = "{\"x\":\"" + p.getX() +
+                "\",\"y\":\"" + p.getY() +
+                "\",\"r\":\"" + p.getR() +
+                "\",\"status\":\"" + p.getHit() +
+                "\",\"currentTime\":\"" + p.getCurrentTime() +
+                "\",\"executionTime\":\"" + p.getExecutionTime() + "\"}";
+        response.getWriter().write(s);
     }
+
     public Point makePoint(HttpServletRequest request, long startTime) {
         String hit;
         String x = request.getParameter("x");
@@ -43,6 +44,17 @@ public class AreaCheckServlet extends HttpServlet {
         String executionTime = String.format("%.2fms", t);
         Point p = new Point(x, y, r, currentTime, hit, executionTime);
         return p;
+    }
+
+    public void updatePoints(HttpServletRequest request, Point p) {
+        HttpSession httpSession = request.getSession();
+        ArrayList<Point> points;
+        points = (ArrayList<Point>) request.getAttribute("points");
+        if (httpSession.getAttribute("points") == null) {
+            points = new ArrayList<>();
+        }
+        points.add(p);
+        httpSession.setAttribute("points", points);
     }
 }
 
