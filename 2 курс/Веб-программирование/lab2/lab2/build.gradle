@@ -29,6 +29,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 
@@ -36,12 +37,6 @@ tasks.withType(Test).configureEach {
     enabled = false
 }
 
-jar {
-    manifest {
-        archiveFileName = "server.jar"
-        attributes("Main-Class": "Server")
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+tasks.named("war") {
+    archiveFileName = "lab2.war"
 }
