@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="863f0588-41c7-43a7-b6b4-1efbc9a97224" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/AreaCheckServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlets/ControllerServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/HitChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utility/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lab2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlets/ControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/ControllerServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +60,11 @@
     "Gradle.Build lab2.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "JBoss/WildFly Server.JBoss/WildFly 37.0.1.Final.executor": "Run",
+    "JBoss/WildFly Server.win.executor": "Run",
     "JavaScript Debug.index.jsp.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -78,9 +73,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
@@ -91,31 +86,32 @@
         <entry key="JBossConfiguration">
           <value>
             <map>
-              <entry key="JBoss/WildFly 37.0.1.Final" value="STOPPED" />
+              <entry key="win" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 37.0.1.Final">
-    <configuration name="JBoss/WildFly 37.0.1.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 37.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+  <component name="RunManager" selected="JBoss/WildFly Server.win">
+    <configuration name="win" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 37.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Gradle : lab2 : lab2-1.0-SNAPSHOT.war">
+        <artifact name="Gradle : lab2 : lab2.war">
           <settings />
         </artifact>
       </deployment>
       <server-settings>
         <option name="BINDING_SET_NAME" value="" />
-        <option name="SERVER" value="" />
+        <option name="SERVER" />
         <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="" />
+        <option name="SERVER_GROUP" value="main-server-group" />
         <option name="USERNAME" value="" />
         <option name="CREDENTIAL_ALIAS" />
       </server-settings>
       <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="59977" />
+        <option name="DEBUG_PORT" value="50669" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -164,12 +160,18 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : lab2 : lab2.war" />
+        </option>
       </method>
     </configuration>
     <configuration name="index.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:25230/lab2-1.0-SNAPSHOT/index.jsp">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.jsp" />
+      <item itemvalue="JBoss/WildFly Server.win" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.jsp" />
@@ -194,6 +196,7 @@
       <workItem from="1760022626108" duration="30000" />
       <workItem from="1760027241228" duration="65000" />
       <workItem from="1760027317273" duration="8825000" />
+      <workItem from="1760111054107" duration="4300000" />
     </task>
     <servers />
   </component>
