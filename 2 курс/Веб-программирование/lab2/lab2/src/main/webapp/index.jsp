@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="utility.Point" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
@@ -104,18 +106,17 @@
           </tr>
           </thead>
           <tbody class="statsTableBody">
-          <%= %>
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-          <!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+          <%
+              ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");
+              if (points == null) {
+                  points = new ArrayList<>();
+              }
+              for (int i = 0; i < points.size(); i++) {
+                  Point p = points.get(i);
+          %>
+          <tr> <td><%=p.getX()%></td> <td><%=p.getY()%></td> <td><%=p.getR()%></td> <td><%=p.getStatus()%></td> <td><%=p.getCurrentTime()%></td> <td><%=p.getExecutionTime()%></td> </tr>
+          <% } %>
+
           </tbody>
         </table>
       </div>
