@@ -7,16 +7,19 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.java.Log;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-@WebServlet(name = "ControllerServlet", value = "/controller")
+@Log
+@WebServlet(value = "/controller")
 public class ControllerServlet extends HttpServlet {
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("x") != null && request.getParameter("y") != null && request.getParameter("r") != null) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/checkArea");
+            log.info("QS: " + request.getQueryString());
             dispatcher.forward(request, response);
         } else if (request.getParameter("x") == null || request.getParameter("y") == null || request.getParameter("r") == null){
             jsonResponse("error", "Неверное тело запроса! Введите по шаблону: \"?x=value1&y=value2&r=value3\"", response);
@@ -29,7 +32,7 @@ public class ControllerServlet extends HttpServlet {
 //        Gson gson = new Gson();
 //        Map<String, String> json = new HashMap<>();
         String s = "{\"status\":\"" + status + "\", " +
-                "\"result\":" + message + "}";
+                "\"result\":\"" + message + "\"}";
 //        json.put("status", status);
 //        json.put("message", message);
         response.addHeader("Content-Type", "application/json");
