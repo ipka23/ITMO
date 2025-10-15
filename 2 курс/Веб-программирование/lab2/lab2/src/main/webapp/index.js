@@ -27,32 +27,17 @@ function sendStorageItem(jsonItem) {
 
 function makeFetch(method, body, contentType) {
     if (method === "POST") {
-        fetch('/controller', {
-            method: 'POST',
-            headers: {
-                'Content-Type': contentType,
-            },
-            body: body
-        }).then(response => response.json()).then(json => {
-            console.log(json)
-            if (json.error == null) {
-                updateTable(jsonToDict(json), true)
-            } else {
-                console.log(json.error)
-            }
-        }).catch(error => {
-            alert("Ошибка сервера!: " + error.toString())
-        })
+        alert("Ошибка: Введите GET запрос!")
     } else if (method === "GET") {
         fetch(`/controller?${body}`, {
             method: "GET"
-        }).then(response => console.log(response))
-
-        //     .then(response => response.json()).then(json => {
-        //     console.log(json)
-        // }).catch(error => {
-        //     alert("Ошибка сервера!: " + error.toString())
-        // })
+        }).then(response => response.json())
+            .then(json => {
+                console.log(json)
+                // updateTable(jsonToDict(json), true)
+            }).catch(error => {
+            alert("Ошибка сервера!: " + error.toString())
+        })
     }
 
 }
