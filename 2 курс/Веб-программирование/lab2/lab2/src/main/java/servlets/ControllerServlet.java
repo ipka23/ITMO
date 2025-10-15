@@ -29,13 +29,23 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private static void jsonResponse(String status, String message, HttpServletResponse response) throws IOException {
+<<<<<<< HEAD
 //        Gson gson = new Gson();
 //        Map<String, String> json = new HashMap<>();
         String s = "{\"status\":\"" + status + "\", " +
                 "\"result\":\"" + message + "\"}";
 //        json.put("status", status);
 //        json.put("message", message);
+=======
+        Gson gson = new Gson();
+        Map<String, String> json = new HashMap<>();
+//        String s = "{\"status\":\"" + status + "\", " +
+//                "\"result\":" + message + "}";
+        json.put("status", status);
+        json.put("message", message);
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
         response.addHeader("Content-Type", "application/json");
-        response.getWriter().write(s);
+//        response.getWriter().write(s);
+        response.getWriter().write(gson.toJson(json));
     }
 }

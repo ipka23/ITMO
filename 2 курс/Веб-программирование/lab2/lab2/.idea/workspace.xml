@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="863f0588-41c7-43a7-b6b4-1efbc9a97224" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -14,6 +15,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlets/ControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlets/ControllerServlet.java" afterDir="false" />
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +94,15 @@
     "Gradle.Build lab2.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "JBoss/WildFly Server.JBoss/WildFly 37.0.1.Final.executor": "Run",
+<<<<<<< HEAD
     "JBoss/WildFly Server.mac.executor": "Debug",
+=======
+    "JBoss/WildFly Server.win.executor": "Run",
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
     "JavaScript Debug.index.jsp.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -102,13 +112,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+<<<<<<< HEAD
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -116,6 +127,23 @@
   </component>
   <component name="RunManager">
     <configuration name="mac" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 37.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+=======
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="JBossConfiguration">
+          <value>
+            <map>
+              <entry key="win" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="JBoss/WildFly Server.win">
+    <configuration name="win" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 37.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Gradle : lab2 : lab2.war">
@@ -126,6 +154,7 @@
         <option name="BINDING_SET_NAME" value="" />
         <option name="SERVER" />
         <option name="DOMAIN" value="false" />
+<<<<<<< HEAD
         <option name="SERVER_GROUP" />
         <option name="USERNAME" value="ipka23" />
         <option name="CREDENTIAL_ALIAS" value="6cf8552d-cbd4-471f-9cb8-079a30935635" />
@@ -133,6 +162,15 @@
       <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="50021" />
+=======
+        <option name="SERVER_GROUP" value="main-server-group" />
+        <option name="USERNAME" value="" />
+        <option name="CREDENTIAL_ALIAS" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="JBoss" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50669" />
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -186,6 +224,21 @@
         </option>
       </method>
     </configuration>
+<<<<<<< HEAD
+=======
+    <configuration name="index.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:25230/lab2-1.0-SNAPSHOT/index.jsp">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.jsp" />
+      <item itemvalue="JBoss/WildFly Server.win" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.jsp" />
+      </list>
+    </recent_temporary>
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -206,7 +259,11 @@
       <workItem from="1760022626108" duration="30000" />
       <workItem from="1760027241228" duration="65000" />
       <workItem from="1760027317273" duration="8825000" />
+<<<<<<< HEAD
       <workItem from="1760523435022" duration="8334000" />
+=======
+      <workItem from="1760111054107" duration="4300000" />
+>>>>>>> 0ad5bd7e4de3962f09bf3db729bb1c2e9c603d1d
     </task>
     <servers />
   </component>
