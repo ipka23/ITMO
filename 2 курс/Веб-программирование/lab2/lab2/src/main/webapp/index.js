@@ -29,7 +29,7 @@ function makeFetch(method, body, contentType) {
     if (method === "POST") {
         alert("Ошибка: Введите GET запрос!")
     } else if (method === "GET") {
-        fetch(`/controller?${body}`, {
+        fetch(`http://localhost:25230/lab2/controller?${body}`, {
             method: "GET"
         }).then(response => response.json())
             .then(json => {
