@@ -12,4 +12,12 @@
         <servlet-name>resultTable</servlet-name>
         <url-pattern>/result</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>servlets.ControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
 </web-app>

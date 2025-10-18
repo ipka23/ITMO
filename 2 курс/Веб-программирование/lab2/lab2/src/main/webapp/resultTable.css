@@ -1,0 +1,24 @@
+.lastPoint {
+    width: 100%;
+    padding: 10%;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    font-family: "fantasy";
+    text-align: center;
+}
+text {
+    font-family: "fantasy";
+}
+th {
+    font-family: "fantasy";
+    position: sticky;
+    top: 0;
+    background: #00BFFF;
+    color: white;
+}

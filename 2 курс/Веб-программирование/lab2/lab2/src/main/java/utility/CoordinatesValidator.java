@@ -23,20 +23,12 @@ public class CoordinatesValidator {
 
     private static ValidateResponse validateX(String val) throws NumberFormatException {
         double x;
-        double[] xValues = {-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2};
-        boolean flag = false;
         try {
             x = Double.parseDouble(val);
-            for (double value : xValues) {
-                if (value == x) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag) {
+            if (-3 <= x && x <= 3) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "X должен принадлежать множеству: {-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2}");
+                return new ValidateResponse(false, "X должен принадлежать [-3, 3]!}");
             }
 
         } catch (NumberFormatException e) {
@@ -46,12 +38,20 @@ public class CoordinatesValidator {
 
     private static ValidateResponse validateY(String val) {
         double y;
+        double[] yValues = {-5, -4, -3, -2, -1, 0, 1, 2, 3};
+        boolean flag = false;
         try {
             y = Double.parseDouble(val);
-            if (-3 <= y && y <= 3) {
+            for (double value : yValues) {
+                if (value == y) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "Y должен принадлежать отрезку: [-3, 3]!");
+                return new ValidateResponse(false, "Y должен принадлежать {-5, -4, -3, -2, -1, 0, 1, 2, 3}!");
             }
         } catch (NumberFormatException e) {
             return new ValidateResponse(false, "Y должен являться числом!");
@@ -62,10 +62,10 @@ public class CoordinatesValidator {
         double r;
         try {
             r = Double.parseDouble(val);
-            if (2 <= r && r <= 5) {
+            if (1 <= r && r <= 4) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "R должен принадлежать отрезку: [2, 5]!");
+                return new ValidateResponse(false, "R должен принадлежать [1, 4]!");
             }
         } catch (NumberFormatException e) {
             return new ValidateResponse(false, "R должен являться числом!");

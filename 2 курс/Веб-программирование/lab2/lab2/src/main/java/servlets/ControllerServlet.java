@@ -11,7 +11,6 @@ import utility.ResponseStatus;
 
 import java.io.IOException;
 @Log
-@WebServlet(value = "/controller")
 public class ControllerServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

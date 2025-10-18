@@ -1,5 +1,7 @@
 package servlets;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +19,7 @@ import java.util.Calendar;
 @WebServlet(value = "/checkArea")
 public class AreaCheckServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
 
         Point p = makePoint(request, startTime);
@@ -33,7 +35,9 @@ public class AreaCheckServlet extends HttpServlet {
         } else {
             jsonResponse(response, ResponseStatus.ERROR, p.getValidationMessage(), false);
         }
-
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("");
+//        dispatcher.forward(request, response);
+//        response.sendRedirect("http://localhost:25230/lab2/result");
     }
 
     private void jsonResponse(HttpServletResponse response, ResponseStatus status, String message, boolean json) throws IOException {
