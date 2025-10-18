@@ -1,20 +1,13 @@
-const submitButton = document.getElementById("submitButton")
 let x
-let y
+let yValues
 let r
-let form = document.getElementById("form")
+let form
+let submitButton
 
-function radioClick(e) {
-    x = +e.target.value
+
+if (localStorage.length !== 0) {
+    loadTableFromLocalStorage()
 }
-
-for (let i = 0; i < form.x.length; i++) {
-    form.x[i].addEventListener("click", radioClick)
-}
-
-// if (localStorage.length !== 0) {
-//     loadTableFromLocalStorage()
-// } else sendStorageLength()
 
 
 // function sendStorageLength() {
@@ -34,7 +27,10 @@ function makeFetch(method, body, contentType) {
         }).then(response => response.json())
             .then(json => {
                 console.log(json)
-                // updateTable(jsonToDict(json), true)
+                let point = jsonToDict(json)
+                hit(point.x, point.y, point.r, point.status)
+                updateTable(point, true)
+                window.location.href = "http://localhost:25230/lab2/result"
             }).catch(error => {
             alert("Ошибка сервера!: " + error.toString())
         })
@@ -47,57 +43,12 @@ function errorMessage(elementId, inputField, errorMessage) {
     let error = document.getElementById(elementId)
     error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
         `${errorMessage}</span>`
-    if (errorMessage !== undefined && inputField !== "inputX") {
+    if (errorMessage !== undefined && inputField !== "inputY") {
         document.getElementById(inputField).value = ""
     }
 }
 
-submitButton.onclick = function (e) {
-    e.preventDefault()
-    const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
-    y = document.getElementById("inputY").value;
-    r = document.getElementById("inputR").value;
-    let successX = true
-    let successY = true
-    let successR = true
-    if (x === undefined) {
-        errorMessage("xError", "inputX", "Выберите X!")
-        successX = false
-    }
-
-    if (y === undefined) {
-        errorMessage("yError", "inputY", "Введите Y!")
-        successY = false
-    }
-    if (r === undefined) {
-        errorMessage("rError", "inputR", "Введите R!")
-        successR = false
-    }
-
-    if (!regexp.test(y) && successY) {
-        errorMessage("yError", "inputY", "Введите Y в правильном формате!")
-        successY = false
-    }
-    if (!regexp.test(r) && successR) {
-        errorMessage("rError", "inputR", "Введите R в правильном формате!")
-        successR = false
-    }
-
-    if (!(-3 <= y && y <= 3) && successY) {
-        errorMessage("yError", "inputY", "Введите значение Y в пределах [-3;3]!")
-        successY = false
-    }
-    if (!(2 <= r && r <= 5) && successR) {
-        errorMessage("rError", "inputR", "Введите значение R в пределах [2;5]!")
-        successR = false
-    } else if (successX && successY && successR) {
-        hit(x, y, r)
-        makeFetch("GET", `x=${x}&y=${y}&r=${r}`, 'application/x-www-form-urlencoded')
-
-    }
-}
-
-function hit(x, y, r) {
+function hit(x, y, r, status) {
     const svg = document.getElementById("svg")
     const rPxSize = svg.clientWidth / 3
     const svgCenterX = 150
@@ -107,7 +58,11 @@ function hit(x, y, r) {
     dot.setAttributeNS(null, "r", "1%")
     dot.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
     dot.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
-    dot.setAttributeNS(null, "fill", "red")
+    if (status === "Попадание") {
+        dot.setAttributeNS(null, "fill", "green")
+    } else {
+        dot.setAttributeNS(null, "fill", "red")
+    }
     dot.setAttributeNS(null, "visibility", "visible")
     svg.appendChild(dot)
 }
@@ -145,7 +100,6 @@ function updateTable(dict, firstAdd) {
     executionTimeCell.textContent = dict["executionTime"]
     if (firstAdd) {
         updateLocalStorage(localStorage.length, dict)
-        sendStorageLength()
     }
 }
 
@@ -202,6 +156,7 @@ function loadTableFromLocalStorage() {
         let item = window.localStorage.getItem(index)
 
         console.log(item)
+        if (item === null) continue
         let dictItem = stringToDict(item)
         dictItem["index"] = index
         // sendStorageItem(dictToJson(dictItem))
@@ -211,3 +166,71 @@ function loadTableFromLocalStorage() {
         console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
     }
 }
+
+function initYvalues() {
+    let yItems = form.y
+    let checkedValues = []
+    for (let i = 0; i < yItems.length; i++){
+        let y = yItems[i]
+        if (y.checked) {
+            checkedValues.push(y.value)
+        }
+        //
+        console.log(checkedValues)
+    }
+    return checkedValues
+}
+
+function sendPoint() {
+    const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
+    x = document.getElementById("inputX").value;
+    yValues = initYvalues()
+    r = document.getElementById("inputR").value;
+    let successX = true
+    let successY = true
+    let successR = true
+    if (x === undefined) {
+        errorMessage("xError", "inputX", "Введите X!")
+        successX = false
+    }
+
+    if (yValues.length === 0) {
+        errorMessage("yError", "inputY", "Выберите Y!")
+        successY = false
+    }
+    if (r === undefined) {
+        errorMessage("rError", "inputR", "Введите R!")
+        successR = false
+    }
+
+    if (!regexp.test(x) && successY) {
+        errorMessage("xError", "inputX", "Введите X в правильном формате!")
+        successY = false
+    }
+    if (!regexp.test(r) && successR) {
+        errorMessage("rError", "inputR", "Введите R в правильном формате!")
+        successR = false
+    }
+
+    if (!(-3 <= x && x <= 3) && successY) {
+        errorMessage("xError", "inputX", "Введите значение X в пределах [-3;3]!")
+        successY = false
+    }
+    if (!(1 <= r && r <= 4) && successR) {
+        errorMessage("rError", "inputR", "Введите значение R в пределах [1;4]!")
+        successR = false
+    } else if (successX && successY && successR) {
+
+        for (let i = 0; i < yValues.length; i++) {
+            let y = yValues[i]
+            makeFetch("GET", `x=${x}&y=${y}&r=${r}`, 'application/x-www-form-urlencoded')
+        }
+
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    form = document.getElementById("form")
+    submitButton = document.getElementById("submitButton")
+    submitButton.addEventListener("click", sendPoint)
+})

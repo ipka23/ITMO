@@ -8,13 +8,13 @@
   <title>
     Веб лаба 2
   </title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index.css">
 
 </head>
-<script src="index.js" defer></script>
+<script src="index.js"></script>
 <body>
 <header class="header">
-  Пчелкин Илья Игоревич, P3206, Вариант 467204
+  Пчелкин Илья Игоревич, P3206, Вариант 592319
 </header>
 <table class="main">
   <tr>
@@ -59,30 +59,41 @@
         <line x1="145" y1="100" x2="155" y2="100" fill="black" stroke="black"/>
         <line x1="145" y1="200" x2="155" y2="200" fill="black" stroke="black"/>
         <line x1="145" y1="250" x2="155" y2="250" fill="black" stroke="black"/>
+<%--          <%--%>
+<%--              int svgCenterX = 150;--%>
+<%--              int svgCenterY = 150;--%>
+<%--              ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");--%>
+<%--              if (points == null) return;--%>
+
+<%--              for (int i = 0; i < points.size(); i++) {--%>
+<%--                  Point p = points.get(i);--%>
+<%--                  int x = svgCenterX*--%>
+<%--          %>--%>
+<%--          <circle r="1%" cx="<%=p.getX()%>"--%>
       </svg>
     </td>
     <td>
-      <span>Введите X:</span>
       <form id="form" class="coordinates">
-        <label><input type="radio" name="x" value="-2">-2</label>
-        <label><input type="radio" name="x" value="-1.5">-1.5</label>
-        <label><input type="radio" name="x" value="-1">-1</label>
-        <label><input type="radio" name="x" value="-0.5">-0.5</label>
-        <label><input type="radio" name="x" value="0">0</label>
-        <label><input type="radio" name="x" value="0.5">0.5</label>
-        <label><input type="radio" name="x" value="1">1</label>
-        <label><input type="radio" name="x" value="1.5">1.5</label>
-        <label><input type="radio" name="x" value="2">2</label>
-        <br>
-        <span id="xError" style="animation-duration: 2s"></span>
-        <br>
-        <span>Введите Y[-3;3]:</span>
-        <label><input id="inputY" min="-3" max="3" type="number" step="any" maxlength="5"></label>
-        <br>
+          <span>Введите X[-3; 3]:</span>
+          <label><input id="inputX" min="-3" max="3" type="number" step="any" maxlength="5"></label>
+          <br>
+          <span id="xError" style="animation-duration: 2s"></span>
+          <br>
+        <span>Выберите Y:</span>
+          <label><input type="checkbox" name="y" value="-5">-5</label>
+          <label><input type="checkbox" name="y" value="-4">-4</label>
+          <label><input type="checkbox" name="y" value="-3">-3</label>
+          <label><input type="checkbox" name="y" value="-2">-2</label>
+          <label><input type="checkbox" name="y" value="-1">-1</label>
+          <label><input type="checkbox" name="y" value="0">0</label>
+          <label><input type="checkbox" name="y" value="1">1</label>
+          <label><input type="checkbox" name="y" value="2">2</label>
+          <label><input type="checkbox" name="y" value="3">3</label>
+          <br>
         <span id="yError"></span>
         <br>
-        <span>Введите R[2;5]:</span>
-        <label><input id="inputR" min="2" max="5" type="number" step="any" maxlength="5"></label>
+        <span>Введите R[1; 4]:</span>
+        <label><input id="inputR" min="1" max="4" type="number" step="any" maxlength="5"></label>
         <br>
         <span id="rError"></span>
         <br>
@@ -107,12 +118,16 @@
           </thead>
           <tbody class="statsTableBody">
           <%
-              ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");
+                        ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");
+                        if (points == null) return;
+
+                        for (int i = 0; i < points.size(); i++) {
+                            Point p = points.get(i);
+
               if (points == null) {
                   points = new ArrayList<>();
               }
-              for (int i = 0; i < points.size(); i++) {
-                  Point p = points.get(i);
+
           %>
           <tr> <td><%=p.getX()%></td> <td><%=p.getY()%></td> <td><%=p.getR()%></td> <td><%=p.getStatus()%></td> <td><%=p.getCurrentTime()%></td> <td><%=p.getExecutionTime()%></td> </tr>
           <% } %>
