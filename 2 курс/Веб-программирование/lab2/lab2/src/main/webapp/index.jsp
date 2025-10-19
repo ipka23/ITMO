@@ -21,6 +21,7 @@
   <tr>
     <td class="mainCell">
         <span id="svgError"></span>
+        <br>
       <svg id="svg" width="300" height="300" viewBox="0 0 300 300">
         <polygon points="
             50,150
