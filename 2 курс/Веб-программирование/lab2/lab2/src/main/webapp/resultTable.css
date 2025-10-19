@@ -1,8 +1,18 @@
-.lastPoint {
+.sessionPoints {
+    border-collapse: collapse;
+    border-color: black;
     width: 100%;
-    padding: 10%;
 }
-
+.sessionPointsDiv {
+    margin: 5%;
+    overflow-y: auto;
+    height: 500px
+}
+.redirectButton {
+    margin-top: 5%;
+    margin-left: 5%;
+    /*float: left;*/
+}
 table {
     margin-left: auto;
     margin-right: auto;
@@ -22,3 +32,4 @@ th {
     background: #00BFFF;
     color: white;
 }
+
