@@ -3,66 +3,118 @@ let yValues
 let r
 let form
 let submitButton
+let rInput
+let svg
+let rPxSize
+let svgCenterX
+let svgCenterY
+let scale
+let dot
 
 
-if (localStorage.length !== 0) {
-    loadTableFromLocalStorage()
-}
+document.addEventListener("DOMContentLoaded", function () {
+    // svg params
+    svg = document.getElementById("svg")
+    rPxSize = svg.clientWidth / 3
+    svgCenterX = 150
+    svgCenterY = 150
 
+    form = document.getElementById("form")
+    submitButton = document.getElementById("submitButton")
+    submitButton.addEventListener("click", sendPoint)
+    rInput = document.getElementById("inputR")
+    rInput.addEventListener("change", changeRadius)
 
+    svg.addEventListener("click", drawByClick)
+})
+// if (localStorage.length !== 0) {
+//     loadTableFromLocalStorage()
+// }
+//
 // function sendStorageLength() {
 //     makeFetch("GET", `storageLength=${localStorage.length}`)
 // }
-
-function sendStorageItem(jsonItem) {
-    makeFetch('POST', jsonItem, 'application/json')
-}
+//
+// function sendStorageItem(jsonItem) {
+//     makeFetch('POST', jsonItem, 'application/json')
+// }
 
 function makeFetch(method, body, contentType) {
     if (method === "POST") {
         alert("Ошибка: Введите GET запрос!")
     } else if (method === "GET") {
-        fetch(`http://localhost:25230/lab2/controller?${body}`, {
-            method: "GET"
-        }).then(response => response.json())
-            .then(json => {
-                console.log(json)
-                let point = jsonToDict(json)
-                hit(point.x, point.y, point.r, point.status)
-                updateTable(point, true)
-                window.location.href = "http://localhost:25230/lab2/result"
+        if (body.drawByClick === false) {
+            console.log(body)
+            fetch(`http://localhost:25230/lab2/controller?x=${body.x}&y=${body.y}&r=${body.r}`, {
+                method: "GET"
+                // }).then(response => response.json())
+                //     .then(json => {
+                //         // console.log(json)
+                //         // if (window.location.href !== "http://localhost:25230/lab2/") {
+                //         //     window.location.href = "http://localhost:25230/lab2/"
+                //         // }
+                //         if (json.status !== "error") {
+                //             let point = jsonToDict(json)
+                //             hit(point.x, point.y, point.r, point.status)
+                //             updateTable(point, true)
+                //         } else {
+                //             console.log(json)
+                //             return json
+                //         }
+
+                // window.location.href = "http://localhost:25230/lab2/result"
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`${response.status}`)
+                } else {
+                    return response.text()
+                }
+            }).then(resultHtml => {
+                document.open()
+                document.write(resultHtml)
+                document.close()
             }).catch(error => {
-            alert("Ошибка сервера!: " + error.toString())
-        })
+                alert("Ошибка: " + error.toString())
+            })
+
+        } else {
+            fetch(`http://localhost:25230/lab2/controller?x=${body.x}&y=${body.y}&r=${body.r}&drawByClick=${body.drawByClick}`, {
+                method: "GET"
+            }).then(response => response.json())
+                .then(json => {
+                    console.log(json)
+                    if (json.status !== "error") {
+                        let point = jsonToDict(json)
+                        hit(point.x, point.y, point.r)
+                        updateTable(point, true)
+                    } else {
+                        console.log(json)
+                    }
+                }).catch(error => {
+                alert("Ошибка: " + error.toString())
+            })
+        }
     }
 
 }
 
 
-function errorMessage(elementId, inputField, errorMessage) {
+function errorMessage(elementId, inputField, message) {
     let error = document.getElementById(elementId)
     error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
-        `${errorMessage}</span>`
-    if (errorMessage !== undefined && inputField !== "inputY") {
+        `${message}</span>`
+
+    if (message !== undefined && inputField !== undefined && inputField !== "inputY") {
         document.getElementById(inputField).value = ""
     }
 }
 
-function hit(x, y, r, status) {
-    const svg = document.getElementById("svg")
-    const rPxSize = svg.clientWidth / 3
-    const svgCenterX = 150
-    const svgCenterY = 150
-    const scale = rPxSize / r
-    const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+function hit(x, y, r) {
+    dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+    scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
     dot.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
     dot.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
-    if (status === "Попадание") {
-        dot.setAttributeNS(null, "fill", "green")
-    } else {
-        dot.setAttributeNS(null, "fill", "red")
-    }
     dot.setAttributeNS(null, "visibility", "visible")
     svg.appendChild(dot)
 }
@@ -77,8 +129,15 @@ function updateTable(dict, firstAdd) {
     const statusCell = row.insertCell(3)
     const dateCell = row.insertCell(4)
     const executionTimeCell = row.insertCell(5)
+    xCell.style.maxWidth = '15px'
     yCell.style.maxWidth = '15px'
     rCell.style.maxWidth = '15px'
+
+    if (dict["x"].length > 5) {
+        yCell.title = dict["y"]
+        yCell.style.overflow = "hidden"
+        dict["x"] = dict["x"].substring(0, 5) + "..."
+    }
     xCell.textContent = dict["x"]
 
     if (dict["y"].length > 5) {
@@ -98,40 +157,40 @@ function updateTable(dict, firstAdd) {
     statusCell.textContent = dict["status"]
     dateCell.textContent = dict["currentTime"]
     executionTimeCell.textContent = dict["executionTime"]
-    if (firstAdd) {
-        updateLocalStorage(localStorage.length, dict)
-    }
+    // if (firstAdd) {
+    //     updateLocalStorage(localStorage.length, dict)
+    // }
 }
+//
+// function updateLocalStorage(index, dict) {
+//     let item = dictToString(dict)
+//     console.log(`index: ${localStorage.length}\nitem: ${item}`)
+//     localStorage.setItem(index.toString(), item)
+// }
+//
+// function dictToString(dict) {
+//     return `x: ${dict["x"]},
+//             y: ${dict["y"]},
+//             r: ${dict["r"]},
+//             status: ${dict["status"]},
+//             currentTime: ${dict["currentTime"]},
+//             executionTime: ${dict["executionTime"]}`
+// }
 
-function updateLocalStorage(index, dict) {
-    let item = dictToString(dict)
-    console.log(`index: ${localStorage.length}\nitem: ${item}`)
-    localStorage.setItem(index.toString(), item)
-}
-
-function dictToString(dict) {
-    return `x: ${dict["x"]},
-            y: ${dict["y"]},
-            r: ${dict["r"]},
-            status: ${dict["status"]},
-            currentTime: ${dict["currentTime"]},
-            executionTime: ${dict["executionTime"]}`
-}
-
-function stringToDict(string) {
-    let statsList = string.split(",\n")
-    let dictItem = {}
-    for (let i = 0; i < statsList.length; i++) {
-        let keyVal = statsList[i].split(": ")
-        let key = keyVal[0].trim()
-        let value = keyVal[1].trim()
-        dictItem[key] = value
-
-    }
-    // console.log(`parsedDictItem: ${dictItem}`)
-    return dictItem
-}
-
+// function stringToDict(string) {
+//     let statsList = string.split(",\n")
+//     let dictItem = {}
+//     for (let i = 0; i < statsList.length; i++) {
+//         let keyVal = statsList[i].split(": ")
+//         let key = keyVal[0].trim()
+//         let value = keyVal[1].trim()
+//         dictItem[key] = value
+//
+//     }
+//     // console.log(`parsedDictItem: ${dictItem}`)
+//     return dictItem
+// }
+//
 function jsonToDict(json) {
     let dict = {}
     dict["x"] = json.result.x
@@ -142,50 +201,90 @@ function jsonToDict(json) {
     dict["executionTime"] = json.result.executionTime
     return dict
 }
-
-function dictToJson(dict) {
-    let json = JSON.stringify(dict)
-    console.log(json)
-    return json
-}
-
-function loadTableFromLocalStorage() {
-    let storageLength = window.localStorage.length
-    for (let i = 0; i < storageLength; i++) {
-        let index = i.toString()
-        let item = window.localStorage.getItem(index)
-
-        console.log(item)
-        if (item === null) continue
-        let dictItem = stringToDict(item)
-        dictItem["index"] = index
-        // sendStorageItem(dictToJson(dictItem))
-
-        updateTable(dictItem, false)
-        hit(dictItem["x"], dictItem["y"], dictItem["r"])
-        console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
-    }
-}
+//
+// function dictToJson(dict) {
+//     let json = JSON.stringify(dict)
+//     console.log(json)
+//     return json
+// }
+//
+// function loadTableFromLocalStorage() {
+//     let storageLength = window.localStorage.length
+//     for (let i = 0; i < storageLength; i++) {
+//         let index = i.toString()
+//         let item = window.localStorage.getItem(index)
+//
+//         console.log(item)
+//         if (item === null) continue
+//         let dictItem = stringToDict(item)
+//         dictItem["index"] = index
+//         // sendStorageItem(dictToJson(dictItem))
+//
+//         updateTable(dictItem, false)
+//         // hit(dictItem["x"], dictItem["y"], dictItem["r"])
+//         console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
+//     }
+// }
 
 function initYvalues() {
     let yItems = form.y
     let checkedValues = []
-    for (let i = 0; i < yItems.length; i++){
+    for (let i = 0; i < yItems.length; i++) {
         let y = yItems[i]
         if (y.checked) {
             checkedValues.push(y.value)
         }
-        //
-        console.log(checkedValues)
     }
     return checkedValues
 }
 
-function sendPoint() {
+function svgToMathCoords(svgX, svgY, r) {
+    const scale = rPxSize / r
+    return {
+        x: ((svgX - svgCenterX) / scale).toFixed(2),
+        y: ((svgCenterY - svgY) / scale).toFixed(2)
+    }
+}
+
+function drawByClick(e) {
+    const r = rInput.value
+    const absoluteX = e.clientX
+    const absoluteY = e.clientY
+    const absolutePoint = svg.createSVGPoint()
+    absolutePoint.x = absoluteX
+    absolutePoint.y = absoluteY
+    const svgPoint = absolutePoint.matrixTransform(svg.getScreenCTM().inverse())
+    const svgX = svgPoint.x
+    const svgY = svgPoint.y
+
+    const coords = svgToMathCoords(svgX, svgY, r)
+
+    if (r === undefined || r === "") {
+        errorMessage("svgError", undefined, "Невозможно определить координаты точки! Введите R!")
+    } else {
+        makeFetch("GET", {x: coords.x, y: coords.y, r: r, drawByClick: true})
+    }
+
+}
+
+function changeRadius() {
+    let r = rInput.value
+    document.getElementById("-rx").textContent = `-${r}`
+    document.getElementById("-ry").textContent = `-${r}`
+    document.getElementById("-rx/2").textContent = `-${r / 2}`
+    document.getElementById("-ry/2").textContent = `-${r / 2}`
+    document.getElementById("rx").textContent = `${r}`
+    document.getElementById("ry").textContent = `${r}`
+    document.getElementById("rx/2").textContent = `${r / 2}`
+    document.getElementById("ry/2").textContent = `${r / 2}`
+}
+
+function sendPoint(e) {
+    e.preventDefault()
     const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
     x = document.getElementById("inputX").value;
     yValues = initYvalues()
-    r = document.getElementById("inputR").value;
+    r = rInput.value;
     let successX = true
     let successY = true
     let successR = true
@@ -223,14 +322,9 @@ function sendPoint() {
 
         for (let i = 0; i < yValues.length; i++) {
             let y = yValues[i]
-            makeFetch("GET", `x=${x}&y=${y}&r=${r}`, 'application/x-www-form-urlencoded')
+            makeFetch("GET", {x: x, y: y, r: r, drawByClick: false}, 'application/x-www-form-urlencoded')
         }
 
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    form = document.getElementById("form")
-    submitButton = document.getElementById("submitButton")
-    submitButton.addEventListener("click", sendPoint)
-})

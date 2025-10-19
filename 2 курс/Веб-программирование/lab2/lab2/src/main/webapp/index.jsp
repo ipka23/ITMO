@@ -1,5 +1,6 @@
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="utility.Point" %>
+<%@ page import="utility.PointsStorage" %>
+<%@ page import="java.util.LinkedHashSet" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
@@ -11,7 +12,7 @@
   <link rel="stylesheet" href="index.css">
 
 </head>
-<script src="index.js"></script>
+<script src="index.js" defer></script>
 <body>
 <header class="header">
   Пчелкин Илья Игоревич, P3206, Вариант 592319
@@ -19,6 +20,7 @@
 <table class="main">
   <tr>
     <td class="mainCell">
+        <span id="svgError"></span>
       <svg id="svg" width="300" height="300" viewBox="0 0 300 300">
         <polygon points="
             50,150
@@ -27,6 +29,33 @@
             " fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
         <rect x="100" y="150" width="50" height="100" fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
         <path d="M 250 150 A 100 100 0 0 1 150 250 L 150 150 L 250 150 Z" fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
+        <!--          circles-->
+
+                    <%
+                        int svgWidth = 300;
+                        int svgHeight = 300;
+                        int rPxSize = svgWidth / 3;
+                        int svgCenterX = svgWidth / 2;
+                        int svgCenterY = svgHeight / 2;
+
+                        LinkedHashSet<Point> points = PointsStorage.getPoints();
+                        if (!points.isEmpty()) {
+                            for (Point p : points) {
+                                double scale = rPxSize / Double.parseDouble(p.getR());
+                                double x = svgCenterX + Double.parseDouble(p.getX()) * scale;
+                                double y = svgCenterY - Double.parseDouble(p.getY()) * scale;
+
+                    %>
+                    <circle r="1%"
+                            cx="<%=x%>"
+                            cy="<%=y%>"/>
+          <%
+                  }
+              }
+          %>
+
+
+
         <!--            lines-->
         <line x1="0" y1="150" x2="300" y2="150" stroke="black" stroke-width="1"/>
         <line x1="150" y1="0" x2="150" y2="300" stroke="black" stroke-width="1"/>
@@ -35,15 +64,15 @@
         <line x1="300" y1="150" x2="290" y2="160" stroke="black" stroke-width="1"/>
         <line x1="290" y1="140" x2="300" y2="150" stroke="black" stroke-width="1"/>
         <!--            Ox R-->
-        <text x="50" y="145" fill="black">-R</text>
-        <text x="100" y="145" fill="black">-R/2</text>
-        <text x="200" y="145" fill="black">R/2</text>
-        <text x="250" y="145" fill="black">R</text>
+        <text x="50" y="145" fill="black" id="-rx">-R</text>
+        <text x="100" y="145" fill="black" id="-rx/2">-R/2</text>
+        <text x="200" y="145" fill="black"id="rx/2">R/2</text>
+        <text x="250" y="145" fill="black" id="rx">R</text>
         <!--            Oy R-->
-        <text x="155" y="50" fill="black">R</text>
-        <text x="155" y="100" fill="black">R/2</text>
-        <text x="160" y="200" fill="black">-R/2</text>
-        <text x="160" y="250" fill="black">-R</text>
+        <text x="155" y="50" fill="black" id="ry">R</text>
+        <text x="155" y="100" fill="black" id="ry/2">R/2</text>
+        <text x="160" y="200" fill="black" id="-ry/2">-R/2</text>
+        <text x="160" y="250" fill="black" id="-ry">-R</text>
         <!--            axes names-->
         <text x="290" y="140" fill="black">x</text>
         <text x="160" y="10" fill="black">y</text>
@@ -59,17 +88,7 @@
         <line x1="145" y1="100" x2="155" y2="100" fill="black" stroke="black"/>
         <line x1="145" y1="200" x2="155" y2="200" fill="black" stroke="black"/>
         <line x1="145" y1="250" x2="155" y2="250" fill="black" stroke="black"/>
-<%--          <%--%>
-<%--              int svgCenterX = 150;--%>
-<%--              int svgCenterY = 150;--%>
-<%--              ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");--%>
-<%--              if (points == null) return;--%>
 
-<%--              for (int i = 0; i < points.size(); i++) {--%>
-<%--                  Point p = points.get(i);--%>
-<%--                  int x = svgCenterX*--%>
-<%--          %>--%>
-<%--          <circle r="1%" cx="<%=p.getX()%>"--%>
       </svg>
     </td>
     <td>
@@ -117,21 +136,19 @@
           </tr>
           </thead>
           <tbody class="statsTableBody">
-          <%
-                        ArrayList<Point> points = (ArrayList<Point>) request.getSession().getAttribute("points");
-                        if (points == null) return;
-
-                        for (int i = 0; i < points.size(); i++) {
-                            Point p = points.get(i);
-
-              if (points == null) {
-                  points = new ArrayList<>();
-              }
-
-          %>
-          <tr> <td><%=p.getX()%></td> <td><%=p.getY()%></td> <td><%=p.getR()%></td> <td><%=p.getStatus()%></td> <td><%=p.getCurrentTime()%></td> <td><%=p.getExecutionTime()%></td> </tr>
-          <% } %>
-
+          <tr>
+              <%if (!points.isEmpty()) {
+                  for (Point p : points) {
+                  %>
+              <td><%=p.getX()%></td>
+              <td><%=p.getY()%></td>
+              <td><%=p.getR()%></td>
+              <td><%=p.getStatus()%></td>
+              <td><%=p.getCurrentTime()%></td>
+              <td><%=p.getExecutionTime()%></td>
+          </tr>
+          <%    }
+              } %>
           </tbody>
         </table>
       </div>

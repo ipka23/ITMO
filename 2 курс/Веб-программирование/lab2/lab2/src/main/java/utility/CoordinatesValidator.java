@@ -38,20 +38,22 @@ public class CoordinatesValidator {
 
     private static ValidateResponse validateY(String val) {
         double y;
-        double[] yValues = {-5, -4, -3, -2, -1, 0, 1, 2, 3};
+//        double[] yValues = {-5, -4, -3, -2, -1, 0, 1, 2, 3};
         boolean flag = false;
         try {
             y = Double.parseDouble(val);
-            for (double value : yValues) {
-                if (value == y) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag) {
+//            for (double value : yValues) {
+//                if (value == y) {
+//                    flag = true;
+//                    break;
+//                }
+//            }
+            if (-5 <= y && y <= 3) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "Y должен принадлежать {-5, -4, -3, -2, -1, 0, 1, 2, 3}!");
+//                return new ValidateResponse(false, "Y должен принадлежать {-5, -4, -3, -2, -1, 0, 1, 2, 3}!");
+                return new ValidateResponse(false, "Y должен принадлежать [-5; 3]!");
+
             }
         } catch (NumberFormatException e) {
             return new ValidateResponse(false, "Y должен являться числом!");
