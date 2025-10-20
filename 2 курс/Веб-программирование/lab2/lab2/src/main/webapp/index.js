@@ -6,25 +6,34 @@ let submitButton
 let rInput
 let svg
 let rPxSize
-let svgCenterX
-let svgCenterY
+const svgCenterX = 150
+const svgCenterY = 150
 let scale
 let dot
-
+let previousR
 
 document.addEventListener("DOMContentLoaded", function () {
     // svg params
     svg = document.getElementById("svg")
     rPxSize = svg.clientWidth / 3
-    svgCenterX = 150
-    svgCenterY = 150
+
 
     form = document.getElementById("form")
     submitButton = document.getElementById("submitButton")
     submitButton.addEventListener("click", sendPoint)
     rInput = document.getElementById("inputR")
-    rInput.addEventListener("change", changeRadius)
+    rInput.addEventListener("input", function (e) {
+        const newR = e.target.value
+        if (newR === "" || isNaN(newR) || newR === undefined) return
+        if (rInput.value === "" || isNaN(rInput.value) || rInput.value === undefined) return;
+        changeRadius(previousR, newR)
+        console.log(`evL previous: ${previousR}, new: ${newR}`)
+        r = newR
+        previousR = newR
+    })
+    // rInput.addEventListener("change", changeRadius)
     svg.addEventListener("click", drawByClick)
+    loadPoints()
 })
 // if (localStorage.length !== 0) {
 //     loadTableFromLocalStorage()
@@ -113,38 +122,62 @@ function hit(x, y, r) {
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
     setPointXY(x, y, dot, scale)
+    changeColor(x, y, r, dot)
     dot.setAttributeNS(null, "visibility", "visible")
     svg.appendChild(dot)
 }
 
 function setPointXY(x, y, point, scale) {
+    console.log(`PointXY (x, y, point, scale): ${x} ${y} ${point} ${scale}`)
     point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
     point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
 }
 
-function changePointR(r) {
-    let hitFlag;
+function changePointR(oldR, newR) {
     let points = document.querySelectorAll("circle")
     for (let i = 0; i < points.length; i++) {
-        p = points[i]
-        let svgX = p.getAttributeNS("cx")
-        let svgY = p.getAttributeNS(null, "cy")
-        let mathCoords = svgToMathCoords(svgX, svgY)
-        let x = mathCoords.x
-        let y = mathCoords.y
-        hitFlag = checkHit(x, y, r)
-        if (hitFlag) {
-            p.setAttributeNS(null, "fill", "green")
-        } else {
-            p.setAttributeNS(null, "fill", "red")
-        }
-        scale = rPxSize / r
+        let p = points[i]
+        let svgX = +p.getAttributeNS(null, "cx")
+        let svgY = +p.getAttributeNS(null, "cy")
+        console.log(`svg: ${svgX} ${svgY}`)
+        let mathCoords = svgToMathCoords(svgX, svgY, oldR)
+        let x = +mathCoords.x
+        let y = +mathCoords.y
+        console.log(`math: ${x} ${x}`)
+        scale = rPxSize / newR
         setPointXY(x, y, p, scale)
+
+        changeColor(x, y, newR, p)
     }
 }
 
-function changeRadius() {
-    let r = rInput.value
+function loadPoints() {
+    let points = document.querySelectorAll("circle")
+    for (let i = 0; i < points.length; i++) {
+        let p = points[i]
+        if (r === undefined) {
+            resetColor(p)
+        }
+    }
+}
+
+function changeColor(x, y, r, point) {
+    let hitFlag = checkHit(x, y, r)
+    if (hitFlag) {
+        point.setAttributeNS(null, "fill", "green")
+    } else {
+        point.setAttributeNS(null, "fill", "red")
+    }
+}
+
+function resetColor(point) {
+    point.setAttributeNS(null, "fill", "black")
+}
+
+function changeRadius(oldR, newR) {
+    let r = newR
+    // let currentR = rInput.value
+    console.log(`old: ${oldR}, new: ${r}`)
     document.getElementById("-rx").textContent = `-${r}`
     document.getElementById("-ry").textContent = `-${r}`
     document.getElementById("-rx/2").textContent = `-${r / 2}`
@@ -153,7 +186,7 @@ function changeRadius() {
     document.getElementById("ry").textContent = `${r}`
     document.getElementById("rx/2").textContent = `${r / 2}`
     document.getElementById("ry/2").textContent = `${r / 2}`
-    changePointR(r)
+    changePointR(oldR, newR) /// fix
 }
 
 
@@ -363,7 +396,7 @@ function checkHit(x, y, r) {
 
 function checkTriangle(x, y, r) {
     if (x <= 0 && y >= 0) {
-        return x > -r / 2 && y > r / 2;
+        return x > y - r && y < x + r;
     }
     return false;
 }
