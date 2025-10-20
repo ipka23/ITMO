@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.addEventListener("click", sendPoint)
     rInput = document.getElementById("inputR")
     rInput.addEventListener("change", changeRadius)
-
     svg.addEventListener("click", drawByClick)
 })
 // if (localStorage.length !== 0) {
@@ -113,10 +112,48 @@ function hit(x, y, r) {
     dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
-    dot.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
-    dot.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
+    setPointXY(x, y, dot, scale)
     dot.setAttributeNS(null, "visibility", "visible")
     svg.appendChild(dot)
+}
+
+function setPointXY(x, y, point, scale) {
+    point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
+    point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
+}
+
+function changePointR(r) {
+    let hitFlag;
+    let points = document.querySelectorAll("circle")
+    for (let i = 0; i < points.length; i++) {
+        p = points[i]
+        let svgX = p.getAttributeNS("cx")
+        let svgY = p.getAttributeNS(null, "cy")
+        let mathCoords = svgToMathCoords(svgX, svgY)
+        let x = mathCoords.x
+        let y = mathCoords.y
+        hitFlag = checkHit(x, y, r)
+        if (hitFlag) {
+            p.setAttributeNS(null, "fill", "green")
+        } else {
+            p.setAttributeNS(null, "fill", "red")
+        }
+        scale = rPxSize / r
+        setPointXY(x, y, p, scale)
+    }
+}
+
+function changeRadius() {
+    let r = rInput.value
+    document.getElementById("-rx").textContent = `-${r}`
+    document.getElementById("-ry").textContent = `-${r}`
+    document.getElementById("-rx/2").textContent = `-${r / 2}`
+    document.getElementById("-ry/2").textContent = `-${r / 2}`
+    document.getElementById("rx").textContent = `${r}`
+    document.getElementById("ry").textContent = `${r}`
+    document.getElementById("rx/2").textContent = `${r / 2}`
+    document.getElementById("ry/2").textContent = `${r / 2}`
+    changePointR(r)
 }
 
 
@@ -161,6 +198,7 @@ function updateTable(dict, firstAdd) {
     //     updateLocalStorage(localStorage.length, dict)
     // }
 }
+
 //
 // function updateLocalStorage(index, dict) {
 //     let item = dictToString(dict)
@@ -201,6 +239,7 @@ function jsonToDict(json) {
     dict["executionTime"] = json.result.executionTime
     return dict
 }
+
 //
 // function dictToJson(dict) {
 //     let json = JSON.stringify(dict)
@@ -267,17 +306,6 @@ function drawByClick(e) {
 
 }
 
-function changeRadius() {
-    let r = rInput.value
-    document.getElementById("-rx").textContent = `-${r}`
-    document.getElementById("-ry").textContent = `-${r}`
-    document.getElementById("-rx/2").textContent = `-${r / 2}`
-    document.getElementById("-ry/2").textContent = `-${r / 2}`
-    document.getElementById("rx").textContent = `${r}`
-    document.getElementById("ry").textContent = `${r}`
-    document.getElementById("rx/2").textContent = `${r / 2}`
-    document.getElementById("ry/2").textContent = `${r / 2}`
-}
 
 function sendPoint(e) {
     e.preventDefault()
@@ -328,3 +356,28 @@ function sendPoint(e) {
     }
 }
 
+
+function checkHit(x, y, r) {
+    return checkCircle(x, y, r) || checkTriangle(x, y, r) || checkRectangle(x, y, r);
+}
+
+function checkTriangle(x, y, r) {
+    if (x <= 0 && y >= 0) {
+        return x > -r / 2 && y > r / 2;
+    }
+    return false;
+}
+
+function checkRectangle(x, y, r) {
+    if (x <= 0 && y <= 0) {
+        return x > -r / 2 && y > -r;
+    }
+    return false;
+}
+
+function checkCircle(x, y, r) {
+    if (x >= 0 && y <= 0) {
+        return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2);
+    }
+    return false;
+}
