@@ -21,6 +21,14 @@ public class HitChecker {
         return false;
     }
 
+
+    private static boolean checkTriangle(double x, double y, double r) {
+        if (x <= 0 && y >= 0) {
+            return y < x + r;
+        }
+        return false;
+    }
+
     private static boolean checkRectangle(double x, double y, double r) {
         if (x <= 0 && y <= 0) {
             return x > -r / 2 && y > -r;
@@ -28,10 +36,4 @@ public class HitChecker {
         return false;
     }
 
-    private static boolean checkTriangle(double x, double y, double r) {
-        if (x <= 0 && y >= 0) {
-            return x > y - r && y < x + r;
-        }
-        return false;
-    }
 }
