@@ -4,48 +4,61 @@ let r
 let form
 let submitButton
 let rInput
-let svg
-let rPxSize
+let xInput
+
+const svg = document.getElementById("svg")
+const rPxSize = svg.clientWidth / 3
 const svgCenterX = 150
 const svgCenterY = 150
 let scale
 let dot
 let previousR
 
+
+
+
+// Utility ===============================================
 document.addEventListener("DOMContentLoaded", function () {
-    // svg params
-    svg = document.getElementById("svg")
-    rPxSize = svg.clientWidth / 3
-
-
     form = document.getElementById("form")
     submitButton = document.getElementById("submitButton")
-    submitButton.addEventListener("click", sendPoint)
+    submitButton.addEventListener("click", sendPointToServer)
     rInput = document.getElementById("inputR")
-    rInput.addEventListener("input", function (e) {
-        const newR = e.target.value
-        if (newR === "" || isNaN(newR) || newR === undefined) return
-        if (rInput.value === "" || isNaN(rInput.value) || rInput.value === undefined) return;
-        changeRadius(previousR, newR)
-        console.log(`evL previous: ${previousR}, new: ${newR}`)
-        r = newR
-        previousR = newR
-    })
-    // rInput.addEventListener("change", changeRadius)
-    svg.addEventListener("click", drawByClick)
+    rInput.addEventListener("input", handleInputR)
+    xInput = document.getElementById("inputX")
+    xInput.addEventListener("input", handleInputX)
+    // rInput.addEventListener("change", changeRadiusOnAxis)
+    svg.addEventListener("click", drawPointByClick)
     loadPoints()
 })
-// if (localStorage.length !== 0) {
-//     loadTableFromLocalStorage()
-// }
-//
-// function sendStorageLength() {
-//     makeFetch("GET", `storageLength=${localStorage.length}`)
-// }
-//
-// function sendStorageItem(jsonItem) {
-//     makeFetch('POST', jsonItem, 'application/json')
-// }
+
+function handleInputX() {
+    if (xInput.value < -3 || xInput.value > 3) {
+        if (xInput.value < 10) {
+            xInput.value = ""
+        } else {
+            xInput.value = xInput.value[0]
+        }
+    }
+}
+
+function handleInputR() {
+    const newR = rInput.value
+    if (newR < 1 || newR > 4) {
+        if (newR < 10) {
+            rInput.value = ""
+            return
+        } else {
+            rInput.value = rInput.value[0]
+            return
+        }
+    }
+    if (newR === "" || isNaN(newR) || newR === undefined) return
+    if (rInput.value === "" || isNaN(rInput.value) || rInput.value === undefined) return;
+    changeRadiusOnAxis(previousR, newR)
+    console.log(`evL previous: ${previousR}, new: ${newR}`)
+    r = newR
+    previousR = newR
+}
 
 function makeFetch(method, body, contentType) {
     if (method === "POST") {
@@ -55,22 +68,6 @@ function makeFetch(method, body, contentType) {
             console.log(body)
             fetch(`http://localhost:25230/lab2/controller?x=${body.x}&y=${body.y}&r=${body.r}`, {
                 method: "GET"
-                // }).then(response => response.json())
-                //     .then(json => {
-                //         // console.log(json)
-                //         // if (window.location.href !== "http://localhost:25230/lab2/") {
-                //         //     window.location.href = "http://localhost:25230/lab2/"
-                //         // }
-                //         if (json.status !== "error") {
-                //             let point = jsonToDict(json)
-                //             hit(point.x, point.y, point.r, point.status)
-                //             updateTable(point, true)
-                //         } else {
-                //             console.log(json)
-                //             return json
-                //         }
-
-                // window.location.href = "http://localhost:25230/lab2/result"
             }).then(response => {
                 if (!response.ok) {
                     throw new Error(`${response.status}`)
@@ -93,7 +90,7 @@ function makeFetch(method, body, contentType) {
                     console.log(json)
                     if (json.status !== "error") {
                         let point = jsonToDict(json)
-                        hit(point.x, point.y, point.r)
+                        drawPoint(point.x, point.y, point.r)
                         updateTable(point, true)
                     } else {
                         console.log(json)
@@ -117,66 +114,41 @@ function errorMessage(elementId, inputField, message) {
     }
 }
 
-function hit(x, y, r) {
-    dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-    scale = rPxSize / r
-    dot.setAttributeNS(null, "r", "1%")
-    setPointXY(x, y, dot, scale)
-    changeColor(x, y, r, dot)
-    dot.setAttributeNS(null, "visibility", "visible")
-    svg.appendChild(dot)
+function jsonToDict(json) {
+    let dict = {}
+    dict["x"] = json.result.x
+    dict["y"] = json.result.y
+    dict["r"] = json.result.r
+    dict["status"] = json.result.status
+    dict["currentTime"] = json.result.currentTime
+    dict["executionTime"] = json.result.executionTime
+    return dict
 }
 
-function setPointXY(x, y, point, scale) {
-    console.log(`PointXY (x, y, point, scale): ${x} ${y} ${point} ${scale}`)
-    point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
-    point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
-}
-
-function changePointR(oldR, newR) {
-    let points = document.querySelectorAll("circle")
-    for (let i = 0; i < points.length; i++) {
-        let p = points[i]
-        let svgX = +p.getAttributeNS(null, "cx")
-        let svgY = +p.getAttributeNS(null, "cy")
-        console.log(`svg: ${svgX} ${svgY}`)
-        let mathCoords = svgToMathCoords(svgX, svgY, oldR)
-        let x = +mathCoords.x
-        let y = +mathCoords.y
-        console.log(`math: ${x} ${x}`)
-        scale = rPxSize / newR
-        setPointXY(x, y, p, scale)
-
-        changeColor(x, y, newR, p)
+function svgToMathCoords(svgX, svgY, r) {
+    const scale = rPxSize / r
+    return {
+        x: ((svgX - svgCenterX) / scale).toFixed(2),
+        y: ((svgCenterY - svgY) / scale).toFixed(2)
     }
 }
 
-function loadPoints() {
-    let points = document.querySelectorAll("circle")
-    for (let i = 0; i < points.length; i++) {
-        let p = points[i]
-        if (r === undefined) {
-            resetColor(p)
+
+function initYvalues() {
+    let yItems = form.y
+    let checkedValues = []
+    for (let i = 0; i < yItems.length; i++) {
+        let y = yItems[i]
+        if (y.checked) {
+            checkedValues.push(y.value)
         }
     }
+    return checkedValues
 }
 
-function changeColor(x, y, r, point) {
-    let hitFlag = checkHit(x, y, r)
-    if (hitFlag) {
-        point.setAttributeNS(null, "fill", "green")
-    } else {
-        point.setAttributeNS(null, "fill", "red")
-    }
-}
 
-function resetColor(point) {
-    point.setAttributeNS(null, "fill", "black")
-}
-
-function changeRadius(oldR, newR) {
+function changeRadiusOnAxis(oldR, newR) {
     let r = newR
-    // let currentR = rInput.value
     console.log(`old: ${oldR}, new: ${r}`)
     document.getElementById("-rx").textContent = `-${r}`
     document.getElementById("-ry").textContent = `-${r}`
@@ -186,7 +158,7 @@ function changeRadius(oldR, newR) {
     document.getElementById("ry").textContent = `${r}`
     document.getElementById("rx/2").textContent = `${r / 2}`
     document.getElementById("ry/2").textContent = `${r / 2}`
-    changePointR(oldR, newR) /// fix
+    changePointR(oldR, newR)
 }
 
 
@@ -227,98 +199,78 @@ function updateTable(dict, firstAdd) {
     statusCell.textContent = dict["status"]
     dateCell.textContent = dict["currentTime"]
     executionTimeCell.textContent = dict["executionTime"]
-    // if (firstAdd) {
-    //     updateLocalStorage(localStorage.length, dict)
-    // }
+}
+// =============================================== Utility
+
+
+
+
+
+
+
+
+// Actions with points ===============================================
+function drawPoint(x, y, r) {
+    dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+    scale = rPxSize / r
+    dot.setAttributeNS(null, "r", "1%")
+    setPointXY(x, y, dot, scale)
+    changePointColor(x, y, r, dot)
+    dot.setAttributeNS(null, "visibility", "visible")
+    svg.appendChild(dot)
 }
 
-//
-// function updateLocalStorage(index, dict) {
-//     let item = dictToString(dict)
-//     console.log(`index: ${localStorage.length}\nitem: ${item}`)
-//     localStorage.setItem(index.toString(), item)
-// }
-//
-// function dictToString(dict) {
-//     return `x: ${dict["x"]},
-//             y: ${dict["y"]},
-//             r: ${dict["r"]},
-//             status: ${dict["status"]},
-//             currentTime: ${dict["currentTime"]},
-//             executionTime: ${dict["executionTime"]}`
-// }
-
-// function stringToDict(string) {
-//     let statsList = string.split(",\n")
-//     let dictItem = {}
-//     for (let i = 0; i < statsList.length; i++) {
-//         let keyVal = statsList[i].split(": ")
-//         let key = keyVal[0].trim()
-//         let value = keyVal[1].trim()
-//         dictItem[key] = value
-//
-//     }
-//     // console.log(`parsedDictItem: ${dictItem}`)
-//     return dictItem
-// }
-//
-function jsonToDict(json) {
-    let dict = {}
-    dict["x"] = json.result.x
-    dict["y"] = json.result.y
-    dict["r"] = json.result.r
-    dict["status"] = json.result.status
-    dict["currentTime"] = json.result.currentTime
-    dict["executionTime"] = json.result.executionTime
-    return dict
+function setPointXY(x, y, point, scale) {
+    console.log(`PointXY (x, y, point, scale): ${x} ${y} ${point} ${scale}`)
+    point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
+    point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
 }
 
-//
-// function dictToJson(dict) {
-//     let json = JSON.stringify(dict)
-//     console.log(json)
-//     return json
-// }
-//
-// function loadTableFromLocalStorage() {
-//     let storageLength = window.localStorage.length
-//     for (let i = 0; i < storageLength; i++) {
-//         let index = i.toString()
-//         let item = window.localStorage.getItem(index)
-//
-//         console.log(item)
-//         if (item === null) continue
-//         let dictItem = stringToDict(item)
-//         dictItem["index"] = index
-//         // sendStorageItem(dictToJson(dictItem))
-//
-//         updateTable(dictItem, false)
-//         // hit(dictItem["x"], dictItem["y"], dictItem["r"])
-//         console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
-//     }
-// }
+function changePointR(oldR, newR) {
+    let points = document.querySelectorAll("circle")
+    for (let i = 0; i < points.length; i++) {
+        let p = points[i]
+        let svgX = +p.getAttributeNS(null, "cx")
+        let svgY = +p.getAttributeNS(null, "cy")
+        console.log(`svg: ${svgX} ${svgY}`)
+        if (oldR === undefined) oldR = newR  // для ситуаций когда точки перерисовываются из начального "черного" состояния когда радиус не выбран
+        let mathCoords = svgToMathCoords(svgX, svgY, oldR)
+        let x = +mathCoords.x
+        let y = +mathCoords.y
 
-function initYvalues() {
-    let yItems = form.y
-    let checkedValues = []
-    for (let i = 0; i < yItems.length; i++) {
-        let y = yItems[i]
-        if (y.checked) {
-            checkedValues.push(y.value)
+        console.log(`math: ${x} ${x}`)
+        scale = rPxSize / newR
+        setPointXY(x, y, p, scale)
+
+        changePointColor(x, y, newR, p)
+    }
+}
+
+function loadPoints() {
+    let points = document.querySelectorAll("circle")
+    for (let i = 0; i < points.length; i++) {
+        let p = points[i]
+        if (r === undefined) {
+            resetPointColor(p)
         }
     }
-    return checkedValues
 }
 
-function svgToMathCoords(svgX, svgY, r) {
-    const scale = rPxSize / r
-    return {
-        x: ((svgX - svgCenterX) / scale).toFixed(2),
-        y: ((svgCenterY - svgY) / scale).toFixed(2)
+function changePointColor(x, y, r, point) {
+    let hitFlag = checkPointHit(x, y, r)
+    if (hitFlag) {
+        point.setAttributeNS(null, "fill", "green")
+    } else {
+        point.setAttributeNS(null, "fill", "red")
     }
 }
 
-function drawByClick(e) {
+function resetPointColor(point) {
+    point.setAttributeNS(null, "fill", "black")
+}
+
+
+function drawPointByClick(e) {
     const r = rInput.value
     const absoluteX = e.clientX
     const absoluteY = e.clientY
@@ -340,7 +292,7 @@ function drawByClick(e) {
 }
 
 
-function sendPoint(e) {
+function sendPointToServer(e) {
     e.preventDefault()
     const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
     x = document.getElementById("inputX").value;
@@ -389,28 +341,28 @@ function sendPoint(e) {
     }
 }
 
+function checkPointHit(x, y, r) {
+    return  checkTriangle(+x, +y, +r) || checkRectangle(+x, +y, +r) || checkCircle(+x, +y, +r);
+}
 
-function checkHit(x, y, r) {
-    return checkCircle(x, y, r) || checkTriangle(x, y, r) || checkRectangle(x, y, r);
+function checkCircle(x, y, r) {
+    if (x >= 0 && y <= 0) {
+        return x ** 2 + y ** 2 <= r ** 2;
+    }
+    return false
 }
 
 function checkTriangle(x, y, r) {
     if (x <= 0 && y >= 0) {
-        return x > y - r && y < x + r;
+        return y < x + r
     }
-    return false;
+    return false
 }
 
 function checkRectangle(x, y, r) {
     if (x <= 0 && y <= 0) {
         return x > -r / 2 && y > -r;
     }
-    return false;
+    return false
 }
-
-function checkCircle(x, y, r) {
-    if (x >= 0 && y <= 0) {
-        return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2);
-    }
-    return false;
-}
+// =============================================== Actions with points
