@@ -1,5 +1,5 @@
 <%@ page import="utility.Point" %>
-<%@ page import="java.util.LinkedHashSet" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html lang="ru">
 <script src="resultTable.js"></script>
@@ -23,7 +23,7 @@
         </thead>
         <tbody class="sessionPointsBody">
         <%
-            LinkedHashSet<Point> points = (LinkedHashSet<Point>) request.getSession().getAttribute("points");
+            LinkedList<Point> points = (LinkedList<Point>) request.getSession().getAttribute("points");
             if (points != null) {
                 for (Point p : points) {
         %>

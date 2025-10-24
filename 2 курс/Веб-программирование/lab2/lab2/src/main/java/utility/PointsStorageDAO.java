@@ -2,7 +2,7 @@ package utility;
 
 import java.util.*;
 
-public class PointsStorage {
+public class PointsStorageDAO {
     private static Set<Point> points = Collections.synchronizedSet(new LinkedHashSet<>());
 
     public static void add(Point p) {
@@ -13,9 +13,9 @@ public class PointsStorage {
         return points.contains(p);
     }
 
-    public static LinkedHashSet<Point> getPoints() {
+    public static LinkedList<Point> getPoints() {
         synchronized (points) {
-            return new LinkedHashSet<>(points);
+            return new LinkedList<>(points);
         }
     }
 }

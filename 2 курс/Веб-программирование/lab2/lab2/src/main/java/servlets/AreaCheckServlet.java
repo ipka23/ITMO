@@ -90,15 +90,15 @@ public class AreaCheckServlet extends HttpServlet {
 
     private void updatePoints(HttpServletRequest request, Point p) {
         HttpSession httpSession = request.getSession();
-        LinkedHashSet<Point> points;
+        LinkedList<Point> points;
 
         if (httpSession.getAttribute("points") == null) {
-            points = new LinkedHashSet<>();
+            points = new LinkedList<>();
             httpSession.setAttribute("points", points);
         } else {
-            points = (LinkedHashSet<Point>) httpSession.getAttribute("points");
+            points = (LinkedList<Point>) httpSession.getAttribute("points");
         }
-        if (!PointsStorage.exists(p)) PointsStorage.add(p);
+        if (!PointsStorageDAO.exists(p)) PointsStorageDAO.add(p);
 
         points.add(p);
         httpSession.setAttribute("points", points);
