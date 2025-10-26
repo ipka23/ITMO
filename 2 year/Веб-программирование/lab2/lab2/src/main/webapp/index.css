@@ -1,0 +1,60 @@
+.header {
+    font-family: "fantasy";
+    font-size: 24px;
+    padding: 5%;
+    /*background: url("https://avatars.mds.yandex.net/i?id=a7f07506b51bfd12bfc2dc1c4505afc70003fbda-16848981-images-thumbs&n=13");*/
+    background: #00BFFF;
+    color: white;
+    text-align: center;
+    /*margin-bottom: 2%;*/
+}
+
+.main {
+    /*margin-bottom: 5%;*/
+    width: 100%;
+    padding: 3%;
+}
+
+.statsTableDiv {
+    margin-top: 3%;
+    width: 100%;
+    overflow-y: auto;
+    height: 215px
+}
+.statsTable {
+    width: 100%;
+    border-color: black;
+    /*border-color: #00BFFF;*/
+    border-collapse: collapse;
+}
+.statsTableBody {
+    text-align: center;
+}
+button {
+    font-family: "fantasy";
+}
+span {
+    font-family: "fantasy";
+}
+td {
+    font-family: "fantasy";
+    text-align: center;
+}
+text {
+    font-family: "fantasy";
+}
+th {
+    font-family: "fantasy";
+    position: sticky;
+    top: 0;
+    background: #00BFFF;
+    color: white;
+}
+
+.mainCell {
+    text-align: center;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
