@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/LiveTemplatesHousekeeping/HotspotSessionHintIsShown/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="2____30_" targetName="2____30_" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1da57aaa-4a81-4fbe-9156-cdf2cc181e0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/IntelliLang.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/conf.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/libs/fastcgi-lib.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/other/guide-httpd.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/other/lab1.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/other/old_httpd.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/report.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/scp.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/scpm.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/src/main/java/CoordinatesValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/src/main/java/HitChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/src/main/java/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/src/main/java/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/src/main/java/ValidateResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/web-app/conf/httpd.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/web-app/fcgi-bin/server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/web-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab1/web-app/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/IntelliLang.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/conf.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/libs/fastcgi-lib.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/other/guide-httpd.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/other/lab1.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/other/old_httpd.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/report.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/scp.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/scpm.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/src/main/java/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/src/main/java/ValidateResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/src/main/java/utility/CoordinatesValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/src/main/java/utility/HitChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/src/main/java/utility/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/web-app/conf/httpd.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/web-app/fcgi-bin/server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/web-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2.0/web-app/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/runConfigurations/JBoss_WildFly_37_0_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_10_2025_18_42_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_10_2025_18_42_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_10_2025_18_42__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_10_2025_23_51_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_10_2025_23_51_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_10_2025_23_51__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/deploy.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/deploy.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/lab2/lab2/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/servlets/AreaCheckServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/servlets/ControllerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/CoordinatesValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/HitChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/PointsStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/ResponseStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/java/utility/ValidateResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/resources/META-INF/beans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/resources/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/resultTable.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/resultTable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/resultTable.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/src/main/webapp/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/start.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/lab2/start.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Веб-программирование/lab2/report.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/.idea/1 семинар - 16 сентября.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/caesar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/caesar.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/hello" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/1 семинар - 16 сентября/hello.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/2 семинар - 30 сентября.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/collection.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2 курс/Языки программирования/2 семинар - 30 сентября/main.h" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="2.2" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="344EGKv2DUf4i4xtJqFaYClyWfZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.2____30_.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ipka23/ITMO/2 year/Prog langs/2 seminar - 30 sept",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="2____30_" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="2____30_" TARGET_NAME="2____30_" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="2____30_" RUN_TARGET_NAME="2____30_">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1da57aaa-4a81-4fbe-9156-cdf2cc181e0b" name="Changes" comment="" />
+      <created>1760464346971</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760464346971</updated>
+      <workItem from="1760464348628" duration="9022000" />
+      <workItem from="1761340135506" duration="1604000" />
+      <workItem from="1761438762611" duration="13000" />
+      <workItem from="1761500589866" duration="7152000" />
+      <workItem from="1761507857409" duration="26000" />
+      <workItem from="1761507918490" duration="5815000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>9</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
