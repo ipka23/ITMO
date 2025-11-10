@@ -1,6 +1,6 @@
 <%@ page import="utility.Point" %>
-<%@ page import="utility.PointsStorageDAO" %>
-<%@ page import="java.util.LinkedList" %>
+<%@ page import="utility.PointsStorage" %>
+<%@ page import="java.util.LinkedHashSet" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
@@ -31,15 +31,15 @@
         <rect x="100" y="150" width="50" height="100" fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
         <path d="M 250 150 A 100 100 0 0 1 150 250 L 150 150 L 250 150 Z" fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
         <!--          circles-->
-                    <%!
+
+                    <%
                         int svgWidth = 300;
                         int svgHeight = 300;
                         int rPxSize = svgWidth / 3;
                         int svgCenterX = svgWidth / 2;
                         int svgCenterY = svgHeight / 2;
-                        LinkedList<Point> points = PointsStorageDAO.getPoints();
-                    %>
-                    <%
+
+                        LinkedHashSet<Point> points = PointsStorage.getPoints();
                         if (!points.isEmpty()) {
                             for (Point p : points) {
                                 double scale = rPxSize / Double.parseDouble(p.getR());
