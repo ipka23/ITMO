@@ -28,7 +28,7 @@ public class CoordinatesValidator {
             if (-3 <= x && x <= 3) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "X должен принадлежать [-3, 3]!");
+                return new ValidateResponse(false, "X должен принадлежать [-3, 3]!}");
             }
 
         } catch (NumberFormatException e) {

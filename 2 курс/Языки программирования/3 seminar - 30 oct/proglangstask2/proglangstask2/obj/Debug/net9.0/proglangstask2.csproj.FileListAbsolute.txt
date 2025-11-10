@@ -1,0 +1,17 @@
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\proglangstask2.exe
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\proglangstask2.deps.json
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\proglangstask2.runtimeconfig.json
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\proglangstask2.dll
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\proglangstask2.pdb
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.csproj.AssemblyReference.cache
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.AssemblyInfoInputs.cache
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.AssemblyInfo.cs
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.csproj.CoreCompileInputs.cache
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglang.DB5BE8E9.Up2Date
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.dll
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\refint\proglangstask2.dll
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.pdb
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\proglangstask2.genruntimeconfig.cache
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\obj\Debug\net9.0\ref\proglangstask2.dll

@@ -1,0 +1,6 @@
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\proglangstask2.exe
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\proglangstask2.dll
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\proglangstask2.deps.json
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\proglangstask2.runtimeconfig.json
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\proglangstask2.pdb
+C:\Users\ipka23\proglangs2task\proglangstask2\proglangstask2\bin\Release\net9.0\publish\Newtonsoft.Json.dll

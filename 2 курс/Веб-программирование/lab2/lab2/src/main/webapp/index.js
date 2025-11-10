@@ -94,8 +94,6 @@ function makeFetch(method, body, contentType) {
                         updateTable(point, true)
                     } else {
                         console.log(json)
-                        errorMessage("svgError", undefined, json.result)
-
                     }
                 }).catch(error => {
                 alert("Ошибка: " + error.toString())
