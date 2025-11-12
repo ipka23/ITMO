@@ -3,7 +3,7 @@ let x
 let y
 let r
 let form = document.getElementById("form")
-
+function changeLang(){}
 function radioClick(e) {
     x = +e.target.value
 }
