@@ -2,15 +2,47 @@ const submitButton = document.getElementById("submitButton")
 let x
 let y
 let r
-let form = document.getElementById("form")
-function changeLang(){}
-function radioClick(e) {
-    x = +e.target.value
+let form
+let selectLang
+// let localization = new Localization()
+const lang = {
+    RU: "ru",
+    EN: "en",
+    EO: "eo"
 }
 
-for (let i = 0; i < form.x.length; i++) {
-    form.x[i].addEventListener("click", radioClick)
+// const localization = {
+//     lang: lang,
+//     change: (l) => this.lang = l
+// }
+
+document.addEventListener("DOMContentLoaded", function () {
+    form = document.getElementById("form")
+    selectLang = document.getElementById("selectLang")
+    selectLang.addEventListener("change", changeLang());
+
+    function radioClick(e) {
+        x = +e.target.value
+    }
+
+    for (let i = 0; i < form.x.length; i++) {
+        form.x[i].addEventListener("click", radioClick)
+    }
+})
+
+function changeLang(){
+   if (selectLang.value === "ru") {
+       location.assign("/index_ru.html")
+   }
+    else if (selectLang.value === "en") {
+        location.assign("/index_en.html")
+       // document.querySelectorAll("table").item()
+    }
+    else if (selectLang.value === "eo") {
+        location.assign("/index_eo.html")
+    }
 }
+
 
 if (localStorage.length !== 0) {
     loadTableFromLocalStorage()

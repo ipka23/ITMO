@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>
-        Веб лаба 1
+        Web Lab 1
     </title>
     <style>
         .header {
@@ -22,7 +22,8 @@
             width: 100%;
             padding: 3%;
         }
-
+        .selectLang {
+        }
         .statsTableDiv {
             margin-top: 3%;
             width: 100%;
@@ -72,7 +73,14 @@
 <script src="index.js" defer></script>
 <body>
 <header class="header">
-    Пчелкин Илья Игоревич, P3206, Вариант 467204
+    <label id="selectLang" class="selectLang">
+        <select>
+            <option id="en" value="en" selected="selected">English</option>
+            <option id="ru" value="ru">Русский</option>
+            <option id="eo" value="eo">Esperanto</option>
+        </select>
+    </label>
+    Ilya Pchelkin, P3206, Variant 467204
 </header>
 <table class="main">
     <tr>
@@ -123,7 +131,7 @@
             </svg>
         </td>
         <td>
-            <span>Введите X:</span>
+            <span>Enter X:</span>
             <form id="form" class="coordinates">
                 <label><input type="radio" name="x" value="-2">-2</label>
                 <label><input type="radio" name="x" value="-1.5">-1.5</label>
@@ -137,17 +145,17 @@
                 <br>
                 <span id="xError" style="animation-duration: 2s"></span>
                 <br>
-                <span>Введите Y[-3;3]:</span>
+                <span>Enter Y[-3;3]:</span>
                 <label><input id="inputY" min="-3" max="3" type="number" step="any" maxlength="5"></label>
                 <br>
                 <span id="yError"></span>
                 <br>
-                <span>Введите R[2;5]:</span>
+                <span>Enter R[2;5]:</span>
                 <label><input id="inputR" min="2" max="5" type="number" step="any" maxlength="5"></label>
                 <br>
                 <span id="rError"></span>
                 <br>
-                <button id="submitButton" type="submit">Отправить</button>
+                <button id="submitButton" type="submit">Submit</button>
             </form>
         </td>
 
@@ -157,30 +165,21 @@
             <div class="statsTableDiv">
                 <table id="statsTable" border="1" class="statsTable">
                     <thead>
-                        <tr>
-                            <th>X</th>
-                            <th>Y</th>
-                            <th>R</th>
-                            <th>Попадание/промах</th>
-                            <th>Текущее время</th>
-                            <th>Время выполнения</th>
-                        </tr>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Hit/Miss</th>
+                        <th>Current Time</th>
+                        <th>Execution Time</th>
+                    </tr>
                     </thead>
                     <tbody class="statsTableBody">
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
-<!--                        <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> </tr>-->
+
                     </tbody>
                 </table>
             </div>
+
         </td>
     </tr>
 </table>
