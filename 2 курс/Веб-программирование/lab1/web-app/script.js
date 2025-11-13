@@ -4,6 +4,10 @@ const intl = new EasyIntl({
     autorun: false,
     dictionary
 })
+let lang = localStorage.getItem("lang")
+document.getElementById(lang).setAttribute("selected", "selected")
+intl.locale = lang
+intl.localize()
 const localeSelector = document.getElementById("localeSelector")
 const submitButton = document.getElementById("submitButton")
 let x
@@ -29,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         intl.locale = lang
         localStorage.setItem("lang", lang)
         intl.localize()
+        updateHitMiss()
     }
 })
 
@@ -37,6 +42,83 @@ if (localStorage.length !== 0) {
     loadTableFromLocalStorage()
 } else sendStorageLength()
 
+function updateHitMiss() {
+    // removeTable()
+    // for (let i = 0; i < localStorage.length; i++) {
+    //     let index = i.toString()
+    //     let item = window.localStorage.getItem(index)
+    //     if (item === "ru-RU" || item === "en-US" || item === "eo-EO" || item === null) continue
+    //     let dictItem = stringToDict(item)
+    //     dictItem["index"] = index
+    //     document.getElementById("statsTable")
+    //     updateTable(dictItem, false)
+    // }
+    // let statusCells = document.getElementsByClassName("statusCell")
+    // for (let cell in statusCells) {
+    //     console.log(`cell: ${cell} innerText: ${cell.innerHTML}`)
+    //
+    //     // if (cell.textContent === dictionary["ru-RU"].hit || cell.textContent === dictionary["eo-EO"].hit || cell.textContent === dictionary["en-US"].hit) {
+    //     //     cell.textContent = dictionary[localStorage.getItem("lang")].hit
+    //     // } else cell.textContent = dictionary[localStorage.getItem("lang")].miss
+    // }
+
+    let table = document.getElementById('statsTable');
+    for (let r = 0, n = table.rows.length; r < n; r++) {
+        for (let c = 0, m = table.rows[r].cells.length; c < m; c++) {
+            let value = table.rows[r].cells[c].innerHTML
+            if (value === dictionary["ru-RU"].hit || value === dictionary["eo-EO"].hit || value === dictionary["en-US"].hit) {
+                table.rows[r].cells[c].innerHTML = dictionary[localStorage.getItem("lang")].hit
+                // console.log(value)
+            } else if (value === dictionary["ru-RU"].miss || value === dictionary["eo-EO"].miss || value === dictionary["en-US"].miss){
+                table.rows[r].cells[c].innerHTML = dictionary[localStorage.getItem("lang")].miss
+                // console.log(value)
+            }
+        }
+    }
+
+}
+function removeTable() {
+    // const table = document.getElementById("statsTable")
+    const tableBody = document.getElementById("statsTableBody")
+    tableBody.innerHTML = "<tbody class=\"statsTableBody\"></tbody>"
+}
+
+function updateTable(dict, firstAdd) {
+    const table = document.getElementById("statsTable")
+    const row = table.insertRow()
+    const xCell = row.insertCell(0)
+    const yCell = row.insertCell(1)
+    const rCell = row.insertCell(2)
+    const statusCell = row.insertCell(3)
+    const dateCell = row.insertCell(4)
+    const executionTimeCell = row.insertCell(5)
+    yCell.style.maxWidth = '15px'
+    rCell.style.maxWidth = '15px'
+    xCell.textContent = dict["x"]
+
+    if (dict["y"].length > 5) {
+        yCell.title = dict["y"]
+        yCell.style.overflow = "hidden"
+        dict["y"] = dict["y"].substring(0, 5) + "..."
+    }
+    yCell.textContent = dict["y"]
+
+    if (dict["r"].length > 5) {
+        rCell.title = dict["r"]
+        rCell.style.overflow = "hidden"
+        dict["r"] = dict["r"].substring(0, 5) + "..."
+    }
+    rCell.textContent = dict["r"]
+
+    statusCell.setAttribute("class", "statusCell")
+    statusCell.textContent = dict["status"]
+    dateCell.textContent = dict["currentTime"]
+    executionTimeCell.textContent = dict["executionTime"]
+    if (firstAdd) {
+        updateLocalStorage(localStorage.length, dict)
+        sendStorageLength()
+    }
+}
 
 function sendStorageLength() {
     makeFetch("GET", `storageLength=${localStorage.length}`)
@@ -95,34 +177,34 @@ submitButton.onclick = function (e) {
     let successY = true
     let successR = true
     if (x === undefined) {
-        errorMessage("xError", "inputX", 'Выберите X!')
+        errorMessage("xError", "inputX", dictionary[localStorage.getItem("lang")].xError)
         successX = false
     }
 
     if (y === undefined) {
-        errorMessage("yError", "inputY", "Введите Y!")
+        errorMessage("yError", "inputY", dictionary[localStorage.getItem("lang")].yInputError)
         successY = false
     }
     if (r === undefined) {
-        errorMessage("rError", "inputR", "Введите R!")
+        errorMessage("rError", "inputR", dictionary[localStorage.getItem("lang")].rInputError)
         successR = false
     }
 
     if (!regexp.test(y) && successY) {
-        errorMessage("yError", "inputY", "Введите Y в правильном формате!")
+        errorMessage("yError", "inputY", dictionary[localStorage.getItem("lang")].yIncorrectError)
         successY = false
     }
     if (!regexp.test(r) && successR) {
-        errorMessage("rError", "inputR", "Введите R в правильном формате!")
+        errorMessage("rError", "inputR", dictionary[localStorage.getItem("lang")].rIncorrectError)
         successR = false
     }
 
     if (!(-3 <= y && y <= 3) && successY) {
-        errorMessage("yError", "inputY", "Введите значение Y в пределах [-3;3]!")
+        errorMessage("yError", "inputY", dictionary[localStorage.getItem("lang")].yBoundsError)
         successY = false
     }
     if (!(2 <= r && r <= 5) && successR) {
-        errorMessage("rError", "inputR", "Введите значение R в пределах [2;5]!")
+        errorMessage("rError", "inputR", dictionary[localStorage.getItem("lang")].rBoundsError)
         successR = false
     } else if (successX && successY && successR) {
         hit(x, y, r)
@@ -147,45 +229,10 @@ function hit(x, y, r) {
 }
 
 
-function updateTable(dict, firstAdd) {
-    const table = document.getElementById("statsTable")
-    const row = table.insertRow()
-    const xCell = row.insertCell(0)
-    const yCell = row.insertCell(1)
-    const rCell = row.insertCell(2)
-    const statusCell = row.insertCell(3)
-    const dateCell = row.insertCell(4)
-    const executionTimeCell = row.insertCell(5)
-    yCell.style.maxWidth = '15px'
-    rCell.style.maxWidth = '15px'
-    xCell.textContent = dict["x"]
-
-    if (dict["y"].length > 5) {
-        yCell.title = dict["y"]
-        yCell.style.overflow = "hidden"
-        dict["y"] = dict["y"].substring(0, 5) + "..."
-    }
-    yCell.textContent = dict["y"]
-
-    if (dict["r"].length > 5) {
-        rCell.title = dict["r"]
-        rCell.style.overflow = "hidden"
-        dict["r"] = dict["r"].substring(0, 5) + "..."
-    }
-    rCell.textContent = dict["r"]
-
-    statusCell.textContent = dict["status"]
-    dateCell.textContent = dict["currentTime"]
-    executionTimeCell.textContent = dict["executionTime"]
-    if (firstAdd) {
-        updateLocalStorage(localStorage.length, dict)
-        sendStorageLength()
-    }
-}
 
 function updateLocalStorage(index, dict) {
     let item = dictToString(dict)
-    console.log(`index: ${localStorage.length}\nitem: ${item}`)
+    // console.log(`index: ${localStorage.length}\nitem: ${item}`)
     localStorage.setItem(index.toString(), item)
 }
 
@@ -199,12 +246,19 @@ function dictToString(dict) {
 }
 
 function stringToDict(string) {
+    // console.log(string)
     let statsList = string.split(",\n")
     let dictItem = {}
     for (let i = 0; i < statsList.length; i++) {
         let keyVal = statsList[i].split(": ")
         let key = keyVal[0].trim()
         let value = keyVal[1].trim()
+        if (key === "status") {
+            if (value === dictionary["ru-RU"].hit || value === dictionary["eo-EO"].hit || value === dictionary["en-US"].hit) {
+                value = dictionary[localStorage.getItem("lang")].hit
+            } else value = dictionary[localStorage.getItem("lang")].miss
+        }
+
         dictItem[key] = value
 
     }
@@ -217,7 +271,15 @@ function jsonToDict(json) {
     dict["x"] = json.result.x
     dict["y"] = json.result.y
     dict["r"] = json.result.r
-    dict["status"] = json.result.status
+    let value = json.result.status
+    console.log(`serverStatus: ${value}`)
+    if (value === dictionary["ru-RU"].hit) {
+        dict["status"] = dictionary[localStorage.getItem("lang")].hit
+        console.log(`clientHit: ${dict["status"]}`)
+    } else if (value === dictionary["ru-RU"].miss){
+        dict["status"] = dictionary[localStorage.getItem("lang")].miss
+        console.log(`clientMiss: ${dict["status"]}`)
+    }
     dict["currentTime"] = json.result.currentTime
     dict["executionTime"] = json.result.executionTime
     return dict
@@ -230,18 +292,15 @@ function dictToJson(dict) {
 }
 
 function loadTableFromLocalStorage() {
-    let storageLength = window.localStorage.length
+    let storageLength = localStorage.length
+
     for (let i = 0; i < storageLength; i++) {
         let index = i.toString()
-        let item = window.localStorage.getItem(index)
-
-        console.log(item)
+        let item = localStorage.getItem(index)
+        if (item === "ru-RU" || item === "en-US" || item === "eo-EO" || item === null) continue
         let dictItem = stringToDict(item)
         dictItem["index"] = index
-        // sendStorageItem(dictToJson(dictItem))
-
         updateTable(dictItem, false)
         hit(dictItem["x"], dictItem["y"], dictItem["r"])
-        console.log(`localStorageLineIndex: ${i} dictItem: ${dictItem}`)
     }
 }
