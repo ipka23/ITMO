@@ -1,25 +1,20 @@
+import { EasyIntl } from './libs/easy-intl/index.js'
+import dictionary from './intl/dictionary.js'
+const intl = new EasyIntl({
+    autorun: false,
+    dictionary
+})
+const localeSelector = document.getElementById("localeSelector")
 const submitButton = document.getElementById("submitButton")
 let x
 let y
 let r
 let form
 let selectLang
-// let localization = new Localization()
-const lang = {
-    RU: "ru",
-    EN: "en",
-    EO: "eo"
-}
-
-// const localization = {
-//     lang: lang,
-//     change: (l) => this.lang = l
-// }
 
 document.addEventListener("DOMContentLoaded", function () {
     form = document.getElementById("form")
     selectLang = document.getElementById("selectLang")
-    selectLang.addEventListener("change", changeLang());
 
     function radioClick(e) {
         x = +e.target.value
@@ -28,20 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < form.x.length; i++) {
         form.x[i].addEventListener("click", radioClick)
     }
-})
 
-function changeLang(){
-   if (selectLang.value === "ru") {
-       location.assign("/index_ru.html")
-   }
-    else if (selectLang.value === "en") {
-        location.assign("/index_en.html")
-       // document.querySelectorAll("table").item()
+    localeSelector.onchange = (e) => {
+        let lang = e.target.value
+        intl.locale = lang
+        localStorage.setItem("lang", lang)
+        intl.localize()
     }
-    else if (selectLang.value === "eo") {
-        location.assign("/index_eo.html")
-    }
-}
+})
 
 
 if (localStorage.length !== 0) {
@@ -106,7 +95,7 @@ submitButton.onclick = function (e) {
     let successY = true
     let successR = true
     if (x === undefined) {
-        errorMessage("xError", "inputX", "Выберите X!")
+        errorMessage("xError", "inputX", 'Выберите X!')
         successX = false
     }
 
