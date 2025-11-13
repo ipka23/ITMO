@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" id="html">
 <head>
     <meta charset="UTF-8">
-    <title>
-        Web Lab 1
+    <title data-intl_type="custom" data-intl_value="pageTitle">
+        Веб лаба 1
     </title>
     <style>
         .header {
@@ -70,17 +70,20 @@
     </style>
 
 </head>
-<script src="index.js" defer></script>
+<script type="module" src="script.js" defer></script>
+
 <body>
 <header class="header">
     <label id="selectLang" class="selectLang">
-        <select>
-            <option id="en" value="en" selected="selected">English</option>
-            <option id="ru" value="ru">Русский</option>
-            <option id="eo" value="eo">Esperanto</option>
+        <select id="localeSelector">
+            <option id="ru" value="ru-RU" selected="selected">Русский</option>
+            <option id="en" value="en-US">English</option>
+            <option id="eo" value="eo-EO">Esperanto</option>
         </select>
     </label>
-    Ilya Pchelkin, P3206, Variant 467204
+    <span data-intl_type="custom" data-intl_value="student">
+        Пчелкин Илья Игоревич, P3206, Вариант 467204
+    </span>
 </header>
 <table class="main">
     <tr>
@@ -131,7 +134,7 @@
             </svg>
         </td>
         <td>
-            <span>Enter X:</span>
+            <span data-intl_type="custom" data-intl_value="enterX">Введите X:</span>
             <form id="form" class="coordinates">
                 <label><input type="radio" name="x" value="-2">-2</label>
                 <label><input type="radio" name="x" value="-1.5">-1.5</label>
@@ -143,19 +146,19 @@
                 <label><input type="radio" name="x" value="1.5">1.5</label>
                 <label><input type="radio" name="x" value="2">2</label>
                 <br>
-                <span id="xError" style="animation-duration: 2s"></span>
+                <span data-intl_type="custom" data-intl_value="xError" id="xError" style="animation-duration: 2s"></span>
                 <br>
-                <span>Enter Y[-3;3]:</span>
+                <span data-intl_type="custom" data-intl_value="enterY">Введите Y[-3;3]:</span>
                 <label><input id="inputY" min="-3" max="3" type="number" step="any" maxlength="5"></label>
                 <br>
-                <span id="yError"></span>
+                <span data-intl_type="custom" data-intl_value="yError" id="yError"></span>
                 <br>
-                <span>Enter R[2;5]:</span>
+                <span  data-intl_type="custom" data-intl_value="enterR" >Введите R[2;5]:</span>
                 <label><input id="inputR" min="2" max="5" type="number" step="any" maxlength="5"></label>
                 <br>
-                <span id="rError"></span>
+                <span data-intl_type="custom" data-intl_value="rError" id="rError"></span>
                 <br>
-                <button id="submitButton" type="submit">Submit</button>
+                <button data-intl_type="custom" data-intl_value="send" id="submitButton" type="submit">Отправить</button>
             </form>
         </td>
 
@@ -165,14 +168,14 @@
             <div class="statsTableDiv">
                 <table id="statsTable" border="1" class="statsTable">
                     <thead>
-                    <tr>
-                        <th>X</th>
-                        <th>Y</th>
-                        <th>R</th>
-                        <th>Hit/Miss</th>
-                        <th>Current Time</th>
-                        <th>Execution Time</th>
-                    </tr>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th data-intl_type="custom" data-intl_value="hit/miss" >Попадание/промах</th>
+                            <th data-intl_type="custom" data-intl_value="currentTime">Текущее время</th>
+                            <th data-intl_type="custom" data-intl_value="executionTime">Время выполнения</th>
+                        </tr>
                     </thead>
                     <tbody class="statsTableBody">
 
