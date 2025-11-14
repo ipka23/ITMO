@@ -72,8 +72,8 @@ public class AreaCheckServlet extends HttpServlet {
             boolean hit = HitChecker.check(x, y, r);
 
             if (hit) {
-                status = "Попадание";
-            } else status = "Промах";
+                status = Localizer.getBundle().getString("hit");
+            } else status = Localizer.getBundle().getString("miss");
 
             String currentTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
             long endTime = System.nanoTime();
