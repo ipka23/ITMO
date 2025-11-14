@@ -21,8 +21,8 @@ public class AreaCheckServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
-
-        Point p = makePoint(request, startTime);
+        ResourceBundle messages = (ResourceBundle) request.getAttribute("messages");
+        Point p = makePoint(request, startTime, messages);
 
         if (p.isValid()) {
             updatePoints(request, p);
@@ -60,20 +60,20 @@ public class AreaCheckServlet extends HttpServlet {
         response.getWriter().write(s);
     }
 
-    private Point makePoint(HttpServletRequest request, long startTime) {
+    private Point makePoint(HttpServletRequest request, long startTime, ResourceBundle messages) {
         String status;
         String x = request.getParameter("x");
         String y = request.getParameter("y");
         String r = request.getParameter("r");
-        ValidateResponse validateCoords = CoordinatesValidator.validate(x, y, r);
+        ValidateResponse validateCoords = CoordinatesValidator.validate(x, y, r, messages);
         Point point = new Point();
         if (validateCoords.isValid()) {
 
             boolean hit = HitChecker.check(x, y, r);
 
             if (hit) {
-                status = Localizer.getBundle().getString("hit");
-            } else status = Localizer.getBundle().getString("miss");
+                status = messages.getString("hit");
+            } else status = messages.getString("miss");
 
             String currentTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
             long endTime = System.nanoTime();
