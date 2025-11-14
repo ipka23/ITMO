@@ -28,35 +28,26 @@ public class CoordinatesValidator {
             if (-3 <= x && x <= 3) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "X должен принадлежать [-3, 3]!}");
+                return new ValidateResponse(false, Localizer.getBundle().getString("x_must_be_in_range"));
             }
 
         } catch (NumberFormatException e) {
-            return new ValidateResponse(false, "X должен являться числом!");
+            return new ValidateResponse(false, Localizer.getBundle().getString("x_must_be_number"));
         }
     }
 
     private static ValidateResponse validateY(String val) {
         double y;
-//        double[] yValues = {-5, -4, -3, -2, -1, 0, 1, 2, 3};
         boolean flag = false;
         try {
             y = Double.parseDouble(val);
-//            for (double value : yValues) {
-//                if (value == y) {
-//                    flag = true;
-//                    break;
-//                }
-//            }
             if (-5 <= y && y <= 3) {
                 return new ValidateResponse(true);
             } else {
-//                return new ValidateResponse(false, "Y должен принадлежать {-5, -4, -3, -2, -1, 0, 1, 2, 3}!");
-                return new ValidateResponse(false, "Y должен принадлежать [-5; 3]!");
-
+                return new ValidateResponse(false, Localizer.getBundle().getString("y_must_be_in_range"));
             }
         } catch (NumberFormatException e) {
-            return new ValidateResponse(false, "Y должен являться числом!");
+            return new ValidateResponse(false, Localizer.getBundle().getString("y_must_be_number"));
         }
     }
 
@@ -67,11 +58,10 @@ public class CoordinatesValidator {
             if (1 <= r && r <= 4) {
                 return new ValidateResponse(true);
             } else {
-                return new ValidateResponse(false, "R должен принадлежать [1, 4]!");
+                return new ValidateResponse(false, Localizer.getBundle().getString("r_must_be_in_range"));
             }
         } catch (NumberFormatException e) {
-            return new ValidateResponse(false, "R должен являться числом!");
+            return new ValidateResponse(false, Localizer.getBundle().getString("r_must_be_number"));
         }
     }
-
 }
