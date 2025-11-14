@@ -4,7 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71b22d30-5296-449e-bc87-87e76c6e62fb" name="Changes" comment="lab1 i18n done" />
+    <list default="true" id="71b22d30-5296-449e-bc87-87e76c6e62fb" name="Changes" comment="lab1 i18n done">
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/intl/dictionary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/intl/options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/.package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/.yarn-integrity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/easy-intl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/easy-intl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/easy-intl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/libs/easy-intl/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scp.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scpm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scpm.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/conf/httpd.conf" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/conf/httpd.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/fcgi-bin/server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/fcgi-bin/server.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/intl/dictionary.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/intl/dictionary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/intl/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/intl/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/easy-intl/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/easy-intl/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/easy-intl/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/easy-intl/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/easy-intl/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/easy-intl/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/libs/easy-intl/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/libs/easy-intl/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/9.0.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/build/classes/java/main/servlets/AreaCheckServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/build/classes/java/main/servlets/AreaCheckServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/build/classes/java/main/utility/CoordinatesValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/build/classes/java/main/utility/CoordinatesValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/build/libs/lab2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/build/libs/lab2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/build/libs/lab2.war" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/build/libs/lab2.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/src/main/java/utility/Localizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/java/utility/Localizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/resultTable.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/resultTable.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2/lab2/src/main/webapp/other/test.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +85,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ipka23/ITMO&quot;,
-    &quot;accountId&quot;: &quot;8be23676-3959-4c20-b9ae-f66372e26466&quot;
+    &quot;accountId&quot;: &quot;61e33293-db6a-4bfb-a15b-4f1f0b45bc6d&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -68,7 +117,7 @@
     "Shell Script.scp.sh.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ipka23/Desktop/ITMO/2 курс/Веб-программирование/lab1/web-app/libs",
+    "last_opened_file_path": "C:/Users/ipka23/ITMO/2 курс/Веб-программирование/lab1/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,6 +131,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ipka23\ITMO\2 курс\Веб-программирование\lab1\webapp" />
       <recent name="$PROJECT_DIR$/web-app/libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -92,11 +142,33 @@
       <recent name="$PROJECT_DIR$/\" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="scp.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scp.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="powershell.exe" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.scp.sh" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
@@ -130,6 +202,8 @@
       <workItem from="1762973974651" duration="4744000" />
       <workItem from="1763018129467" duration="4770000" />
       <workItem from="1763023907754" duration="14437000" />
+      <workItem from="1763099484319" duration="21000" />
+      <workItem from="1763099568936" duration="3780000" />
     </task>
     <task id="LOCAL-00001" summary="GET, POST done; TODO fix HitChecker">
       <option name="closed" value="true" />

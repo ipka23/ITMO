@@ -1,0 +1,16 @@
+{
+  "systemParams": "darwin-arm64-137",
+  "modulesFolders": [
+    "node_modules"
+  ],
+  "flags": [],
+  "linkedModules": [],
+  "topLevelPatterns": [
+    "easy-intl@^0.0.2"
+  ],
+  "lockfileEntries": {
+    "easy-intl@^0.0.2": "https://registry.yarnpkg.com/easy-intl/-/easy-intl-0.0.2.tgz#564d36be21a4c4f4721e24df6790e6f120796619"
+  },
+  "files": [],
+  "artifacts": {}
+}
