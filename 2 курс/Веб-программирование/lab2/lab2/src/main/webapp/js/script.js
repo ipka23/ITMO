@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-// убрать
+
 export function updateHitMiss(tableID) {
     let currentLang = localStorage.getItem("lang")
     if (lang === null) currentLang = lang
