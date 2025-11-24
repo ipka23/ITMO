@@ -31,6 +31,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     implementation 'com.google.code.gson:gson:2.8.9'
+    compileOnly("javax.faces:javax.faces-api:2.3")
 }
 
 
@@ -39,5 +40,5 @@ tasks.withType(Test).configureEach {
 }
 
 tasks.named("war") {
-    archiveFileName = "lab2.war"
+    archiveFileName = "lab3.war"
 }
