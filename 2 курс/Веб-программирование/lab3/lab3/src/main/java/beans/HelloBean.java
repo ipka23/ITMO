@@ -1,17 +1,24 @@
 package beans;
 
+import jakarta.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
 import lombok.Data;
 
-import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 
-@ManagedBean
+@Named("helloBean")
+@SessionScoped
 @Data
-public class HelloBean {
+public class HelloBean implements Serializable {
     private String name;
     private String greeting;
 
     public String sayHello(){
-        this.greeting = "Hello, " + name;
+        if (name == null || name.trim().isEmpty()) {
+            this.greeting = "Hello!";
+        } else {
+            this.greeting = "Hello, " + name;
+        }
         return null;
     }
 }

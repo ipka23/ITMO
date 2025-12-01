@@ -11,7 +11,7 @@
     <h:form>
         <h:outputText value="Hi JSF!"/>
         <br/>
-        <h:inputText value="#{helloBean.name}"/>
+        <h:inputText value="#{helloBean.name}" required="true"/>
         <br/>
         <h:commandButton value="Make greeting" action="#{helloBean.sayHello}"/>
         <br/>
