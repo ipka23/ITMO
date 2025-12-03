@@ -1,38 +1,63 @@
 package utility;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class HitChecker {
-    public static boolean check(String sx, String sy, String sr) {
-//        if (sx == null || sy == null || sr == null) return false;
-        BigDecimal xBD = new BigDecimal(sx);
-        BigDecimal yBD =  new BigDecimal(sy);
-        BigDecimal rBD =  new BigDecimal(sr);
-        double x = xBD.doubleValue();
-        double y = yBD.doubleValue();
-        double r = rBD.doubleValue();
-        if (x > 0 && y < 0) return false;
-        if (x == 0 && y == 0) return true;
+
+    public static boolean check(BigDecimal x, BigDecimal y, BigDecimal r) {
+        if (x == null || y == null || r == null) {
+            return false;
+        }
+
+        if (x.compareTo(BigDecimal.ZERO) > 0 && y.compareTo(BigDecimal.ZERO) < 0) {
+            return false;
+        }
+
+        if (x.compareTo(BigDecimal.ZERO) == 0 && y.compareTo(BigDecimal.ZERO) == 0) {
+            return true;
+        }
+
         return checkTriangle(x, y, r) || checkRectangle(x, y, r) || checkCircle(x, y, r);
     }
 
-    private static boolean checkCircle(double x, double y, double r) {
-        if (x <= 0 && y <= 0) {
-            return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(0.5 * r, 2);
+    private static boolean checkCircle(BigDecimal x, BigDecimal y, BigDecimal r) {
+
+        if (x.compareTo(BigDecimal.ZERO) <= 0 && y.compareTo(BigDecimal.ZERO) <= 0) {
+            BigDecimal xSquared = x.pow(2);
+            BigDecimal ySquared = y.pow(2);
+            BigDecimal sumOfSquares = xSquared.add(ySquared);
+
+            BigDecimal halfR = r.divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP);
+            BigDecimal halfRSquared = halfR.pow(2);
+
+            return sumOfSquares.compareTo(halfRSquared) <= 0;
         }
         return false;
     }
 
+    private static boolean checkTriangle(BigDecimal x, BigDecimal y, BigDecimal r) {
 
-    private static boolean checkTriangle(double x, double y, double r) {
-        if (x >= 0 && y >= 0) {
-            return y <= -2 * x + r;
+        if (x.compareTo(BigDecimal.ZERO) >= 0 && y.compareTo(BigDecimal.ZERO) >= 0) {
+
+            BigDecimal twoX = x.multiply(new BigDecimal("2"));
+            BigDecimal negativeTwoX = twoX.negate();
+            BigDecimal rightSide = negativeTwoX.add(r);
+
+            return y.compareTo(rightSide) <= 0;
         }
         return false;
     }
 
-    private static boolean checkRectangle(double x, double y, double r) {
-        if (x <= 0 && y >= 0) {
-            return x >= -r / 2 && y <= r;
+    private static boolean checkRectangle(BigDecimal x, BigDecimal y, BigDecimal r) {
+
+        if (x.compareTo(BigDecimal.ZERO) <= 0 && y.compareTo(BigDecimal.ZERO) >= 0) {
+            BigDecimal halfRNegative = r.divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP).negate();
+            boolean xCondition = x.compareTo(halfRNegative) >= 0;
+
+            boolean yCondition = y.compareTo(r) <= 0;
+
+            return xCondition && yCondition;
         }
         return false;
     }

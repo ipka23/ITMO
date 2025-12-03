@@ -11,11 +11,15 @@
     <title>
         Веб лаба 3
     </title>
+    <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
     <h:outputStylesheet name="css/main.css" />
     <h:outputScript name="js/script.js"/>
 </h:head>
 
 <h:body>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{pointsBean.resetForm}" />
+    </f:metadata>
     <header class="header">
         <span>
             Пчелкин Илья Игоревич, P3206, Вариант 999312
@@ -97,7 +101,7 @@
                             <circle r="1%"
                                     cx="#{pointsBean.getSvgX(point)}"
                                     cy="#{pointsBean.getSvgY(point)}"
-                                    fill="black"/>
+                                    fill="#{pointsBean.getPointColor(point)}"/>
                         </ui:repeat>
                     </svg>
                 </td>
@@ -127,7 +131,7 @@
 
                         <br/>
 
-                        <h:message for="inputY" id="yError" style="animation-duration: 2s"/>
+                        <h:message for="inputY" id="yError" style="animation-duration: 2s"> </h:message>
 
                         <br/>
 
@@ -146,10 +150,18 @@
                         <h:message for="inputR" id="rError" style="animation-duration: 2s"/>
                         <br/>
 
+
+
+
                         <h:commandButton value="Отправить" action="#{pointsBean.addPoint}"
                                          id="submitButton">
                         <f:ajax execute="@form" render="svg statsTable" />
                         </h:commandButton>
+
+
+
+
+
                     </div>
                 </td>
             </tr>
