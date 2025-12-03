@@ -20,21 +20,21 @@
     <f:metadata>
         <f:event type="preRenderView" listener="#{pointsBean.resetForm}"/>
     </f:metadata>
-    <header class="header">
-        <span>
-            Пчелкин Илья Игоревич, P3206, Вариант 999312
-        </span>
-    </header>
+<!--    <header class="header">-->
+<!--        <span>-->
+<!--            Пчелкин Илья Игоревич, P3206, Вариант 999312-->
+<!--        </span>-->
+<!--    </header>-->
 
     <h:form id="mainForm">
         <h:button styleClass="main-btn" value="Стартовая страница" outcome="index"/>
 
-        <!--        autoRun="true"-->
 
         <table class="main">
             <tr>
                 <td class="mainCell">
                     <span id="svgError"></span>
+
                     <br/>
                     <!--                <h:panelGroup id="svgContainer" >-->
                     <p:remoteCommand
@@ -111,7 +111,7 @@
                     <div class="coordinates">
                         <span>Выберите X:</span>
                         <h:selectOneRadio id="inputX" value="#{pointsBean.x}"
-                                          validatorMessage="Выберите X!"
+                                          requiredMessage="Выберите X!"
                                           required="true">
                             <f:selectItem itemValue="-3" itemLabel="-3"/>
                             <f:selectItem itemValue="-2" itemLabel="-2"/>
@@ -125,25 +125,26 @@
                             <f:validateDoubleRange minimum="-3" maximum="5"/>
                         </h:selectOneRadio>
                         <br/>
-                        <h:message for="inputX" id="xError" style="animation-duration: 2s"/>
+                        <h:message for="inputX" id="xError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
                         <br/>
 
                         <span>Введите Y[-3, 3]:</span>
                         <h:inputText id="inputY" value="#{pointsBean.y}"
                                      validatorMessage="Y должен быть в диапазоне [-3; 3]"
+                                     requiredMessage="Введите Y!"
                                      required="true">
                             <f:validateDoubleRange minimum="-3" maximum="3"/>
                         </h:inputText>
 
                         <br/>
 
-                        <h:message for="inputY" id="yError" style="animation-duration: 2s"> </h:message>
+                        <h:message for="inputY" id="yError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
 
                         <br/>
 
                         <span>Выберите R:</span>
                         <h:selectOneRadio id="inputR" value="#{pointsBean.r}"
-                                          validatorMessage="Выберите R!"
+                                          requiredMessage="Выберите R!"
                                           required="true"
                         >
                             <f:selectItem itemValue="1" itemLabel="1"/>
@@ -155,13 +156,13 @@
 
                         </h:selectOneRadio>
                         <br/>
-                        <h:message for="inputR" id="rError" style="animation-duration: 2s"/>
+                        <h:message for="inputR" id="rError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
                         <br/>
 
 
                         <h:commandButton value="Отправить" action="#{pointsBean.addPoint}"
                                          id="submitButton">
-                            <f:ajax execute="@form" render="svg statsTable"/>
+                            <f:ajax execute="@form" render="xError yError rError svg statsTable"/>
                         </h:commandButton>
 
                     </div>

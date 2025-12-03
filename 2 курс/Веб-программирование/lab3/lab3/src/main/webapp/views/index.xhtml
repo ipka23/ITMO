@@ -2,22 +2,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>JSF GREETING</title>
+    <title>
+        Веб лаба 3
+    </title>
+    <h:outputStylesheet name="css/index.css"/>
+    <h:outputScript name="js/index.js"/>
 </h:head>
 <h:body>
-    <h:form>
-        <h:outputText value="Hi JSF!"/>
-        <br/>
-        <h:inputText value="#{helloBean.name}" required="true"/>
-        <br/>
-        <h:commandButton value="Make greeting" action="#{helloBean.sayHello}"/>
-        <br/>
-        <h:outputText value="#{helloBean.greeting}"/>
-
-    </h:form>
+    <header>
+        <span>
+            Пчелкин Илья Игоревич, P3206, Вариант 999312
+        </span>
+    </header>
     <h:button styleClass="main-btn" value="Главная страница" outcome="main" />
+    <h:outputText id="clock" value="#{clockBean.currentTime}"/>
+    <p:poll interval="9" listener="#{clockBean.updateCurrentTime}" update="clock"/>
 </h:body>
 </html>

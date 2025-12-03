@@ -7,7 +7,6 @@ let submitButton
 let rInput
 let xInput
 
-// const svg = document.getElementById("svg")
 const rPxSize = 100
 const svgCenterX = 150
 const svgCenterY = 150
@@ -98,7 +97,6 @@ function changeRadiusOnAxis(oldR, newR) {
 }
 
 // Actions with points ===============================================
-
 function setPointXY(x, y, point, scale) {
     point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
     point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
@@ -135,11 +133,7 @@ function changePointColor(x, y, r, point) {
     }
 }
 
-function resetPointColor(point) {
-    point.setAttributeNS(null, "fill", "black")
-}
 function drawPoint() {
-    // y = yInput.value
     dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
@@ -152,8 +146,6 @@ function drawPoint() {
 
 
 function drawPointByClick(e) {
-    // const svg = document.getElementById("svg")
-    // const r = rInput ? rInput.value : undefined
     const absoluteX = e.clientX
     const absoluteY = e.clientY
     const absolutePoint = mainSvg.createSVGPoint()
@@ -213,7 +205,7 @@ function checkTriangle(x, y, r) {
 
 function checkRectangle(x, y, r) {
     if (x.lessThanOrEqualTo(0) && y.greaterThanOrEqualTo(0)) {
-        const halfRNegative = r.div(2).negated();  // -r/2
+        const halfRNegative = r.div(2).negated();
         const xCondition = x.greaterThanOrEqualTo(halfRNegative);
         const yCondition = y.lessThanOrEqualTo(r);
 
