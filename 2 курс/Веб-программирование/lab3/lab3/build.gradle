@@ -7,9 +7,6 @@ group 'ru.ipka23'
 
 repositories {
     mavenCentral()
-//    maven {
-//        url "http://repository.primefaces.org"
-//    }
 }
 
 ext {

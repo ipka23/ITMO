@@ -260,6 +260,9 @@ function loadPoints() {
 }
 
 function changePointColor(x, y, r, point) {
+    x = new Decimal(x);
+    y = new Decimal(y);
+    r = new Decimal(r);
     let hitFlag = checkPointHit(x, y, r)
     if (hitFlag) {
         point.setAttributeNS(null, "fill", "green")
@@ -313,9 +316,7 @@ function drawPointByClick(e) {
 
 }
 
-// function remotePointCommand() {
-//
-// }
+
 function sendPointToServer(e) {
     e.preventDefault()
     const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
@@ -360,28 +361,42 @@ function sendPointToServer(e) {
         // makeFetch("GET", {x: x, y: y, r: r, drawByClick: false}, 'application/x-www-form-urlencoded')
     }
 }
-
 function checkPointHit(x, y, r) {
-    return  checkTriangle(+x, +y, +r) || checkRectangle(+x, +y, +r) || checkCircle(+x, +y, +r);
+    x = new Decimal(x);
+    y = new Decimal(y);
+    r = new Decimal(r);
+
+    return checkTriangle(x, y, r) || checkRectangle(x, y, r) || checkCircle(x, y, r);
 }
 
 function checkCircle(x, y, r) {
-    if (x <= 0 && y <= 0) {
-        return x ** 2 + y ** 2 <= (0.5 * r) ** 2
+    if (x.lessThanOrEqualTo(0) && y.lessThanOrEqualTo(0)) {
+        const halfR = r.div(2);
+        const radiusSquared = halfR.pow(2);
+        const distanceSquared = x.pow(2).plus(y.pow(2));
+
+        return distanceSquared.lessThanOrEqualTo(radiusSquared);
     }
-    return false
+    return false;
 }
 
 function checkTriangle(x, y, r) {
-    if (x >= 0 && y >= 0) {
-        return y <= -2 * x + r
+    if (x.greaterThanOrEqualTo(0) && y.greaterThanOrEqualTo(0)) {
+        const twoX = x.times(2);
+        const rightSide = r.minus(twoX);
+
+        return y.lessThanOrEqualTo(rightSide);
     }
-    return false
+    return false;
 }
 
 function checkRectangle(x, y, r) {
-    if (x <= 0 && y >= 0) {
-        return x >= -r / 2 && y <= r
+    if (x.lessThanOrEqualTo(0) && y.greaterThanOrEqualTo(0)) {
+        const halfRNegative = r.div(2).negated();  // -r/2
+        const xCondition = x.greaterThanOrEqualTo(halfRNegative);
+        const yCondition = y.lessThanOrEqualTo(r);
+
+        return xCondition && yCondition;
     }
-    return false
+    return false;
 }

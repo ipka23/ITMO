@@ -4,15 +4,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 
 
 @ToString
 @Getter
 @NoArgsConstructor
 public class Point {
-    private String x;
-    private String y;
-    private String r;
+    private BigDecimal x;
+    private BigDecimal y;
+    private BigDecimal r;
     private String status;
     private String currentTime;
     private String executionTime;
@@ -21,7 +22,7 @@ public class Point {
     @Setter
     private String validationMessage;
 
-    public Point(String x, String y, String r, String status, String currentTime, String executionTime) {
+    public Point(BigDecimal x, BigDecimal y, BigDecimal r, String status, String currentTime, String executionTime) {
         this.x = x;
         this.y = y;
         this.r = r;
