@@ -3,12 +3,15 @@ package beans;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Named("helloBean")
 @SessionScoped
-@Data
+@Getter
+@Setter
 public class HelloBean implements Serializable {
     private String name;
     private String greeting;

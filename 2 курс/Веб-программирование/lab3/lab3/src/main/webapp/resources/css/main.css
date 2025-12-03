@@ -54,6 +54,14 @@ th {
 .mainCell {
     text-align: center;
 }
+.Y {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    width: 80px;
+    max-width: 80px;
+    min-width: 80px;
+}
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
