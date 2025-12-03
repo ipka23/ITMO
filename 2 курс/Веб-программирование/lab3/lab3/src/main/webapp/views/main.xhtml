@@ -7,18 +7,18 @@
       lang="ru" id="html">
 
 <h:head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>
         Веб лаба 3
     </title>
     <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
-    <h:outputStylesheet name="css/main.css" />
+    <h:outputStylesheet name="css/main.css"/>
     <h:outputScript name="js/script.js"/>
 </h:head>
 
 <h:body>
     <f:metadata>
-        <f:event type="preRenderView" listener="#{pointsBean.resetForm}" />
+        <f:event type="preRenderView" listener="#{pointsBean.resetForm}"/>
     </f:metadata>
     <header class="header">
         <span>
@@ -27,23 +27,23 @@
     </header>
 
     <h:form id="mainForm">
-        <h:button styleClass="main-btn" value="Стартовая страница" outcome="index" />
+        <h:button styleClass="main-btn" value="Стартовая страница" outcome="index"/>
 
-<!--        autoRun="true"-->
+        <!--        autoRun="true"-->
 
         <table class="main">
             <tr>
                 <td class="mainCell">
                     <span id="svgError"></span>
                     <br/>
-<!--                <h:panelGroup id="svgContainer" >-->
+                    <!--                <h:panelGroup id="svgContainer" >-->
                     <p:remoteCommand
                             name="remotePointCommand"
                             update="statsTable"
                             action="#{pointsBean.addPointFromSvg(param.x, param.y, param.r)}"
                             immediate="true">
 
-<!--                        process="@this"-->
+                        <!--                        process="@this"-->
 
                         <f:param name="x"/>
                         <f:param name="y"/>
@@ -108,7 +108,9 @@
                 <td>
                     <div class="coordinates">
                         <span>Выберите X:</span>
-                        <h:selectOneRadio id="inputX" value="#{pointsBean.x}" validatorMessage="X должен быть в диапазоне [-3; 5]">
+                        <h:selectOneRadio id="inputX" value="#{pointsBean.x}"
+                                          validatorMessage="Выберите X!"
+                                          required="true">
                             <f:selectItem itemValue="-3" itemLabel="-3"/>
                             <f:selectItem itemValue="-2" itemLabel="-2"/>
                             <f:selectItem itemValue="-1" itemLabel="-1"/>
@@ -125,7 +127,9 @@
                         <br/>
 
                         <span>Введите Y[-3, 3]:</span>
-                        <h:inputText id="inputY" value="#{pointsBean.y}" validatorMessage="Y должен быть в диапазоне [-3; 3]">
+                        <h:inputText id="inputY" value="#{pointsBean.y}"
+                                     validatorMessage="Y должен быть в диапазоне [-3; 3]"
+                                     required="true">
                             <f:validateDoubleRange minimum="-3" maximum="3"/>
                         </h:inputText>
 
@@ -137,7 +141,9 @@
 
                         <span>Выберите R:</span>
                         <h:selectOneRadio id="inputR" value="#{pointsBean.r}"
-                                     validatorMessage="R должен быть в диапазоне [1; 3]">
+                                          validatorMessage="Выберите R!"
+                                          required="true"
+                        >
                             <f:selectItem itemValue="1" itemLabel="1"/>
                             <f:selectItem itemValue="1.5" itemLabel="1.5"/>
                             <f:selectItem itemValue="2" itemLabel="2"/>
@@ -151,16 +157,10 @@
                         <br/>
 
 
-
-
                         <h:commandButton value="Отправить" action="#{pointsBean.addPoint}"
                                          id="submitButton">
-                        <f:ajax execute="@form" render="svg statsTable" />
+                            <f:ajax execute="@form" render="svg statsTable"/>
                         </h:commandButton>
-
-
-
-
 
                     </div>
                 </td>
