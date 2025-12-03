@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       lang="ru" id="html">
 
 <h:head>
@@ -10,12 +11,11 @@
     <title>
         Веб лаба 3
     </title>
-    <h:outputStylesheet name="css/index.css" />
+    <h:outputStylesheet name="css/main.css" />
+    <h:outputScript name="js/script.js"/>
 </h:head>
 
 <h:body>
-    <script type="module" src="#{request.contextPath}/js/script.js" defer="defer"></script>
-
     <header class="header">
         <span>
             Пчелкин Илья Игоревич, P3206, Вариант 999312
@@ -23,26 +23,40 @@
     </header>
 
     <h:form id="mainForm">
+        <h:button styleClass="main-btn" value="Стартовая страница" outcome="index" />
+
+<!--        autoRun="true"-->
+
         <table class="main">
             <tr>
                 <td class="mainCell">
                     <span id="svgError"></span>
                     <br/>
-                    <svg id="svg" width="300" height="300" viewBox="0 0 300 300">
-                        <polygon points="50,150 150,50 150,150"
-                                 fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
-                        <rect x="100" y="150" width="50" height="100"
-                              fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
-                        <path d="M 250 150 A 100 100 0 0 1 150 250 L 150 150 L 250 150 Z"
+<!--                <h:panelGroup id="svgContainer" >-->
+                    <p:remoteCommand
+                            name="remotePointCommand"
+                            update="statsTable"
+                            action="#{pointsBean.addPointFromSvg(param.x, param.y, param.r)}"
+                            immediate="true">
+
+<!--                        process="@this"-->
+
+                        <f:param name="x"/>
+                        <f:param name="y"/>
+                        <f:param name="r"/>
+                    </p:remoteCommand>
+
+
+                    <svg id="mainSvg" width="300" height="300" viewBox="0 0 300 300">
+
+                        <rect x="100" y="50" width="50" height="100"
                               fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
 
-                        <!-- points from bean -->
-                        <ui:repeat value="#{pointsBean.points}" var="point">
-                            <circle r="1%"
-                                    cx="#{pointsBean.getSvgX(point)}"
-                                    cy="#{pointsBean.getSvgY(point)}"
-                                    fill="black"/>
-                        </ui:repeat>
+                        <polygon points="150,50 200,150 150,150"
+                                 fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
+
+                        <path d="M 150 150 L 150 200 A 50 50 0 0 1 100 150 Z"
+                              fill="#00BFFF" stroke="#00BFFF" stroke-width="1"/>
 
                         <!-- lines -->
                         <line x1="0" y1="150" x2="300" y2="150" stroke="black" stroke-width="1"/>
@@ -79,6 +93,12 @@
                         <line x1="145" y1="100" x2="155" y2="100" fill="black" stroke="black"/>
                         <line x1="145" y1="200" x2="155" y2="200" fill="black" stroke="black"/>
                         <line x1="145" y1="250" x2="155" y2="250" fill="black" stroke="black"/>
+                        <ui:repeat value="#{pointsBean.points}" var="point">
+                            <circle r="1%"
+                                    cx="#{pointsBean.getSvgX(point)}"
+                                    cy="#{pointsBean.getSvgY(point)}"
+                                    fill="black"/>
+                        </ui:repeat>
                     </svg>
                 </td>
                 <td>
@@ -94,20 +114,19 @@
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:selectItem itemValue="4" itemLabel="4"/>
                             <f:selectItem itemValue="5" itemLabel="5"/>
-                            <f:validateDoubleRange minimum="-3" maximum="3"/>
+                            <f:validateDoubleRange minimum="-3" maximum="5"/>
                         </h:selectOneRadio>
                         <br/>
                         <h:message for="inputX" id="xError" style="animation-duration: 2s"/>
                         <br/>
 
-                        <span>Введите Y[-3, 3]</span>
+                        <span>Введите Y[-3, 3]:</span>
                         <h:inputText id="inputY" value="#{pointsBean.y}" validatorMessage="Y должен быть в диапазоне [-3; 3]">
                             <f:validateDoubleRange minimum="-3" maximum="3"/>
                         </h:inputText>
 
-
                         <br/>
-<!--                        <h:outputText id="yError"/>-->
+
                         <h:message for="inputY" id="yError" style="animation-duration: 2s"/>
 
                         <br/>
@@ -128,7 +147,9 @@
                         <br/>
 
                         <h:commandButton value="Отправить" action="#{pointsBean.addPoint}"
-                                         id="submitButton"/>
+                                         id="submitButton">
+                        <f:ajax execute="@form" render="svg statsTable" />
+                        </h:commandButton>
                     </div>
                 </td>
             </tr>
@@ -141,7 +162,7 @@
                                 <f:facet name="header">X</f:facet>
                                 #{point.x}
                             </h:column>
-                            <h:column>
+                            <h:column styleClass="Y">
                                 <f:facet name="header">Y</f:facet>
                                 #{point.y}
                             </h:column>

@@ -1,98 +1,95 @@
-import { EasyIntl } from './libs/easy-intl/index.js'
-import dictionary from './intl/dictionary.js'
-
-const intl = new EasyIntl({
-    autorun: false,
-    dictionary
-})
-let lang = localStorage.getItem("lang")
-if (lang === null) lang = "ru-RU"
-
 let x
-let yValues
+let y
+let yInput
 let r
 let form
 let submitButton
 let rInput
 let xInput
 
-const svg = document.getElementById("svg")
-const rPxSize = svg.clientWidth / 3
+// const svg = document.getElementById("svg")
+const rPxSize = 100
 const svgCenterX = 150
 const svgCenterY = 150
+let mainSvg
+
 let scale
 let dot
 let previousR
 document.addEventListener("DOMContentLoaded", function () {
+    form = document.getElementById("mainForm")
 
-    document.getElementById(lang).setAttribute("selected", "selected")
-    intl.locale = lang
-    intl.localize()
+    submitButton = document.getElementById("mainForm:submitButton")
+    submitButton.addEventListener("click", sendPointToServer)
 
-    form = document.getElementById("form")
-    submitButton = document.getElementById("submitButton")
-    if (submitButton) submitButton.addEventListener("click", sendPointToServer)
-    rInput = document.getElementById("inputR")
-    if (rInput) rInput.addEventListener("input", handleInputR)
-    xInput = document.getElementById("inputX")
-    if (xInput) xInput.addEventListener("input", handleInputX)
-    if (svg) svg.addEventListener("click", drawPointByClick)
+    rInput = document.getElementById("mainForm:inputR")
+    rInput.addEventListener("change", handleChangeR)
 
-    const localeSelector = document.getElementById("localeSelector")
-    localeSelector.onchange = (e) => {
-        let lang = e.target.value
-        intl.locale = lang
-        localStorage.setItem("lang", lang)
-        intl.localize()
-        updateHitMiss('statsTable')
+    xInput = document.getElementById("mainForm:inputX")
+    // xInput.addEventListener("change", handleChangeX)
+
+    yInput = document.getElementById("mainForm:inputY")
+    yInput.value = ""
+    yInput.addEventListener("input", handleInputY)
+
+    mainSvg = document.getElementById("mainSvg")
+    mainSvg.addEventListener("click", drawPointByClick)
+
+    let xRadioValues = document.querySelectorAll('input[name="mainForm:inputX"]')
+    for (let i = 0; i < xRadioValues.length; i++) {
+        xRadioValues[i].checked = false
+        xRadioValues[i].addEventListener("click", function (e){
+            x = +e.target.value
+        })
     }
 
-    intl.localize()
-    updateHitMiss('statsTable')
+    let rRadioValues = document.querySelectorAll('input[name="mainForm:inputR"]')
+    for (let i = 0; i < rRadioValues.length; i++) {
+        rRadioValues[i].checked = false
+        rRadioValues[i].addEventListener("click", function (e){
+            r = +e.target.value
+        })
+    }
 })
 
 
+// function getSelectedR() {
+//     const radioButtons = document.getElementsByName('mainForm:inputR');
+//
+//     for (const radio of radioButtons) {
+//         if (radio.checked) {
+//             return radio.value;
+//         }
+//     }
+//
+//     return undefined;
+// }
 
-export function updateHitMiss(tableID) {
-    let currentLang = localStorage.getItem("lang")
-    if (lang === null) currentLang = lang
-    const table = document.getElementById(tableID)
+// function handleChangeX() {
+//     if (xInput.value < -3 || xInput.value > 3) {
+//         if (xInput.value < 10) {
+//             xInput.value = ""
+//         } else {
+//             xInput.value = xInput.value[0]
+//         }
+//     }
+// }
 
-    for (let r = 0, n = table.rows.length; r < n; r++) {
-        for (let c = 0, m = table.rows[r].cells.length; c < m; c++) {
-            let value = table.rows[r].cells[c].innerHTML.trim()
-            if (value === dictionary["ru-RU"].hit || value === dictionary["eo-EO"].hit || value === dictionary["en-US"].hit) {
-                table.rows[r].cells[c].innerHTML = dictionary[currentLang].hit
-            } else if (value === dictionary["ru-RU"].miss || value === dictionary["eo-EO"].miss || value === dictionary["en-US"].miss){
-                table.rows[r].cells[c].innerHTML = dictionary[currentLang].miss
-            }
+function handleInputY() {
+    if (yInput.value < -3 || yInput.value > 3) {
+        if (yInput.value < 10) {
+            yInput.value = ""
+        } else {
+            yInput.value = yInput.value[0]
         }
     }
 }
 
-function handleInputX() {
-    if (xInput.value < -3 || xInput.value > 3) {
-        if (xInput.value < 10) {
-            xInput.value = ""
-        } else {
-            xInput.value = xInput.value[0]
-        }
-    }
-}
-
-function handleInputR() {
-    const newR = rInput.value
-    if (newR < 1 || newR > 4) {
-        if (newR < 10) {
-            rInput.value = ""
-            return
-        } else {
-            rInput.value = rInput.value[0]
-            return
-        }
-    }
+function handleChangeR() {
+    const newR = r
+    console.log(newR)
     if (newR === "" || isNaN(newR) || newR === undefined) return
-    if (rInput.value === "" || isNaN(rInput.value) || rInput.value === undefined) return;
+    if (r === "" || isNaN(r) || r === undefined) return;
     changeRadiusOnAxis(previousR, newR)
     r = newR
     previousR = newR
@@ -100,7 +97,6 @@ function handleInputR() {
 
 function makeFetch(method, body, contentType) {
     let currentLang = localStorage.getItem("lang")
-    if (lang === null) currentLang = lang
     if (method === "POST") {
         alert("Ошибка: Введите GET запрос!")
     } else if (method === "GET") {
@@ -146,7 +142,7 @@ function errorMessage(elementId, inputField, message) {
     error.innerHTML = "<span style='color: red; animation: 3s fadeOut ease-in forwards'>" +
         `${message}</span>`
 
-    if (message !== undefined && inputField !== undefined && inputField !== "inputY") {
+    if (message !== undefined && inputField !== undefined && (inputField !== "mainForm:inputX" || inputField !== "mainForm:inputR")) {
         const inputEl = document.getElementById(inputField)
         if (inputEl) inputEl.value = ""
     }
@@ -157,23 +153,14 @@ function jsonToDict(json) {
     dict["x"] = json.result.x
     dict["y"] = json.result.y
     dict["r"] = json.result.r
-    let serverStatus = json.result.status
-    const current = localStorage.getItem("lang") || lang
-    if (serverStatus === dictionary["ru-RU"].hit || serverStatus === dictionary["eo-EO"].hit || serverStatus === dictionary["en-US"].hit) {
-        dict["status"] = dictionary[current].hit
-    } else if (serverStatus === dictionary["ru-RU"].miss || serverStatus === dictionary["eo-EO"].miss || serverStatus === dictionary["en-US"].miss) {
-        dict["status"] = dictionary[current].miss
-    } else {
-        dict["status"] = serverStatus
-    }
+    dict["status"] = json.result.status
     dict["currentTime"] = json.result.currentTime
     dict["executionTime"] = json.result.executionTime
     return dict
 }
 
 function dictToJson(dict) {
-    let json = JSON.stringify(dict)
-    return json
+    return JSON.stringify(dict)
 }
 
 function svgToMathCoords(svgX, svgY, r) {
@@ -184,17 +171,6 @@ function svgToMathCoords(svgX, svgY, r) {
     }
 }
 
-function initYvalues() {
-    let yItems = form.y
-    let checkedValues = []
-    for (let i = 0; i < yItems.length; i++) {
-        let y = yItems[i]
-        if (y.checked) {
-            checkedValues.push(y.value)
-        }
-    }
-    return checkedValues
-}
 
 function changeRadiusOnAxis(oldR, newR) {
     let r = newR
@@ -210,7 +186,7 @@ function changeRadiusOnAxis(oldR, newR) {
 }
 
 function updateTable(dict, firstAdd) {
-    const table = document.getElementById("statsTable")
+    const table = document.getElementById("mainForm:statsTable")
     const row = table.insertRow()
     const xCell = row.insertCell(0)
     const yCell = row.insertCell(1)
@@ -249,15 +225,6 @@ function updateTable(dict, firstAdd) {
 }
 
 // Actions with points ===============================================
-function drawPoint(x, y, r) {
-    dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-    scale = rPxSize / r
-    dot.setAttributeNS(null, "r", "1%")
-    setPointXY(x, y, dot, scale)
-    changePointColor(x, y, r, dot)
-    dot.setAttributeNS(null, "visibility", "visible")
-    svg.appendChild(dot)
-}
 
 function setPointXY(x, y, point, scale) {
     point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
@@ -304,78 +271,93 @@ function changePointColor(x, y, r, point) {
 function resetPointColor(point) {
     point.setAttributeNS(null, "fill", "black")
 }
+function drawPoint(x, y, r) {
+    dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+    scale = rPxSize / r
+    dot.setAttributeNS(null, "r", "1%")
+    setPointXY(x, y, dot, scale)
+    changePointColor(x, y, r, dot)
+    dot.setAttributeNS(null, "visibility", "visible")
+    mainSvg.appendChild(dot)
+
+}
+
 
 function drawPointByClick(e) {
-    const r = rInput ? rInput.value : undefined
+    // const svg = document.getElementById("svg")
+    // const r = rInput ? rInput.value : undefined
     const absoluteX = e.clientX
     const absoluteY = e.clientY
-    const absolutePoint = svg.createSVGPoint()
+    const absolutePoint = mainSvg.createSVGPoint()
     absolutePoint.x = absoluteX
     absolutePoint.y = absoluteY
-    const svgPoint = absolutePoint.matrixTransform(svg.getScreenCTM().inverse())
+    const svgPoint = absolutePoint.matrixTransform(mainSvg.getScreenCTM().inverse())
     const svgX = svgPoint.x
     const svgY = svgPoint.y
 
     const coords = svgToMathCoords(svgX, svgY, r)
 
     if (r === undefined || r === "") {
-        const cur = localStorage.getItem("lang") || lang
-        errorMessage("svgError", undefined, dictionary[cur].rInputError)
-    } else {
-        makeFetch("GET", {x: coords.x, y: coords.y, r: r, drawByClick: true})
+        errorMessage("svgError", undefined, "Выберите радиус R!")
+    }
+    else {
+        remotePointCommand([
+            {name: 'x', value: coords.x},
+            {name: 'y', value: coords.y},
+            {name: 'r', value: r}
+        ])
+        drawPoint(coords.x, coords.y, r)
+        // updateTable(point, true)
+
     }
 
 }
 
+// function remotePointCommand() {
+//
+// }
 function sendPointToServer(e) {
     e.preventDefault()
     const regexp = /^[-+]?[0-9]*[.,][0-9]+$|^[-+]?[0-9]+$/
-    x = document.getElementById("inputX").value;
-    yValues = initYvalues()
-    r = rInput ? rInput.value : undefined;
+    // x = xInput.value;
+    // yValues = initYvalues()
+    y = yInput.value
+    // r = rInput ? rInput.value : undefined;
     let successX = true
     let successY = true
     let successR = true
-    let cur = localStorage.getItem("lang")
-    if (cur == null) cur = lang
 
     if (x === undefined || x === "") {
-        errorMessage("xError", "inputX", dictionary[cur].xError)
+        console.log(`x: ${x}`)
+        errorMessage("mainForm:xError", "inputX", "Выберите X!")
         successX = false
     }
 
-    if (yValues.length === 0) {
-        errorMessage("yError", "inputY", dictionary[cur].yInputError)
+    if (y === undefined || y === "") {
+        errorMessage("mainForm:yError", "inputY", 'Введите Y!')
         successY = false
     }
     if (r === undefined || r === "") {
-        errorMessage("rError", "inputR", dictionary[cur].rInputError)
+        console.log(`r: ${r}`)
+        errorMessage("mainForm:rError", "inputR", 'Выберите R!')
         successR = false
     }
 
-    if (!regexp.test(x) && successX) {
-        errorMessage("xError", "inputX", dictionary[cur].xIncorrectError)
+    if (!regexp.test(y) && successY) {
+        errorMessage("mainForm:xError", "inputX", 'Введите Y в правильном формате!')
         successX = false
     }
-    if (!regexp.test(r) && successR) {
-        errorMessage("rError", "inputR", dictionary[cur].rIncorrectError)
-        successR = false
-    }
 
-    if (!(-3 <= x && x <= 3) && successX) {
-        errorMessage("xError", "inputX", dictionary[cur].xBoundsError)
+    if (!(-3 <= y && y <= 3) && successY) {
+        errorMessage("mainForm:xError", "inputX", 'Введите значение Y в пределах [-3;3]!')
         successX = false
     }
-    if (!(1 <= r && r <= 4) && successR) {
-        errorMessage("rError", "inputR", dictionary[cur].rBoundsError)
-        successR = false
-    } else if (successX && successY && successR) {
+     else if (successX && successY && successR) {
+        drawPoint(x, y, r)
 
-        for (let i = 0; i < yValues.length; i++) {
-            let y = yValues[i]
-            makeFetch("GET", {x: x, y: y, r: r, drawByClick: false}, 'application/x-www-form-urlencoded')
-        }
 
+        // ...
+        // makeFetch("GET", {x: x, y: y, r: r, drawByClick: false}, 'application/x-www-form-urlencoded')
     }
 }
 
@@ -384,22 +366,22 @@ function checkPointHit(x, y, r) {
 }
 
 function checkCircle(x, y, r) {
-    if (x >= 0 && y <= 0) {
-        return x ** 2 + y ** 2 <= r ** 2;
+    if (x <= 0 && y <= 0) {
+        return x ** 2 + y ** 2 <= (0.5 * r) ** 2
     }
     return false
 }
 
 function checkTriangle(x, y, r) {
-    if (x <= 0 && y >= 0) {
-        return y < x + r
+    if (x >= 0 && y >= 0) {
+        return y <= -2 * x + r
     }
     return false
 }
 
 function checkRectangle(x, y, r) {
-    if (x <= 0 && y <= 0) {
-        return x > -r / 2 && y > -r;
+    if (x <= 0 && y >= 0) {
+        return x >= -r / 2 && y <= r
     }
     return false
 }

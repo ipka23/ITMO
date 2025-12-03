@@ -4,10 +4,10 @@ import java.util.ResourceBundle;
 
 public class CoordinatesValidator {
 
-    public static ValidateResponse validate(String x, String y, String r, ResourceBundle messages) {
-        ValidateResponse validatedX = validateX(x, messages);
-        ValidateResponse validatedY = validateY(y, messages);
-        ValidateResponse validatedR = validateR(r, messages);
+    public static ValidateResponse validate(String x, String y, String r) {
+        ValidateResponse validatedX = validateX(x, ResourceBundle.getBundle("messages_ru"));
+        ValidateResponse validatedY = validateY(y, ResourceBundle.getBundle("messages_ru"));
+        ValidateResponse validatedR = validateR(r, ResourceBundle.getBundle("messages_ru"));
 
         if (validatedX.isValid()) {
 

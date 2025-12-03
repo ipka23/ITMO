@@ -7,6 +7,9 @@ group 'ru.ipka23'
 
 repositories {
     mavenCentral()
+//    maven {
+//        url "http://repository.primefaces.org"
+//    }
 }
 
 ext {
@@ -32,6 +35,12 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     implementation 'com.google.code.gson:gson:2.8.9'
     compileOnly("javax.faces:javax.faces-api:2.3")
+
+//    compile 'org.primefaces:primefaces:4.0'
+//    compile 'org.primefaces.themes:bootstrap:1.0.10'
+    implementation("org.primefaces:primefaces:14.0.0-RC2:jakarta")
+    implementation("org.primefaces.extensions:primefaces-extensions:14.0.0-RC2:jakarta")
+
 }
 
 
