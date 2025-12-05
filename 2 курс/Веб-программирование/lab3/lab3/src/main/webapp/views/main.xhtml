@@ -157,7 +157,7 @@
                         <br/>
 
 
-                        <h:commandButton value="Отправить" action="#{pointsBean.addPoint}"
+                        <h:commandButton styleClass="submitButton" value="Отправить" action="#{pointsBean.addPoint}"
                                          id="submitButton">
                             <f:ajax execute="@form" render="xError yError rError svg statsTable"/>
                         </h:commandButton>
