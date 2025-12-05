@@ -54,8 +54,6 @@ public class PointsBean implements Serializable {
     }
 
     public void addPointFromSvg(BigDecimal cx, BigDecimal cy, BigDecimal cr) {
-//        if (x == null && y == null) return;
-
         this.x = cx;
         this.y = cy;
         this.r = cr;
@@ -87,11 +85,13 @@ public class PointsBean implements Serializable {
         double scale = rPxSize / point.getR().doubleValue();
         return SVG_CENTER_Y - point.getY().doubleValue() * scale;
     }
+
     public void resetForm() {
         this.x = null;
         this.y = null;
         this.r = null;
     }
+
     public String getPointColor(Point p) {
         if (r != null) {
             return HitChecker.check(p.getX(), p.getY(), r) ? "green" : "red";
