@@ -95,7 +95,7 @@ function changeRadiusOnAxis(oldR, newR) {
     changePointR(oldR, newR)
 }
 
-// Actions with points ===============================================
+
 function setPointXY(x, y, point, scale) {
     point.setAttributeNS(null, "cx", (svgCenterX + x * scale).toString())
     point.setAttributeNS(null, "cy", (svgCenterY - y * scale).toString())
