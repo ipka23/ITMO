@@ -40,7 +40,6 @@ public class CoordinatesValidator {
 
     private static ValidateResponse validateY(String val, ResourceBundle messages) {
         double y;
-        boolean flag = false;
         try {
             y = Double.parseDouble(val);
             if (-5 <= y && y <= 3) {

@@ -1,11 +1,56 @@
+/* Ваш существующий header - без изменений */
 header {
     font-family: "fantasy";
     font-size: 24px;
     padding: 5%;
-    /*background: url("https://avatars.mds.yandex.net/i?id=a7f07506b51bfd12bfc2dc1c4505afc70003fbda-16848981-images-thumbs&n=13");*/
     background: #00BFFF;
     color: white;
     text-align: center;
-    /*margin-bottom: 2%;*/
 }
 
+.main-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background: #00BFFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main-btn:hover {
+    background: #0099CC;
+}
+
+.clock {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+    padding: 15px;
+    border: 2px solid #00BFFF;
+    border-radius: 8px;
+    background: white;
+    max-width: 300px;
+}
+
+.time {
+    font-family: 'Courier New', monospace;
+    font-size: 32px;
+    color: #00BFFF;
+    display: block;
+    line-height: 1.2;
+}
+
+.date {
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    color: #666;
+    display: block;
+    line-height: 1.2;
+    margin-top: 8px;
+}
