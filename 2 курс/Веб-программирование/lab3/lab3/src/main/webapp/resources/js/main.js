@@ -136,6 +136,7 @@ function drawPoint() {
     dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
+    y = yInput.value
     setPointXY(x, y, dot, scale)
     changePointColor(x, y, r, dot)
     dot.setAttributeNS(null, "visibility", "visible")
