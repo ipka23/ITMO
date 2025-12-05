@@ -25,6 +25,8 @@ tasks.withType(JavaCompile) {
 dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-api:11.0.0')
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+    implementation 'org.postgresql:postgresql:42.6.0'
+
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -37,7 +39,7 @@ dependencies {
 //    compile 'org.primefaces.themes:bootstrap:1.0.10'
     implementation("org.primefaces:primefaces:14.0.0-RC2:jakarta")
     implementation("org.primefaces.extensions:primefaces-extensions:14.0.0-RC2:jakarta")
-
+    implementation('org.hibernate.orm:hibernate-core:6.2.5.Final')
 }
 
 

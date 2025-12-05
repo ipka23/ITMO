@@ -13,18 +13,14 @@
     </title>
     <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
     <h:outputStylesheet name="css/main.css"/>
-    <h:outputScript name="js/script.js"/>
+    <h:outputScript name="js/main.js"/>
 </h:head>
 
 <h:body>
     <f:metadata>
         <f:event type="preRenderView" listener="#{pointsBean.resetForm}"/>
     </f:metadata>
-<!--    <header class="header">-->
-<!--        <span>-->
-<!--            Пчелкин Илья Игоревич, P3206, Вариант 999312-->
-<!--        </span>-->
-<!--    </header>-->
+
 
     <h:form id="mainForm">
         <h:button styleClass="main-btn" value="Стартовая страница" outcome="index"/>
@@ -132,6 +128,7 @@
                         <h:inputText id="inputY" value="#{pointsBean.y}"
                                      validatorMessage="Y должен быть в диапазоне [-3; 3]"
                                      requiredMessage="Введите Y!"
+                                     converterMessage="Введите число!"
                                      required="true">
                             <f:validateDoubleRange minimum="-3" maximum="3"/>
                         </h:inputText>

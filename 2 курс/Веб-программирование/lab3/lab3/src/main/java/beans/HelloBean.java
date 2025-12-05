@@ -2,7 +2,6 @@ package beans;
 
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,5 +1,6 @@
 package beans;
 
+import controllers.DBManager;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -27,6 +28,7 @@ public class PointsBean implements Serializable {
     private String currentTime;
     private String executionTime;
     private ArrayList<Point> points;
+    private DBManager dbManager;
 
     private static final double SVG_WIDTH = 300;
     private static final double SVG_HEIGHT = 300;
@@ -39,11 +41,12 @@ public class PointsBean implements Serializable {
 
     @PostConstruct
     public void init() {
-//        dbController = ...
-//        points = dbController.get...
         this.x = null;
         this.y = null;
         this.r = null;
+        dbManager = new DBManager();
+        points = dbManager.getPoints();
+
 
         if (points == null) {
             points = new ArrayList<>();
@@ -56,20 +59,20 @@ public class PointsBean implements Serializable {
         this.x = cx;
         this.y = cy;
         this.r = cr;
-//        CoordinatesValidator.validate(this.x, this.y, this.r);
         addPoint();
     }
 
     public void addPoint() {
         double startTime = System.nanoTime();
+        if (!CoordinatesValidator.validate(this.x.toString(), this.y.toString(), this.r.toString()).isValid()) return;
         status = HitChecker.check(x, y, r) ? "Попадание" : "Промах";
-        currentTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        currentTime = new SimpleDateFormat("HH:mm dd-MM-yyyy").format(Calendar.getInstance().getTime());
         double endTime = System.nanoTime();
         double t = (endTime - startTime) / FORMAT_TO_MILLIS;
         executionTime = String.format("%.2fms", t);
         Point p = new Point(x, y, r, status, currentTime, executionTime);
         points.add(p);
-        System.out.println("Point was added:\n" + p);
+        dbManager.addPoint(p);
 
     }
 
