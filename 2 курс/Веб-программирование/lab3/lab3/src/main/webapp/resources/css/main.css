@@ -7,12 +7,6 @@
     text-align: center;
 }
 
-button {
-    font-family: "fantasy";
-    border: none;
-    cursor: pointer;
-}
-
 span {
     font-family: "fantasy";
 }
@@ -123,7 +117,7 @@ svg#mainSvg {
     border-color: #0099CC;
 }
 
-#submitButton {
+.coordinates .submitButton {
     margin-top: 20px;
     padding: 12px 25px;
     background: #00BFFF;
@@ -136,7 +130,7 @@ svg#mainSvg {
     width: 100%;
 }
 
-#submitButton:hover {
+.coordinates .submitButton:hover {
     background: #0099CC;
 }
 
