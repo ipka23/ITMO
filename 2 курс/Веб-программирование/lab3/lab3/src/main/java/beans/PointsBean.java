@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import utility.CoordinatesValidator;
 import utility.HitChecker;
-import utility.Point;
+import entities.Point;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
