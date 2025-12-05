@@ -1,10 +1,7 @@
 package filters;
 
 import beans.DateBean;
-import jakarta.ejb.SessionBean;
-import jakarta.enterprise.inject.spi.Bean;
 import jakarta.enterprise.inject.spi.CDI;
-import jakarta.faces.context.FacesContext;
 import jakarta.servlet.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +11,8 @@ import java.io.IOException;
 public class TimezoneFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -25,13 +23,13 @@ public class TimezoneFilter implements Filter {
 
         Cookie timezoneCookie = null;
         if (cookies != null) {
-            for (Cookie cookie : cookies){
+            for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("TIMEZONE_COOKIE")) {
                     timezoneCookie = cookie;
                     break;
                 }
             }
-            if (timezoneCookie != null){
+            if (timezoneCookie != null) {
                 String timezone = "GMT";
                 int offset = -1 * Integer.parseInt(timezoneCookie.getValue()) / 60;
                 if (offset >= 0) {
@@ -46,6 +44,7 @@ public class TimezoneFilter implements Filter {
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 
 }

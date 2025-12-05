@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/src/main/resources/sql/create.sql" value="ed579b37-684b-4e50-85e4-db78534c4431" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/truncate.sql" value="ed579b37-684b-4e50-85e4-db78534c4431" />
   </component>
 </project>

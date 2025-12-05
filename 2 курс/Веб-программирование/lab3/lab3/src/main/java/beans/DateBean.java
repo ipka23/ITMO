@@ -26,7 +26,8 @@ public class DateBean implements Serializable {
         this.timezone = zone;
         updateCurrentDateTime();
     }
+
     public void updateCurrentDateTime() {
-        this.currentDateTime =  Date.from(ZonedDateTime.now(ZoneId.of(timezone)).toInstant());
+        this.currentDateTime = Date.from(ZonedDateTime.now(ZoneId.of(timezone)).toInstant());
     }
 }

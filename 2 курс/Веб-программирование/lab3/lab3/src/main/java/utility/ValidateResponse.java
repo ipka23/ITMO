@@ -11,6 +11,7 @@ public class ValidateResponse {
         valid = status;
         this.message = message;
     }
+
     public ValidateResponse(boolean status) {
         valid = status;
         this.message = "успешно";

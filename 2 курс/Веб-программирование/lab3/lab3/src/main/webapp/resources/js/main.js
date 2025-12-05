@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     rInput.addEventListener("change", handleChangeR)
 
     xInput = document.getElementById("mainForm:inputX")
-    // xInput.addEventListener("change", handleChangeX)
 
     yInput = document.getElementById("mainForm:inputY")
     yInput.value = ""
