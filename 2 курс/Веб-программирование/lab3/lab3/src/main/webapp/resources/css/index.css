@@ -38,7 +38,7 @@ header {
 }
 
 .time {
-    font-family: 'Courier New', monospace;
+    font-family: "fantasy";
     font-size: 32px;
     color: #00BFFF;
     display: block;
@@ -46,7 +46,7 @@ header {
 }
 
 .date {
-    font-family: 'Courier New', monospace;
+    font-family: "fantasy";
     font-size: 20px;
     color: #666;
     display: block;
