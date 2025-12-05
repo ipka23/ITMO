@@ -1,4 +1,4 @@
-package utility;
+package entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

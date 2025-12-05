@@ -1,7 +1,7 @@
 package controllers;
 
 import jakarta.persistence.*;
-import utility.Point;
+import entities.Point;
 
 import java.util.ArrayList;
 import java.util.List;
