@@ -132,11 +132,13 @@ function changePointColor(x, y, r, point) {
     }
 }
 
-function drawPoint() {
+function drawPoint(click) {
     dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
-    y = yInput.value
+    if (!click) {
+        y = yInput.value
+    }
     setPointXY(x, y, dot, scale)
     changePointColor(x, y, r, dot)
     dot.setAttributeNS(null, "visibility", "visible")
@@ -168,7 +170,7 @@ function drawPointByClick(e) {
         ])
         x = coords.x
         y = coords.y
-        drawPoint()
+        drawPoint(true)
     }
 
 }
