@@ -136,14 +136,21 @@ function drawPoint(click) {
     dot = document.createElementNS("http://www.w3.org/2000/svg", "circle")
     scale = rPxSize / r
     dot.setAttributeNS(null, "r", "1%")
-    if (!click) {
+    if (!click || click instanceof PointerEvent) {
         y = yInput.value
     }
     setPointXY(x, y, dot, scale)
     changePointColor(x, y, r, dot)
     dot.setAttributeNS(null, "visibility", "visible")
     mainSvg.appendChild(dot)
-
+    // mainSvg.getElementById("pointAddedDiv").innerHTML = "<span style=\"color:green;animation: 2s fadeOut ease-in forwards\">Точка успешно добавлена!</span>"
+    let messageSpan = document.getElementById("successMessage")
+    messageSpan.textContent = "Точка успешно добавлена!";
+    messageSpan.style.display = "inline-block";
+    setTimeout(() => {
+        messageSpan.textContent = ""
+        messageSpan.style.display = "none";
+    }, 2000)
 }
 
 

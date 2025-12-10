@@ -142,12 +142,25 @@ svg#mainSvg {
     font-family: "fantasy";
     font-size: 14px;
 }
-
+@keyframes successFadeOut {
+    from {
+        opacity: 1;
+        background: #fffde6;
+        color: green;
+        border: 1px solid #c1f397;
+    }
+    to {
+        opacity: 0;
+        background: transparent;
+        color: transparent;
+        border: none;
+    }
+}
 @keyframes fadeOut {
     from {
         opacity: 1;
         background: #ffe6e6;
-        color: #d00;
+        color: red;
         border: 1px solid #ffcccc;
     }
     to {

@@ -118,7 +118,8 @@
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:selectItem itemValue="4" itemLabel="4"/>
                             <f:selectItem itemValue="5" itemLabel="5"/>
-                            <f:validateDoubleRange minimum="-3" maximum="5"/>
+<!--                            <f:validateDoubleRange minimum="-3" maximum="5"/>-->
+                            <f:validator validatorId="xValidator"/>
                         </h:selectOneRadio>
                         <br/>
                         <h:message for="inputX" id="xError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
@@ -126,13 +127,15 @@
 
                         <span>Введите Y[-3, 3]:</span>
                         <h:inputText id="inputY" value="#{pointsBean.y}"
-                                     validatorMessage="Y должен быть в диапазоне [-3; 3]"
                                      requiredMessage="Введите Y!"
                                      converterMessage="Введите число!"
                                      required="true">
-                            <f:validateDoubleRange minimum="-3" maximum="3"/>
-                        </h:inputText>
+<!--                            <f:validateDoubleRange minimum="-3" maximum="3"/>-->
+<!--                                     validatorMessage="Y должен быть в диапазоне [-3; 3]"-->
 
+                            <f:validator validatorId="yValidator"/>
+
+                        </h:inputText>
                         <br/>
 
                         <h:message for="inputY" id="yError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
@@ -150,23 +153,30 @@
                             <f:selectItem itemValue="2.5" itemLabel="2.5"/>
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:validateDoubleRange minimum="1" maximum="3"/>
-
+                            <f:validator validatorId="rValidator"/>
                         </h:selectOneRadio>
                         <br/>
                         <h:message for="inputR" id="rError" style="color:red; animation: 2s fadeOut ease-in forwards"/>
                         <br/>
 
 
-                        <h:commandButton styleClass="submitButton" value="Отправить" action="#{pointsBean.addPoint}"
-                                         id="submitButton">
+                        <h:commandButton styleClass="submitButton"
+                                         value="Отправить"
+                                         id="submitButton"
+                                         action="#{pointsBean.addPoint}">
                             <f:ajax execute="@form" render="xError yError rError svg statsTable"/>
                         </h:commandButton>
-
+<!--                        <h:outputText id="addingMessage"-->
+<!--                                      style="color:green;-->
+<!--                                      animation: 2s fadeOut ease-in forwards"-->
+<!--                                      value=""/>-->
+                        <span id="successMessage" style="display: none; color: green; animation: 2s successFadeOut ease-in forwards;"/>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
+
                     <div class="statsTableDiv">
                         <h:dataTable id="statsTable" value="#{pointsBean.points}" var="point"
                                      border="1" class="statsTable">

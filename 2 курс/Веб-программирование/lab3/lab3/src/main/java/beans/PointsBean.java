@@ -6,7 +6,6 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
-import validators.CoordinatesValidator;
 import utility.HitChecker;
 import entities.Point;
 
@@ -15,6 +14,8 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
 @Named("pointsBean")
 @SessionScoped
@@ -29,7 +30,8 @@ public class PointsBean implements Serializable {
     private String executionTime;
     private ArrayList<Point> points;
     private DBManager dbManager;
-
+//    private String addingMessage;
+//    private List<Point> reversedPoints;
     private static final double SVG_WIDTH = 300;
     private static final double SVG_HEIGHT = 300;
     private static final double SVG_CENTER_X = SVG_WIDTH / 2;
@@ -44,6 +46,7 @@ public class PointsBean implements Serializable {
         this.x = null;
         this.y = null;
         this.r = null;
+//        this.addingMessage = null;
         dbManager = new DBManager();
         points = dbManager.getPoints();
 
@@ -62,16 +65,16 @@ public class PointsBean implements Serializable {
 
     public void addPoint() {
         double startTime = System.nanoTime();
-        if (!CoordinatesValidator.validate(this.x.toString(), this.y.toString(), this.r.toString()).isValid()) return;
+
         status = HitChecker.check(x, y, r) ? "Попадание" : "Промах";
         currentTime = new SimpleDateFormat("HH:mm dd-MM-yyyy").format(Calendar.getInstance().getTime());
         double endTime = System.nanoTime();
         double t = (endTime - startTime) / FORMAT_TO_MILLIS;
         executionTime = String.format("%.2fms", t);
         Point p = new Point(x, y, r, status, currentTime, executionTime);
-        points.add(p);
+        points.addFirst(p);
         dbManager.addPoint(p);
-
+//        this.addingMessage = "Точка успешно добавлена!";
     }
 
     public double getSvgX(Point point) {
