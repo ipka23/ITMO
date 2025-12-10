@@ -1,8 +1,14 @@
-package utility;
+package validators;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.validator.ValidatorException;
+import jakarta.validation.Validator;
+import utility.ValidateResponse;
 
 import java.util.ResourceBundle;
 
-public class CoordinatesValidator {
+public class CoordinatesValidator implements Validator {
 
     public static ValidateResponse validate(String x, String y, String r) {
         ValidateResponse validatedX = validateX(x, ResourceBundle.getBundle("messages_ru"));
@@ -64,5 +70,10 @@ public class CoordinatesValidator {
         } catch (NumberFormatException e) {
             return new ValidateResponse(false, messages.getString("r_must_be_number"));
         }
+    }
+    @Override
+    public void validate(FacesContext context, UIComponent component,
+                         Object value) throws ValidatorException {
+
     }
 }
