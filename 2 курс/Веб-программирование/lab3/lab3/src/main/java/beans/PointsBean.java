@@ -6,7 +6,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
-import utility.CoordinatesValidator;
+import validators.CoordinatesValidator;
 import utility.HitChecker;
 import entities.Point;
 
