@@ -19,17 +19,21 @@
         </span>
     </header>
 
-    <h:panelGroup id="clock" layout="block" styleClass="clock">
-        <h:outputText class="time" value="#{dateBean.currentDateTime}">
+
+    <h:panelGroup id="clockPanel" layout="block" styleClass="clockPanel">
+        <p:clock class="analogClock" id="analogClock" displayMode="analog" mode="server" value="#{dateBean.currentDateTime}"
+                 style="width: 250px; height: 250px;"/>
+
+        <h:outputText class="digitalTime" value="#{dateBean.currentDateTime}">
             <f:convertDateTime pattern="HH:mm" timeZone="#{dateBean.timezone}"/>
         </h:outputText>
         <br/>
-        <h:outputText class="date" value="#{dateBean.currentDateTime}">
+        <h:outputText class="digitalDate" value="#{dateBean.currentDateTime}">
             <f:convertDateTime pattern="dd-MM-yyyy" timeZone="#{dateBean.timezone}"/>
         </h:outputText>
     </h:panelGroup>
-    <p:poll interval="9" listener="#{dateBean.updateCurrentDateTime}" update="clock"/>
 
+    <p:poll interval="9" listener="#{dateBean.updateCurrentDateTime}" update="clockPanel"/>
     <h:button styleClass="main-btn" value="Главная страница" outcome="main" />
 </h:body>
 </html>

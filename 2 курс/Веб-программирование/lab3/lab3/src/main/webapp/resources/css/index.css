@@ -26,7 +26,7 @@ header {
     background: #0099CC;
 }
 
-.clock {
+.clockPanel {
     display: block;
     text-align: center;
     margin: 40px auto;
@@ -37,7 +37,7 @@ header {
     max-width: 300px;
 }
 
-.time {
+.digitalTime {
     font-family: "fantasy";
     font-size: 32px;
     color: #00BFFF;
@@ -45,7 +45,7 @@ header {
     line-height: 1.2;
 }
 
-.date {
+.digitalDate {
     font-family: "fantasy";
     font-size: 20px;
     color: #666;
@@ -53,3 +53,4 @@ header {
     line-height: 1.2;
     margin-top: 8px;
 }
+
