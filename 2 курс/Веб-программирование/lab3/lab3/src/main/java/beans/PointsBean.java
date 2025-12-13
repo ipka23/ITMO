@@ -72,7 +72,7 @@ public class PointsBean implements Serializable {
         double t = (endTime - startTime) / FORMAT_TO_MILLIS;
         executionTime = String.format("%.2fms", t);
         Point p = new Point(x, y, r, status, currentTime, executionTime);
-        points.addFirst(p);
+        points.add(0, p);
         dbManager.addPoint(p);
 //        this.addingMessage = "Точка успешно добавлена!";
     }

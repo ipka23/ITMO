@@ -15,8 +15,6 @@ import java.util.Date;
 @Setter
 @Getter
 @ApplicationScoped
-
-
 public class DateBean implements Serializable {
     private String timezone = "UTC";
 
