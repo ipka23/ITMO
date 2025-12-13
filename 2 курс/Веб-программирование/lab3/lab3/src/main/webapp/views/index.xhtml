@@ -21,7 +21,11 @@
 
 
     <h:panelGroup id="clockPanel" layout="block" styleClass="clockPanel">
-        <p:clock class="analogClock" id="analogClock" displayMode="analog" mode="server" value="#{dateBean.currentDateTime}"
+        <p:clock class="analogClock" id="analogClock"
+                 displayMode="analog"
+                 mode="server"
+                 value="#{dateBean.currentDateTime}"
+                 timeZone="#{dateBean.timezone}"
                  style="width: 250px; height: 250px;"/>
 
         <h:outputText class="digitalTime" value="#{dateBean.currentDateTime}">
