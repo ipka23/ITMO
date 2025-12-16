@@ -3,6 +3,7 @@ package beans;
 import controllers.DBManager;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,7 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
-public class PointsBean implements Serializable {
+public class  PointsBean implements Serializable {
     private BigDecimal x;
     private BigDecimal y;
     private BigDecimal r;
@@ -48,7 +49,7 @@ public class PointsBean implements Serializable {
         this.r = null;
 //        this.addingMessage = null;
         dbManager = new DBManager();
-        points = dbManager.getPoints();
+        points = new ArrayList<>(dbManager.getPoints());
 
 
         if (points == null) {
