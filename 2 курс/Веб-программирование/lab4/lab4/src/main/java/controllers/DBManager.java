@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Point;
+import entities.User;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -20,4 +21,17 @@ public class DBManager implements Serializable {
     public void addPoint(Point point) {
         em.persist(point);
     }
+
+    public boolean userExist(User user){
+        return true;
+    }
+
+    public void addUser(User user) {
+        if (!userExist()) {
+
+        }
+
+
+    }
+
 }
