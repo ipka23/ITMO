@@ -22,7 +22,7 @@ import java.util.List;
 @SessionScoped
 @Getter
 @Setter
-public class  PointsBean implements Serializable {
+public class PointsBean implements Serializable {
     private BigDecimal x;
     private BigDecimal y;
     private BigDecimal r;
@@ -30,8 +30,9 @@ public class  PointsBean implements Serializable {
     private String currentTime;
     private String executionTime;
     private ArrayList<Point> points;
+    @Inject
     private DBManager dbManager;
-//    private String addingMessage;
+    //    private String addingMessage;
 //    private List<Point> reversedPoints;
     private static final double SVG_WIDTH = 300;
     private static final double SVG_HEIGHT = 300;
@@ -47,8 +48,6 @@ public class  PointsBean implements Serializable {
         this.x = null;
         this.y = null;
         this.r = null;
-//        this.addingMessage = null;
-        dbManager = new DBManager();
         points = dbManager.getPoints();
 
 

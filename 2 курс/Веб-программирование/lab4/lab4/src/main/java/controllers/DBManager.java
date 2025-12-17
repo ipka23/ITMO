@@ -1,14 +1,15 @@
 package controllers;
 
-import entities.User;
-import jakarta.persistence.*;
 import entities.Point;
+import jakarta.ejb.Singleton;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.concurrent.RecursiveTask;
 
-public class DBManager {
-
+@Singleton
+public class DBManager implements Serializable {
     @PersistenceContext(unitName = "persistenceUnit")
     private EntityManager em;
 
@@ -16,16 +17,7 @@ public class DBManager {
         return new ArrayList<>(em.createQuery("SELECT p FROM Point p", Point.class).getResultList());
     }
 
-
     public void addPoint(Point point) {
         em.persist(point);
-    }
-    public boolean userExists(User user) {
-        return em.contains(user);
-    }
-    public void addUser(User user){
-        if (userExists(user)) {
-            em.persist(user);
-        }
     }
 }
