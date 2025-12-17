@@ -49,7 +49,7 @@ public class  PointsBean implements Serializable {
         this.r = null;
 //        this.addingMessage = null;
         dbManager = new DBManager();
-        points = new ArrayList<>(dbManager.getPoints());
+        points = dbManager.getPoints();
 
 
         if (points == null) {
