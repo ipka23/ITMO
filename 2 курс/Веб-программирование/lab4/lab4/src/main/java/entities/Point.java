@@ -5,17 +5,15 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "points")
 public class Point {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "x", nullable = false)
@@ -35,6 +33,9 @@ public class Point {
 
     @Column(name = "exectime", nullable = false)
     private String executionTime;
+
+    @Column(name = "userId", nullable = false)
+    private String userId;
 
     public Point(BigDecimal x, BigDecimal y, BigDecimal r,
                  String status, String currentTime, String executionTime) {
