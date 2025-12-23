@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("proglangstask5")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92e9cd8b4096595b6fe1f9165d9469c676fe7f51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbf404523c309853852e8032400fd8f0d3eddaa1")]
 [assembly: System.Reflection.AssemblyProductAttribute("proglangstask5")]
 [assembly: System.Reflection.AssemblyTitleAttribute("proglangstask5")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
