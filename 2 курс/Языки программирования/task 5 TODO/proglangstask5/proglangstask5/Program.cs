@@ -94,34 +94,28 @@
             List<string> opps = new List<string> { "+", "-", "*", "/" };
             // bool isVar = !long.TryParse(token, out long result) && !opps.Contains(token) && !token.Equals("(") && !token.Equals(")"); 
             bool isVarOrConst = !opps.Contains(token) && !token.Equals("(") && !token.Equals(")");
-            if (isVarOrConst)
-            {
-                rpn.Add(token);
-            }
-            else if (opps.Contains(token))
+            
+            if (opps.Contains(token)) // operator
             {
                 //expr a+b*(c-d)
                 
                 //expr 3+2*(6-4)
-                if (stack.Count != 0)
+                //expr (a+b)
+                while (stack.Count > 0 && opps.Contains(stack.Peek()) && operators[stack.Peek()] >= operators[token])
                 {
-                    //expr (a+b)
-                    while (opps.Contains(stack.First()) && operators[stack.First()] >= operators[token])
-                    {
-                        rpn.Add(stack.Pop());
-                        if (stack.Count == 0) break;
-                    }
+                    rpn.Add(stack.Pop());
                 }
+                
                
                 stack.Push(token);
             }
-            else if (token.Equals("("))
+            else if (token.Equals("(")) // (
             {
                 stack.Push(token);
             }
-            else if (token.Equals(")"))
+            else if (token.Equals(")")) // ) 
             {
-                while (!stack.First().Equals("("))
+                while (!stack.Peek().Equals("("))
                     // Console.WriteLine(stack.First());
                 {
                     rpn.Add(stack.Pop());
@@ -129,13 +123,16 @@
                 }
                 stack.Pop();
             }
+            else // operand
+            {
+                rpn.Add(token);
+            }
         }
 
         while (stack.Count > 0)
         {
             rpn.Add(stack.Pop());
         }
-        // List<string> reversed = rpn.Reverse().ToList();
         return String.Join("", rpn);
     }
 }
