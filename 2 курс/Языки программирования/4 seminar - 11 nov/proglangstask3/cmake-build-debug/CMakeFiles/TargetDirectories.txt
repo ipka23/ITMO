@@ -1,3 +1,0 @@
-/Users/ipka23/Desktop/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/proglangstask3.dir
-/Users/ipka23/Desktop/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/ipka23/Desktop/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

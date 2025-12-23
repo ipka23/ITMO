@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2025.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\proglangstask3.dir/objects.a
+"C:\PROGRA~1\JetBrains\CLion 2025.2.2\bin\mingw\bin\ar.exe" qc CMakeFiles\proglangstask3.dir/objects.a @CMakeFiles\proglangstask3.dir\objects1.rsp
+"C:\PROGRA~1\JetBrains\CLion 2025.2.2\bin\mingw\bin\gcc.exe" -g -Wl,--whole-archive CMakeFiles\proglangstask3.dir/objects.a -Wl,--no-whole-archive -o proglangstask3.exe -Wl,--out-implib,libproglangstask3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\proglangstask3.dir\linkLibs.rsp

@@ -1,0 +1,14 @@
+C:\Users\ipka23\proglangstask5\proglangstask5\bin\Debug\net9.0\proglangstask5.exe
+C:\Users\ipka23\proglangstask5\proglangstask5\bin\Debug\net9.0\proglangstask5.deps.json
+C:\Users\ipka23\proglangstask5\proglangstask5\bin\Debug\net9.0\proglangstask5.runtimeconfig.json
+C:\Users\ipka23\proglangstask5\proglangstask5\bin\Debug\net9.0\proglangstask5.dll
+C:\Users\ipka23\proglangstask5\proglangstask5\bin\Debug\net9.0\proglangstask5.pdb
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.AssemblyInfoInputs.cache
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.AssemblyInfo.cs
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.csproj.CoreCompileInputs.cache
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.dll
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\refint\proglangstask5.dll
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.pdb
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\proglangstask5.genruntimeconfig.cache
+C:\Users\ipka23\proglangstask5\proglangstask5\obj\Debug\net9.0\ref\proglangstask5.dll
