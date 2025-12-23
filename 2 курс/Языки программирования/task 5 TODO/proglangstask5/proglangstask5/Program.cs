@@ -57,7 +57,7 @@
             else if (input.Equals("do") && !String.IsNullOrEmpty(expr))
             {
                 Console.WriteLine($"before: {expr}");
-                string result = ShuttingYard(tokens);
+                string result = ShuntingYard(tokens);
                 Console.WriteLine($"after: {result}");
             }
             else if (input.Equals("exit"))
@@ -76,7 +76,7 @@
     }
 
 
-    static string ShuttingYard(string[] tokens)
+    static string ShuntingYard(string[] tokens)
     {
         Dictionary<string, int> operators = new Dictionary<string, int>
         {
@@ -87,7 +87,7 @@
         };
 
         Stack<string> stack = new Stack<string>();
-        Stack<string> rpn = new Stack<string>();
+        List<string> rpn = new List<string>();
 
         foreach (var token in tokens)
         {
@@ -96,7 +96,7 @@
             bool isVarOrConst = !opps.Contains(token) && !token.Equals("(") && !token.Equals(")");
             if (isVarOrConst)
             {
-                rpn.Push(token);
+                rpn.Add(token);
             }
             else if (opps.Contains(token))
             {
@@ -108,7 +108,7 @@
                     //expr (a+b)
                     while (opps.Contains(stack.First()) && operators[stack.First()] >= operators[token])
                     {
-                        rpn.Push(stack.Pop());
+                        rpn.Add(stack.Pop());
                         if (stack.Count == 0) break;
                     }
                 }
@@ -124,7 +124,7 @@
                 while (!stack.First().Equals("("))
                     // Console.WriteLine(stack.First());
                 {
-                    rpn.Push(stack.Pop());
+                    rpn.Add(stack.Pop());
                     // Console.WriteLine(stack.Pop());
                 }
                 stack.Pop();
@@ -133,10 +133,10 @@
 
         while (stack.Count > 0)
         {
-            rpn.Push(stack.Pop());
+            rpn.Add(stack.Pop());
         }
-        List<string> reversed = rpn.Reverse().ToList();
-        return String.Join("", reversed);
+        // List<string> reversed = rpn.Reverse().ToList();
+        return String.Join("", rpn);
     }
 }
 //expr (a+b)
