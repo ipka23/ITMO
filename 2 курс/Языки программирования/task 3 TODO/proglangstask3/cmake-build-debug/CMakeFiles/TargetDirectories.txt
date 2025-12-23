@@ -1,0 +1,3 @@
+C:/Users/ipka23/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/proglangstask3.dir
+C:/Users/ipka23/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ipka23/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
