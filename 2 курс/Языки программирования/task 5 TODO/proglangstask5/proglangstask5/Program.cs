@@ -1,4 +1,6 @@
-﻿class Program
+﻿
+
+class Program
 {
     readonly static string info = """
                                   Commands:
@@ -9,15 +11,14 @@
                                   exit                      Quit
                                   """;
 
-    static Dictionary<string, string> variables;
+    static Dictionary<string, string> variables = new Dictionary<string, string>();
     static string expr;
     static string[] tokens;
-
+    static string funcBody = "";
     static void Main(string[] args)
     {
         // Console.WriteLine(info);
-        // string[] tokens;
-        variables = new Dictionary<string, string>();
+        
         while (true)
         {
             Console.Write("> ");
@@ -59,6 +60,12 @@
                 Console.WriteLine($"before: {expr}");
                 string result = ShuntingYard(tokens);
                 Console.WriteLine($"after: {result}");
+                
+                // HandleExpr(result);
+                
+              
+                
+                
             }
             else if (input.Equals("exit"))
             {
@@ -76,6 +83,29 @@
     }
 
 
+    static void HandleExpr(string expr, string funcBody)
+    {
+        string funcArgs = "";
+        // string funcBody = "";
+        for (var i = 0; i < expr.Length; i++)
+        {
+            string key = expr[i].ToString();
+            if (variables.ContainsKey(key))
+            {
+                funcArgs += $"int {key}, ";
+                // funcBody += $"string expr{i} = "
+            }
+
+            if (i == expr.Length - 1) funcArgs = funcArgs.Substring(0, funcArgs.Length - 2); // обрезка ", "
+        }
+
+        string path = "proglangstask5/mylib.c";
+        File.Create(path);
+        File.WriteAllText(path,"#include <stdio.h>\n void func(" + funcArgs + ") {\n" + funcBody + "\n}");
+        
+    }
+
+    
     static string ShuntingYard(string[] tokens)
     {
         Dictionary<string, int> operators = new Dictionary<string, int>
@@ -89,12 +119,10 @@
         Stack<string> stack = new Stack<string>();
         List<string> rpn = new List<string>();
 
-        foreach (var token in tokens)
+        for (var i = 0; i < tokens.Length; i++)
         {
+            string token = tokens[i];
             List<string> opps = new List<string> { "+", "-", "*", "/" };
-            // bool isVar = !long.TryParse(token, out long result) && !opps.Contains(token) && !token.Equals("(") && !token.Equals(")"); 
-            bool isVarOrConst = !opps.Contains(token) && !token.Equals("(") && !token.Equals(")");
-            
             if (opps.Contains(token)) // operator
             {
                 //expr a+b*(c-d)
@@ -106,7 +134,7 @@
                     rpn.Add(stack.Pop());
                 }
                 
-               
+                
                 stack.Push(token);
             }
             else if (token.Equals("(")) // (
