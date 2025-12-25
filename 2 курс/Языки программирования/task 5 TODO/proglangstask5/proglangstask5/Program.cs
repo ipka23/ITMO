@@ -11,13 +11,12 @@ class Program
                                   info                      Commands info
                                   exit                      Quit
                                   """;
-    
+
     static Dictionary<string, string> variables = new Dictionary<string, string>();
     static string expr;
 
     static string[] tokens;
 
-    // static string funcBody = "int stack[1000];\nint sp =0;";
     static List<string> operators = new List<string> { "+", "-", "*", "/" };
 
     static Dictionary<string, int> operatorsWithPriority = new Dictionary<string, int>
@@ -28,9 +27,22 @@ class Program
         { "/", 2 }
     };
 
+
+    [DllImport("kernel32.dll")]
+    static extern IntPtr LoadLibrary(string libFileName);
+
+    [DllImport("kernel32.dll")]
+    static extern IntPtr GetProcAddress(IntPtr libAddr, string functionName);
+
+    [DllImport("kernel32.dll")]
+    static extern bool FreeLibrary(IntPtr libAddr);
+
+    delegate void FuncDelegate();
+
     static void Main(string[] args)
     {
-        // Console.WriteLine(info);
+        Console.WriteLine(info);
+        Console.WriteLine("dir: " + Directory.GetCurrentDirectory());
 
         while (true)
         {
@@ -46,25 +58,12 @@ class Program
                 {
                     tokens[i] = expr[i].ToString();
                 }
-                // for (var i = 5; i - 5 < input.Length; i++)
-                // {
-                //     Console.WriteLine(input[i].ToString());
-                //     tokens.Append(input[i].ToString());
-                // }
-                // expr = String.Join("", tokens);
             }
             else if (input.StartsWith("set ") && !String.IsNullOrEmpty(expr))
             {
-                // char[] varValChars = new char[] { };
-                // for (var i = 4; i < input.Length; i++)
-                // {
-                //     varValChars[i] = input[i];
-                // }
-
                 string s = input.Substring(4, input.Length - 4);
 
 
-                // string varValString = new String(varValChars);
                 String[] varVal = s.Split(" ", 2);
 
                 string variable = varVal[0];
@@ -73,9 +72,9 @@ class Program
             }
             else if (input.Equals("do") && !String.IsNullOrEmpty(expr))
             {
-                Console.WriteLine($"before: {expr}");
+                Console.WriteLine($"infix: {expr}");
                 string result = ShuntingYard(tokens);
-                Console.WriteLine($"after: {result}");
+                Console.WriteLine($"rpn: {result}");
 
                 HandleRpnExpr(result);
             }
@@ -95,7 +94,7 @@ class Program
     }
 
 
-    static void HandleRpnExpr(string expr) //, string funcBody
+    static void HandleRpnExpr(string expr)
     {
         Stack<string> stack = new Stack<string>();
         string funcArgs = "";
@@ -105,8 +104,9 @@ class Program
             string token = expr[i].ToString();
             if (variables.ContainsKey(token))
             {
-                funcArgs += $"int {token}, ";
+                funcBody.AppendLine($"    long long {token} = {variables[token]};");
             }
+
             if (token == " ") continue;
             if (operators.Contains(token)) // operator 
             {
@@ -114,53 +114,75 @@ class Program
                 string leftVar = stack.Pop();
                 string rightVal;
                 string leftVal;
-                
+
                 if (variables.ContainsKey(rightVar)) rightVal = variables[rightVar];
                 else rightVal = rightVar;
                 if (variables.ContainsKey(leftVar)) leftVal = variables[leftVar];
                 else leftVal = leftVar;
-                
-                
+
+
                 string varName = $"expr{i}";
-                funcBody.AppendLine($"    int {varName} = {leftVal} {token} {rightVal};");
-                funcBody.AppendLine($"    printf(\"%d %s %d = %d\n\", {leftVar}, \"{token}\", {rightVar}, {varName});");
+                funcBody.AppendLine($"    long long {varName} = {leftVal} {token} {rightVal};");
+                funcBody.AppendLine(
+                    $"    printf(\"%d %s %d = %d\\n\", {leftVar}, \"{token}\", {rightVar}, {varName});");
                 stack.Push(varName);
             }
             else // operand
             {
                 stack.Push(token);
             }
-
-            if (i == expr.Length - 1) funcArgs = funcArgs.Substring(0, funcArgs.Length - 2); // обрезка ", "
         }
 
-        int[] funcParams = getValuesArray(variables);
-        MakeCFile(funcArgs, funcBody.ToString(), funcParams);
-
+        RunCFile(funcArgs, funcBody.ToString());
     }
-
-    private static int[] getValuesArray(Dictionary<string, string> variables)
-    {
-        int[] valuesArray = new int[]{};
-        var i = 0;
-        foreach (var keyVal in variables)
-        {
-            valuesArray[i] = int.Parse(keyVal.Value);
-            i++;
-        }
-        return valuesArray;
-    }
-    private static void MakeCFile(string funcArgs, string funcBody, int[] funcParams)
+    
+    private static void RunCFile(string funcArgs, string funcBody)
     {
         string path = "mylib.c";
         File.WriteAllText(path, "#include <stdio.h>\n\nvoid func(" + funcArgs + ") {\n" + funcBody + "}");
-        // System.Diagnostics.Process.Start("mylib.c");
-        string cmd = "gcc -fPIC -shared mylib.c -o mylib.dll";
-        System.Diagnostics.Process.Start("buildlib.exe", cmd);
+        string currentDir = Directory.GetCurrentDirectory();
 
-        [DllImport("mylib.dll")]
-        static extern void func(int[] funcParams);
+        string libC = "mylib.c";
+        string libOBJ = "mylib.obj";
+        string libDLL = "mylib.dll";
+
+        string myLibC = Path.Combine(currentDir, libC);
+        string myLibOBJ = Path.Combine(currentDir, libOBJ);
+        string myLibDLL = Path.Combine(currentDir, libDLL);
+
+
+        if (File.Exists(myLibOBJ)) File.Delete(myLibOBJ);
+        if (File.Exists(myLibDLL)) File.Delete(myLibDLL);
+
+        string gccCommand =
+            $"/c gcc -c -fPIC \"{myLibC}\" -o \"{myLibOBJ}\" && gcc -shared -o \"{myLibDLL}\" \"{myLibOBJ}\"";
+        var process = System.Diagnostics.Process.Start("cmd.exe", gccCommand);
+        process.WaitForExit();
+
+        IntPtr mylib = IntPtr.Zero;
+        IntPtr funcPtr = IntPtr.Zero;
+
+        mylib = LoadLibrary(libDLL);
+
+        if (mylib == IntPtr.Zero)
+        {
+            Console.WriteLine("mylib не загрузилась!");
+        }
+
+        funcPtr = GetProcAddress(mylib, "func");
+
+        if (funcPtr == IntPtr.Zero)
+        {
+            Console.WriteLine("funcPtr == null!");
+        }
+
+        FuncDelegate func = (FuncDelegate)Marshal.GetDelegateForFunctionPointer(funcPtr, typeof(FuncDelegate));
+
+        func();
+
+        FreeLibrary(mylib);
     }
+
     static string ShuntingYard(string[] tokens)
     {
         Stack<string> stack = new Stack<string>();
@@ -173,51 +195,45 @@ class Program
             if (token == " ") continue;
             if (operators.Contains(token)) // operator
             {
-                //expr a+b*(c-d)
-
-                //expr 3+2*(6-4)
-                //expr (a+b)
                 while (stack.Count > 0 && operators.Contains(stack.Peek()) &&
                        operatorsWithPriority[stack.Peek()] >= operatorsWithPriority[token])
                 {
                     rpn.Add(stack.Pop());
                 }
-                // Console.Write($"string expr{i} = {String.Join("", rpn)};\n");
 
 
                 stack.Push(token);
             }
-            else if (token.Equals("(")) // (
+            else if (token.Equals("("))
             {
                 stack.Push(token);
             }
-            else if (token.Equals(")")) // ) 
+            else if (token.Equals(")"))
             {
                 while (!stack.Peek().Equals("("))
-                    // Console.WriteLine(stack.First());
                 {
                     rpn.Add(stack.Pop());
-                    // Console.WriteLine(stack.Pop());
                 }
 
-                // Console.Write($"string expr{i} = {String.Join("", rpn)};\n");
                 stack.Pop();
             }
             else // operand
             {
                 rpn.Add(token);
-                // Console.Write($"string expr{i} = {String.Join("", rpn)};\n");
             }
         }
 
         while (stack.Count > 0)
         {
             rpn.Add(stack.Pop());
-            // Console.Write($"string expr{tokens.Length} = {String.Join("", rpn)};\n");
         }
 
         return String.Join(" ", rpn);
     }
 }
+//test expr:
 //expr a+b
+//expr (a+b)
+//expr a+b*(c-d)
+//expr 3+2*(6-4)
 //expr a*b/c+d*e-f/g
