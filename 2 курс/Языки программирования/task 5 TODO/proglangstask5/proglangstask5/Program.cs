@@ -42,7 +42,6 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine(info);
-        Console.WriteLine("dir: " + Directory.GetCurrentDirectory());
 
         while (true)
         {
