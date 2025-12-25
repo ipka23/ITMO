@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices;
+using System.Text;
 
 class Program
 {
@@ -10,7 +11,7 @@ class Program
                                   info                      Commands info
                                   exit                      Quit
                                   """;
-
+    
     static Dictionary<string, string> variables = new Dictionary<string, string>();
     static string expr;
 
@@ -133,12 +134,33 @@ class Program
             if (i == expr.Length - 1) funcArgs = funcArgs.Substring(0, funcArgs.Length - 2); // обрезка ", "
         }
 
-        string path = "mylib.c";
-        File.WriteAllText(path, "#include <stdio.h>\n\nvoid func(" + funcArgs + ") {\n" + funcBody + "}");
-        // System.Diagnostics.Process.Start(""); gcc -fPIC -shared mylib.c -o mylib.dll
+        int[] funcParams = getValuesArray(variables);
+        MakeCFile(funcArgs, funcBody.ToString(), funcParams);
+
     }
 
+    private static int[] getValuesArray(Dictionary<string, string> variables)
+    {
+        int[] valuesArray = new int[]{};
+        var i = 0;
+        foreach (var keyVal in variables)
+        {
+            valuesArray[i] = int.Parse(keyVal.Value);
+            i++;
+        }
+        return valuesArray;
+    }
+    private static void MakeCFile(string funcArgs, string funcBody, int[] funcParams)
+    {
+        string path = "mylib.c";
+        File.WriteAllText(path, "#include <stdio.h>\n\nvoid func(" + funcArgs + ") {\n" + funcBody + "}");
+        // System.Diagnostics.Process.Start("mylib.c");
+        string cmd = "gcc -fPIC -shared mylib.c -o mylib.dll";
+        System.Diagnostics.Process.Start("buildlib.exe", cmd);
 
+        [DllImport("mylib.dll")]
+        static extern void func(int[] funcParams);
+    }
     static string ShuntingYard(string[] tokens)
     {
         Stack<string> stack = new Stack<string>();
