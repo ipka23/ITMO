@@ -2,17 +2,18 @@
   <title>Вход</title>
 </header>
 <div class="main">
-  <form class="form-card">
+  <span [(ngModel)]="errorMessage"></span>
+  <form #loginForm="ngForm" class="form-card">
     <h1 class="title">Добро пожаловать!</h1>
     <br>
     <span class="field-label">Введите имя пользователя:</span>
     <br>
-    <label class="field-control"><input [(ngModel)]="username" type="text" class="text-input"></label>
+    <label class="field-control"><input [(ngModel)]="username" name="username" type="text" class="text-input"></label>
     <br>
     <span class="field-label">Введите пароль:</span>
     <br>
-    <label class="field-control"><input [(ngModel)]="password" type="password" class="text-input"></label>
-    <button type="submit" (click)="submitForm()" class="main-btn">Войти</button>
+    <label class="field-control"><input [(ngModel)]="password" name="password" type="password" class="text-input"></label>
+    <button (click)="submitForm()" class="main-btn">Войти</button>
   </form>
 </div>
 <footer class="footer">

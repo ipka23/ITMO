@@ -22,9 +22,6 @@
         @Column(name = "password", nullable = false)
         private String password;
 
-//        @OneToMany(mappedBy = "user")
-//        private List<PointEntity> points;
-
         public UserEntity(String login, String password) {
             this.login = login;
             this.password = password;

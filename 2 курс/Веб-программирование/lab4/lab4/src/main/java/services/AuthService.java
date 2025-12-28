@@ -2,6 +2,8 @@ package services;
 
 import dto.AuthRequest;
 import dto.AuthResponse;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import persistence.dao.UserDAO;
@@ -10,8 +12,14 @@ import persistence.entities.UserEntity;
 @Stateless
 public class AuthService {
 
-    @Inject
+    @EJB
     private UserDAO db;
+    @PostConstruct
+    public void init() {
+        System.out.println("=== AuthService INIT ===");
+        System.out.println("DB class: " + (db != null ? db.getClass().getName() : "NULL"));
+        System.out.println("DB toString: " + db);
+    }
 
     public AuthResponse validate(AuthRequest request) {
         if (request.getPassword() == null || request.getPassword().isEmpty()) {

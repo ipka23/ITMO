@@ -27,8 +27,9 @@ public class UserDAO {
 
     public boolean passwordIsCorrect(UserEntity u) {
         String password = u.getPassword();
-        UserEntity user = em.createQuery("select u from UserEntity u where u.password like :password", UserEntity.class).setParameter("password", password).getSingleResultOrNull();
-        return user != null;
+        List<UserEntity> users = em.createQuery("select u from UserEntity u where u.password like :password", UserEntity.class).setParameter("password", password).getResultList();
+        if (users.size() == 1) return true;
+        else return false;
     }
 
     public void addUser(UserEntity user) {

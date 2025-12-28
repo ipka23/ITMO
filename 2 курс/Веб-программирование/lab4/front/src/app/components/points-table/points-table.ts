@@ -6,6 +6,7 @@ import {DataService} from '../../services/data-service';
 import {PointRequest} from '../../dto/PointRequest';
 import {reduce} from 'rxjs';
 import {CommonInfoService} from '../../services/common-info-service';
+import {PointResponse} from '../../dto/PointResponse';
 
 
 @Component({
@@ -21,15 +22,15 @@ export class PointsTableComponent implements OnInit {
   constructor(private dataService: DataService, private common: CommonInfoService) {}
 
   ngOnInit() {
+    this.loadPointsFromServer()
     this.dataService.getPoints().subscribe({
       next: (response) => {
-        this.points = response.points
+          this.points.unshift(response.getPoint());
       },
       error: () => {
         this.errorMessage = "serverErr"
       }
     })
-    this.common.sub``
   }
 
   addPoint(point: PointRequest) {
@@ -42,4 +43,20 @@ export class PointsTableComponent implements OnInit {
       }
     })
   }
+
+
+  private loadPointsFromServer(): void {
+    this.dataService.getPoints().subscribe({
+      next: (response) => {
+        const points = response.points || response;
+
+        this.common.setPoints(points);
+
+      },
+      error: () => {
+        this.errorMessage = "Ошибка загрузки данных";
+      }
+    });
+  }
+
 }
