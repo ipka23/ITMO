@@ -1,0 +1,24 @@
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th>R</th>
+      <th>Попадание/промах</th>
+      <th>Текущее время</th>
+      <th>Время выполнения</th>
+    </tr>
+    </thead>
+    @for (point of points; track point) {
+      <tbody>
+      <td>point.x</td>
+      <td>point.y</td>
+      <td>point.r</td>
+      <td>point.result</td>
+      <td>point.currentTime</td>
+      <td>point.executionTime</td>
+      </tbody>
+    }
+  </table>
+</div>

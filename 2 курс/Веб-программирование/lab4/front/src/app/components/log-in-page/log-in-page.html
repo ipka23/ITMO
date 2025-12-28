@@ -1,0 +1,22 @@
+<header>
+  <title>Вход</title>
+</header>
+<div>
+  <form>
+    <h1>Добро пожаловать!</h1>
+    <br>
+    <span>Введите имя пользователя:</span>
+    <br>
+    <label><input [(ngModel)]="username"></label>
+
+    <br>
+    <span>Введите пароль:</span>
+    <br>
+    <label><input [(ngModel)]="password"></label>
+    <button type="submit" (click)="submitForm()" >Войти</button>
+  </form>
+</div>
+<footer>
+  <h4>Нет аккаунта?</h4>
+  <button (click)="redirectToRegister()" >Зарегистрироваться</button>
+</footer>

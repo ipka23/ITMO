@@ -1,0 +1,2 @@
+ssh -p 2222 s467204@se.ifmo.ru "rm -rf /home/studs/s467204/web/wildfly-37.0.1.Final/standalone/deployments/lab4.war"
+scp -P 2222 build/libs/lab4.war s467204@se.ifmo.ru:web/wildfly-37.0.1.Final/standalone/deployments

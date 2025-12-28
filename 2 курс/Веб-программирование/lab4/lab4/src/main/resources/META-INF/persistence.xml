@@ -4,7 +4,24 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
              version="3.2">
     <persistence-unit name="persistenceUnit" transaction-type="JTA">
+
         <jta-data-source>java:jboss/PostgresDS_lab4</jta-data-source>
-        <class>entities.Point</class>
+        <class>persistence.entities.PointEntity</class>
+        <class>persistence.entities.UserEntity</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.create-source"
+                      value="metadata"/>
+
+            <property name="jakarta.persistence.show-sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+
+
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+
+        </properties>
     </persistence-unit>
 </persistence>
