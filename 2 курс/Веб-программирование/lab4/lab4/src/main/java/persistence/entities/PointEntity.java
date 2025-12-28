@@ -38,10 +38,6 @@
         @Column(name = "userId", nullable = false)
         private Long userId;
 
-//        @ManyToOne
-//        @JoinColumn(name = "userId", nullable = false)
-//        private UserEntity user;
-
         public PointEntity(BigDecimal x, BigDecimal y, BigDecimal r,
                            String status, String currentTime, String executionTime) {
             this.x = x;

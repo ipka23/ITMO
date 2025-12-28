@@ -6,6 +6,7 @@ import {PointRequest} from '../../dto/PointRequest';
 import {DataService} from '../../services/data-service';
 import {Point} from '../../models/Point';
 import {PointResponse} from '../../dto/PointResponse';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: "app-coordinates-form",
@@ -24,18 +25,24 @@ export class CoordinatesFormComponent {
   // @Output() buttonClicked = new EventEmitter<any>();
   errorMessage = ""
   // point: Point = new PointResponse()
+
+  private pointsSubscription?: Subscription;
+  private pointAddedSubscription?: Subscription;
+
   submitForm(): void {
     this.buttonClicked = true
     this.common.r = +this.rSelect
 
     this.dataService.sendPoint(new PointRequest(this.xSelect, this.yInput, this.rSelect)).subscribe({
       next: (response) => {
-        this.common.point = response.getPoint()
+        const newPoint = response.getPoint();
+        this.common.addPoint(newPoint);
       },
       error: () => {
         this.errorMessage = "err"
       }
     })
+
 
     setTimeout(() => {
       this.buttonClicked = false

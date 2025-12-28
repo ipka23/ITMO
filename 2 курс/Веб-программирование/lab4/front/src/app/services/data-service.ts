@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Point} from '../models/Point';
 import {CommonInfoService} from './common-info-service';
 import {PointRequest} from '../dto/PointRequest';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {PointResponse} from '../dto/PointResponse';
 import {AuthResponse} from '../dto/AuthResponse';
 import {AuthRequest} from '../dto/AuthRequest';
@@ -18,14 +18,23 @@ export class DataService {
 
   sendPoint(request: PointRequest): Observable<PointResponse> {
     const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/add-point`
-    return this.http.post<PointResponse>(url, request)
-
+    return this.http.post<PointResponse>(url, request).pipe(
+      tap((response) => {
+        const point = response.getPoint() ;
+        this.common.addPoint(point);
+      })
+    );
   }
 
 
   getPoints(): Observable<PointResponse> {
-    const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/get-points`
-    return this.http.get<PointResponse>(url)
+    const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/get-points`;
+    return this.http.get<PointResponse>(url).pipe(
+      tap((response: PointResponse) => {
+        const points: Point[] = response.points || response;
+        this.common.setPoints(points);
+      })
+    );
   }
 
 // todo https || hash || и то и то

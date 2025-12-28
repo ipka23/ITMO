@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
@@ -21,11 +21,24 @@ export class LogInPage {
 
   username = ''
   password = ''
+  errorMessage = ''
+
   redirectToRegister() {
     this.router.navigate(['/register'])
   }
 
   submitForm() {
-    this.dataService.getLogInResponse(new AuthRequest(this.username, this.password))
+    console.log(`${this.username}\n${this.password}`)
+    this.dataService.getLogInResponse(new AuthRequest(this.username, this.password)).subscribe({
+      next: (response) => {
+        if (response.isValid) {
+          this.common.userId = +response.id
+          this.router.navigate(['/points/' + response.id])
+        }
+      },
+      error: (response)=> {
+        this.errorMessage = response.message
+      }
+    })
   }
 }

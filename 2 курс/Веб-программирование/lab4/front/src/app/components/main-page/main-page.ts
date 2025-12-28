@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CoordinatesFormComponent} from '../coordinates-form/coordinates-form';
 import {PointsTableComponent} from '../points-table/points-table';
 import {SvgGraphComponent} from '../svg-graph/svg-graph';
