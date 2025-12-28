@@ -1,0 +1,80 @@
+.header {
+  font-family: "fantasy";
+  font-size: 24px;
+  padding: 5%;
+  background: #00BFFF;
+  color: white;
+  text-align: center;
+}
+
+.main {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.form-card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid #00BFFF;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.title {
+  font-family: "fantasy";
+  text-align: center;
+}
+
+.field-label {
+  font-family: "fantasy";
+  color: #333;
+  font-weight: bold;
+}
+
+.field-control {
+  display: block;
+}
+
+.text-input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #00BFFF;
+  border-radius: 4px;
+  font-family: "fantasy";
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #0099CC;
+}
+
+.main-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  background: #00BFFF;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "fantasy";
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #0099CC;
+}
+
+.main-btn:hover {
+  background: #0099CC;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}

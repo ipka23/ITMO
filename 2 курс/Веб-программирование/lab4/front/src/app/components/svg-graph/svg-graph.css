@@ -1,0 +1,44 @@
+#mainSvg {
+  display: block;
+  margin: 0 auto;
+  background: white;
+  border: 2px solid #00BFFF;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+svg text {
+  font-family: "fantasy";
+  font-size: 14px;
+}
+
+circle:hover {
+  r: 2.5%;
+  stroke: #333;
+  stroke-width: 1;
+}
+
+.faces-message {
+  display: block;
+  padding: 5px 10px;
+  margin: 5px 0 10px 0;
+  border-radius: 4px;
+  font-family: "fantasy";
+  font-size: 14px;
+  animation: 2s errorFadeOut ease-in forwards;
+}
+
+@keyframes errorFadeOut {
+  from {
+    opacity: 1;
+    background: #ffe6e6;
+    color: red;
+    border: 1px solid #ffcccc;
+  }
+  to {
+    opacity: 0;
+    background: transparent;
+    color: transparent;
+    border: none;
+  }
+}

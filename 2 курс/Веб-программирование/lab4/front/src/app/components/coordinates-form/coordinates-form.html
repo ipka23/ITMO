@@ -1,55 +1,57 @@
-<span>Выберите X:</span>
-<label>
-  <select [(ngModel)]="xSelect">
-    <option value="-2">-2</option>
-    <option value="-1.5">-1.5</option>
-    <option value="-1">-1</option>
-    <option value="-0.5">-0.5</option>
-    <option value="0">0</option>
-    <option value="0.5">0.5</option>
-    <option value="1">1</option>
-    <option value="1.5">1.5</option>
-    <option value="2">2</option>
-  </select>
-</label>
-<br>
-@if (xSelect === "" && buttonClicked) {
-  <span style="color: red" >Выберите X!</span>
-}
-@else if (+xSelect < -2 && +xSelect > 2 && buttonClicked) {
-  <span style="color: red" >X должен быть от -2 до 2!</span>
-}
-<span>Введите Y[-3;5]:</span>
-<label><input [(ngModel)]="yInput" type="number" step="any"></label>
-<br>
-@if (yInput === "" && buttonClicked) {
-  <span  style="color: red" >Выберите Y!</span>
-}
-@else if (+yInput < -3 && +yInput > 5 && buttonClicked) {
-  <span style="color: red">Y должен быть от -3 до 5!</span>
-}
-<span  >Выберите R:</span>
-<label>
-  <select [(ngModel)]="rSelect">
-    <option value="-2">-2</option>
-    <option value="-1.5">-1.5</option>
-    <option value="-1">-1</option>
-    <option value="-0.5">-0.5</option>
-    <option value="0" selected>0</option>
-    <option value="0.5">0.5</option>
-    <option value="1">1</option>
-    <option value="1.5">1.5</option>
-    <option value="2">2</option>
-  </select>
+<section class="form-container">
+  <span class="form-label">Выберите X:</span>
+  <label>
+    <select [(ngModel)]="xSelect" class="form-select">
+      <option value="-2">-2</option>
+      <option value="-1.5">-1.5</option>
+      <option value="-1">-1</option>
+      <option value="-0.5">-0.5</option>
+      <option value="0" >0</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+    </select>
+  </label>
   <br>
-  @if (rSelect === "" && buttonClicked) {
-    <span style="color: red">Выберите радиус R!</span>
+  @if (xSelect === "" && buttonClicked) {
+    <span class="error-message">Выберите X!</span>
   }
-  @else if (+rSelect < 0 && buttonClicked) {
-    <span style="color: red" >R должен быть от 0 до 2!</span>
+  @else if ((+xSelect < -2 || +xSelect > 2) && buttonClicked) {
+    <span class="error-message">X должен быть от -2 до 2!</span>
   }
-</label>
-<br>
-<label>
-  <button type="submit" (click)="submitForm()">Отправить</button>
-</label>
+  <span class="form-label">Введите Y[-3;5]:</span>
+  <label><input [(ngModel)]="yInput" type="number" step="any" class="form-input"></label>
+  <br>
+  @if (yInput === "" && buttonClicked) {
+    <span class="error-message">Выберите Y!</span>
+  }
+  @else if ((+yInput < -3 || +yInput > 5) && buttonClicked) {
+    <span class="error-message">Y должен быть от -3 до 5!</span>
+  }
+  <span class="form-label">Выберите R:</span>
+  <label>
+    <select [(ngModel)]="rSelect" (click)="changeR()" class="form-select">
+      <option value="-2">-2</option>
+      <option value="-1.5">-1.5</option>
+      <option value="-1">-1</option>
+      <option value="-0.5">-0.5</option>
+      <option value="0">0</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+    </select>
+    <br>
+    @if (rSelect === "" && buttonClicked) {
+      <span class="error-message">Выберите радиус R!</span>
+    }
+    @else if (+rSelect < 0) {
+      <span class="error-message">R должен быть от 0 до 2!</span>
+    }
+  </label>
+  <br>
+  <label>
+    <button type="submit" (click)="submitForm()" class="form-button">Отправить</button>
+  </label>
+</section>

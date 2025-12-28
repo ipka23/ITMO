@@ -1,0 +1,73 @@
+.statsTableDiv {
+  margin-top: 30px;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 380px;
+  border: 2px solid #00BFFF;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "fantasy";
+  font-size: 14px;
+}
+
+.statsTable thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.statsTable th {
+  background: #00BFFF;
+  color: white;
+  padding: 12px 8px;
+  font-weight: bold;
+  border: 1px solid #0099CC;
+  text-align: center;
+}
+
+.statsTable td {
+  text-align: center;
+  padding: 10px 8px;
+  border: 1px solid #ddd;
+  font-family: "fantasy";
+}
+
+.statsTable tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.statsTable tbody tr:hover {
+  background-color: #e6f7ff;
+}
+
+.X, .Y, .R {
+  font-weight: bold;
+}
+
+.result {
+  font-weight: bold;
+}
+
+.result.hit {
+  color: green;
+}
+
+.result.miss {
+  color: red;
+}
+
+.time {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.exec {
+  font-family: monospace;
+  color: #666;
+}
