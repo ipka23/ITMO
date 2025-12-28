@@ -1,5 +1,5 @@
-<div>
-  <table>
+<div class="statsTableDiv">
+  <table class="statsTable">
     <thead>
     <tr>
       <th>X</th>
@@ -12,12 +12,14 @@
     </thead>
     @for (point of points; track point) {
       <tbody>
-      <td>point.x</td>
-      <td>point.y</td>
-      <td>point.r</td>
-      <td>point.result</td>
-      <td>point.currentTime</td>
-      <td>point.executionTime</td>
+      <tr>
+        <td class="X">point.x</td>
+        <td class="Y">point.y</td>
+        <td class="R">point.r</td>
+        <td class="result" [class.hit]="point.status === 'hit'" [class.miss]="point.status === 'miss'">point.result</td>
+        <td class="time">point.currentTime</td>
+        <td class="exec">point.executionTime</td>
+      </tr>
       </tbody>
     }
   </table>

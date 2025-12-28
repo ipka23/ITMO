@@ -1,22 +1,21 @@
-<header>
+<header class="header">
   <title>Вход</title>
 </header>
-<div>
-  <form>
-    <h1>Добро пожаловать!</h1>
+<div class="main">
+  <form class="form-card">
+    <h1 class="title">Добро пожаловать!</h1>
     <br>
-    <span>Введите имя пользователя:</span>
+    <span class="field-label">Введите имя пользователя:</span>
     <br>
-    <label><input [(ngModel)]="username"></label>
-
+    <label class="field-control"><input [(ngModel)]="username" type="text" class="text-input"></label>
     <br>
-    <span>Введите пароль:</span>
+    <span class="field-label">Введите пароль:</span>
     <br>
-    <label><input [(ngModel)]="password"></label>
-    <button type="submit" (click)="submitForm()" >Войти</button>
+    <label class="field-control"><input [(ngModel)]="password" type="password" class="text-input"></label>
+    <button type="submit" (click)="submitForm()" class="main-btn">Войти</button>
   </form>
 </div>
-<footer>
+<footer class="footer">
   <h4>Нет аккаунта?</h4>
-  <button (click)="redirectToRegister()" >Зарегистрироваться</button>
+  <button (click)="redirectToRegister()" class="main-btn">Зарегистрироваться</button>
 </footer>

@@ -1,0 +1,100 @@
+.form-container {
+  background: #f0f8ff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #00BFFF;
+  margin-left: 20px;
+}
+
+.form-label {
+  display: block;
+  margin: 10px 0 5px 0;
+  color: #333;
+  font-weight: bold;
+  font-family: "fantasy";
+}
+
+.form-select {
+  padding: 8px;
+  border: 2px solid #00BFFF;
+  border-radius: 4px;
+  width: 150px;
+  font-family: "fantasy";
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #0099CC;
+}
+
+.form-input {
+  padding: 8px;
+  border: 2px solid #00BFFF;
+  border-radius: 4px;
+  width: 150px;
+  font-family: "fantasy";
+  font-size: 14px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0099CC;
+}
+
+.form-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #00BFFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "fantasy";
+  cursor: pointer;
+  width: 100%;
+}
+
+.form-button:hover {
+  background: #0099CC;
+}
+
+.error-message {
+  color: red;
+  font-family: "fantasy";
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+  animation: 2s errorFadeOut ease-in forwards;
+}
+
+
+@keyframes successFadeOut {
+  from {
+    opacity: 1;
+    background: #fffde6;
+    color: green;
+    border: 1px solid #c1f397;
+  }
+  to {
+    opacity: 0;
+    background: transparent;
+    color: transparent;
+    border: none;
+  }
+}
+@keyframes errorFadeOut {
+  from {
+    opacity: 1;
+    background: #ffe6e6;
+    color: red;
+    border: 1px solid #ffcccc;
+  }
+  to {
+    opacity: 0;
+    background: transparent;
+    color: transparent;
+    border: none;
+  }
+}

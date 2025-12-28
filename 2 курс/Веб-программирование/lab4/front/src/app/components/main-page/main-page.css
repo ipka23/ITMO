@@ -1,0 +1,47 @@
+.header {
+  font-family: "fantasy";
+  font-size: 24px;
+  padding: 5%;
+  background: #00BFFF;
+  color: white;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: "fantasy";
+}
+
+.main {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "svg form"
+    "table table";
+  gap: 20px;
+  align-items: start;
+}
+
+.grid-svg {
+  grid-area: svg;
+}
+
+.grid-form {
+  grid-area: form;
+}
+
+.grid-table {
+  grid-area: table;
+}
+
+.statsTableDiv {
+  margin-top: 0;
+}
