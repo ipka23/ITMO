@@ -1,4 +1,4 @@
-package filters;
-
-public class AuthFilter {
-}
+//package filters;
+//
+//public class AuthFilter {
+//}
