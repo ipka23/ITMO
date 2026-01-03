@@ -39,7 +39,8 @@ public class AuthService {
     public AuthResponse logIn(UserEntity user) {
         if (db.userExist(user)) {
             if (db.passwordIsCorrect(user)) {
-                return new AuthResponse("Вход выполнен!", user.getId().toString());
+                UserEntity dbUser = db.findUserByLogin(user.getLogin());
+                return new AuthResponse("Вход выполнен!", dbUser.getId().toString());
             } else return new AuthResponse(false, "Неверный пароль!");
         } else {
             return new AuthResponse(false, "Пользователь " + user.getLogin() + " не найден!");
@@ -47,6 +48,7 @@ public class AuthService {
     }
 
     public AuthResponse register(UserEntity user) {
+//        UserEntity dbUser = db.findUserByLogin(user.getLogin());
         if (db.userExist(user)) {
             return new AuthResponse(false, "Имя пользователя " + user.getLogin() + " уже занято!");
         } else {

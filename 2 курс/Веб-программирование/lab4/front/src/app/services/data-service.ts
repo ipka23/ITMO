@@ -29,6 +29,7 @@ export class DataService {
 
   getPoints(): Observable<PointResponse> {
     const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/get-points`;
+    console.log(this.common.userId)
     return this.http.get<PointResponse>(url).pipe(
       tap((response: PointResponse) => {
         const points: Point[] = response.points || response;

@@ -4,6 +4,8 @@ import {AuthRequest} from '../../dto/AuthRequest';
 import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
 import {Router} from '@angular/router';
+import {PointResponse} from '../../dto/PointResponse';
+import {AuthResponse} from '../../dto/AuthResponse';
 
 @Component({
   selector: 'app-register-page',
@@ -12,6 +14,7 @@ import {Router} from '@angular/router';
   ],
   templateUrl: './register-page.html',
   styleUrl: './register-page.css',
+  standalone: true
 })
 export class RegisterPage {
   constructor(private common: CommonInfoService, private dataService: DataService, private router: Router) {
@@ -27,7 +30,6 @@ export class RegisterPage {
   }
 
   submitForm() {
-    console.log(`${this.username}\n${this.password1}\n${this.password2}`)
     if (this.password1 !== this.password2) {
       this.errorMessage = 'Пароли не совпадают!'
       setTimeout(() => {
@@ -36,19 +38,24 @@ export class RegisterPage {
       this.password1 = ''
       this.password2 = ''
       return
-    } else {
-      this.dataService.getRegisterResponse(new AuthRequest(this.username, this.password1)).subscribe({
+    }
+    console.log(this.dataService === null)
+    // console.log(`${this.username}\n${this.password1}\n${this.password2}`)
+
+    this.dataService.getRegisterResponse(new AuthRequest(this.username, this.password1)).subscribe({
         next: (response) => {
-          if (response.isValid) {
-            this.common.userId = +response.id
-            this.router.navigate(['/points/' + response.id])
-          }
+          console.log(`${this.username}\n${this.password1}\n${this.password2}`)
+            this.common.userId = parseInt(response.id)
+            this.router.navigate(['/points/' + response.id.toString()])
         },
-        error: (response) => {
-          this.errorMessage = response.message
+        error: (err)=> {
+          const errorResponse: AuthResponse = err.error;
+          this.errorMessage = errorResponse.message
+          console.error('Ошибка регистрации:', errorResponse.message);
+          console.error(errorResponse)
         }
       })
-    }
+
 
   }
 

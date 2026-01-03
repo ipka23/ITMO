@@ -10,18 +10,14 @@
         <class>persistence.entities.UserEntity</class>
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action"
-                      value="drop-and-create"/>
+                      value="none"/>
             <property name="jakarta.persistence.schema-generation.create-source"
                       value="metadata"/>
-
             <property name="jakarta.persistence.show-sql" value="true"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
 
-
-
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

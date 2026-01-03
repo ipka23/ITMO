@@ -13,12 +13,15 @@
     @for (point of points; track point) {
       <tbody>
       <tr>
-        <td class="X">point.x</td>
-        <td class="Y">point.y</td>
-        <td class="R">point.r</td>
-        <td class="result" [class.hit]="point.status === 'hit'" [class.miss]="point.status === 'miss'">point.result</td>
-        <td class="time">point.currentTime</td>
-        <td class="exec">point.executionTime</td>
+        <td class="X" >{{ point.x }}</td>
+        <td class="Y">{{ point.y }}</td>
+        <td class="R">{{ point.r }}</td>
+
+        <td class="result" >{{ point.status }}</td>
+        <!--        [class.hit]="point.status === 'hit'" [class.miss]="point.status === 'miss'"-->
+
+        <td class="time">{{ point.currentTime }}</td>
+        <td class="exec">{{ point.executionTime }}</td>
       </tr>
       </tbody>
     }

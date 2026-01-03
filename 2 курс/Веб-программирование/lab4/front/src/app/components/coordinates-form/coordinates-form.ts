@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonInfoService} from '../../services/common-info-service';
 import {PointsTableComponent} from '../points-table/points-table';
@@ -15,12 +15,16 @@ import {Subscription} from 'rxjs';
   styleUrl: "coordinates-form.css",
   standalone: true
 })
-export class CoordinatesFormComponent {
+export class CoordinatesFormComponent implements OnInit{
   constructor(private common: CommonInfoService, private dataService: DataService) {
+  }
+
+  ngOnInit(): void {
+    this.rSelect = localStorage.getItem("r_value") === null ? localStorage.getItem("r_value") : ""
   }
   xSelect = ""
   yInput = ""
-  rSelect = ""
+  rSelect: string | null = ""
   buttonClicked: boolean = false
   // @Output() buttonClicked = new EventEmitter<any>();
   errorMessage = ""
@@ -31,7 +35,7 @@ export class CoordinatesFormComponent {
 
   submitForm(): void {
     this.buttonClicked = true
-    this.common.r = +this.rSelect
+    this.common.r = Number(this.rSelect)
 
     this.dataService.sendPoint(new PointRequest(this.xSelect, this.yInput, this.rSelect)).subscribe({
       next: (response) => {
@@ -50,7 +54,9 @@ export class CoordinatesFormComponent {
   }
 
   changeR() {
-    if (+this.rSelect < 0) {}
-    this.common.r = +this.rSelect
+    if (Number(this.rSelect) < 0) {}
+    this.common.r = Number(this.rSelect)
   }
+
+  protected readonly Number = Number;
 }

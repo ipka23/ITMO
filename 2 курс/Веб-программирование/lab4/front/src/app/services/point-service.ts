@@ -1,5 +1,5 @@
 import {Point} from '../models/Point';
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {LoggerService} from './logger-service';
 import {HttpClient} from '@angular/common/http';
 import {CommonInfoService} from './common-info-service';
@@ -10,10 +10,20 @@ import {DataService} from './data-service';
 @Injectable({
   providedIn: 'root',
 })
-export class PointService {
+export class PointService implements OnInit {
   svgError = ""
 
   constructor(private logger: LoggerService, private http: HttpClient, private common: CommonInfoService, private dataService: DataService) {
+  }
+
+
+  ngOnInit(): void {
+
+
+
+
+
+
   }
 
 
@@ -22,10 +32,7 @@ export class PointService {
     const r: number = this.common.r
     const absoluteX = $e.clientX
     const absoluteY = $e.clientY
-    const absolutePoint = new SVGPoint()
-
-    absolutePoint.x = absoluteX
-    absolutePoint.y = absoluteY
+    const absolutePoint = new DOMPoint(absoluteX, absoluteY)
 
     const screenCTM = svg.getScreenCTM();
     if (screenCTM == null) return

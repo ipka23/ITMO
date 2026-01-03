@@ -32,6 +32,7 @@
   <span class="form-label">Выберите R:</span>
   <label>
     <select [(ngModel)]="rSelect" (click)="changeR()" class="form-select">
+      <option selected>{{ rSelect }}</option>
       <option value="-2">-2</option>
       <option value="-1.5">-1.5</option>
       <option value="-1">-1</option>
@@ -46,7 +47,7 @@
     @if (rSelect === "" && buttonClicked) {
       <span class="error-message">Выберите радиус R!</span>
     }
-    @else if (+rSelect < 0) {
+    @else if (Number(rSelect) < 0) {
       <span class="error-message">R должен быть от 0 до 2!</span>
     }
   </label>

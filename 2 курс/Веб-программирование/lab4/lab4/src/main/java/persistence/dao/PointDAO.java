@@ -31,8 +31,8 @@ public class PointDAO {
     public void addPoint(PointEntity point, long startTime, Long userId) throws UserNotFoundException {
         checkUser(userId);
         point.setUserId(userId);
-        long endTime = System.nanoTime();
-        point.setExecutionTime(String.valueOf((endTime - startTime) / 1_000_000L));
+        String executionTime = (System.nanoTime() - startTime) / 1_000_000L + "ms";
+        point.setExecutionTime(executionTime);
         em.persist(point);
     }
 

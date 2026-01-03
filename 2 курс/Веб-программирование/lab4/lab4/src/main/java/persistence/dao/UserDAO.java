@@ -27,12 +27,25 @@ public class UserDAO {
 
     public boolean passwordIsCorrect(UserEntity u) {
         String password = u.getPassword();
-        List<UserEntity> users = em.createQuery("select u from UserEntity u where u.password like :password", UserEntity.class).setParameter("password", password).getResultList();
-        if (users.size() == 1) return true;
+        List<UserEntity> users = em.createQuery("select u from UserEntity u where u.login = :login and u.password = :password", UserEntity.class)
+                .setParameter("login", u.getLogin())
+                .setParameter("password", u.getPassword())
+                .getResultList();
+        if (users.size() == 1) {
+//            u.setId();
+            return true;
+        }
         else return false;
     }
 
     public void addUser(UserEntity user) {
         em.persist(user);
+    }
+
+    public UserEntity findUserByLogin(String login) {
+        List<UserEntity> users = em.createQuery("select u from UserEntity u where u.login = :login", UserEntity.class)
+                .setParameter("login", login)
+                .getResultList();
+        return users.isEmpty() ? null : users.get(0);
     }
 }
