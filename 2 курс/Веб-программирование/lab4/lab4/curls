@@ -1,3 +1,8 @@
 curl.exe -X POST -H "Content-Type: application/json" -d '{\"login\": \"ipka23\", \"password\": \"23\"}' http://localhost:25230/lab4/app/auth/register
+
+
 curl.exe -X POST -H "Content-Type: application/json" -d '{\"x\": \"0\", \"y\": \"0\", \"r\": \"1\"}' http://localhost:25230/lab4/app/points/1/add-point
+
+
+curl.exe -X POST -H "Content-Type: application/json" -d '{\"login\": \"i\", \"password\": \"23\"}' http://localhost:25230/lab4/app/auth/log-in
 

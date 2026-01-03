@@ -30,11 +30,11 @@ public class UserController {
         if (response.isValid()) {
             UserEntity user = new UserEntity(request.getLogin(), request.getPassword());
             response = authService.logIn(user);
-            if (response.isValid()) return Response.ok(response.getMessage()).build();
+            if (response.isValid()) return Response.ok(response).build();
             else {
-                return Response.status(Response.Status.UNAUTHORIZED).entity(response.getMessage()).build();
+                return Response.status(Response.Status.UNAUTHORIZED).entity(response).build();
             }
-        } else return Response.status(Response.Status.BAD_REQUEST).entity(response.getMessage()).build();
+        } else return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
 
     }
 
@@ -47,10 +47,10 @@ public class UserController {
         if (response.isValid()) {
             UserEntity user = new UserEntity(request.getLogin(), request.getPassword());
             response = authService.register(user);
-            if (response.isValid()) return Response.ok(response.getMessage()).build();
+            if (response.isValid()) return Response.ok(response).build();
             else {
-                return Response.status(Response.Status.UNAUTHORIZED).entity(response.getMessage()).build();
+                return Response.status(Response.Status.UNAUTHORIZED).entity(response).build();
             }
-        } else return Response.status(Response.Status.BAD_REQUEST).entity(response.getMessage()).build();
+        } else return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
     }
 }

@@ -4,6 +4,8 @@ import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
 import {AuthRequest} from '../../dto/AuthRequest';
 import {Router} from '@angular/router';
+import {AuthResponse} from '../../dto/AuthResponse';
+import {configDefaults} from 'vitest/config';
 
 @Component({
   selector: 'app-auth-page',
@@ -31,13 +33,16 @@ export class LogInPage {
     console.log(`${this.username}\n${this.password}`)
     this.dataService.getLogInResponse(new AuthRequest(this.username, this.password)).subscribe({
       next: (response) => {
-        if (response.isValid) {
-          this.common.userId = +response.id
-          this.router.navigate(['/points/' + response.id])
-        }
+        // if (response.isValid) {
+          this.common.userId = parseInt(response.id)
+          this.router.navigate(['/points/' + response.id.toString()])
+        // }
       },
-      error: (response)=> {
-        this.errorMessage = response.message
+      error: (err)=> {
+        const errorResponse: AuthResponse = err.error;
+        this.errorMessage = errorResponse.message
+        console.error('Ошибка входа:', errorResponse.message);
+        // console.error(errorResponse)
       }
     })
   }
