@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {CoordinatesFormComponent} from '../coordinates-form/coordinates-form';
 import {SvgGraphComponent} from '../svg-graph/svg-graph';
-import {PointsContainer} from '../points-container/points-container';
+import {PointsTableComponent} from '../points-table/points-table';
 
 @Component({
   selector: 'app-main-page',
-  imports: [CoordinatesFormComponent, PointsContainer],
+  imports: [CoordinatesFormComponent, PointsTableComponent, SvgGraphComponent],
   templateUrl: './main-page.html',
   styleUrl: './main-page.css',
   standalone: true
