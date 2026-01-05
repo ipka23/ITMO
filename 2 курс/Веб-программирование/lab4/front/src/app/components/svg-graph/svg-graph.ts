@@ -13,8 +13,7 @@ import {SyncService} from '../../services/sync-service';
   imports: [
     FormsModule,
     NgStyle,
-    CommonModule,
-    PointsTableComponent
+    CommonModule
   ],
   templateUrl: './svg-graph.html',
   styleUrl: './svg-graph.css',

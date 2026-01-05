@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Point} from '../models/Point';
 import {BehaviorSubject, Observable, pipe} from 'rxjs';
-import {PointResponse} from '../dto/PointResponse';
 import {SvgGraphComponent} from '../components/svg-graph/svg-graph';
 
 @Injectable({

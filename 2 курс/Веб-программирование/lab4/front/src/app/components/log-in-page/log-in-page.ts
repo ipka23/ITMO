@@ -5,12 +5,13 @@ import {DataService} from '../../services/data-service';
 import {AuthRequest} from '../../dto/AuthRequest';
 import {Router} from '@angular/router';
 import {AuthResponse} from '../../dto/AuthResponse';
-import {configDefaults} from 'vitest/config';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-auth-page',
   imports: [
-    FormsModule
+    FormsModule, 
+    CommonModule
   ],
   templateUrl: './log-in-page.html',
   styleUrl: './log-in-page.css',
