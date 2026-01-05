@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Point} from '../models/Point';
 import {BehaviorSubject, Observable, pipe} from 'rxjs';
 import {PointResponse} from '../dto/PointResponse';
+import {SvgGraphComponent} from '../components/svg-graph/svg-graph';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class CommonInfoService {
   private pointAddedSubject = new BehaviorSubject<Point | null>(null);
   // points$: Observable<Point[]> = this.pointsSubject.asObservable();
   // pointAdded$: Observable<Point | null> = this.pointAddedSubject.asObservable();
-
+  constructor(private svgGraph: SvgGraphComponent) {
+  }
   get r(): number {
     const saved = localStorage.getItem(this.R_KEY);
     return saved ? +saved : -1;
@@ -48,8 +50,9 @@ export class CommonInfoService {
   }
 
 
-  get points(): Point[] {
-    return this.pointsSubject.value;
+  get points(): Point[] | undefined {
+    // return this.pointsSubject.value;
+  return this._points
   }
 
   addPoint(point: Point): void {
@@ -143,5 +146,9 @@ export class CommonInfoService {
     } catch (e) {
       console.error('Error saving points to localStorage:', e);
     }
+  }
+
+  updatePoints() {
+    this.svgGraph.refreshPoints()
   }
 }

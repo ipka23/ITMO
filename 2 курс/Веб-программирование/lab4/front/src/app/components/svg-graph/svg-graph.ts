@@ -4,27 +4,34 @@ import {CommonInfoService} from '../../services/common-info-service';
 import {FormsModule} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {CommonModule} from '@angular/common';
+import {PointsTableComponent} from '../points-table/points-table';
+
 
 @Component({
   selector: 'app-svg-graph',
   imports: [
     FormsModule,
     NgStyle,
-    CommonModule
+    CommonModule,
+    PointsTableComponent
   ],
   templateUrl: './svg-graph.html',
   styleUrl: './svg-graph.css',
   standalone: true
 })
-export class SvgGraphComponent implements OnChanges {
+export class SvgGraphComponent implements OnChanges, OnInit {
   rPxWidth = 300
   rPxHeight = 300
   svgCenterX = this.rPxWidth / 2
   svgCenterY = this.rPxHeight / 2
   scale = 0
-  svgPoints: Array<{ x: number, y: number, color: string}> = [];
+  svgPoints: Array<{ x: number, y: number, color: string }> = [];
 
   constructor(protected common: CommonInfoService, private pointService: PointService) {
+  }
+
+  ngOnInit(): void {
+    this.getSvgPoints()
   }
 
 
@@ -40,6 +47,14 @@ export class SvgGraphComponent implements OnChanges {
       return;
     }
     this.scale = this.rPxWidth / (this.r); //  this.scale = this.rPxWidth / (2 * this.r);
+    this.getSvgPoints()
+    console.log("updateSvgPoints" + this.svgPoints)
+
+  }
+
+  getSvgPoints() {
+    console.log("this.common.points:\n" + this.common.points)
+    // @ts-ignore
     this.svgPoints = this.common.points.map(point => {
       const x = Number(point.x);
       const y = Number(point.y);
@@ -51,7 +66,7 @@ export class SvgGraphComponent implements OnChanges {
         // originalPoint: point
       };
     });
-
+    console.log("svgPoints:\n" + this.svgPoints)
   }
 
   refreshPoints() {
