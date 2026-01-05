@@ -4,7 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class SyncService implements OnInit{
+export class SyncService {
   constructor(private _tableLoaded: BehaviorSubject<boolean>) {
   }
 
@@ -12,10 +12,10 @@ export class SyncService implements OnInit{
     this._tableLoaded = behaviorSubject
   }
 
-  ngOnInit() {
-    // this._tableLoaded.asObservable().subscribe(isReady => {
-    //
-    // })
-  }
+  // ngOnInit() {
+  //   // this._tableLoaded.asObservable().subscribe(isReady => {
+  //   //
+  //   // })
+  // }
 
 }

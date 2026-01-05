@@ -67,12 +67,13 @@
 <!--&lt;!&ndash;    [attr.data-original-x]="svgPoint.originalPoint.x"&ndash;&gt;-->
 <!--&lt;!&ndash;    [attr.data-original-y]="svgPoint.originalPoint.y">&ndash;&gt;-->
 <!--  </g>-->
+  <g *ngFor="let svgPoint of svgPoints">
+    <circle
+      [attr.cx]="svgPoint.x"
+      [attr.cy]="svgPoint.y"
+      [attr.fill]="svgPoint.color"
+      r="1%">
+    </circle>
+  </g>
 
-  <circle *ngFor="let svgPoint of svgPoints"
-          [attr.cx]="svgPoint.x"
-          [attr.cy]="svgPoint.y"
-          [attr.fill]="svgPoint.color"
-          r="1%">
-  </circle>
 </svg>
-<app-points-table class="grid-table"></app-points-table>

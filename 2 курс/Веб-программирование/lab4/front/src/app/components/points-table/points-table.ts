@@ -12,7 +12,7 @@ import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: "app-points-table",
-  providers: [PointService, LoggerService],
+  providers: [PointService, LoggerService, SyncService],
   templateUrl: "points-table.html",
   standalone: true,
   imports: [
