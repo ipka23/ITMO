@@ -6,6 +6,8 @@ import {DataService} from '../../services/data-service';
 import {PointRequest} from '../../dto/PointRequest';
 import {CommonInfoService} from '../../services/common-info-service';
 import {FormsModule} from '@angular/forms';
+import {SyncService} from '../../services/sync-service';
+import {BehaviorSubject} from 'rxjs';
 
 
 @Component({
@@ -23,10 +25,9 @@ export class PointsTableComponent implements OnInit {
   public points: Point[] = []
 
   errorMessage: string = ""
-  constructor(private dataService: DataService, private common: CommonInfoService) {}
-
+  constructor(private dataService: DataService, private common: CommonInfoService, private syncService: SyncService) {}
+  tableLoaded = new BehaviorSubject(false)
   ngOnInit() {
-
     this.loadPointsFromServer()
     this.dataService.getPoints().subscribe({
       next: (response) => {
@@ -37,6 +38,8 @@ export class PointsTableComponent implements OnInit {
         console.log( "serverErr: " + err.error)
       }
     })
+    this.tableLoaded = new BehaviorSubject(true)
+    this.syncService.tableLoaded = this.tableLoaded
   }
 
   addPoint(point: PointRequest) {

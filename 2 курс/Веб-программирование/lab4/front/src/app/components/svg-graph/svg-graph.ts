@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {CommonModule} from '@angular/common';
 import {PointsTableComponent} from '../points-table/points-table';
+import {SyncService} from '../../services/sync-service';
 
 
 @Component({
@@ -27,11 +28,15 @@ export class SvgGraphComponent implements OnChanges, OnInit {
   scale = 0
   svgPoints: Array<{ x: number, y: number, color: string }> = [];
 
-  constructor(protected common: CommonInfoService, private pointService: PointService) {
+  constructor(protected common: CommonInfoService, private pointService: PointService, private syncService: SyncService) {
   }
 
   ngOnInit(): void {
-    this.getSvgPoints()
+    this.syncService.tableLoaded.asObservable().subscribe(isReady => {
+      if (isReady) {
+        this.getSvgPoints()
+      }
+    })
   }
 
 
