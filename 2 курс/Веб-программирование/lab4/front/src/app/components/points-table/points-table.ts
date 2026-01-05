@@ -4,16 +4,13 @@ import {PointService} from '../../services/point-service';
 import {LoggerService} from '../../services/logger-service';
 import {DataService} from '../../services/data-service';
 import {PointRequest} from '../../dto/PointRequest';
-import {reduce} from 'rxjs';
 import {CommonInfoService} from '../../services/common-info-service';
-import {PointResponse} from '../../dto/PointResponse';
 import {FormsModule} from '@angular/forms';
-import {SvgGraphComponent} from '../svg-graph/svg-graph';
 
 
 @Component({
   selector: "app-points-table",
-  providers: [PointService, LoggerService, SvgGraphComponent],
+  providers: [PointService, LoggerService],
   templateUrl: "points-table.html",
   standalone: true,
   imports: [
@@ -26,11 +23,10 @@ export class PointsTableComponent implements OnInit {
   public points: Point[] = []
 
   errorMessage: string = ""
-  constructor(private dataService: DataService, private common: CommonInfoService, private svgGraph: SvgGraphComponent) {}
+  constructor(private dataService: DataService, private common: CommonInfoService) {}
 
   ngOnInit() {
 
-    // console.log(this.points)
     this.loadPointsFromServer()
     this.dataService.getPoints().subscribe({
       next: (response) => {
@@ -62,8 +58,11 @@ export class PointsTableComponent implements OnInit {
         const points = response.points || response;
         console.log(response.points)
         this.points = response.points
-        this.common.setPoints(points);
-        this.svgGraph.refreshPoints()
+        console.log("response.points(PointsTableComponent): " + this.points)
+
+        this.common.setPoints(points)
+        this.common.updatePoints()
+        // this.svgGraph.refreshPoints()
 
       },
       error: (err) => {
