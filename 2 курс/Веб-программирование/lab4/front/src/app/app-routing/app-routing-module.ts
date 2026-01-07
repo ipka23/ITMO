@@ -5,11 +5,11 @@ import {MainPage} from '../components/main-page/main-page';
 
 
 export const routes: Routes = [
-  {path: "/log-in", component: LogInPage},
-  {path: "/register", component: RegisterPage},
-    {path: '/points/:userId', component: MainPage},
+  {path: "log-in", component: LogInPage},
+  {path: "register", component: RegisterPage},
+    {path: 'points/:userId', component: MainPage},
 
-  {path: '', redirectTo: '/log-in', pathMatch: 'full'},
-  {path: "**", redirectTo: '/log-in'}
+  {path: '', redirectTo: 'log-in', pathMatch: 'full'},
+  {path: "**", redirectTo: 'log-in'}
 ]
 

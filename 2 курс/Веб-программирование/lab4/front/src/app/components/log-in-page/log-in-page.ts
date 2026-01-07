@@ -10,7 +10,7 @@ import {CommonModule} from '@angular/common';
 @Component({
   selector: 'app-auth-page',
   imports: [
-    FormsModule, 
+    FormsModule,
     CommonModule
   ],
   templateUrl: './log-in-page.html',
