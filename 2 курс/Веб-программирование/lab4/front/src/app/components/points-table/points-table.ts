@@ -53,7 +53,7 @@ export class PointsTableComponent implements OnInit {
         console.log( "serverErr: " + err.error)
       }
     })
-    this.syncService.pointAdded$ = this.pointAdded
+    // this.syncService.pointAdded$ = this.pointAdded
   }
 
 
