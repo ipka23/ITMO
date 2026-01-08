@@ -31,7 +31,7 @@ export class SvgGraphComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.syncService.tableLoaded.asObservable().subscribe(isReady => {
+    this.syncService.tableLoaded$.subscribe(isReady => {
       if (isReady) {
         this.getSvgPoints()
       }
