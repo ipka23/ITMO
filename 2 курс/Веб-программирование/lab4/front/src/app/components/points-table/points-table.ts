@@ -40,6 +40,7 @@ export class PointsTableComponent implements OnInit {
     })
     this.tableLoaded = new BehaviorSubject(true)
     this.syncService.tableLoaded$ = this.tableLoaded
+
   }
 
   addPoint(point: PointRequest) {
@@ -52,7 +53,10 @@ export class PointsTableComponent implements OnInit {
         console.log( "serverErr: " + err.error)
       }
     })
+    this.syncService.pointAdded$ = this.pointAdded
   }
+
+
 
 
   private loadPointsFromServer(): void {
