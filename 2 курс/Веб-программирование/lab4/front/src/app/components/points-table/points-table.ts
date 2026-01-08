@@ -39,7 +39,7 @@ export class PointsTableComponent implements OnInit {
       }
     })
     this.tableLoaded = new BehaviorSubject(true)
-    this.syncService.tableLoaded = this.tableLoaded
+    this.syncService.tableLoaded$ = this.tableLoaded
   }
 
   addPoint(point: PointRequest) {

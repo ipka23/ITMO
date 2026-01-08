@@ -1,21 +1,17 @@
 import {Injectable, OnInit} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SyncService {
-  constructor(private _tableLoaded: BehaviorSubject<boolean>) {
+
+  private tableLoadedSubject = new BehaviorSubject<boolean>(false);
+
+  tableLoaded$: Observable<boolean> =
+    this.tableLoadedSubject.asObservable();
+
+  setTableLoaded(value: boolean): void {
+    this.tableLoadedSubject.next(value);
   }
-
-  set tableLoaded(behaviorSubject: BehaviorSubject<boolean>) {
-    this._tableLoaded = behaviorSubject
-  }
-
-  // ngOnInit() {
-  //   // this._tableLoaded.asObservable().subscribe(isReady => {
-  //   //
-  //   // })
-  // }
-
 }
