@@ -26,6 +26,7 @@ public class PointController {
     public Response addPoint(PointRequest request, @PathParam("userId") Long userId) {
         try {
             long startTime = System.nanoTime();
+
             BigDecimal x = new BigDecimal(request.getX());
             BigDecimal y = new BigDecimal(request.getY());
             BigDecimal r = new BigDecimal(request.getR());
@@ -35,7 +36,7 @@ public class PointController {
 //                point.setUserId(userId.toString()); // TODO
                 response = pointService.add(point, startTime, userId);
                 return Response.ok().entity(response).build();
-            } else return Response.status(Response.Status.BAD_REQUEST).entity(response.getMessage()).build();
+            } else return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
         } catch (UserNotFoundException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
@@ -51,7 +52,7 @@ public class PointController {
         if (response.isValid()) {
             return Response.ok().entity(response).build();
         } else {
-            return Response.status(Response.Status.BAD_REQUEST).entity(response.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
         }
     }
 }

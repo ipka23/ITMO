@@ -1,28 +1,31 @@
 import { Injectable } from '@angular/core';
 import {Point} from '../models/Point';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {PointRequest} from '../dto/PointRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonInfoService {
-  private _r = -1;
   private _userId = 0;
-  private _point = new Point("0", "0", "0", "0", "0", "0")
   private _points: Point[] | undefined
   private readonly R_KEY = 'r_value';
   private readonly USER_ID_KEY = 'user_id';
   private readonly POINT_KEY = 'current_point';
   private readonly POINTS_KEY = 'points_collection';
 
-  private defaultPoint = new Point("0", "0", "0", "0", "0", "0");
-  private defaultPoints: Point[] = [];
 
-  private pointsSubject = new BehaviorSubject<Point[]>([]);
-  private pointAddedSubject = new BehaviorSubject<Point | null>(null);
-  // points$: Observable<Point[]> = this.pointsSubject.asObservable();
-  // pointAdded$: Observable<Point | null> = this.pointAddedSubject.asObservable();
-  pointsAdded = new BehaviorSubject(false)
+  private tableLoadedSubject = new BehaviorSubject<boolean>(false)
+  private newPointSubject = new BehaviorSubject<Point | null>(null)
+  private pointsSubject = new BehaviorSubject<Point[] | null>([])
+  private radius = new BehaviorSubject<number>(-1)
+
+  tableLoaded$: Observable<boolean> = this.tableLoadedSubject.asObservable()
+  newPoint$ = this.newPointSubject.asObservable()
+  points$ = this.pointsSubject.asObservable()
+  r$ = this.radius.asObservable()
+
+
   get r(): number {
     const saved = localStorage.getItem(this.R_KEY);
     return saved ? +saved : -1;
@@ -36,6 +39,7 @@ export class CommonInfoService {
   set r(value: number) {
     if (value !== this.r) {
       localStorage.setItem(this.R_KEY, value.toString());
+      this.radius.next(value);
     }
   }
 
@@ -59,6 +63,14 @@ export class CommonInfoService {
   }
   addPoint(point: Point) {
 
+    let updatedPoints = this._points
+    if (this._points != undefined) {
+      updatedPoints = [point, ...this._points]
+      this.pointsSubject.next(updatedPoints);
+    }
+
+
+    this.newPointSubject.next(point);
   }
 
 

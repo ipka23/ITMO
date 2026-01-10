@@ -47,8 +47,8 @@
     @if (rSelect === "" && buttonClicked) {
       <span class="error-message">Выберите радиус R!</span>
     }
-    @else if (Number(rSelect) < 0) {
-      <span class="error-message">R должен быть от 0 до 2!</span>
+    @else if (Number(rSelect) <= 0) {
+      <span class="error-message">R должен быть больше 0!</span>
     }
   </label>
   <br>

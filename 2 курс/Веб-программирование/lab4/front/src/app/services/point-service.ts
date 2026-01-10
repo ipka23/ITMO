@@ -10,53 +10,63 @@ import {DataService} from './data-service';
 @Injectable({
   providedIn: 'root',
 })
-export class PointService implements OnInit {
+export class PointService {
   svgError = ""
 
-  constructor(private logger: LoggerService, private http: HttpClient, private common: CommonInfoService, private dataService: DataService) {
-  }
-
-
-  ngOnInit(): void {
-
-
-
-
-
-
+  constructor(private common: CommonInfoService, private dataService: DataService) {
   }
 
 
   drawPointByClick($e: PointerEvent): void {
-    const svg = $e.currentTarget as SVGGraphicsElement
+    const svg = $e.currentTarget as SVGSVGElement
     const r: number = this.common.r
+
+    if (r === -1 || r === 0 || r.toString() === "") {
+      this.svgError = "Выберите R!"
+      return
+    }
+
     const absoluteX = $e.clientX
     const absoluteY = $e.clientY
-    const absolutePoint = new DOMPoint(absoluteX, absoluteY)
+    const absolutePoint = svg.createSVGPoint()
+    absolutePoint.x = absoluteX
+    absolutePoint.y = absoluteY
 
-    const screenCTM = svg.getScreenCTM();
-    if (screenCTM == null) return
+    const screenCTM = svg.getScreenCTM()
+    if (!screenCTM) {
+      console.error('Cannot get SVG CTM')
+      return
+    }
 
     const svgPoint = absolutePoint.matrixTransform(screenCTM.inverse())
     const svgX = svgPoint.x
     const svgY = svgPoint.y
 
-    const coords = this.svgToMathCoords(svgX, svgY, r, svg)
+    const coords = this.svgToMathCoords(svgX, svgY, r)
 
-    if (r === -1) {
-      this.svgError = "Выберите R!"
-    } else {
-      this.dataService.sendPoint(new PointRequest(coords.x, coords.y, r.toString()))
+    const request = new PointRequest(coords.x.toString(), coords.y.toString(), r.toString())
+    console.log(`PointService: requestPoint_newPoint(${request.x}, ${request.y}, ${request.r})`)
 
-    }
+    this.dataService.sendPoint(request).subscribe({
+      next: (response) => {
+        const newPoint = new Point(response.x, response.y, response.r, response.status, response.currentTime, response.executionTime);
+        console.log(`PointService: responsePoint(${newPoint.x}, ${newPoint.y}, ${newPoint.r}, ${newPoint.status}, ${newPoint.currentTime}, ${newPoint.executionTime})`)
+        this.common.addPoint(newPoint);
+      },
+      error: (err) => {
+        console.log(err.error)
+      }
+    })
   }
 
 
-  svgToMathCoords(svgX: number, svgY: number, r: number, svg: SVGGraphicsElement) {
-    const rPxSize = svg.clientWidth / 3
-    const scale = rPxSize / r
+  svgToMathCoords(svgX: number, svgY: number, r: number) {
+    const rPxSize = 300 / 3
     const svgCenterX = 150
     const svgCenterY = 150
+
+    const scale = rPxSize / r
+
     return {
       x: ((svgX - svgCenterX) / scale).toFixed(2),
       y: ((svgCenterY - svgY) / scale).toFixed(2)

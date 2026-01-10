@@ -18,7 +18,6 @@ import {CommonModule} from '@angular/common';
   standalone: true
 })
 export class LogInPage {
-// после логина common.userId = userId
   constructor(private common: CommonInfoService, private dataService: DataService, private router: Router) {
   }
 
@@ -34,10 +33,8 @@ export class LogInPage {
     console.log(`${this.username}\n${this.password}`)
     this.dataService.getLogInResponse(new AuthRequest(this.username, this.password)).subscribe({
       next: (response) => {
-        // if (response.isValid) {
           this.common.userId = parseInt(response.id)
           this.router.navigate(['/points/' + response.id.toString()])
-        // }
       },
       error: (err)=> {
         const errorResponse: AuthResponse = err.error;

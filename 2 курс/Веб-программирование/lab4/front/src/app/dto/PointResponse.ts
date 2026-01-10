@@ -5,7 +5,10 @@ export class PointResponse {
   constructor(public x: string, public y: string, public r: string, public status: string, public currentTime: string, public executionTime: string) {
   }
   getPoint(): Point {
-    return new Point(this.x, this.y, this.r, this.status, this.currentTime, this.executionTime)
+    const point = new Point(this.x, this.y, this.r, this.status, this.currentTime, this.executionTime)
+    console.log(`PointResponse getPoint(): Point(${this.x}, ${this.y}, ${this.r}, ${this.status}, ${this.currentTime}, ${this.executionTime})`)
+
+    return point
   }
 
   set points(points: Point[]) {
