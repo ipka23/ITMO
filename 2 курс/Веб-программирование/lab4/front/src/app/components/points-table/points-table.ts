@@ -75,12 +75,14 @@ export class PointsTableComponent implements OnInit {
   private loadPointsFromServer(): void {
     this.dataService.getPoints().subscribe({
       next: (response) => {
-        const points = response.points.reverse()
-        // console.log(response.points.reverse())
-        this.points = points
-        // console.log("response.points(PointsTableComponent): " + this.points)
+        let points: Point[] = []
+        if (response.points === undefined) {
+          this.points = points
+        } else {
+          this.points = response.points.reverse()
+        }
 
-        this.common.setPoints(points)
+        this.common.setPoints(this.points)
         this.common.updatePoints()
         // this.svgGraph.refreshPoints()
         this.tableLoaded.next(true)

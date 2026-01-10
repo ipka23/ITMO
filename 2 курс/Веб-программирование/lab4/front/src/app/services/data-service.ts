@@ -27,13 +27,13 @@ export class DataService {
     console.log(this.common.userId)
     return this.http.get<PointResponse>(url).pipe(
       tap((response: PointResponse) => {
-        const points: Point[] = response.points || response;
+        const points: Point[] = response.points || [];
         this.common.setPoints(points);
       })
     );
   }
 
-// todo https || hash || и то и то
+// todo https || hash
   getLogInResponse(request: AuthRequest): Observable<AuthResponse> {
     const url = `http://localhost:25230/lab4/app/auth/log-in`
     return this.http.post<AuthResponse>(url, request)

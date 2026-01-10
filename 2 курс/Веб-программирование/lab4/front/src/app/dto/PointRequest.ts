@@ -1,4 +1,5 @@
-export class PointRequest {
-  constructor(public x: string, public y: string, public r: string | null = "") {
-  }
+export type PointRequest = {
+  x: string;
+  y: string;
+  r: string | null;
 }

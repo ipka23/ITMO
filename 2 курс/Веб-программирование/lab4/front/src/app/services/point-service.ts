@@ -44,12 +44,12 @@ export class PointService {
 
     const coords = this.svgToMathCoords(svgX, svgY, r)
 
-    const request = new PointRequest(coords.x.toString(), coords.y.toString(), r.toString())
+    const request: PointRequest = {x: coords.x.toString(), y: coords.y.toString(), r: r.toString()}
     console.log(`PointService: requestPoint_newPoint(${request.x}, ${request.y}, ${request.r})`)
 
     this.dataService.sendPoint(request).subscribe({
       next: (response) => {
-        const newPoint = new Point(response.x, response.y, response.r, response.status, response.currentTime, response.executionTime);
+        const newPoint: Point = {x: response.x, y: response.y, r: response.r, status: response.status, currentTime: response.currentTime, executionTime: response.executionTime}
         console.log(`PointService: responsePoint(${newPoint.x}, ${newPoint.y}, ${newPoint.r}, ${newPoint.status}, ${newPoint.currentTime}, ${newPoint.executionTime})`)
         this.common.addPoint(newPoint);
       },
