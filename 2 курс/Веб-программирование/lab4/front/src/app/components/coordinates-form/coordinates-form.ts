@@ -30,16 +30,19 @@ export class CoordinatesFormComponent implements OnInit{
   errorMessage = ""
   // point: Point = new PointResponse()
 
-  private pointsSubscription?: Subscription;
-  private pointAddedSubscription?: Subscription;
+  // private pointsSubscription?: Subscription;
+  // private pointAddedSubscription?: Subscription;
 
   submitForm(): void {
     this.buttonClicked = true
     this.common.r = Number(this.rSelect)
-
+    console.log('submitForm')
     this.dataService.sendPoint(new PointRequest(this.xSelect, this.yInput, this.rSelect)).subscribe({
       next: (response) => {
-        const newPoint = response.getPoint();
+        // const newPoint = response.getPoint();
+        // this.common.addPoint(newPoint);
+        const newPoint = new Point(response.x, response.y, response.r, response.status, response.currentTime, response.executionTime);
+        console.log(`CoordinatesFormComponent: responsePoint_newPoint(${newPoint.x}, ${newPoint.y}, ${newPoint.r}, ${newPoint.status}, ${newPoint.currentTime}, ${newPoint.executionTime})`)
         this.common.addPoint(newPoint);
       },
       error: () => {
@@ -54,7 +57,6 @@ export class CoordinatesFormComponent implements OnInit{
   }
 
   changeR() {
-    if (Number(this.rSelect) < 0) {}
     this.common.r = Number(this.rSelect)
   }
 

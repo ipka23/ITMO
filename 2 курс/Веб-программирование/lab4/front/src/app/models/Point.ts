@@ -18,11 +18,11 @@ export class Point {
 
 
   get x(): string {
-    return this._x
+    return Number(this._x).toFixed(2)
   }
 
   get y(): string {
-    return this._y
+    return Number(this._y).toFixed(2)
   }
 
   get r(): string {

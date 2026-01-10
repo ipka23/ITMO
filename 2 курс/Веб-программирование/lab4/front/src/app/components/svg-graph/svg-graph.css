@@ -4,7 +4,7 @@
   background: white;
   border: 2px solid #00BFFF;
   border-radius: 8px;
-  padding: 10px;
+  /*padding: 10px;*/
 }
 
 svg text {
@@ -12,11 +12,7 @@ svg text {
   font-size: 14px;
 }
 
-circle:hover {
-  r: 2.5%;
-  stroke: #333;
-  stroke-width: 1;
-}
+
 
 .faces-message {
   display: block;

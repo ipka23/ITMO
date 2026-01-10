@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {LoggerService} from './logger-service';
 import {HttpClient} from '@angular/common/http';
 import {Point} from '../models/Point';
 import {CommonInfoService} from './common-info-service';
@@ -18,12 +17,8 @@ export class DataService {
 
   sendPoint(request: PointRequest): Observable<PointResponse> {
     const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/add-point`
-    return this.http.post<PointResponse>(url, request).pipe(
-      tap((response) => {
-        const point = response.getPoint() ;
-        this.common.addPoint(point);
-      })
-    );
+    console.log(`(data-service)requestPoint(${request.x}, ${request.y}, ${request.r})`)
+    return this.http.post<PointResponse>(url, request)
   }
 
 

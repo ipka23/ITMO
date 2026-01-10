@@ -1,12 +1,10 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {PointService} from '../../services/point-service';
 import {CommonInfoService} from '../../services/common-info-service';
 import {FormsModule} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {CommonModule} from '@angular/common';
-import {PointsTableComponent} from '../points-table/points-table';
-import {SyncService} from '../../services/sync-service';
-
+import {Point} from '../../models/Point';
 
 @Component({
   selector: 'app-svg-graph',
@@ -19,63 +17,66 @@ import {SyncService} from '../../services/sync-service';
   styleUrl: './svg-graph.css',
   standalone: true
 })
-export class SvgGraphComponent implements OnChanges, OnInit {
+export class SvgGraphComponent implements OnInit {
   rPxWidth = 300
   rPxHeight = 300
-  svgCenterX = this.rPxWidth / 2
-  svgCenterY = this.rPxHeight / 2
+  svgCenterX = 150
+  svgCenterY = 150
+  rPxSize = this.rPxWidth / 3
   scale = 0
   svgPoints: Array<{ x: number, y: number, color: string }> = [];
 
-  constructor(protected common: CommonInfoService, private pointService: PointService, private syncService: SyncService) {
+  constructor(protected common: CommonInfoService, private pointService: PointService, private cdr: ChangeDetectorRef) {
   }
 
-  ngOnInit(): void {
-    this.syncService.tableLoaded$.subscribe(isReady => {
-      if (isReady) {
-        this.getSvgPoints()
+  ngOnInit() {
+    this.common.points$.subscribe(points => {
+      if (points != null) {
+        this.getSvgPoints(points)
+      }
+
+    })
+
+    this.common.r$.subscribe(r => {
+      if (r != null && r > 0) {
+        this.updateSvgPoints(r)
       }
     })
+
   }
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.updateSvgPoints()
-  }
 
   protected svgError = ""
 
-  updateSvgPoints() {
-    if (!this.common.points || this.r === 0) {
-      this.svgPoints = [];
-      return;
-    }
-    this.scale = this.rPxWidth / (this.r); //  this.scale = this.rPxWidth / (2 * this.r);
-    this.getSvgPoints()
-    console.log("updateSvgPoints" + this.svgPoints)
+  updateSvgPoints(r: number) {
+    this.scale = this.rPxSize / r
+    console.log(`r: ${r} scale: ${this.scale}`)
+    this.getSvgPoints(this.common.points ?? [])
 
   }
 
-  getSvgPoints() {
-    console.log("this.common.points:\n" + this.common.points)
-    // @ts-ignore
-    this.svgPoints = this.common.points.map(point => {
+  getSvgPoints(points: Point[]) {
+    this.svgPoints = points.map(point => {
       const x = Number(point.x);
       const y = Number(point.y);
+      const currentR = this.common.r;
+
+      const svgX = this.svgCenterX + x * this.scale
+      const svgY = this.svgCenterY - y * this.scale
+
+      const isHit = this.checkPointHit(x, y, currentR)
+      const color = isHit ? 'green' : 'red'
 
       return {
-        x: this.svgCenterX + x * this.scale,
-        y: this.svgCenterY - y * this.scale,
-        color: point.status === 'Попадание' ? 'red' : 'green',
-        // originalPoint: point
-      };
-    });
-    console.log("svgPoints:\n" + this.svgPoints)
+        x: svgX,
+        y: svgY,
+        color: color
+      }
+    })
+    this.cdr.detectChanges()
   }
 
-  refreshPoints() {
-    this.updateSvgPoints();
-  }
+
 
   svgClick($event: PointerEvent) {
     if (this.r == 0 || this.r.toString() == "") {
@@ -100,5 +101,35 @@ export class SvgGraphComponent implements OnChanges, OnInit {
         'visibility:': 'hidden'
       }
     }
+  }
+
+
+  private checkPointHit(x: number, y: number, r: number): boolean {
+    if (r <= 0) {
+      return false;
+    }
+    return this.checkCircle(x, y, r) || this.checkTriangle(x, y, r) || this.checkRectangle(x, y, r);
+  }
+
+  private checkCircle(x: number, y: number, r: number): boolean {
+    if (x <= 0 && y <= 0) {
+      return x ** 2 + y ** 2 <= r ** 2;
+    }
+    return false;
+  }
+
+  private checkTriangle(x: number, y: number, r: number): boolean {
+    if (x <= 0 && y >= 0) {
+      return y < 2*x + r;
+    }
+    return false;
+  }
+
+
+  private checkRectangle(x: number, y: number, r: number): boolean {
+    if (x >= 0 && y <= 0) {
+      return x < r / 2 && y > -r;
+    }
+    return false;
   }
 }

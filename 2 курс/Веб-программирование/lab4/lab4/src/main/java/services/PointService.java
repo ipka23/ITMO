@@ -23,15 +23,16 @@ public class PointService {
         BigDecimal y;
         if (request.getX() == null || request.getX().isEmpty()) {
             return new PointResponse(false, "X не может быть пустым!");
-        } else if (!request.getX().matches("^-2|-1\\.5|-1|-0\\.5|0|0\\.5|1|1\\.5|2$")) {
-            return new PointResponse(false, "X должен принадлежать {-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2}");
+        } else if ((new BigDecimal(request.getX())).compareTo(BigDecimal.valueOf(-2)) < 0 || (new BigDecimal(request.getX())).compareTo(BigDecimal.valueOf(2)) > 0) {
+
+            return new PointResponse(false, "X должен принадлежать [-2; 2]!");
         }
 
         if (request.getY() == null || request.getY().isEmpty()) {
             return new PointResponse(false, "Y не может быть пустым!");
         } else y = new BigDecimal(request.getY());
         if (y.compareTo(BigDecimal.valueOf(-3)) < 0 || y.compareTo(BigDecimal.valueOf(5)) > 0) {
-            return new PointResponse(false, "X должен принадлежать [-3; 5]!");
+            return new PointResponse(false, "Y должен принадлежать [-3; 5]!");
         }
 
         if (request.getR() == null || request.getR().isEmpty()) {
@@ -43,7 +44,6 @@ public class PointService {
         response.setValid(true);
         return response;
     }
-
 
     public PointResponse add(PointEntity point, long startTime, Long userId) {
         if (isHit(point)) {
@@ -99,10 +99,9 @@ public class PointService {
 
     private boolean triangleIsHit(BigDecimal x, BigDecimal y, BigDecimal r) {
         if (x.compareTo(BigDecimal.ZERO) <= 0 && y.compareTo(BigDecimal.ZERO) >= 0) {
-            BigDecimal twoX = x.multiply(new BigDecimal("2"));
-            BigDecimal yOffset = twoX.add(r);
 
-            return y.compareTo(yOffset) <= 0;
+            return y.compareTo(r.add(x.multiply(BigDecimal.valueOf(2)))) <= 0
+                    && y.compareTo(r) <= 0;
         }
         return false;
     }
