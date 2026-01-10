@@ -1,4 +1,4 @@
-export class AuthRequest {
-  constructor(public login: string, public password: string) {
-  }
+export type AuthRequest = {
+  username: string;
+  password: string;
 }

@@ -42,7 +42,7 @@ export class RegisterPage {
     console.log(this.dataService === null)
     // console.log(`${this.username}\n${this.password1}\n${this.password2}`)
 
-    this.dataService.getRegisterResponse(new AuthRequest(this.username, this.password1)).subscribe({
+    this.dataService.getRegisterResponse({username: this.username, password:this.password1}).subscribe({
         next: (response) => {
           console.log(`${this.username}\n${this.password1}\n${this.password2}`)
             this.common.userId = parseInt(response.id)
