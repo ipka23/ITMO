@@ -33,7 +33,6 @@ public class PointController {
             PointResponse response = pointService.validate(request);
             if (response.isValid()) {
                 PointEntity point = new PointEntity(x, y, r);
-//                point.setUserId(userId.toString()); // TODO
                 response = pointService.add(point, startTime, userId);
                 return Response.ok().entity(response).build();
             } else return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
