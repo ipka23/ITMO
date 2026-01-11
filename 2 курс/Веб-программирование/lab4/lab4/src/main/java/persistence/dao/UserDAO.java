@@ -7,7 +7,6 @@ import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import persistence.entities.UserEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
