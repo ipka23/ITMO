@@ -18,14 +18,14 @@ export class DataService {
   sendPoint(request: PointRequest): Observable<PointResponse> {
     const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/add-point`
     console.log(`(data-service)requestPoint(${request.x}, ${request.y}, ${request.r})`)
-    return this.http.post<PointResponse>(url, request)
+    return this.http.post<PointResponse>(url, request, {withCredentials: true})
   }
 
 
   getPoints(): Observable<PointResponse> {
     const url = `http://localhost:25230/lab4/app/points/${this.common.userId}/get-points`;
     console.log(this.common.userId)
-    return this.http.get<PointResponse>(url).pipe(
+    return this.http.get<PointResponse>(url, {withCredentials: true}).pipe(
       tap((response: PointResponse) => {
         const points: Point[] = response.points || [];
         this.common.setPoints(points);
@@ -33,7 +33,6 @@ export class DataService {
     );
   }
 
-// todo https || hash
   getLogInResponse(request: AuthRequest): Observable<AuthResponse> {
     const url = `http://localhost:25230/lab4/app/auth/log-in`
     return this.http.post<AuthResponse>(url, request)
@@ -41,6 +40,6 @@ export class DataService {
 
   getRegisterResponse(request: AuthRequest): Observable<AuthResponse> {
     const url = `http://localhost:25230/lab4/app/auth/register`
-    return this.http.post<AuthResponse>(url, request)
+    return this.http.post<AuthResponse>(url, request, {withCredentials: true})
   }
 }
