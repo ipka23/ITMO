@@ -32,7 +32,6 @@ public class UserDAO {
                 .setParameter("password", u.getPassword())
                 .getResultList();
         if (users.size() == 1) {
-//            u.setId();
             return true;
         }
         else return false;
