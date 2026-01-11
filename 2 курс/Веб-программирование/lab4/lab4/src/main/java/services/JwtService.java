@@ -26,14 +26,6 @@ public class JwtService {
                 .signWith(JWT_SIGN_KEY)
                 .compact();
     }
-    public String extractSubject(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(JWT_SIGN_KEY)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
-    }
 
     public boolean tokenIsValid(String token) {
         try {
@@ -42,7 +34,7 @@ public class JwtService {
                     .build()
                     .parseClaimsJws(token);
             return !isTokenExpired(token);
-        } catch (JwtException e){
+        } catch (JwtException e) {
             return false;
         }
     }
@@ -56,7 +48,6 @@ public class JwtService {
                 .getExpiration()
                 .before(new Date());
     }
-
 
     public NewCookie createJwtCookie(String jwt) {
         return new NewCookie.Builder("JWT")
