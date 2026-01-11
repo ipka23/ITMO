@@ -9,11 +9,17 @@ import jakarta.inject.Inject;
 import persistence.dao.UserDAO;
 import persistence.entities.UserEntity;
 
+import java.util.HashMap;
+
 @Stateless
 public class AuthService {
 
     @EJB
     private UserDAO db;
+
+    @EJB
+    private JwtService jwtService;
+
     @PostConstruct
     public void init() {
         System.out.println("=== AuthService INIT ===");
@@ -44,16 +50,23 @@ public class AuthService {
             } else return new AuthResponse(false, "Неверный пароль!");
         } else {
             return new AuthResponse(false, "Пользователь " + user.getLogin() + " не найден!");
+
         }
     }
 
-    public AuthResponse register(UserEntity user) {
-//        UserEntity dbUser = db.findUserByLogin(user.getLogin());
+    public HashMap<String, String> register(UserEntity user) {
+        HashMap<String, String> registerParams = new HashMap<>();
         if (db.userExist(user)) {
-            return new AuthResponse(false, "Имя пользователя " + user.getLogin() + " уже занято!");
+            registerParams.put("isValid", "false");
+            registerParams.put("message", "Имя пользователя " + user.getLogin() + " уже занято!");
         } else {
+            String jwt = jwtService.generateToken(user.getLogin());
+            registerParams.put("isValid", "true");
+            registerParams.put("message", "Регистрация выполнена!");
+            registerParams.put("jwt", jwt);
+            registerParams.put("userId", user.getId().toString());
             db.addUser(user);
-            return new AuthResponse("Регистрация выполнена!", user.getId().toString());
         }
+        return registerParams;
     }
 }

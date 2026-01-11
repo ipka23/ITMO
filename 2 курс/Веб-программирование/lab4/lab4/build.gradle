@@ -35,8 +35,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     compileOnly("javax.faces:javax.faces-api:2.3")
 
-//    compile 'org.primefaces:primefaces:4.0'
-//    compile 'org.primefaces.themes:bootstrap:1.0.10'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
     implementation("org.primefaces:primefaces:14.0.0-RC2:jakarta")
     implementation("org.primefaces.extensions:primefaces-extensions:14.0.0-RC2:jakarta")
     implementation('org.hibernate.orm:hibernate-core:6.2.5.Final')

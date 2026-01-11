@@ -8,24 +8,29 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 import persistence.entities.UserEntity;
 import services.AuthService;
+import services.JwtService;
+
+import java.util.HashMap;
 
 @Path("/auth")
 public class UserController {
 
     @EJB
     private AuthService authService;
+    @EJB
+    private JwtService jwtService;
+
 
     @POST
     @Path("/log-in")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response logIn(AuthRequest request) {
-//        TODO добавить хеширование пароля
-//        String password = request.getPassword();
-//        password.hash();
+
         AuthResponse response = authService.validate(request);
         if (response.isValid()) {
             UserEntity user = new UserEntity(request.getLogin(), request.getPassword());
@@ -46,11 +51,16 @@ public class UserController {
         AuthResponse response = authService.validate(request);
         if (response.isValid()) {
             UserEntity user = new UserEntity(request.getLogin(), request.getPassword());
-            response = authService.register(user);
-            if (response.isValid()) return Response.ok(response).build();
-            else {
+            HashMap<String, String> registerParams = authService.register(user);
+            if (registerParams.get("isValid").equals("true")) {
+                response.setMessage(response.getMessage());
+                response.setId(registerParams.get("userId"));
+                NewCookie jwtCookie = jwtService.createJwtCookie(registerParams.get("jwt"));
+                return Response.ok(response).cookie(jwtCookie).build();
+            } else {
                 return Response.status(Response.Status.UNAUTHORIZED).entity(response).build();
             }
         } else return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
     }
+
 }
