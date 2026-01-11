@@ -1,4 +1,4 @@
 export type AuthRequest = {
-  username: string;
+  login: string;
   password: string;
 }

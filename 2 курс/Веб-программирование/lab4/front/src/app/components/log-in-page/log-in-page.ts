@@ -31,9 +31,10 @@ export class LogInPage {
 
   submitForm() {
     console.log(`${this.username}\n${this.password}`)
-    this.dataService.getLogInResponse({username: this.username, password: this.password}).subscribe({
+    this.dataService.getLogInResponse({login: this.username, password: this.password}).subscribe({
       next: (response) => {
           this.common.userId = parseInt(response.id)
+
           this.router.navigate(['/points/' + response.id.toString()])
       },
       error: (err)=> {
