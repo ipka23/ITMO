@@ -42,16 +42,29 @@ public class AuthService {
         }
     }
 
-    public AuthResponse logIn(UserEntity user) {
+    public HashMap<String, String> logIn(UserEntity user) {
+        HashMap<String, String> loginParams = new HashMap<>();
+
         if (db.userExist(user)) {
             if (db.passwordIsCorrect(user)) {
                 UserEntity dbUser = db.findUserByLogin(user.getLogin());
-                return new AuthResponse("Вход выполнен!", dbUser.getId().toString());
-            } else return new AuthResponse(false, "Неверный пароль!");
-        } else {
-            return new AuthResponse(false, "Пользователь " + user.getLogin() + " не найден!");
 
+                String jwt = jwtService.generateToken(user.getLogin());
+
+                loginParams.put("isValid", "true");
+                loginParams.put("message", "Вход выполнен!");
+                loginParams.put("jwt", jwt);
+                loginParams.put("userId", dbUser.getId().toString());
+            } else {
+                loginParams.put("isValid", "false");
+                loginParams.put("message", "Неверный пароль!");
+            }
+        } else {
+            loginParams.put("isValid", "false");
+            loginParams.put("message", "Пользователь " + user.getLogin() + " не найден!");
         }
+
+        return loginParams;
     }
 
     public HashMap<String, String> register(UserEntity user) {
@@ -64,8 +77,9 @@ public class AuthService {
             registerParams.put("isValid", "true");
             registerParams.put("message", "Регистрация выполнена!");
             registerParams.put("jwt", jwt);
-            registerParams.put("userId", user.getId().toString());
             db.addUser(user);
+            registerParams.put("userId", user.getId().toString());
+
         }
         return registerParams;
     }

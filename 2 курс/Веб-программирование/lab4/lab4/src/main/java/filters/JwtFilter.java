@@ -22,9 +22,10 @@ public class JwtFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        String clientToken = requestContext.getCookies().get("JWT").getValue();
         String path = requestContext.getUriInfo().getPath();
         if (path.startsWith("/auth")) return;
+        String clientToken = requestContext.getCookies().get("JWT").getValue();
+
 
         if (clientToken == null || clientToken.isEmpty() || !jwtService.tokenIsValid(clientToken)) {
             AuthResponse response = new AuthResponse(false, "Отклонено в доступе!");

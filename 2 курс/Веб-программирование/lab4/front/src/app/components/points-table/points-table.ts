@@ -83,7 +83,6 @@ export class PointsTableComponent implements OnInit {
         }
 
         this.common.setPoints(this.points)
-        this.common.updatePoints()
         // this.svgGraph.refreshPoints()
         this.tableLoaded.next(true)
         this.common.tableLoaded$ = this.tableLoaded
