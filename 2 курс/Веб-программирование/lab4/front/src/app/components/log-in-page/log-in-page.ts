@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
-import {AuthRequest} from '../../dto/AuthRequest';
 import {Router} from '@angular/router';
 import {AuthResponse} from '../../dto/AuthResponse';
 import {CommonModule} from '@angular/common';
@@ -41,7 +40,6 @@ export class LogInPage {
         const errorResponse: AuthResponse = err.error;
         this.errorMessage = errorResponse.message
         console.error('Ошибка входа:', errorResponse.message);
-        // console.error(errorResponse)
       }
     })
   }

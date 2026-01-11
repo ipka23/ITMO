@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {AuthRequest} from '../../dto/AuthRequest';
 import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
 import {Router} from '@angular/router';
-import {PointResponse} from '../../dto/PointResponse';
 import {AuthResponse} from '../../dto/AuthResponse';
 
 @Component({
@@ -40,7 +38,6 @@ export class RegisterPage {
       return
     }
     console.log(this.dataService === null)
-    // console.log(`${this.username}\n${this.password1}\n${this.password2}`)
 
     this.dataService.getRegisterResponse({login: this.username, password:this.password1}).subscribe({
         next: (response) => {

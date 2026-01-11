@@ -12,7 +12,6 @@ bootstrapApplication(App, {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
     }
   ]
 }).catch((err) => console.error(err));
