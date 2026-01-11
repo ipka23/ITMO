@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 @Stateless
 public class JwtService {
-    public SecretKey JWT_SIGN_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey JWT_SIGN_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     public long JWT_EXPIRATION_TIME = TimeUnit.DAYS.toMillis(7);
 
     public String generateToken(String username) {
@@ -48,7 +48,7 @@ public class JwtService {
     }
 
     private boolean isTokenExpired(String token) {
-        return !Jwts.parserBuilder()
+        return Jwts.parserBuilder()
                 .setSigningKey(JWT_SIGN_KEY)
                 .build()
                 .parseClaimsJws(token)
@@ -61,6 +61,7 @@ public class JwtService {
     public NewCookie createJwtCookie(String jwt) {
         return new NewCookie.Builder("JWT")
                 .value(jwt)
+                .path("/")
                 .httpOnly(true)
                 .maxAge((int) Duration.ofDays(7).getSeconds())
                 .build();

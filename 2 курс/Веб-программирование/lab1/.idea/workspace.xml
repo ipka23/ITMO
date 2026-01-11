@@ -5,114 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71b22d30-5296-449e-bc87-87e76c6e62fb" name="Changes" comment="lab1 i18n done">
-      <change afterPath="$PROJECT_DIR$/../lab4/front/src/app/dto/AuthRequest.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/front/src/app/dto/AuthResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/front/src/app/dto/PointRequest.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/front/src/app/dto/PointResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/deploy.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/deploy.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/deployToHelios.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/RestApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/controllers/PointController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/dto/AuthRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/dto/AuthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/dto/PointRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/dto/PointResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/persistence/dao/PointDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/persistence/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/services/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/services/PointService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/utility/exceptions/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/resources/create.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/start.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/lab4/start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/app.coordinates-form.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/app.points-table.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/services/logger.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/services/points.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/app/utility/Point.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/front/src/app/models/Point.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/front/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/front/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/frontend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/frontend react/src/setupTests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/PointsBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/beans/enterprise/D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/controllers/DBManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/entities/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/persistence/entities/PointEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/persistence/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/filters/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/filters/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/report.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/.idea/.idea.proglangstask5/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/.idea/.idea.proglangstask5/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/.idea/.idea.proglangstask5/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/.idea/.idea.proglangstask5/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5.sln.DotSettings.user" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/.idea/editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/.idea/net9.0.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/mylib.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/mylib.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/mylib.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/proglangstask5.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/proglangstask5.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/proglangstask5.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/proglangstask5.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/bin/Debug/net9.0/proglangstask5.runtimeconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/apphost.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.GlobalUsings.g.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.genruntimeconfig.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/proglangstask5.sourcelink.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/ref/proglangstask5.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/Debug/net9.0/refint/proglangstask5.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/proglangstask5.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/proglangstask5.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/proglangstask5.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/project.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/rider.project.model.nuget.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/obj/rider.project.restore.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/proglangstask5/proglangstask5/proglangstask5.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Языки программирования/task 5 TODO/task05.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/lab4/src/main/java/services/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/lab4/src/main/java/services/JwtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +160,7 @@
       <workItem from="1766405091822" duration="5000" />
       <workItem from="1766841408254" duration="912000" />
       <workItem from="1766875535823" duration="135000" />
+      <workItem from="1768142195495" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="GET, POST done; TODO fix HitChecker">
       <option name="closed" value="true" />
@@ -377,5 +271,13 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
