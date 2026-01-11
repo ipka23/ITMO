@@ -5,7 +5,6 @@ import dto.AuthResponse;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
 import persistence.dao.UserDAO;
 import persistence.entities.UserEntity;
 
@@ -73,13 +72,14 @@ public class AuthService {
             registerParams.put("isValid", "false");
             registerParams.put("message", "Имя пользователя " + user.getLogin() + " уже занято!");
         } else {
+            db.addUser(user);
+            UserEntity savedUser = db.findUserByLogin(user.getLogin());
+            
             String jwt = jwtService.generateToken(user.getLogin());
             registerParams.put("isValid", "true");
             registerParams.put("message", "Регистрация выполнена!");
             registerParams.put("jwt", jwt);
-            db.addUser(user);
-            registerParams.put("userId", user.getId().toString());
-
+            registerParams.put("userId", savedUser.getId().toString());
         }
         return registerParams;
     }

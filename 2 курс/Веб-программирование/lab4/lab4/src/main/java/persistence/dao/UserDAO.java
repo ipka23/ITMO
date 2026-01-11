@@ -40,6 +40,7 @@ public class UserDAO {
 
     public void addUser(UserEntity user) {
         em.persist(user);
+        em.flush();
     }
 
     public UserEntity findUserByLogin(String login) {
