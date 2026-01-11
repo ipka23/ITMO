@@ -53,8 +53,8 @@ public class JwtService {
         return new NewCookie.Builder("JWT")
                 .value(jwt)
                 .path("/")
-                .httpOnly(true)
                 .maxAge((int) Duration.ofDays(7).getSeconds())
                 .build();
     }
 }
+

@@ -81,6 +81,6 @@ public class AuthService {
             registerParams.put("jwt", jwt);
             registerParams.put("userId", savedUser.getId().toString());
         }
-        return registerParams;
+            return registerParams;
     }
 }

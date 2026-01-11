@@ -1,9 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonInfoService} from '../../services/common-info-service';
 import {DataService} from '../../services/data-service';
 import {Point} from '../../models/Point';
-import {PointResponse} from '../../dto/PointResponse';
 
 @Component({
   selector: "app-coordinates-form",
@@ -23,12 +22,7 @@ export class CoordinatesFormComponent implements OnInit{
   yInput = ""
   rSelect: string | null = ""
   buttonClicked: boolean = false
-  // @Output() buttonClicked = new EventEmitter<any>();
   errorMessage = ""
-  // point: Point = new PointResponse()
-
-  // private pointsSubscription?: Subscription;
-  // private pointAddedSubscription?: Subscription;
 
   submitForm(): void {
     this.buttonClicked = true
@@ -36,8 +30,6 @@ export class CoordinatesFormComponent implements OnInit{
     console.log('submitForm')
     this.dataService.sendPoint({x: this.xSelect, y: this.yInput, r: this.rSelect}).subscribe({
       next: (response) => {
-        // const newPoint = response.getPoint();
-        // this.common.addPoint(newPoint);
         const newPoint: Point = {x: response.x, y: response.y, r: response.r, status: response.status, currentTime: response.currentTime, executionTime: response.executionTime}
         console.log(`CoordinatesFormComponent: responsePoint_newPoint(${newPoint.x}, ${newPoint.y}, ${newPoint.r}, ${newPoint.status}, ${newPoint.currentTime}, ${newPoint.executionTime})`)
         this.common.addPoint(newPoint);

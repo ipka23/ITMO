@@ -19,7 +19,6 @@ import {Point} from '../../models/Point';
 })
 export class SvgGraphComponent implements OnInit {
   rPxWidth = 300
-  rPxHeight = 300
   svgCenterX = 150
   svgCenterY = 150
   rPxSize = this.rPxWidth / 3

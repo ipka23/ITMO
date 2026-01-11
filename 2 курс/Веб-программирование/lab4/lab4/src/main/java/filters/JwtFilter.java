@@ -25,7 +25,7 @@ public class JwtFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext requestContext) throws IOException {
         String path = requestContext.getUriInfo().getPath();
         if (path.startsWith("/auth")) return;
-        
+
         Cookie jwtCookie = requestContext.getCookies().get("JWT");
         String clientToken = (jwtCookie != null) ? jwtCookie.getValue() : null;
 
@@ -35,3 +35,4 @@ public class JwtFilter implements ContainerRequestFilter {
         }
     }
 }
+
