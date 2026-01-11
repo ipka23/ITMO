@@ -18,6 +18,5 @@ export class MainPage {
     if (this.common.userId === undefined) {
       this.router.navigate(['log-in']);
     }
-    // cdr.detectChanges()
   }
 }
