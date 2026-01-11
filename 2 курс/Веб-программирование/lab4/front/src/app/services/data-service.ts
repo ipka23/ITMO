@@ -35,27 +35,11 @@ export class DataService {
 
   getLogInResponse(request: AuthRequest): Observable<AuthResponse> {
     const url = `http://localhost:25230/lab4/app/auth/log-in`
-    return this.http.post<AuthResponse>(url, request)
+    return this.http.post<AuthResponse>(url, request, {withCredentials: true})
   }
 
   getRegisterResponse(request: AuthRequest): Observable<AuthResponse> {
     const url = `http://localhost:25230/lab4/app/auth/register`
     return this.http.post<AuthResponse>(url, request, {withCredentials: true})
-  }
-
-  checkLogIn(): Observable<AuthResponse> {
-    const url = `http://localhost:25230/lab4/app/auth/log-in`
-    return this.http.post<AuthResponse>(url, {withCredentials: true})
-  }
-
-
-  checkRegister(): Observable<AuthResponse> {
-    const url = `http://localhost:25230/lab4/app/auth/register`
-    return this.http.post<AuthResponse>(url, {withCredentials: true})
-  }
-
-  checkAuth(): Observable<AuthResponse> {
-    const url = `http://localhost:25230/lab4/app/auth`
-    return this.http.post<AuthResponse>(url, {withCredentials: true})
   }
 }
