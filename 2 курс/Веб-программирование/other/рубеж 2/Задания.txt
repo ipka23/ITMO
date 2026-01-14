@@ -1,0 +1,174 @@
+// Интерфейс на JSF для отображения ленты новостей
+
+<html>
+ <head>
+   <title> 
+     Новости
+   </title>
+ </head>
+ <body>
+    <div>
+      <ui:repeat value="#{newsBean.allNews} var="news">
+       <span>Название</span>
+       <h:inputText value="#{newsBean.news.title/>
+       <span>Новость</span>
+       <h:inputText value="#{newsBean.news.description/>
+       <span>Дата</span>
+       <h:inputText value="#{newsBean.news.date/>
+       <h:graphicImage value="#{newsBean.news.imageName}" library="images"/>
+      </ui:repeat>
+    </div>
+    <br>
+    <h1>Добавить новость</h1>
+   <h:form>
+    <div>
+      <span>Введите название:</span>
+      <h:inputText value="#{newsBean.title}" required="true/>
+      <span>Введите описание:</span>
+      <h:inputText value="#{newsBean.description}" required="true/>
+      <span>Введите название изображения:</span>
+      <h:inputText value="#{newsBean.imageName}" required="true/>
+    </div>
+    <h:commandButton value="Отправить" action="#{newsBean.addNews}>
+   </h:form>
+ </body>
+</html>
+
+import lombok;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class News {
+ private String title;
+ private String description;
+ private String imageName;
+ private Date date;
+}
+
+
+@ApplicationScoped
+public class NewsBean {
+ private String title;
+ private String description;
+ private String imageName;
+ private Date date;
+ private List<News> allNews = new ArrayList<>(); 
+ public void addNews() {
+ News news = new News(tite, description, imageName, new Date())
+ this.allNews.add(news)
+ }
+}
+
+
+
+
+
+
+
+
+// Привести пример Java класса, использующего передаваемый через конструктор экземпляр JPA EntityMаnаger, для реализации следующих операций со студентами зачисление (создание), редактирование персональной информации, отчисление (удаление), получение записи о студенте по идентификатору
+
+import lombok;
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+public class Student {
+ @Id
+ private Long id;
+ 
+ private String name;
+ 
+ public Student(String name) {
+  this.name = name;
+ }
+}
+
+public class StudentManager {
+ private EntityManager em;
+ public StudentManager(EntityManager em){
+  this.em = em;
+ }
+
+ @Transactional
+ public Student getStudentById(Long studentId) {
+ retun em.find(Student.class, studentId)
+ }
+
+ @Transactional
+ public void addStudent(String name) {
+  em.persist(new Student(name));
+ }
+
+ @Transactional
+ public Student deleteStudent(Long studentId) {
+  Student studentToRemove = getStudentById(studentId);
+  if (studentToRemove != null) em.remove(studentToRemove);
+ }
+
+ @Transactional
+ public Student changeStudentInfo(Long studentId, String newName) {
+ Student student = getStudentById(studentId);
+ student.setName(newName);
+ }
+}
+
+
+
+
+
+
+
+
+// react компонент для аутентификации
+
+
+
+
+
+
+
+
+
+// angular компонент для аутентификации
+
+@Component(
+selector: 'app-login',
+template: 
+`
+<form>
+ <div *ngIf="errrorMessage"> 
+ <label><text>{{errrorMessage}}</text></label>
+ </div>
+ <span>Введите имя пользователя:</span>
+ <br>
+ <label><text [(ngModel)]="username" type="text"></text></label>
+ <br>
+ <span>Введите имя пароль:</span>
+ <br>
+ <label><text [(ngModel)]="password" type="password"></text></label>
+ <br>
+ <button (click)="submitLogIn()">Войти</button>
+</form>
+`
+)
+export class LogInComponent {
+ login = ''
+ passwd = ''
+ errrorMessage = ''
+ type AuthRequest = {
+  username: string,
+  password: string
+ }
+ constructor(private http: Http, private request: AuthRequest, private router: Router)
+ submitLogIn() {
+  this.request = {username: this.login, password: this.passwd}
+  http.post<AuthRequest>("http://localhost:4200/app/auth/login", request).subscribe({
+    next: (response) => {
+     this.router.navigate(['points/'+response.id])
+    }, 
+    error: this.errorMessage = error.message
+  })
+ }
+}
