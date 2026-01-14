@@ -55,7 +55,7 @@ public class NewsBean {
  private Date date;
  private List<News> allNews = new ArrayList<>(); 
  public void addNews() {
- News news = new News(tite, description, imageName, new Date())
+ News news = new News(title, description, imageName, new Date())
  this.allNews.add(news)
  }
 }
@@ -76,6 +76,7 @@ import lombok;
 @Entity
 public class Student {
  @Id
+ @GeneratedValue(strategy = GeneratedType.IDENTIFY)
  private Long id;
  
  private String name;
@@ -113,16 +114,6 @@ public class StudentManager {
  student.setName(newName);
  }
 }
-
-
-
-
-
-
-
-
-// react компонент для аутентификации
-
 
 
 
@@ -172,3 +163,74 @@ export class LogInComponent {
   })
  }
 }
+
+
+
+
+
+
+
+
+// react компонент для аутентификации
+
+function LogInPage() {
+ const [username, setUsername] = useState('')
+ const [passwd, setPassword] = useState('')
+ const [error, setError] = useState('')
+
+ const submitForm = (e) => {
+  e.preventDefault()
+   const response = axios.post(
+   'http://localhost:8080/app/auth/logIn',
+   {login: username, password: passwd}
+   ).then(response => useNavigate(`points/${response.id}`).catch(err => {
+   if (err.message) {
+   const message = err.message
+   setError(message)
+   }
+  })
+ }
+
+ return (
+ <div>
+  <h1>Вход</h1>
+  <form onSubmit={submitForm}>
+   <span>Введите логин:</span>
+    <input value={username} onChange={(e) => setUsername(e.target.value)}/>
+   <span>Введите пароль:</span>
+    <input value={passwd} onChange={(e) => setPassword(e.target.value)}/>
+    <button type='submit'>Отправить</button>
+  </form>
+ </div>
+)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
