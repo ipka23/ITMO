@@ -61,7 +61,12 @@ public class NewsBean {
 }
 
 
-// Привести пример Java класса, использующего передаваемый через конструктор экземпляр JPA EntityMаnаger, для реализации следующих операций со студентами зачисление (создание), редактирование персональной информации, отчисление (удаление), получение записи о студенте по идентификатору
+// Привести пример Java класса, 
+   использующего передаваемый через 
+   конструктор экземпляр JPA EntityMаnаger, 
+   для реализации следующих операций со студентами 
+   зачисление (создание), редактирование персональной информации, 
+   отчисление (удаление), получение записи о студенте по идентификатору
 
 import lombok;
 @Getter
@@ -70,7 +75,7 @@ import lombok;
 @Entity
 public class Student {
  @Id
- @GeneratedValue(strategy = GeneratedType.IDENTIFY)
+ @GeneratedValue(strategy = GenerationType.IDENTIFY)
  private Long id;
  
  private String name;
@@ -112,8 +117,14 @@ public class StudentManager {
 
 // angular компонент для аутентификации
 
+ interface AuthRequest {
+  username: string,
+  password: string
+ }
+
 @Component(
 selector: 'app-login',
+imports: [FormsModule, CommonModule],
 template: 
 `
 <form>
@@ -122,11 +133,11 @@ template:
  </div>
  <span>Введите имя пользователя:</span>
  <br>
- <label><text [(ngModel)]="username" type="text"></text></label>
+ <label><text [(ngModel)]="username" type="text" name="username"></text></label>
  <br>
  <span>Введите имя пароль:</span>
  <br>
- <label><text [(ngModel)]="password" type="password"></text></label>
+ <label><text [(ngModel)]="password" type="password" name="password"></text></label>
  <br>
  <button (click)="submitLogIn()">Войти</button>
 </form>
@@ -136,10 +147,7 @@ export class LogInComponent {
  login = ''
  passwd = ''
  errrorMessage = ''
- type AuthRequest = {
-  username: string,
-  password: string
- }
+
  constructor(private http: Http, private request: AuthRequest, private router: Router)
  submitLogIn() {
   this.request = {username: this.login, password: this.passwd}
@@ -151,10 +159,6 @@ export class LogInComponent {
   })
  }
 }
-
-
-
-
 
 
 
@@ -172,8 +176,8 @@ function LogInPage() {
    'http://localhost:8080/app/auth/logIn',
    {login: username, password: passwd}
    ).then(response => useNavigate(`points/${response.id}`).catch(err => {
-   if (err.message) {
-   const message = err.message
+   if (err.error) {
+   const message = err.error
    setError(message)
    }
   })
@@ -197,10 +201,11 @@ function LogInPage() {
 
 
 // Написать EJB, который просыпается в полночь и выводит содержимое таблицы н_люди
+
 import lombok;
 @Singleton
 public class ShowPeopleBean {
- @PersistenceContext(persistenceUnit = 'pu')
+ @PersistenceContext(unitName = 'pu')
  private EntityManager em;
  @Getter @Setter
  private String peopleList;
@@ -208,7 +213,7 @@ public class ShowPeopleBean {
  @Schedule
  public void showPeopleAtMidnight() {
   StringBuilder sb = new StringBuilder();
-  ArrayList<Person> people = em.createQuery("select p Person from н_люди", Person.class).getResultSet();
+  ArrayList<Person> people = em.createQuery("select p from Person p", Person.class).getResultSet();
   for (int i = 0; i < people.length; i++) {
    Person p = people[i];
    sb.append("ЧЛВК_" + i.toString() + ": " + p.name + "\n");
@@ -220,7 +225,12 @@ public class ShowPeopleBean {
 import lombok;
 @Getter
 @Setter
+@Entity
+@Table(name = "н_люди")
 public class Person {
+ @Id  
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+ private Long id;
  private String name;
 }
 
@@ -265,35 +275,20 @@ public class BankTransactionBean() {
   em.merge(bank);
  }
 }
-
-??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-@Stateless
-public class BankTransactionBean() {
- @Transactional
- public void purchase(Client client, Bank bank, Double sum) {
-  client.getWalletBalance().subtract(sum);
-  bank.getWallet().add(sum);
- }
-}
 или
 @Stateless
-@TransactionManagement(BEAN)
 public class BankTransactionBean() {
- @Resource
- private UserTransaction ut;
- public void purchase(Client client, Bank bank, Double sum) {
-  try {
-   ut.begin();
-   client.getWalletBalance().subtract(sum)
-   bank.getWallet().add(sum)
-   ut.commit();
-  } catch (Exception e) {
-   ut.rollback()
-  }
+ @PersistenceContext(persistenceUnit = "pu")
+ private EntityManager em;
+
+ public void purchase(Long clientId, Long bankId, Double sum) {
+  Client client = em.find(Client.class, clientId);
+  Bank bank = em.find(Bank.class, bankId);
+
+  client.updateBalance(client.getBalance().subtract(sum));
+  bank.updateBalance(bank.getWallet().add(sum));
  }
 }
-??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-
 
 
 // JSF Managed Bean, после инициализации HTTP-сессии
@@ -316,10 +311,6 @@ private class DataBean implements Serializable{
   studyPlans = resultSetToList(rs);
  }
 }
-
-
-
-
 
 // Реализовать бин, который считает количество минут со
    старта приложения (или рестарта сервера)
@@ -355,12 +346,11 @@ public class CalculatorEJB {
 
 
 
-
 // Создать бин, конфигурируемый аннотациями, с именем
    myBean, контекст которого равен контексту другого
    бина - myOtherBean
 @Named
-@Dependent # значит MyBean будет иметь контекст того, в кого его инжектят
+@Dependent # значит MyBean будет иметь контекст того, в кого его инжектят(наверное)
 public class MyBean {
 }
 
@@ -456,6 +446,7 @@ export class CheckAuthService {
 
 // React компонент для хранения информации о
    банковской карте
+
 interface BankCard {
  number: string,
  name: string,
