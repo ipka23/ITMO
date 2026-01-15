@@ -61,12 +61,6 @@ public class NewsBean {
 }
 
 
-
-
-
-
-
-
 // Привести пример Java класса, использующего передаваемый через конструктор экземпляр JPA EntityMаnаger, для реализации следующих операций со студентами зачисление (создание), редактирование персональной информации, отчисление (удаление), получение записи о студенте по идентификатору
 
 import lombok;
@@ -114,12 +108,6 @@ public class StudentManager {
  student.setName(newName);
  }
 }
-
-
-
-
-
-
 
 
 // angular компонент для аутентификации
@@ -194,6 +182,7 @@ function LogInPage() {
  return (
  <div>
   <h1>Вход</h1>
+  {error && <span>{error}</span>}
   <form onSubmit={submitForm}>
    <span>Введите логин:</span>
     <input value={username} onChange={(e) => setUsername(e.target.value)}/>
@@ -207,30 +196,289 @@ function LogInPage() {
 
 
 
+// Написать EJB, который просыпается в полночь и выводит содержимое таблицы н_люди
+import lombok;
+@Singleton
+public class ShowPeopleBean {
+ @PersistenceContext(persistenceUnit = 'pu')
+ private EntityManager em;
+ @Getter @Setter
+ private String peopleList;
+
+ @Schedule
+ public void showPeopleAtMidnight() {
+  StringBuilder sb = new StringBuilder();
+  ArrayList<Person> people = em.createQuery("select p Person from н_люди", Person.class).getResultSet();
+  for (int i = 0; i < people.length; i++) {
+   Person p = people[i];
+   sb.append("ЧЛВК_" + i.toString() + ": " + p.name + "\n");
+  }
+  peopleList = sb.toString()
+  System.out.println(peopleList)
+ }
+}
+import lombok;
+@Getter
+@Setter
+public class Person {
+ private String name;
+}
+
+
+
+
+// Написать конфиг JSF страницы,
+   которая принимает xhtml запросы и все,
+   чей url начинается на /faces/
+
+
+<web-app>
+ <servlet>
+ <servlet-name>FacesServlet<servlet-name>
+ <servlet-class>jakarta.servlet.FacesServlet<servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>FacesServlet<servlet-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+   <servlet-name>FacesServlet<servlet-name>
+   <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+
+// Написать компонент ejb для списания средств со счета
+   клиента и начисления их на счет банка за одну
+   транзакцию
+
+@Stateless
+public class BankTransactionBean() {
+ @PersistenceContext(persistenceUnit = "pu")
+ private EntityManager em;
+
+ public void purchase(Client client, Bank bank, Double sum) {
+  client.updateBalance(client.getBalance().subtract(sum));
+  bank.updateBalance(bank.getWallet().add(sum));
+  em.merge(client);
+  em.merge(bank);
+ }
+}
+
+??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+@Stateless
+public class BankTransactionBean() {
+ @Transactional
+ public void purchase(Client client, Bank bank, Double sum) {
+  client.getWalletBalance().subtract(sum);
+  bank.getWallet().add(sum);
+ }
+}
+или
+@Stateless
+@TransactionManagement(BEAN)
+public class BankTransactionBean() {
+ @Resource
+ private UserTransaction ut;
+ public void purchase(Client client, Bank bank, Double sum) {
+  try {
+   ut.begin();
+   client.getWalletBalance().subtract(sum)
+   bank.getWallet().add(sum)
+   ut.commit();
+  } catch (Exception e) {
+   ut.rollback()
+  }
+ }
+}
+??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+
+
+
+// JSF Managed Bean, после инициализации HTTP-сессии
+   формирующий коллекцию с содержимым таблицы
+   Н_УЧЕБНЫЕ_ПЛАНЫ. Для доступа к БД необходимо
+   использовать JDBC-ресурс jdbc/OrbisPool.
+
+@Named
+@SessionScoped
+private class DataBean implements Serializable{
+ @Resource("jdbc/OrbisPool")
+ private DataSource dataSource;
+ private ArrayList<StudyPlan> studyPlans;
+
+ @PostConstruct
+ public void init() throws SQLException {
+  Connection connection = dataSource.getConnection();
+  PreparedStatement st = connection.createQuery("select * from Н_УЧЕБНЫЕ_ПЛАНЫ");
+  ResultSet rs = st.getResultSet();
+  studyPlans = resultSetToList(rs);
+ }
+}
 
 
 
 
 
+// Реализовать бин, который считает количество минут со
+   старта приложения (или рестарта сервера)
+
+@Named
+@ApplicationScoped
+public class CounterBean {
+ private long startTime;
+ public CounterBean() {
+  startTime = System.currentTimeMillis();
+ }
+ public long getMinutesFromStart() {
+  return (System.currentTimeMillis() - startTime) / 1000 / 60;
+ }
+}
+
+
+
+// EJB калькулятор для 4-х операций
+import lombok;
+@Getter
+@Setter
+public class CalculatorEJB {
+ private double a;
+ private double b;
+ private double ans;
+ public getAns(){ return ans; }
+ public float add(){ ans = a + b; }
+ public float sub(){ ans = a - b; }
+ public float mul(){ ans = a * b; }
+ public float div(){ ans = a / b; }
+}
 
 
 
 
+// Создать бин, конфигурируемый аннотациями, с именем
+   myBean, контекст которого равен контексту другого
+   бина - myOtherBean
+@Named
+@Dependent # значит MyBean будет иметь контекст того, в кого его инжектят
+public class MyBean {
+}
+
+@Named
+@ApplicationScoped
+public class MyOtherBean {
+  @Inject
+  private MyBean myBean;
+}
+
+
+// Написать правило навигации, для перехода с одной
+   страницы на другую по нажатию кнопки
+
+<navigation-rule>
+ <from-view-id>index.xhtml</from-view-id>
+ <navigation-case>
+  <from-outcome>main</from-outcome>
+  <to-view-id>main.xhtml</to-view-id>
+ <navigation-case>
+</navigation-rule>
 
 
 
+// JSF поле многострочного ввода в которое можно ввести
+   только строчные английские буквы
+
+<h:inputTextArea value="#{myBean.text}">
+ <f:validateRegex pattern="^[a-z]*$"/>
+</h:inputTextArea>
 
 
+// Форма ПСЖ на angular
+
+@Component ({
+selector: 'app-expel-form'
+imports: [FormsModule],
+template:
+`
+<form>
+ <div *ngIf=errorMessage><span>{{errorMessage}}</span></div>
+ <span>Введите имя:</span>
+ <input type="text" [(ngModel)]="name" value="name"/>
+ <button type="submit" (click)="expel()">Прошу отчислить по собственному желанию<button>
+</form>
+`
+})
+export class ExpelFormComponent {
+ name = ""
+ constructor(private http: HttpClient, private router: Router) {}
+ expel() {
+  this.http.post("http://localhost:8080/app/main/expel", {name: this.name}).subscribe({
+   next: response => {
+    console.log(response)
+    this.router.navigate(['/success'])
+   },
+   error: error => {
+    this.errorMessage = error.error
+   }
+  })
+ }
+}
 
 
+// сервис, который проверяет вошел
+  ли пользователь и возвращал бы форму входа, при
+  неавторизованности
+
+@Injectable({
+ providedIn: "root"
+})
+export class CheckAuthService {
+ interface User = {
+  id: string,
+  name: string
+ }
+ constructor(private http: HttpClient, private router: Router) {}
+ checkAuth(url: string, user: User) {
+  this.http.post(url, {id: user.id, name: user.name}).subscribe({
+  next: response => {
+    if (!response.userIsAuth) {
+     this.router.navigate(["/log-in"])
+    }
+   },
+  error: {
+    console.log(error.error)
+    this.router.navigate(['/log-in'])
+   }
+  })
+ }
+}
 
 
-
-
-
-
-
-
-
-
-
+// React компонент для хранения информации о
+   банковской карте
+interface BankCard {
+ number: string,
+ name: string,
+ cvv: string
+}
+function BankCardComponent() {
+ const [number, setNumber] = useState('')
+ const [name, setName] = useState('')
+ const [cvv, setCvv] = useState('')
+ const submitCard = (e) => {
+  e.preventDefault()
+  console.log(number)
+  console.log(name)
+  console.log(cvv)
+ }
+ return (
+<form onSubmit={submitCard}>
+ <span>Введите номер карты:</span>
+ <input type="text" onChange={(e) => setNumber(e.target.value)}/>
+ <span>Введите имя владельца карты:</span>
+ <input type="text" onChange={(e) => setName(e.target.value)}/>
+ <span>Введите секретный код карты:</span>
+ <input type="password" onChange={(e) => setCvv(e.target.value)}/>
+</form>
+)
+}
