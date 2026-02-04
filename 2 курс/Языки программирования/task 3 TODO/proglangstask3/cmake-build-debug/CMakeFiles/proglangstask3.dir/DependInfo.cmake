@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/ipka23/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/main.c" "CMakeFiles/proglangstask3.dir/main.c.obj" "gcc" "CMakeFiles/proglangstask3.dir/main.c.obj.d"
+  "C:/Users/ipka23/ITMO/2 курс/Языки программирования/task 3 TODO/proglangstask3/main.c" "CMakeFiles/proglangstask3.dir/main.c.obj" "gcc" "CMakeFiles/proglangstask3.dir/main.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
