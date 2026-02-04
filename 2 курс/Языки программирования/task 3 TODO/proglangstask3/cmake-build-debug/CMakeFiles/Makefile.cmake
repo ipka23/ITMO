@@ -98,7 +98,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/JetBrains/CLion 2025.2.2/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/JetBrains/CLion 2025.2.2/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/Windows.cmake"
   "C:/Program Files/JetBrains/CLion 2025.2.2/bin/cmake/win/x64/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake"
-  "C:/Users/ipka23/ITMO/2 курс/Языки программирования/4 seminar - 11 nov/proglangstask3/CMakeLists.txt"
+  "C:/Users/ipka23/ITMO/2 курс/Языки программирования/task 3 TODO/proglangstask3/CMakeLists.txt"
   "CMakeFiles/4.0.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeSystem.cmake"
