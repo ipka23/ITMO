@@ -30,8 +30,6 @@ class MatrixUtil:
                 print("Изначальная матрица:")
                 self.printUtil.printMatrix(matrix)
                 print()
-                # self.gauss_zeldel(matrix, n)
-                # self.gauss_zeldel(matrix)
                 self.zeroApproximation(matrix, n)
                 break
 
