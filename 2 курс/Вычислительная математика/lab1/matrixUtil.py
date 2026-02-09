@@ -1,8 +1,9 @@
-from configparser import ParsingError
-from os import error
+from printUtil import PrintUtil
 
 
 class MatrixUtil:
+    def __init__(self, printUtil: PrintUtil):
+        self.printUtil = printUtil
 
     def getMatrixFromInput(self):
         n = 0
@@ -25,62 +26,14 @@ class MatrixUtil:
                 print("Введите корректную матрицу")
                 continue
 
-            # for line in matrix:
-            #     if len(line) != n + 1:
-            #         print("Введите корректную матрицу")
-            # continue
-
             else:
                 print("Изначальная матрица:")
-                self.printMatrix(matrix)
+                self.printUtil.printMatrix(matrix)
                 print()
                 # self.gauss_zeldel(matrix, n)
-                self.gauss_zeldel(matrix, n)
+                # self.gauss_zeldel(matrix)
+                self.zeroApproximation(matrix, n)
                 break
-
-    def gauss_zeldel(self, a, n):
-        max_iter = 1
-        precision = 0.05
-        for k in range(max_iter):
-            for i in range(n):
-                for j in range(n):
-                    # print(f"a_ij:{a[i][j]}")
-                    summ = 0
-                    for j2 in range(n):
-                        # print(f"a_ij2:{a[i][j2]}")
-                        if j2 != j:
-                            summ += a[i][j2]
-                    if a[i][j] >= summ: # условие преобладания диагональных элементов
-                        for j2 in range(n):
-                            tmp = a[i][j2]
-                            a[i][j2] = a[j][j2]
-                            a[j][j2] = tmp
-            matrix = a
-            print("Преобразованная матрица")
-            self.printMatrix(matrix)
-            x = [0]*n
-            for i in range(n):
-                c = matrix[i][i]
-                b = matrix[i][-1]
-                x[i] = b
-                # print("c: " + str(c))
-                s = 0
-                for j in range(n):
-                    if i != j:
-                        matrix[i][j] = -1 * matrix[i][j] / c
-                    else:
-                        matrix[i][j] = 1
-                matrix[i][-1] /= c
-                matrix[i][i] = 0
-            for i in range(n):
-                for j in range(n):
-                    x[i] = x[i] * matrix[i][j]
-            print("Итоговая матрица")
-            self.printMatrix(matrix)
-
-
-    def getMatrixFromFile(self, filename):
-        pass
 
     def inputMatrix(self):
         matrix = list()
@@ -93,65 +46,88 @@ class MatrixUtil:
                 matrix.append(line)
         return matrix
 
+    # def testGZ(self, matrix: list):
+    #     matrix = self.zeroApproximation(matrix, n)
+    #     # matrix = self.testGZ2(matrix)
+    #     return matrix
 
-    def printMatrix(self, matrix: list):
-        print("=========start============")
-        for i in range(len(matrix)):
-            for j in range(len(matrix) + 1):
-                print(round(matrix[i][j]), end=" ")
-            print()
-        print("=========finish===========")
+    def diagElemDominate(self, matrix, lineIndex):
+        s = 0  # сумма всех коэф. кроме главного
+        matrixLine = matrix[lineIndex]
+        for i in range(len(matrixLine) - 1):
+            if i != lineIndex:
+                s += abs(matrixLine[i])
+        if abs(matrixLine[lineIndex]) < s:
+            return False
+        return True
 
-    # def zeldel(self, matrix, n, e):
-    #     abs_max = e + 1
-    #
-    #     answer = []
-    #     answer_new = []
-    #
-    #     for i in range(0, n):
-    #         for j in range(0, n):
-    #             sum = 0
-    #             for jj in range(0, n):
-    #                 if jj != j:
-    #                     sum += matrix[i][jj]
-    #             if matrix[i][j] >= sum:
-    #                 for jj in range(0, n):
-    #                     tmp = matrix[i][jj]
-    #                     matrix[i][jj] = matrix[j][jj]
-    #                     matrix[j][jj] = tmp
-    #
-    #     for i in range(0, n):
-    #         c = matrix[i][i]
-    #         for j in range(0, n):
-    #             matrix[i][j] = -1 * matrix[i][j] / c
-    #         matrix[i][-1] /= c
-    #         matrix[i][i] = 0
-    #
-    #     c_norm = 0
-    #     for i in range(0, n):
-    #         sum = 0
-    #         for j in range(0, n):
-    #             sum += abs(matrix[i][j])
-    #         if sum > c_norm:
-    #             c_norm = sum
-    #
-    #     if c_norm < 1:
-    #         for i in range(0, n):
-    #             answer[i] = matrix[i][-1]
-    #             answer_new[i] = matrix[i][-1]
-    #
-    #     # while abs_max > e:
-    #     #     for i in range(0, n):
-    #     #         sum = 0
-    #     #         for j in range(0, n):
-    #     #             sum += matrix[i][j] * answer_new[j]
-    #     #         answer_new[i] = sum + matrix[i][-1]
-    #     #
-    #     #     abs_max = 0
-    #     #     for i in range(0, n):
-    #     #         if abs(answer[i] - answer_new[i]) > abs_max:
-    #     #             abs_max = abs(answer[i] - answer_new[i])
-    #     #         answer[i] = answer_new[i]
-    #
-    #     for i in range(0, n):
-    #         print(answer[i])
+    def zeroApproximation(self, matrix, n):
+        for k in range(n - 1):  # по
+            if not self.diagElemDominate(matrix, k):  # Условие преобладания диагональных элементов
+                matrix[k], matrix[k + 1] = matrix[k + 1], matrix[k]
+                if k == n: print("Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
+        print("Преобразованная матрица:")
+        self.printUtil.printMatrix(matrix)
+        c = []  # список для коэф. при главных элементах
+
+        for i in range(n):
+            c.append(matrix[i][i])
+        for i in range(n):
+            for j in range(n):
+                if i != j:
+                    matrix[i][j] = -1 * matrix[i][j] / c[i]
+                else:
+                    matrix[i][j] = 0
+        d = [0] * n  # список свободных членов равных решению x_0 (нулевому приближению)
+        for i in range(n):
+            matrix[i][-1] = matrix[i][-1] / c[i]
+            d[i] = matrix[i][-1]
+
+        X = []  # решения системы x_0, ..., x_k; где k = номер итерации
+        X.append(d)
+
+        self.printUtil.printX(0, X[0])
+        # self.printUtil.printMatrix(matrix)
+
+        k = 1
+        while not self.absoluteDeviation(X):
+            x = self.kApproximationGaussZeldel(matrix, n, X)
+            X.append(x)
+            self.printUtil.printX(k, X[-1])
+            k += 1
+        print("Итого: 6 итераций")
+
+    def absoluteDeviation(self, X):
+        epsilon = 0.01  # абсолютное отклонение
+        maxDeviation = -1
+        l = len(X)
+        solutionLen = len(X[0])
+        if l == 1:
+            print(f"Вектор погрешности: {max(X[0]):10.4f}")
+            return False
+        for i in range(solutionLen):
+            e = abs(X[l - 1][i] - X[l - 2][i])
+            if e >= maxDeviation:
+                maxDeviation = e
+        print(f"Вектор погрешности: {maxDeviation:10.4f}")
+        return maxDeviation <= epsilon
+
+    def kApproximationSimpleIteration(self, matrix, n, X):
+        x = [] # k-тое приближение решения
+        for i in range(n): # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
+            x_k = 0
+            for j in range(n):
+                    x_k += matrix[i][j] * X[-1][j]
+            x_k += + X[0][i]
+            x.append(x_k)
+        return x
+
+    def kApproximationGaussZeldel(self, matrix, n, X):
+        x = []  # k-тое приближение решения
+        for i in range(n):  # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
+            x_k = 0
+            for j in range(n):
+                x_k += matrix[i][j] * X[-1][j]
+            x_k += + X[0][i]
+            x.append(x_k)
+        return x
