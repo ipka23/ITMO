@@ -1,0 +1,3 @@
+/Users/ipka23/ITMO/2 курс/Алгоритмы и структуры данных/tasksCpp/cmake-build-debug/CMakeFiles/tasksCpp.dir
+/Users/ipka23/ITMO/2 курс/Алгоритмы и структуры данных/tasksCpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ipka23/ITMO/2 курс/Алгоритмы и структуры данных/tasksCpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,7 +1,5 @@
-#include <iso646.h>
 #include <stdbool.h>
 #include <stdio.h>
-#define FLOWERS_MAX_SIZE 200000
 
 void inputArray(int arr[], int n) {
   for (int i = 0; i < n; ++i) {
@@ -17,8 +15,8 @@ void sortFlowers(int arr[], int n) {
   int end = 0;
   int count = 0;
   while (i < n - 2) {
-    if ((arr[i] != arr[i + 1] and arr[i] != arr[i + 2]) or
-        (arr[i] != arr[i + 1] or arr[i] != arr[i + 2])) {
+    if ((arr[i] != arr[i + 1] && arr[i] != arr[i + 2]) ||
+        (arr[i] != arr[i + 1] || arr[i] != arr[i + 2])) {
       start = i;
       count += 3;
       i += 2;
@@ -27,14 +25,14 @@ void sortFlowers(int arr[], int n) {
     }
     end = start + count;
   }
-  printf("%d %d", start + 1, end + 1);
+  printf("%d %d\n", start + 1, end + 1);
 }
 
 void inputFlowers() {
   int n;
   while (true) {
     scanf("%d", &n);
-    if (n > 0 or n < FLOWERS_MAX_SIZE) {
+    if (n > 0 || n < 200000) {
       break;
     }
   }
