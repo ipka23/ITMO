@@ -14,10 +14,8 @@ void sortFlowers(std::vector<int>& arr, int n) {
   int start = 0;
   int end = 0;
   int count = 0;
-  int minStart = 200000;
-  int minEnd = 200000;
   int maxCount = 0;
-  bool newSequence = true;
+  bool newSequence = false;
   while (i < n - 2) {
     if (newSequence) {
       start = i;
@@ -26,8 +24,8 @@ void sortFlowers(std::vector<int>& arr, int n) {
     if (((arr[i] != arr[i + 1] && arr[i] != arr[i + 2]) ||
          (arr[i] != arr[i + 1] || arr[i] != arr[i + 2])) &&
         arr[i + 1] != arr[i + 2]) {
-      count += 2;
-      i += 2;
+      count += 3;
+      i += 3;
       newSequence = false;
     } else if (((arr[i] != arr[i + 1] && arr[i] != arr[i + 2]) ||
                 (arr[i] != arr[i + 1] || arr[i] != arr[i + 2])) &&
@@ -40,29 +38,15 @@ void sortFlowers(std::vector<int>& arr, int n) {
       count += 2;
       newSequence = true;
     }
-    if (i == n - 2) {
+    if (i >= n - 2) {
       count++;
     }
-    if (minStart > start) {
-    minStart = start;
-    }
-    // if (minEnd > end) {
-    // minEnd = start + count;
-    // }
     if (maxCount < count) {
       maxCount = count;
     }
-    else if (maxCount == count) {
-      end = start + count;
-    }
-    // else {
-    //   count = maxCount;
-    //   end = start + count;
-    // }
   }
   end = start + maxCount;
   std::cout << start + 1 << " " << end + 1 << std::endl;
-  // std::cout << minStart << " " << minEnd << std::endl;
 }
 
 void inputFlowers() {
