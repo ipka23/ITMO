@@ -5,8 +5,6 @@ void inputArray(std::vector<int>& arr, int n) {
   for (int i = 0; i < n; ++i) {
     int x;
     std::cin >> x;
-    if (x < 1 || x > 10000000000)
-      break;
     arr[i] = x;
   }
 }
@@ -18,12 +16,8 @@ void sortFlowers(std::vector<int>& arr, int n) {
   int maxCount = 0;
   int minStart = 200000;
   int minEnd = 200000;
-  int tmpMin = 200000;
   while (i < n - 1) {
-    int a = arr[i - 1];
-    int b = arr[i];
-    int c = arr[i + 1];
-    if (a == b && b == c) {
+    if (arr[i - 1] == arr[i] && arr[i] == arr[i + 1]) {
       count++;
       if (maxCount < count)
         maxCount = count;
