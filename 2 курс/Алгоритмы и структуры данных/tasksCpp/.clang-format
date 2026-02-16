@@ -4,7 +4,7 @@ BasedOnStyle: Google
 
 ColumnLimit: 100
 AccessModifierOffset: -2
-
+IndentWidth: 2
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
