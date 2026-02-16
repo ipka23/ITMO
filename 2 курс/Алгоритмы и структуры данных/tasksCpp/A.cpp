@@ -79,7 +79,7 @@ void sortFlowers(std::vector<int>& arr, int n) {
     int b = arr[i];
     int c = arr[i + 1];
     if (a == b and b == c) {
-      std::cout << "start: " << start << std::endl;
+      // std::cout << "start: " << start << std::endl;
       count++;
       if (maxCount < count)
         maxCount = count;
@@ -98,17 +98,19 @@ void sortFlowers(std::vector<int>& arr, int n) {
       // minStart = start;
       // minEnd = minStart + maxCount;
     }
-    // else {
+    // else if (maxCount == count) {
     //   if (minStart > start) {
     //     minStart = start;
     //   }
     //   if (minEnd > end) {
     //     minEnd = minStart + count;
     //   }
+    // } else if (maxCount > count) {
+    //   minStart = i -
     // }
   }
   minStart = start;
-  minEnd = start + maxCount;
+  minEnd = minStart + maxCount;
   std::cout << minStart + 1 << " " << minEnd + 1 << std::endl;
 }
 
