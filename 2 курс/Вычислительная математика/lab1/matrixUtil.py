@@ -40,18 +40,22 @@ class MatrixUtil:
                 continue
 
         while True:
-            print("Введите матрицу\n")
-            matrix = self.inputMatrix()
-            if len(matrix) != n:
-                print("Введите корректную матрицу")
-                continue
+            try:
+                print("Для подтверждения матрицы нажмите enter 2 раза")
+                print("Введите матрицу\n")
+                matrix = self.inputMatrix()
+                if len(matrix) != n:
+                    print("Введите корректную матрицу")
+                    continue
 
-            else:
-                print("Изначальная матрица:")
-                self.printUtil.printMatrix(matrix)
-                print()
-                self.zeroApproximation(matrix, n)
-                break
+                else:
+                    print("Изначальная матрица:")
+                    self.printUtil.printMatrix(matrix)
+                    print()
+                    self.zeroApproximation(matrix, n)
+                    break
+            except ValueError:
+                print("Введите корректную матрицу")
 
     def inputMatrix(self):
         matrix = list()
@@ -75,32 +79,40 @@ class MatrixUtil:
         return True
 
     def zeroApproximation(self, matrix, n):
-        for _ in range(n**2):
-            swapped = False
-            for k in range(n - 1):
-                if not self.diagElemDominate(matrix, k):  # условие преобладания диагональных элементов
-                    matrix[k], matrix[k + 1] = matrix[k + 1], matrix[k]
-                    swapped = True
-                if not swapped:
-                    break
-            if _ == n:
-                print("Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
+        for i in range(n):
+            for j in range(i + 1, n):
+                if not self.diagElemDominate(matrix, i):  # условие преобладания диагональных элементов
+                    matrix[i], matrix[j] = matrix[j], matrix[i]
+                    if self.diagElemDominate(matrix, i):
+                        break
+        if all(self.diagElemDominate(matrix, i) for i in range(n)):
+            print("Преобладание диагональных элементов достигнуто")
+        else:
+            print(
+                "Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
 
-        print("Преобразованная матрица:")
         self.printUtil.printMatrix(matrix)
         c = []  # список для коэф. при главных элементах
-
+        divideZeroFlag = False
         for i in range(n):
             c.append(matrix[i][i])
         for i in range(n):
             for j in range(n):
                 if i != j:
-                    matrix[i][j] = -1 * matrix[i][j] / c[i]
+                    if c[i] != 0:
+                        matrix[i][j] = -1 * matrix[i][j] / c[i]
+                    else:
+                        divideZeroFlag  = True
+                        matrix[i][-1] = matrix[i][-1]
                 else:
                     matrix[i][j] = 0
         d = [0] * n  # список свободных членов равных решению x_0 (нулевому приближению)
         for i in range(n):
-            matrix[i][-1] = matrix[i][-1] / c[i]
+            if c[i] != 0:
+                matrix[i][-1] = matrix[i][-1] / c[i]
+            else:
+                divideZeroFlag  = True
+                matrix[i][-1] = matrix[i][-1]
             d[i] = matrix[i][-1]
 
         X = []  # решения системы x_0, ..., x_k; где k = номер итерации
@@ -111,12 +123,16 @@ class MatrixUtil:
 
         k = 1
         i = 0
-        while not self.absoluteDeviation(X):
-            i += 1
-            x = self.kApproximationSimpleIteration(matrix, n, X)
-            X.append(x)
-            self.printUtil.printX(k, X[-1])
-            k += 1
+        if not divideZeroFlag :
+            while not self.absoluteDeviation(X):
+                i += 1
+                x = self.kApproximationSimpleIteration(matrix, n, X)
+                X.append(x)
+                self.printUtil.printX(k, X[-1])
+                k += 1
+                if i > 10: break
+        else:
+            self.printUtil.printX(0, d)
         print(f"Итого: {i + 1} итераций")
 
     def absoluteDeviation(self, X):
