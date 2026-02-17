@@ -16,7 +16,7 @@ class PrintUtil:
         print(f"{s:60}", end=" | ")
 
     def printMatrix(self, matrix: list):
-        print("=" * 93)
+        print("=" * 146)
         for i in range(len(matrix)):
             for j in range(len(matrix) + 1):
                 if not isinstance(matrix[i][j], float):
@@ -24,5 +24,5 @@ class PrintUtil:
                 else:
                     print(f"{matrix[i][j]:6.4f}", end=" ")
             print()
-        print("=" * 93)
+        print("=" * 146)
 

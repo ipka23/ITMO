@@ -75,12 +75,17 @@ class MatrixUtil:
         return True
 
     def zeroApproximation(self, matrix, n):
-        for k in range(n - 1):  # по
-            if not self.diagElemDominate(matrix, k):  # Условие преобладания диагональных элементов
-                matrix[k], matrix[k + 1] = matrix[k + 1], matrix[k]
-                if k == n:
-                    print(
-                        "Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
+        for _ in range(n**2):
+            swapped = False
+            for k in range(n - 1):
+                if not self.diagElemDominate(matrix, k):  # условие преобладания диагональных элементов
+                    matrix[k], matrix[k + 1] = matrix[k + 1], matrix[k]
+                    swapped = True
+                if not swapped:
+                    break
+            if _ == n:
+                print("Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
+
         print("Преобразованная матрица:")
         self.printUtil.printMatrix(matrix)
         c = []  # список для коэф. при главных элементах
@@ -108,7 +113,7 @@ class MatrixUtil:
         i = 0
         while not self.absoluteDeviation(X):
             i += 1
-            x = self.kApproximationGaussZeldel(matrix, n, X)
+            x = self.kApproximationSimpleIteration(matrix, n, X)
             X.append(x)
             self.printUtil.printX(k, X[-1])
             k += 1
