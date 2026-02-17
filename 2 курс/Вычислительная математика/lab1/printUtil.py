@@ -1,4 +1,3 @@
-from itertools import repeat
 
 
 class PrintUtil:
@@ -26,3 +25,4 @@ class PrintUtil:
                     print(f"{matrix[i][j]:6.4f}", end=" ")
             print()
         print("=" * 93)
+
