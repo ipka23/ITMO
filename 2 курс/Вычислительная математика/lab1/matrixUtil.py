@@ -5,6 +5,26 @@ class MatrixUtil:
     def __init__(self, printUtil: PrintUtil):
         self.printUtil = printUtil
 
+    def getMatrixFromFile(self, filename):
+        matrix = list()
+        n = 0
+        with open(filename) as f:
+            while True:
+                for line in f:
+                    if line.strip() == "":
+                        break
+                    else:
+                        lineNums = list(map(int, line.strip().split()))
+                        if len(lineNums) == 1:
+                            n = lineNums[0]
+                        else:
+                            matrix.append(lineNums)
+                break
+        print("Изначальная матрица:")
+        self.printUtil.printMatrix(matrix)
+        print()
+        self.zeroApproximation(matrix, n)
+
     def getMatrixFromInput(self):
         n = 0
         while True:
@@ -44,11 +64,6 @@ class MatrixUtil:
                 matrix.append(line)
         return matrix
 
-    # def testGZ(self, matrix: list):
-    #     matrix = self.zeroApproximation(matrix, n)
-    #     # matrix = self.testGZ2(matrix)
-    #     return matrix
-
     def diagElemDominate(self, matrix, lineIndex):
         s = 0  # сумма всех коэф. кроме главного
         matrixLine = matrix[lineIndex]
@@ -63,7 +78,9 @@ class MatrixUtil:
         for k in range(n - 1):  # по
             if not self.diagElemDominate(matrix, k):  # Условие преобладания диагональных элементов
                 matrix[k], matrix[k + 1] = matrix[k + 1], matrix[k]
-                if k == n: print("Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
+                if k == n:
+                    print(
+                        "Решение может не сходиться т.к. в матрице не выполняется условие преобладания диагональных элементов")
         print("Преобразованная матрица:")
         self.printUtil.printMatrix(matrix)
         c = []  # список для коэф. при главных элементах
@@ -88,12 +105,14 @@ class MatrixUtil:
         # self.printUtil.printMatrix(matrix)
 
         k = 1
+        i = 0
         while not self.absoluteDeviation(X):
-            x = self.GaussZeldel_kApproximation(matrix, n, X)
+            i += 1
+            x = self.kApproximationGaussZeldel(matrix, n, X)
             X.append(x)
             self.printUtil.printX(k, X[-1])
             k += 1
-        print("Итого: 6 итераций")
+        print(f"Итого: {i + 1} итераций")
 
     def absoluteDeviation(self, X):
         epsilon = 0.01  # абсолютное отклонение
@@ -110,54 +129,26 @@ class MatrixUtil:
         print(f"Вектор погрешности: {maxDeviation:10.4f}")
         return maxDeviation <= epsilon
 
-    def SimpleIteration_kApproximation(self, matrix, n, X):
-        x = [] # k-тое приближение решения
-        for i in range(n): # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
+    def kApproximationSimpleIteration(self, matrix, n, X):
+        x = []  # k-тое приближение решения
+        for i in range(n):  # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
             x_k = 0
             for j in range(n):
-                    x_k += matrix[i][j] * X[-1][j]
+                x_k += matrix[i][j] * X[-1][j]
             x_k += + X[0][i]
             x.append(x_k)
         return x
 
-    def GaussZeldel_kApproximation(self, matrix, n, X):
+    def kApproximationGaussZeldel(self, matrix, n, X):
         x = []  # k-тое приближение решения
-        print("-----")
-        self.printUtil.printMatrix(matrix)
+        # self.printUtil.printMatrix(matrix)
         for i in range(n):  # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
             x_k = 0
             for j in range(n):
-
-                # if i - 1 >= j:
-                # x_k += matrix[i][j] * X[-1][j]
-
-                # matrix[i][j] += matrix[i][j] * X[-1][j]
-                # x_k += matrix[i][j]
-
-
-                # if j < i:
-                #     x_k += x[j]
-                # else:
-                #     x_k += matrix[i][j] * X[-1][j]
-
-                x_k += matrix[i][j] * X[-1][j]
-            x_k += X[0][i]
-            matrix[i][i] = x_k
+                if j < len(x):
+                    x_k += matrix[i][j] * x[j]
+                else:
+                    x_k += matrix[i][j] * X[-1][j]
+            x_k += + X[0][i]  # прибавляем свободный член
             x.append(x_k)
-
-
-
-                # else:
-                #     x_k += matrix[i][j] * X[-1][j]
-            # for j in range(n):
-            #     matrix[i][j] += X[0][i] # прибавляем свободный член
-            # x_k += + X[0][i] # прибавляем свободный член
-            # x.append(x_k)
         return x
-        # matrix[0][0] = matrix[0][1] * X[-1][1] + X[0][0]
-        # x.append(matrix[0][0])
-        #
-        # matrix[1][1] = x[0] * X[-1][1] + X[0][1]
-        # x.append(matrix[1][1])
-
-
