@@ -1,3 +1,5 @@
+from numpy.random import normal
+
 from printUtil import PrintUtil
 
 
@@ -8,18 +10,23 @@ class MatrixUtil:
     def getMatrixFromFile(self, filename):
         matrix = list()
         n = 0
-        with open(filename) as f:
-            while True:
-                for line in f:
-                    if line.strip() == "":
-                        break
-                    else:
-                        lineNums = list(map(int, line.strip().split()))
-                        if len(lineNums) == 1:
-                            n = lineNums[0]
+        try:
+            with open(filename) as f:
+                while True:
+                    for line in f:
+                        if line.strip() == "":
+                            break
                         else:
-                            matrix.append(lineNums)
-                break
+                            lineNums = list(map(int, line.strip().split()))
+                            if len(lineNums) == 1:
+                                n = lineNums[0]
+                            else:
+                                matrix.append(lineNums)
+                    break
+        except ValueError:
+            print(
+                "В файле должна быть корректная матрица вида:\nn\na_11 a_12 ... a_1n = b_1\n...\na_n1 a_n2 ... a_nn = b_n")
+            return
         print("Изначальная матрица:")
         self.printUtil.printMatrix(matrix)
         print()
@@ -96,37 +103,49 @@ class MatrixUtil:
         divideZeroFlag = False
         for i in range(n):
             c.append(matrix[i][i])
+        # norm = 0
         for i in range(n):
             for j in range(n):
+                # norm += matrix[i][j] ** 2
                 if i != j:
                     if c[i] != 0:
                         matrix[i][j] = -1 * matrix[i][j] / c[i]
                     else:
-                        divideZeroFlag  = True
+                        divideZeroFlag = True
                         matrix[i][-1] = matrix[i][-1]
                 else:
                     matrix[i][j] = 0
+
         d = [0] * n  # список свободных членов равных решению x_0 (нулевому приближению)
         for i in range(n):
             if c[i] != 0:
                 matrix[i][-1] = matrix[i][-1] / c[i]
             else:
-                divideZeroFlag  = True
+                divideZeroFlag = True
                 matrix[i][-1] = matrix[i][-1]
             d[i] = matrix[i][-1]
 
         X = []  # решения системы x_0, ..., x_k; где k = номер итерации
         X.append(d)
-
+        norm = 0
+        for i in range(n):
+            for j in range(n - 1):
+                norm += matrix[i][j]**2
+        norm = norm ** 0.5
+        print(f"Норма матрицы: {norm}")
         self.printUtil.printX(0, X[0])
         # self.printUtil.printMatrix(matrix)
 
         k = 1
         i = 0
-        if not divideZeroFlag :
+
+
+        if not divideZeroFlag:
             while not self.absoluteDeviation(X):
+
                 i += 1
                 x = self.kApproximationSimpleIteration(matrix, n, X)
+
                 X.append(x)
                 self.printUtil.printX(k, X[-1])
                 k += 1
@@ -152,7 +171,7 @@ class MatrixUtil:
 
     def kApproximationSimpleIteration(self, matrix, n, X):
         x = []  # k-тое приближение решения
-        for i in range(n):  # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
+        for i in range(n):  # x_0 = matrix[0][0] * X[-1][1] + matrix[0][1] * X[-1][1] + X[-1][0]
             x_k = 0
             for j in range(n):
                 x_k += matrix[i][j] * X[-1][j]
@@ -163,7 +182,7 @@ class MatrixUtil:
     def kApproximationGaussZeldel(self, matrix, n, X):
         x = []  # k-тое приближение решения
         # self.printUtil.printMatrix(matrix)
-        for i in range(n):  # x_0 = matrix[0][1] * X[-1][1] + matrix[0][2] * X[-1][2] + X[-1][0]
+        for i in range(n):
             x_k = 0
             for j in range(n):
                 if j < len(x):
