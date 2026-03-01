@@ -5,15 +5,15 @@ output_addr:     .word  0x84
 first_part_mask: .word  0xFFFF0000
 second_part_mask: .word  0x0000FFFF
 shift_count:     .word  0x10               ; переменная для хранения количества битов для сдвига, инициализированная 16
-result:          .word  0xCCCCCCCC
 tmp:             .word  0                  ; дополнительная ячейка
-
+test:            .word  0
     .text
 
 _start:
     load         input_addr
     load_acc
     and          first_part_mask
+    store_ind    test
     shiftr       shift_count
     store        tmp
 
@@ -23,7 +23,7 @@ _start:
     beqz         is_palindrome
 
 not_palindrome:
-    load_imm     -1
+    load_imm     0
     store_ind    output_addr
     halt
 
