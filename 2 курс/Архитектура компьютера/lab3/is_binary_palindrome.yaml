@@ -1,9 +1,8 @@
-name: is_binary_palindrome
 limit: 400
 memory_size: 0x1000
 memory_mapped_io:
   0x80: [5, 15, 4026531855, 3221225474]
-  0x84: [0, 0, 1, 0]
+  0x84: []
 reports:
   - name: Step-by-step
     slice: all
@@ -16,5 +15,5 @@ reports:
       numio[0x84]: {io:0x84:dec}
       {memory:0:16}
     assert: |
-      numio[0x80]: [] >>> [5, 15, 4026531855, 3221225474]
+      numio[0x80]: [] >>> []
       numio[0x84]: [] >>> [0, 0, 1, 0]
