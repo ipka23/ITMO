@@ -1,0 +1,697 @@
+
+<html>
+
+<head>
+<title>Activity: Identify Design Elements</title>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/ovu_works.htm">Roles and Activities</a> &gt;
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/wks_developers.htm">Developer Role Set</a> &gt;
+<img border=0 src="../../applet/images/worker.gif"> <a href="../workers/wk_archt.htm">Software Architect</a> &gt;
+<img border=0 src="../../applet/images/activity.gif"> Identify Design Elements
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Activity:
+&nbsp;<rpw name="PresentationName">Identify Design Elements</rpw><a name="Top"></a></h2>
+<div align="center"><center>
+
+<div align="center">
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td colspan="2" valign="top" bordercolor="#808080" width="646"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li><font size="3"><a name="XE_class__refining_analysis_classes"></a>To
+        analyze interactions of analysis classes to identify design model
+        elements</font></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top" bordercolor="#808080" width="646"><small><strong><font face="Arial">Steps</font></strong></small>
+    <ul>
+      <li><a href="#Identify and Specify Events"">Identify and Specify Events</a></li>
+      <li><a href="#Identify and Specify Signals"">Identify and Specify Signals</a></li>
+      <li><a href="#Identify Classes, Active Classes and Subsystems"">Identify Classes,
+        Active Classes and Subsystems</a></li>
+      <li><a href="#Identify Interfaces"">Identify Subsystem Interfaces</a></li>
+
+      <li class="reactive"><a href="#Identify Capsule Protocols">Identify Capsule Protocols</a></li>
+
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080" width="335"><small><font face="Arial"><strong>Input
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_sadoc.htm">Software Architecture Document</a></li>
+<li><a href="../artifact/ar_sspec.htm">Supplementary Specifications</a></li>
+<li><a href="../artifact/ar_aclss.htm">Analysis Class</a></li>
+<li><a href="../artifact/ar_desgl.htm">Design Guidelines</a></li>
+<li><a href="../artifact/ar_desmd.htm">Design Model</a></li>
+</ul>
+
+
+    <pre> </pre>
+    
+</td>
+    <td style="text-indent: 0px" valign="top" bordercolor="#808080" width="305"><small><font face="Arial"><strong>Resulting
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_dsub.htm">Design Subsystem</a></li>
+<li><a href="../artifact/ar_despk.htm">Design Package</a></li>
+<li><a href="../../addin_realtime/process/artifact/ar_prot.htm">Protocol</a></li>
+<li><a href="../artifact/ar_signa.htm">Signal</a></li>
+<li><a href="../artifact/ar_event.htm">Event</a></li>
+<li><a href="../../addin_realtime/process/artifact/ar_cpsl.htm">Capsule</a></li>
+<li><a href="../artifact/ar_if.htm">Interface</a></li>
+<li><a href="../artifact/ar_class.htm">Design Class</a></li>
+<li><a href="../artifact/ar_desmd.htm">Design Model</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" style="text-indent: 4px" bordercolor="#808080" width="646"><strong><small><font face="Arial">Frequency:</font></small>
+    </strong><font size="3">Once per iteration</font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" style="text-indent: 4px" bordercolor="#808080" width="646"><strong><font face="Arial"><small>Role:</small>
+    </font></strong><a href="../workers/wk_archt.htm">Software Architect</a></td>
+  </tr>
+</table>
+</div>
+<!-- Linked to Workflow Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" colspan="2" bordercolor="#808080"><small><font face="Arial"><strong>Workflow Details:</strong></font></small>
+<ul>
+<li><a href="../workflow/ovu_and.htm">Analysis & Design</a>
+	<ul>
+	<li><a href="../workflow/ana_desi/wfs_and3.htm">Analyze Behavior</a></li>
+	<li><a href="../workflow/ana_desi/wfs_and2.htm">Refine the Architecture</a></li>
+	</ul>
+</li>
+</ul>
+
+
+</td>
+</tr>
+</table>
+<!-- Linked to Workflow End -->
+</center></div>
+
+<p>The <a href="ac_ucana.htm"">Activity: Use Case Analysis</a> results in <strong>analysis
+classes</strong>, which represent <strong>conceptual things which can perform
+behavior</strong>. In design, <strong>analysis classes </strong>evolve into a
+number of different kinds of design elements:
+<ul>
+  <li>classes, to represent a set of rather fine-grained responsibilities;</li>
+  <li>subsystems, to represent a set of coarse-grained responsibilities, perhaps
+    composed of a further set of subsystems, but ultimately a set of classes;</li>
+  <li>active classes, to represent threads of control in the system;</li>
+  <li>interfaces, to represent abstract declarations of responsibilities
+    provided by a class or subsystem.</li>
+</ul>
+<p>In addition, in design we shall also identify:</p>
+<ul>
+  <li>events, which are specifications of interesting occurrences in time and
+    space that usually (if they are noteworthy) require some response from the
+    system; and</li>
+  <li>signals, to represent asynchronous mechanisms used to communicate certain types of
+    events within the system.</li>
+</ul>
+<p>These finer distinctions enable us to examine different aspects of the
+design:
+<ul>
+  <li>Events and the Signals that are used to communicate them, allow us to describe the asynchronous triggers of
+    behavior to which the system must respond.</li>
+  <li>Classes and Subsystems allow us to group related responsibilities into
+    units which can be developed in relative independence; classes fulfill an
+    atomic set of related responsibilities, while subsystems are composite
+    building blocks which are in turn composed of classes or other subsystems.
+    Subsystems are used to represent the work products of a development team as
+    a single, integral unit of functionality, and as such are used both as units
+    of control and configuration management as well as logical design elements.</li>
+  <li>Active classes are used to represent threads of control in the system, allowing
+    the modeling of concurrency. Active classes are often used in
+    composition with other classes that are usually, but not necessarily, passive: such
+    a composition can then be used - in the same way as a collaboration - to
+    model complex behavior.<p class="reactive">In real-time systems, capsules are used in place of
+    active classes, offering stronger semantics to simplify the design and
+    increase the reliability of concurrent applications. Capsules share some aspects of both classes and subsystems: they are in
+    fact encapsulated collaborations of classes which together represent a
+    thread of control in the system. They differ from subsystems in the sense
+    that a capsule is the responsibility of a single designer, whereas a
+    subsystem is the responsibility (typically) of a team of developers; a
+    subsystem may contain capsules, however.&nbsp;</p>
+</li>
+  <li>Interfaces allow us to examine and capture the 'seams' of
+    the system, defining in precise terms how the constituent parts of the
+    system will interoperate.</li>
+
+  <li class="reactive">In real-time systems, we shall use Protocols to define precisely the
+    messages that may be sent and received on a port of a capsule.</li>
+
+</ul>
+<p>By separating concerns and handling each issue represented by these concepts
+separately, we simplify the design process and clarify our solution.</p>
+<h3><a name="XE_events__identification_of"></a><a name="Identify and Specify Events">Identify
+and Specify Events</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To identify and specify the external and internal events to which the
+        system must respond.</li>
+    </ul>
+    
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>Events are external and internal occurrences which cause some action within the system;
+they may occur at random and potentially independently of one another. The need to
+respond to events in a timely manner is a primary driver for concurrency
+requirements in the system.&nbsp; The determination of the events to which the
+system must respond and the characterization of these events will drive the identification of essential
+parts of the architecture of the system.</p>
+<p>To identify events to which the system must respond, look to the use-cases
+and their associated realizations. For each stimulus sent from an actor to the
+system, consider how the system becomes aware of the stimulus: is the system
+polling the user, waiting for a response, or is the receipt triggered by a
+device or sensor which detects the event?</p>
+<p>System interrupts are a typical
+mechanism by which the system becomes aware, asynchronously, that something
+interesting has occurred. Interrupts are most useful when they are
+used to communicate information about aperiodic events (things that do not
+occur on regular intervals) that require immediate response. Interrupts may lead
+to the occurrence of a <i> call event</i> or <i> signal event</i>, or, if the interrupt came
+from a clock or timer, to a <i> time event</i>.</p>
+<p>Polling is more appropriate for cases where the events occur on a natural,
+periodic cycle or occur at random but more or less continuously, and where the
+system does not have to respond absolutely immediately. For these kinds of
+events, the system can buffer the events and respond to them on a periodic
+interval; use of interrupts would be costly and wasteful. Polling may also be used to
+detect a the satisfaction of some condition, which then leads to the occurrence
+of a <i> change event</i>.</p>
+<p>An important aspect of the architecture is to determine which events must be
+responded to immediately, and how the system will communicate the arrival of
+those events, i.e. to characterize the event as a <i> call event</i> (where the caller
+waits for the event to be handled), a <i> change event</i> (signifying a state change in
+some Boolean condition), a <i> signal event</i> (signifying the receipt of a signal
+entity for asynchronous communication, where the sender does not lose control
+when the signal is sent), or a <i> time event</i> (signifying that some absolute
+time has
+been reached or that some time period has elapsed). The choice of event kind
+will strongly influence the shape of the architecture.</p>
+<p>For events which do not
+require immediate response, the software architect must determine which can be responded
+to periodically and on what intervals the system should service the events
+(different events may require different service intervals). This may be
+represented by properties on the event itself representing the priority, or
+latency that can be tolerated, and expected mean frequency and frequency
+distribution of the event.</p>
+<h3><a name="XE_signal__identification_of"></a><a name="Identify and Specify Signals">Identify and Specify Signals</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p> A signal is an explicit named entity intended for explicit, asynchronous
+communication between objects - and often (but not exclusively) the receiving
+object, and possibly the sending object, will be modeled as active objects. A
+signal has an explicit list of parameters, the values for which are specified by
+the sender at the time the instance of the signal is sent. A <i>signal event</i>
+is the receipt by an object of a signal sent to it, and a signal event instance
+is associated with just one signal instance.</p>
+<p>Signals are used to communicate between internal parts of the system, and may
+be used to communicate faults or exceptions, although they can be used in
+any circumstance where asynchronous communication is required. Signals are also
+typically implemented using interrupts, though polling techniques may be used as
+well. The importance of identifying signals in the architecture is to establish
+common rules for how and when signals will be used, and to identify which
+signals will use which signaling mechanisms (e.g. which specific interrupts or
+polling messages). Failure to agree on these can be quite disastrous and may lead to highly unpredictable system behavior.</p>
+<p>Note that a signal event is handled by a state machine, and the receipt of a
+signal may or may not trigger a transition in the machine (depending on the
+state at the time the signal is received), and cause an action
+to be executed.</p>
+
+<p class="reactive">In real-time systems, capsules are restricted to using
+signals for inter-capsule communication, and synchronous communication can be
+achieved by the use of pairs of signals, one in each direction.</p>
+
+<h3><a name="Identify Classes, Active Classes and Subsystems">Identify Classes, Active
+Classes and Subsystems</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li><font size="3">To refine the <font color="#000000"><b>analysis classes</b></font>
+        into appropriate design model elements</font></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="text-indent: 4px" bordercolor="#808080"><strong><font face="Arial"><small>More
+    Information:</small></font></strong>
+    <ul>
+      <li><a href="../modguide/md_desmd.htm"">Design Model</a></li>
+      <li><a href="../modguide/md_class.htm"">Design Class</a></li>
+      <li><a href="../modguide/md_dsub.htm"">Design Subsystem</a></li>
+      <li><a href="../modguide/md_despk.htm"">Design Package</a></li>
+
+      <li class="reactive"><a href="../../addin_realtime/process/modguide/md_cpsl.htm">Capsule</a></li>
+
+      <li><a href="../workflow/ana_desi/co_sysif.htm"">Representing Interfaces to
+        External Systems</a></li>
+      <li><a href="../workflow/ana_desi/co_guiif.htm"">Representing Graphical
+        User Interfaces</a></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" style="text-indent: 4px" bordercolor="#808080"><strong><small><font face="Arial">Tool
+    Mentors:</font></small></strong>
+    <ul>
+      <li><a href="../../toolment/rose/tm_class.htm"">Managing Classes Using
+        Rational Rose</a></li>
+      <li><a href="../../toolment/rose/tm_dssub.htm"">Managing Subsystems Using
+        Rational Rose</a></li>
+      <li><a href="../../toolment/rose/tm_desmd.htm"">Managing the Design Model
+        Using Rational Rose</a></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><strong>Identify Classes. </strong>When the analysis class is simple and
+already represent a single logical abstraction, it can be directly mapped, 1:1,
+to a <strong>design class</strong>. Typically, entity classes survive relatively
+intact into Design. Since entity classes are typically also persistent,
+determine whether the design class should be persistent and note it accordingly
+in the class description.</p>
+<p>When identifying classes, they should be grouped into <a href="../artifact/ar_despk.htm"">Artifact:
+Design Package</a>s, for organizational and configuration management purposes.
+See <a href="../modguide/md_despk.htm"">Guidelines: Design Package</a> for more
+information on how to make packaging decisions.</p>
+<p><strong>Identify Active Classes. </strong>Consider the concurrency requirements of
+the system in the context of the analysis objects identified: is there a need
+for the system to respond to externally generated events, and if so, which
+analysis classes are 'active' when the events occur? External events in the
+Use-Case Model are represented by stimuli coming from actors, interacting with a
+use case. Look at the corresponding Use-Case Realizations to see which objects
+interact when an event occurs. Start by grouping the objects together into
+autonomous sets of collaborating objects - these groupings represent an initial
+cut at a group that may form a composite active class.&nbsp;</p>
+
+<p class="reactive">In real-time systems, these identified sets of objects
+should be grouped into capsules, which have strong encapsulation semantics.</p>
+
+<p>The instances of active classes represent independent 'logical' threads of execution. These 'logical' threads of
+execution are not to be confused with or mapped literally to threads of
+execution in the operating system (though at some point we will map them to
+operating system threads of execution). Instead, they represent independent
+conceptual threads of execution in the solution space. Our goal in identifying
+them at this point in design is to be able to partition the solution into
+independent units based on natural 'concurrency seams' in the system. Dividing
+the work in this way makes the problems of dealing with concurrency conceptually
+simpler, since independent threads of execution can be dealt with separately
+except to the extent that they share underlying passive classes.</p>
+<p>In general, an active class should be considered whenever there exist concurrency and
+concurrency conflicts in the problem domain. An active class should be used to
+represent some external concurrent object or concurrent activity within the
+computer. This gives us the ability to monitor and control concurrent
+activities.</p>
+<p>Another natural choice is to use active classes as <b>internal representatives of
+external physical devices</b> that are connected to a computer since those
+physical entities are inherently concurrent. These &quot;device driver&quot;
+classes serve not only to monitor and control the corresponding physical
+devices but they also isolate the rest of the system from the specifics of the
+devices. This means that the rest of the system may not be affected even if the
+technology behind the devices evolves.</p>
+<p>Another common place for using active classes is to represent logical
+concurrent activities. A logical activity represents a conceptual concurrent
+&quot;object&quot;, such as, for example, a financial transaction or a telephone
+call. Despite the fact that these are not directly manifested as physical
+entities (although they take place in the physical world), there are often
+reasons to treat them as such. For instance, we may need to temporarily hold
+back a particular financial transaction to avoid a concurrency conflict or we
+may need to abort it due to failures within the system. Since these conceptual
+objects need to be manipulated as a unit, it is convenient to represent them as
+objects with interfaces of their own that provide the appropriate functional
+capabilities.</p>
+<p>A particular example of this type of conceptual object is an <b>active object
+controller</b>. Its purpose is to continuously manage one or more other active
+objects. This normally involves bringing each object into the desired
+operational state, maintaining it in that state in the face of various
+disruptions such as partial failures, and synchronizing its operation with the
+operation of other objects. These active object controllers often evolve from
+Control objects identified during <a href="ac_ucana.htm"">Activity: Use-Case
+Analysis</a>.</p>
+<p>Because of their capacity to simply and elegantly resolve concurrency
+conflicts, active classes are also useful as <b>guardians of shared resources</b>. In
+this case, one or more resources that are required by multiple concurrent
+activities are encapsulated within an active class. By virtue of their built-in mutual
+exclusion semantics, such guardians automatically protect these resources
+against concurrency conflicts.</p>
+
+<p class="reactive"><b>For real-time systems, capsules should be used in place
+of active classes: wherever you identified the need for an active class
+according to the heuristics described above, a capsule should be substituted.</b></p>
+
+<p><strong>Identify Subsystems. </strong>When the analysis class is complex,
+such that it appears to embody behaviors that cannot be the responsibility of a
+single class acting alone, the analysis class should be mapped to a design
+subsystem. The design subsystem is used to encapsulate these collaborations in
+such a way that clients of the subsystem can be completely unaware of the
+internal design of the subsystem, even as they use the services provided by the
+subsystem. A design subsystem is logically equivalent to the <a href="../artifact/ar_comp.htm"">Artifact:
+Component</a> in the <a href="../artifact/ar_impmd.htm"">Artifact: Implementation
+Model</a>.</p>
+<p>A subsystem is, effectively, a special kind of package which has only
+interfaces as public elements. The interfaces provide a layer of encapsulation,
+allowing the internal design of the subsystem to remain hidden from other model
+elements. The concept subsystem is used to distinguish it from
+&quot;ordinary&quot; packages, which are semantic-free containers of model
+elements; the subsystem represents a particular usage of packages with
+class-like (behavioral) properties.</p>
+<p>The decision to create a subsystem from a set of collaborating analysis
+classes is based largely on whether the collaboration can be or will be
+developed independently by a separate design team. If the collaborations can be
+completely contained within a package along with the collaborating classes, a
+subsystem can provide a stronger form of encapsulation than that provided by a
+simple package. The contents and collaborations within a subsystem are
+completely isolated behind one or more interfaces, so that the client of the
+subsystem is only dependent upon the interface. The designer of the subsystem is
+then completely isolated from external dependencies; the designer (or design
+team) is required to specify how the interface is realized, but they are
+completely free to change the internal subsystem design without affecting
+external dependencies. In large systems with largely independent teams, this
+degree of de-coupling combined with the architectural enforcement provided by
+formal interfaces is a strong argument for the choice of subsystems over simple
+packages. See <a href="../modguide/md_dsub.htm"">Guidelines: Design Subsystem</a>
+for more information about the factors which affect the choice to use subsystems
+as design elements.</p>
+<h3><a name="XE_interfaces__identifying_a_subsystem's"></a><a name="XE_design_subsystem__identifying_interfaces"></a><a name="Identify Interfaces">Identify
+Subsystem Interfaces</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To identify the design elements which formalize the seams in the
+        system.</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="23" style="text-indent: 4px" bordercolor="#808080"><strong><small><font face="Arial">Tool
+    Mentor: </font></small></strong><a href="../../toolment/rose/tm_ards3.htm"">Managing
+    Interfaces Using Rational Rose</a></td>
+  </tr>
+</table>
+</center></div>
+
+<p>Interfaces define a set of operations which are realized by some classifier.
+In the Design Model, interfaces are principally used to define the interfaces
+for subsystems. This is not to say that they cannot be used for classes as well,
+but for a single class it is usually sufficient to define public operations on
+the class which, in effect, define its 'interface'. Interfaces are important for
+subsystems because they allow the separation of the declaration of behavior (the
+interface) from the realization of behavior (the specific classes within the
+subsystem which realize the interface). This de-coupling provides us with a way
+to increase the independence of development teams working on different parts of
+the system, while retaining precise definitions of the 'contracts' between these
+different parts.</p>
+<p><strong>For each subsystem, identify a set of candidate interfaces</strong>.
+Using the grouped collaborations identified in the previous step, identify the
+responsibility which is 'activated' when the collaboration is initiated. This
+responsibility is then refined by determining what information must be provided
+by the 'client' and what information is returned when the collaboration is
+complete; these sets of information become the prototype input and output
+parameters and return value for an operation which the subsystem will realize.
+Define a name for this operation, using the naming conventions defined in the <a href="../artifact/ar_desgl.htm"">Artifact:
+Design Guidelines</a>. Repeat this until all operations which will be realized
+by the subsystem have been defined.</p>
+<p>Next, group operations together according to their related responsibilities.
+Smaller groups are preferable to larger groups, since it is more likely that a
+cohesive set of common responsibilities will exist if there are fewer operations
+in the group. Keep an eye toward reuse as well - look for similarities that may
+make it easier to identify related reusable functionality. At the same time,
+though, don't spend a great deal of time trying to find the ideal grouping of
+responsibilities; remember, this is just a first-cut grouping and refinement
+will proceed iteratively throughout the elaboration phase.</p>
+<p><strong>Look for similarities between interfaces. </strong>From the candidate
+set of interfaces, look for similar names, similar responsibilities, and similar
+operations. Where the same operations exist in several interfaces, re-factor the
+interfaces, extracting the common operations into a new interface. Be sure to
+look at existing interfaces as well, re-using them where possible. The goal is
+to maintain the cohesiveness of the interfaces while removing redundant
+operations between interfaces. This will make the interfaces easier to
+understand and evolve over time.</p>
+<p><strong>Define interface dependencies. </strong>The parameters and return
+value of each interface operation each have a particular type: they must realize
+a particular interface, or they must be instances of a simple data type. In
+cases where the parameters are objects that realize a particular interface,
+define dependency relationships between the interface and the interfaces on which
+it depends. Defining the dependencies between interfaces provides useful
+coupling information to the software architect, since interface dependencies define the
+primary dependencies between elements in the design model.</p>
+<p><strong>Map the interfaces to subsystems. </strong>Once interfaces have been
+identified, create <strong>realization </strong>associations between the
+subsystem and the interfaces it realizes. A realization from the subsystem to an
+interface indicates that there are one or more elements within the subsystem
+that realize the operations of the interface. Later, when the subsystem is
+designed, these subsystem-interface realizations will be refined, with the
+subsystem designer specifying which specific elements within the subsystem
+realize the operations of the interface. These refined realizations are visible
+only to the subsystem designer; from the perspective of the subsystem client,
+only the subsystem-interface realization is visible.</p>
+<p><strong>Define the behavior specified by the interfaces.</strong> Interfaces
+often define an implicit state machine for the elements that realize the
+interface. If the operations on the interface must be invoked in a particular
+order (e.g. the database connection must be opened before it can be used), a
+state machine that illustrates the publicly visible (or inferred) states that
+any design element that realizes the interface must support should be defined.
+This state machine will aid the user of the interface to better understand the
+interface, and will aid the designer of elements which realize the interface to
+provide the correct behavior for their element.</p>
+<p><strong>Package the interfaces. </strong>Interfaces are owned by the software
+architect; changes to interfaces are always architecturally significant. To
+manage this, the interfaces should be grouped into one or more packages owned by
+the software architect. If each interface is realized by a single subsystem, the
+interfaces can be placed within the facade of the subsystem. If the interfaces
+are realized by more than one subsystem, they should be placed within a separate
+package owned by the software architect. This allows the interfaces to be managed and
+controlled independently of the subsystems themselves.</p>
+
+<h3 class="reactive"><a name="XE_protocol__identification_of"></a><a name="Identify Capsule Protocols">Identify
+Capsule Protocols</a> <a href="#Top"><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080">
+      <p class="reactive"><small><strong><font face="Arial">Purpose</font></strong></small>
+      <ul class="reactive">
+      <li>To identify the design elements which formalize the seams in the
+        system.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p class="reactive">Protocols are similar to interfaces in event-driven systems: they
+identify the 'contract' between capsules by defining a matched set of signals
+which are used to communicate between independent threads of control. While
+interfaces are primarily used to define synchronous messaging using a function
+call model of invocation, protocols are primarily used to define asynchronous
+communication using signal-based messaging. Protocols allow the separation of
+the declaration of behavior (the set of signals) from the realization of
+behavior (the elements within the subsystem which realize the interface). This
+de-coupling provides us with a way to increase the independence of development
+teams working on different parts of the system, while retaining precise
+definitions of the 'contracts' between these different parts.</p>
+<p class="reactive"><strong>For each capsule, identify a set of in and out signals</strong>.
+Using the grouped collaborations identified in earlier steps, identify the
+responsibility which is 'activated' when the collaboration is initiated. This
+responsibility is then refined by determining what information must be provided
+by the 'client' and what information is returned when the collaboration is
+complete; these sets of information become the prototype input parameters for a
+signal which the capsule will realize through one of its ports. Define a name
+for this signal, using the naming conventions defined in the <a href="../artifact/ar_desgl.htm">Artifact:
+Design Guidelines</a>. Repeat this until all signals which will be realized by
+the capsule have been defined.</p>
+<p class="reactive">Next, group signals together according to their related responsibilities.
+Smaller groups are preferable to larger groups, since it is more likely that a
+cohesive set of common responsibilities will exist if there are fewer signals in
+the group. Keep an eye toward reuse as well - look for similarities that may
+make it easier to identify related reusable functionality. At the same time,
+though, don't spend a great deal of time trying to find the ideal grouping of
+responsibilities; remember, this is just a first-cut grouping and refinement
+will proceed iteratively throughout the elaboration phase. Give the protocol a
+meaningful name, one that describes the role the protocol plays in capsule
+collaborations.</p>
+<p class="reactive"><strong>Look for similarities between protocols. </strong>From the candidate
+set of protocols, look for similar names, similar responsibilities, and similar
+signals. Where the same signals exist in several protocols, re-factor the
+protocols, extracting the common signals into a new interface. Be sure to look
+at existing protocols as well, re-using them where possible. The goal is to
+maintain the cohesiveness of the protocols while removing redundant signals
+between protocols. This will make the protocols easier to understand and evolve
+over time.</p>
+<p class="reactive"><strong>Map the protocols to capsules. </strong>Once protocols have been
+identified, create <strong>ports </strong>on the capsules which realize the
+protocols. The ports of the capsule define its 'interfaces', the behavior that
+can be requested from the capsule. Later, when the capsule is designed, the
+behavior specified by the ports will be described by the state machine for the
+capsule.</p>
+<p class="reactive"><strong>Define the behavior specified by the protocols.</strong> Protocols
+often define an implicit state machine for the elements that realize the
+interface. If the input signals on the interface must be received in a
+particular order (e.g. a 'system-ready' signal must be received before a
+particular error signal can be received), a state machine that illustrates the
+publicly visible (or inferred) states that any design element that realizes the
+protocol must support should be defined. This state machine will aid the user of
+the capsules which realize the protocol to better understand their behavior, and
+will aid the designer of capsules to provide the correct behavior for their
+element.</p>
+<p class="reactive"><strong>Package the protocols. </strong>Protocols are owned by the software
+architect;
+changes to protocols are always architecturally significant. To manage this, the
+protocols should be grouped into one or more packages owned by the software architect.
+This allows the protocols to be managed and controlled independently of the
+capsules which realize the protocols.<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

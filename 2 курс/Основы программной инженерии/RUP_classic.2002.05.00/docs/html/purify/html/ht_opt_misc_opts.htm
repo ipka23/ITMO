@@ -1,0 +1,535 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Miscellaneous options                                  Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=3932>
+<meta name=layout-width content=705>
+<meta name=date content="04 30, 2002 10:12:46 AM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_opt_watchpoint.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_ov_p_api.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>+Miscellaneous options</h1>
+
+<p>&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 486px; border-spacing: 0px;"
+		cellspacing=0
+		width=486>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableHead>Option</p></td>
+<td style="width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableHead>Default</p>
+<p class=rTableHead
+	style="margin-top: 0; margin-bottom: 0;">&nbsp;</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-follow-child-processes</p></td>
+<td style="background-color: #e5e5e5;
+			width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">no</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 486px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Controls whether Purify monitors child processes created when a Purify'd 
+ program forks. If you do not specify <font style="font-family: Courier;"
+											face=courier>-follow-child-processes</font>, 
+ Purify does not follow child processes.</p>
+<p>If this option is set to <font style="font-family: Courier;"
+									face=courier>yes</font>, Purify invokes 
+ a new Viewer (if appropriate) and monitors the progress of the child process 
+ separately from the parent, reporting access errors and memory leaks. 
+ </p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_FREEZE></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 486px; border-spacing: 0px;"
+		cellspacing=0
+		width=486>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-freeze-on-error</p></td>
+<td style="background-color: #e5e5e5;
+			width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">no</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 486px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>If this option is set, the Purify Viewer delays sending a response back 
+ to the application when an error is reported. This usually causes the 
+ application to freeze. This option is useful when you want to explore 
+ the relationship between error reports and program activity. </p>
+<p>While the application is frozen, two new buttons appear on the message 
+ display. Press <span style="font-weight: bold;"><B>Continue </B></span>to continue 
+ to the next error message. Press <span style="font-weight: bold;"><B>Reset 
+ freeze-on-error then Continue </B></span>to continue uninterrupted.</p>
+<p class=rTipNoteGlossaryHeading>Note: </p>
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet>Do <span style="font-style: italic;"><I>not</I></span> 
+ use this feature with a debugger. Instead, set a debugger breakpoint in 
+ the function <font style="font-family: Courier; font-weight: bold;"
+					face=courier><a href="ht_api_misc.htm" style="font-weight: bold;">purify_stop_here</a></font>. 
+ When the application is frozen by the Viewer, the debugger freezes also, 
+ so you cannot examine variables or obtain stack traces. </p></li>
+</ul></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_JIT></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="border-spacing: 0px; width: 480px;"
+		width=480
+		cellspacing=0>
+<col style="width: 60%;">
+<col style="width: 192px;">
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5
+	width=60%>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-jit-debug</p></td>
+<td style="background-color: #e5e5e5;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5
+	width=192>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">not 
+ set</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Enables <a href="ht_enable_jit.htm"><span style="font-weight: bold;"><B>just-in-time 
+ debugging</B></span></a>, instructing Purify to automatically start a debugger 
+ when it reports a message of a type you specify. You can use your debugger 
+ to investigate errors even when you run your application from outside 
+ the debugger.</p>
+<p>Specify a list of keywords separated by commas. For example:</p>
+<p><font style="font-family: Courier;"
+		face=courier>-jit-debug=&quot;error, warning, ask, watchpoint&quot;</font></p>
+<p><font style="font-family: Courier;"
+		face=courier>&nbsp;&nbsp;ask:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Purify 
+ asks you if you want to start <font style="font-family: Courier;"
+									face=courier><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>the 
+ debugger when it encounters <font style="font-family: Courier;"
+									face=courier><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>the 
+ specified type of message<font style="font-family: Courier;"
+								face=courier><br>
+<br>
+&nbsp;&nbsp;error:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Purify starts 
+ a debugger for <font style="font-family: Courier;"
+						face=courier><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a href="../html_notoc/ht_gloss_message_categories.htm"><span style="font-weight: bold;"><B>fatal 
+ or corrupting</B></span></a> messages<font style="font-family: Courier;"
+										face=courier><br>
+<br>
+&nbsp;&nbsp;warning:&nbsp;&nbsp;&nbsp;&nbsp;</font>Purify starts a debugger 
+ for<font style="font-family: Courier;"
+			face=courier><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a href="../html_notoc/ht_gloss_message_categories.htm"><span style="font-weight: bold;"><B>warning</B></span></a> 
+ messages<font style="font-family: Courier;"
+				face=courier><br>
+<br>
+&nbsp;&nbsp;watchpoint:&nbsp;</font>Purify starts a debugger for<font style="font-family: Courier;"
+	face=courier><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><a href="ht_ov_watchpoints.htm"><span style="font-weight: bold;"><B>watchpoint</B></span></a> 
+ messages</p>
+<p style="margin-bottom: 6.00pt;">You can change the list of available 
+ debuggers, and Purify's interface to them, using your ~/.purify.Xdefaults 
+ file and the <a href="ht_customize_scripts.htm"><span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier>pure_jit_debug</font></B></span><span style="font-weight: bold;"><B> 
+ script</B></span></a> which is located in the Purify installation directory. 
+ </p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_HANDLE></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 486px; border-spacing: 0px;"
+		cellspacing=0
+		width=486>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-handle-signals<br>
+-ignore-signals</p></td>
+<td style="background-color: #e5e5e5;
+			width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">not 
+ set<br>
+system-dependent</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 486px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Purify installs a signal handler for many of the possible software signals 
+ that can be delivered to a Purify'd process. The signal handler outputs 
+ a <a href="ht_m_sig.htm"><span style="font-weight: bold;"><B><font style="font-family: Courier;"
+	face=courier>SIG</font></B></span></a> or <a href="ht_m_cor.htm"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>COR</font></B></span></a> 
+ message to the Viewer or log file before passing control to the user or 
+ to the default signal handler. The initial default signals handled by 
+ Purify are:</p>
+<p><span style="font-weight: bold;"><B>Solaris:</B></span><font style="font-family: Courier;"
+														face=courier> SIGHUP, 
+ SIGINT, SIGQUIT, SIGILL, SIGABRT, SIGEMT, SIGFPE, SIGBUS, SIGCANCEL, SIGPIPE, 
+ SIGSEGV, SIGSYS, SIGTERM, SIGUSR1, SIGUSR2, SIGPOLL, SIGXCPU, SIGXFSZ, 
+ SIGFREEZE, SIGTHAW, SIGRTMIN, SIGRTMAX</font></p>
+<p><span style="font-weight: bold;"><B>HP-UX:</B></span><font style="font-family: Courier;"
+														face=courier> SIGHUP, 
+ SIGINT, SIGQUIT, SIGILL, SIGABRT, SIGEMT, SIGFPE, SIGBUS, SIGSEGV, SIGSYS, 
+ SIGPIPE, SIGTERM, SIGUSR1, SIGUSR2, SIGLOST, SIGRESERVE, SIGDIL, SIGXCPU, 
+ SIGXFSZ SIGIO, SIGWINCH, SIGGFAULT, SIGRTMAX, SIGRTMIN</font></p>
+<p><span style="font-weight: bold;"><B>IRIX:</B></span><font style="font-family: Courier;"
+														face=courier> SIGHUP, 
+ SIGINT, SIGQUIT, SIGILL, SIGABRT, SIGEMT, SIGFPE, SIGBUS, SIGCPU, SIGSEGV, 
+ SIGSYS, SIGPIPE, SIGALRM, SIGTERM, SIGUSR1, SIGUSR2, SIGTSTP, SIGTTIN, 
+ SIGTTOU, SIGVTALRM, SIGPROF, SIGXCPU, SIGXFSZ</font></p>
+<p><span style="font-weight: bold;"><B>Tru64 UNIX:</B></span><font style="font-family: Courier;"
+															face=courier> 
+ SIGHUP, SIGINT, SIGQUIT, SIGILL, SIGABRT, SIGEMT, SIGFPE, SIGBUS, SIGSEGV, 
+ SIGSYS, SIGPIPE, SIGTERM, SIGUSR1, SIGUSR2, SIGPOLL, SIGXCPU, SIGXFSZ, 
+ SIGINFO, SIGRESV, SIGRTMIN, SIGRTMAX</font></p>
+<p>To ignore signals in this list, set <span style="font-family: Courier;">-ignore-signals</span> 
+ to a comma-delimited list of the signals to be ignored. For example: <font 
+ style="font-family: Courier;"
+	face=courier>-ignore-signals=SIGSEGV,SIGBUS</font></p>
+<p>To handle additional signals, set <span style="font-family: Courier;"><!--kadov_tag{{<spaces>}}-->&nbsp;&nbsp;</span>&nbsp;<!--kadov_tag{{</spaces>}}-->to 
+ a comma-delimited list of the additional signals. For example: <font style="font-family: Courier;"
+	face=courier>-handle-signals=SIGALRM,SIGCHLD</font></p>
+<p>Purify does <span style="font-style: italic;"><I>not</I></span> handle <font 
+ style="font-family: Courier;"
+	face=courier>SIGKILL</font>, <font style="font-family: Courier;"
+										face=courier>SIGSTOP</font>, or 
+ <font style="font-family: Courier;"
+		face=courier>SIGTRAP</font> signals, since doing so interferes 
+ with normal program operation. If you specify these signals in <font style="font-family: Courier;"
+	face=courier>-handle-signals</font>, Purify silently ignores them.</p>
+<p><span style="font-weight: bold;"><B>Note:</B></span><span style="font-weight: bold;"><B><font 
+ style="color: #00ffff;"
+	color=#00FFFF> </font></B></span>The default action on delivery of <font 
+ style="font-family: Courier;"
+	face=courier>SIGALRM</font> terminates the process. Purify does not 
+ handle this signal by default, since it is used internally by functions 
+ such as <font style="font-family: Courier;"
+				face=courier>sleep</font>. However, if you see a process 
+ terminated with a message like &quot;Alarm clock,&quot; you can set <font 
+ style="font-family: Courier;"
+	face=courier>-handle-signals=SIGALRM</font> to get a report when the 
+ program terminates. You can also <a href="ht_suppress_messages_file.htm"><span 
+ style="font-weight: bold;"><B>add the following suppression directive to 
+ a </B></span><span style="font-weight: bold;"><B><font style="font-family: Courier;"
+												face=courier>.purify</font></B></span><span 
+ style="font-weight: bold;"><B> file</B></span></a> to silence the signal message 
+ when used in the sleep function:</p>
+<p class="@First-Paragraph"
+	style="font-family: Courier;">suppress SIG sleep</p>
+<p>See the man pages for signal and sigmask, and the <font style="font-family: Courier;"
+															face=courier>/usr/include/signal.h</font> 
+ and <font style="font-family: Courier;"
+			face=courier>/usr/include/sys/signal.h</font> files for more 
+ information on signals. </p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_HELP_WAIT></a></p>
+
+<p>&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 486px; border-spacing: 0px;"
+		cellspacing=0
+		width=486>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p><span style="font-weight: bold;"><B>-pure-help-max-wait</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p><span style="font-weight: bold;"><B>20 seconds </B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 486px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Enables you to set the number of seconds that the Purify Viewer waits 
+ for the Netscape browser to display the Purify help system.</p>
+<p>If initialization of the Netscape browser takes longer than the value 
+ set for this option, Purify displays an error message and stops trying 
+ to open the browser.</p></td>
+<td_null></tr>
+
+<caption align=bottom>&nbsp;</caption>
+</table>
+
+<p><a name=MID_REPLACE></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 486px; border-spacing: 0px;"
+		cellspacing=0
+		width=486>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p><span style="font-weight: bold;"><B>-replace-path</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 198px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p><span style="font-weight: bold;"><B>not set</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>In an instrumented shared library or an instrumented &quot;incomplete&quot; 
+ executable (that is, an executable that references a shared library), 
+ replaces one specified library path with another. </p>
+<p>This option is intended to make it easier to run instrumented programs 
+ generated by other teams or on other systems. It allows you set library 
+ paths in instrumented files to reflect the location of the referenced 
+ libraries on your own system. When the other team creates the instrumented 
+ program, they should use the option <a href="ht_opt_buildtime.htm#MID_LIB" style="font-weight: bold; font-family: Courier, monospace;">-lib-path-length</a>, 
+ selecting a value to accommodate the length of the longest absolute path 
+ on your system.</p>
+<p style="margin-bottom: 0;"><span>To use this option for an incomplete 
+ executable, type:</span></p>
+<p class=rCode>% purify -replace-path &lt;old-path&gt; &lt;new-path&gt; 
+ a.out</p>
+<p style="margin-bottom: 0;"><span>For an instrumented shared library, 
+ type:</span></p>
+<p class=rCode>% purify -replace-path &lt;old-path&gt; &lt;new-path&gt; 
+ &lt;shared_library&gt;_pure_23456887.sl</p>
+<p style="margin-bottom: 0;">Specify both paths as absolute paths.</p>
+<p style="margin-bottom: 0;">If you need to replace more than one path 
+ name in a file, run this command as many times as necessary, replacing 
+ one path name with each pass.</p>
+<p><span style="font-family: Helvetica, sans-serif;">This option is supported 
+ only on HP-UX. The file must be a 32-bit SOM file or a 64-bit ELF file.</span></p></td>
+<td_null></tr>
+</table>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

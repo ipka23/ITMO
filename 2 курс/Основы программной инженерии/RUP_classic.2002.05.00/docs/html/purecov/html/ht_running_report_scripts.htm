@@ -1,0 +1,237 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Running report scripts                                 Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1198>
+<meta name=layout-width content=583>
+<meta name=date content="04 30, 2002 2:58:33 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_about_pc_report_scripts.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_rep_covsummary.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	color=navy
+	style="font-family: Helvetica;
+			font-size: 18pt;
+			color: #000080;
+			font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Running report scripts</B></FONT></span></B></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica>The 
+ PureCoverage report scripts are located in the directory </span><span 
+ face=Courier
+	style="font-family: Courier;">&lt;</span><span face=Courier
+													style="font-family: Courier;"><a href="../html_notoc/ht_gloss_purecovhome.htm" style="font-weight: bold;">purecovhome</a></span><span face=Courier
+															style="font-family: Courier;">&gt;/scripts</span><span 
+ face=Helvetica>. To run scripts from a shell or makefile, you can include 
+ this directory on your </span><span face=Courier
+									style="font-family: Courier;">$PATH</span><span 
+ face=Helvetica>, make symbolic links from </span><span face=Courier
+														style="font-family: Courier;">/usr/local/bin</span><span 
+ face=Helvetica> to the script, or invoke the scripts by absolute pathname.</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You 
+ can also run the report scripts from within the Viewer. Select </FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>File &gt; Run Script</B></FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. This opens the Script 
+ dialog: </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ch3_runscriptdialog.gif' alt='image\ch3_runscriptdialog.gif' width='564' height='93' border='0'>");}
+else
+{   document.write("<img src='../image/ch3_runscriptdialog.gif' alt='image\ch3_runscriptdialog.gif' style='width: 564px;  	height: 93px;  	border-style: none;' width='564' height='93' border='0'>");}
+//-->
+</SCRIPT></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Select 
+ the script name from the script selection list. Enter any arguments, being 
+ sure to escape any character that has a special meaning to the shell. 
+ The script works on the data files currently being viewed, and shows the 
+ adjustments that are currently displayed.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ Script Output window displays the results:</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ch3_scriptoutput.gif' alt='image\ch3_scriptoutput.gif' width='533' height='320' border='0'>");}
+else
+{   document.write("<img src='../image/ch3_scriptoutput.gif' alt='image\ch3_scriptoutput.gif' style='width: 533px;  	height: 320px;  	border-style: none;' width='533' height='320' border='0'>");}
+//-->
+</SCRIPT><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"> <FONT SIZE=4 style="font-size:14pt;"></FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You 
+ can also run </FONT></span><span style="font-style: italic;"><I><span face=Helvetica
+															style="font-family: Helvetica;
+	font-size: 14pt;
+	font-style: italic;"><FONT SIZE=4 style="font-size:14pt;"><I>custom</I></FONT></span></I></span><span face=Helvetica
+													style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ scripts in the Viewer, provided that they use </FONT></span><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> as the source of 
+ their export data. Install your custom script in the directory</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> &lt;purecovhome&gt;/scripts</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. The next time you 
+ start the Viewer, the custom script name appears in the Script dialog, 
+ where you can select it. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ run the </FONT></span><a href="ht_rep_differences.htm"><span style="font-weight: bold;"><B><span 
+ face=Courier
+	style="font-family: Courier;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>pc_diff</B></FONT></span></B></span></a><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> or </FONT></span><a href="ht_rep_builddiffsum.htm"><span 
+ style="font-weight: bold;"><B><span face=Courier
+									style="font-family: Courier;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>pc_build_diff</B></FONT></span></B></span></a><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script from the Viewer, 
+ use &quot;-&quot; (for </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">) as one of the arguments, 
+ and the name of the file to be compared as the other. You cannot run the 
+ </FONT></span><a href="ht_rep_anndiff.htm"><span style="font-weight: bold;"><B><span 
+ face=Courier
+	style="font-family: Courier;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>pc_covdiff</B></FONT></span></B></span></a><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script from the Viewer.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">A 
+ report script that you run from the dialog produces output in the Script 
+ Output window that is similar to the output when you invoke scripts using 
+ the command:</FONT></span></p>
+
+<p class=rCode><span face=Courier>% purecov </span><span face=Courier
+														style="font-weight: bold;"><B><a href="ht_opt_mode.htm#MID_EXPORT">-export</a></B></span><span face=Courier> prog.</span><span 
+ face=Courier
+	style="font-weight: bold;"><B><a href="../html_notoc/ht_gloss_pcv.htm">pcv</a></B></span><span 
+ face=Courier> | &lt;report_script&gt;</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica>To 
+ save a report, select </span><span face=Helvetica
+									style="font-weight: bold;"><B>File &gt; 
+ Save as . . .</B></span><span face=Helvetica
+							style="font-weight: bold;"> <B></B></span><span face=Helvetica>in 
+ the Script Output window. </span></p>
+
+</body>
+
+</html>

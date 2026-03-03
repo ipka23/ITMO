@@ -1,0 +1,346 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Configuring a change request management system         Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=4330>
+<meta name=layout-width content=633>
+<meta name=date content="03 7, 2002 3:39:32 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_integrate_with_cc.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_ov_custom_mem_managers.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Configuring a change request management system</h1>
+
+<p>Use the following information to configure Purify to work with your 
+ group's change request management (CRM) system: </p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0; font-weight: bold;"><a 
+ href="#MID_CQ"
+	style="font-weight: bold;">Rational ClearQuest</a></p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;"><a href="#MID_CLEARDDTS"
+														style="font-weight: bold;">Rational 
+ ClearDDTS</a></p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;"><a href="#MID_OTHER_CRMS"
+														style="font-weight: bold;">another 
+ system</a></p></li>
+</ul>
+
+<p><a name=MID_CQ></a></p>
+
+<h2>Configuring Rational ClearQuest</h2>
+
+<p>If you are using ClearQuest, most of the configuration is ordinarily 
+ performed when Purify is installed. Use the information here as a checklist, 
+ or to customize your configuration.</p>
+
+<p>ClearQuest has both a native interface, which runs as an Xwindows client, 
+ and a web-based interface, which uses the Netscape browser. Configure 
+ Purify to use whichever interface your group has selected.</p>
+
+<h3>Native interface</h3>
+
+<p>The native interface is available on Solaris and HP-UX systems.</p>
+
+<p>For you to file a change request from within Purify, the following is 
+ necessary:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Either the line <span 
+ style="font-family: Courier;">PURE_CRMS_COMMAND_STRING=clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> must be present in the file 
+ </span>&lt;<span style="font-family: Courier, monospace;"><a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;/pure_crms</span><span 
+ style="font-family: Helvetica, sans-serif;">, or the environment variable</span> 
+ <span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING=clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> must be set. If both are 
+ set, the environment variable overrides the entry in the </span><span 
+ style="font-family: Courier, monospace;">pure_crms</span><span style="font-family: Helvetica, sans-serif;"> 
+ file.<br>
+	<br>
+	It is necessary either for </span><span style="font-family: Courier;">clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> to be included in your search 
+ path, or for the full path to be specified with </span><span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING</span><span 
+ style="font-family: Helvetica, sans-serif;">.</span> <br>&nbsp;</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">In addition, either 
+ the line <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_CLIENT=X</span> 
+ must be present in &lt;<span style="font-family: Courier, monospace;">purifyhome&gt;/pure_crms</span>, 
+ or the environment variable <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_CLIENT=X</span> 
+ must be set. If both are set, the environment variable overrides the entry 
+ <span style="font-family: Helvetica, sans-serif;">in the </span><span 
+ style="font-family: Courier, monospace;">pure_crms</span><span style="font-family: Helvetica, sans-serif;"> 
+ file.</span></p></li>
+</ul>
+
+<p>You can automate login in the following ways:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Add the following lines, 
+ if they are not already present, to the file &lt;<span style="font-family: Courier, monospace;">purifyhome&gt;/pure_crms:<br>
+	<br>
+	PURE_CLEARQUEST_USERNAME=&lt;username&gt;</span> <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_DATABASE=&lt;ClearQuest 
+ database&gt;</span> <br>&nbsp;</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Alternatively, set the 
+ following environment variables: <span style="font-family: Courier, monospace;"><br>
+	<br>
+	PURE_CLEARQUEST_USERNAME=&lt;username&gt;</span> <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_DATABASE=&lt;ClearQuest 
+ database&gt;</span> <span style="margin-bottom: 0; font-family: Helvetica, sans-serif;"><br>
+	<br>
+	The environment variables override the entries in the </span><span 
+ style="margin-bottom: 0; font-family: Courier, monospace;">pure_crms</span><span 
+ style="margin-bottom: 0; font-family: Helvetica, sans-serif;"> file.</span><span 
+ style="margin-bottom: 0; font-family: Courier, monospace;">&nbsp;</span></p></li>
+</ul>
+
+<p>With this configuration, clicking the <span style="font-weight: bold;"><B>File 
+ a Change Request</B></span> button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' width='39' height='39' border='0'>");}
+else
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' style='width: 39px;  											height: 39px;  											border-style: none;' width='39' height='39' border='0'>");}
+//-->
+</SCRIPT> in the toolbar or selecting 
+ <span style="font-weight: bold;"><B>File&nbsp;&gt;&nbsp; File a Change Request</B></span> 
+ calls the script <font style="font-family: Courier;"
+						face=courier><a href="ht_customize_scripts.htm" style="font-weight: bold;">pure_invoke_clearquest</a><span 
+ style="font-family: Helvetica, sans-serif;">. After you log in, this script 
+ invokes </span></font><font style="font-family: Courier;"
+							face=courier><a href="ht_customize_scripts.htm" style="font-weight: bold;">pure_submit_clearquest_defect</a><span 
+ style="font-family: Helvetica, sans-serif;">, which by default automatically 
+ adds to the change request 1) the message selected in the Purify Viewer 
+ and 2) the <a href="../html_notoc/ht_gloss_log_file.htm" style="font-weight: bold;">log file</a> for the run. You 
+ can edit </font><font style="font-family: Courier;"
+						face=courier>pure_submit_clearquest_defect</font><font 
+ style="font-family: Helvetica, sans-serif;"
+	face=helvetica> to make additional entries automatically, or customize 
+ it to work with your group's ClearQuest schema. </font></span></p>
+
+<h3 style="font-family: Helvetica, sans-serif;">Web-based interface</h3>
+
+<p>To use the ClearQuest web-based interface from within Purify, the following 
+ is necessary:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Either the line <span 
+ style="font-family: Courier;">PURE_CRMS_COMMAND_STRING=clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> must be present in the file 
+ </span>&lt;<span style="font-family: Courier, monospace;"><a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;/pure_crms</span><span 
+ style="font-family: Helvetica, sans-serif;">, or the environment variable 
+ </span><!--kadov_tag{{<spaces>}}-->&nbsp;<span style="font-family: Courier;"><!--kadov_tag{{</spaces>}}-->PURE_CRMS_COMMAND_STRING=clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> must be set. If both are 
+ set, the environment variable overrides the entry in the </span><span 
+ style="font-family: Courier, monospace;">pure_crms</span><span style="font-family: Helvetica, sans-serif;"> 
+ file.<br>
+	<br>
+	It is necessary either for </span><span style="font-family: Courier;">clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;"> to be included in your search 
+ path, or for the full path to be specified with </span><span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING</span><span 
+ style="font-family: Helvetica, sans-serif;">. <br>
+	&nbsp;</span></p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Either the line <span 
+ style="font-family: Courier, monospace;">PURE_CLEARQUEST_CLIENT=web</span> 
+ must be present in the file &lt;<span style="font-family: Courier, monospace;"><a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;/pure_crms</span>, or 
+ the environment variable <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_CLIENT=web</span> 
+ must be set. If both are set, the environment variable overrides the entry 
+ <span style="font-family: Helvetica, sans-serif;">in the </span><span 
+ style="font-family: Courier, monospace;">pure_crms</span><span style="font-family: Helvetica, sans-serif;"> 
+ file.<br>
+	&nbsp;</span></p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">In addition, either 
+ the line <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_URL=&lt;url&gt;</span> 
+ must be present in the file &lt;<span style="font-family: Courier, monospace;">purifyhome&gt;/pure_crms</span>, 
+ or the environment variable <span style="font-family: Courier, monospace;">PURE_CLEARQUEST_URL</span> 
+ must be set. The variable <span style="font-family: Courier, monospace;">&lt;url&gt;</span> 
+ is the site-wide URL for the ClearQuest web interface. If both are set, 
+ the URL specified in the environment variable overrides the URL specified 
+ in the file.</p></li>
+</ul>
+
+<p>With this configuration, clicking the <span style="font-weight: bold;"><B>File 
+ a Change Request</B></span> button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' width='39' height='39' border='0'>");}
+else
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' style='width: 39px;  											height: 39px;  											border-style: none;' width='39' height='39' border='0'>");}
+//-->
+</SCRIPT> in the toolbar or selecting 
+ <span style="font-weight: bold;"><B>File&nbsp;&gt;&nbsp; File a Change Request</B></span> 
+ calls the script <font style="font-family: Courier;"
+						face=courier>netscape_remote</font>, which starts 
+ a Netscape browser. (For browser requirements and configuration, see your 
+ ClearQuest documentation.)</p>
+
+<p><a name=MID_CLEARDDTS></a></p>
+
+<h2>Configuring Rational ClearDDTS</h2>
+
+<p>To use ClearDDTS for managing change requests, do the following:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Add the line <span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING=xddts</span><span 
+ style="font-family: Helvetica, sans-serif;"> to the file </span>&lt;<span 
+ style="font-family: Courier, monospace;"><a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;/pure_crms</span><span 
+ style="font-family: Helvetica, sans-serif;">, or set the environment variable 
+ </span><!--kadov_tag{{<spaces>}}-->&nbsp;<span style="font-family: Courier;"><!--kadov_tag{{</spaces>}}-->PURE_CRMS_COMMAND_STRING=xddts</span><span 
+ style="font-family: Helvetica, sans-serif;">. If both are set, the environment 
+ variable overrides the entry in the </span><span style="font-family: Courier, monospace;">pure_crms</span><span 
+ style="font-family: Helvetica, sans-serif;"> file.<br>
+	<br>
+	It is necessary either for </span><span style="font-family: Courier;">xddts</span><span 
+ style="font-family: Helvetica, sans-serif;"> to be included in your search 
+ path, or for the full path to be specified with </span><span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING</span><span 
+ style="font-family: Helvetica, sans-serif;">.</span> </p></li>
+</ul>
+
+<p>With this configuration, clicking the <span style="font-weight: bold;"><B>File 
+ a Change Request</B></span> button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' width='39' height='39' border='0'>");}
+else
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' style='width: 39px;  											height: 39px;  											border-style: none;' width='39' height='39' border='0'>");}
+//-->
+</SCRIPT> in the toolbar or selecting 
+ <span style="font-weight: bold;"><B>File&nbsp;&gt;&nbsp; File a Change Request</B></span> 
+ calls the script <font style="font-family: Courier; font-weight: bold;"
+						face=courier><a href="ht_customize_scripts.htm" style="font-weight: bold;">pure_invoke_ddts</a></font> 
+ to start ClearDDTS. </p>
+
+<p><a name=MID_OTHER_CRMS></a></p>
+
+<h2>Configuring other change request management software</h2>
+
+<p>You can configure Purify to call your own change request management 
+ system. Do the following: </p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;"><span style="font-family: Helvetica, sans-serif;">Add</span><span> 
+ the line </span><span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING=</span><span><font 
+ style="font-family: Courier;"
+	face=courier>&lt;your_CRMSystem_executable&gt;</font></span><span style="font-family: Helvetica, sans-serif;"> 
+ to the file </span><span>&lt;</span><span style="font-family: Courier, monospace;"><a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;/pure_crms</span><span 
+ style="font-family: Helvetica, sans-serif;">, or set the environment variable 
+ </span><span><!--kadov_tag{{<spaces>}}-->&nbsp;</span><span style="font-family: Courier;"><!--kadov_tag{{</spaces>}}-->PURE_CRMS_COMMAND_STRING=</span><span><font 
+ style="font-family: Courier;"
+	face=courier>&lt;your_CRMSystem_executable&gt;</font></span><span style="font-family: Helvetica, sans-serif;">. 
+ If both are set, the environment variable overrides the entry in the </span><span 
+ style="font-family: Courier, monospace;">pure_crms</span><span style="font-family: Helvetica, sans-serif;"> 
+ file.<br>
+	<br>
+	It is necessary either for </span><span><font style="font-family: Courier;"
+													face=courier>&lt;your_CRMSystem_executable&gt;</font></span><span 
+ style="font-family: Helvetica, sans-serif;"> to be included in your search 
+ path, or for the full path to be specified with </span><span style="font-family: Courier;">PURE_CRMS_COMMAND_STRING</span><span 
+ style="font-family: Helvetica, sans-serif;">.</span> <br>&nbsp;</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Edit the script <font 
+ style="font-family: Courier;"
+	face=courier><a href="ht_customize_scripts.htm" style="font-weight: bold;">pure_invoke_ddts</a></font><span 
+ style="font-family: Helvetica, sans-serif;"> to call your system, then 
+ saving the script as <font style="font-family: Courier;"
+							face=courier>pure_invoke_&lt;your_CRMSystem_executable&gt;</font>.</span></p></li>
+	
+	<p>&nbsp;</p>
+	
+	<p style="margin-bottom: 0;">&nbsp;</p>
+	
+	<p>&nbsp;</p>
+</ul>
+
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guidelines: Boundary Class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_req.htm">Requirements Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/additional.gif"> <a href="../artifact/arp_req_add.htm">{More Requirements Artifacts}</a> &gt;
+<img border=0 src="../../applet/images/ar_bcls.gif"> <a href="../artifact/ar_bcls.htm">Boundary Class</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Boundary Class</rpw><a name="Top"></a><a name="XE_boundary_class__guidelines_for"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td width="135" valign="middle" bordercolor="#808080" height="58" align="center"><font face="Bookman" size="2"><img src="../artifact/images/bcls.jpg" width="47" height="31"></font><br>
+    <strong><font face="Arial" size="2">Boundary Class</font></strong></td>
+    <td width="371" valign="top" bordercolor="#808080" height="58">
+    <blockquote>
+      <p>A <strong>boundary class</strong> models the interaction between one or
+      more actors and the system.</p>
+    </blockquote>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Explanation"">Explanation</a></li>
+  <li><a href="#Using Boundary Classes to Model the User Interface"">Using
+    boundary classes to model the user interface</a></li>
+  <li><a href="#Examples of Boundary Classes"">Examples of boundary classes</a></li>
+  <li><a href="#Examples of Boundary Class Responsibilities"">Examples of
+    boundary class responsibilities</a></li>
+  <li><a href="#Examples of Boundary Class Attributes"">Examples of boundary
+    class attributes</a></li>
+  <li><a href="#Examples of Boundary Class Relationships"">Examples of boundary
+    class relationships</a></li>
+  <li><a href="#Examples of Special Requirements on Boundary Classes"">Examples
+    of special requirements on boundary classes</a></li>
+  <li><a href="#Relating Actors and Boundary Classes"">Relating actors and
+    boundary classes</a></li>
+  <li><a href="#Goodness Criteria on Boundary Classes and their Relationships"">Goodness
+    criteria on boundary classes and their relationships</a></li>
+</ul>
+<h3><a name="Explanation">Explanation</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Boundary classes are used to model the interaction between a system and its
+surroundings, i.e., its actors. The following aspects of the interaction are
+captured on boundary classes:
+<ul>
+  <li>coordinating the actor's behavior with the &quot;internals&quot; of the
+    system;</li>
+  <li>receiving input from the actor to the system, e.g., information or
+    requests;</li>
+  <li>providing output from the system to the actor, e.g., stored information or
+    derived results.</li>
+</ul>
+<p>Boundary classes can thus be used to capture the requirements on a user
+interface. Making an object model of the user interface is normally very
+worthwhile, since many user interfaces created today are object-oriented, and
+the trend is towards even more object orientation, because of its benefits with
+regard to natural and efficient use. Although many of the user-interface design
+decisions are best made during prototyping and rapid development of the user
+interface itself, reasoning about the structure and usability requirements on
+the user interface is natural to do in terms of an object model.</p>
+<h3><a name="Using Boundary Classes to Model the User Interface"></a>Using
+Boundary Classes to Model the User Interface <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>To understand the rest of these guidelines, please refer to the section
+&quot;Windows Fundamentals: Setting the<br>
+Context&quot; in <a href="md_uig.htm"">Guidelines: User Interface (General)</a>.</p>
+<p>A window-based user interface can be modeled by boundary classes; this can be
+described at a high level in the following points:
+<ul>
+  <li>Use one boundary class to represent one primary window.</li>
+  <li>Use one boundary class to represent each relevant and logical object
+    (type) manipulated by the actor within the primary windows; recall that each
+    such object also often has its own secondary windows, such as property
+    windows.</li>
+  <li>Use responsibilities on boundary classes to describe the required
+    operations on their corresponding windows and objects.</li>
+  <li>Use attributes on boundary classes to describe properties of their
+    corresponding windows and objects.</li>
+  <li>Use relationships between boundary classes to represent relationships such
+    as aggregation hierarchies and navigation paths of their corresponding
+    windows and objects.</li>
+  <li>Use special requirements on boundary classes to capture usability
+    requirements, and also other types of requirements such as design and
+    implementation requirements, on their corresponding windows and objects.</li>
+</ul>
+<p>Given the windows and their objects in the examples above, we identify the
+following <a href="#Examples of Boundary Classes"">boundary classes</a>, <a href="#Examples of Boundary Class Responsibilities"">responsibilities</a>,
+<a href="#Examples of Boundary Class Attributes"">attributes</a>, <a href="#Examples of Boundary Class Relationships"">relationships</a>,
+and <a href="#Examples of Special Requirements on Boundary Classes"">special
+requirements</a>.</p>
+<h3><a name="XE_boundary_class__examples_of"></a><a name="Examples of Boundary Classes"></a>Examples
+of Boundary Classes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following boundary classes can be identified for a document editor:</p>
+<p align="center"><img src="images/doc_cls.gif" width="355" height="32"></p>
+<p>Note that Character is included just because it is essential to view a
+character as an object of its own in this particular application, i.e., in the
+document editor. Character classes should of course not be used if not
+considered essential in the application being modeled. In such cases, Character
+is probably of too fine a granularity.</p>
+<p>The following boundary classes can be identified for a mail application:</p>
+<p align="center"><img src="images/mail_cls.gif" width="310" height="32"></p>
+<p>The following boundary classes can be identified for file manipulation:</p>
+<p align="center"><img src="images/fld_file.gif" width="139" height="32"></p>
+<h3><a name="Examples of Boundary Class Responsibilities"></a><a name="XE_boundary_class__responsibilities¸_examples_of">Examples
+of Boundary Class Responsibilities</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following responsibilities can be identified for a document editor:</p>
+<p align="center"><img src="images/doc_rsp.gif" width="238" height="88"></p>
+<p>The Split responsibility is to split a Document in two (sub) windows. The
+Find(Text) responsibility is to find some Text in the Document.</p>
+<p>The following responsibilities can be identified for a mail application:</p>
+<p align="center"><img src="images/mail_rsp.gif" width="344" height="80"></p>
+<p>The Arrange(Criteria) responsibility is to arrange the Mail Messages of a
+Mail Box according to various Criteria, such as sender, subject, receive time,
+etc.</p>
+<p>The following responsibilities can be identified for file manipulation:</p>
+<p align="center"><img src="images/file_rsp.gif" width="247" height="74"></p>
+<h3><a name="XE_boundary_class__attributes¸_examples_of"></a>Examples of
+Boundary Cl<a name="Examples of Boundary Class Attributes"></a>ass Attributes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following attributes can be identified for a document editor:</p>
+<p align="center"><img src="images/doc_att.gif" width="346" height="77"></p>
+<p>Note that the attribute types are on a conceptual level here, and may be
+realized by various units of measure such as centimeters, inches, etc. in the
+actual user interface.</p>
+<p>The following attributes can be identified for a mail application:</p>
+<p align="center"><img src="images/mail_att.gif" width="288" height="105"></p>
+<h3><a name="Examples of Boundary Class Relationships"></a><a name="XE_boundary_class__relationships¸_examples_of">Examples
+of Boundary Class Relationships</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following aggregation relationships can be identified for a document
+editor:</p>
+<p align="center"><img src="images/doc_agg.gif" width="157" height="223"></p>
+<p>Note that the primary window, here the Document, is often an aggregate, since
+it contains an arbitrary number of other objects. However, aggregates (such as
+the Paragraph) also exist within other aggregates and do not necessarily
+represent primary windows.</p>
+<p>The following aggregation relationships can be identified for a mail
+application.</p>
+<p align="center"><img src="images/mail_agg.gif" width="241" height="149"></p>
+<p>Regarding the files, the relationship between Folder and File could also be
+modeled as an aggregate:</p>
+<p align="center"><img src="images/file_agg.gif" width="32" height="152"></p>
+<p>The following association relationships can be identified for a document
+editor:</p>
+<p align="center"><img src="images/doc_ass.gif" width="257" height="41"></p>
+<p>A Footnote must always be anchored to one Character. On the other hand, a
+Character can associate one or several Footnotes.</p>
+<p>Note the difference between aggregations and (ordinary) associations.
+Aggregations are often used to model containment hierarchies, whereas
+associations can model relations and alternative navigation paths between
+different containment hierarchies.</p>
+<p>A slightly more advanced use of associations is to model user-controlled
+inheritance. Then, an association should go between the inherited object and the
+inheriting object; an example is when a Paragraph inherits a Style:</p>
+<p align="center"><img src="images/doc_iass.gif" width="227" height="44"></p>
+<p>The following generalization relationship can be identified for a document
+editor:</p>
+<p align="center"><img src="images/doc_gen.gif" width="45" height="153"></p>
+<p>A Document is also a File, implying that it inherits all its responsibilities
+and attributes.</p>
+<p>The following generalization relationships can be identified for a mail
+application:</p>
+<p align="center"><img src="images/mail_gen.gif" width="157" height="148"></p>
+<h3><a name="Examples of Special Requirements on Boundary Classes"></a>Examples
+of Special Requirements on Boundary Classes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Special requirements on boundary classes can be:
+<ul>
+  <li>Usability requirements, like user execution times, learning times, and
+    error rates associated with the boundary class.</li>
+  <li>Non-functional requirements, that are captured on the class but that need
+    to be handled when the corresponding user interface is designed and
+    implemented. An example of such a requirement is that a boundary class
+    should be implemented using a specific component, such as an ActiveX
+    control.</li>
+</ul>
+<h5>Example:</h5>
+<p class="example">A usability requirement regarding the Character class could
+be:
+<ul>
+  <li>
+    <p class="example">A Character should provide navigation to any associated
+    Footnote by a single mouse move.</p>
+  </li>
+</ul>
+<p class="example">A usability requirement regarding the Mail Message class
+could be:
+<ul>
+  <li>
+    <p class="example">The Mail User should not be disturbed by incoming Mail
+    Messages when reading existing Mail Messages.</p>
+  </li>
+</ul>
+<p class="example">A usability requirement regarding the Mail Box class could
+be:
+<ul>
+  <li>
+    <p class="example">The Mail User should be able to arrange Mail Messages
+    with a single mouse click.</p>
+  </li>
+</ul>
+<p>Other usability requirements have to do with attribute values and object
+volumes. This is because the user interface often has a requirement to provide a
+readable interface regarding a specific range of an attribute value, or to
+provide usable management of a range of a specific object volume. Such ranges
+should then represent the normal cases, and cover up to 90% of them. The user
+interface will in turn cover all values, including those exceeding the ranges,
+but can be optimized for values in the normal ranges.</p>
+<h5>Example:</h5>
+<p class="example">A usability requirement regarding object volumes contained by
+the Document class could be:
+<ul>
+  <li>
+    <p class="example">A Document should be able to manage 1000 Paragraphs
+    without delaying the scrolling mechanism.</p>
+  </li>
+</ul>
+<p class="example">A usability requirement regarding attribute values of the
+Mail Message class could be:
+<ul>
+  <li>
+    <p class="example">A Subject should be able to include 40 characters without
+    being hyphenated.</p>
+  </li>
+</ul>
+<h3><a name="Relating Actors and Boundary Classes"></a>Relating Actors and
+Boundary Classes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Since the boundary classes model interactions between the actors and the
+system, we make this clear by associating each actor with the boundary classes
+handling the interaction with the actor.</p>
+<h5>Example:</h5>
+<p class="example">For the document editor, we have identified a Writer actor
+that interacts with Documents.</p>
+<p align="center"><img src="images/doc_act.gif" width="221" height="50"></p>
+<p class="example">A Writer can work with several different Documents. A
+Document can be created by several different Writers. Note that this probably
+implies that a Document needs to be able to discriminate between different
+Writers.</p>
+<p class="example">Moreover, in this case we let it be understood from the
+context that a Writer interacts with all objects contained in the aggregation
+hierarchy under Document.</p>
+<p class="example">For the mail application, we have identified a Mail User
+actor that interacts with Mail Boxes.</p>
+<p align="center"><img src="images/mail_act.gif" width="218" height="50"></p>
+<p class="example">In this case, we also let it be understood from the context
+that a Mail User interacts with all objects contained in the aggregation
+hierarchy under Mail Box.</p>
+<h3><a name="Goodness Criteria on Boundary Classes and their Relationships"></a>Goodness
+Criteria on Boundary Classes and their Relationships <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>A problem with many user interfaces is that they have too many windows, and
+window navigation paths that are too long. In addition to adding needless
+interaction overhead, window navigation paths that are too long make it more
+likely that the user will &quot;get lost&quot; in the system. Ideally, all
+windows should be opened from one single primary window, often called the main
+window. Then you have a maximum navigation length of two. Avoid navigation
+lengths greater than three.</p>
+<p>It is thus an important goal when building the user interface to have only
+one primary window per actor, if possible containing all objects that the actor
+needs to access. If this is not possible, the window should provide navigation
+to all objects that the actor needs to access. It is important that the actor
+spends a considerable part of his &quot;use time&quot; interacting with this
+primary window.</p>
+<p>As a result, this has the following impact on the object model of the user
+interface:
+<ul>
+  <li>Each actor should if possible be related to only one boundary class
+    (aggregate) representing the primary window.</li>
+  <li>All boundary classes used by the same actor should be related some way,
+    often via an aggregation hierarchy, starting with the boundary class
+    representing the primary window.</li>
+  <li>Aggregation hierarchies should be as wide and shallow as possible.</li>
+  <li>Boundary classes should, in general, be part of one (and-only one)
+    aggregation hierarchy, so the actor knows where to find it.</li>
+  <li>There should be as few aggregation hierarchies as possible, because they
+    complicate the actors' mental model.</li>
+  <li>If you have an association with a multiplicity of one, and the associated
+    classes are part of different aggregation hierarchies, you should consider
+    replacing the association with an aggregation, if the two aggregation
+    hierarchies can be merged. However, note that this may lead to a compromise
+    between one deep aggregation hierarchy, and two more shallow ones.</li>
+</ul>
+<p>The goodness criteria presented above are on quite a detailed level. On a
+higher level, we can list the following criteria, which may not provide as much
+detail, but at least communicate the intent of the boundary classes:
+<ul>
+  <li>The boundary classes should contribute to good system usability.</li>
+  <li>The boundary classes should be kept on as high a conceptual level as
+    possible.</li>
+  <li>The boundary classes should provide a sound encapsulation of the
+    interaction between the system and the actor.</li>
+  <li>The boundary classes should be the only objects that need to change if
+    actors change the way they provide input to the system.</li>
+  <li>The boundary classes should be the only objects that need to change if the
+    system changes the way it provides output to the actors.</li>
+  <li>The boundary classes must be &quot;aware&quot; of the requirements from
+    other object types (such as control and entity objects) so that they can be
+    implemented and still be usable and efficient with respect to the
+    &quot;inside of the system.&quot;</li>
+</ul>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

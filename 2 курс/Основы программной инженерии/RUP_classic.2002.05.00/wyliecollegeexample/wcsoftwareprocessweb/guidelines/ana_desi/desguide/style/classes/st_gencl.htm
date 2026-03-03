@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standards: Classes - General</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards: Classes -
+    General </h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" WIDTH="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER" width="142"><strong><img SRC="../../style/images/class.gif" NOSAVE WIDTH="30" HEIGHT="29"> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; Class&nbsp;</strong></td>
+        <td width="446">A class is a description of a set of objects that share the same
+        responsibilities, relationships, operations, attributes, and semantics.</td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER" width="142"><strong>Related Information:</strong></td>
+        <td width="446"><dir>
+          <li><a HREF="../../style/classes/st_ancl.htm">Standards: Analysis Classes</a></li>
+          <li><a HREF="../../style/classes/st_descl.htm">Standards: Design Classes</a></li>
+          <li><a HREF="../../style/classes/st_genat.htm">Standards: Attributes - General</a></li>
+          <li><a HREF="../../style/classes/st_anat.htm">Standards: Attributes - Analysis</a></li>
+          <li><a HREF="../../style/classes/st_desat.htm">Standards: Attributes - Design</a></li>
+          <li><a HREF="../../style/classes/st_resp.htm">Standards: Responsibilities</a></li>
+          <li><a HREF="../../style/classes/st_op.htm">Standards: Operations</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/modguide/md_class.htm">RUP Guidelines: Design Class</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/artifact/ar_aclss.htm">RUP Artifact: Analysis Class</a></li>
+        </dir>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a HREF="../../style/classes/st_gencl.htm#Introduction">Introduction</a></li>
+      <li><a HREF="../../style/classes/st_gencl.htm#Background">Background</a></li>
+      <li><a HREF="../../style/classes/st_gencl.htm#Naming">Naming Standards</a></li>
+      <li><a HREF="../../style/classes/st_gencl.htm#Doc">General Documentation Standards</a></li>
+      <li><a HREF="../../style/classes/st_gencl.htm#Stereotypes">Stereotypes</a></li>
+      <li><a HREF="../../style/classes/st_gencl.htm#Examples">Examples</a></li>
+    </ul>
+    <h3><a NAME="Introduction"></a>Introduction&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>In this section we outline the standards that are applicable to all classes. </p>
+    <p>For the specific standards related to the different kinds of classes see: <dir>
+      <li><a HREF="../../style/classes/st_ancl.htm">Standards: Analysis Classes</a></li>
+      <li><a HREF="../../style/classes/st_descl.htm">Standards: Design Classes</a></li>
+    </dir>
+    <p>For information on attributes, responsibilities and operations see: <dir>
+      <li><a HREF="../../style/classes/st_genat.htm">Standards: Attributes - General</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm">Standards: Attributes - Analysis</a></li>
+      <li><a HREF="../../style/classes/st_desat.htm">Standards: Attributes - Design</a></li>
+      <li><a HREF="../../style/classes/st_resp.htm">Standards: Responsibilities</a></li>
+      <li><a HREF="../../style/classes/st_op.htm">Standards: Operations</a></li>
+    </dir>
+    <h3><a NAME="Background"></a>Background&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>A class is a description of a set of objects that share the same attributes,
+    operations, relationships and semantics.&nbsp; A class implements one or more
+    interfaces.&nbsp; Classes are used to capture the vocabulary of the system being
+    developed.&nbsp; Classes can be used to represent software things, hardware things and
+    even things that are purely conceptual. </p>
+    <p>When we are modeling we need to be careful about what we model as attributes and what
+    we model as associations between classes. The Rational Unified Process Modeling
+    Guidelines contains a good discussion of the criteria to consider when deciding whether to
+    model a concept as a set of attributes or to reify it as a class (See <a HREF="../../../../../../../RationalUnifiedProcess/process/modguide/md_class.htm">RUP Guidelines: Design Class</a>). Remember you should model the
+    properties of objects as attributes if, and only if, they are properties of that object
+    alone (i.e. they are not and cannot be shared).&nbsp; </p>
+    <p>During analysis modeling we are really dealing with analysis types &#150; these will
+    be represented in Rose by the use of the Class model item (See <a HREF="../../../../../../../RationalUnifiedProcess/process/artifact/ar_aclss.htm">RUP Artifact: Analysis Class</a>).&nbsp; When
+    modeling classes during
+    analysis we will model the classes in terms of responsibilities, relationships and
+    attributes. The responsibilities represent the services offered by the class, the
+    relationships provide the ability for the classes to collaborate to deliver the services
+    that they offer and attributes represent a short hand way of describing a
+    &quot;knowledge&quot; responsibility.&nbsp; To quote Martin Fowler in &quot;Analysis
+    Patterns: Reusable Object Models&quot;: &quot;Conceptual models are linked to interfaces
+    (types) not implementations (classes).&quot; </p>
+    <h3><a NAME="Naming"></a>Naming Standards&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Class names are short nouns or noun phrases drawn from the vocabulary of the system you
+    are modeling.&nbsp; The name should clearly explain what the class and its objects stand
+    for.&nbsp; The name can consist of several words if this makes its meaning clearer. It is
+    more important to make the name clear than to make it short. </p>
+    <p>Capitalize the first letter of every word in a class name; Party and
+    PersonalAccount.&nbsp; Class names should be singular rather than plural; Order and Task,
+    but not Orders and Tasks.&nbsp; </p>
+    <p>Avoid similar names and synonyms because they make it difficult to distinguish
+    classes.&nbsp; </p>
+    <h3><a NAME="Doc"></a>General Documentation Standards&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>You should briefly describe each class. You should also briefly describe the
+    responsibilities of each class, including its objects' roles and behavior in the system.
+    Include this description on the class and use it as a summary of the responsibilities of
+    the objects of the class. </p>
+    <p>The names of abstract classes will be italicized.&nbsp; In Rose this is done
+    automatically when the Abstract check box is checked on the &quot;detail&quot; tab of the
+    class specification. </p>
+    <p>The format of the class description will be: </p>
+    <blockquote>
+      <font FACE="Courier New,Courier"><b><p>Description:</b> [Class description goes here]</font>
+      </p>
+      <p><b><font FACE="Courier New,Courier">Responsibilities:</font></b> </p>
+      <p><font FACE="Courier New,Courier">[Responsibility 1]</font> </p>
+      <p><font FACE="Courier New,Courier">[Brief Description of responsibility]</font> </p>
+      <p><b><font FACE="Courier New,Courier">Mechanisms</font></b> </p>
+      <p><font FACE="Courier New,Courier">[Mechanism 1]</font> </p>
+      <p><font FACE="Courier New,Courier">[Characteristics of mechanism]</font></p>
+    </blockquote>
+    <p>Note: a lot of the Analysis Mechanisms are characterized by adding additional comments
+    to the class documentation &#150; the documentation standards for the individual
+    mechanisms are defined as part of the mechanism's themselves.&nbsp; Typical mechanisms
+    include Persistency and Error Handling (See <a HREF="../../../../../../../RationalUnifiedProcess/process/workflow/ana_desi/co_amech.htm">RUP Concepts: Analysis Mechanisms</a> and <a HREF="../../../../../../../RationalUnifiedProcess/process/workflow/ana_desi/co_dmech.htm">RUP Concepts: Design Mechanisms</a> for further details). </p>
+    <p>For more information on documenting the responsibilities see <a HREF="../../style/classes/st_resp.htm">Standards:
+    Responsibilities</a>.&nbsp; </p>
+    <p><b>Rose: </b>Within Rose the documentation should be added in the
+    &quot;Documentation&quot; tab of the class specification.&nbsp; </p>
+    <h3><a NAME="Stereotypes"></a>Stereotypes&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The applicable set of stereotypes varies between Analysis and Design - See <a HREF="../../style/classes/st_ancl.htm#Stereotypes">Standards: Analysis Class</a> and <a HREF="../../style/classes/st_descl.htm#Stereotypes">Standards: Design Class</a> for details. </p>
+    <h3><a NAME="Examples"></a>Examples&nbsp;<a HREF="../../style/classes/st_gencl.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>None <br>
+    &nbsp;</td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" 
+border="0" width="20" height="110"></a></p>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+Version&nbsp;2001.02</small></small></font></td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

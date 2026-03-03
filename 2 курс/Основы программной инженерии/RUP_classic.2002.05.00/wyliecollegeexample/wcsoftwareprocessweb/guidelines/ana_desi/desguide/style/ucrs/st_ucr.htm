@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standards: Use Case Realization</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards: Use-Case
+    Realizations </h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" WIDTH="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong><img SRC="../../style/images/ucr.gif" NOSAVE WIDTH="98" HEIGHT="44"> <br>
+        Use-Case Realization</strong></td>
+        <td>A use-case realization describes how a particular use case is realized within the
+        design model, in terms of collaborating objects.</td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong>Related Information:</strong></td>
+        <td><ul>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/artifact/ar_ucrea.htm">RUP Artifact: Use-Case Realization</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_ucrea.htm">RUP Guideline: Use-Case Realization</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/activity/chklists/ck_ucrlz.htm">RUP Checkpoints: Use-Case Realization</a></li>
+        </ul>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Background">Background</a></li>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Naming">Naming Standards</a></li>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Doc">General Documentation Standards</a></li>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Stereotypes">Stereotypes</a></li>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Stereotypes">Documentation in Rose</a></li>
+      <li><a HREF="../../style/ucrs/st_ucr.htm#Examples">Examples</a></li>
+    </ul>
+    <h3><a NAME="Background"></a>Background&nbsp;<a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Each Use-Case to be analyzed will be complemented with a Use-Case realization. For each
+    use-case realization there is one or more class diagrams depicting its participating
+    classes and one or more interaction diagrams depicting its participating objects and their
+    interactions. </p>
+    <p>These diagrams can be presented, along with any textual elaboration of the Use-Case
+    (i.e. Use-Case Design documentation or textual scenarios), in a Use-Case Realization
+    document. There will be one Use-Case realization document per Use-Case. </p>
+    <h3><a NAME="Naming"></a>Naming Standards&nbsp;<a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Use Case Realizations are named by appending Realization to the name of the Use Case
+    realized (i.e. the realization of the Receive Deposit Item use case will be named Receive
+    Deposit Item Realization). </p>
+    <p>Where a single realization per use case is insufficient then sequentially number the
+    realizations. </p>
+    <p>Note: the naming standards for the diagrams contained by the realization are detailed
+    in the documentation section where the required set of diagrams is defined. </p>
+    <h3><a NAME="Doc"></a>General Documentation Standards&nbsp;<a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The realization will consist of adding the following diagrams to the Use-Case
+    Realization in the Rose Model:&nbsp; </p>
+    <table BORDER="1" CELLPADDING="7" WIDTH="100%" BORDERCOLOR="#000000">
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Diagram&nbsp;</b></font></td>
+        <td VALIGN="TOP" WIDTH="14%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Diagram
+        Type</b></font></td>
+        <td VALIGN="TOP" WIDTH="12%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Optionality</b></font></td>
+        <td VALIGN="TOP" WIDTH="25%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Naming
+        Standard</b></font></td>
+        <td VALIGN="TOP" WIDTH="33%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Purpose
+        / Comments</b></font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font SIZE="-1">Participating Classes</font></td>
+        <td VALIGN="TOP" WIDTH="14%"><font SIZE="-1"><a HREF="../../style/diagrams/st_cl_di.htm">Class
+        Diagram</a></font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font SIZE="-1">Mandatory</font></td>
+        <td VALIGN="TOP" WIDTH="25%"><font SIZE="-1">Name the diagram Participating Classes.</font><small>
+        </small><p><font SIZE="-1">If more than one diagram is required number the diagrams.</font></td>
+        <td VALIGN="TOP" WIDTH="33%"><font SIZE="-1">This diagram shows the classes that
+        participate in the Use Case.</font><small> </small><p><font SIZE="-1">This diagram could
+        be generated automatically using Rose Script.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font SIZE="-1">Overview</font></td>
+        <td VALIGN="TOP" WIDTH="14%"><font SIZE="-1"><a HREF="../../style/diagrams/st_coll.htm">Collaboration</a></font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font SIZE="-1">Optional</font></td>
+        <td VALIGN="TOP" WIDTH="25%"><font SIZE="-1">Name the diagram Overview.</font><small> </small><p><font SIZE="-1">If more than one diagram is required number the diagrams.</font></td>
+        <td VALIGN="TOP" WIDTH="33%"><font SIZE="-1">This diagram shows all of the objects
+        involved in the use case and the links between them. It does not show the messages sent.</font><small>
+        </small><p><font SIZE="-1">This diagram could be generated automatically using Rose
+        Script.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font SIZE="-1">Flow of Events</font></td>
+        <td VALIGN="TOP" WIDTH="14%"><font SIZE="-1"><a HREF="../../style/diagrams/st_seq.htm">Sequence</a></font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font SIZE="-1">Mandatory</font></td>
+        <td VALIGN="TOP" WIDTH="25%"><font SIZE="-1">Name the Flow of Event diagrams after the
+        Flow being analyzed / designed.</font><small> </small><p><font SIZE="-1">If more than one
+        diagram is required to explore a single flow then sequentially number the diagrams in the
+        order they should be read.</font></td>
+        <td VALIGN="TOP" WIDTH="33%"><font SIZE="-1">Basic flow and all alternate flows must be
+        elaborated via sequence diagrams.</font><small> </small><p><font SIZE="-1">Alternate Flows
+        should be described in terms of their variation from the Basic Flow. We do not want to
+        repeat the details of the Basic Flow over and over again on the individual Alternative
+        Flow diagrams.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font SIZE="-1">Sub-Flows</font></td>
+        <td VALIGN="TOP" WIDTH="14%"><font SIZE="-1"><a HREF="../../style/diagrams/st_seq.htm">Sequence</a></font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font SIZE="-1">Optional</font></td>
+        <td VALIGN="TOP" WIDTH="25%"><font SIZE="-1">Name the Sub-Flow diagrams after the Sub-Flow
+        being analyzed / designed.</font></td>
+        <td VALIGN="TOP" WIDTH="33%"><font SIZE="-1">Produce individual diagrams detailing the
+        sub-flows where their use simplifies, and reduces repetition, on the basic and alternate
+        flow diagrams.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font SIZE="-1">Local View</font></td>
+        <td VALIGN="TOP" WIDTH="14%"><font SIZE="-1">Use Case&nbsp;</font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font SIZE="-1">Mandatory</font></td>
+        <td VALIGN="TOP" WIDTH="25%"><font SIZE="-1">Name the diagram Local View.</font></td>
+        <td VALIGN="TOP" WIDTH="33%">&nbsp;</td>
+      </tr>
+    </table>
+    <p>Note: The basic flow and all alternative flows <b>must be</b> documented. </p>
+    <p>See the individual diagram types for details of the standards applied to each diagram. </p>
+    <h3><a NAME="Stereotypes"></a>Stereotypes&nbsp;<a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>No use case realization stereotypes have been identified. The realizations themselves
+    are represented as a stereotyped UML collaboration (or in Rose a stereotyped Use Case See:
+    <a HREF="../../style/ucrs/st_ucr.htm#Rose">Documentation in Rose</a> below). </p>
+    <h3><a NAME="Rose"></a><b>Documentation in Rose&nbsp;</b><a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Each Use Case Realization is given its own &lt;&lt;dynamic&gt;&gt; package in the
+    Logical View &#150; this is to enable the realization to be treated as a controlled unit
+    for change management purposes.&nbsp; This package is given a single Use Case to represent
+    the Use Case Realization.&nbsp; This Use Case is given the stereotype of &lt;&lt;use case
+    realization&gt;&gt; and the appropriate dashed ellipse icon can be used if the RUP Rose
+    Add-in is installed.&nbsp;&nbsp; The modeling standards for use case realizations are
+    then applied. </p>
+    <h3><a NAME="Examples"></a>Examples&nbsp;<a HREF="../../style/ucrs/st_ucr.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>None</td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" 
+border="0" width="20" height="110"></a></p>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+Version&nbsp;2001.02</small></small></font></td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

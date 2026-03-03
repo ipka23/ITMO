@@ -55,6 +55,18 @@ build CMakeFiles/tasksCpp.dir/A.cpp.o: CXX_COMPILER__tasksCpp_unscanned_Debug /U
   OBJECT_DIR = CMakeFiles/tasksCpp.dir
   OBJECT_FILE_DIR = CMakeFiles/tasksCpp.dir
 
+build CMakeFiles/tasksCpp.dir/B.cpp.o: CXX_COMPILER__tasksCpp_unscanned_Debug /Users/ipka23/ITMO/2$ курс/Алгоритмы$ и$ структуры$ данных/tasksCpp/B.cpp || cmake_object_order_depends_target_tasksCpp
+  DEP_FILE = CMakeFiles/tasksCpp.dir/B.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/tasksCpp.dir
+  OBJECT_FILE_DIR = CMakeFiles/tasksCpp.dir
+
+build CMakeFiles/tasksCpp.dir/B_2.cpp.o: CXX_COMPILER__tasksCpp_unscanned_Debug /Users/ipka23/ITMO/2$ курс/Алгоритмы$ и$ структуры$ данных/tasksCpp/B_2.cpp || cmake_object_order_depends_target_tasksCpp
+  DEP_FILE = CMakeFiles/tasksCpp.dir/B_2.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/tasksCpp.dir
+  OBJECT_FILE_DIR = CMakeFiles/tasksCpp.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target tasksCpp
@@ -63,7 +75,7 @@ build CMakeFiles/tasksCpp.dir/A.cpp.o: CXX_COMPILER__tasksCpp_unscanned_Debug /U
 #############################################
 # Link the executable tasksCpp
 
-build tasksCpp: CXX_EXECUTABLE_LINKER__tasksCpp_Debug CMakeFiles/tasksCpp.dir/A.cpp.o
+build tasksCpp: CXX_EXECUTABLE_LINKER__tasksCpp_Debug CMakeFiles/tasksCpp.dir/A.cpp.o CMakeFiles/tasksCpp.dir/B.cpp.o CMakeFiles/tasksCpp.dir/B_2.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/tasksCpp.dir
   POST_BUILD = :

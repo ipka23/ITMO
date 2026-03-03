@@ -1,0 +1,791 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../../../rop.css" type="text/css">
+<title>Toolkit: SiteMap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#004080" vlink="#8000FF" alink="#0000FF">
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../index.htm">Process Engineer Toolkit</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../../toolment/devkit/tm_use.htm">User's Guide</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../doc/index.htm">Tools Reference</a> &gt;
+<img border=0 src="../../../../../applet/images/tools.gif"> SiteMap
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h1 class="banner">Toolkit: SiteMap</h1>
+<ul>
+  <li><a href="#Configuration_file"">Configuration file</a></li>
+  <li><a href="#Layout_of_Sitemap"">The layout of the Site Map</a></li>
+  <li><a href="#Synonym file"">Synonym file</a></li>
+  <li><a href="#How to execute the application"">How to execute the application</a></li>
+</ul>
+<p>The SiteMap application is an application that creates a HTML-table
+describing the contents of a <a href="../../../applet/treebrowse/doc/index.htm"">treebrowse</a>
+structure. For an example of the result of the SiteMap application <a target="_blank" href="example.htm">see</a>.</p>
+<h2><a name="Configuration_file"></a>Configuration file</h2>
+<p class="left">To make the application work as you want it to you have to
+specify a number of parameters in a configuration file. Each row in the
+configuration file defines one parameter. The order of the rows does not matter.
+Each part of a row is separated with a &quot;tab character (/t)&quot;. The name
+of the parameters are not case sensitive. Space characters to the left or right
+of an item will be removed.</p>
+<p class="left">Below is an example of how a configuration file may look.</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%">
+  <tr bgcolor="#cccccc">
+    <td valign="top">
+    <p class="tableexample">includesubtree<br>
+    wwwroot<br>
+    datafile<br>
+    startDir<br>
+    resultfile<br>
+    relativepath<br>
+    bgcolor<br>
+    fgcolor<br>
+    headerfile<br>
+    footerfile<br>
+    maxlevels<br>
+    delimeters<br>
+    convertampersand<br>
+    levelstyle<br>
+    levelstyle<br>
+    levelstyle<br>
+    levelfont<br>
+    levelfont<br>
+    defaulttitlelength<br>
+    </td>
+    <td valign="top">
+    <p class="tableexample">false<br>
+    d:/project/rup50/applet/<br>
+    tree.zip<br>
+    d:/project/rup/<br>
+    sitemap/sitemap.htm<br>
+    ../<br>
+    #C0C0C0<br>
+    #336699<br>
+    sitepreamble.txt<br>
+    sitepostamble.txt<br>
+    10<br>
+    *<br>
+    false<br>
+    defaultstyle<br>
+    headlinestyle<br>
+    1<br>
+    defaultfont<br>
+    headlinefont<br>
+    30</td>
+    <td valign="top">
+    <p class="tableexample"><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </p>
+    <p class="tableexample"><br>
+    <br>
+    <br>
+    indexlevel2<br>
+    indexlevel1<br>
+    indexlevel2<br>
+    Arial&nbsp;Plain -1<br>
+    Arial Bold +2<br>
+    <br>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p class="left">&nbsp;</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%">
+  <tr bgcolor="#cccccc">
+    <td><b>Name of the parameter</b></td>
+    <td><b>Example value</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">wwwroot</td>
+    <td valign="top">
+    <p class="paramexample">d:/project/rup50/applet/</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines the directory where the
+    datafile is located. This parameter is mandatory.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">datafile</td>
+    <td valign="top">
+    <p class="paramexample">tree.zip</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines name of the WinZip-file
+    that contains the data file (tree.dat) defining the tree structure. This
+    parameter together with the parameter &quot;wwwroot&quot; shall define a
+    valid URL to the datafile. The default value is &quot;tree.dat&quot;. This
+    parameter is optional.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">includesubtree</td>
+    <td valign="top">
+    <p class="paramexample">false</td>
+    <td valign="top">
+    <p class="paramdescription">A tree structure may contain subtrees defined in
+    separate dat-files. This parameter defines if all subtrees shall be included
+    in the Site Map or not. Possible values are &quot;true&quot; and
+    &quot;false&quot;. Default is &quot;false&quot;. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">resultfile</td>
+    <td valign="top">
+    <p class="paramexample">sitemap/overview.htm<br>
+    sitemap/artifacts.htm<br>
+    sitemap/worker.htm<br>
+    sitemap/workflow.htm<br>
+    sitemap/toolmentors.htm</td>
+    <td valign="top">
+    <p class="paramdescription">The name of the file in which the Site Map is to
+    be written. The value of this parameter together with the value of the
+    parameter &quot;startDir&quot; shall be a valid path for a file. This
+    parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">relativepath</td>
+    <td valign="top">
+    <p class="paramexample">../</td>
+    <td valign="top">
+    <p class="paramdescription">Defines the relative path from where the result
+    of this application is written to the files it refers to. If the result is
+    written to a directory one level below the top of the site this parameters
+    shall have the value &quot;..&quot;. This parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">synonymfile</td>
+    <td valign="top">
+    <p class="paramexample">synonyms.txt</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter will make the application behave
+    in a quite different way if it is used. If this parameter is specified the
+    application will traverse the directory structure specified by the parameter
+    &quot;startDir&quot;. It will create a temporary dat-file named &quot;sitemap.dat&quot;
+    located in the directory defined by the parameter &quot;wwwroot&quot;. In
+    the synonymfile each direct name is mapped to a more readable name, the name
+    that shall be visible in the Site Map. If a directory is not specified in the
+    synonym file that directory will not be included in the dat-file and
+    therefore not in the Site Map. The dat-file will contain every html document
+    in the directory structure.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">removedatfile</td>
+    <td valign="top">
+    <p class="paramexample">true</td>
+    <td valign="top">
+    <p class="paramdescription">If the parameter &quot;synonymfile&quot; is set
+    then a temporary dat-file is created. If you want this file can be used as
+    input to a TreeBrowser. If that is the case this parameter should be set to
+    false. The default value is true, i.e. the file is removed. If the generated
+    dat-file shall be used without modification it have to be placed at the same
+    level from the top of the directory structure as the Site Map document
+    generated by this program. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">target</td>
+    <td valign="top">
+    <p class="paramexample">ory_doc</td>
+    <td valign="top">
+    <p class="paramdescription">The name of the target in which the html
+    documents is to be shown. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">maxlevels</td>
+    <td valign="top">
+    <p class="paramexample">10</td>
+    <td valign="top">
+    <p class="paramdescription">If the tree structure that serves as base for
+    the Site Map is very deep you may want to exclude the deepest parts if the
+    structure. This parameter defines how many levels of the structure that at
+    most will be included in the Site Map. The default value is &quot;10&quot;.
+    This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">delimeters</td>
+    <td valign="top">
+    <p class="paramexample">*</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines the delimeter character
+    in the datafile. The default value is &quot;*&quot;. This parameter is
+    optional and only needs to be set if the operating system does not support
+    the &quot;*&quot; sign.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">convertampersand</td>
+    <td valign="top">
+    <p class="paramexample">true</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines if the system shall
+    convert all &quot;special&quot; characters, for example the Swedish ä to
+    &amp;auml;. The default value is &quot;true&quot;. This parameter is
+    optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">bgcolor</td>
+    <td valign="top">
+    <p class="paramexample">#C0C0C0</td>
+    <td valign="top">
+    <p class="paramdescription">If a node is marked as a headline the cell in
+    which the node is written will have this background color. This parameter is
+    mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">fgcolor</td>
+    <td valign="top">
+    <p class="paramexample">#336699</td>
+    <td valign="top">
+    <p class="paramdescription">If a node is marked as a headline the node text
+    will have this color. This parameter is mandatory if stylesheets are not
+    used. If stylesheets are used this parameter is left without notice.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">headerfile</td>
+    <td valign="top">
+    <p class="paramexample">sitepreamble.txt</td>
+    <td valign="top">
+    <p class="paramdescription">To make it possible for the user to customize
+    this application as much as possible this parameter exists. This parameter
+    is the name of a file that will serve as the header for the file SiteMap.
+    The value of this parameter is either a relative path from where this
+    program is executed or an absolute path. This parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">footerfile</td>
+    <td valign="top">
+    <p class="paramexample">sitepostamble.txt</td>
+    <td valign="top">
+    <p class="paramdescription">To make it possible for the user to customize
+    this application as much as possible this parameter exists. This parameter
+    is the name of a file that will serve as the footer for the Site Map. The
+    value of this parameter is either a relative path from where this program is
+    executed or an absolute path. This parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">levelstyle</td>
+    <td valign="top">
+    <p class="paramexample">defaultstyle&nbsp;defaultsitemapstyle<br>
+    1&nbsp;levelonestyle</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines which style, in the
+    referenced stylesheet, that shall be used for each node level. The SiteMap
+    application assumes the &lt;P&gt;-tag, which means the stylesheet must
+    define styles for the &lt;P&gt; tag. For example, p.headinglevel2. If
+    stylesheets are not used the parameter &quot;levelfont&quot; controls the
+    layout.<br>
+    The syntax of this attribute is [paramname][nodelevel/reservedname][stylename].<br>
+    [paramname] is &quot;levelstyle&quot;.<br>
+    [nodelevel/reservedname] is either the level of the node or one of the
+    reserved names, (&quot;defaultstyle&quot; or &quot;headlinestyle&quot;).<br>
+    [stylename] is the name of the style.<br>
+    The attribute is optional but if you intend to use stylesheets you have to
+    specify at least a &quot;defaultstyle&quot;. Use the file defined by the
+    parameter &quot;headerfile&quot; to import the styles.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">levelfont</td>
+    <td valign="top">
+    <p class="paramexample">defaulfont&nbsp;Arial&nbsp;Bold&nbsp;+2<br>
+    1&nbsp;Times&nbsp;Italic&nbsp;-1</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines which font that shall be
+    used to generate the different nodes. If you have defined any stylesheets
+    this parameter will be left unnoticed. If you have not specified any
+    stylesheets this parameter have to be used. The syntax of this attribute is
+    [paramname][nodelevel/reservedname][fontname][fontstyle][fontsize].<br>
+    [paramname] is &quot;levelfont&quot;.<br>
+    [nodelevel/reservedname] is either the level of the node or one of the
+    reserved names, (&quot;defaultfont&quot; or &quot;headlinefont&quot;).<br>
+    [fontname] is mapped to the &quot;FACE&quot; attribute of the HTML FONT
+    attribute.<br>
+    [fontstyle] is mapped to the &quot;&lt;B&gt;&quot; or &quot;&lt;I&gt;&quot;
+    tags. Possible values are Bold, Italic and Plain.<br>
+    [fontsize] is mapped to the &quot;SIZE&quot; attribute of the HTML FONT
+    attribute.<br>
+    The attribute is optional but if you intend to use Font definition you have
+    to specify at least a &quot;defaultfont&quot;.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">startDir</td>
+    <td valign="top">
+    <p class="paramexample">d:/project/rup50</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter defines the top directory of the
+    structure to describe and/or the top of the directory structure in which the
+    resultfile is to be written. The reason to have both a wwwroot and a
+    startDir parameters are as follows. You may want to create a Site Map with a
+    data-file as input parameter where the data-file is located on a server
+    somewhere, but the Site Map is supposed to be located on a totally different
+    place. This parameter is mandatory.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">defaulttitlelength</td>
+    <td valign="top">
+    <p class="paramexample">3</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter the max length of a title of a
+    document. If the length exceeds this value it is truncated and
+    &quot;...&quot; are apended to the string. This parameter is only valid if
+    there is no definition of the parameter &quot;titlelength&quot; for the
+    current cell. If this parameter is not set the length of a title can be in
+    definite. This parameter is optional.</td>
+  </tr>
+</table>
+</center></div>
+
+<h2><a name="XE_SiteMap__Layout"></a><a name="Layout_of_Sitemap"></a>The layout 
+  of the Site Map</h2>
+<p class="left">The Site Map that will be generated is an ordinary HTML table. In
+the definition file you will define how the table will look. To specify the
+definition file think that you will cut the tree structure into smaller parts.
+Each top node in one of these structures shall be defined in the definition
+file. The application will insert the node and all nodes that are children and
+siblings to that node until it finds the next node defined in the definition
+file. This will make it possible to create the table in the way you want to. For
+each node there are a number of parameters described below. The order among the
+parameters are not of any interest and the names of the parameters are not case
+sensitive.</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%">
+  <tr bgcolor="#cccccc">
+    <td valign="top">
+    <p class="tableexample">&lt;--<br>
+    label<br>
+    level<br>
+    row<br>
+    col<br>
+    colspan<br>
+    rowspan<br>
+    colwidth<br>
+    cellcolor<br>
+    links<br>
+    visitonce<br>
+    onlythis<br>
+    mode<br>
+    titlelength<br>
+    --&gt;</td>
+    <td valign="top">
+    <p class="tableexample"><br>
+    Introduction to the Rational Unified Process / rup<br>
+    0<br>
+    1<br>
+    1<br>
+    1<br>
+    1<br>
+    20%<br>
+    false<br>
+    true<br>
+    true<br>
+    true<br>
+    headline<br>
+    20<br>
+    <br>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%">
+  <tr>
+    <td valign="top">
+    <p class="paramname">&lt;--</p>
+    </td>
+    <td valign="top"></td>
+    <td valign="top">
+    <p class="paramdescription">Each definition of a node starts with
+    &quot;&lt;--&quot;. This parameter is mandatory.</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">label</td>
+    <td valign="top">
+    <p class="paramexample">Introduction to the Rational Unified Process / rup</td>
+    <td valign="top">
+    <p class="paramdescription">The visible label of a node, (&quot;Introduction
+    to the Rational Unified Process&quot;) or the synonym for a directory/file (&quot;rup&quot;). The
+    synonym case is only applicable if you use a synonymfile. This parameter is
+    mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">level</td>
+    <td valign="top">
+    <p class="paramexample">0</td>
+    <td valign="top">
+    <p class="paramdescription">The level of the node in the tree structure. The
+    first level is 0. The unique definition of a node in the tree structure is
+    the label of the node and the level the node is located at. There can exist
+    more than one node in the tree structure that have the same label and level
+    as long as no one of them are not included in the definition file. This
+    parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">row</td>
+    <td valign="top">
+    <p class="paramexample">1</td>
+    <td valign="top">
+    <p class="paramdescription">The row in the table where this node is to be
+    inserted. If the value is &quot;0&quot; then the node will be inserted above
+    the table. This parameter is mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">col</td>
+    <td valign="top">
+    <p class="paramexample">1</td>
+    <td valign="top">
+    <p class="paramdescription">The column in the current row this node is to be
+    inserted into. If the node is to be inserted into the cell specified by the
+    previous node definition, let this node have the same values of the
+    parameters &quot;&quot;row&quot; and &quot;col&quot;. This parameter is
+    mandatory.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">rowspan</td>
+    <td valign="top">
+    <p class="paramexample">1</td>
+    <td valign="top">
+    <p class="paramdescription">Defines the number of rows in the table this
+    cell shall occupy. Default is &quot;1&quot;. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">colspan</td>
+    <td valign="top">
+    <p class="paramexample">1</td>
+    <td valign="top">
+    <p class="paramdescription">Defines the number of columns in the current row
+    this cell shall occupy. Default is &quot;1&quot;. This parameter is
+    optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">colwidth</td>
+    <td valign="top">
+    <p class="paramexample">20%</td>
+    <td valign="top">
+    <p class="paramdescription">Defines the width of the column in pixels or in
+    percentage. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">cellcolor</td>
+    <td valign="top">
+    <p class="paramexample">false</td>
+    <td valign="top">
+    <p class="paramdescription">Defines if this cell shall have a background
+    color or not. Possible values are &quot;true&quot; and &quot;false&quot;.
+    The default value is &quot;false&quot;. This parameter is optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">links</td>
+    <td valign="top">
+    <p class="paramexample">true</td>
+    <td valign="top">
+    <p class="paramdescription">Defines if the hypertext links of the nodes in
+    this subtree shall be generated. Possible values are &quot;true&quot; and
+    &quot;false&quot;. The default value is &quot;true&quot;. This parameter is
+    optional.</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p class="paramname">visitonce</td>
+    <td valign="top">
+    <p class="paramexample">true</td>
+    <td valign="top">
+    <p class="paramdescription">Defines if this node can be defined just one
+    time in the definition file. Possible values are &quot;true&quot; and
+    &quot;false&quot;. The default value is &quot;true&quot;. The reason for
+    setting this parameter to false is if you first want to have the node label
+    as the headline in a cell without any hypertext link and then want the node
+    in a cell with the hypertext link generated. This parameter is optional.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">onlythis</td>
+    <td valign="top">
+    <p class="paramexample">true</td>
+    <td valign="top">
+    <p class="paramdescription">The default behavior is that the program starts
+    width the node defined and continues as far as possible of until another
+    node defined in this file. But if only this node is to be inserted and no
+    more then this parameter is set to true. The default value is
+    &quot;false&quot;. This parameter is optional.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">titlelength</td>
+    <td valign="top">
+    <p class="paramexample">20</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter the max length of a title of a
+    document. If the length exceeds this value it is truncated and
+    &quot;...&quot; are appended to the string. This parameter defines the max
+    length of the title for the subtree defined by this node definition. If
+    neither of the parameters &quot;titlelength&quot; and the parameter &quot;defaulttitlelength&quot;
+    not set the length of a title can be in definite. This parameter is
+    optional.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">mode</td>
+    <td valign="top">
+    <p class="paramexample">headline</td>
+    <td valign="top">
+    <p class="paramdescription">This parameter is only applicable if you use a
+    synonym file. Possible values of this parameter are &quot;headline&quot;,
+    &quot;first&quot;, &quot;half&quot; and &quot;define&quot;. If you use a
+    synonymfile the value of the parameter &quot;label&quot; is a synonym for
+    the real label. The value of that parameter is typically the name of a
+    directory. This parameter together with the label parameter will instruct
+    the program how to calculate the label.
+    <ul>
+      <li>
+        <p class="paramdescription">&quot;headline&quot;, The label will get the
+        text this node is associated with in the synonymfile.</p>
+      </li>
+      <li>
+        <p class="paramdescription">&quot;first&quot;, The label will get the
+        text of the first child of the node pointed out by the synonym. Even if
+        you shall point out a child node the value of the label and level
+        parameters shall be as if you did point out the parent node. The program
+        will den use that node to calculate the actual value of the parameter
+        label and level. This will make the definition of nodes in the
+        definition file independent of if you add or remove files from a
+        directory.</p>
+      </li>
+      <li>
+        <p class="paramdescription">&quot;half&quot;, The label will get the
+        text of the middle child of the node pointed out by the synonym. The
+        child nodes are sorted in alphabetical order.</p>
+      </li>
+      <li>
+        <p class="paramdescription">&quot;define&quot;, The program will create
+        a as many cells needed to display this node and all its children. Each
+        row will have four columns. The nodes that have children will be marked
+        as headline.</p>
+      </li>
+    </ul>
+    <p class="paramdescription">This parameter is optional.</td>
+  </tr>
+  <tr valign="top">
+    <td valign="top">
+    <p class="paramname">--&gt;</td>
+    <td valign="top"></td>
+    <td valign="top">
+    <p class="paramdescription">Each definition of a node ends with
+    &quot;--&gt;&quot;. This parameter is mandatory.</td>
+  </tr>
+</table>
+</center></div>
+
+<h2><a name="Synonym file">Synonym file</a></h2>
+<p class="left">The purpose of the synonymfile is to define a mapping between
+non HTML documents or directories and a label visible in the Site Map. The Site Map
+will use the title attribute of all HTML documents. Items that are not
+HTML documents have to be defined in the synonym file. Such items are
+directories, data files and PDF documents. Each item consists of the
+directory/filename and the user defined label/title separated with a tab
+character (\t). All directory/filenames are relative from the directory
+structure top.</p>
+<p class="left">Below is an example of how a synonym file may look. It shows how
+to map a directory, a PDF document and a dat-file into a readable label.</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%">
+  <tr bgcolor="#cccccc">
+    <td>
+    <p class="tableexample">process<br>
+    process/summary.pdf<br>
+    process/process.dat</td>
+    <td>
+    <p class="tableexample">Process overview<br>
+    Process summary<br>
+    External process description</td>
+  </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<h2><a name="How to execute the application">How to execute the application</a></h2>
+<p class="left">Read the <a href="../../../doc/require.htm"">System Requirements</a>
+to understand what is needed to execute this application.</p>
+<h3>Execute Java application</h3>
+<p class="left">To execute the SiteMap as a Java application type:<br>
+<br>
+java -classpath ../../ruptools/RUP.jar ruptools.SiteMap -r configfile.txt -c
+ASCII - h helpfile.txt</p>
+
+<table>
+  <tr>
+    <td colspan="2">The parameters can be entered in any order.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>The file defining the behavior of the application, i.e. the
+    'configuration file'.</td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>The character set to use when reading input. Default is local character
+    set. Parameter is optional.</td>
+  </tr>
+  <tr>
+    <td>-h</td>
+    <td>File containing text to make the output from the application language
+    dependent. Parameter is optional.</td>
+  </tr>
+</table>
+
+ 
+<p><font face="Arial">
+<a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

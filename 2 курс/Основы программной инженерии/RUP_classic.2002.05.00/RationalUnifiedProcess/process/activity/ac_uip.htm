@@ -1,0 +1,479 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Activity: Prototype the User-Interface</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/ovu_works.htm">Roles and Activities</a> &gt;
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/wks_analysts.htm">Analyst Role Set</a> &gt;
+<img border=0 src="../../applet/images/worker.gif"> <a href="../workers/wk_uides.htm">User-Interface Designer</a> &gt;
+<img border=0 src="../../applet/images/activity.gif"> Prototype the User-Interface
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Activity:
+&nbsp;<rpw name="PresentationName">Prototype the User-Interface</rpw><a name="Top"></a></h2>
+<div align="center"><center>
+
+<table border="1" cellspacing="0" cellpadding="2" width="85%">
+  <tr>
+    <td colspan="2" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To create a user-interface prototype.</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Steps</font></strong></small>
+    <p>For each use-case storyboard to be prototyped in the current iteration,
+    perform the following steps:
+    <ul>
+      <li><a href="#Design the User-Interface Prototype"">Design the
+        User-Interface Prototype</a></li>
+      <li><a href="#Implement the User-Interface Prototype"">Implement the
+        User-Interface Prototype</a></li>
+      <li><a href="#Get Feedback on the User-Interface Prototype"">Get Feedback
+        on the User-Interface Prototype</a></li>
+    </ul>
+    <p>Note that these steps are presented here in a logical order, but it is
+    likely that you will need to alternate between them, and perform them in
+    parallel. Initially, you spend the most time designing the prototype; then,
+    after a while when you know more about the prototype, you spend the most
+    time implementing it and getting feedback on it.</td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Input
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_uigls.htm">User-Interface Guidelines</a></li>
+<li><a href="../artifact/ar_bcls.htm">Boundary Class</a></li>
+<li><a href="../artifact/ar_sspec.htm">Supplementary Specifications</a></li>
+<li><a href="../artifact/ar_ucstb.htm">Use-Case Storyboard</a></li>
+<li><a href="../artifact/ar_actor.htm">Actor</a></li>
+</ul>
+
+
+    
+</td>
+    <td style="text-indent: 0px" valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Resulting
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_uiprt.htm">User-Interface Prototype</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" style="text-indent: 4px" bordercolor="#808080"><strong><font face="Arial"><small>Role:</small>
+    </font></strong><a href="../workers/wk_uides.htm">User-Interface Designer</a></td>
+  </tr>
+</table>
+<!-- Linked to Workflow Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" colspan="2" bordercolor="#808080"><small><font face="Arial"><strong>Workflow Details:</strong></font></small>
+<ul>
+<li><a href="../workflow/ovu_req.htm">Requirements</a>
+	<ul>
+	<li><a href="../workflow/requirem/wfs_refs.htm">Refine the System Definition</a></li>
+	</ul>
+</li>
+</ul>
+
+
+</td>
+</tr>
+</table>
+<!-- Linked to Workflow End -->
+</center></div>
+
+<h3><br>
+<a name="Design the User-Interface Prototype"></a>Design the User-Interface
+Prototype <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following are different aspects of designing the user-interface
+prototype:
+<ul>
+  <li><a href="#Identify the Primary Windows"">Identify the Primary Windows</a></li>
+  <li><a href="#Design the Visualization of the Primary Windows"">Design the
+    Visualization of the Primary Windows</a></li>
+  <li><a href="#Design the Operations of the Primary Windows"">Design the
+    Operations of the Primary Windows</a></li>
+  <li><a href="#Design the Property Windows"">Design the Property Windows</a></li>
+  <li><a href="#Design the Operations Involving Multiple Objects"">Design the
+    Operations Involving Multiple Objects</a></li>
+  <li><a href="#Design Miscellaneous Features"">Design Miscellaneous Features</a></li>
+</ul>
+<p>These aspects are presented below. However, a project need not consider all
+of these aspects in the prototype. Instead, it can often be appropriate to leave
+some aspects to the implementers and thus not deal with them in the prototype.
+In this case, we recommend that you leave the lower aspects in the list, and
+focus on the upper aspects.</p>
+<p>While you design the prototype, you should:
+<ul>
+  <li>continuously implement your design (see the step <a href="#Implement the User-Interface Prototype"">Implement
+    the User-Interface Prototype</a> below) and expose it to others (see the
+    step <a href="#Get Feedback on the User-Interface Prototype"">Get Feedback on
+    the User-Interface Prototype</a> below);</li>
+  <li>take into consideration any project-specific <a href="../artifact/ar_uigls.htm"">Artifact:
+    User-Interface Guidelines</a>.</li>
+</ul>
+<h4><a name="Identify the Primary Windows"></a>Identify the Primary Windows <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Each boundary class aggregate yields a candidate for a primary window in the
+user interface. However, recall that one of the goals when building the object
+model was to identify as shallow aggregation hierarchies as possible; the
+purpose of this was essentially to minimize the number of primary windows and
+thereby also the window navigation paths required between them. In addition to
+adding needless interaction overhead, window navigation paths that are too long
+make it more likely that the user will &quot;get lost&quot; in the system.
+Ideally, all windows should be opened from a main primary window, resulting in a
+maximum window navigation length of two. Try to avoid window navigation lengths
+greater than three.</p>
+<p>The main primary window should be the window that is opened when the user
+launches the application. It is normally always open as long as the application
+is running, and is the place where the user spends a considerable part of his
+&quot;use time.&quot; Since it is always open and since it constitutes the
+user's first contact with the system, it is the foremost vehicle for enforcing
+the user's mental model of the system.</p>
+<p>The most obvious candidate for the main primary window is defined by the top
+boundary class of the aggregation hierarchy, for example the Document class in a
+document editor. For details, refer to <a href="../modguide/md_bcls.htm"">Guidelines:
+Boundary Class</a>. If there are several aggregation hierarchies, choose the one
+that is most important to the user, that is, where the major part of the use
+time is spent.</p>
+<p>When the main primary window is identified, you should consider the other
+aggregate classes that are part of the aggregation hierarchies, and decide
+whether or not they should be designed as primary windows. The default
+recommendation is that they should be designed as composites instead of primary
+windows of their own, if possible. Again, this is to minimize the number of
+primary windows and thereby also the window navigation paths required between
+them. Moreover, a composite is often justified by the fact that its constituents
+need to be shown together, and in spatial relation to, the constituents of other
+composites; note that this is hard to achieve if (primary) windows are used
+instead.</p>
+<h5>Example:</h5>
+<p class="example">The Paragraph aggregate in a document editor is designed as a
+composite instead of a primary window of its own. This is partly because the
+constituents of a Paragraph, i.e. Characters, should be shown together, and in
+spatial relation to, the Characters of other Paragraphs.</p>
+<p class="example">As an alternative design, imagine the usability of a document
+editor where the user had to navigate to a separate (primary) window each time
+the contents of a specific paragraph is to be viewed.</p>
+<p>However, it is often the case that all aggregates cannot be designed as
+composites, due to limitations in screen area. If there is not room for
+designing all aggregates as composites, try at least to design the following
+aggregates as composites:
+<ul>
+  <li>The aggregates that are central to the user's mental model of the system.</li>
+  <li>The aggregates that the user will spend most use time in.</li>
+  <li>The aggregates that provide the initiation of use cases.</li>
+</ul>
+<p>Note that the average object volumes is an important input to this step,
+since they state how many objects that potentially need to be shown at once. Too
+many objects may imply that they cannot be designed as composites; instead, they
+may have a compact representation in the primary window in which they reside,
+and then define primary windows of their own.</p>
+<h4><a name="Design the Visualization of the Primary Windows"></a>Design the
+Visualization of the Primary Windows <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>The visualization of the primary windows, and the main primary window in
+particular, will have a significant impact on the usability of the system.
+Designing this visualization is about determining which parts (attributes) of
+the contained objects should be visualized. The flow or events and storyboard
+descriptions help prioritize which attributes to show. If the user need to
+see many different attributes of the objects, you may implement several views of
+a primary window, each view visualizing a different set of attributes. Designing
+this visualization also means that you have to look at how the parts
+(attributes) of the contained objects should be visualized, by using all visual
+dimensions. For details, refer to section &quot;Visual Dimensions&quot; in <a href="../modguide/md_uig.htm"">Guidelines:
+User Interface (General)</a>.</p>
+<p>If a primary window contains objects of several different classes, it is
+important to find &quot;common denominators&quot; for these classes, for
+example. attribute types that are contained in all or most classes. By
+visualizing common denominators by some dimension, the user can relate objects
+of the different classes with each other and start to see patterns. This greatly
+increases the &quot;bandwidth&quot; of the user interface.</p>
+<h5>Example:</h5>
+<p class="example">Assume you have a customer service system, where you want to
+show aspects like:
+<ul>
+  <li>
+    <p class="example">The customer's complaints and questions over time.</p>
+  </li>
+  <li>
+    <p class="example">What products the customer has purchased over time.</p>
+  </li>
+  <li>
+    <p class="example">How much the customer has been invoiced over time.</p>
+  </li>
+</ul>
+<p>Here, a common denominator is &quot;time.&quot; Thus,
+displaying complaints/questions, purchases and invoices beside each other on the
+same horizontal time axis will enable the user to see patterns of how these are
+related (if they are).</p>
+<h4><a name="Design the Operations of the Primary Windows"></a>Design the
+Operations of the Primary Windows <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>The responsibilities of the boundary classes specify the operations required
+by their corresponding windows. It is common that the operations of the primary
+windows and their contained objects are provided as menu items in a menu bar,
+and are provided as an alternative and complement via shortcut menus and
+toolbars. If a primary window contains objects of several classes, and these
+have different operations, you can assign one menu for each class, or one menu
+for each group of cohesive operations.</p>
+<h5>Example:</h5>
+<p class="example">In a document editor, there is an Edit menu, grouping
+cohesive operations such as Cut, Copy, etc.</p>
+<p>Note also that some operations may require a complex interaction with the
+user, thereby justifying a secondary window of their own.</p>
+<h5>Example:</h5>
+<p class="example">In a document editor, there is a Print operation on a
+Document that, due to its complex interaction, justifies a separate dialog
+window.</p>
+<h4><a name="Design the Property Windows"></a>Design the Property Windows <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Property windows need to be designed for all boundary classes, thereby making
+all their attributes available to the user. Note that some objects may only be
+partly visualized when they reside within a primary window (see the section
+&quot;Design the Visualization of the Primary Windows&quot; above); their
+property windows will, on the other hand, visualize all their attributes. Note
+that any average attribute values are an important input to this step, since
+they help in deciding the optimal visualization of a specific attribute.</p>
+<p>Some of the simple responsibilities of boundary classes, such as setting the
+value of a specific attribute, are often provided as an operation by the
+property window. Such an operation is then either unavailable in the primary
+window in which the object resides, or it can work as an alternative or
+complement to a similar operation in the primary window.</p>
+<p>Also, if a boundary class is part of an association, this association
+(including the associated objects) is normally visualized in the property
+window.</p>
+<h4><a name="Design the Operations Involving Multiple Objects"></a>Design the
+Operations Involving Multiple Objects <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>If a boundary class defines a large number of objects to be visualized in the
+user interface, it is often delicate to design operations involving these
+objects. The following are different variants of such operations:
+<ul>
+  <li>Operations providing a mechanism for searching among multiple objects.</li>
+  <li>Operations providing a mechanism for sorting multiple objects.</li>
+  <li>Operations providing a mechanism for user-controlled inheritance among
+    multiple objects.</li>
+  <li>Operations providing a mechanism for managing browsing hierarchies of
+    multiple objects.</li>
+  <li>Operations providing a mechanism for selecting multiple objects.</li>
+</ul>
+<p>Refer to <a href="../modguide/md_uig.htm"">Guidelines:
+    User Interface (General)</a> for more detail.</p>
+<h4><a name="Design Miscellaneous Features"></a>Design Miscellaneous Features <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Add the necessary dynamic behavior to the user interface. Most dynamics are
+given by the target platform, like the select-operate paradigm, open by double
+clicking, pop-up menus on right mouse button, etc. There are, however, some
+decisions you need to make, including:
+<ul>
+  <li>How to support window management.</li>
+  <li>What session information, like input cursor position, scroll bar position,
+    opened windows, window sizes, relative window positions, etc., to store
+    between sessions.</li>
+  <li>Whether to support single or multiple document interfaces (SDI or MDI) for
+    your primary windows.</li>
+</ul>
+<p>Also evaluate other common features that can enhance usability, including:
+<ul>
+  <li>Whether &quot;on-line help,&quot; including &quot;wizards,&quot; should be
+    provided.</li>
+  <li>Whether an &quot;undo&quot; operation should be provided, to make the
+    system safe for exploration.</li>
+  <li>Whether &quot;agents&quot; should be provided, to monitor user events and
+    actively suggest actions.</li>
+  <li>Whether &quot;dynamic highlighting&quot; should be provided, to visualize
+    associations.</li>
+  <li>Whether user-defined &quot;macros&quot; should be supported.</li>
+  <li>Whether there are specific areas that should be user configurable.</li>
+</ul>
+<p>Refer to <a href="../modguide/md_uig.htm"">Guidelines:
+    User Interface (General)</a> for more detail.</p>
+<h3><a name="Implement the User-Interface Prototype"></a>Implement the
+User-Interface Prototype <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>There are basically three kinds of implementations of a user-interface
+prototype:
+<ul>
+  <li>Drawings: created by the use of pencil and paper.</li>
+  <li>Bitmaps: created in a bitmap editor.</li>
+  <li>Executables: mock-up applications that can &quot;run&quot; and interact
+    with end-users.</li>
+</ul>
+<p>In most projects, you should use all three kinds of implementations, in the
+order listed above. This order allows for the simple incorporation of changes
+early on, since their typical implementation times differ greatly (drawings are
+much faster to create and modify than executables). However, drawings do not
+properly reflect limited screen area; it is easy to put more in a drawing than
+there is room for on the screen.</p>
+<p>The best way to finally specify the user interface is through a combination
+of bitmaps and executables. This should be done as soon as you need to expose
+the prototype to people other than user-interface designers. A bitmap can
+specify the exact look of the primary windows, whereas the executables can
+approximate the look of the primary windows and support their operations, as
+well as the looks and behavior of the secondary windows. Naturally, if you can
+implement the exact looks of the primary windows in the executable, with a
+reasonable effort, this is better than combining the executable with a bitmap.
+If you don't have enough resources to produce an executable, you can use bitmaps
+as the final implementation of the prototype. In this case, it can be useful to
+complement them with use-case storyboards describing their dynamics; otherwise,
+chances are high that the implementers of the user interface will get the
+dynamics wrong.</p>
+<p>Note that the focus should not be on achieving a good structure and
+modularization of the source code for the executable prototype; instead, the
+focus should be on creating a throw-away prototype that visualizes the
+significant aspects of the user interface and that provides some of its
+significant operations. Moreover, a prototype is likely to change several times
+when it is designed and exposed to others, and these changes are often made as
+cheap patches. As a result, the source code of the prototype is often of very
+limited value, and not &quot;evolutionary,&quot; when the real user interface is
+to be implemented.</p>
+<p>In general, it is of value that an executable prototype is cheaper to
+implement than an implementation of the real user interface. The following are
+some differences between the prototype and the real implementation of the user
+interface:
+<ul>
+  <li>The prototype need not support all use cases and scenarios. Instead, only
+    a small number of use cases and/or scenarios may be prioritized and
+    supported by the prototype.</li>
+  <li>The primary windows are often the most complicated to implement; if you
+    make an advanced user interface that really takes advantage of the
+    visualization potential, then it may be difficult to find ready-made
+    components. Rather than implementing new components, you can normally use
+    primitive components, such as push-, toggle- or option buttons, as an
+    approximation of how the user interface will look for a certain set of data.
+    If possible, make several prototypes showing different sets of data that
+    cover the average values and object volumes.</li>
+  <li>Simulate, or ignore, all operations on windows that are non-trivial to
+    implement.</li>
+  <li>Simulate, or ignore, the internals of the system, such as business logic,
+    secondary storage, multiple processes, and interaction with other systems.</li>
+</ul>
+<h3><a name="Get Feedback on the User-Interface Prototype"></a>Get Feedback on
+the User-Interface Prototype <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>See <a href="../workflow/test/co_ustst.htm"">Concepts: Usability Testing</a>.
+<br>
+<br>
+</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+img.zip*
+
+0*Home*../main/home_page.htm* *house.gif*house.gif*f*
+
+0*Vision*../artifacts/requirements/vision.htm* *ar_doc.gif*ar_doc.gif*f*
+0*Development Case*../devcase/dc_index.htm* *it_wf.gif*it_wf.gif*f*
+0*Phases and Iterations*../main/phases_iterations.htm* *ar_doc.gif*ar_doc.gif*f*
+0*Project Members*../main/project_members.htm* *smileys.gif*smileys.gif*f*
+
+0*Artifacts*../artifacts/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+1*Business modeling*../artifacts/businessmodeling/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+
+1*Requirements*../artifacts/requirements/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Glossary*../artifacts/requirements/glossary.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Vision*../artifacts/requirements/vision.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Use Case Model Overview*../artifacts/requirements/pt_ucm.htm* *ar_ucmod.gif*ar_ucmod.gif*f*
+3*Published report*../artifacts/models/reports/analysis/web_anamod.htm*new_window*report.gif*report.gif*f*
+3*Use Case Specifications*../artifacts/requirements/uc_specs.htm* *artfc_w.gif*artfo_w.gif*f*
+4*UC Close Registration*../artifacts/requirements/uc_clsreg.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Login*../artifacts/requirements/uc_login.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Maintain Professor Information*../artifacts/requirements/uc_mprof.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Maintain Student Information*../artifacts/requirements/uc_mstud.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Register for Courses*../artifacts/requirements/uc_regc.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Submit Grades*../artifacts/requirements/uc_subgr.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC Select Courses to Teach*../artifacts/requirements/uc_sctt.htm* *ar_doc.gif*ar_doc.gif*f*
+4*UC View Report Cards*../artifacts/requirements/uc_vwrpt.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Supplementary Specification*../artifacts/requirements/supplspec.htm* *ar_doc.gif*ar_doc.gif*f*
+
+1*Analysis & Design*../artifacts/analysisndesign/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Software Architecture Document*../artifacts/analysisndesign/sadoc.htm* *ar_doc.gif*ar_doc.gif*t*
+2*Analysis Model*../artifacts/analysisndesign/pt_analysismodel.htm* *ar_anamd.gif*ar_anamd.gif*f*
+2*Design Model*../artifacts/analysisndesign/pt_designmodel.htm* *ar_desmd.gif*ar_desmd.gif*f*
+2*Process Model*../artifacts/analysisndesign/pt_processmodel.htm* *ar_impss.gif*ar_impss.gif*f*
+2*Deployment Model*../artifacts/analysisndesign/pt_deploymentmodel.htm* *ar_desmd.gif*ar_desmd.gif*f*
+2*Data Model*../artifacts/analysisndesign/pt_datamodel.htm* *ar_datmd.gif*ar_datmd.gif*f*
+
+1*Implementation*../artifacts/implementation/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Integration Build Plan - Overview*../artifacts/implementation/pt_integration_build_plan.htm* *artfc_w.gif*artfo_w.gif*f*
+3*For arch. prototype*../artifacts/implementation/build_plan_arch.htm* *ar_doc.gif*ar_doc.gif*t*
+3*For release #1*../artifacts/implementation/build_plan_r1.htm* *ar_doc.gif*ar_doc.gif*t*
+
+1*Test*../artifacts/test/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Test Plan - Overview*../artifacts/test/pt_test_plan.htm* *artfc_w.gif*artfo_w.gif*f*
+3*For arch. prototype*../artifacts/test/plans/test_plan_arch.htm* *ar_doc.gif*ar_doc.gif*t*
+3*For release#1 and #2*../artifacts/test/plans/test_plan_r1r2.htm* *ar_doc.gif*ar_doc.gif*t*
+2*Test Evaluation Summary - Overview*../artifacts/test/pt_test_report.htm* *artfc_w.gif*artfo_w.gif*f*
+3*From arch. prototype tests*../artifacts/test/results/test_report_arch.htm* *ar_doc.gif*ar_doc.gif*t*
+3*From release #1 tests*../artifacts/test/results/test_report_r1.htm* *ar_doc.gif*ar_doc.gif*t*
+
+1*Deployment*../artifacts/deployment/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Release Notes*../artifacts/deployment/releasenotes.htm* *ar_doc.gif*ar_doc.gif*t*
+
+1*Configuration & Change Management*../artifacts/confnchgmanagement/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Configuration Management Plan*../artifacts/confnchgmanagement/cm_plan.htm* *ar_doc.gif*ar_doc.gif*t*
+
+1*Project Management*../artifacts/projectmanagement/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Software Development Plan*../artifacts/projectmanagement/sdp_current.htm* *ar_doc.gif*ar_doc.gif*t*
+2*Risk List*../artifacts/projectmanagement/risklist_current.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Iteration Plans - Overview*../artifacts/projectmanagement/pt_iterationplans.htm* *artfc_w.gif*artfo_w.gif*f*
+3*Preliminary inception iteration*../artifacts/baselined/inception/itplan_i1.htm* *ar_doc.gif*ar_doc.gif*t*
+3*Elaboration iteration E1*../artifacts/baselined/elaboration_e1/itplan_e1.htm* *ar_doc.gif*ar_doc.gif*t*
+3*Construction iteration C2*../artifacts/baselined/construction/construction_c2/itplan_c2.htm* *ar_doc.gif*ar_doc.gif*t*
+3*Transition iterations T1 & T2*../artifacts/baselined/transition/itplan_t1t2.htm* *ar_doc.gif*ar_doc.gif*t*
+2*Assesments - Overview*../artifacts/projectmanagement/pt_status_assessment.htm* *artfc_w.gif*artfo_w.gif*f*
+3*Status assessment - construction phase*../artifacts/baselined/construction/status_constr.htm* *ar_doc.gif*ar_doc.gif*t*
+3*Iteration assessment - C2*../artifacts/baselined/construction/construction_c2/itassessement_c2.htm* *ar_doc.gif*ar_doc.gif*t*
+
+1*Environment*../artifacts/environment/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Development Case*../devcase/dc_index.htm* *it_wf.gif*it_wf.gif*f*
+3*Introduction*../devcase/introduction.htm* *ar_doc.gif*ar_doc.gif*f*
+3*Project Lifecycle*../devcase/workflows/dc_wf_lifecycle.htm* *it_wf.gif*it_wf.gif*f*
+3*Core Discipline Configurations*../devcase/workflows/dc_wf_index.htm* *workflow.gif*workflow.gif*f*
+4*Business Modeling*../devcase/workflows/dc_wf_bm.htm* *wf_red.gif*wf_red.gif*f*
+4*Requirements*../devcase/workflows/dc_wf_rq.htm* *wf_pink.gif*wf_pink.gif*f*
+4*Analysis & Design*../devcase/workflows/dc_wf_and.htm* *wf_orang.gif*wf_orang.gif*f*
+4*Implementation*../devcase/workflows/dc_wf_im.htm* *wf_yello.gif*wf_yello.gif*f*
+4*Test*../devcase/workflows/dc_wf_te.htm* *wf_green.gif*wf_green.gif*f*
+4*Deployment*../devcase/workflows/dc_wf_de.htm* *wf_blue.gif*wf_blue.gif*f*
+4*Configuration & Change Management*../devcase/workflows/dc_wf_cm.htm* *wf_turq.gif*wf_turq.gif*f*
+4*Project Management*../devcase/workflows/dc_wf_pm.htm* *wf_dblue.gif*wf_dblue.gif*f*
+4*Environment*../devcase/workflows/dc_wf_en.htm* *wf_purpl.gif*wf_purpl.gif*f*
+3*Project Roles*../devcase/roles/dc_roles.htm* *ar_actor.gif*ar_actor.gif*f*
+2*Use Case Modeling Guidelines*../artifacts/environment/wc_ucmgd.htm* *guidelin.gif*guidelin.gif*f*
+
+0*Baselined Artifacts*../artifacts/baselined/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+1*Inception*../artifacts/baselined/inception/overview.htm* *it_wf.gif*it_wf.gif*f*
+2*Iteration Plan*../artifacts/baselined/inception/itplan_i1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Vision*../artifacts/baselined/inception/vision_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Glossary*../artifacts/baselined/inception/glossary_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Supplementary Specifications*../artifacts/baselined/inception/supplspec_v0.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Use Case Specifications*../artifacts/baselined/inception/uc_specs.htm* *artfc_w.gif*artfo_w.gif*f*
+3*UC Close Registration*../artifacts/baselined/inception/uc_clsreg_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Login*../artifacts/baselined/inception/uc_login_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Maintain Professor Information*../artifacts/baselined/inception/uc_mprof_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Maintain Student Information*../artifacts/baselined/inception/uc_mstud_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Register for Courses*../artifacts/baselined/inception/uc_regc_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Submit Grades*../artifacts/baselined/inception/uc_subgr_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Select Courses to Teach*../artifacts/baselined/inception/uc_sctt_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC View Report Cards*../artifacts/baselined/inception/uc_vwrpt_draft.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Risk List*../artifacts/baselined/inception/risklist_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+
+1*Elaboration - E1*../artifacts/baselined/elaboration_e1/overview.htm* *it_wf.gif*it_wf.gif*f*
+2*Configuration Management Plan*../artifacts/baselined/elaboration_e1/cm_plan_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Iteration Plan*../artifacts/baselined/elaboration_e1/itplan_e1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Integration Build Plan*../artifacts/baselined/elaboration_e1/build_plan_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Glossary*../artifacts/baselined/elaboration_e1/glossary_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Supplementary Specifications*../artifacts/baselined/elaboration_e1/supplspec_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Use Case Specifications*../artifacts/baselined/elaboration_e1/uc_specs.htm* *artfc_w.gif*artfo_w.gif*f*
+3*UC Close Registration*../artifacts/baselined/elaboration_e1/uc_clsreg_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Login*../artifacts/baselined/elaboration_e1/uc_login_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Maintain Professor Information*../artifacts/baselined/elaboration_e1/uc_mprof_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Maintain Student Information*../artifacts/baselined/elaboration_e1/uc_mstud_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Register for Courses*../artifacts/baselined/elaboration_e1/uc_regc_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Submit Grades*../artifacts/baselined/elaboration_e1/uc_subgr_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC Select Courses to Teach*../artifacts/baselined/elaboration_e1/uc_sctt_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*UC View Report Cards*../artifacts/baselined/elaboration_e1/uc_vwrpt_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Software Architecture Document*../artifacts/baselined/elaboration_e1/sadoc_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Test Plan*../artifacts/baselined/elaboration_e1/test_plan_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Test Evaluation Summary*../artifacts/baselined/elaboration_e1/test_report_v1.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Risk List*../artifacts/baselined/elaboration_e1/risklist_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+
+1*Construction*../artifacts/baselined/construction/overview.htm* *it_wf.gif*it_wf.gif*f*
+2*Iteration C1*../artifacts/baselined/construction/construction_c1/overview.htm* *it_wf.gif*it_wf.gif*f*
+
+2*Iteration C2*../artifacts/baselined/construction/construction_c2/overview.htm* *it_wf.gif*it_wf.gif*f*
+3*Iteration Plan*../artifacts/baselined/construction/construction_c2/itplan_c2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*Integration Build Plan*../artifacts/baselined/construction/construction_c2/build_plan_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*Risk List*../artifacts/baselined/construction/construction_c2/risklist_v3.htm* *ar_doc.gif*ar_doc.gif*f*
+3*Test Evaluation Summary*../artifacts/baselined/construction/construction_c2/test_report_v2.htm* *ar_doc.gif*ar_doc.gif*f*
+3*Iteration Assessment*../artifacts/baselined/construction/construction_c2/itassessement_c2.htm* *ar_doc.gif*ar_doc.gif*f*
+
+2*Iteration C3*../artifacts/baselined/construction/construction_c3/overview.htm* *it_wf.gif*it_wf.gif*f*
+
+2*Status Assesment - Construction*../artifacts/baselined/construction/status_constr.htm* *ar_doc.gif*ar_doc.gif*f*
+
+1*Transition T1 & T2*../artifacts/baselined/transition/overview.htm* *it_wf.gif*it_wf.gif*f*
+2*Iteration Plan*../artifacts/baselined/transition/itplan_t1t2.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Release Notes*../artifacts/baselined/transition/releasenotes.htm* *ar_doc.gif*ar_doc.gif*f*
+
+0*Browse Wylie College Software Process*../../wcsoftwareprocessweb/index.htm*_blank*rup1.gif*rup1.gif*f*
+
+0*About the Course Registration Project Web*../main/about_page.htm* *house.gif*house.gif*f*
+
+
+

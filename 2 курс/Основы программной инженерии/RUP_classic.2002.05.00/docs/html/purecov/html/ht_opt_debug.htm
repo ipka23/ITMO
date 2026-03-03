@@ -1,0 +1,507 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Options for debugging messages                         Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=959>
+<meta name=layout-width content=677>
+<meta name=date content="05 1, 2002 9:21:38 AM">
+
+
+<!--(Links)=========================================================-->
+
+<link rel=StyleSheet href="..\..\pcu.css">
+
+
+
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_opt_ann.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_opt_fileid.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span face=HELVETICA
+											color=navy
+											style="font-family: Helvetica;
+													font-size: 18pt;
+													color: #000080;
+													font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Options 
+ for debugging messages</B></FONT></span></h1>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+<col style="width: 292px;">
+<col style="width: 188px;">
+
+<tr style="x-cell-content-align: top; height: 28px;"
+	valign=top>
+<td style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=292>
+<p class=rTableHead><span style="font-weight: bold;"><B><span face=HELVETICA
+															style="font-family: Helvetica;
+	font-size: 14pt;
+	font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Option</B></FONT></span></B></span></p></td>
+<td style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=188>
+<p class=rTableHead><span style="font-weight: bold;"><B><span face=HELVETICA
+															style="font-family: Helvetica;
+	font-size: 14pt;
+	font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Default</B></FONT></span></B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top; height: 33px;"
+	valign=top>
+<td style="background-color: #d8d8d8;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#D8D8D8
+	width=292>
+<p style="margin-top: 6.00pt;
+			margin-bottom: 0.00pt;
+			background-color: #d8d8d8;"><span face=Courier
+												style="font-family: Courier;
+														font-size: 14pt;
+														font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-debug</B></FONT></span></p></td>
+<td style="background-color: #d8d8d8;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#D8D8D8
+	width=188>
+<p style="margin-top: 6.00pt;
+			margin-bottom: 0.00pt;
+			background-color: #d8d8d8;
+			font-family: Courier;
+			font-weight: bold;"><span face=Courier><B>no</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top; height: 59px;"
+	valign=top>
+<td colspan=2
+	style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=480>
+<p class=rTableText><span face=Helvetica
+							style="font-family: Helvetica;
+									font-size: 14pt;
+									font-weight: normal;"><FONT SIZE=4 style="font-size:14pt;">Instructs PureCoverage 
+ to print debug messages during instrumentation.</FONT></span></p>
+<p class=rTableText>&nbsp;</p></td>
+<td_null></tr>
+</table>
+
+<p style="margin-bottom: 0;">&nbsp; <a name=#MID_VERBOSE></a></p>
+
+<p style="margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+<col style="width: 292px;">
+<col style="width: 188px;">
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=292>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier;
+									font-size: 14pt;
+									font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-verbose</B></FONT></span></p></td>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=188>
+<p style="margin-top: 6.00pt;
+			margin-bottom: 0.00pt;
+			background-color: #d8d8d8;
+			font-weight: bold;
+			font-family: Courier;"><span face=Courier><B>no</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=480>
+<p class=rTableText><span face=Helvetica
+							style="font-family: Helvetica;
+									font-size: 14pt;
+									font-weight: normal;"><FONT SIZE=4 style="font-size:14pt;">Instructs PureCoverage 
+ to print debug messages in verbose format during instrumentation.</FONT></span></p>
+<p class=rTableText>&nbsp;</p></td>
+<td_null></tr>
+</table>
+
+<p style="margin-bottom: 0;">&nbsp; <a name=#MID_THTRCONTEXT></a></p>
+
+<p style="margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+<col style="width: 292px;">
+<col style="width: 188px;">
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=292>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier;
+									font-size: 14pt;
+									font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-thread-trace-contexts</B></FONT></span></p></td>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=188>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-weight: bold;"><B>n</B></span><span 
+ face=Courier
+	style="font-family: Courier; font-weight: bold;"><B>o</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=480>
+<p class=rTableText><span face=Helvetica
+							style="font-family: Helvetica;
+									font-size: 14pt;
+									font-weight: normal;"><FONT SIZE=4 style="font-size:14pt;">Prints out context 
+ switch messages.</FONT></span></p>
+<p class=rTableText>&nbsp;</p></td>
+<td_null></tr>
+</table>
+
+<p style="margin-bottom: 0;">&nbsp; <a name=#MID_THTRLOCKS></a></p>
+
+<p style="margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+<col style="width: 292px;">
+<col style="width: 188px;">
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=292>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier;
+									font-size: 14pt;
+									font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-thread-trace-locks</B></FONT></span></p></td>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=188>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-weight: bold;"><B>n</B></span><span 
+ face=Courier
+	style="font-family: Courier; font-weight: bold;"><B>o</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=480>
+<p class=rTableText><span face=Helvetica
+							style="font-family: Helvetica;
+									font-size: 14pt;
+									font-weight: normal;"><FONT SIZE=4 style="font-size:14pt;">Prints out information 
+ about <span face=Courier
+			style="font-family: Courier;">rtlib</span> lock usage.</FONT></span></p>
+<p class=rTableText>&nbsp;</p></td>
+<td_null></tr>
+</table>
+
+<p style="margin-bottom: 0;">&nbsp; <a name=#MID_THDBASSERTION></a></p>
+
+<p style="margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+<col style="width: 292px;">
+<col style="width: 188px;">
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=292>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier;
+									font-size: 14pt;
+									font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-thread-debug-assertions</B></FONT></span></p></td>
+<td style="background-color: #d8d8d8;
+			height: 36px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=36
+	bgcolor=#D8D8D8
+	width=188>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-weight: bold;"><B>n</B></span><span 
+ face=Courier
+	style="font-family: Courier; font-weight: bold;"><B>o</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="border-top: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	width=480>
+<p class=rTableText><span face=Helvetica
+							style="font-family: Helvetica;
+									font-size: 14pt;
+									font-weight: normal;"><FONT SIZE=4 style="font-size:14pt;">Prints out thread 
+ assertion messages.</FONT></span></p>
+<p class=rTableText>&nbsp;</p></td>
+<td_null></tr>
+</table>
+
+</body>
+
+</html>

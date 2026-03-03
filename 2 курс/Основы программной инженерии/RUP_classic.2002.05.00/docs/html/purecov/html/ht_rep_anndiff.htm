@@ -1,0 +1,431 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Annotated differences report                           Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1943>
+<meta name=layout-width content=655>
+<meta name=date content="09 13, 2001 3:56:27 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_rep_annsource.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_rep_seltests.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	color=navy
+	style="font-family: Helvetica;
+			font-size: 18pt;
+			color: #000080;
+			font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Annotated differences report</B></FONT></span></B></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_covdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script generates 
+ a source code differences report that includes coverage information. This 
+ allows you to see the coverage of the lines of code that you have just 
+ changed without having to consider the coverage for the unchanged portion. 
+ The syntax is:</FONT></span></p>
+
+<p class=rCode><span face=Courier>% yourdiff &lt;name&gt; &nbsp;&nbsp;&nbsp;| 
+ pc_covdiff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-context=&lt;lines&gt;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-format={diff|side-by-side|new-only}]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-lines=&lt;boolean&gt;] 
+ [-tabs=&lt;stops&gt;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-width=&lt;width&gt;] 
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</span><a href="ht_opt_merging.htm"><span face=Courier
+								style="font-weight: bold;"><B>-force-merge</B></span></a><span 
+ face=Courier>] <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</span><a href="ht_opt_adjust.htm"><span face=Courier
+								style="font-weight: bold;"><B>-apply-adjustments</B></span></a><span 
+ face=Courier>=no] <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-file=&lt;name&gt; 
+ &lt;file&gt;.</span><span face=Courier
+							style="font-weight: bold;"><B><a href="../html_notoc/ht_gloss_pcv.htm">pcv</a></B></span><span 
+ face=Courier> ...</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> for the </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_covdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script is a description 
+ in </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff(1)</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> format of the changes 
+ made to a file specified in </FONT></span><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&lt;name&gt;</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. The value for </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">yourdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> depends on the code 
+ management tool you are using. If you are using RCS, for example, </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">yourdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> is </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">rcsdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Specify 
+ the same file for the </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-file</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option. This script 
+ calls the </FONT></span><a href="ht_rep_annsource.htm"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>pc_annotate</B></FONT></span></B></span></a><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> report script, so 
+ you can use any form of the file name that </FONT></span><span face=Courier
+														style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_annotate</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> recognizes. List 
+ the </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.pcv</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> files that contain 
+ the coverage data for the new version of the file. If you specify the 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-force-merge</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option here, the 
+ script passes it to </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_annotate</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You 
+ can use this script only on one file at a time. You cannot run it from 
+ the PureCoverage Viewer.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ other options control the format of the output. There are two output styles: 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> and </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. In </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> style, the old and 
+ new versions of the source are displayed side-by-side, with a column between 
+ them indicating whether the lines were added, deleted, or changed. In 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> style, the old and 
+ new are listed sequentially, with code lines indicating what happened. 
+ The default is </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ option </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-format</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> allows you to specify 
+ the style:</FONT></span></p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 558px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				x-border: 1px table;
+				border-collapse: separate;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=558>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 282px;
+			height: 26px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=26>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-format=diff</FONT></span></p></td>
+<td style="width: 276px;
+			height: 26px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=26>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=NewCenturySchlbk
+	style="font-family: newcenturyschlbk, 'times new roman'; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ style</FONT></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 282px;
+			height: 26px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=26>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-format=side-by-side</FONT></span></p></td>
+<td style="width: 276px;
+			height: 26px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=26>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span 
+ face=NewCenturySchlbk
+	style="font-family: newcenturyschlbk, 'times new roman'; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ style</FONT></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 282px;
+			height: 40px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=40>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-format=new-only</FONT></span></p></td>
+<td style="width: 276px;
+			height: 40px;
+			border-top: 0.50pt solid #000000;
+			border-bottom: 0.50pt solid #000000;
+			border-left: 0.50pt solid #000000;
+			border-right: 0.50pt solid #000000;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	height=40>
+<p class=rTableText><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span 
+ face=NewCenturySchlbk
+	style="font-family: newcenturyschlbk, 'times new roman'; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ style, but without the &quot;old&quot; column</FONT></span></p></td></tr>
+</table>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">In 
+ both </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> and </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> styles, the tabs 
+ are stripped. Use the </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-tabs</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option if your text 
+ editor normally expands tabs to a value other than 8 character stops.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">In 
+ both styles, you can request that additional context lines be included 
+ in the output. The default is 2, but set it to 0 if you want to produce 
+ output understandable to other tools that read </FONT></span><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">In 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> style, use the </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-lines</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option (default </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">TRUE</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">) to indicate whether 
+ line numbers should be included in the output.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">In 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">sdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> style, you can use 
+ the option </FONT></span><span face=Courier
+						style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-width</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> to specify the width 
+ of each column of source. Normally, width is adjusted automatically to 
+ accommodate the input. If you specify an explicit value, the sources are 
+ truncated if they are too wide. Note that the width is for each column 
+ of the source, not the overall width, which includes other items such 
+ as coverage counts, the dividing column, and line numbers, depending on 
+ the options that you use.</FONT></span></p>
+
+<h2 style="font-size: 12pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 16pt;
+			font-weight: bold;"><FONT SIZE=5 style="font-size:16pt;"><B>Sample report</B></FONT></span></B></span></h2>
+
+<p style="margin-left: 8.60pt;
+			margin-top: 6.00pt;
+			margin-bottom: 7.20pt;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/r_anndif.gif' alt='image\r_anndif.gif' width='600' height='588' border='0'>");}
+else
+{   document.write("<img src='../image/r_anndif.gif' alt='image\r_anndif.gif' style='width: 600px;  												height: 588px;  												border-style: none;' width='600' height='588' border='0'>");}
+//-->
+</SCRIPT></p>
+
+</body>
+
+</html>

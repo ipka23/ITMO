@@ -1,0 +1,294 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Calling Purify API functions                           Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2743>
+<meta name=layout-width content=691>
+<meta name=date content="01 15, 2002 4:52:57 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_api_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_api.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_ov_p_api.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_api_annotation.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Calling Purify API functions</h1>
+
+<p>You can call Purify API functions from a debugger or <a href="ht_howto_call_p_api.htm#MID_CALL_API_FROM_PROG"><span 
+ style="font-weight: bold;"><B>from your program</a>.</B></span></p>
+
+<h2>Calling Purify API functions from a debugger</h2>
+
+<p>You can call many Purify functions interactively from a debugger. Some, 
+ such as the <a href="ht_api_watchpoint.htm"><span style="font-weight: bold;"><B>watchpoint 
+ functions</B></span></a>, the <a href="ht_api_mem_leak.htm"><span style="font-weight: bold;"><B>leak-detection 
+ functions</B></span></a>, <span style="font-weight: bold; font-family: Courier;"><B><a href="ht_api_mem_access.htm" style="font-family: Courier;">purify_describe</a></B></span>, and <span 
+ style="font-weight: bold; font-family: Courier;"><B><a href="ht_api_mem_access.htm" style="font-family: Courier;">purify_what_colors</a></B></span>, 
+ are especially useful when used with a debugger:</p>
+
+<p class=rCode>(gdb) print purify_describe(addr)<br>
+(dbx) print purify_what_colors(buf, sizeof(buf))<br>
+(xdb) p purify_describe(addr)<br>
+(ladebug) call purify_clear_data()</p>
+
+<p class=rTipNoteGlossaryHeading>Note: </p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">You can force your debugger 
+ to stop on every Purify error message, right before the error actually 
+ occurs in your program. This allows you to call API functions from your 
+ debugger in order to investigate the problem. To do this, set a debugger 
+ breakpoint on the function <span style="font-weight: bold;"><B><font style="font-family: Courier;"
+	face=courier><a href="ht_api_misc.htm">purify_stop_here</a></font></B></span>, 
+ as follows:<span style="font-family: Courier;"><br>
+	<br>
+	(gdb) break purify_stop_here<br>
+	(dbx) stop in purify_stop_here<br>
+	(xdb) b purify_stop_here</span><br>
+	<br>
+	For an example of how to use <span style="font-family: Courier;">purify_stop_here</span>, 
+ click <a href="ht_build_example.htm#MID_STOP">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' width='14' height='14' border='0'>");}
+else
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' style='width: 14px;  															height: 14px;  															border-style: none;' width='14' height='14' border='0'>");}
+//-->
+</SCRIPT></a><br>
+	<br>
+	Setting a breakpoint on the function also stops the debugger at any 
+ point in your source code where you have inserted a call to <span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier><a href="ht_api_misc.htm">purify_stop_here_internal</a></font></B></span>.</p></li>
+</ul>
+
+<h2><a name=MID_CALL_API_FROM_PROG></a></h2>
+
+<h2>Calling Purify API functions from your program </h2>
+
+<p>You can automatically control error data collection and reporting by 
+ calling Purify API functions from within your program. For example, you 
+ can use <span style="font-family: Courier; font-weight: bold;"><B><a href="ht_api_misc.htm" style="font-weight: bold;">purify_is_running</a></B></span> to keep Purify 
+ function calls from slowing down your program when code that is not <a href="../html_notoc/ht_gloss_instr.htm" style="font-weight: bold;">instrumented</a> is executing.</p>
+
+<p>To call Purify functions from ANSI C and C++ programs, include the file 
+ <font style="font-family: Courier;"
+		face=courier>purify.h</font>: </p>
+
+<p class=rCode># include &lt;purify.h&gt;</p>
+
+<p>This header file is located in the same directory as Purify. Add the 
+ compiler option <font style="font-family: Courier;"
+						face=courier>-I&lt;<a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;</font> 
+ or <font style="font-family: Courier;"
+			face=courier>-I`purify -printhomedir`</font> in your <span 
+ style="font-family: Courier;">makefile</span>, if necessary.</p>
+
+<p><a name=MID_STUBS></a></p>
+
+<h2>Using the API stubs library</h2>
+
+<p>If you call Purify functions in your program, you must link with the 
+ Purify API stubs library (unless you use <span style="font-family: Courier; font-weight: bold;"><B><a href="ht_api_misc.htm#MID_IFDEF" style="font-weight: bold;">#ifdef</a></B></span> to control the execution 
+ of these functions). This is a small library that stubs out all the Purify 
+ API functions when you are <span style="font-style: italic;"><I>not</I></span> 
+ using Purify. When you <span style="font-style: italic;"><I>are</I></span> using 
+ Purify, Purify provides the real definitions for the API functions, and 
+ the stubs are ignored; you do not need to change your link line. </p>
+
+<p>On Tru64 UNIX systems, it is always mandatory to link with the stubs 
+ library.</p>
+
+<h3>For 32-bit Solaris and HP-UX systems:</h3>
+
+<p><span>Add the library <font style="font-family: Courier;"
+								face=courier>&lt;purifyhome&gt;/lib32/libpurify_stubs.a</font> 
+ to your link line.</span></p>
+
+<h3><span>For 64-bit Solaris, HP-UX, and Tru64 UNIX systems:</span></h3>
+
+<p><span>Add the library <font style="font-family: Courier;"
+								face=courier>&lt;purifyhome&gt;/lib64/libpurify_stubs.a</font> 
+ to your link line.</span></p>
+
+<h3>For IRIX systems:</h3>
+
+<p>Purify on IRIX includes both a shared and an archived version of the 
+ stubs library. If you are using the N32 Application Binary Interface (ABI), 
+ link with these versions of the stubs library:</p>
+
+<p class=rCode><span>&lt;purifyhome&gt;/lib32/</span>libpurify_stubs_n32.so</p>
+
+<p class=rCode><span>&lt;purifyhome&gt;/lib32/</span>libpurify_stubs_n32.a</p>
+
+<p><!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->For the 
+ O32 ABI, link with:</p>
+
+<p class=rCode><span>&lt;purifyhome&gt;/lib32/</span>libpurify_stubs.so<span><br>
+<br>
+&lt;purifyhome&gt;/lib32/</span>libpurify_stubs.a</p>
+
+<p>For a 64-bit platform, the libraries are:</p>
+
+<p class=rCode><span>&lt;purifyhome&gt;/lib64/</span>libpurify_stubs.so<span><br>
+<br>
+&lt;purifyhome&gt;/lib64/</span>libpurify_stubs.a</p>
+
+<p class=rTipNoteGlossaryHeading>Note:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Purify includes the 
+ source code for <font style="font-family: Courier;"
+						face=courier>purify_stubs.a</font> (<font style="font-family: Courier;"
+	face=courier>pure_stubs.c</font> and <font style="font-family: Courier;"
+												face=courier>purify.h</font>) 
+ without copyright. You can include it in the libraries you ship to customers, 
+ or compile it on other platforms. This allows you to include calls to 
+ Purify API functions throughout development and testing, without having 
+ to re-compile or change your code for final shipment.</p></li>
+</ul>
+
+<h4>Installing libpurify_stubs.so on IRIX systems</h4>
+
+<p>In the examples below, replace <font style="font-family: Courier;"
+										face=courier>&lt;purifyhome&gt;</font> 
+ with the path to your Purify installation. </p>
+
+<p>If <font style="font-family: Courier;"
+			face=courier>ld</font> is available when you install Purify, 
+ the full pathname is automatically encoded in <font style="font-family: Courier;"
+													face=courier>libpurify_stubs.so</font>.</p>
+
+<p>If <font style="font-family: Courier;"
+			face=courier>ld</font> is not available, Purify uses the default 
+ path <font style="font-family: Courier;"
+			face=courier>/usr/pure/purify</font>. </p>
+
+<p>If you do not install Purify in <font style="font-family: Courier;"
+										face=courier>/usr/pure/purify</font> 
+ and <font style="font-family: Courier;"
+			face=courier>ld</font> is not available, <font style="font-family: Courier;"
+															face=courier>libpurify_stubs.so</font> 
+ is installed without a built-in path. You can specify the pathname by 
+ typing:</p>
+
+<p class=rCode>% ld -shared -all -soname \ <br>
+&lt;purifyhome&gt;/libpurify_stubs.so -o \ &lt;purifyhome&gt;/libpurify_stubs.so 
+ \ &lt;purifyhome&gt;/libpurify_stubs.so.std</p>
+
+<p>You can also use <font style="font-family: Courier;"
+							face=courier>libpurify_stubs.so</font> without 
+ a path, then specify it at run time by typing:</p>
+
+<p class=rCode>% cc &lt;program&gt;.c `purify -printhomedir`/libpurify_stubs.so<br>
+% setenv LD_LIBRARY_PATH `purify -printhomedir`<br>
+&nbsp;% a.out</p>
+
+<h4>Linking with libpurify_stubs.so on IRIX systems</h4>
+
+<p>During development, link your program with the <font style="font-family: Courier;"
+														face=courier>libpurify_stubs.so</font> 
+ library by typing:</p>
+
+<p class=rCode>cc &lt;program&gt;.c &lt;purifyhome&gt;/libpurify_stubs.so</p>
+
+<p>This resolves any API references in your code and lets you use the API 
+ when you Purify the program. </p>
+
+<p><span style="font-weight: bold;"><B>Warning:</B></span> Do not ship a program 
+ linked with the <font style="font-family: Courier;"
+						face=courier>libpurify_stubs.so</font> library. 
+ It will cause a fatal error when the library is not found at run time.</p>
+
+<h4>Linking with libpurify_stubs.a on IRIX systems</h4>
+
+<p>To produce a program for non-Purify users, link with the <font style="font-family: Courier;"
+	face=courier>libpurify_stubs.a</font> library by typing:</p>
+
+<p class=rCode>cc &lt;program&gt;.c &lt;purifyhome&gt;/libpurify_stubs.a 
+ </p>
+
+<p>This disables Purify API functions. If you Purify a program linked with 
+ this library, Purify API functions are ignored.</p>
+
+</body>
+
+</html>

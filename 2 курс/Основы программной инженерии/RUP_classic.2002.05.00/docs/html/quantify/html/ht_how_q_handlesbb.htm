@@ -1,0 +1,630 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>How Quantify handles basic blocks                      Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=6900>
+<meta name=layout-width content=963>
+<meta name=date content="05 16, 2001 1:38:26 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_how_q_names.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_how_q_timessyscalls.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>How Quantify handles basic blocks</h1>
+
+<p>To determine the time spent in a function, Quantify analyzes the basic 
+ code blocks of each function. A basic block is a sequence of instructions 
+ that are always executed together in succession. Basic blocks typically 
+ start at the beginning of functions and other code blocks and terminate 
+ at conditional jumps to other basic blocks.</p>
+
+<p>Quantify uses information about your machine's hardware to compute the 
+ expected number of machine cycles each original basic block will require 
+ to execute.</p>
+
+<p>On RISC architecture machines, most instructions take a single machine 
+ cycle. Instructions such as load and store instructions can take longer 
+ and can stall, depending on the instruction stream that follows each instruction. 
+ Quantify uses this machine-specific information to estimate the number 
+ of instruction cycles each basic block will take, including the expected 
+ number of stall cycles. <!--kadov_tag{{<spaces>}}-->&nbsp;&nbsp;<!--kadov_tag{{</spaces>}}--></p>
+
+<p>Quantify inserts code that adds the expected cycle count to a basic 
+ block cycle accumulator each time the basic block is entered. These accumulators 
+ have 64-bit precision, providing accurate counts even in programs or blocks 
+ that execute for a very long time.</p>
+
+<p>The counts Quantify reports reflect the time the original program would 
+ have taken without Quantify. The reported times are exclusive of any Quantify 
+ run-time overhead. </p>
+
+<h2>How Quantify identifies basic blocks</h2>
+
+<p>To understand how Quantify identifies basic blocks, consider this example 
+ program: </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl.gif' x-maintain-ratio='TRUE' width='518' height='652'>");}
+else
+{   document.write("<img src='../image/bbexmpl.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 518px;  				height: 652px;  				float: none;' width='518' height='652'>");}
+//-->
+</SCRIPT></p>
+
+<p>The block numbers indicate the extent of the basic blocks in the function 
+ test when compiled using the <a href="../html_notoc/ht_gloss_debug.htm" style="font-weight: bold;">-g debugging 
+ option</a>. </p>
+
+<p>Here is the basic block flow structure of the <span style="font-family: Courier;">test</span> 
+ function:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl2.gif' x-maintain-ratio='TRUE' width='680' height='760'>");}
+else
+{   document.write("<img src='../image/bbexmpl2.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 680px;  				height: 760px;  				float: none;' width='680' height='760'>");}
+//-->
+</SCRIPT></p>
+
+<p>Here is an example of the cycle counts for the program compiled using 
+ <span style="font-family: Courier;">cc -g</span> on a SPARCstation ELC: 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl3.gif' x-maintain-ratio='TRUE' width='658' height='740'>");}
+else
+{   document.write("<img src='../image/bbexmpl3.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 658px;  				height: 740px;  				float: none;' width='658' height='740'>");}
+//-->
+</SCRIPT></p>
+
+<p>To execute the first call to test(0, 1, 3, 8) in main, the program enters 
+ blocks 1, 3, 5, 6 and 7, which takes 51 cycles. The table below compares 
+ the difference in cycle counts between optimized and non-optimized code. 
+ The optimized version is noticeably faster, primarily because all the 
+ calculation occurs in registers, thereby avoiding the need to load and 
+ store values from memory. <!--kadov_tag{{<spaces>}}-->&nbsp;&nbsp;<!--kadov_tag{{</spaces>}}--></p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				border-spacing: 0;
+				width: 52.11%;"
+		width=52.11%
+		cellspacing=0>
+<col style="width: 32.389%;">
+<col style="width: 39.19%;">
+<col style="width: 28.421%;">
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p style="font-weight: bold;">Block</p></td>
+<td style="border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p style="font-weight: bold;">Nonoptimized</p></td>
+<td style="border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p style="font-weight: bold;">Optimized</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>1</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>26</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p><!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->4</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>3</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>3</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p>2</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>5</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>8</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p>1</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>6</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>6</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p>1</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>7</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>8</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p>3</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=32.389%>
+<p>Total cycles</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=39.19%>
+<p>51</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.421%>
+<p>11</p></td></tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Many optimizing compilers rearrange the execution order of machine instructions 
+ to take advantage of the RISC processor's ability to overlap operations. 
+ These instruction scheduling optimizations can have a significant impact 
+ on performance.</p>
+
+<p>Since Quantify bases its analysis on the optimized instruction sequences 
+ produced by the compiler, Quantify's reports reflect any benefits of instruction 
+ scheduling performed by the compiler.</p>
+
+<p class=rTipNoteGlossaryHeading>Note:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Quantify's analysis 
+ does not reflect the additional performance improvements possible on superscalar 
+ architectures using multiple pipelines and other hardware features such 
+ as dynamic branch prediction. On such machines, Quantify's estimates are 
+ pessimistic, predicting a slower run time than what actually might be 
+ possible.</p></li>
+</ul>
+
+<h2>How Quantify reports multiple basic blocks</h2>
+
+<p>In the Annotated Source window, lines marked with a plus sign (+) indicate 
+ the start and possible continuation of multiple basic blocks over one 
+ source line. This occurs in expressions such as:</p>
+
+<p class=rCode>if ((a &gt; 0) &amp;&amp; (b &gt; 0)) {c++;}</p>
+
+<p>The two clauses of the conditional expression and the increment clause 
+ are compiled as three separate basic blocks, but all these blocks are 
+ associated with the same line number. When Quantify displays the data, 
+ the number in the margin reflects the sum of the data recorded for all 
+ the basic blocks associated with that line.</p>
+
+<p>If you select <span style="font-weight: bold;"><B>View&nbsp;&gt; Multi-block 
+ lines&nbsp;&gt; Show multi-block lines</B></span>, the individual times for 
+ basic blocks, as ordered in the object file, are shown on comment lines 
+ inserted immediately after the initial multiple basic block line. In some 
+ cases, the compiler might order the basic blocks differently from the 
+ order of the source code.</p>
+
+<h2>Annotations and compiler differences</h2>
+
+<p>Quantify reports counts for basic blocks in the Annotated Source window 
+ using the line number information emitted by the compiler for debugging 
+ purposes. Different compilers emit different line information in addition 
+ to different machine instruction sequences for a source file. Quantify's 
+ annotated source reports can reflect some of these internal differences.</p>
+
+<p>For example, consider this code fragment:</p>
+
+<p class=rCode>if ((a &gt; 0) &amp;&amp; (b &gt; 0)) {c++;}</p>
+
+<p>When compiling without debugging information, most compilers emit three 
+ basic blocks for this code fragment, corresponding to the two test expressions 
+ and the variable increment statement. When compiling with debugging information, 
+ however, some compilers emit four basic blocks. The extra basic block 
+ corresponds to an &quot;empty&quot; <span style="font-family: Courier;">else</span> 
+ clause:</p>
+
+<p class=rCode>if ((a &gt; 0) &amp;&amp; (b &gt; 0)) {c++;} else {}</p>
+
+<p>At run time, if the conjunction succeeds, <span style="font-family: Courier;">c</span> 
+ will be incremented and the code will jump to the following statement. 
+ If either of the conditions fail, however, the “empty” code block will 
+ be executed, jumping to the next statement. This jump costs some machine 
+ cycles, and Quantify records those cycles in a separate basic block.</p>
+
+<h2>Annotations for if-then expressions</h2>
+
+<p>For if-then expressions written on several lines, the data from the 
+ “empty” basic block can produce annotations such as:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl4.gif' x-maintain-ratio='TRUE' width='586' height='92'>");}
+else
+{   document.write("<img src='../image/bbexmpl4.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 586px;  				height: 92px;  				float: none;' width='586' height='92'>");}
+//-->
+</SCRIPT></p>
+
+<p>The implied else clause can result in positive counts for the last line 
+ of the then cause. </p>
+
+<p>For a description of the annotations in the Annotated Source window, 
+ read <a href="ht_using_annotated_source.htm#mid_ann_meaning" style="font-weight: bold;">What annotations mean</a>.</p>
+
+<h2>Annotations for switch expressions</h2>
+
+<p>Similar annotations can occur in switch statements, which are often 
+ rewritten by the compiler as if-then-else statements. Consider the following 
+ annotation fragment:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl5.gif' x-maintain-ratio='TRUE' width='266' height='124'>");}
+else
+{   document.write("<img src='../image/bbexmpl5.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 266px;  				height: 124px;  				float: none;' width='266' height='124'>");}
+//-->
+</SCRIPT></p>
+
+<p>In this case, the compiler rewrote the switch statement as follows:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl6.gif' x-maintain-ratio='TRUE' width='420' height='126'>");}
+else
+{   document.write("<img src='../image/bbexmpl6.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 420px;  				height: 126px;  				float: none;' width='420' height='126'>");}
+//-->
+</SCRIPT></p>
+
+<p>The counts on line 4 are not caused by the break expression but by the 
+ implicit else clause added by the compiler and associated with line 4. 
+ Compilers often do this because they assume that an optimizer eliminates 
+ the superfluous branches in a later pass if debugging information is not 
+ needed.</p>
+
+<p>Showing multi-block lines, Quantify would display:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl7.gif' x-maintain-ratio='TRUE' width='202' height='146'>");}
+else
+{   document.write("<img src='../image/bbexmpl7.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 202px;  				height: 146px;  				float: none;' width='202' height='146'>");}
+//-->
+</SCRIPT></p>
+
+<p>Quantify indicates that the implicit goto exit_switch statement, which 
+ corresponds to the original break statement, was never executed. However, 
+ the added implicit else basic block was executed. Since the sum of the 
+ multiple basic blocks under line 4 was not zero, Quantify reports the 
+ total and marks the line as being executed.</p>
+
+<p>Most compilers emit many small basic blocks when compiling for debugging. 
+ The increase in the number of small basic blocks often results in a degradation 
+ in speed when Quantify is recording data in these functions, since it 
+ must record the time for each basic block separately. You can control 
+ this trade-off. For information, read <a href="ht_change_granularity.htm" style="font-weight: bold;">Changing 
+ the granularity of collected data</a>.</p>
+
+<p>On Solaris systems, if you are recording data on register window traps, 
+ the counts for the first and last lines of the function can look quite 
+ large. Quantify assigns the register window trap times to the prevailing 
+ basic block at the time of the trap. This is typically the first or last 
+ basic block of the function.</p>
+
+<h2>C++ templates and annotated source</h2>
+
+<p>When using C++ templates, it is common to include the template declaration 
+ in a header file and define each type variant (specialization) in one 
+ or more source files. For debugging purposes, the compiler indicates that 
+ the source code for each specialization is actually found in the header 
+ file. This means that several different specializations share the same 
+ source code in the header file.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/bbexmpl8.gif' x-maintain-ratio='TRUE' width='944' height='586'>");}
+else
+{   document.write("<img src='../image/bbexmpl8.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 944px;  				height: 586px;  				float: none;' width='944' height='586'>");}
+//-->
+</SCRIPT></p>
+
+<p>Quantify reports data for each called specialization separately, reporting 
+ each specialization as a separate function with a demangled name that 
+ indicates the specialization's data types. Quantify displays the annotated 
+ source for a function in the header file with the collected data for that 
+ function. </p>
+
+<p class=rTipNoteGlossaryHeading>Note:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">The same display technique 
+ applies to static C functions defined in header files and multiple function 
+ definitions on a single line. </p></li>
+</ul>
+
+</body>
+
+</html>

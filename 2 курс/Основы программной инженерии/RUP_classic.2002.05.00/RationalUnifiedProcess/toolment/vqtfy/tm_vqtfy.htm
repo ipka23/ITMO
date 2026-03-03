@@ -1,0 +1,295 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Tool Mentor: Finding Performance Bottlenecks Using Rational Quantify and Rational PurifyPlus (Windows)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/tools.gif"> <a href="../toolment.htm">Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/quantify.gif"> <a href="vqtfy.htm">Rational Quantify Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/toolmentor.gif"> Finding Performance Bottlenecks Using Rational Quantify and Rational PurifyPlus (Windows)
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+  
+
+
+<h2 class="banner"><a name="Top"></a>Tool Mentor:
+&nbsp;<rpw name="PresentationName">Finding Performance Bottlenecks Using Rational Quantify and Rational
+PurifyPlus (Windows)</rpw>
+</h2>
+
+<h3>Purpose</h3>
+<p>This tool mentor provides an overview of how to use Rational Quantify® to quickly 
+  pinpoint performance bottlenecks in Visual C/C++, Visual Basic, Java, and Visual 
+  Studio.Net managed applications. This tool mentor is applicable for use with 
+  systems running Microsoft Windows.&nbsp/p> 
+<p>PurifyPlus is a Rational product that includes Quantify functionality.</p>
+<p><IMG SRC="../../images/Book.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="15">
+ To learn more about Quantify, including how to project the effect of performance
+improvements, interpret source-code annotations, compare program runs, and
+fine-tune data collection, read the <i>Getting Started </i>manual for the
+PurifyPlus product family (Windows version).&nbsp;</p>
+<p><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+For step-by-step information about using
+Quantify, see the Quantify online Help.</p>
+
+<p>Related Rational Unified Process information:&nbsp;</p>
+<ul>
+  <li><a href="../../process/activity/ac_untst.htm"">Activity: Perform Unit Tests</a>, 
+    refer to the section titled &quot;Execute Unit Test&quot;</li>
+  <li><a href="../../process/activity/ac_tst_anltstflr.htm"">Activity: Analyze 
+    Execution Failures</a>, refer to the section titled &quot;Evaluate Execution 
+    of Test&quot;</li>
+  <li><a href="../../process/activity/ac_tst_dtrtstrsl.htm"">Activity: Determine 
+    Test Results</a>, refer to the section titled &quot;Evaluate 
+    Code-based Test Coverage&quot;</li>
+</ul>
+
+
+<h3>Overview</h3>
+<p> Quantify provides a complete, accurate, and easy-to-interpret set of performance data for your
+program and its components, so that you can identify and eliminate performance
+bottlenecks in your code.&nbsp;&nbsp;
+
+<h4>Tool Steps</h4>
+<p>
+To improve a program's performance:
+<ol>
+  <ol>
+    <li><a href="#Step1"">Run the program using Quantify to collect performance
+      data</a></li>
+    <li><a href="#Step2"">Use the Quantify data analysis tool to find and
+      diagnose bottlenecks</a></li>
+    <li><a href="#Step3"">Eliminate bottlenecks and rerun to verify improvements</a></li>
+  </ol>
+</ol>
+    <h3>1. <a name="Step1"></a><b>Run the program using Quantify to collect
+    performance data&nbsp;</b><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The first step in improving your program's performance is to run the program
+under Quantify to collect performance data.</p>
+<p>You can do this by starting Quantify from your desktop, clicking the <b>Run</b>
+button on the Welcome screen, and specifying and running your program in the Run
+Program dialog. You can also run a program under Quantify from within Microsoft
+Visual Studio or Microsoft Visual Basic; first select the menu item <b>Quantify&nbsp;&gt;
+Engage Quantify Integration</b>, then run your program as usual.
+<p>As you exercise your code, Quantify records data about your program's
+performance and displays the activity of its threads and fibers. You can pause
+and resume data recording at any time, and so limit profiling to specific
+portions of code. You can also take a series of snapshots of the current data
+and examine performance in stages.
+<p>When you exit your program, Quantify has an accurate profile of its
+performance. Because this base dataset can be very large, Quantify applies
+default filters to hide non-critical data from modules such as system libraries
+before it displays the performance profile. You can choose to display more or
+less data as you proceed with your analysis.
+<p><b>Tip</b>: You can also use Quantify's command line interface to incorporate
+it into your test scripts, makefiles, and batch files for automated testing. For
+instructions, look up <i>scripts</i> in the Quantify online Help index.&nbsp;</p>
+  <p>
+  <b><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics in the Quantify
+  online Help index:&nbsp;</p>
+<ul>
+  <li><i>running programs</i></li>
+  <li><i>run summary</i></li>
+  <li><i>recording data</i><br>
+  &nbsp;</li>
+</ul>
+    <h3>2. <a name="Step2"></a><b>Use the Quantify data analysis tool to find
+    and diagnose bottlenecks&nbsp;</b><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+The second step in improving your program's performance is to analyze the
+performance data to find and diagnose bottlenecks.
+<p>When you exit the program for which Quantify has been collecting data, it
+displays the Call Graph window, which graphically depicts the calling structure
+and performance of the functions, procedures, or methods (collectively referred
+to here as <b>functions</b>) in the program. By default, the call graph displays
+the top 20 functions in the current dataset by function + descendants (F+D)
+time. Quantify's results include virtually no overhead from the profiling
+process itself. The numbers you see are the time your program would take without
+Quantify.
+<p>The call graph also highlights the most expensive path; thicker lines
+indicate more expensive paths. You can highlight other functions based on
+various criteria, including performance, calling relationships, and possible
+causes for bottlenecks. You can also show additional functions, hide functions,
+and move functions around to help with interpreting the call graph.
+<p>You can use Quantify's other data analysis windows for further examination of
+the program's performance. To review all functions in the current dataset, and
+to sort them by various criteria, use the Function List window. To display
+tabular and graphical data for a specific function, including data about its
+callers and descendants, use the Function Detail Window. If debug data was
+available when you ran the program and you measured functions at line level, you
+can also use the Annotated Source window to analyze a specific function's
+performance line by line.
+<p>Quantify provides several ways to reduce large datasets and display only the
+data you're interested in. For example, you can specify filters to hide
+functions based on module name, pattern (for example, functions with <font size="-1" face="Courier New,Courier">CWnd</font>
+in their name), or measurement type (for example, all waiting and blocking
+functions). You can also focus on a specific subtree.
+<p>You can easily analyze the performance of the program over several runs by
+merging the separate runs to create a new dataset.&nbsp;
+<p>With the data you collect, you will be able to identify performance
+bottlenecks such as needless computations and recomputations, premature
+computations, or excessive and expensive library calls.</p>
+
+  <p>
+  <b><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics in the Quantify
+  online Help index:</p>
+<ul>
+  <li><i>call graph window</i></li>
+  <li><i>function list
+  window</i></li>
+  <li><i>function detail window</i></li>
+  <li><i>annotated source window</i></li>
+  <li><i>highlighting
+  functions</i></li>
+  <li><i>filtering data</i></li>
+  <li><i>subtrees</i></li>
+</ul>
+<h3>3. <a name="Step3"></a><b>Eliminate bottlenecks and rerun to verify
+improvements&nbsp;</b><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+The third and final step in improving your program's performance is to modify
+your code to eliminate bottlenecks, and then to compare the performance of the
+original code and the modified code
+<p>After you make changes to your code, rerun the updated program under
+Quantify. Then compare the new results to the previous run by creating a
+&quot;diff&quot; dataset, which gives clear indications of performance
+improvements and regressions. The call graph for this dataset highlights
+improvements in green and regressions in red; the function list displays the
+differences between the two runs, as well as original data from the two runs.
+<p>Use the Quantify Navigator window to keep track of all the runs you're
+working with. You can save performance data as a Quantify data file (.qfy) to
+use for further analysis or to share with other Quantify users. You can save
+data to a tab-delimited ASCII text file (.txt) to use outside of Quantify, for
+example, in test scripts or in Microsoft Excel. You can also copy data directly
+from the Function List window to use in Excel.&nbsp;</p>
+
+  <p>
+  <b>
+  <IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics in the Quantify online
+  Help
+  index:</p>
+
+<ul>
+  <li><i>comparing runs</i></li>
+  <li><i>navigator window</i></li>
+  <li><i>saving data</i></li>
+</ul>
+<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

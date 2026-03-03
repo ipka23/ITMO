@@ -3,4 +3,4 @@ project(tasksCpp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(tasksCpp A.cpp)
+add_executable(tasksCpp A.cpp B.cpp B_2.cpp)

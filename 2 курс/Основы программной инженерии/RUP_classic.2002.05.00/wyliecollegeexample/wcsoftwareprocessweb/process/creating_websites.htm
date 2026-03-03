@@ -1,0 +1,147 @@
+
+<html>
+
+<head>
+<title>Your Project's Home Page</title>
+<link rel="stylesheet" href="../css/project.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body>
+<h1 class="banner"><a name="top"></a>Creating Process Webs</h1>
+
+<script language="JavaScript">
+<!--
+var rup = null;
+var devcase_window = null;
+
+function openRup ()
+{
+    if(!rup || rup==null || rup.closed)
+    {
+      rup = open("../../../RationalUnifiedProcess/index.htm","rup");
+    }
+    else
+    {
+      rup.focus();
+    }
+}
+
+function openDevCase ()
+{
+    if(!devcase_window || devcase_window==null || devcase_window.closed)
+    {
+      devcase_window = open("../artifacts/management/devcase/ex_dvlcs.htm", "devcase_window", "toolbar=yes,directories=yes,menubar=yes,scrollbars=yes,width=350,height=600,resizable=yes");
+    }
+    else
+    {
+      devcase_window.focus();
+    }
+}
+// -->
+</script>
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Basic Setup">Basic Setup</a>
+  <li><a href="#Alternate Navigation Schemes">Alternate Navigation Schemes</a>
+</ul>
+
+<h3><a name="Basic Setup">Basic Setup</a> <a href="#top"><img src="../images/top.gif" alt="top.gif (164 bytes)" border="0" width="26" height="20"></a></h3>
+
+<p class="comment">This example Wylie College Organization Web and the
+corresponding Project Web can be copied and modified to
+form the basis for your own organization's websites, by following the steps
+below:</p>
+<ol>
+  <li>
+    <p style="margin-bottom: 1">Most organizations will prefer each website to
+    be on a separate webserver, or at least its own virtual directory.&nbsp;
+    Microsoft Management Console may be used to create virtual directories.<br>
+    Each relative link, such as
+    <blockquote>
+      <p style="margin-bottom: 1">&lt;a href=&quot;<font COLOR="#000000">../../../RationalUnifiedProcess/toolment/devkit/tm_web.htm</font>&quot;&gt;&nbsp;</p>
+    </blockquote>
+    <p style="margin-bottom: 1">then needs to be replaced with an absolute link,
+    such as:&nbsp;</p>
+    <blockquote>
+      <p style="margin-bottom: 1">&lt;a href=&quot;http://my-rup-server-name/RationalUnifiedProcess<font COLOR="#000000">/toolment/devkit/tm_web.htm&quot;&gt;</font>.&nbsp;</p>
+    </blockquote>
+  <li>Modify the websites to meet your needs, as described in the Rational
+    Unified Process's <a href="../../../RationalUnifiedProcess/toolment/devkit/tm_web.htm"> Process Engineer
+    Toolkit</a>.&nbsp; Some additional guidance follows below.
+</ol>
+
+<h3><a name="Alternate Navigation Schemes">Alternate Navigation Scheme</a>s <a href="#top"><img src="../images/top.gif" alt="top.gif (164 bytes)" border="0" width="26" height="20"></a></h3>
+
+<p>The following are alternative ways to link project, organization, and
+Rational Unified Process websites:</p>
+
+<h4>Using Multiple Windows</h4>
+
+
+<p class="banner">You can navigate using three
+windows, a Project window, an Organization window, and a Rational Unified
+Process window.</p>
+
+
+<p> A link from
+Website A to Website B causes the linked page to open in Website B's browser
+window.</p>
+<p>This behavior is enabled by setting the target frame in the link.&nbsp; The
+target frames for these Websites are as follows:</p>
+<div align="center">
+  <center>
+<table border="1" width="85%" cellspacing="0" cellpadding="0" height="119">
+  <tr>
+    <td width="50%" height="19" align="center"><b>Website</b></td>
+    <td width="50%" height="19" align="center"><b>Frame name</b></td>
+  </tr>
+  <tr>
+    <td width="50%" height="19" align="center">Rational Unified Process</td>
+    <td width="50%" height="19" align="center">ory_doc</td>
+  </tr>
+  <tr>
+    <td width="50%" height="19" align="center">Organization Web</td>
+    <td width="50%" height="19" align="center">process_main</td>
+  </tr>
+  <tr>
+    <td width="50%" height="19" align="center">Project Web</td>
+    <td width="50%" height="19" align="center">main</td>
+  </tr>
+</table>
+  </center>
+</div>
+<p>The following link is an example which also provides detailed guidance for linking to the Rational Unified
+Process - <a href="../../../RationalUnifiedProcess/toolment/devkit/tm_exter.htm" target="ory_doc">Toolkit:
+<RPW name="PresentationName">
+Adding External Links to the Rational Unified Process</a>.</p>
+
+
+<p class="banner">When the corresponding window is first opened (by clicking on
+a link) it is raised and made visible.&nbsp; It's treebrowser can be activated
+by clicking on &quot;Display Treebrowser&quot; at the top right of the window.</p>
+
+
+<p>Once a window is open, it is NOT re-raised automatically when
+clicking on a link targeted to the window.&nbsp; This can be changed by use of javascript.&nbsp; The following
+link is an example which raises the <a href="JavaScript:openRup();">Rational
+    Unified Process</a> when clicked on a second time.</p>
+
+
+<h4>Merged Treebrowsers</h4>
+<p>Sites can be merged so that they share a single treebrowser.</p>
+<p>Note that when a process is tailored for an organization or a project using
+the <a href="../../../RationalUnifiedProcess/toolment/rpw/rpw.htm">Rational
+Process Workbench</a>, the result is a single website containing a process for
+either an organization or a project.</p>
+
+<h4>Nested Frames</h4>
+<p class="comment">The following link shows how the <a href="../../../RationalUnifiedProcess/index.htm">Rational Unified
+Process</a> can be browsed in a nested frame with its corresponding treebrowser.</p>
+
+&nbsp;</body>
+
+</html>

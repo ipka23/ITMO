@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standard: Package Overview</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards: Packages -
+    Overview</h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" width="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong><img SRC="images/despack.jpg" NOSAVE WIDTH="105" HEIGHT="81"></strong></td>
+        <td>A package is a collection of classes, relationships, use-case realizations, diagrams,
+        and other packages; it is used to structure the design model by dividing it into smaller
+        parts. Packages are used primarily for model organization and typically serve as a unit of
+        configuration management.
+                      <p>In Rose, packages are also used to represent subsystems.
+                    </td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong>Related Information:</strong></td>
+        <td><ul>
+          <li><a href="../../style/packages/st_org_p.htm">Standards: Organizational Packages</a></li>
+          <li><a href="../../style/packages/st_str_p.htm">Standards: Structural Packages</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/artifact/ar_despk.htm">RUP Artifact: Design Package</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/modguide/md_despk.htm">RUP Guidelines: Design Package</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/artifact/ar_dsub.htm">RUP Artifact: Design Subsystem</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_dsub.htm">RUP Guidelines: Design Subsystem</a></li>
+        </ul>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a HREF="../../style/packages/st_pk_ov.htm#Introduction">Introduction</a></li>
+      <li><a HREF="../../style/packages/st_pk_ov.htm#Naming">Naming Standard</a></li>
+      <li><a HREF="../../style/packages/st_pk_ov.htm#General">General Documentation Standards</a></li>
+      <li><a HREF="../../style/packages/st_pk_ov.htm#Stereotypes">Use of Stereotypes</a></li>
+    </ul>
+    <h3><a NAME="Introduction"></a>Introduction&nbsp;<a href="../../style/packages/st_pk_ov.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Packages are used to decompose models by dividing them into smaller parts.&nbsp;
+    Without the use of packages the end result is large, flat models in which all elements
+    have to be uniquely named.&nbsp; This would soon become unmanageable especially when
+    attempting to integrate and manage elements developed by multiple developers and multiple
+    teams. </p>
+    <p>The package is also the unit of configuration in Rose &#150; the models must be split
+    into packages to support multi-user development (each package can become a controlled
+    unit). </p>
+    <p>Packages can also be involved in more than one model at a time.&nbsp; This is very
+    common when using the models to facilitate the analysis and design of component based
+    developments.&nbsp; In this case the packages should be read-only in all the models except
+    their initial design model, the one in which their development actually takes place. </p>
+    <p>Packages are used to decompose models in many ways: <ul>
+      <li>packages are used to represent the layering applications</li>
+      <li>to group the classes into logical packages</li>
+      <li>to identify the logical subsystems of the application</li>
+      <li>to hold the architectural views required to define, and describe, the architecture</li>
+      <li>to provide a higher level of abstraction than that provided by individual classes.</li>
+    </ul>
+    <p>Note: if a package contains too many public classes to easily display on a single class
+    diagram then the package is probably too large and should be split into multiple packages.
+    </p>
+    <p>Packages are also used to organize the Use-Case focused part of the dynamic model. In
+    this case: <ul>
+      <li>the packaging is used to facilitate the realization of the Use Case Model by instances
+        of the classes defined in the static object model</li>
+      <li>the packaging is used to provide a more functional view of the system</li>
+      <li>the packaging is used to partition the use case focused aspects of the dynamic model
+        &#150; the use case realizations.</li>
+    </ul>
+    <p>Note: Packages are also used to partition the Use Case Model &#150; these standards are
+    not covered by this document they are dealt with in the Use Case Modeling Guidelines. </p>
+    <h3><a NAME="Naming"></a>Naming Standard&nbsp;<a href="../../style/packages/st_pk_ov.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Begin package names with an upper case letter.&nbsp; Package names can include spaces
+    and punctuation where this clarifies the model.&nbsp; In practice package names are short
+    groupings of nouns or noun phrases drawn from the vocabulary of the domain.&nbsp; </p>
+    <p>The names of the packages should communicate their purpose. </p>
+    <h3><a NAME="General"></a>General Documentation&nbsp;<a href="../../style/packages/st_pk_ov.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>All packages will have their brief description completed.&nbsp; This will be a one or
+    two paragraph description summarizing the purpose of the package.&nbsp; This should be
+    entered in the &quot;General Tab&quot; for the package documentation. </p>
+    <p>Note: additional documentation is required for each package stereotype used.&nbsp; The
+    stereotypes are defined in the table below and linked to pages describing the specific
+    standards to be applied in each case.</p>
+    <p>Note: packages can be marked as global &#150; a package can only be global if it is a
+    top-level package or its parent package is global. </p>
+    <h3><a NAME="Stereotypes"></a>Use of Stereotypes<font SIZE="+1">&nbsp;</font><a href="../../style/packages/st_pk_ov.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>Stereotypes are used to clarify the intent and purpose of the packages in the model.
+    &nbsp; Individual documentation and diagramming standards are defined for each stereotype.</p>
+    <p>The stereotypes are grouped by their underlying purpose: <ul>
+      <li>Organizational - those that denote packages purely used to organize the model.&nbsp; </li>
+    </ul>
+    <blockquote>
+      <p>Organizational package stereotypes include <font face="Times New Roman" size="3"><a HREF="../../style/packages/st_dynam.htm">&lt;&lt;dynamic&gt;&gt;</a>, <a HREF="../../style/packages/st_layer.htm">&lt;&lt;layer&gt;&gt;</a>,
+      <a HREF="../../style/packages/st_model.htm">&lt;&lt;model&gt;&gt;</a>, <a HREF="../../style/packages/st_view.htm">&lt;&lt;view&gt;&gt;</a>
+      and&nbsp; <a HREF="../../style/packages/st_work.htm">&lt;&lt;work&gt;&gt;</a> (</font>See <a href="../../style/packages/st_org_p.htm">Standards: Organizational Packages</a> for more details).</p>
+    </blockquote>
+    <ul>
+      <li>Structural - those that denote the packages that logically represent the pieces of the
+        system (including subsystems) that are to be implemented.&nbsp; </li>
+    </ul>
+    <blockquote>
+      <p>Structural package stereotypes include: <font size="3"><a HREF="../../style/packages/st_facad.htm">&lt;&lt;facade&gt;&gt;</a>,
+      <a href="../../style/packages/st_imp.htm">&lt;&lt;implementation&gt;&gt;</a>, <a HREF="../../style/packages/st_subsys.htm">&lt;&lt;subsystem&gt;&gt;</a>
+      and <a HREF="../../style/packages/st_util.htm">&lt;&lt;utility&gt;&gt;</a> (</font>See <a href="../../style/packages/st_str_p.htm">Standards:
+      Structural Packages</a> for more details).</p>
+    </blockquote>
+    <p>Note: if a package is unstereotyped it is considered to be work in progress and treated
+    as if it used the <font size="3"><a HREF="../../style/packages/st_work.htm">&lt;&lt;work&gt;&gt;</a>
+    stereotype.</font></p>
+    <p>The UML also defines the following package stereotypes:<ul>
+      <li>&lt;&lt;framework&gt;&gt;</li>
+      <li>&lt;&lt;top package&gt;&gt;</li>
+      <li>&lt;&lt;system&gt;&gt;</li>
+    </ul>
+    <p>No standards are defined for these stereotypes - they are only mentioned to prevent
+    their local use without consideration of their wider UML definition.&nbsp; These will not
+    be used in the current models.</td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" width="20" height="110"></p></a>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+Version&nbsp;2001.02</small></small></font></td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

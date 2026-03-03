@@ -1,0 +1,11 @@
+
+<p align="center">&nbsp;</p>
+
+<table border="0" width="100%" height="1">
+  <tr>
+    <td align="right" width="50%" height="1"><a href="../copyrite/copyrite.htm"><small><small><font face="Arial">Copyright © 1987 - 2001 Rational Software Corporation</font></small></small></a></td>
+    <td align="right" height="1"><small><small>Rational Unified Process</small></small></td>
+  </tr>
+</table>
+</body>
+</html>

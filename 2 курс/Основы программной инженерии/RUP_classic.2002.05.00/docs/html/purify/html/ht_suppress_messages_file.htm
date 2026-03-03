@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+ <!-- $MVD$:fontset("Courier New","Courier New") -->
+ <SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_tasks_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_tasks.css'>");}
+//-->
+ </SCRIPT>
+ <title>Specifying suppressions in a .purify file              Rational Purify</title>
+ <META NAME="generator" CONTENT="RoboHELP by eHelp Corporation www.ehelp.com">
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../bsscdhtm.js" name="EHELP_DHTM">
+ </SCRIPT>
+ <script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+ </script>
+ <style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+ </style>
+ <script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+ </script>
+</HEAD>
+<BODY>
+ <SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_suppress_messages_viewer.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_view_suppressed_messages.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+ </SCRIPT>
+ <H1>Specifying suppressions in a .purify file</H1>
+ <P>You can specify suppressions directly as directives in a <font  face='Courier'>.purify</font> file. The syntax is:</P>
+ <P class="rCode" >suppress &lt;message-type&gt; &lt;function-call-chain&gt;</P>
+ <P>For <font  face='Courier'>&lt;message-type&gt;</font>, specify the three-character acronym for the message to be suppressed. You can use upper or lower case, and wildcards. For example, AB* matches ABR and ABW, while *W matches ABW, FMW, IPW, NPW, SBW, WPW and ZPW. </P>
+ <P>For <font  face='Courier'>&lt;function-call-chain&gt;</font>, specify a list of function names separated by semicolons. You can replace or augment a function name by specifying a filename enclosed in double quotes. Purify compares the filename to source, object, or library names. You can use wildcards for function and filenames. An unqualified filename (containing no '/') matches the specified file in any directory; a qualified filename must match exactly to suppress the message. </P>
+ <P>For example,</P>
+ <P class="rCode" >suppress ABR sortFunction; sort*; qsort &quot;libc*&quot;</P>
+ <P>suppresses ABR messages in the <font  face='Courier'>sortFunction</font> function whenever it is called from a function with the prefix <font  face='Courier'>sort</font>, which in turn is called from the <font  face='Courier'>qsort</font> function in the <font  face='Courier'>libc</font> library in any directory.</P>
+ <H2>Using &quot;...&quot; syntax</H2>
+ <P>You can use <span style="font-size:9pt; "><FONT SIZE=1 style="font-size:9pt;"><font  face='Courier'>&quot;...&quot;</font></FONT></span> syntax for floating or unanchored matches. For example, </P>
+ <P class="rCode" >suppress UMR ...; Xm*</P>
+ <P>suppresses UMR messages in any function beginning with <font  face='Courier'>Xm</font> or any function called directly or indirectly from such a function.</P>
+ <P>You can use <span style="font-size:9pt; "><FONT SIZE=1 style="font-size:9pt;"><font  face='Courier'>&quot;...&quot;</font></FONT></span> syntax in the middle of a chain. For example, </P>
+ <P class="rCode" >suppress ABW tzsetwall; ...; main</P>
+ <P>suppresses ABW messages in <font  face='Courier'>tzsetwall</font> when called at any level below <font  face='Courier'>main</font>.</P>
+ <P>Using <font  face='Courier'>&quot;...&quot;</font> syntax is more time-consuming than simple pattern matches because it causes Purify to match every address in the call chain with the function name. Without <font  face='Courier'>&quot;...&quot;</font>, Purify can usually make a match at the first name. </P>
+ <P><font  face='Courier'>&quot;...&quot;</font> reaches only as far as the recorded call chain. For example, Purify does not suppress a UMR message that is 27 levels below <font  face='Courier'>XmInit</font>, if the <A href="ht_opt_message_appearance.htm"><span style="font-weight:bold; "><B><font  face='Courier'>-chain-length</font></B></span></A> option is set to the default of 6.</P>
+ <H2>Suppressing error messages in C++ code</H2>
+ <P>To suppress messages in C++ code, use natural C++ notation, including the function or method argument signature. You cannot use a mangled function name as reported by tools like <font  face='Courier'>nm</font>.</P>
+ <P>If you do not include the argument signature, Purify matches any overloaded function of the specified name. For example, </P>
+ <P class="rCode" >suppress FNH Test::Test<font  face='Helvetica'> </font></P>
+ <P>suppresses FNH errors in all <font  face='Courier'>Test::Test</font> functions regardless of their argument signature. However, </P>
+ <P class="rCode" >suppress FNH Test::Test()</P>
+ <P>suppresses <span style="font-style:italic; "><I>only</I></span> the error in <font  face='Courier'>Test</font> with zero arguments. So, for example, it would not suppress errors in a <font  face='Courier'>Test::Test(const char*)</font>function. </P>
+ <H2><span style="font-size:14pt; "><FONT SIZE=4 style="font-size:14pt;">Suppressing message</FONT></span>s in the Hello World example </H2>
+ <P>In the Hello World program example supplied with the Purify program in <font  face='Courier'>&lt;purifyhome&gt;/example</font>, Purify reports an ABR error. You can suppress this message by using any of the following suppression directives:</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To suppress all ABR errors in <font  face='Courier'>_doprnt</font>, use:<BR><font  face='Courier'>suppress ABR _doprnt</font></P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To suppress ABR errors in <font  face='Courier'>_doprnt</font>, called from <font  face='Courier'>printf</font>, called from <font  face='Courier'>main</font>, use:<BR><font  face='Courier'>suppress ABR _doprnt; printf; main</font></P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To suppress all ABR errors in the <font  face='Courier'>libc</font> library, use: <BR><font  face='Courier'>suppress ABR &quot;libc*&quot;</font></P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To suppress array bounds errors from descendants of <font  face='Courier'>printf</font>, use:<BR><font  face='Courier'>suppress AB* ...; printf</font></P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To suppress all errors in descendants of <font  face='Courier'>libc</font>, use:<BR><font  face='Courier'>suppress *&nbsp;&nbsp;&nbsp;...; &quot;libc*&quot;</font></P></LI>
+ </UL>
+</BODY>
+</HTML>

@@ -1,0 +1,31 @@
+
+-f c:/java/applets/softlab/application/search/doc/TOC.html
+-u http://sww.softlab.se/softlab/application/search/doc/TOC.html
+
+Dependency exclusions:
+
+-xu *.zip
+-xu *.cab
+-xu *.java
+-xu *.class
+-xu /www//
+
+Word count exclusions:
+
+-xwu */docsearch.html
+-xwu */docextsearch.html
+-xwu */docindex.html
+-xwu */menu.html
+-xwu */searchapplet.html
+-xwu */searchpage.html
+-xwu */waiting.html
+-xwu */TOC.html
+-xwu *.java
+-xwu *.class
+
+Standard word exclusion filters:
+
+-xn
+
+-xwf exclude.english.html
+-xwf search.exclude.html

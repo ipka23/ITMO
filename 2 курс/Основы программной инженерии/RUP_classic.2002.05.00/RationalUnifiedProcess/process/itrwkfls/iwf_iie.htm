@@ -1,0 +1,201 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Phase: Elaboration</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/it_wf.gif"> <a href="iwf_iwfs.htm">Phases</a> &gt;
+<img border=0 src="../../applet/images/it_wf.gif"> Elaboration
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+<h2 align="center" class="banner">Phase: <rpw name="PresentationName">Elaboration</rpw></h2>
+
+<a name="XE_phases__elaboration"></a>
+
+
+<h4>Objectives</h4>
+<p>The goal of the elaboration phase is to baseline the architecture of the
+system to provide a stable basis for the bulk of the design and implementation
+effort in the construction phase. The architecture evolves out of a
+consideration of the most significant requirements (those that have a great
+impact on the architecture of the system) and an assessment of risk. The
+stability of the architecture is evaluated through one or more architectural
+prototypes.</p>
+<p>The primary objectives of the elaboration phase include:
+<ul>
+  <li>To ensure that the architecture, requirements and plans are stable enough,
+    and the risks sufficiently mitigated to be able to predictably determine the
+    cost and schedule for the completion of the development. For most projects,
+    passing this milestone also corresponds to the transition from a
+    light-and-fast, low-risk operation to a high cost, high risk operation with
+    substantial organizational inertia.</li>
+  <li>To address all architecturally significant risks of the project</li>
+  <li>To establish a baselined architecture derived from addressing the
+    architecturally significant <a href="../glossary.htm#scenario"">scenarios</a>,
+    which typically expose the top technical risks of the project.</li>
+  <li>To produce an evolutionary <a href="../workflow/manageme/co_proto.htm"">prototype</a>
+    of production-quality components, as well as possibly one or more
+    exploratory, throw-away prototypes to mitigate specific risks such as:
+    <ul>
+      <li>design/requirements trade-offs</li>
+      <li>component reuse</li>
+      <li>product feasibility or demonstrations to investors, customers, and
+        end-users.</li>
+    </ul>
+  </li>
+  <li>To demonstrate that the baselined architecture will support the
+    requirements of the system at a reasonable cost and in a reasonable time.</li>
+  <li>To establish a supporting environment.</li>
+</ul>
+In order to achieve this primary objectives, it is equally important to set up
+the supporting environment for the project. This includes creating a development
+case, create templates, guidelines, and setting up tools.
+<h4><a name="Essential activities">Essential activities</a></h4>
+<ul>
+  <li><strong>Defining, validating and baselining the architecture</strong> as
+    rapidly as practical.</li>
+  <li><strong>Refining the Vision</strong>, based on new information obtained
+    during the phase, establishing a solid understanding of the most critical
+    use cases that drive the architectural and planning decisions.</li>
+  <li><strong>Creating and baselining detailed iteration plans for the
+    construction phase</strong>.</li>
+  <li><strong>Refining the development case and putting in place the development
+    environment</strong>, including the process, tools and automation support
+    required to support the construction team.</li>
+  <li><strong>Refining the architecture and selecting components</strong>.
+    Potential components are evaluated and the make/buy/reuse decisions
+    sufficiently understood to determine the construction phase cost and
+    schedule with confidence. The selected architectural components are
+    integrated and assessed against the primary scenarios. Lessons learned from
+    these activities may well result in a redesign of the architecture, taking
+    into consideration alternative designs or reconsideration of the
+    requirements.</li>
+</ul>
+<h4>Milestone: <a href="ms_lca.htm"">Lifecycle Architecture</a></h4>
+<blockquote>
+  <p>The Lifecycle Architecture milestone establishes a managed baseline for the
+  architecture of the system and enables the project team to scale during the
+  Construction phase.</p>
+</blockquote>
+<h4><a href="sip_iie.htm"">Sample Iteration Plan</a></h4>
+<p>&nbsp;</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

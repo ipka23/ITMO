@@ -1,0 +1,268 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tool Mentor: Analyzing Test Execution Using Rational Test RealTime</title>
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/tools.gif"> <a href="../../../toolment/toolment.htm">Tool Mentors</a> &gt;
+<img border=0 src="../../../applet/images/testrt.gif"> <a href="test_rt.htm">Rational Test RealTime Tool Mentors</a> &gt;
+<img border=0 src="../../../applet/images/toolmentor.gif"> Analyzing Test Execution Using Rational Test RealTime
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Tool Mentor: <rpw name="PresentationName">Analyzing Test Execution Using Rational Test RealTime</rpw><a name="Top"></a>
+</h2>
+
+
+<h3>Purpose</h3>
+<p>This tool mentor describes how to analyze test execution using Rational Test
+RealTime.
+</p>
+<p>It relates to this Rational Unified Process information:<br>
+
+  <ul>
+<li><a href="../../../process/activity/ac_tst_anltstflr.htm">Analyze Test Failure</a></li>
+</ul>
+
+
+<h3>Overview</h3>
+<p>Test RealTime's testing tools can generate two different types of test
+reports:
+<ul>
+  <li>The test verdict report provides an assessment of each test with a Passed
+    or Failed status.
+  <li>The UML sequence diagram report provides a more detailed graphical test
+    report.</li>
+</ul>
+<p>Typically, you acknowledge the results provided by the test verdict report
+first, and then you analyze the root causes of test failure, if any, with the
+UML sequence diagram report.</p>
+<p>The Coverage, PurifyLT, and QuantifyLT observation tools generate table
+results and the Trace tool provides a graphical UML sequence diagram of the
+application's execution sequence.</p>
+<p>For executing test components, see the Tool Mentor titled <a href="tm_rtrtexe.htm"">Executing
+Test Components Using Rational Test RealTime</a>.</p>
+<h4>Tool Steps</h4>
+<ol>
+  <li><a href="#View the test verdicts"">View the test verdicts</a></li>
+  <li><a href="#Evaluate your results"">Evaluate your results</a></li>
+  <li><a href="#Evaluate the coverage of your tests"">Evaluate the coverage of your tests</a></li>
+  <li><a href="#Submit a ClearQuest defect report using Test RealTime"">Submit a
+    Rational ClearQuest defect report using Test RealTime</a></li>
+</ol>
+<h3>1.&nbsp; <a name="View the test verdicts">View the test
+verdicts</a>  <font size="3"><b><a href="#Top""><img alt="To top of page" border="0" src="../../../images/top.gif" width="26" height="20"></a></b></font>
+</h3>
+<p>The test verdict is a summary text report that tells you if the source code
+under test effectively passed or failed the tests.<br>
+<br>
+To open a test verdict report:</p>
+<ul>
+  <li>Right-click a successfully executed test node.
+  <li>From the context menu, select <b>View</b> and <b>Report Viewer.</b></li>
+</ul>
+<p>The report is organized into two main sections:</p>
+<ul>
+  <li><i>Header &#151 </i>the report header shows the name of the report file, as
+    well as the global <b>Passed</b> or <b>Failed</b> status. The statistics are
+    calculated on the actual number of test elements listed in the Test Script
+    section.
+  <li><i>Test Results &#151</i> this section summarizes the results of the test
+    script. Tests components are displayed hierarchically with their <b>Failed</b>,
+    <b>Passed</b>, or <b>Not Tested</b> status.</li>
+</ul>
+<p>The Report Viewer works in conjunction with the Report Browser pane. Click on
+an element in the Report Browser to go to the corresponding line.</p>
+<p><b><img border="0" height="16" src="../../../images/book.gif" width="16">
+</b>For detailed information on using the Report Viewer, refer to the <i>Rational
+Test RealTime User Guide</i>.</p>
+<h3>2. <a name="Evaluate your results">Evaluate your results</a>&nbsp; <font size="3"><b><a href="#Top""><img alt="To top of page" border="0" src="../../../images/top.gif" width="26" height="20"></a></b></font>
+</h3>
+<p>Object Testing and System Testing each generate a UML Sequence Diagram (SD)
+report, which provides you with the graphical detail of the test execution
+sequence, as well as the interaction between application components.
+<p>A UML Sequence Diagram report helps you understand why and when a test has
+failed. For system testing this also gives you a visual report of the messages
+passing between the system under test and the virtual testers.</p>
+<p>To open the UML sequence diagram report:</p>
+<ul>
+  <li>Right-click a successfully executed test node.
+  <li>From the context menu, select <b>View</b> and <b>UML/SD Viewer</b>.</li>
+</ul>
+<p>Test components are displayed as green or red UML <i>notes</i>, depending on
+their Passed or Failed status.</p>
+<p>The UML sequence diagram report works in conjunction with the Report Browser
+pane. The Report Browser offers a hierarchical view of instances and is a
+practical way to locate an element in the UML/SD Viewer.</p>
+<p><b><img border="0" height="16" src="../../../images/book.gif" width="16">
+</b>For detailed information on using the UML/SD Viewer, refer to the <i>Rational
+Test RealTime User Guide</i>.</p>
+<h3>3. <a name="Evaluate the coverage of your tests">Evaluate the coverage of
+your tests</a>  <font size="3"><b><a href="#Top""><img alt="To top of page" border="0" src="../../../images/top.gif" width="26" height="20"></a>
+
+</b>
+
+</font>
+</h3>
+<p>An essential parameter when analyzing the relevance of a test or a test
+campaign is the coverage rate of the source code under test. Test RealTime's
+Coverage tool can instrument the application under test to provide a Code
+Coverage report. This report marks each line of the source code as <b>Covered</b>
+or <b>Not-covered</b> by the test. Coverage types include control structures
+(iterations, selections), conditions (multiple, modified, forced), and functions
+(inputs, outputs, calls).</p>
+<p>To obtain a Coverage Rate report on a test:</p>
+<ul>
+  <li>Select a test node.
+  <li>In the <b>Build</b> toolbar, click <b>Build Options</b>.
+  <li>Select <b>Coverage</b>.
+  <li>Rerun the test node.
+  <li>Right-click the successfully executed test node.
+  <li>From the context menu, select <b>View</b> and <b>Coverage Report</b>.</li>
+</ul>
+<p><b><img border="0" height="16" src="../../../images/book.gif" width="16">
+</b>For detailed information on using Coverage, refer to the <i>Rational Test
+RealTime User Guide.</i></p>
+<h3>4. <a name="Submit a ClearQuest defect report using Test RealTime">Submit a
+ClearQuest defect report using Test RealTime</a>  <font size="3"><b><a href="#Top""><img alt="To top of page" border="0" src="../../../images/top.gif" width="26" height="20"></a>
+
+</b>
+
+</font>
+</h3>
+<p>When testing software, tracking defects and change requests is essential.
+Test RealTime offers seamless integration with Rational ClearQuest, a defect and
+change tracking (DCT) tool designed to operate in a client/server environment.
+ClearQuest helps you determine the quality of your application or component
+during each phase of the development cycle and helps you track the release where
+a feature, an enhancement, or a bug fix appears.</p>
+<p>To submit a defect report for a failed test:</p>
+<ul>
+  <li>Right-click on the test node that you want to add to the defect report.
+  <li>From the context menu, select <b>Submit ClearQuest Defect</b>. ClearQuest
+    displays a submit form that already contains information about the selected
+    test
+  <li>Enter any additional information about the defect and click <b>OK</b> to
+    submit the defect.</li>
+</ul>
+<p>&nbsp;</p>
+
+
+<font size="3"> 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</font>
+</body>
+
+</html>

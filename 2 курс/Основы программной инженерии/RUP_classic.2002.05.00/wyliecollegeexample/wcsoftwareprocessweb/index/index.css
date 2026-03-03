@@ -1,0 +1,22 @@
+p.indexheading
+{
+ font-weight: bold;
+margin-top: +2px; 
+margin-bottom: -2px;
+}
+
+p.indexlevel1
+{
+ font-size: smaller;
+ margin-top: -0px; 
+margin-bottom: -2px;
+}
+
+p.indexlevel2
+{
+ font-size: smaller;
+ margin-left: +16px;
+ margin-top: -1px; 
+margin-bottom: -2px;
+}
+

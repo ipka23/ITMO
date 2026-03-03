@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+ <!-- $MVD$:fontset("Courier New","Courier New") -->
+ <SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix.css'>");}
+//-->
+ </SCRIPT>
+ <title>Saving error data                                      Rational Purify</title>
+ <META NAME="generator" CONTENT="RoboHELP by eHelp Corporation www.ehelp.com">
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../bsscdhtm.js" name="EHELP_DHTM">
+ </SCRIPT>
+ <script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+ </script>
+ <style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+ </style>
+ <script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+ </script>
+</HEAD>
+<BODY>
+ <SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_ov_correcting.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_automated_testing.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+ </SCRIPT>
+ <H1>Saving error data</H1>
+ <P>By default, Purify outputs error data to the <A href="ht_use_viewer.htm"><span style="font-weight:bold; "><B>Purify Viewer</B></span></A> You can save error data from the Viewer as follows:</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To save the current error data in a binary <A href="../html_notoc/ht_gloss_pv.htm"><span style="font-weight:bold; "><B>view file (.pv)</B></span></A>, select <span style="font-weight:bold; "><B>File&nbsp;&gt;&nbsp;Save&nbsp;as&nbsp;.&nbsp;.&nbsp;.</B></span></P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To save the current error data in an ASCII text log file (.plog), select <span style="font-weight:bold; "><B>File&nbsp;&gt;&nbsp;Export&nbsp;.&nbsp;.&nbsp;.</B></span></P></LI>
+ </UL>
+ <P>You can also save error data without displaying the Viewer, which is especially useful in <A href="ht_automated_testing.htm"><span style="font-weight:bold; "><B>automated testing</B></span></A>. To do this, set <A href="ht_opt_output_mode.htm"><span style="font-weight:bold; "><B>output options</B></span></A> in the Purify command line, as follows.</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To redirect Purify output to a view file without starting the Viewer, set the option <A href="ht_opt_output_mode.htm#MID_VIEWFILE"><span style="font-weight:bold; "><B><font  face='Courier'>-view-file</font></B></span></A>=<font  face='Courier'>&lt;filename</font><span style="font-size:8pt; "><FONT SIZE=1 style="font-size:8pt;"><font  face='Courier'>&gt;</font></FONT></span><font  face='Courier'>.pv&gt;</font> . (To save output and also display the Viewer, set the option <A href="ht_opt_output_mode.htm"><span style="font-weight:bold; "><B><font  face='Courier'>-windows</font></B></span></A><font  face='Courier'>=yes</font> as well.)</P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >To redirect Purify messages to a log file, set the option <A href="ht_opt_output_mode.htm#MID_LOG"><span style="font-weight:bold; "><B><font  face='Courier'>-log-file</font></B></span></A>=<font  face='Courier'>&lt;filename.plog&gt;</font>. (Use the <A href="ht_opt_output_mode.htm#MID_OUTPUT"><span style="font-weight:bold; "><B><font  face='Courier'>-output-limit</font></B></span></A> option to restrict the size of the log file if you need to conserve disk space.)</P></LI>
+ </UL>
+ <P>You can also use standard shell file redirection syntax to redirect Purify output to a text file when you run the <A href="../html_notoc/ht_gloss_instr.htm"><span style="font-weight:bold; "><B>instrumented</B></span></A> program. For example, after compiling and linking with Purify, you can run the program as follows:   </P>
+ <TABLE width="583" cellspacing='0' cellpadding="1">
+  <TR valign=top>
+  <TD width="108">
+  <P class="rCode">csh<BR></P></TD>
+  <TD width="475">
+  <P class="rCode">% a.out &gt;&amp; a.out.messages</P></TD></TR>
+  <TR valign=top>
+  <TD width="108">
+  <P class="rCode">sh, ksh<BR></P></TD>
+  <TD width="475">
+  <P class="rCode">$ a.out 2&gt; a.out.messages</P></TD></TR>
+ </TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,246 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Tool Mentor: Managing Process Content Using Rational Process Workbench</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/tools.gif"> <a href="../toolment.htm">Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/rup1.gif"> <a href="rpw.htm">Rational Process Workbench Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/toolmentor.gif"> Managing Process Content Using Rational Process Workbench
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Tool Mentor: <rpw name="PresentationName">Managing Process Content Using Rational Process Workbench</rpw><a name="Top"></a>
+</h2>
+<h3>Purpose</h3>
+<p>This tool mentor describes how to manage your content when you develop 
+  your own process material.</p>
+<p>This tool mentor relates to the Rational Unified Process&nbsp; information:</p>
+<ul>
+  <li><a href="../devkit/tm_webpa.htm"">Toolkit: Authoring Process Web Pages</a></li>
+  <li><a href="../../devkit/ruptools/doc/translate.htm"">Toolkit: Translating the 
+    Rational Unified Process</a></li>
+  <li><a href="../../devkit/ruptools/doc/trans_tool.htm"">Toolkit: Translating 
+    the Rational Unified Process Tools</a></li>
+</ul>
+      <h3>Overview</h3>
+<p>The Rational Process Workbench (RPW) allows you to create new HTML files based on provided
+templates. This allows you to author process content&#151either inside or
+outside of RPW's control&#151with your preferred HTML
+editor.<p>Most process HTML files have presentation names. These are the names by which files are
+represented in published Web sites. RPW supports changing
+the presentation names in a separate user interface.<p>During publishing RPW processes hyperlinks encountered in the text material and updates them with
+their appropriate presentation names. This means you can use spontaneous hyperlinks in your process text. If a particular process closure, however,
+does not include the file designated by a hyperlink, RPW disables the hyperlink
+as it processes the file during publishing.<p>Web Site Forms provide
+the &quot;static&quot; portions of generated Web sites, which are those portions
+that do not vary with the closure of the generated process. RPW supports composing Web Site Forms using the same paradigm it does for
+content files in general, and allows you to modify the set of files and folders
+of which it's comprised.
+<h4>Tool Steps</h4>
+<p>Manage your process content following these steps:</p>
+<ol>
+  <li>
+    <p class="MsoNormal"><a href="#Edit content pages"">Create and edit content pages</a></li>
+  <li>
+    <p class="MsoNormal"><a href="#Synchronize a Process Content Library with its Process Model"">Synchronize a
+    Process Content Library with its process model</a></li>
+  <li>
+    <p class="MsoNormal"><a href="#Translate a Process Content Library into a different language"">Translate a
+    Process Content Library into a different language</a></li>
+  <li>
+    <p class="MsoNormal"><a href="#Manage Web Site Forms"">Manage Web Site Forms</a></li>
+</ol>
+<h3>1. <a name="Edit content pages">Create and edit content pages</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+    <p>Content pages provide the text descriptions of process elements. As
+    you develop your process material, you need to create new pages to describe
+    the new process elements you create, or you need to add or replace files for
+    existing elements.
+    <p> The content pages reside in a Process Content Library (PCL). Content pages are ordinary HTML pages with some additional RPW
+    constructs embedded in them. These constructs are clearly
+    marked in the files and must not be modified or removed.
+    <p>RPW does not include an HTML editor. It does,
+    however, support template-based creation of new pages in the PCL, as well as navigation from the Rational Rose modeling space to an
+    HTML editor. This allows you to create new content files from your modeling
+    context, and to navigate back and forth between your modeling and authoring
+    activities.
+    <p><b><img src="../../images/helpbook.gif" width="16" height="16"> </b> Refer
+to the topic titled <i>Creating and editing content pages</i> in the RPW online Help for detailed
+information.
+<h3>2. <a name="Synchronize a Process Content Library with its Process Model">Synchronize a
+Process Content Library with its process model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+    <p>A PCL and its process model are considered to be synchronized
+    if all file references existing in the process model are satisfied by the
+    PCL. RPW provides a function that
+    determines whether a process model is synchronized with its associated PCL, which operates at any level inside of your
+    process model,
+    from the entire process model down to individual process elements.
+    <p><b><img src="../../images/helpbook.gif" width="16" height="16"> </b> Refer
+to the topic titled <i>Synchronizing a Process Content Library with its Process Model</i>
+    in the RPW online Help for detailed
+information.
+<h3>3.&nbsp;<a name="Translate a Process Content Library into a different language">
+Translate a Process Content Library into a different language</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+    <p>A PCL can be translated into different languages, retaining
+    the associations to its process model. Conversely, this also means that the same process
+    model can serve as the model for multiple translations of its PCL.
+    <p><b><img src="../../images/helpbook.gif" width="16" height="16"> </b> Refer
+to the topic titled <i>Translating a Process Content Library into a different language</i>
+    in the RPW online Help for detailed
+information.
+<h3>4.&nbsp; <a name="Manage Web Site Forms">Manage Web Site Forms</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The Web Site Form is a collective term for the invariable portions of a
+    published process&#151those portions that are not published by RPW, but exist there to provide the context for your process. The&nbsp; Web Site Form is comprised of a collection of
+folders and individual files that reside in the Content Library.<p>Most notably,
+a <font face="Courier New" size="2">tree.dat</font> file exists that specifies
+the layout of the static portions of presented tree browsers.<p>RPW defines a &#171process» process element, which is the
+element type on which Web Site Forms are defined. The Web Site Form File
+Association
+dialog is used for this purpose and allows for the association of any number of
+anonymous folders and files. The only mandatory element in a Web Site Form is
+the &quot;tree browser folder&quot;, which is the folder that contains the definition
+of the initial pre-generation tree browser and other associated files.<p>In a generated process Web site,
+all files referenced from the non-generated portions of the tree browser need to
+be included in the published material. This applies to all sections except
+Disciplines, Artifacts, Roles, and Activities, and Tools. Every page referenced, directly or indirectly, by the tree
+browser must be included in the Web Site Form definition.<p>To facilitate the
+process development stage, you might want to define an alternative, smaller Web
+Site Form&#151one that excludes the many files&nbsp; included in your production-quality
+Web Site Form.<p><b>Note</b>: The <font face="Courier New" size="2">tree.dat</font>
+file in your tree browser folder needs to be updated in tandem with any changes
+to the Web Site Form to ensure that the files in the <font face="Courier New" size="2">tree.dat</font>
+file references are actually present in the published Web site. They become
+present in the published Web site if they were directly specified as a file or
+indirectly specified through their enclosing folder.
+    <p><b><img src="../../images/helpbook.gif" width="16" height="16"> </b> Refer
+to the topic titled <i>Managing Web Site Forms</i> in the RPW online Help for detailed
+information.
+<h3>For More Information <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>
+<IMG SRC="../../images/Book.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="15">
+ For detailed information on
+this procedure, see Chapter 5, &quot;Managing process content&quot; in
+the <i>Developing Process Using Rational Process Workbench </i>manual.
+<p>
+&nbsp;
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

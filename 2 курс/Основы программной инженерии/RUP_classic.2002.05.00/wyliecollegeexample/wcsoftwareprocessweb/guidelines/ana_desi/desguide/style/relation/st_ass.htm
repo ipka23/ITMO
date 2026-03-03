@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standards: Association</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards:
+    Association </h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" WIDTH="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER" width="136"><strong><img SRC="../../style/images/im_ass.jpg" NOSAVE WIDTH="90" HEIGHT="30"> <br>
+        Association</strong></td>
+        <td width="452">A structural relationship that describes a set of links, where a link is a
+        connection among objects.</td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER" width="136"><strong>Related Information:</strong></td>
+        <td width="452"><dir>
+          <li><a href="../../style/relation/st_relov.htm">Standards: Relationships</a></li>
+          <li><a HREF="../../style/relation/st_agg.htm">Standards: Aggregation</a></li>
+          <li><a HREF="../../style/relation/st_comp.htm">Standards: Composition</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_assoc.htm">RUP Guidelines: Association</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_aggrg.htm">RUP Guidelines: Aggregation</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_sbscr.htm">RUP Guidelines: Subscribes-Association</a></li>
+        </dir>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a HREF="../../style/relation/st_ass.htm#Background">Background</a></li>
+      <li><a HREF="../../style/relation/st_ass.htm#Naming">Naming Standards</a></li>
+      <li><a HREF="../../style/relation/st_ass.htm#Doc">General Documentation Standards</a></li>
+      <li><a HREF="../../style/relation/st_ass.htm#Stereotypes">Stereotypes</a></li>
+      <li><a HREF="../../style/relation/st_ass.htm#Examples">Examples</a></li>
+    </ul>
+    <h3><a NAME="Background"></a>Background&nbsp;<a HREF="../../style/relation/st_ass.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>An association is a structural relationship that specifies that objects of one class
+    are connected to objects of another.&nbsp; There are two special forms of association;
+    aggregation and composition - the standards for these elements are the same as used for
+    associations (although they have their own pages see <a HREF="../../style/relation/st_agg.htm">Standards:
+    Aggregation</a> and <a HREF="../../style/relation/st_comp.htm">Standards: Composition</a>). </p>
+    <h3><a NAME="Naming"></a>Naming Standards&nbsp;<a HREF="../../style/relation/st_ass.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>An association may be named. The name of the association should reflect the purpose of
+    the relationship and be a verb phrase; association names are optional but should be used
+    where they add clarity to the model.&nbsp; Association names should start with an upper
+    case letter. </p>
+    <p>Each end of an association is a role specifying the face that a class plays in the
+    association. Each role must have a name, and the role names opposite a class must be
+    unique. The role name should be a noun indicating the associated object's role in relation
+    to the associating object. A suitable role name for a <font FACE="Courier New,Courier">Teacher</font>
+    in an association with a <font FACE="Courier New,Courier">School</font> Class would, for
+    instance, be <font FACE="Courier New,Courier">lecturer</font>. You should avoid names like
+    &quot;<font FACE="Courier New,Courier">has</font>&quot; and &quot;<font FACE="Courier New,Courier">contains.</font>&quot;&nbsp; Role names should start with a
+    lower case letter. </p>
+    <p>Where only single associations exist between two classes no names are required. If
+    there is more than one association between any two classes then the associations must be
+    named or explicit role names must be applied.&nbsp; The name of the association can be
+    omitted if role names are used. </p>
+    <p>Note: When there is no role name on one of the ends of an association then the class
+    name is used as a default role name. </p>
+    <h3><a NAME="Doc"></a>General Documentation Standards&nbsp;<a HREF="../../style/relation/st_ass.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>All association must have an explicit multiplicity defined. </p>
+    <p>All other association documentation (except for naming) is optional. </p>
+    <p>Bi-directional associations are allowed in the Analysis Model. </p>
+    <p>In addition to setting the multiplicity and navigability of the association, each
+    association end should be characterized using the following types of constraint: <ul>
+      <i><p>Initial Value</i>: The result of traversing the association on object creation <br>
+      <i>Invariants</i>: Details of any invariant conditions that apply to the association end <br>
+      <i>Valid Ranges</i>: Details of any range limitations applied to the objects held <br>
+      <i>Validation Rules</i>: Details of any validation rules that apply to the objects held</p>
+    </ul>
+    <p>where these are not already identified by the association or the associated classes. </p>
+    <h3><a NAME="Stereotypes"></a>Stereotypes&nbsp;<a HREF="../../style/relation/st_ass.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <table BORDER="1" CELLPADDING="7" WIDTH="85%" BORDERCOLOR="#000000">
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%" BGCOLOR="#000000"><font COLOR="#FFFFFF" size="3"><b>Stereotype</b></font></td>
+        <td VALIGN="TOP" WIDTH="13%" BGCOLOR="#000000"><font COLOR="#FFFFFF" size="3"><b>Source</b></font></td>
+        <td VALIGN="TOP" WIDTH="49%" BGCOLOR="#000000"><font COLOR="#FFFFFF" size="3"><b>Comments</b></font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font size="2">&lt;&lt;subscribes&gt;&gt;</font></td>
+        <td VALIGN="TOP" WIDTH="13%"><small><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_sbscr.htm">RUP</a></small></td>
+        <td VALIGN="TOP" WIDTH="49%"><font size="2">A <b>subscribes</b>-<b>association</b> between
+        two classes indicates that objects of the subscribing class will be informed when a
+        particular event has occurred in objects of the associated class. A subscribes-association
+        has a <b>condition</b> defining the event that causes the subscriber to be notified.</font><p><font size="2">The <strong>condition</strong> must be specified as part of the association's
+        documentation. </font></td>
+      </tr>
+    </table>
+    <h3>&nbsp;<a NAME="Examples"></a>Examples&nbsp;<a HREF="../../style/relation/st_ass.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>None</td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" 
+border="0" width="20" height="110"></a></p>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+Version&nbsp;2001.02</small></small></font></td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

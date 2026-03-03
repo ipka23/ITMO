@@ -1,0 +1,306 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Changing the granularity of collected data             Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1703>
+<meta name=layout-width content=680>
+<meta name=date content="05 16, 2001 5:17:52 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_time_reg_win_traps.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_coll_partial.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Changing the granularity of collected data</h1>
+
+<p>Quantify can collect function time information at different levels of 
+ detail, or granularity. As the level of detail increases, so does the 
+ cost of collecting the data. By default, Quantify determines the level 
+ of detail based on the type of code your compiler emits. </p>
+
+<p>Quantify can collect data at the following levels of granularity: </p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0;"
+		cellspacing=0
+		width=100%>
+<col style="width: 28.481%;">
+<col style="width: 71.519%;">
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.481%>
+<p><span style="font-weight: bold;"><B>Collection granularity</B></span><br>&nbsp;</p></td>
+<td style="border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=71.519%>
+<p style="font-weight: bold;">Description</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.481%>
+<p>Function<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=71.519%>
+<p>Distinguishes counts for each function only</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.481%>
+<p>Basic-block<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=71.519%>
+<p>Distinguishes counts for each basic block</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=28.481%>
+<p>Line<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=71.519%>
+<p>Distinguishes counts for each line</p></td></tr>
+</table>
+
+<p>You can use the <a href="ht_opt_buildtime.htm#MID_COLLECTION" style="font-weight: bold; font-family: Courier;">-collection-granularity</a> 
+ option to control the level of detail at which Quantify collects data. 
+ You can specify function, basic-block, or line. </p>
+
+<p>You can use basic-block and line only if debugging information is available; 
+ that is, if you compile your application using the <a href="../html_notoc/ht_gloss_debug.htm" style="font-weight: bold;">-g 
+ debugging option</a>. </p>
+
+<ul>
+	
+	<li class=kadov-p
+		class=kadov-p>
+	<span style="font-family: Courier;">-collection-granularity=function</span> 
+ 
+	
+	<p>Quantify tracks the total machine cycles over each function call 
+ but does not record any data about machine cycles for basic blocks. This 
+ level of data collection incurs the least overhead, requiring about 1 
+ machine cycle for each basic block. This is the detail that is displayed 
+ in the Function Detail window.</p>
+	
+	<p>When you specify <span style="font-family: Courier;">-collection-granularity=function</span>, 
+ the Annotated Source window is not available.</p>
+	
+	<p>If debugging information is not present, such as in third-party 
+ libraries and in optimized code, Quantify automatically instruments code 
+ at function granularity.<br>&nbsp;</p>
+	</li>
+	
+	<li class=kadov-p
+		class=kadov-p>
+	<span style="font-family: Courier;">-collection-granularity=basic-block</span> 
+ 
+	
+	<p>This setting requires debugging information. Quantify tracks both 
+ the total machine cycles over each function call and the machine cycles 
+ executed in each basic block. Basic block data is used for the line annotations 
+ in the Annotated Source window. <br>&nbsp;</p>
+	</li>
+	
+	<li class=kadov-p
+		class=kadov-p>
+	<span style="font-family: Courier;">-collection-granularity=line </span>
+	
+	<p>This is the default if debugging information is available. <span 
+ style="font-family: Courier;">-collection-granularity=line</span> is identical 
+ to basic-block granularity, except that when a basic block extends over 
+ several lines of source code, Quantify inserts additional counters to 
+ record line-by-line counts. This improves readability of the data but 
+ at the expense of additional counting at run time.</p>
+	</li>
+</ul>
+
+<p>Counting for basic blocks and lines is substantially slower than counting 
+ for function granularity, requiring approximately seven machine cycles 
+ per basic block or line counter. This is because Quantify must update 
+ both its function counter and each of the basic-block counters as it enters 
+ each basic block. Updating the basic-block counters requires updating 
+ a counter in memory. </p>
+
+<p>The average cost of each basic block in normal code is 5 to 10 machine 
+ cycles. This means that, exclusive of function entry and exit overhead, 
+ Quantify's counting insertion in this case slows the function on average 
+ by a factor of two. This contrasts with function granularity which slows 
+ the same code by only about 20 percent.</p>
+
+<p>To control the granularity of data collection without using the <span 
+ style="font-family: Courier;">-collection-granularity</span> option, you 
+ can:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Recompile your application 
+ without using the <span style="font-family: Courier;">-g</span> option 
+ so Quantify automatically collects data at function granularity. </p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Use strip -l to remove 
+ the line number information from certain files. Quantify then automatically 
+ collects data at function granularity.</p></li>
+</ul>
+
+<p>To speed up data collection in an application compiled for debugging 
+ without recompiling the code, use the <span style="font-family: Courier; font-weight: bold;"><B><a href="ht_opt_buildtime.htm#MID_FORCE" style="font-weight: bold;">-force-rebuild</a></B></span> option with the 
+ <span style="font-family: Courier;">-collection-granularity</span> option:</p>
+
+<p class=rCode>% quantify -force-rebuild \<br>
+&nbsp; &nbsp; &nbsp; -collection-granularity=function cc ...</p>
+
+</body>
+
+</html>

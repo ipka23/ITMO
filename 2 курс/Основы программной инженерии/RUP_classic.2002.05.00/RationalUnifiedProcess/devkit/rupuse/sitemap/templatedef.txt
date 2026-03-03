@@ -1,0 +1,84 @@
+includesubtree	false
+wwwroot	../../../applet/
+datafile	tree.zip
+startDir	../../../
+resultfile	/sitemap/template.htm
+relativepath	..
+bgcolor	#C0C0C0
+fgcolor	#336699
+levelfont	defaultfont	Times	Plain	-2
+levelfont	headlinefont	Times	Bold	+1
+levelfont	1	Times	Plain	-2
+headerfile	templatepreamble.txt
+footerfile	sitepostamble.txt
+maxlevels	10
+delimeters	*
+defaulttitlelength	25
+
+<--
+label	Templates
+level	0
+row	1
+col	1
+colspan	3
+cellcolor	true
+-->
+
+
+<--
+label	Microsoft Word Templates
+level	1
+row	2
+col	1
+cellcolor	true
+-->
+
+<--
+label	Rational Rose Templates
+level	1
+row	2
+col	2
+cellcolor	true
+-->
+
+<--
+label	SoDA Templates
+level	1
+row	2
+col	3
+cellcolor	true
+-->
+
+<--
+label	Business Modeling
+level	2
+row	3
+col	1
+
+-->
+
+<--
+label	RUP Template Model
+level	2
+row	3
+col	2
+-->
+
+<--
+label	Business Entity Report
+level	2
+row	3
+col	3
+-->
+
+
+
+
+
+
+
+
+
+
+
+

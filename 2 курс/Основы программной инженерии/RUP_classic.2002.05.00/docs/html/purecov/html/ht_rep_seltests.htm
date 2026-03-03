@@ -1,0 +1,467 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Selected tests report                                  Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2581>
+<meta name=layout-width content=655>
+<meta name=date content="09 13, 2001 3:57:57 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_rep_anndiff.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_writing_report_scripts.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	color=navy
+	style="font-family: Helvetica;
+			font-size: 18pt;
+			color: #000080;
+			font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Selected tests report</B></FONT></span></B></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script addresses 
+ the problem of selecting an appropriate subset of tests to run in order 
+ to test a limited change made to the code. Most of the time, it is too 
+ time consuming to run the entire test suite after each change, so the 
+ typical practice is for the user to update the master source code without 
+ running any of the test suite. Then, as part of an overnight build process, 
+ the full test suite is run and reported.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">There 
+ are problems with this practice, for example:</FONT></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If the update introduces 
+ severe problems, the rest of the development group may be &quot;stuck&quot; 
+ while they wait for a repair.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If several developers 
+ have made updates, it may not be clear which code changes caused things 
+ to break.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If several developers 
+ have introduced bugs, one set of problems may mask the other, causing 
+ a series of delays between the initial update of the code and the eventual 
+ discovery of problems introduced.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">When problems are 
+ eventually discovered, the developer may already be involved in other 
+ changes, making it inconvenient or difficult to stop and fix those problems.</FONT></span></p></li>
+</ul>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script gives developers 
+ a way to run just that subset of the test suite which is necessary to 
+ exercise the code changes they have just made. It can greatly reduce the 
+ testing time required, making it much more feasible to do the appropriate 
+ testing before the code update. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Even 
+ though some test harnesses support the selection of an arbitrary subset 
+ of the tests to run, they still do not address the issue of determining 
+ just which subset of the tests is the appropriate subset to exercise a 
+ given set of changes. The </FONT></span><span face=Courier
+										style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script addresses 
+ this problem. It assumes that:</FONT></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Your test harness 
+ supports specification of an arbitrary subset of tests to run.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica>There 
+ is a set of </span><span face=Courier
+							style="font-family: Courier;">.</span><span 
+ face=Helvetica
+	style="font-weight: bold;"><B><a href="../html_notoc/ht_gloss_pcv.htm">pcv</a></B></span><span 
+ face=Helvetica> files available, one per testcase, that might need running; 
+ and further that you have some way to determine from the name of a </span><span 
+ face=Courier
+	style="font-family: Courier;">.pcv</span><span face=Helvetica> file 
+ which testcase corresponds to it.</span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You can identify which 
+ source files were modified.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-P-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">There is some way 
+ to determine for each source file the full set of </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> output identifying 
+ the changes made since the coverage data for each test was collected.</FONT></span></p></li>
+</ul>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">When 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> runs, it searches 
+ all the coverage files, and identifies each coverage file that exercises 
+ any function that was modified. The resulting list of coverage files is 
+ output. These can then be converted into whatever form you need to run 
+ just the corresponding tests from the test suite.</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% &lt;changed 
+ files&gt; | pc_select [-diff=&lt;rule&gt;] \ <br>
+[-canonicalize=&lt;rule&gt;] &lt;file&gt;.pcv ...</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&lt;changed 
+ files&gt;</FONT></span><span face=Helvetica
+						style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ list piped to </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> via </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> should consist of 
+ filenames, one per line, identifying each file modified since the coverage 
+ data was collected. For example, if you have been making the changes for 
+ the last 3 days, you can use a </FONT></span><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">find</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> command to produce 
+ the correct list, and then pipe the list into the </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> command:</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% find 
+ * -type f -mtime -3 -print | pc_select</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ list of </FONT></span><span face=Courier
+						style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&lt;.pcv&gt;</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> files on the command 
+ line should be the full list of coverage data corresponding to the test 
+ suite. For example,</FONT></span></p>
+
+<p style="margin-left: 14.40pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% 
+ /usr/builds/951211/tests/*.pcv</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-diff &lt;rule&gt;</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option is used to 
+ specify exactly how to obtain the </FONT></span><span face=Courier
+												style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> output for each file. 
+ It is a generic Perl expression that is applied (via </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">eval</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">) to each file on 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> in turn to obtain 
+ the </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> output for each file. 
+ When the expression is evaluated, the variable </FONT></span><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">$file</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> contains the name 
+ as it was found on </FONT></span><span face=Courier
+								style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">, and for convenience 
+ the variable </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">$_</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> is also set to the 
+ same value.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Since 
+ the shell and Perl use some of the same metacharacters, it is very important 
+ to apply appropriate quotation marks and escapes to make sure the correct 
+ program parses the value.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ default value for the </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-diff 
+ &lt;rule&gt;</FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ is</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-diff='`rcsdiff 
+ $file`'</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">which 
+ says to use </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">rcsdiff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> on each file to look 
+ up the changes in the RCS data. Another example value is</FONT></span></p>
+
+<p style="margin-left: 14.40pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-diff='`diff 
+ $file.original $file`'</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">which 
+ says to look for a file </FONT></span><span face=Courier
+										style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">foo.original</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> from which the new 
+ version of </FONT></span><span face=Courier
+						style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">foo</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> is descended, then 
+ to use the standard </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">diff</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> program to calculate 
+ the changes.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">While 
+ the script can detect syntax errors in the specification, it cannot detect 
+ various other problems, such as reversing the order of the two files and 
+ argument errors to the command which cause it to produce no output.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-canonicalize 
+ &lt;rule&gt;</FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ is used in the case where the fullpaths in the&nbsp;</FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.pcv</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> files do not match 
+ those of the files which were being modified. For example, suppose that 
+ the name of the original </FONT></span><span face=Courier
+										style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">file.c</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> when it was built 
+ for the overnight full test run was:</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">/usr/builds/951211/src/file.c</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">while 
+ the fullpath in your development </FONT></span><span face=Helvetica
+												style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">a</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">rea is now:</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">/usr/home/pat/work/file.c</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">In 
+ this case, the </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pc_select</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> script looks for 
+ coverage information for the file under the latter name, but does not 
+ find it because all the information in the </FONT></span><span face=Courier
+														style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.pcv</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> file is under the 
+ former name.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-canonicalize 
+ &lt;rule&gt;</FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ is a generic Perl expression that is applied (via </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">eval</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">) to each file in 
+ turn in order to determine what name to use to locate coverage for it 
+ in the </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.pcv</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> files. When the expression 
+ is evaluated, the variable </FONT></span><span face=Courier
+										style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">$file</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> contains the name 
+ as it was found on </FONT></span><span face=Courier
+								style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">stdin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">, and for convenience 
+ the variable </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">$_</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> is also set to the 
+ same value.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ default value of the </FONT></span><span face=Courier
+									style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-canonicalize 
+ &lt;rule&gt;</FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ is:</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-canonicalize='chop(local($here)=`pwd`); 
+ &quot;$here/$file&quot;'</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">This 
+ converts the relative pathname to an absolute pathname, using </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pwd</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> to calculate the 
+ fullpath. For the example shown here, if the filename is just the basename 
+ of the file, you can use:</FONT></span></p>
+
+<p style="margin-left: 14.40pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-canonicalize='&quot;/usr/builds/951211/src/$file&quot;'</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">While 
+ the script can detect syntax errors in this specification, it cannot detect 
+ problems such as incorrect use of automounter prefixes or specification 
+ of a fixed value instead of a variable value.</FONT></span></p>
+
+</body>
+
+</html>

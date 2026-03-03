@@ -1,0 +1,507 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Output mode options                                    Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2380>
+<meta name=layout-width content=816>
+<meta name=date content="05 18, 2001 4:30:28 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_opt_message_batching.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_opt_static_check.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Output mode options</h1>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableHead>Option</p></td>
+<td style="width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableHead>Default</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-windows</p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">not 
+ set</p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Controls whether Purify opens the Viewer.</p>
+<p>Purify opens the Viewer by default when you run an <a href="../html_notoc/ht_gloss_instr.htm"><span 
+ style="font-weight: bold;"><B>instrumented</B></span></a> program unless you 
+ request an alternative output format using one or more of the options 
+ <a href="ht_opt_output_mode.htm#MID_LOG"><span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier>-log-file</font></B></span></a>, <a href="ht_opt_output_mode.htm#MID_VIEWFILE"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>-view-file</font></B></span></a> 
+ or <a href="ht_opt_mail.htm"><span style="font-weight: bold;"><B><font style="font-family: Courier;"
+	face=courier>-mail-to-user</font></B></span></a>.</p>
+<p>To have Purify open the Viewer in addition to any alternative output 
+ formats, set <font style="font-family: Courier;"
+					face=courier>-windows=yes</font>.</p>
+<p style="margin-bottom: 6.00pt;">If you set <font style="font-family: Courier;"
+													face=courier>-windows=no</font>, 
+ Purify outputs ASCII text to <font style="font-family: Courier;"
+									face=courier>stderr</font> instead 
+ of opening the Viewer. Purify interleaves error messages with the program 
+ output, and discards repeating error messages by default rather than counting 
+ them.</p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_LOG></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">-log-file</p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText
+	style="font-weight: bold; font-family: Helvetica, sans-serif;">not 
+ set </p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Set <font style="font-family: Courier;"
+			face=courier>-log-file=&lt;filename&gt;</font> to have Purify 
+ save ASCII output to the named file, in addition to any other output formats 
+ you requested using the <a href="ht_opt_output_mode.htm#MID_VIEWFILE"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>-view-file</font></B></span></a> 
+ or <a href="ht_opt_mail.htm"><span style="font-weight: bold;"><B><font style="font-family: Courier;"
+	face=courier>-mail-to-user</font></B></span></a> option.</p>
+<p>Purify sends the same information to the log file that you see in the 
+ Viewer. Messages are printed fully expanded. Purify does not expand source 
+ files, even when line-number and filename information is available.</p>
+<p>Set <font style="font-family: Courier;"
+			face=courier>-log-file=stderr</font> to have Purify output 
+ ASCII text to the program's <font style="font-family: Courier;"
+									face=courier>stderr</font> stream. 
+ (Note that you cannot use <!--kadov_tag{{<spaces>}}-->&nbsp;<font style="font-family: Courier;"
+	face=courier><!--kadov_tag{{</spaces>}}-->stdout</font> <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->here.)</p>
+<p>You can use <a href="../html_notoc/ht_gloss_conversion.htm"><span style="font-weight: bold;"><B>conversion 
+ characters</B></span></a> in <font style="font-family: Courier;"
+								face=courier>&lt;filename&gt;</font>. </p>
+<p>If you set this option, Purify does not open the Viewer, unless you 
+ set <a href="ht_opt_output_mode.htm"><span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier>-windows</font></B></span></a><font style="font-family: Courier;"
+												face=courier>=yes</font>.</p>
+<p>To append output to an existing log file instead of replacing it, use 
+ the<span style="font-weight: bold;"><B><font style="font-family: Courier;"
+											face=courier> </font></B></span><a href="ht_opt_output_mode.htm#MID_APPEND"><span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier>-append-logfile</font></B></span></a> option</p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_APPEND></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>-append-logfile</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>no</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p style="margin-bottom: 6.00pt;">Appends Purify output to the current 
+ log file rather than replacing it. </p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_VIEW></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>-view</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>not set</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>To open an empty Viewer, use:<font style="font-family: Courier;"
+										face=courier><br>
+% purify -view &lt;program-name&gt;</font>.</p>
+<p>To open an empty Viewer on a different screen, use:<font style="font-family: Courier;"
+															face=courier> 
+ <br>
+% purify -view -display=&lt;myscreen&gt;.0 &lt;program-name&gt;</font></p>
+<p style="margin-bottom: 6.00pt;">To open a view file in the Viewer, use: 
+ <span style="margin-bottom: 6.00pt;"><font style="font-family: Courier;"
+											face=courier><br>
+% purify -view &lt;program-name&gt;.pv</font>. <br>
+Purify opens the specified file in the Viewer, displaying the same output 
+ as when you ran the Purify'd program interactively. You do not need access 
+ to the original program. </span></p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_VIEWFILE></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableHead>-view-file</p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableHead>not set </p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Set <font style="font-family: Courier;"
+			face=courier>-view-file=&lt;filename&gt;</font>: to have Purify 
+ write compact binary data to the specified file, in addition to any other 
+ output formats you requested using the <a href="ht_opt_output_mode.htm#MID_LOG"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>-log-file</font></B></span></a> 
+ or <a href="ht_opt_mail.htm"><span style="font-weight: bold;"><B><font style="font-family: Courier;"
+	face=courier>-mail-to-user</font></B></span></a> option. </p>
+<p>Use the option <a href="ht_opt_output_mode.htm#MID_VIEW" style="font-family: Courier;"><span style="font-weight: bold; font-family: Courier;"><B>-view 
+ &lt;filename&gt;</B></span></a> to view the resulting file. </p>
+<p style="margin-bottom: 6.00pt;">You can use <a href="../html_notoc/ht_gloss_conversion.htm"><span 
+ style="font-weight: bold;"><B>conversion characters</B></span></a> in <font style="font-family: Courier;"
+	face=courier>&lt;filename&gt;</font>.</p>
+<p>If you set this option, Purify does not open the Viewer, unless you 
+ set <a href="ht_opt_output_mode.htm"><span style="font-weight: bold;"><B><font 
+ style="font-family: Courier;"
+	face=courier>-windows</font></B></span></a><font style="font-family: Courier;"
+												face=courier>=yes</font>.</p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_OUTPUT></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>-output-limit</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>1000000</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p style="margin-bottom: 6.00pt;">Use with the option <a href="ht_opt_output_mode.htm#MID_LOG"><span 
+ style="font-weight: bold;"><B>-<font style="font-family: Courier;"
+									face=courier>log-file</font></B></span></a> 
+ to restrict the size of the log file and to conserve disk space. The value 
+ of this option specifies the maximum size of the Purify log file in bytes. 
+ Purify truncates all output beyond this size. </p></td>
+<td_null></tr>
+</table>
+
+<p><a name=MID_USERPATH></a></p>
+
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 492px; border-spacing: 0px;"
+		cellspacing=0
+		width=492>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 288px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>-user-path</B></span></p></td>
+<td style="background-color: #e5e5e5;
+			width: 204px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableText><span style="font-weight: bold;"><B>not set</B></span></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td colspan=2
+	style="width: 492px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p>Specifies a list of directories in which to search for programs and 
+ source code. You can specify full pathnames separated by spaces or colons 
+ (:). For example:</p>
+<p class=rCode>setenv PURIFYOPTIONS -user-path=/usr/home/prog1:/usr/home/prog2</p>
+<p>Purify searches for the executable file from which to read the symbol 
+ table in your <font style="font-family: Courier;"
+					face=courier>$PATH</font>, then in -<font style="font-family: Courier;"
+	face=courier>user-path</font>. See also <a href="ht_opt_buildtime.htm#MID_PROGRAM"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>-program-name</font></B></span></a>.</p>
+<p>When searching for source code, Purify looks for the file in the full 
+ pathname specified in the debugging data, then in directories listed in 
+ <font style="font-family: Courier;"
+		face=courier>-user-path</font>, and finally in the current directory. 
+ </p></td>
+<td_null></tr>
+</table>
+
+<p>For information about other ways to save Purify output, click <a href="ht_saving.htm">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' width='14' height='14' border='0'>");}
+else
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' style='width: 14px;  			height: 14px;  			border-style: none;' width='14' height='14' border='0'>");}
+//-->
+</SCRIPT></a> </p>
+
+</body>
+
+</html>

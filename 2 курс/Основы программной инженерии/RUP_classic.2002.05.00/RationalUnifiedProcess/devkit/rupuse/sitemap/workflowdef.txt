@@ -1,0 +1,179 @@
+includesubtree	false
+wwwroot	../../../applet/
+datafile	tree_sitemap.dat
+startDir	../../../
+resultfile	/sitemap/workflow.htm
+relativepath	..
+bgcolor	#C0C0C0
+fgcolor	#336699
+levelfont	defaultfont	Times	Plain	-2
+levelfont	headlinefont	Times	Bold	+1
+levelfont	1	Times	Plain	-2
+headerfile	workflowpreamble.txt
+footerfile	sitepostamble.txt
+maxlevels	10
+delimeters	*
+defaulttitlelength	35
+
+<--
+label	Disciplines
+level	0
+row	1
+col	1
+colspan	5
+cellcolor	true
+-->
+
+<--	
+label	Requirements
+level	1
+row	2
+col	1
+rowspan	1
+colwidth	25%
+cellcolor	true
+-->
+
+<--
+label	Analysis & Design
+level	1
+row	2
+col	2
+rowspan	1
+colwidth	25%
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Implementation
+level	1
+row	2
+col	3
+rowspan	1
+colwidth	25%
+cellcolor	true
+-->
+
+<--
+label	Test
+level	1
+row	2
+col	4
+rowspan	1
+colwidth	20%
+cellcolor	true
+-->
+
+<--
+label	Introduction
+level	2
+row	3
+col	1
+rowspan	1
+-->
+
+
+<--
+label	Introduction
+level	2
+row	3
+col	2
+rowspan	1
+-->
+
+<--
+label	Introduction
+level	2
+row	3
+col	3
+rowspan	1
+-->
+
+<--
+label	Introduction
+level	2
+row	3
+col	4
+rowspan	1
+-->
+
+<--
+label	Deployment
+level	1
+row	4
+col	1
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Configuration & Change Management
+level	1
+row	4
+col	2
+rowspan	1
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Project Management
+level	1
+row	4
+col	3
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Environment
+level	1
+row	4
+col	4
+colspan	1
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Introduction
+level	2
+row	5
+col	1
+rowspan	1
+-->
+
+<--
+label	Introduction
+level	2
+row	5
+col	2
+rowspan	1
+-->
+
+<--
+label	Introduction
+level	2
+row	5
+col	3
+rowspan	1
+-->
+
+<--
+label	Introduction
+level	2
+row	5
+col	4
+colspan	2
+rowspan	1
+-->
+
+
+
+
+
+
+
+
+

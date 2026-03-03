@@ -1,0 +1,589 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../../../rop.css" type="text/css">
+<title>SearchEngine: The Search Applet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#004080" vlink="#8000FF" alink="#0000FF">
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../index.htm">Process Engineer Toolkit</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../../toolment/devkit/tm_use.htm">User's Guide</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../doc/index.htm">Tools Reference</a> &gt;
+<img border=0 src="../../../../../applet/images/tools.gif"> <a href="index.htm">Search Engine</a> &gt;
+<img border=0 src="../../../../../applet/images/tools.gif"> Search Applet
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+  
+<h1 class="banner"><a name="XE_SearchEngine__Search_Applet"></a>SearchEngine: 
+  The Search Applet</h1>
+<p class="banner"><a name="stdpage"></a> The generated HTML documents for the 
+  search applet are just sufficient to run the applet in a browser, or <samp>appletviewer</samp>. 
+  You will probably want to install the applet within some prepared HTML document, 
+  which contains instructions on how to use the search applet.</p>
+<p class="left">It is strongly suggested that you use a relative path from the 
+  applet page for both the <samp>codebase</samp> attribute, and the <samp>path</samp> 
+  parameter.</p>
+<p class="left">You may also want to change the name of your database files. The 
+  search applet expects to find the database in a file which has the <samp>URL</samp> 
+  given by the <samp>database</samp> parameter, in the <samp>codebase</samp> directory, 
+  but with different extensions.</p>
+<p>An example demonstrates these actions. The database for the search applet is 
+  constructed in a set of files:</p>
+<blockquote>
+  <pre>
+search.html
+search.ws
+</pre>
+</blockquote>
+<p>The original content of the <samp>search.html</samp> document is:</p>
+<blockquote>
+  <pre>
+&lt;title&gt;Search Web applet&lt;/title&gt;
+&lt;div align=center&gt;
+&lt;applet codebase=&quot;.&quot; archive=&quot;Search.zip&quot;
+ code=&quot;ruptools.Search.class&quot; width=600 height=200&gt;
+&lt;param name=database value=&quot;search&quot;&gt;
+&lt;!-- param name=path value=&quot;../&quot; --&gt;
+&lt;!-- param name=query value=&quot;Enter query: &quot; --&gt;
+&lt;!-- param name=results value=&quot;Results: (double click to view the document) &quot; --&gt;
+&lt;!-- param name=search value=&quot; Search &quot; --&gt;
+&lt;!-- param name=empty value=&quot;No matching documents found&quot; --&gt;
+&lt;!-- param name=select value=&quot;Search by: &quot; --&gt;
+&lt;!-- param name=title value=&quot; title &quot; --&gt;
+&lt;!-- param name=headings value=&quot; headings &quot; --&gt;
+&lt;!-- param name=lists value=&quot; lists &quot; --&gt;
+&lt;!-- param name=body value=&quot; body &quot; --&gt;
+&lt;!-- param name=target value=&quot;add target frame/window here&quot; --&gt;
+&lt;/applet&gt;
+&lt;/div&gt;</pre>
+</blockquote>
+<h3><a name="XE_SearchEngine__Personalising_the_applet"></a>Personalizing the 
+  applet</h3>
+<p>The applet interface consists of a series of labels, and input objects (text 
+  fields, lists, and selectors). All the labels, and result messages can be modified 
+  by simply specifying their value within the applet parameters. The labels have 
+  the following parameter names, and default values:</p>
+<table align="center" border="0" width=85%>
+  <tr bgcolor="#cccccc"> 
+    <td><b>Name of the parameter</b></td>
+    <td><b>Example value</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">searchfont<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Arial,PLAIN,12
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the font used in the search applet. 
+        The default value is <font class="paramexample">Helvetica,PLAIN,14</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">query<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Enter query:
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears to the left of the text 
+        input window. The default value is <font class="paramexample">Enter query:</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">results<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Results: (double click to view the document)
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears above the results list 
+        box. The default value is <font class="paramexample">Results: (double 
+        click to view the document)</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">search<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Search
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears in the button to the 
+        right of the text input window. The default value is <font class="paramexample">Search 
+        (double click to view the document)</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">empty<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">No matching documents found
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears in the results list box 
+        when no matching documents are found. The default value is <font class="paramexample">No 
+        matching documents found</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">select<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Search by:
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears to the left of the tag 
+        selectors, below the text input window and above the results list box. 
+        The default value is <font class="paramexample">Search by:</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">title<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">title
+    </td>
+    <td> 
+      <p class="paramdescription">The title (<samp>&lt;title&gt;</samp>) type 
+        tags selector label name. The default value is <font class="paramexample">title</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">headings<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">headings
+    </td>
+    <td> 
+      <p class="paramdescription">The headings (<samp>&lt;h1..h6&gt;</samp> and 
+        <samp>&lt;caption&gt;</samp>) type tags selector label name. The default 
+        value is <font class="paramexample">headings</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">lists<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">lists
+    </td>
+    <td> 
+      <p class="paramdescription">The list (<samp>&lt;li&gt;</samp> and <samp>&lt;dt&gt;</samp>) 
+        type tags selector label name. The default value is <font class="paramexample">lists</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">body<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">body
+    </td>
+    <td> 
+      <p class="paramdescription">The remaining tags selector label name. The 
+        default value is <font class="paramexample">body</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">target<br>
+        (optional)
+    </td>
+    <td></td>
+    <td> 
+      <p class="paramdescription">The name of the browser window or frame, where 
+        requested documents are to be displayed.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">helppage<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">help.htm
+    </td>
+    <td> 
+      <p class="paramdescription">The name of the helpfile relative to the codebase. 
+        The default value is <font class="paramexample">help.htm</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">helptarget<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">_top
+    </td>
+    <td> 
+      <p class="paramdescription">The html target in which the helppage is shown. 
+        If this parameter is not set the helppage will be shown in the current 
+        frame.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">database
+    </td>
+    <td> 
+      <p class="paramexample">doc.ws
+    </td>
+    <td> 
+      <p class="paramdescription">The name of the database file
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">wwwroot<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">search
+    </td>
+    <td> 
+      <p class="paramdescription">Defines where the pictures have their top directory. 
+        If this parameter is not defined wwwroot is set to the documentbase of 
+        the HTML document containing the applet tag. In most cases this parameter 
+        is not used.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">path
+    </td>
+    <td> 
+      <p class="paramexample">../
+    </td>
+    <td> 
+      <p class="paramdescription">The relative path to the top of the directory 
+        structure. This value of this parameter together with the value in the 
+        database will make an URL complete.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">frame<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">true
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies if the applet shall be opened in a 
+        separate window or in the current applet area. The default value is <font class="paramexample">false</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">framewidth<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">250
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the width of the separate window. 
+        The default value is <font class="paramexample">250</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">frameheight<br>
+        (optional)<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">400
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the height of the separate window. 
+        The default value is <font class="paramexample">400</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">frametitle<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Search
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the title of the separate window. 
+        The default value is <font class="paramexample">Tree Browser</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">frameimage<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">images/icon.gif
+    </td>
+    <td> 
+      <p class="paramdescription">You can choose to display a text, a image or 
+        both in the applet area. Specify the image relatively the documentbase, 
+        for example &quot;images/icon.gif&quot;. If the image can not be loaded 
+        the text specified by the parameter framelabel will be shown.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">framelabel<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Tree Browser
+    </td>
+    <td> 
+      <p class="paramdescription">Specify the text to be shown in the applet area. 
+        The default value is <font class="paramexample">Tree Browser</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">labelpos<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">below
+    </td>
+    <td> 
+      <p class="paramdescription">If both the parameters frameimage and framelabel 
+        are specified this parameter specifies where the text shall be written 
+        according to the image. Possible values are &quot;right&quot; and &quot;below&quot;. 
+        The default value is <font class="paramexample">below</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">framelabelfont<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Arial,BOLD,12
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the font of the text specified by 
+        the parameter framelabel. The default value is <font class="paramexample">Arial,BOLD,12</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">framelabelbgcolor<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">white
+    </td>
+    <td> 
+      <p class="paramdescription">Specifies the background color of the applet. 
+        The default value is <font class="paramexample">white</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">loading1<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Loading database
+    </td>
+    <td> 
+      <p class="paramdescription">The first part of the text which appears when 
+        the database is loading. The default value is <font class="paramexample">Loading 
+        database</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">loading2<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">%...
+    </td>
+    <td> 
+      <p class="paramdescription">The second part of the text which appears when 
+        the database is loading. The default value is <font class="paramexample">%...</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">failedloading<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Failed to load database, thread interrupted
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears if loading the database 
+        fails. The default value is <font class="paramexample">Failed to load 
+        database, thread interrupted</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">invaliddocumenturl<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Couldn't build the document URL
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears if the url to a document 
+        contains syntax errors. The default value is <font class="paramexample">Couldn't 
+        build the document URL</font>.
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <p class="paramname">invalidhelpurl<br>
+        (optional)
+    </td>
+    <td> 
+      <p class="paramexample">Invalid help url!
+    </td>
+    <td> 
+      <p class="paramdescription">The text which appears if the url to the help 
+        document contains syntax errors. The default value is <font class="paramexample">Invalid 
+        help url!</font>.
+    </td>
+  </tr>
+</table>
+ 
+<p><font face="Arial">
+<a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

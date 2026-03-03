@@ -1,0 +1,353 @@
+
+<html>
+
+<head>
+<title>Artifact: Test Log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="ars_test.htm">Test Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/additional.gif"> <a href="arp_tst_add.htm">{More Test Artifacts}</a> &gt;
+<img border=0 src="../../applet/images/additional.gif"> <a href="arp_tstimpart.htm">Test Implementation</a> &gt;
+<img border=0 src="../../applet/images/ar_tstlog.gif"> Test Log
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+<h2 class="banner"><a name="Top"></a>Artifact:
+<rpw name="PresentationName">Test Log</rpw><a name="XE_test_log__artifact_definition"></a></h2>
+
+
+<div align="center">
+<table border="1" width="85%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolorlight="#808080" bordercolordark="#808080">
+ <tbody valign="top">
+  <tr>
+      <td width="135" height="34" valign="middle" align="center"><img src="images/ar_tstlog.jpg" width="49" height="51" >&nbsp;<br>
+        <font face="Arial" size="-1"><b>Test Log</b></font></td>
+      <td width="371" height="34">A collection of raw output captured during a 
+        unique execution of one or more tests, usually representing the output 
+        resulting from the execution of a Test Suite for a single test cycle run.</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>UML Representation:</b></font></td>
+      <td width="365" height="22">There is no UML representation for this artifact.</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Role:</b></font></td>
+      <td width="365" height="22"><a href="../workers/wk_tstr.htm">Tester</a>&nbsp;</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Optionality/ 
+        Occurrence:</b></font></td>
+      <td width="365" height="22">One or more artifacts. Often used informally 
+        or discarded once Test Results are determined. Where formal audit requirements 
+        must be met, it may be necessary to retain the Test Logs or some collection 
+        thereof.</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Enclosed in:</b></font></td>
+      <td width="365" height="22">Automation tools often provide and manage their 
+        own Test Log facilities.</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Templates:</b></font></td>
+      <td width="365" height="22"><ul>&nbsp;<li><a href="../templates.htm"">Others</a></li></ul>
+</td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Examples:</b></font></td>
+      <td width="365" height="22">&nbsp;
+<!---        <ul>
+          <li> 
+            Rational Robot log
+          </li>
+          <li>Visual Coverage log</li>
+          <li>Custom User log</li>
+        </ul> --->
+      </td>
+  </tr>
+  <tr>
+      <td width="141" height="22"><font face="Arial" size="-1"><b>Reports:</b></font></td>
+      <td width="365" height="22">&nbsp;</td>
+  </tr>
+  <tr>
+      <td width="141" height="22" valign="top"><font face="Arial" size="-1"><b>More Information:</b></font></td>
+      <td width="365" height="22" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="506" height="22" colspan="2">
+    <ul>
+          <li><a href="#Purpose"">Purpose</a></li>
+          <li><a href="#Brief Outline"">Brief Outline</a></li>
+          <li><a href="#Properties"">Properties</a></li>
+          <li><a href="#Timing"">Timing</a></li>
+          <li><a href="#Responsibility"">Responsibility</a></li>
+          <li><a href="#Tailoring"">Tailoring</a></li>
+    </ul>
+    </td>
+  </tr>
+ </tbody>
+</table>
+
+
+<!-- Input_Output Activity Begin -->
+<br>
+<table border="1" width="85%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+ <tbody valign="top">
+  <tr>
+      <td width="50%"><font face="Arial" size="-1"><b>Input to Activities:&nbsp;</b></font> 
+        <ul>
+<li><a href="../activity/ac_tst_anltstflr.htm">Analyze Test Failure</a></li>
+<li><a href="../activity/ac_tst_dtrtstrsl.htm">Determine Test Results</a></li>
+<li><a href="../activity/ac_vfycr.htm">Verify Changes in Build</a></li>
+</ul>
+&nbsp;</td>
+      <td width="50%"><font face="Arial" size="-1"><b>Output from Activities:&nbsp;</b></font> 
+        <ul>
+<li><a href="../activity/ac_tst_exctstste.htm">Execute Test Suite</a></li>
+<li><a href="../activity/ac_tst_imptst.htm">Implement Test</a></li>
+<li><a href="../activity/ac_tst_imptstste.htm">Implement Test Suite</a></li>
+</ul>
+&nbsp;</td>
+  </tr>
+ </tbody>
+</table>
+<!-- Input_Output Activity End -->
+</div>
+
+<h3><a name="Purpose">Purpose</a><a name="XE_test_log__purpose_of"></a>
+<a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>The Test Log provides a detailed, typically time-based record that serves both 
+  as verification that a set of tests were executed, and provides information 
+  relating to the success of those tests. The focus is typically on the provision 
+  of an accurate audit trail, enabling post-execution diagnosis of failures to 
+  be undertaken. This raw data will subsequently be analyzed to help determine 
+  the results of some aspect of the test effort.</p>
+
+
+<h3><a name="Brief Outline">Brief Outline</a><a name="XE_test_log__brief_outline_of"></a>
+ <a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>Each Test Log should be made up of a series of entries that present an audit 
+  trail for various aspects of the test execution including, but not limited to, 
+  the following: </p>
+<ul>
+  <li>the date and time stamp of when the event occurred</li>
+  <li>a description (usually brief) of the event logged</li>
+  <li>some indication of the observed status</li>
+  <li>additional contextual information where relevant</li>
+  <li>additional details relating to any anomalous or erroneous condition detected</li>
+</ul>
+
+
+<h3><a name="Properties">Properties</a><a name="XE_test_log__properties_of"></a>
+<a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>There are no UML representations for this artifact or its properties. 
+</p>
+<div align="center">
+  <table border="1" colspec="L15 L17 L12" width="85%" cellpadding="4" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+   <tbody valign="top"> 
+    <tr> 
+      <td width="102"> 
+        <p class="tableheading"><b><font face="Arial" size="2">Property Name</font></b> 
+      </td>
+      <td width="195"> 
+        <p class="tableheading"><b><font face="Arial" size="2">Brief Description</font></b> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="102">Name</td>
+      <td width="195">A unique name used to identify this Test Log.</td>
+    </tr>
+    <tr> 
+      <td width="102">Description</td>
+      <td width="195">A short description of the contents of the Test Log, typically 
+        giving some high-level indication of its scope.</td>
+    </tr>
+    <tr> 
+      <td width="102">Date/ Time</td>
+      <td width="195">A time-stamp or time period range to which the Test Log 
+        relates.</td>
+    </tr>
+    <tr> 
+      <td width="102">Storage Location</td>
+      <td width="195">The details of where the Test Log is stored and how to gain 
+        access to it.</td>
+    </tr>
+    <tr> 
+      <td width="102">Dependent Test and Evaluation Items</td>
+      <td width="195">Some form of traceability or dependency mapping to specific 
+        elements, such as individual Test Suites or Test Cases that need to be 
+        referenced.</td>
+    </tr>
+   </tbody> 
+  </table>
+<br>
+</div>
+
+
+<h3><a name="Timing">Timing</a>
+ <a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>Test Logs should be created whenever Test Suites are executed&#151;and possibly 
+  when Test Scripts are implemented.</p>
+
+
+<h3><a name="Responsibility">Responsibility</a> 
+<a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>The <a href="../workers/wk_tstr.htm">Tester</a> role is primarily responsible for this 
+  artifact. Those responsibilities include:</p>
+<ul>
+  <li>Ensuring the accurate recording of the observed outcome of each test executed 
+    in the test cycle.</li>
+  <li>Ensuring the Test Logs are uniquely and accurately identified, and stored 
+    against the correct test cycle or test run.</li>
+  <li>Actively monitoring for anomalous and erroneous occurrences in the Test 
+    Log, and taking appropriate recovery and reporting actions.</li>
+</ul>
+
+
+<h3><a name="Tailoring">Tailoring</a>
+<a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20" alt="To top of page"></a> 
+</h3>
+<p>Automation tools often provide their own Test Log facilities, which can be 
+  extended or supplemented with additional logging provided both through custom 
+  user-routines and the use of additional tools.</p>
+<p>The output may take one single or many different forms. Typically, Test Logs 
+  have a tabular or spreadsheet-like appearance, with each entry comprising some 
+  form of date and time stamp, a description of the event logged, some indication 
+  the observed status, and possibly some additional contextual information.</p>
+<p>If you are using automated test tools, such as those found in the Rational 
+  Suite family of products, much of the above functionality is provided by default 
+  with the tool. These Test Log facilities typically provide the ability for the 
+  capture, filtering and sorting and the analysis of the information contained 
+  in the log. This allows the Test Log to be expanded in detail or collapsed to 
+  a summary view as required. The tools also offer the ability to customize and 
+  retain views of the Test Log for reporting purposes.</p>
+<p>Where the logic that produces an automated Test Log simply appends new information 
+  to an existing log file, it will be necessary to provide sufficient storage 
+  to retain the Test Log file. An alternative solution to this approach, and a 
+  good overview of other classic problems with automated Test Logs, are presented 
+  in Brian Marick's collection of patterns <a href="http://visibleworkings.com/trace/Documentation/ring-buffer.pdf"">Using 
+  Ring Buffer Logging to Help Find Bugs</a>.</p>
+<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

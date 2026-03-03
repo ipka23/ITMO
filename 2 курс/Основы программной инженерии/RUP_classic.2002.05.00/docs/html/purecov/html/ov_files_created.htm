@@ -1,0 +1,217 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Managing PureCoverage cache files                      Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1050>
+<meta name=layout-width content=677>
+<meta name=date content="05 1, 2002 9:39:59 AM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_library_coverage.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ov_debug_option.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span face=HELVETICA
+											color=navy
+											style="font-family: Helvetica;
+													font-size: 18pt;
+													color: #000080;
+													font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Managing 
+ PureCoverage cache files</B></FONT></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">PureCoverage 
+ inserts usage-tracking instructions into the object code of your application. 
+ After the compiler creates the object files for your application, PureCoverage 
+ instruments the object files, using Object Code Insertion (OCI) to add 
+ the monitoring instructions. The instrumented object files, or cache files, 
+ are given new names so that your original object files are not modified.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">PureCoverage 
+ passes the cache files, complete with the instrumented versions of any 
+ libraries required for the application, to the linker, in place of the 
+ original object files.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ cache file names always include </FONT></span><span face=Courier
+												style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pure</FONT></span><span 
+ face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> and an encoded PureCoverage 
+ version number. The names can also include information about the size 
+ of the original file, or the name and number of the operating system.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA>PureCoverage 
+ stores the cache files in the same directories as their original counterparts, 
+ unless those directories do not have write permission. In this case, PureCoverage 
+ creates shadow directories in the global cache, </span><span face=Courier
+	style="font-family: Courier;">&lt;<a href="../html_notoc/ht_gloss_purecovhome.htm" style="font-weight: bold;">purecovhome</a></span><span 
+ face=Courier
+	style="font-family: Courier;">&gt;/cache</span><span face=HELVETICA>, 
+ where it stores the cache files. </span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA>To 
+ force PureCoverage to store all cache files in the global cache, use the 
+ </span><span face=HELVETICA
+				style="font-weight: bold; font-family: Courier, monospace;"><B><a href="ht_opt_caching.htm##MID_ALWAYS" style="font-family: Courier, monospace;">-always-use-cache-dir</a></B></span><span 
+ face=HELVETICA> option.</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA>To 
+ prevent PureCoverage from storing cache files in specific directories, 
+ use the </span><span face=HELVETICA
+						style="font-weight: bold; font-family: Courier, monospace;"><B><a href="ht_opt_caching.htm##MID_FORBID" style="font-family: Courier, monospace;">-forbidden-directories</a></B></span><span 
+ face=HELVETICA> option.</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA>To 
+ force PureCoverage to reinstrument all libraries and directories, regardless 
+ of the timestamp, use the </span><span face=HELVETICA
+										style="font-family: Courier, monospace; font-weight: bold;"><B><a href="ht_opt_caching.htm##MID_FORCE">-force-rebuild</a></B></span><span face=HELVETICA> 
+ option.</span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You 
+ can clean up and remove old cached files with the script </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&lt;purecovhome&gt;/pure_remove_old_files</FONT></span><span 
+ face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">. It is safe to remove 
+ these files because PureCoverage rebuilds them as needed. By removing 
+ them, you gain disk space, but lose some time during linking.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ remove all cache files that have been in the system 14 days or longer, 
+ use:</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% 
+ pure_remove_old_files / 14</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ remove all of the cache files in the current directory and subdirectories, 
+ useful in clean targets of makefiles, use:</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% 
+ pure_remove_old_files . 0</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ remove the cache files periodically, add a cron job. For example, to remove 
+ cache files that have not been accessed in two weeks, add an entry to 
+ your </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">crontab</FONT></span><span 
+ face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> file: </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">15 
+ 2 * * * &lt;purecovhome&gt;/pure_remove_old_files / 14</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">This 
+ runs </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">pure_remove_old_files</FONT></span><span 
+ face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> every day at 2:15 
+ a.m. and, starting at the root directory, removes all cache files that 
+ have not been read in the last 14 days.</FONT></span></p>
+
+</body>
+
+</html>

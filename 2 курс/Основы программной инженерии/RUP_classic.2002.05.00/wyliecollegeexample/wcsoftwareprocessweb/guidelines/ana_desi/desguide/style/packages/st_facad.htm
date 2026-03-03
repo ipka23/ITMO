@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standard: Facade Package</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards:
+    &lt;&lt;facade&gt;&gt; Package </h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" WIDTH="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><img src="images/facade.jpg" alt="facade.bmp (32014 bytes)" WIDTH="113" HEIGHT="94"></td>
+        <td>A façade is a packaged subset of work products selected from the contents of a
+        subsystem.&nbsp; Each façade provides public access to only those parts of the subsystem
+        that have been chosen to be available for reuse.&nbsp; The façades are presented as
+        stereotyped UML packages using the stereotype &lt;&lt;façade&gt;&gt;.<p><font FACE="Garamond">In other words, a model element that defines a subsystem interface.</font></td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong>Related Information:</strong></td>
+        <td><ul>
+          <li><a HREF="../../style/packages/st_pk_ov.htm#Naming">Standards: Package Overview</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/artifact/ar_despk.htm">RUP Artifact: Design Package</a></li>
+          <li><a HREF="../../../../../../../RationalUnifiedProcess/process/modguide/md_despk.htm">RUP Guideline: Design Package</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/artifact/ar_dsub.htm">RUP Artifact: Design Subsystem</a></li>
+          <li><a href="../../../../../../../RationalUnifiedProcess/process/modguide/md_dsub.htm">RUP Guideline: Design Subsystem</a></li>
+        </ul>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a href="../../style/packages/st_facad.htm#Introduction">Introduction</a></li>
+      <li><a HREF="../../style/packages/st_facad.htm#Naming">Naming Standards</a></li>
+      <li><a HREF="../../style/packages/st_facad.htm#Diagramming Standards">Diagramming Standards</a></li>
+      <li><a HREF="../../style/packages/st_facad.htm#Constraints">Constraints</a></li>
+      <li><a HREF="../../style/packages/st_facad.htm#Examples">Examples</a></li>
+    </ul>
+    <h3><a NAME="Introduction"></a>Introduction&nbsp;<a href="../../style/packages/st_facad.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <font size="3"><p>A façade acts as a public interface to a subsystem.&nbsp; A façade
+    provides a simplified interface to a complicated model.</p>
+    <p>A façade is a re-user's view of a subsystem.&nbsp; It simplifies the job for re-users
+    who wish to use the subsystem (and therefore the components) presented by the façade.
+    &nbsp; The façade, and its contents, should be selected and documented so that re-users
+    need to only understand the façade and not any of the other details of the component.</p>
+    <p>Façades are used when:<ul>
+      <li>You want a simpler interface to a complex subsystem.</li>
+      <li>There are many dependencies between clients and the implementation classes of an
+        abstraction.&nbsp; Facades are introduced to de-couple the subsystem from clients and
+        other subsystems, thereby promoting subsystem independence and portability.</li>
+      <li>You want to layer your subsystems.&nbsp; Use a façade to define an entry point to each
+        subsystem level.&nbsp; If subsystems are dependent, then you can simplify the dependencies
+        between them by making them communicate with each other solely through their facades.</li>
+    </ul>
+    <p>Making use of the façade pattern offers the following benefits:<ul>
+      <li>It shields clients from the implementation details of subsystems/components, thereby
+        reducing the number of objects that clients deal with and making the subsystem easier to
+        use</li>
+      <li>It promotes weak coupling between the subsystem and its clients. Often the components in
+        a subsystem are strongly coupled. Weak coupling lets you vary the components of the
+        subsystem without affecting the clients. </li>
+      <li>Facades help layer a system and the dependencies between objects. They can eliminate
+        complex or circular dependencies. This can be an important consequence when the client and
+        the subsystems are implemented independently</li>
+      <li>The use of facades lends itself to the modeling of stateless services and subsystems.</li>
+      <li>When modeling the subsystem clients only the Façade needs to be loaded into the client
+        model.</li>
+    </ul>
+    <p>Another benefit of adopting the façade approach is that the facades provide a valuable
+    focus for client/server interactions when the implementation is based on the server. A
+    useful technique in these cases is to &quot;stretch&quot; the façade across the client
+    and the server, placing a façade class on both the client and the server. The client side
+    facades would now operate as a proxy, as well as an interface definition, and can then
+    have built in intelligence to handle issues such as marshalling and data type conversions.</p></font>
+    <h3><a NAME="Naming"></a>Naming Standard&nbsp;<a href="../../style/packages/st_facad.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The general package naming standards apply to &lt;&lt;facade&gt;&gt; packages (See <a HREF="../../style/packages/st_pk_ov.htm#Naming">Standards: Package Overview</a>). </p>
+    <h3><a NAME="Diagramming Standards"></a>Diagramming Standards&nbsp;<a href="../../style/packages/st_facad.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <table BORDER="1" CELLPADDING="7" WIDTH="95%" BORDERCOLOR="#000000">
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%" BGCOLOR="#000000"><b><font COLOR="#FFFFFF">Diagram</font></b></td>
+        <td VALIGN="TOP" WIDTH="34%" BGCOLOR="#000000"><b><font COLOR="#FFFFFF">Purpose</font></b></td>
+        <td VALIGN="TOP" WIDTH="12%" BGCOLOR="#000000"><b><font COLOR="#FFFFFF">Use</font></b></td>
+        <td VALIGN="TOP" WIDTH="36%" BGCOLOR="#000000"><b><font COLOR="#FFFFFF">Comment</font></b></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><font size="2"><a HREF="../../style/examples/di_inter.htm">Main /
+        Interface</a> <a href="../../style/packages/st_facad.htm#*1">*1</a></font></td>
+        <td VALIGN="TOP" WIDTH="34%"><font size="2">A class diagram showing the full interface
+        presented by the facade.</font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font size="2">Mandatory</font></td>
+        <td VALIGN="TOP" WIDTH="36%"><font size="2">A diagram showing the full interface of the
+        subsystem as presented by the facade.&nbsp; This must include all classes that are part of
+        the interface (including those passed as parameters to methods that are part of the
+        interface).</font><p><font size="2">Note: You should never attempt to combine this diagram
+        with any other diagrams.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><a href="../../style/examples/di_usage.htm"><font size="2">Usage</font></a></td>
+        <td VALIGN="TOP" WIDTH="34%"><font size="2">A set of interaction (sequence) and / or class
+        diagrams showing how the clients of the subsystem should use the facade.</font><p><font size="2"><b>Naming convention</b><strong>:</strong></font></p>
+        <p><font FACE="Arial" size="2"><b>Usage: diagram name</b></font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font size="2">Mandatory</font></td>
+        <td VALIGN="TOP" WIDTH="36%"><font size="2">These diagrams show how a client would use the
+        subsystem. It should not describe any internal behavior.</font><p><font size="2">Typical
+        examples include:</font><big><big><br>
+        </big></big><font size="2"><font FACE="Symbol">· </font>Initialize subsystem</font><br>
+        <font size="2"><font FACE="Symbol">· </font>Shutdown subsystem</font><br>
+        <font size="2"><font FACE="Symbol">· </font>Complex patterns of usage</font></p>
+        <p><font size="2">The sequence diagram should state [Preconditions] and [postconditions]
+        at the start and end of the trace.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><a href="../../style/examples/di_dep.htm"><font size="2">Dependencies</font></a></td>
+        <td VALIGN="TOP" WIDTH="34%"><font size="2">A class diagram showing which other packages
+        the subsystem facade is dependent on.</font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font size="2">Mandatory*</font></td>
+        <td VALIGN="TOP" WIDTH="36%"><font size="2">*Not required if the facade is not dependent
+        on any other packages.</font><p><font size="2">This would include dependencies to all of
+        the packages from which the individual interfaces are imported or which supply model
+        elements that the subsystems interface is dependent upon.</font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><a href="../../style/examples/di_con.htm"><font size="2">Connections&nbsp;</font></a></td>
+        <td VALIGN="TOP" WIDTH="34%"><font size="2">A class diagram showing which other interfaces
+        and classes the components of the facade are dependent on.</font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font size="2">Mandatory*</font></td>
+        <td VALIGN="TOP" WIDTH="36%"><font size="2">*Not required if the facade is not dependent
+        on any other packages.</font><p><font size="2">This would include dependencies to all of
+        the interface and utility classes upon which the facade is dependent.</font></p>
+          <p><font size="2">This is the only internal design documentation
+          required for a facade.</font></p>
+        <p><font size="2">This diagram can often be combined with the <a href="../../style/examples/di_dep.htm">Dependencies</a> diagram to show both the package level
+        dependencies and the class level connections (i.e. Diagram named <a href="../../style/examples/di_depco.htm">Dependencies / Connections)</a></font></td>
+      </tr>
+      <tr>
+        <td VALIGN="TOP" WIDTH="17%"><a href="../../style/examples/di_wel.htm"><font size="2">Welcome</font></a></td>
+        <td VALIGN="TOP" WIDTH="34%"><font size="2">A class diagram presenting the purpose of the
+        facade.</font></td>
+        <td VALIGN="TOP" WIDTH="12%"><font size="2">Optional</font></td>
+        <td VALIGN="TOP" WIDTH="36%"><font size="2">An explanatory diagram welcoming users to the
+        facade.</font></td>
+      </tr>
+    </table>
+    <p>Notes:</p>
+    <blockquote>
+      <p><a name="*1"></a>*1 - The Main/Interface diagram is sometimes referred to as the
+      Interface Realizations diagram (See the <a href="../../../../../../../RationalUnifiedProcess/toolment/rose/rose.htm">RUP:
+      Rose Tool Mentors</a>).</p>
+    </blockquote>
+    <h3><a NAME="Constraints"></a>Constraints&nbsp;<a href="../../style/packages/st_facad.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p><b>Constraints:</b> &lt;&lt;facade&gt;&gt; packages can contain only interfaces (i.e.
+    interface classes).&nbsp; All classes in the facade are considered public. </p>
+    <p><b>Notes:</b> <a href="../../style/packages/st_imp.htm">&lt;&lt;implementation&gt;&gt;</a> packages will
+    implement the interfaces defined by the &lt;&lt;facade&gt;&gt; packages (See <a HREF="../../../../../../../RationalUnifiedProcess/process/modguide/md_dsub.htm">RUP Guidelines: Design Subsystem</a> and <a href="../../style/packages/st_imp.htm">Standards:
+    Implementation Packages</a>). </p>
+    <h3><a NAME="Examples"></a>Examples&nbsp;<a href="../../style/packages/st_facad.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>An example&nbsp; &lt;&lt;facade&gt;&gt; package is shown below, with its <a href="../../style/examples/di_inter.htm">Interface</a> diagram displayed.&nbsp; The browser
+    &nbsp; shows the presence of a set of <a href="../../style/examples/di_usage.htm">Usage</a>
+    diagrams explaining how the services offered by the facade's interface should be used.</p>
+    <p><img src="../../style/examples/images/di_fac10.gif" alt="wpeB.gif (30174 bytes)" WIDTH="667" HEIGHT="548"> </p>
+    <p>The <a href="../../style/examples/di_depco.htm">Dependencies / Connections</a> diagram shows how
+    the facade depends upon the underlying Data Base Utilities package:</p>
+    <p><img src="../../style/examples/images/di_fac11.gif" alt="wpeC.gif (11308 bytes)" WIDTH="468" HEIGHT="478"></td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" 
+border="0" width="20" height="110"></p></a>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+Version&nbsp;2001.02</small></small></font></td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

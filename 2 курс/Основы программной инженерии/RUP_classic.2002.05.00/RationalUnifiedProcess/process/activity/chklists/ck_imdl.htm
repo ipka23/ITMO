@@ -1,0 +1,168 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<title>Checkpoints: Implementation Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/artfc_w.gif"> <a href="../../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../../applet/images/artfc_y.gif"> <a href="../../artifact/ars_impl.htm">Implementation Artifact Set</a> &gt;
+<img border=0 src="../../../applet/images/additional.gif"> <a href="../../artifact/arp_impmd.htm">Implementation Model...</a> &gt;
+<img border=0 src="../../../applet/images/ar_impmd.gif"> <a href="../../artifact/ar_impmd.htm">Implementation Model</a> &gt;
+<img border=0 src="../../../applet/images/checko.gif"> Checkpoints
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Checkpoints:
+&nbsp;<rpw name="PresentationName">Implementation Model</rpw><a name="XE_implementation_model__checkpoints"></a></h2>
+<ul>
+  <ul>
+    <li class="ck">Interfaces and dependencies between components have been
+      defined.</li>
+    <li class="ck">The workload for the Implementation Team is balanced;
+      potential bottlenecks have been identified and work has been
+      redistributed, and contingency plans have been created to allow critical
+      work to be redistributed if the initial work allocation becomes
+      imbalanced.</li>
+    <li class="ck">There are no instances of dependencies crossing more than one
+      layer boundary.</li>
+    <li class="ck">Unnecessary dependencies on lower-layer components have been
+      eliminated.</li>
+    <li class="ck">The impact of necessary dependencies on lower layer
+      components have been reduced by letting components in middle layers
+      re-export interfaces from components in lower layers.</li>
+    <li class="ck">The number of layers is no more than seven (plus or minus
+      two), or there is a well-understood reason why more layers exist.</li>
+    <li class="ck">The ratio between the number of packages or subsystems and
+      the number of components is consistent with the application size and
+      complexity (for example, 5 packages or subsystems and 1,000 components is
+      a sign that something is wrong).</li>
+    <li class="ck">The amount of source code is consistent with the expectation
+      based on the number of design classes (for example, 100,000 lines of code
+      for 10 design classes is a sign that the either the design or the
+      implementation, or both, may be flawed).</li>
+    <li class="ck">The actual implementation effort is close to what was
+      estimated, or if not, the basis for estimation has been examined and
+      adjusted.</li>
+  </ul>
+</ul>
+
+
+ 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

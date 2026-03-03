@@ -1,0 +1,1460 @@
+body
+{
+	background-image: none;
+	background-color: white
+}
+
+h1
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.banner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.banner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3
+{
+        font-family: Arial, sans-serif;
+}
+
+h4, h5, h6
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+  
+    
+a:link
+{
+    color: #003399
+}
+
+a:active
+{
+    color: #0000ff
+}
+
+a:visited
+{
+    color: #660066
+}
+
+dl
+{
+}
+
+dt
+{
+}
+
+dd
+{
+}
+
+p
+{
+        margin-left: 0px
+}
+
+p.node
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.exampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.example
+{
+	margin-left: 70px;
+}
+
+p.picturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.definition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.tableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.tabletext
+{
+        margin-left: 0
+}
+
+p.paramname
+{
+   text-align: left
+}
+
+p.paramexample
+{
+   text-align: left;
+   color: red
+}
+
+p.paramdescription
+{
+   text-align: left
+}
+
+ol
+{
+        margin-left: +45px
+}
+
+ol ol
+{
+        margin-left: +23px
+}
+
+ol ol ol
+{
+        margin-left: +23px
+}
+
+ol.alpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul li.node
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.ck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.ck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.ck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul.plus
+{
+        list-style-image: 
+}
+
+ul.minus
+{
+        list-style-image: 
+}
+
+
+ul.ck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table
+{
+}
+
+td
+{
+        vertical-align: top
+}
+
+td ul
+{
+        margin-left: +20px
+}
+
+font.paramexample
+{
+   color: red
+}
+
+font.imageexample
+{
+   font-size: smaller
+}
+
+// used for not-included plugins
+h1.notincludedbanner
+{
+        background: #FFFFCC;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+
+//the following is used for ibm content
+
+h1.ibm
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.ibmbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2.ibm
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.ibmbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3.ibm
+{
+        font-family: Arial, sans-serif;
+}
+
+h4.ibm, h5.ibm, h6.ibm
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+
+dl.ibm
+{
+}
+
+dt.ibm
+{
+}
+
+dd.ibm
+{
+}
+   
+p.ibm
+{
+        margin-left: 0px
+}
+
+p.ibmnode
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.ibmexampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.ibmexample
+{
+	margin-left: 70px;
+}
+
+p.ibmpicturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.ibmdefinition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.ibmtableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.ibmtabletext
+{
+        margin-left: 0
+}
+
+p.ibmparamname
+{
+   text-align: left
+}
+
+p.ibmparamexample
+{
+   text-align: left;
+   color: red
+}
+
+p.ibmparamdescription
+{
+   text-align: left
+}
+
+ol.ibm
+{
+        margin-left: +45px
+}
+
+ol ol.ibm
+{
+        margin-left: +23px
+}
+
+ol ol ol.ibm
+{
+        margin-left: +23px
+}
+
+ol.ibmalpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li.ibm
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li.ibm
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+
+ul ul ul li.ibm
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+ul li.ibmnode
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.ibmck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.ibmck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.ibmck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul.ibmplus
+{
+        list-style-image: 
+}
+
+ul.ibmminus
+{
+        list-style-image: 
+}
+
+
+ul.ibmck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table.ibm
+{
+}
+
+tr.ibm
+{
+}
+
+td.ibm
+{
+        vertical-align: top
+}
+
+td ul.ibm
+{
+        margin-left: +20px
+}
+
+font.ibmparamexample
+{
+   color: red
+}
+
+font.ibmimageexample
+{
+   font-size: smaller
+}
+
+//the following is used for real time content
+
+h1.reactive
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.reactivebanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2.reactive
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.reactivebanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3.reactive
+{
+        font-family: Arial, sans-serif;
+}
+
+h4.reactive, h5.reactive, h6.reactive
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+
+dl.reactive
+{
+}
+
+dt.reactive
+{
+}
+      
+dd.reactive
+{
+}
+
+p.reactive
+{
+        margin-left: 0px
+}
+
+p.reactivenode
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.reactiveexampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.reactiveexample
+{
+	margin-left: 70px;
+}
+
+p.reactivepicturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.reactivedefinition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.reactivetableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.reactivetabletext
+{
+        margin-left: 0
+}
+
+p.reactiveparamname
+{
+   text-align: left
+}
+
+p.reactiveparamexample
+{
+   text-align: left;
+   color: red
+}
+
+p.reactiveparamdescription
+{
+   text-align: left
+}
+
+ol.reactive
+{
+        margin-left: +45px
+}
+
+ol ol.reactive
+{
+        margin-left: +23px
+}
+
+ol ol ol.reactive
+{
+        margin-left: +23px
+}
+
+ol.reactivealpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li.reactive
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li.reactive
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+
+ul ul ul li.reactive
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+ul li.reactivenode
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.reactiveck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.reactiveck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.reactiveck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul.reactiveplus
+{
+        list-style-image: 
+}
+
+ul.reactiveminus
+{
+        list-style-image: 
+}
+
+
+ul.reactiveck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table.reactive
+{
+}
+
+tr.reactive
+{
+}
+
+td.reactive
+{
+        vertical-align: top
+}
+
+td ul.reactive
+{
+        margin-left: +20px
+}
+
+font.reactiveparamexample
+{
+   color: red
+}
+
+font.reactiveimageexample
+{
+   font-size: smaller
+}
+
+//the following is used for Microsoft content
+
+h1.msft
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.msftbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2.msft
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.msftbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3.msft
+{
+        font-family: Arial, sans-serif;
+}
+
+h4.msft, h5.msft, h6.msft
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+
+dl.msft
+{
+}
+
+dt.msft
+{
+}
+      
+dd.msft
+{
+}
+
+p.msft
+{
+        margin-left: 0px
+}
+
+p.msftnode
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.msftexampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.msftexample
+{
+	margin-left: 70px;
+}
+
+p.msftpicturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.msftdefinition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.msfttableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.msfttabletext
+{
+        margin-left: 0
+}
+
+p.msftparamname
+{
+   text-align: left
+}
+
+p.msftparamexample
+{
+   text-align: left;
+   color: red
+}
+
+p.msftparamdescription
+{
+   text-align: left
+}
+
+ol.msft
+{
+        margin-left: +45px
+}
+
+ol ol.msft
+{
+        margin-left: +23px
+}
+
+ol ol ol.msft
+{
+        margin-left: +23px
+}
+
+ol.msftalpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li.msft
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li.msft
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+
+ul ul ul li.msft
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+ul li.msftnode
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.msftck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.msftck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.msftck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul.msftplus
+{
+        list-style-image: 
+}
+
+ul.msftminus
+{
+        list-style-image: 
+}
+
+
+ul.msftck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table.msft
+{
+}
+
+tr.msft
+{
+}
+
+td.msft
+{
+        vertical-align: top
+}
+
+td ul.msft
+{
+        margin-left: +20px
+}
+
+font.msftparamexample
+{
+   color: red
+}
+
+font.msftimageexample
+{
+   font-size: smaller
+}
+
+//the following is used for database content
+
+h1.dbms
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.dbmsbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2.dbms
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.dbmsbanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3.dbms
+{
+        font-family: Arial, sans-serif;
+}
+
+h4.dbms, h5.dbms, h6.dbms
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+
+dl.dbms
+{
+}
+
+dt.dbms
+{
+}
+      
+dd.dbms
+{
+}
+
+p.dbms
+{
+        margin-left: 0px
+}
+
+p.dbmsnode
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.dbmsexampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.dbmsexample
+{
+	margin-left: 70px;
+}
+
+p.dbmspicturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.dbmsdefinition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.dbmstableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.dbmstabletext
+{
+        margin-left: 0
+}
+
+p.dbmsparamname
+{
+   text-align: left
+}
+
+p.dbmsparamexample
+{
+   text-align: left;
+   color: red
+}
+
+p.dbmsparamdescription
+{
+   text-align: left
+}
+
+ol.dbms
+{
+        margin-left: +45px
+}
+
+ol ol.dbms
+{
+        margin-left: +23px
+}
+
+ol ol ol.dbms
+{
+        margin-left: +23px
+}
+
+ol.dbmsalpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li.dbms
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li.dbms
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+
+ul ul ul li.dbms
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+ul li.dbmsnode
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.dbmsck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.dbmsck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.dbmsck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul.dbmsplus
+{
+        list-style-image: 
+}
+
+ul.dbmsminus
+{
+        list-style-image: 
+}
+
+
+ul.dbmsck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table.dbms
+{
+}
+
+tr.dbms
+{
+}
+
+td.dbms
+{
+        vertical-align: top
+}
+
+td ul.dbms
+{
+        margin-left: +20px
+}
+
+font.dbmsparamexample
+{
+   color: red
+}
+
+font.dbmsimageexample
+{
+   font-size: smaller
+}
+
+//the following is used for large-scale development content
+
+h1.large
+{
+        font-family: Arial, sans-serif;
+}
+        
+h1.largebanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+	  font-size: large;
+}
+
+h2.large
+{
+        font-family: Arial, sans-serif;
+}
+        
+h2.largebanner
+{
+        background: #6a8fbd;
+        text-align: center;
+        font-family: Arial, sans-serif;
+}
+
+h3.large
+{
+        font-family: Arial, sans-serif;
+}
+
+h4.large, h5.large, h6.large
+{
+        font-family: Arial, sans-serif;
+        margin-left: 0px
+}
+
+dl.large
+{
+}
+
+dt.large
+{
+}
+      
+dd.large
+{
+}
+
+p.large
+{
+        margin-left: 0px
+}
+
+p.largenode
+{
+        margin-left: 15px
+        leftMargin: 15px
+}
+
+p.largeexampleheading
+{
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 10pt;
+        margin-left: 15px
+}
+
+p.largeexample
+{
+	margin-left: 70px;
+}
+
+p.largepicturetext
+{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 80%;
+        margin-left: 70px;
+        margin-right: 50px
+}
+
+p.largedefinition
+{
+	background: #ffffcc;
+	border: thin double black
+}
+
+p.largetableheading
+{
+	font-weight: bold;
+        margin-left: 0
+}
+
+p.largetabletext
+{
+        margin-left: 0
+}
+
+p.largeparamname
+{
+   text-align: left
+}
+
+p.largeparamexample
+{
+   text-align: left;
+   color: red
+}
+
+p.largeparamdescription
+{
+   text-align: left
+}
+
+ol.large
+{
+        margin-left: +45px
+}
+
+ol ol.large
+{
+        margin-left: +23px
+}
+
+ol ol ol.large
+{
+        margin-left: +23px
+}
+
+ol.largealpha
+{
+	list-style-type: lower-alpha
+}
+
+
+
+ul li.large
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +20px
+	text-align: justify
+}
+
+
+ul ul li.large
+{
+        list-style-image: url("images/bullet2.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+
+ul ul ul li.large
+{
+        list-style-image: url("images/bullet3.gif");
+        text-indent: +10px
+	  text-align: justify
+}
+
+ul li.largenode
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul li.largeck
+{
+        list-style-image: url("images/bullet1.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul li.largeck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+
+ul ul ul li.largeck
+{
+        list-style-image: url("images/checkbox.gif");
+        text-indent: +10px
+	text-align: justify
+}
+
+ul.largeplus
+{
+        list-style-image: 
+}
+
+ul.largeminus
+{
+        list-style-image: 
+}
+
+
+ul.largeck
+{
+        list-style-image: url("images/checkbox.gif");
+}
+
+table.large
+{
+}
+
+tr.large
+{
+}
+
+td.large
+{
+        vertical-align: top
+}
+
+td ul.large
+{
+        margin-left: +20px
+}
+
+font.largeparamexample
+{
+   color: red
+}
+
+font.largeimageexample
+{
+   font-size: smaller
+}
+
+rpw.reactive
+{
+  color: green
+}
+
+rpw.busmod
+{
+  color: red
+}
+
+rpw.msft
+{
+  color: blue
+}
+
+
+rpw.ibm
+{
+  color: yellow
+}
+
+

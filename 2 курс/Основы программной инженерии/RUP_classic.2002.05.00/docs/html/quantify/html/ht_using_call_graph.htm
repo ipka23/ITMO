@@ -1,0 +1,428 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Using the Call Graph window                            Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=6094>
+<meta name=layout-width content=813>
+<meta name=date content="05 16, 2001 5:28:05 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_using_function_list.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_using_function_detail.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Using the Call Graph window</h1>
+
+<p>The Call Graph window presents a graph of the functions called during 
+ the run. It uses lines of varying thickness to graphically depict where 
+ your program spends its time. Thicker lines correspond directly to larger 
+ amounts of time spent along a path. </p>
+
+<p>The call graph helps you understand the calling structure of your program 
+ and the major call paths that contributed to the total time of the run. 
+ Using the call graph, you can quickly discover the sources of bottlenecks.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cgw.gif' x-maintain-ratio='TRUE' width='794' height='470'>");}
+else
+{   document.write("<img src='../image/cgw.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 794px;  				height: 470px;  				float: none;' width='794' height='470'>");}
+//-->
+</SCRIPT></p>
+
+<p>By default, Quantify expands the call paths of the top 20 functions 
+ that contribute most to the overall time of the program. The call graph 
+ begins at the <span style="font-family: Courier;">.root.</span> accumulator, 
+ which represents the total amount of time used by all the functions in 
+ the program. For more information about the <span style="font-family: Courier;">.root.</span> 
+ accumulator, read <a href="ht_how_q_records_func_time.htm" style="font-weight: bold;">How Quantify records 
+ function time</a>. </p>
+
+<h2>Understanding the layout of the call graph</h2>
+
+<p>In single-threaded applications, the call graph begins at the <span 
+ style="font-family: Courier;">.root.</span> function, with one or two 
+ branches emanating from it. One branch corresponds to the initialization 
+ sequence of the program before it reaches your program's main function. 
+ This branch also contains C++ static initialization and <span style="font-family: Courier;">at_exit</span> 
+ processing, if any.</p>
+
+<p>The other branch starts at <span style="font-family: Courier;">pure_sigtramp</span> 
+ and is present only if your program handled any signals. Multi-threaded 
+ applications can have several additional branches emanating from the <span 
+ style="font-family: Courier;">.root.</span> function. For more information, 
+ read Collecting data in threaded programs.</p>
+
+<p>Curved lines in the call graph often indicate the presence of recursive 
+ functions or cycles of function calls. For more information, read <a href="ht_recurs_fnct_hndling.htm" style="font-weight: bold;">How Quantify handles recursive functions</a>. 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cgw2.gif' x-maintain-ratio='TRUE' width='794' height='286'>");}
+else
+{   document.write("<img src='../image/cgw2.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 794px;  				height: 286px;  				float: none;' width='794' height='286'>");}
+//-->
+</SCRIPT></p>
+
+<p>If a function is not a leaf function, a triangle indicates how many 
+ of each function's immediate descendants are shown in the call graph.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/solidtriangle.gif' x-maintain-ratio='TRUE' align='left' width='15' height='13' align='left'>");}
+else
+{   document.write("<img src='../image/solidtriangle.gif' x-maintain-ratio='TRUE' align='left' style='border: none;  				width: 15px;  				height: 13px;  				float: left;' width='15' height='13' align='left'>");}
+//-->
+</SCRIPT>&nbsp; &nbsp; None of the immediate descendants are 
+ shown. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/startracktriangle.gif' x-maintain-ratio='TRUE' align='left' width='16' height='13' align='left'>");}
+else
+{   document.write("<img src='../image/startracktriangle.gif' x-maintain-ratio='TRUE' align='left' style='border: none;  				width: 16px;  				height: 13px;  				float: left;' width='16' height='13' align='left'>");}
+//-->
+</SCRIPT>&nbsp; &nbsp; Some of the immediate descendants are 
+ shown.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/hollowtriangle.gif' x-maintain-ratio='TRUE' width='15' height='13'>");}
+else
+{   document.write("<img src='../image/hollowtriangle.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 15px;  				height: 13px;  				float: none;' width='15' height='13'>");}
+//-->
+</SCRIPT>&nbsp; &nbsp; All of the immediate descendants are shown.</p>
+
+<h2><a name=MID_POPUP></a>Using the pop-up menu</h2>
+
+<p>To display the pop-up menu, right-click any function in the call graph. 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_popup.gif' x-maintain-ratio='TRUE' width='290' height='146'>");}
+else
+{   document.write("<img src='../image/cg_popup.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 290px;  				height: 146px;  				float: none;' width='290' height='146'>");}
+//-->
+</SCRIPT></p>
+
+<p>You can use the pop-up menu to:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Expand and collapse 
+ the function's subtree </p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Locate individual caller 
+ and descendant functions</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Change the focus of 
+ the call graph to the selected function </p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Display the annotated 
+ source code or the function detail for the selected function</p></li>
+</ul>
+
+<h2><a name=MID_EXPANDING></a>Expanding and collapsing descendants</h2>
+
+<p>Use the pop-up menu to expand or collapse the subtrees of descendants 
+ for individual functions. </p>
+
+<p style="font-family: Courier;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_popup_expand.gif' x-maintain-ratio='TRUE' width='405' height='142'>");}
+else
+{   document.write("<img src='../image/cg_popup_expand.gif' x-maintain-ratio='TRUE' style='border: none;  												width: 405px;  												height: 142px;  												float: none;' width='405' height='142'>");}
+//-->
+</SCRIPT></p>
+
+<p>After expanding or collapsing subtrees, you can select <span style="font-weight: bold;"><B>View 
+ &gt; Redo</B></span> layout to remove any gaps that your changes create in 
+ the call graph.</p>
+
+<h2>Locating functions in the call graph</h2>
+
+<p>To locate a particular caller or descendant of the selected function, 
+ select <span style="font-weight: bold;"><B>Locate callers</B></span> or <span 
+ style="font-weight: bold;"><B>Locate descendants</B></span> from the pop-up menu. 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_locatecallers.gif' x-maintain-ratio='TRUE' width='267' height='142'>");}
+else
+{   document.write("<img src='../image/cg_locatecallers.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 267px;  				height: 142px;  				float: none;' width='267' height='142'>");}
+//-->
+</SCRIPT></p>
+
+<p>Quantify sorts the descendants by their contribution to the function's 
+ accumulated time. </p>
+
+<p>If the function you are trying to locate is not present in the call 
+ graph, Quantify displays the most expensive path from the function that 
+ is the current focus to the desired function.</p>
+
+<p>If the function is not in the descendant subtree of the current focus 
+ (for example, if it is the caller of the current focus), Quantify attempts 
+ to find a common function whose descendant subtree contains both the current 
+ focus (and hence current selection) and the desired function. It automatically 
+ makes that function the new focus and then displays the most expensive 
+ path from the new focus to the desired function. </p>
+
+<h2><a name=MID_FOCUSING></a>Changing the focus of the call graph</h2>
+
+<p>You can change the focus of the call graph to a different function. 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cgw3.gif' x-maintain-ratio='TRUE' width='776' height='258'>");}
+else
+{   document.write("<img src='../image/cgw3.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 776px;  				height: 258px;  				float: none;' width='776' height='258'>");}
+//-->
+</SCRIPT></p>
+
+<p>To change the focus of the call graph to a new function, right-click 
+ the desired function and select <span style="font-weight: bold;"><B>Change 
+ focus&nbsp;&gt; Focus&nbsp;on subtree</B></span> from the pop-up menu.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_changefocus.gif' x-maintain-ratio='TRUE' width='328' height='144'>");}
+else
+{   document.write("<img src='../image/cg_changefocus.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 328px;  				height: 144px;  				float: none;' width='328' height='144'>");}
+//-->
+</SCRIPT></p>
+
+<p>The selected function becomes the basis for scaling and expanding operations. 
+ For example, you can select <span style="font-weight: bold;"><B>View&nbsp;&gt; 
+ Scale factors&nbsp;&gt; %&nbsp;of&nbsp;focus</B></span> to see numeric data 
+ scaled for the current focus.</p>
+
+<h2>Functions with multiple callers</h2>
+
+<p>The subtree of the function you select as the new focus of the call 
+ graph might contain functions that are called from outside of the subtree. 
+ Consider, for example, the functions <span style="font-family: Courier;">malloc</span> 
+ and <span style="font-family: Courier;">free</span>. Both of these functions 
+ are called from many different functions in a typical C program. </p>
+
+<p>If you select one of <span style="font-family: Courier;">malloc'</span>s 
+ callers as the new focus, its other callers are excluded from the subtree. 
+ In this case, <span style="font-family: Courier;">malloc'</span>s function+descendants 
+ time can exceed that of its individual callers. This is because <span 
+ style="font-family: Courier;">malloc</span> distributed the additional 
+ time to the callers that are excluded from the subtree. If you display 
+ <span style="font-family: Courier;">malloc'</span>s function+descendants 
+ time as a percentage of the focus function's function+descendants time, 
+ this percentage will exceed 100 percent. Quantify reports the percentage 
+ as “100+%.” </p>
+
+<p>Quantify warns you if the subtree of the new focus contains any functions 
+ that distribute time to functions outside of the subtree. Quantify displays 
+ a count of these functions in the status bar at the bottom of the call 
+ graph and places an asterisk (*) next to their names in the call graph.</p>
+
+<h2><a name=MID_LEGEND></a>Displaying additional data for functions</h2>
+
+<p>To display additional data for functions in the call graph, select <span 
+ style="font-weight: bold;"><B>View&nbsp;&gt; Display data</B></span>. Select 
+ <span style="font-weight: bold;"><B>None</B></span> to display functions without 
+ any additional data. <!--kadov_tag{{<spaces>}}-->&nbsp;&nbsp;<!--kadov_tag{{</spaces>}}--></p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_displaydata.gif' x-maintain-ratio='TRUE' width='459' height='346'>");}
+else
+{   document.write("<img src='../image/cg_displaydata.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 459px;  				height: 346px;  				float: none;' width='459' height='346'>");}
+//-->
+</SCRIPT></p>
+
+<p>Quantify describes the data that is displayed for each function in the 
+ legend at the top of the call graph. To hide or show the legend, select 
+ <span style="font-weight: bold;"><B>View&nbsp;&gt; Legend</B></span>. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cgw4.gif' x-maintain-ratio='TRUE' width='794' height='218'>");}
+else
+{   document.write("<img src='../image/cgw4.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 794px;  				height: 218px;  				float: none;' width='794' height='218'>");}
+//-->
+</SCRIPT></p>
+
+<h2><a name=MID_SCALING_DATA></a>Changing line scale factors</h2>
+
+<p>To change the scale of the lines in the call graph, select <span style="font-weight: bold;"><B>View&nbsp;&gt; 
+ Line&nbsp;scale&nbsp;factors</B></span>. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cg_scalefactors.gif' x-maintain-ratio='TRUE' width='302' height='342'>");}
+else
+{   document.write("<img src='../image/cg_scalefactors.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 302px;  				height: 342px;  				float: none;' width='302' height='342'>");}
+//-->
+</SCRIPT></p>
+
+<p>You can select from three line scale factors: </p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Unweighted lines show 
+ only the calling relationships between functions. These lines do not carry 
+ information about how time is distributed between functions.</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Linear scaling shows 
+ the distributed time from a descendant function to its caller as a percentage 
+ of the total time of the current focus. This is the default line scale 
+ factor.</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Logarithmic scaling 
+ shows the distributed time from a descendant function to its caller as 
+ the logarithm of the percentage of the total time of the current focus. 
+ This scaling de-emphasizes the rapid accumulation of time near the root 
+ of a subtree while emphasizing small differences between contributing 
+ functions deep in the subtree.</p></li>
+</ul>
+
+<h2><a name=MID_TRUNCATING></a>Shortening function names</h2>
+
+<p>You can shorten function names in order to tighten up the display in 
+ the call graph. Select <span style="font-weight: bold;"><B>View&nbsp;&gt; 
+ Function&nbsp;names</B></span>. </p>
+
+<p>You can shorten function names by eliminating the C++ class name, argument 
+ list, or operator prefix. You can also specify a custom truncation length. 
+ In cases where demangling the full C++ name is ambiguous, Quantify prints 
+ ??? in the function's argument list.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/fnd.gif' x-maintain-ratio='TRUE' width='532' height='182'>");}
+else
+{   document.write("<img src='../image/fnd.gif' x-maintain-ratio='TRUE' style='border: none;  				float: none;  				width: 532px;  				height: 182px;' width='532' height='182'>");}
+//-->
+</SCRIPT></p>
+
+<h2>Saving the call graph</h2>
+
+<p>To save a PostScript version of the current call graph, select <span 
+ style="font-weight: bold;"><B>File&nbsp;&gt; Save&nbsp;call&nbsp;graph&nbsp;as</B></span>.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/cgw_fsb_writecg.gif' x-maintain-ratio='TRUE' width='650' height='300'>");}
+else
+{   document.write("<img src='../image/cgw_fsb_writecg.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 650px;  				height: 300px;  				float: none;' width='650' height='300'>");}
+//-->
+</SCRIPT></p>
+
+</body>
+
+</html>

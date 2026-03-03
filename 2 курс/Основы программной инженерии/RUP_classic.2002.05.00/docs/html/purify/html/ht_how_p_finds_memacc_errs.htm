@@ -1,0 +1,256 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>How Purify finds memory access errors                  Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2747>
+<meta name=layout-width content=721>
+<meta name=date content="01 11, 2002 4:22:27 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_mem_access_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_mem_access.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_ov_memaccess_errors.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_ov_mem_leaks.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>How Purify finds memory access errors</h1>
+
+<p>Purify monitors every memory operation in your program, determining 
+ whether it is legal. It keeps track of memory that is not allocated to 
+ your program, memory that is allocated but uninitialized, memory that 
+ is both allocated and initialized, and memory that has been freed after 
+ use but still initialized. </p>
+
+<p>Purify maintains a table to track the status of each byte of memory 
+ used by your program. The table contains two bits that represent each 
+ byte of memory. The first bit records whether the corresponding byte has 
+ been allocated. The second bit records whether the memory has been initialized. 
+ Purify uses these two bits to describe four states of memory: red, yellow, 
+ green, and blue. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/mem_colo.gif' alt='image\mem_colo.gif' width='702' height='548' border='0'>");}
+else
+{   document.write("<img src='../image/mem_colo.gif' alt='image\mem_colo.gif' style='width: 702px;  				height: 548px;  				border-style: none;' width='702' height='548' border='0'>");}
+//-->
+</SCRIPT></p>
+
+<p>Purify checks each memory operation against the color state of the memory 
+ block to determine whether the operation is valid. If the program accesses 
+ memory illegally, Purify reports an error. </p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><span 
+ style="font-weight: bold;"><B>Red</B></span>: Purify labels heap memory and stack 
+ memory red initially. This memory is unallocated and uninitialized. Either 
+ it has never been allocated, or it has been allocated and subsequently 
+ freed.<br>
+	<br>
+	In addition, Purify inserts guard zones around each allocated block 
+ and each statically-allocated data item, in order to detect array bounds 
+ errors. Purify colors these guard zones red, and refers to them as <span 
+ style="font-style: italic;"><I>red zones</I></span>. It is illegal to read, write, 
+ or free red memory because it is not owned by the program. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B>Yellow</B></span>: 
+ Memory returned by <font style="font-family: Courier;"
+							face=courier>malloc</font> or <font style="font-family: Courier;"
+	face=courier>new</font> is yellow. This memory has been allocated so 
+ the program owns it, but it is uninitialized. You can write yellow memory, 
+ or free it if it is allocated by <font style="font-family: Courier;"
+										face=courier>malloc</font>, but 
+ it is illegal to read it because it is uninitialized. Purify sets stack 
+ frames to yellow upon function entry. </p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B>Green</B></span>: 
+ When you write to yellow memory, Purify labels it green. This means that 
+ the memory is allocated and initialized. It is legal to read or write 
+ green memory, or free it if it was allocated by <font style="font-family: Courier;"
+														face=courier>malloc</font> 
+ or <font style="font-family: Courier;"
+			face=courier>new</font>. Purify initializes the data and <font 
+ style="font-family: Courier;"
+	face=courier>bss</font> sections of memory to green.</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B>Blue</B></span>: 
+ When you free memory after it is initialized and used, Purify labels it 
+ blue. This means that the memory is initialized, but is no longer valid 
+ for access. It is illegal to read, write or free blue memory. </p></li>
+</ul>
+
+<p>Since Purify keeps track of memory at the byte level, it catches all 
+ memory access errors. For example, it reports an <a href="ht_m_umr.htm"><span 
+ style="font-weight: bold;"><B>uninitialized memory read (UMR)</B></span></a> 
+ if an <font style="font-family: Courier;"
+			face=courier>int</font> or <font style="font-family: Courier;"
+											face=courier>long</font> (4 
+ bytes) is read from a location previously initialized by storing a <font 
+ style="font-family: Courier;"
+	face=courier>short</font> (2 bytes). <a name=MID_STATIC></a></p>
+
+<h2>How Purify checks statically allocated memory</h2>
+
+<p>In addition to detecting access errors in dynamic memory, Purify detects 
+ references beyond the boundaries of data in global variables and static 
+ variables, that is, data allocated statically at link-time as opposed 
+ to dynamically at run time. </p>
+
+<p>Here is an example of data that is handled by the static checking feature:</p>
+
+<p class=rCode>int array[10]; <br>
+main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;array[11] = 1; <br>
+}</p>
+
+<p>In this example, Purify reports an <a href="ht_m_abw.htm"><span style="font-weight: bold;"><B>array 
+ bounds write (ABW)</B></span></a> error at the assignment to <font style="font-family: Courier;"
+	face=courier>array[11]</font> because it is 4 bytes beyond the end 
+ of the array.</p>
+
+<p>Purify inserts red guard zones around each variable in your program's 
+ static-data area. If the program attempts to read from or write to one 
+ of these guard zones, Purify reports an array bounds error (<a href="ht_m_abr.htm"><span 
+ style="font-weight: bold;"><B>ABR</B></span></a> or ABW).</p>
+
+<p>Purify inserts guard zones into the data section <span style="font-style: italic;"><I>only</I></span> 
+ if all data references are to known data variables. If Purify finds a 
+ data reference that is relative to the start of the data section as opposed 
+ to a known data variable, Purify is unable to determine which variable 
+ the reference involves. In this case, Purify inserts guard zones at the 
+ beginning and end of the data section only, not between data variables. 
+ </p>
+
+<p>Purify provides several command line <a href="ht_opt_static_check.htm"><span 
+ style="font-weight: bold;"><B>static checking options</B></span></a> and directives 
+ to aid in maximizing the benefits of static checking.</p>
+
+<p class=rTipNoteGlossaryHeading>Notes:</p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet>Purify does not 
+ detect array bounds errors between individual local (stack) variables. 
+ On Solaris, Purify inserts guard zones between stack frames, causing <a href="ht_m_sbr.htm"><span style="font-weight: bold;"><B>stack array bounds 
+ read (SBR)</B></span></a> and <a href="ht_m_sbw.htm"><span style="font-weight: bold;"><B>stack 
+ array bounds write (SBW)</B></span></a> errors on accesses that extend beyond 
+ all the local variables in a function. Purify detects accesses beyond 
+ the end of the stack (<a href="ht_m_bsr.htm"><span style="font-weight: bold;"><B>BSR</B></span></a> 
+ and <a href="ht_m_bsw.htm"><span style="font-weight: bold;"><B>BSW</B></span></a> 
+ errors) on all platforms, as well as UMR errors on all stack variables. 
+ </p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet>Due to the flexibility 
+ of manipulating pointers in C and C++ programs, a pointer can <span style="font-style: italic;"><I>accidentally</I></span> 
+ access a legally allocated block of memory that is in fact beyond the 
+ block that you are attempting to access. In this case, Purify does <span 
+ style="font-style: italic;"><I>not</I></span> signal illegal memory access errors 
+ because the memory is properly allocated and initialized. Purify monitors 
+ memory accesses and the blocks of memory accessed, not pointer arithmetic. 
+ You can use the <a href="ht_opt_static_check.htm#MID_STATICGUARD">-<span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>static-checking-guardzone</font></B></span></a> 
+ option to adjust the size of red zones to find these types of errors. 
+ </p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet>Purify detects 
+ array bounds errors in arrays within C structures <span style="font-style: italic;"><I>only</I></span> 
+ when the access extends beyond the entire structure.</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet>On Tru64 UNIX, 
+ Purify does not perform bounds checking on static data in the program's 
+ data or bss segments or local stack variables. For this reason, Purify 
+ does not report stack array bounds read (SBR) or write (SBW) messages 
+ in Tru64 UNIX. It reports array bounds read (ABR) and write (ABW) messages 
+ only for dynamically allocated arrays.</p></li>
+</ul>
+
+</body>
+
+</html>

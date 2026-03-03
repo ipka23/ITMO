@@ -1,0 +1,166 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Timing shared library operations                       Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1180>
+<meta name=layout-width content=747>
+<meta name=date content="01 7, 2002 5:00:34 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_time_sys_calls.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_time_reg_win_traps.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Timing shared library operations</h1>
+
+<p>For programs linked with shared libraries, Quantify instruments the 
+ code in each shared library and records data from functions in those libraries. 
+ Quantify does not instrument the dynamic linker itself, the program responsible 
+ for loading the shared libraries into the running process and resolving 
+ references to entry points and data within those libraries. These dynamic-linking 
+ operations, including calls to <span style="font-family: Courier;">dlopen</span> 
+ (Solaris 2, Tru64 UNIX, and 64-bit HP-UX) and <span style="font-family: Courier;">shl_load</span> 
+ (32-bit HP-UX), can take a substantial amount of time.</p>
+
+<h2>Recording dynamic linking</h2>
+
+<p>Quantify measures the elapsed time of dynamic-linking operations. </p>
+
+<p>You can use the <a href="ht_opt_datacollection.htm#MID_RECORD_DYNAMIC_LIB_DATA" style="font-weight: bold; font-family: Courier;">-record-dynamic-library-data</a> 
+ option to control whether Quantify records time for dynamic linking. The 
+ default is -<span style="font-family: Courier;">record-dynamic-library-data=yes</span>. 
+ </p>
+
+<p>To specify how Quantify measures time for dynamic linking, use the <span 
+ style="font-family: Courier;">-<a href="ht_opt_datacollection.htm#MID_MEASURE" style="font-weight: bold;">measure-timed-calls</a></span> 
+ option. The default is <span style="font-family: Courier;">-measure-timed-calls=elapsed-time</span>. 
+ This option also controls how Quantify measures times for system calls. 
+ If you change how Quantify measures time for system calls, you also change 
+ how it measures time for dynamic linking. </p>
+
+<p>Most dynamic linkers perform an initial link of a shared library and 
+ then, as individual functions in that library are called, the final references 
+ are resolved once and a procedure linkage table (PLT) is updated by the 
+ dynamic linker so that subsequent calls to this function are processed 
+ directly. Quantify does not measure the time required to patch these PLT 
+ entries.</p>
+
+<p>If the program attempts to open a dynamic library at run time that has 
+ not been instrumented, Quantify automatically instruments the library. 
+ Quantify does not measure the time required to instrument the library. 
+ Quantify records only the time required to open the instrumented library 
+ and link it into the process.</p>
+
+<h2>Understanding shared-library operations</h2>
+
+<p>Each operating system implements dynamic library initialization and 
+ support differently. As a consequence, when Quantify times dynamic library 
+ operations it often reports the times in different functions and files.</p>
+
+<p>On Solaris 2, the dynamic linker <span style="font-family: Courier;">ld.so</span> 
+ is loaded by the standard program interpreter before the program is started, 
+ so Quantify cannot time this loading operation. Each dynamic library contains 
+ <span style="font-family: Courier;">init</span> and <span style="font-family: Courier;">fini</span> 
+ code that is run after the library is loaded. Quantify reports these times 
+ under the <span style="font-family: Courier;">init[&lt;dynamic_library_name&gt;] 
+ </span>and <span style="font-family: Courier;">fini[&lt;dynamic_library_name&gt;]</span> 
+ functions. Quantify records dynamic library loading at run time in the 
+ <span style="font-family: Courier;">dlopen</span> function.</p>
+
+<p>On HP-UX, the dynamic loader <span style="font-family: Courier;">dld.sl</span> 
+ is loaded by a function in the file <span style="font-family: Courier;">crt0.o</span> 
+ before <span style="font-family: Courier;">start</span> calls <span style="font-family: Courier;">main</span>. 
+ After <span style="font-family: Courier;">dld.sl</span> is loaded into 
+ memory, <span style="font-family: Courier;">start</span> calls it and 
+ it loads the initial set of dynamic libraries into memory and initializes 
+ them. Quantify times both the initial load of <span style="font-family: Courier;">dld.sl</span> 
+ and the initialization operations and attributes the times to the <span 
+ style="font-family: Courier;">_p___map_dld</span> function. Quantify records 
+ dynamic library loading at run time in the <span style="font-family: Courier;">shl_load</span> 
+ function. </p>
+
+<p><span style="font-weight: bold;"><B>Note: </B></span>Unmapping dynamic libraries 
+ using <span style="font-family: Courier;">dlclose</span> on Solaris 2, 
+ and <span style="font-family: Courier;">shl_unload</span> on HP-UX, causes 
+ Quantify to attribute data to incorrect functions. Therefore, Quantify 
+ intercepts these functions and prevents the unmapping of dynamic libraries.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+includesubtree	false
+wwwroot	../../../applet/
+datafile	tree_sitemap.dat
+startDir	../../../
+resultfile	/sitemap/overview.htm
+relativepath	..
+bgcolor	#C0C0C0
+fgcolor	#336699
+levelfont	defaultfont	Times	Plain	-2
+levelfont	headlinefont	Times	Bold	+1
+levelfont	1	Times	Plain	-2
+headerfile	overviewpreamble.txt
+footerfile	sitepostamble.txt
+maxlevels	10
+delimeters	*
+defaulttitlelength	50
+
+<--
+label	Overview
+level	0
+row	1
+col	1
+colwidth	33%
+cellcolor	true
+-->
+
+<--
+label	Process Engineer Toolkit
+level	0
+row	1
+col	2
+colwidth	34%
+cellcolor	true
+-->
+
+<--
+label	Examples Overview
+level	0
+row	1
+col	3
+colwidth	34%
+cellcolor	true
+-->
+
+<--
+label	Site Map
+level	1
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	Web Resource Center
+level	0
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	Introduction
+level	1
+row	2
+col	2
+rowspan	3
+-->
+
+<--
+label	Wylie College Organization Website
+level	1
+row	2
+col	3
+rowspan	1
+-->
+
+<--
+label	White Papers
+level	0
+row	3
+col	3
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Applying Requirements Management with Use Cases
+level	1
+row	4
+col	3
+rowspan	1
+-->
+
+<--
+label	Phases
+level	0
+row	5
+col	1
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Templates
+level	0
+row	5
+col	2
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Work Guidelines
+level	0
+row	5
+col	3
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Inception
+level	1
+row	6
+col	1
+rowspan	1
+-->
+
+<--
+label	Microsoft Project
+level	1
+row	6
+col	2
+rowspan	1
+-->
+
+
+<--
+label	Assessment Workshop
+level	1
+row	6
+col	3
+rowspan	1
+-->
+
+
+
+
+
+
+
+
+

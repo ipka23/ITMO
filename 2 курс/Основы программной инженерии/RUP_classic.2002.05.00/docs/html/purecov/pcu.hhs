@@ -1,0 +1,2245 @@
+[TOPICS=221]
+"Legal Notices","html/copyright.htm"
+"How the Annotated Source window displays adjustments","html/ht__illustration_adj_as.htm"
+"About PureCoverage API functions","html/ht_about_pc_api.htm"
+"About PureCoverage options","html/ht_about_pc_options.htm"
+"About PureCoverage report scripts","html/ht_about_pc_report_scripts.htm"
+"Making adjustments using source code directives","html/ht_adj_manually.htm"
+"Making adjustments in the Annotated Source window","html/ht_adj_nteractively.htm"
+"Strategies for using adjustments","html/ht_adj_strategies.htm"
+"Adjustments file format","html/ht_adjustment_file_format.htm"
+"Glossary","html/ht_alphabet.htm"
+"purecov_clear_data","html/ht_api_purecov_clear_data.htm"
+"purecov_disable_save","html/ht_api_purecov_disable_save.htm"
+"purecov_enable_save","html/ht_api_purecov_enable_save.htm"
+"purecov_is_running","html/ht_api_purecov_is_running.htm"
+"purecov_save_data","html/ht_api_purecov_save_data.htm"
+"purecov_set_filename","html/ht_api_purecov_set_filename.htm"
+"Automating coverage data collection","html/ht_automated_testing.htm"
+"Filing bug reports with Rational Software","html/ht_bug_report.htm"
+"Using Rational ClearQuest with PureCoverage","html/ht_clearquest.htm"
+"Configuring a change request management system","html/ht_config_cmrs.htm"
+"Covering multiple processes","html/ht_covering_multi_proc.htm"
+"Using and customizing PureCoverage utility scripts","html/ht_customize_scripts.htm"
+"Displaying the license agreement","html/ht_dlgpath_on_license.htm"
+"Excluding libraries, directories, and files","html/ht_excluding.htm"
+"How adjustments affect export format","html/ht_export_and_adjustments.htm"
+"Using export format","html/ht_export_format.htm"
+"Calling PureCoverage API functions","html/ht_howto_call_pc_api.htm"
+"How the Viewer displays adjustments","html/ht_illustration_adj_viewer.htm"
+"Rational PureCoverage: What it does","html/ht_intro_pc.htm"
+"About library coverage","html/ht_library_coverage.htm"
+"An option for handling adjustments","html/ht_opt_adjust.htm"
+"An option for annotation","html/ht_opt_ann.htm"
+"Options for managing cache files","html/ht_opt_caching.htm"
+"Options for data collection","html/ht_opt_data_collect.htm"
+"Options for debugging messages","html/ht_opt_debug.htm"
+"An option for exit processing","html/ht_opt_exit.htm"
+"Options for specifying files and directories","html/ht_opt_fileid.htm"
+"A help system display option","html/ht_opt_help.htm"
+"An option for controlling run-time conditions","html/ht_opt_ignore.htm"
+"Informational options","html/ht_opt_info.htm"
+"Linker and collector options","html/ht_opt_link_collect.htm"
+"An option for merging data","html/ht_opt_merging.htm"
+"Mode options for analyzing data","html/ht_opt_mode.htm"
+"An option for objdebug","html/ht_opt_objdebug.htm"
+"An option for saving data","html/ht_opt_saving.htm"
+"Options for signal handling","html/ht_opt_signal.htm"
+"An option for objdebug","html/ht_opt_threads.htm"
+"Output from instrumented applications","html/ht_output.htm"
+"About adjustments","html/ht_ov_adjusting.htm"
+"Annotation variations: overview","html/ht_ov_ann_variations.htm"
+"Collecting coverage data","html/ht_ov_collecting.htm"
+"Rerunning your program under PureCoverage","html/ht_ov_merging.htm"
+"Viewing coverage data","html/ht_ov_viewing.htm"
+"The basic steps","html/ht_overview.htm"
+"Using Rational Purify with PureCoverage","html/ht_purify.htm"
+"Accessing the Rational Developer Network","html/ht_rdn_pc.htm"
+"Annotated differences report","html/ht_rep_anndiff.htm"
+"Annotated source report","html/ht_rep_annsource.htm"
+"Build differences summary report","html/ht_rep_builddiffsum.htm"
+"Coverage summary report","html/ht_rep_covsummary.htm"
+"Differences report","html/ht_rep_differences.htm"
+"Low coverage report","html/ht_rep_lowcov.htm"
+"Low coverage mail report","html/ht_rep_lowcovmail.htm"
+"Selected tests report","html/ht_rep_seltests.htm"
+"Spreadsheet report","html/ht_rep_spreadsheet.htm"
+"Running report scripts","html/ht_running_report_scripts.htm"
+"Saving coverage data","html/ht_saving.htm"
+"Contacting Technical Publications","html/ht_tech_pubs.htm"
+"Using the PureCoverage help system","html/ht_using_help.htm"
+"Using PureCoverage options","html/ht_using_pc_options.htm"
+"Complex source lines (annotation variations)","html/ht_var_complex.htm"
+"C++ inline functions (annotation variations)","html/ht_var_cpp.htm"
+"exit() statements (annotation variations)","html/ht_var_exit.htm"
+"Function entry points (annotation variations)","html/ht_var_function.htm"
+"Local variable declarations (annotation variations)","html/ht_var_local.htm"
+"Multi-line statements (annotation variations)","html/ht_var_multi.htm"
+"Switch statements (annotation variations)","html/ht_var_switch.htm"
+"Writing custom report scripts","html/ht_writing_report_scripts.htm"
+"Using X Resources to customize PureCoverage","html/ht_xres.htm"
+"Contacting Technical Support","html/idh_cmn_help_tech_support.htm"
+"Covering multi-threaded processes","html/ov_cover_multithreaded.htm"
+"Compiling with the debug option -g","html/ov_debug_option.htm"
+"Managing PureCoverage cache files","html/ov_files_created.htm"
+"How PureCoverage finds source files","html/ov_finding_source_files.htm"
+"About PureCoverage overhead","html/ov_overhead.htm"
+"About PureCoverage counters","html/ov_pc_counters.htm"
+"About signal handling","html/ov_signal_handling.htm"
+"Initializing help . . .","html/sys_initializing.htm"
+"bl--Block","html_notoc/ht_export_block.htm"
+"di--Directory","html_notoc/ht_export_directory.htm"
+"edi--End Directory","html_notoc/ht_export_enddir.htm"
+"efi--End File","html_notoc/ht_export_endfile.htm"
+"efu--End Function","html_notoc/ht_export_endfunc.htm"
+"fi--File","html_notoc/ht_export_file.htm"
+"fu--Function;","html_notoc/ht_export_function.htm"
+"li--Line","html_notoc/ht_export_line.htm"
+"to--Total","html_notoc/ht_export_total.htm"
+"adjustment","html_notoc/ht_gloss_adj.htm"
+"adjustments file","html_notoc/ht_gloss_adjfile.htm"
+"annotated source","html_notoc/ht_gloss_anno.htm"
+"basic block","html_notoc/ht_gloss_basic_block.htm"
+"cache, PureCoverage","html_notoc/ht_gloss_cache.htm"
+"conversion characters","html_notoc/ht_gloss_conversion.htm"
+"dead code","html_notoc/ht_gloss_dead_code.htm"
+"debug data","html_notoc/ht_gloss_debug.htm"
+"exclude","html_notoc/ht_gloss_exclude.htm"
+"function level","html_notoc/ht_gloss_functionlevel.htm"
+"inspected code","html_notoc/ht_gloss_inspct.htm"
+"instrumentation","html_notoc/ht_gloss_instr.htm"
+"line level","html_notoc/ht_gloss_linelevel.htm"
+"log file","html_notoc/ht_gloss_log_file.htm"
+"mode option","html_notoc/ht_gloss_mode_option.htm"
+"PureCoverage data file (.pcv)","html_notoc/ht_gloss_pcv.htm"
+"purecovhome","html_notoc/ht_gloss_purecovhome.htm"
+"tested code","html_notoc/ht_gloss_tested.htm"
+"thread","html_notoc/ht_gloss_thread.htm"
+"unnecessary adjustment","html_notoc/ht_gloss_unnecessary.htm"
+"Close (File menu)","html_notoc/idc_as_file_close.htm"
+"Exit PureCoverage (File menu, Annotated Source window)","html_notoc/idc_as_file_exit.htm"
+"Save (File menu, Annotated Source window)","html_notoc/idc_as_file_save.htm"
+"Save source and annotations as... (File menu, Annotated Source window)","html_notoc/idc_as_file_save_source.htm"
+"Snapshop (File menu, Annotated Source window)","html_notoc/idc_as_file_snapshot.htm"
+"Find (Annotated Source window)","html_notoc/idc_as_find.htm"
+"Go to line # (Annotated Source window)","html_notoc/idc_as_goto_line.htm"
+"Hit counts column (Annotated Source window)","html_notoc/idc_as_hitcounts.htm"
+"Next unused (Annotated Source window)","html_notoc/idc_as_next.htm"
+"Prev unused (Annotated Source window)","html_notoc/idc_as_prev.htm"
+"Highlight 'purecov: deadcode' lines (View menu, Annotated Source window)","html_notoc/idc_as_view_highlight_dead.htm"
+"Highlight 'purecov: inspected' lines (View menu, Annotated Source window)","html_notoc/idc_as_view_highlight_insp.htm"
+"Highlight 'purecov: tested' lines (View menu, Annotated Source window)","html_notoc/idc_as_view_highlight_test.htm"
+"Highlight unused lines (View menu, Annotated Source window)","html_notoc/idc_as_view_highlight_un.htm"
+"Highlight used lines (View menu, Annotated Source window)","html_notoc/idc_as_view_highlight_used.htm"
+"Show adjusted annotated source (View menu, Annotated Source window)","html_notoc/idc_as_view_show_adj.htm"
+"Show line counts (View menu, Annotated Source window)","html_notoc/idc_as_view_show_counts.htm"
+"Show line numbers (View menu, Annotated Source window)","html_notoc/idc_as_view_show_number.htm"
+"Actual line coverage (Columns selection dialog box)","html_notoc/idc_col_sel_actual_line_cov.htm"
+"Adjusted line coverage (Columns selection dialog box","html_notoc/idc_col_sel_adj_line_cov.htm"
+"Adjustments (Columns selection dialog box)","html_notoc/idc_col_sel_adjustments.htm"
+"Basic blocks (Columns selection dialog box)","html_notoc/idc_col_sel_basic_blocks.htm"
+"Functions: Deadcode (Columns selection dialog box)","html_notoc/idc_col_sel_dead.htm"
+"Functions: Percent deadcode (Columns selection dialog box)","html_notoc/idc_col_sel_dead_percent.htm"
+"Function calls (Columns selection dialog box)","html_notoc/idc_col_sel_function_calls.htm"
+"Functions (Columns selection dialog box)","html_notoc/idc_col_sel_functions.htm"
+"Newest session (Columns selection dialog box)","html_notoc/idc_col_sel_new_session.htm"
+"Adjustments: Number of deadcode lines (Columns selection dialog box)","html_notoc/idc_col_sel_num_dead.htm"
+"Number of files (Columns selection dialog box)","html_notoc/idc_col_sel_num_files.htm"
+"Adjustments: Number of inspected lines (Columns selection dialog box)","html_notoc/idc_col_sel_num_insp.htm"
+"Number of sessions (Columns selection dialog box)","html_notoc/idc_col_sel_num_sessions.htm"
+"Number of tested lines (Columns selection dialog box)","html_notoc/idc_col_sel_num_test.htm"
+"Oldest session (Columns selection dialog box)","html_notoc/idc_col_sel_old_session.htm"
+"Percent unused (Columns selection dialog box)","html_notoc/idc_col_sel_percent_unused.htm"
+"Percent used (Columns selection dialog box)","html_notoc/idc_col_sel_percent_used.htm"
+"Total (Columns selection dialog box)","html_notoc/idc_col_sel_total.htm"
+"Unused (Columns selection dialog box)","html_notoc/idc_col_sel_unused.htm"
+"Used (Columns selection dialog box)","html_notoc/idc_col_sel_used.htm"
+"Bug report (Help menu)","html_notoc/idc_help_bug_report.htm"
+"On Context (Help menu)","html_notoc/idc_help_context.htm"
+"On license (Help menu)","html_notoc/idc_help_license.htm"
+"Help topics (Help menu)","html_notoc/idc_help_overview.htm"
+"Release notes (Help menu)","html_notoc/idc_help_release_notes.htm"
+"On version (Help menu)","html_notoc/idc_help_version.htm"
+"On window (Help menu)","html_notoc/idc_help_window.htm"
+"Rightmost segment (Name style settings menu)","html_notoc/idc_name_right_dir_seg.htm"
+"Suppress C++ argument list (Name style settings menu)","html_notoc/idc_name_suppress_args.htm"
+"Suppress C++ class name (Name style settings menu)","html_notoc/idc_name_suppress_class.htm"
+"Suppress C++ operator prefix (Name style settings menu)","html_notoc/idc_name_suppress_op.htm"
+"Leftmost portion (Name style settings menu)","html_notoc/idc_name_truncate_left.htm"
+"Rightmost portion (Name style settings menu)","html_notoc/idc_name_truncate_right.htm"
+"Whole pathname (Name style settings menu)","html_notoc/idc_name_whole_path.htm"
+"Name column width (Name style settings menu)","html_notoc/idc_name_width.htm"
+"Save (Script Output window)","html_notoc/idc_script_output_save.htm"
+"Arguments field (Run script dialog box)","html_notoc/idc_scripts_arg.htm"
+"Scripts menu (Run script dialog box)","html_notoc/idc_scripts_menu.htm"
+"Actions menu (PureCoverage Viewer)","html_notoc/idc_viewer_actions.htm"
+"Collapse all (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_col_all.htm"
+"Collapse (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_collapse.htm"
+"Expand all (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_exp_all.htm"
+"Expand (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_expand.htm"
+"Next (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_next.htm"
+"Previous (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_previous.htm"
+"Show annotated source (Actions menu, PureCoverage Viewer)","html_notoc/idc_viewer_actions_show_as.htm"
+"Extract adjustments from all source files (Adjustments menu, PureCoverage Viewer)","html_notoc/idc_viewer_adj_extract.htm"
+"Adjustments menu (PureCoverage Viewer)","html_notoc/idc_viewer_adjustments.htm"
+"File menu (PureCoverage Viewer)","html_notoc/idc_viewer_as_file.htm"
+"View menu (PureCoverage Viewer)","html_notoc/idc_viewer_as_view.htm"
+"File a Change Request (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_bug_report.htm"
+"Exit (File menu)","html_notoc/idc_viewer_file_exit.htm"
+"Open (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_open.htm"
+"Reload all (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_reload.htm"
+"Run script... (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_run_script.htm"
+"Save as .. (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_save_as.htm"
+"Write export file... (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_write_exp.htm"
+"Write .pcv file... (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_file_write_pcv.htm"
+"Sorting order (PureCoverage Viewer)","html_notoc/idc_viewer_sorting.htm"
+"Toolbar (PureCoverage Viewer)","html_notoc/idc_viewer_toolbar.htm"
+"Hide toolbar/Make toolbar visible (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_hide_toolb.htm"
+"Refresh display (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_refresh.htm"
+"Select columns... (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_sel_columns.htm"
+"Select sorting order (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_sel_sorting.htm"
+"Vertical column separators (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_set_names.htm"
+"Update ../.purecov.Xdefaults (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_update_dets.htm"
+"No vertical separators (View > Vertical column separators, PureCoverage Viewer)","html_notoc/idc_viewer_view_ver.htm"
+"Between all columns (View > Vertical column separators, PureCoverage Viewer)","html_notoc/idc_viewer_view_ver_all.htm"
+"Run script... (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_ver_groups.htm"
+"Run script... (File menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_ver_none.htm"
+"Write view settings to... (View menu, PureCoverage Viewer)","html_notoc/idc_viewer_view_write_sets.htm"
+"Annotated Source window","html_notoc/idd_ann_src.htm"
+"Rational ClearQuest Login dialog box","html_notoc/idd_clearquest_db.htm"
+"Columns selection dialog box","html_notoc/idd_columns_selection.htm"
+"Error message","html_notoc/idd_error_message.htm"
+"File selection dialog box","html_notoc/idd_file_selection_db.htm"
+"Information message","html_notoc/idd_info_message.htm"
+"Name style settings menu","html_notoc/idd_name_style.htm"
+"Is it OK to continue?","html_notoc/idd_ok_message.htm"
+"Prolonged Update panel","html_notoc/idd_prolonged_update.htm"
+"Run script dialog box","html_notoc/idd_run_script.htm"
+"PureCoverage Script Output window","html_notoc/idd_script_output.htm"
+"Some PureCoverage data changed dialog box","html_notoc/idd_some_data_changed.htm"
+"PureCoverage Viewer","html_notoc/idd_viewer.htm"
+"PureCoverage Viewer toolbar","html_notoc/idd_viewer_toolbar.htm"
+"Warning message","html_notoc/idd_warn_message.htm"
+
+
+[KEYWORDS=1907]
+"000", 64, 85
+"01", 5
+"01040", 58
+"010408", 58
+"02", 5
+"049", 0
+"07", 62
+"0800", 62
+"10", 8, 58, 64, 85
+"100", 60, 77
+"10000", 85
+"10k", 85
+"11", 7, 43
+"12", 7, 5
+"126", 0
+"13", 62
+"14", 0, 82
+"15", 8, 82
+"16", 5
+"167", 0
+"180", 0
+"193", 0
+"1987", 0
+"1988", 0
+"1992", 0
+"1993", 0
+"1994", 0, 16
+"1995", 0
+"1998", 0
+"1999", 5, 0, 16, 62
+"1prog", 57
+"20", 46, 37
+"200", 0
+"2001", 0
+"2002", 0, 28
+"206", 0
+"227", 0
+"23", 8, 5
+"252", 0
+"2prog", 57
+"300", 36
+"32", 5, 36
+"329", 0
+"335", 0
+"34", 62
+"344", 0
+"3d", 0, 77
+"404", 0
+"42", 5
+"45", 62
+"48", 0
+"499", 0
+"50", 36
+"52", 0, 60
+"534", 0
+"535", 0
+"54", 5
+"56", 61, 60
+"574", 0
+"584", 0
+"5lib", 32
+"5r1", 0
+"60", 61, 60
+"649", 0
+"666", 0
+"675", 0
+"70", 60, 77
+"700", 36
+"701", 0
+"7013", 0
+"71", 60
+"75", 62, 61
+"754", 0
+"760", 0
+"77", 28
+"80", 62, 61
+"802", 0
+"835", 0
+"898", 0
+"90", 28
+"901", 0
+"94303", 0
+"951211", 63
+"96", 60
+"960408", 58
+"98", 7
+"9999", 85
+"_", 63, 102
+"_pure_23456887", 36
+"about", 10, 8, 4, 3, 2, 0, 29, 28, 27, 25, 23, 18, 16, 39, 34, 51, 50, 48, 79, 77, 69, 68, 67, 95, 94, 93, 88, 86, 85, 84, 82, 104, 138, 137, 158, 156, 161, 185, 207, 206, 200, 220, 218
+"abov", 0
+"absolut", 15, 36, 63, 65, 102
+"absolute", 16
+"ac", 0
+"accelerator", 0
+"accept", 4, 59
+"acces", 18, 36, 55, 54, 68, 82, 115, 219
+"accessibility", 0
+"accessibl", 32
+"accommodat", 36, 56
+"accompani", 0
+"accompany", 0
+"accomplish", 29
+"accumulat", 15, 14, 11, 29, 20, 16, 44, 33, 76, 72
+"accumulation", 16
+"accumulator", 10
+"accurat", 97
+"acknowledgement", 0
+"acknowledgment", 0
+"acros", 93, 89, 96, 172
+"action", 0, 45, 175, 174, 173, 180, 179, 178, 177, 176, 194, 218
+"activ", 0
+"activemovi", 0
+"activestor", 0
+"activesync", 0
+"activex", 0
+"activiti", 32
+"actual", 15, 7, 27, 52, 49, 48, 135, 132
+"ad", 5, 19, 16, 45, 36, 60, 56, 50, 66, 84, 81, 169
+"adapt", 7
+"add", 7, 4, 26, 25, 23, 19, 16, 54, 52, 69, 82
+"addin", 0
+"addison", 0
+"addition", 8, 27, 19, 35, 50, 83
+"additional", 8, 7, 5, 0, 27, 19, 16, 45, 36, 58, 56, 69, 84, 108
+"addres", 20, 17, 36, 63, 79
+"addtional", 0
+"adequate", 18
+"adj", 136
+"adjust", 8, 7, 6, 5, 28, 27, 24, 42, 56, 52, 66, 98, 97, 119, 136, 132, 130, 148, 146, 144, 206
+"adjustment", 9, 8, 7, 6, 5, 4, 3, 1, 30, 27, 24, 23, 42, 62, 61, 60, 59, 58, 57, 56, 49, 48, 69, 66, 65, 64, 111, 107, 103, 98, 97, 127, 119, 116, 114, 137, 136, 135, 129, 128, 148, 146, 144, 182, 181, 206, 198, 193, 218
+"adopt", 7
+"advantag", 7, 16
+"advertis", 0
+"advis", 0
+"affect", 5, 24, 23, 41, 48, 66
+"africa", 79
+"again", 5, 40, 51, 194
+"against", 0
+"agent", 0
+"agre", 7
+"agreement", 0, 157
+"alarm", 45
+"allow", 7, 4, 36, 56, 68, 66, 83, 121, 116, 142, 138, 137, 136, 135, 182, 207, 201, 199, 198, 197, 217
+"allowabl", 33
+"alphawork", 0
+"alter", 36
+"alternat", 16, 69, 86
+"alternate", 0
+"alternative", 14, 19, 51
+"although", 81
+"alto", 0
+"alur", 0
+"alway", 7, 3, 30, 26, 24, 32, 70, 69, 82, 81, 101, 100, 96
+"america", 79
+"amount", 7
+"analysi", 7, 3, 42, 36, 54, 64, 192
+"analyststudio", 0
+"analyz", 7, 28, 42, 60
+"anchor", 58
+"annotat", 9, 8, 7, 6, 5, 4, 1, 30, 29, 28, 27, 36, 57, 56, 52, 49, 48, 75, 74, 73, 71, 70, 66, 83, 81, 107, 103, 99, 98, 97, 126, 125, 124, 123, 122, 121, 119, 116, 114, 132, 180, 206, 198, 194, 193
+"annotation", 31, 49, 76, 75, 74, 73, 72, 71, 70, 66, 120
+"answ", 7
+"answer", 7, 28, 79
+"answerbook", 0
+"ant", 0
+"antonio", 0
+"anywher", 71, 173
+"ap", 5, 4, 3, 30, 23, 42, 63, 62, 61, 60, 59, 58, 57, 56, 74, 69, 64, 182, 200, 198, 193, 218
+"apac", 79
+"apach", 0
+"apachesoftwarelicens", 0
+"apex", 0
+"api", 2, 28, 26, 20, 16, 33, 50, 66, 86, 80
+"apparent", 36
+"appear", 8, 7, 5, 0, 27, 25, 16, 59, 49, 79, 72, 71, 65, 94, 93, 89, 207, 217
+"append", 3, 31, 36, 77, 83
+"applet", 0
+"appli", 7, 5, 30, 63, 58, 69, 137, 148, 146, 144, 181
+"applicabl", 0
+"application", 4, 2, 0, 28, 23, 16, 47, 36, 58, 54, 50, 69, 86, 84, 82, 80, 97, 115, 199
+"apply_patch", 58
+"approach", 7
+"appropriat", 7, 26, 21, 16, 63, 62, 77, 116
+"apr", 58
+"april", 58
+"arbitrari", 8
+"arbitrary", 35, 63
+"archiv", 66
+"area", 63, 58, 49, 218
+"argument", 20, 36, 63, 58, 57, 65, 171, 163, 199
+"argv", 36, 77
+"aris", 0
+"arrang", 16, 218
+"array", 77
+"arrow", 6
+"artifact", 55
+"as", 8, 7, 6, 5, 4, 0, 29, 28, 27, 24, 23, 19, 18, 17, 16, 45, 42, 40, 36, 35, 63, 62, 61, 60, 58, 56, 54, 53, 50, 48, 77, 76, 74, 73, 72, 70, 68, 66, 65, 64, 94, 93, 89, 86, 85, 84, 83, 82, 81, 109, 107, 102, 101, 120, 116, 114, 140, 139, 156, 168, 190, 216, 213
+"ascii", 25, 21, 77, 66, 98, 120, 191, 190
+"asia", 79
+"ask", 0, 66, 83
+"aspect", 78
+"assemb", 100
+"assertion", 3, 34
+"asses", 28
+"assign", 41, 36, 127, 129, 128, 169
+"assignment", 100
+"associat", 0, 16, 108
+"assum", 63
+"attach", 0, 100
+"attempt", 20, 83
+"attention", 220
+"attribut", 83
+"authenticod", 0
+"auto", 3, 36
+"automat", 28, 21, 19, 18, 16, 53, 50, 66, 185
+"automatic", 217
+"automatical", 11, 7, 6, 5, 27, 19, 18, 16, 38, 36, 56, 51, 78, 77, 68, 83, 188, 207, 217
+"automation", 18
+"automount", 36, 63
+"autosum", 0
+"availabl", 5, 0, 29, 19, 18, 17, 33, 63, 54, 68, 109, 104, 99, 194, 218
+"avoid", 16, 46, 116
+"awar", 5
+"away", 20, 169
+"b", 9, 8, 42, 100
+"back", 72, 68
+"backoffic", 0
+"ban", 54, 50
+"bar", 6, 5, 173
+"bas", 0, 19, 18, 41, 57, 185
+"basenam", 63, 57, 83
+"basi", 16
+"basic", 9, 4, 0, 25, 16, 33, 57, 53, 77, 70, 88, 81, 100, 96, 138
+"basicscript", 0
+"bcentral", 0
+"be", 16, 36, 63, 69, 65, 89, 137
+"bear", 0
+"becom", 69, 68, 64, 156, 169
+"befor", 11, 5, 21, 20, 16, 45, 42, 39, 63, 94, 93, 89, 86
+"begin", 8, 5, 2, 25, 23, 16, 54, 69, 81, 100, 122, 116
+"beginning", 77
+"behalf", 0
+"behavior", 2, 78
+"believ", 5
+"bell", 0
+"bellcor", 0
+"below", 0, 62, 61, 81
+"best", 55
+"bim", 5
+"bin", 4, 16, 40, 39, 77, 67, 65
+"binari", 0
+"binary", 0, 112
+"bit", 36
+"biztalk", 0
+"bl", 25, 24, 88
+"black", 103
+"blank", 25, 57, 73, 145
+"block", 9, 8, 5, 25, 33, 57, 77, 70, 94, 93, 89, 88, 81, 100, 96, 116, 138
+"body", 103
+"book", 0
+"bookmark", 68
+"bookshelf", 0
+"boolean", 56, 69
+"both", 6, 0, 20, 19, 16, 36, 33, 56, 54, 66, 83, 81, 96, 119
+"box", 143, 142, 141, 140, 139, 138, 137, 136, 135, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 172, 171, 188, 207, 199, 217, 216, 215, 213, 211, 210, 208
+"break", 63
+"breakpoint", 26
+"brows", 19, 18, 37, 68, 95, 94, 93, 92, 91, 90, 89, 88, 96, 158
+"bug", 17, 63, 79, 155
+"bug_report", 17
+"build", 7, 4, 3, 28, 23, 16, 39, 38, 36, 32, 63, 58, 69
+"built", 21, 16, 38, 36, 63, 58, 69
+"busines", 0
+"button", 21, 19, 18, 68, 158, 156, 173, 172, 161, 207, 219, 218
+"bypas", 40
+"c", 9, 7, 6, 5, 0, 31, 28, 26, 25, 23, 16, 42, 41, 40, 39, 36, 63, 62, 61, 60, 58, 57, 54, 50, 49, 77, 71, 100, 165, 164, 163, 199
+"ca", 0
+"cach", 9, 3, 21, 32, 69, 82, 108, 101
+"cal", 0, 26, 21, 20, 19, 36, 58, 56, 64, 94, 80, 103, 102, 141
+"calculat", 5, 63, 58, 77
+"call", 15, 14, 11, 26, 20, 19, 16, 36, 35, 33, 79, 115
+"cam", 8, 0
+"cancel", 207, 213
+"cannot", 8, 6, 29, 23, 16, 41, 38, 36, 63, 56, 54, 65, 83, 81, 120
+"canonical", 8, 5, 23
+"canonicaliz", 63
+"car", 7
+"caret", 58, 77
+"carnegi", 0
+"cas", 17, 16, 45, 41, 36, 63, 54, 77, 74, 71, 69, 86, 82, 81, 101, 122
+"catalog", 0
+"catch", 45, 86
+"category", 7
+"caus", 0, 36, 63, 100
+"cc", 7, 5, 31, 26, 16, 41, 40, 39, 36, 54, 50, 69
+"ccs", 40, 32
+"ce", 0
+"cedric", 0
+"cent", 0
+"central", 69
+"certain", 10, 16
+"cflag", 26, 39
+"cfr", 0
+"cgi", 67
+"chang", 7, 6, 4, 2, 1, 23, 21, 19, 18, 16, 41, 32, 63, 60, 58, 56, 51, 69, 68, 66, 81, 121, 188, 185, 207, 206, 194, 193, 217
+"char", 15, 7, 163
+"charact", 56, 65, 102, 122
+"character", 15, 9, 44, 36, 35, 58, 102, 122, 169
+"chat", 0
+"check", 28, 16, 54
+"checklist", 19
+"checkpoint", 14
+"checksum", 16, 41
+"child", 3, 20, 33
+"chmod", 77
+"choic", 36
+"choos", 30, 42, 127, 132, 129, 128, 188, 205, 199, 218
+"chop", 63
+"chri", 60
+"circumstanc", 72
+"cl", 0
+"clark", 0
+"clas", 164, 199
+"claus", 73
+"clean", 21, 16, 82
+"clear", 15, 14, 12, 63, 69
+"clearcas", 0
+"clearddt", 0, 19
+"clearguid", 0
+"clearquest", 0, 28, 21, 19, 18, 185, 207
+"cleartrack", 0
+"cleartyp", 0
+"click", 9, 6, 4, 3, 23, 21, 19, 18, 54, 52, 50, 79, 69, 68, 67, 83, 126, 125, 116, 158, 156, 161, 207, 206, 218, 213
+"client", 0, 19
+"clock", 45
+"clos", 77, 66, 118, 117, 186, 217
+"cod", 10, 9, 8, 7, 6, 5, 4, 2, 0, 30, 29, 28, 27, 26, 25, 24, 23, 16, 41, 40, 36, 63, 62, 58, 56, 55, 54, 53, 52, 51, 49, 48, 78, 71, 66, 95, 89, 88, 84, 82, 81, 108, 107, 106, 104, 103, 99, 98, 97, 119, 116, 114, 142, 134, 133, 131, 130, 129, 128, 206
+"codeview", 0
+"collaps", 175, 174, 173, 194
+"collect", 10, 4, 2, 29, 28, 23, 16, 42, 41, 40, 36, 33, 63, 60, 53, 51, 50, 48, 70, 93, 109, 104
+"collection", 3, 2, 28, 16, 33, 50, 109, 106
+"collector", 3, 40
+"colon", 6, 5, 43, 32, 69
+"color", 1, 78, 127, 129, 128
+"column", 8, 7, 6, 5, 27, 16, 58, 57, 56, 49, 64, 124, 116, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 169, 204, 203, 202, 201, 199, 197, 218, 212, 208
+"com", 0, 28, 62, 79, 67
+"combin", 20, 16, 42, 41, 33, 84
+"combination", 80
+"comma", 31, 45
+"command", 7, 5, 30, 25, 16, 42, 40, 39, 36, 35, 63, 58, 52, 51, 50, 77, 69, 68, 66, 65, 111, 121, 158, 156, 173, 171, 161, 188, 184, 183, 182, 195, 194
+"comment", 8, 7, 6, 5, 25, 67, 116, 142, 205
+"commercial", 0
+"common", 0, 28, 20, 79, 219
+"communication", 0
+"compani", 0
+"company", 0
+"compar", 4, 42, 60, 58, 57, 53, 51, 66, 65, 121
+"comparison", 100
+"compatibl", 0, 42, 54
+"compil", 7, 29, 26, 17, 16, 43, 41, 40, 39, 58, 51, 50, 49, 74, 70, 84, 83, 82, 81, 109, 106, 104, 103, 99, 120, 116, 218
+"compilation", 7, 17, 16, 41, 74, 81
+"compiler", 49, 76, 75, 73, 72, 71, 83, 116
+"complet", 7, 2, 18, 17, 16, 82
+"complete", 24, 42
+"completion", 12
+"complex", 16, 49, 70
+"component", 0, 36, 68, 158, 156, 161
+"componenton", 0
+"compos", 0
+"comprehensiv", 28
+"comput", 16, 79
+"conclud", 5
+"condition", 0, 16, 45, 38, 86, 116
+"conditional", 41, 100
+"confidential", 0
+"configur", 21, 19, 18, 185, 207
+"configuration", 19
+"confirmation", 12
+"conflict", 54
+"connection", 0
+"connexi", 0
+"consent", 0, 28
+"consequential", 0
+"consid", 16, 56
+"consider", 5
+"consideration", 7
+"consist", 5, 0, 63, 57
+"consistent", 72
+"consol", 50
+"const", 15
+"construct", 36
+"constructor", 40
+"consult", 0
+"consum", 63, 214
+"contact", 0, 17, 79, 67
+"contain", 15, 8, 5, 0, 27, 25, 23, 16, 36, 63, 56, 77, 73, 70, 95, 94, 93, 89, 88, 102, 119, 116, 112, 142, 173, 184, 183, 182
+"content", 68, 66, 120, 190
+"contentstudio", 0
+"context", 3, 34, 56, 68, 158, 156, 161, 218
+"continu", 10, 20, 16, 41, 207, 213
+"contract", 0
+"contribut", 95, 88
+"contribution", 0, 23
+"contributor", 0
+"control", 3, 2, 20, 16, 45, 41, 38, 33, 62, 59, 56, 78, 72, 68, 86, 80, 122, 115, 184, 183, 201, 198, 212
+"convenienc", 63
+"convenient", 69
+"conversion", 15, 9, 44, 36, 35, 102
+"convert", 8, 25, 63, 77, 102
+"copi", 0, 31, 67
+"copy", 4, 3, 0, 31, 21, 43, 42, 108, 99, 157
+"copyright", 0, 16
+"cor", 0
+"corn", 68, 198
+"corp", 16
+"corporation", 0, 28
+"correct", 5, 20, 41, 39, 36, 63, 107, 114
+"correspond", 5, 0, 63, 58
+"count", 15, 14, 3, 24, 20, 16, 44, 33, 56, 51, 77, 73, 71, 70, 66, 64, 85, 83, 81, 107, 102, 124, 120, 114, 133
+"counter", 85, 84, 80
+"counterpart", 82, 101
+"countri", 0
+"cours", 0
+"cov", 20, 107, 114
+"cover", 4, 0, 20, 18, 80
+"coverag", 14, 11, 10, 8, 7, 5, 4, 30, 29, 28, 27, 25, 24, 23, 20, 18, 16, 45, 44, 42, 41, 36, 35, 33, 32, 63, 62, 61, 60, 59, 58, 57, 56, 54, 53, 52, 51, 50, 49, 48, 79, 77, 66, 86, 84, 83, 81, 80, 111, 109, 108, 104, 99, 98, 97, 121, 112, 136, 135, 132, 191, 187, 206, 192, 218, 217
+"crash", 17, 45, 86
+"crc", 0
+"creat", 23, 16, 40, 36, 33, 32, 49, 78, 77, 82, 101
+"crm", 19
+"cron", 82
+"crontab", 82
+"crupi", 0
+"csh", 16, 58, 69
+"cshrc", 69
+"cumulativ", 16, 51
+"curdir", 77
+"curfil", 77
+"curfunc", 77
+"current", 15, 7, 6, 1, 23, 45, 38, 36, 32, 69, 66, 65, 83, 82, 102, 98, 121, 120, 119, 117, 143, 136, 159, 156, 149, 147, 170, 161, 191, 190, 188, 187, 205, 200, 198, 193, 192, 218, 217
+"cursor", 68, 156, 172, 179, 178
+"custom", 4, 77, 65, 189
+"customiz", 3, 1, 21, 19, 18, 62, 49, 78, 185
+"cv", 0
+"cycl", 51
+"d", 9, 6, 5, 0, 45, 86, 100
+"dai", 7, 58
+"damag", 0
+"dang", 5
+"danny", 0
+"dat", 7, 16, 62, 58
+"data", 15, 14, 12, 11, 10, 9, 8, 7, 5, 4, 3, 2, 0, 30, 29, 28, 27, 25, 23, 20, 17, 16, 46, 45, 44, 42, 41, 36, 35, 33, 63, 62, 61, 60, 59, 58, 57, 56, 54, 53, 52, 51, 50, 48, 79, 77, 76, 72, 66, 65, 64, 95, 94, 93, 92, 91, 90, 89, 88, 86, 84, 83, 81, 80, 111, 109, 106, 104, 99, 98, 97, 96, 112, 132, 191, 188, 187, 207, 206, 197, 193, 192, 218, 217
+"databas", 7, 19, 35, 62, 61, 60, 207
+"datatip", 0
+"day", 7, 63, 58, 82
+"daytim", 16
+"dbx", 7, 26
+"ddt", 0
+"dead", 9, 7, 5, 27, 24, 78, 103, 140, 139
+"deadcod", 8, 7, 6, 5, 27, 48, 107, 103, 97, 127, 114, 140, 139, 144
+"deal", 0
+"debug", 9, 3, 29, 26, 17, 43, 36, 34, 33, 50, 49, 71, 84, 81, 109, 106, 104, 99, 218
+"decemb", 0
+"declar", 73
+"declaration", 49, 74, 73
+"decreas", 58
+"deepak", 0
+"deepen", 55
+"default", 15, 7, 2, 31, 30, 29, 27, 23, 20, 19, 16, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 63, 57, 56, 51, 48, 69, 108, 103, 101, 98, 172, 200
+"defect", 28, 18, 32
+"deficienci", 28
+"defin", 9, 8, 21, 208
+"definition", 9
+"degre", 29
+"delay", 63
+"delet", 6, 16, 60, 56
+"deliver", 45, 86
+"delivery", 45
+"demo", 25
+"denot", 58
+"depend", 8, 7, 29, 56, 81
+"dependent", 40, 32
+"deriv", 0
+"descend", 63
+"describ", 7, 28, 53, 213
+"description", 8, 4, 17, 56
+"descriptor", 31
+"deselect", 49
+"design", 0, 83
+"designat", 60
+"desir", 77
+"desktop", 0
+"destination", 86
+"detail", 4, 29, 21, 33, 70, 83
+"detect", 11, 16, 41, 63
+"detection", 28, 54
+"determin", 16, 63, 62, 49, 83
+"dev", 36
+"develop", 7, 0, 63, 55
+"developer", 7, 16, 63, 62
+"development", 7, 0, 63, 51
+"devtool", 79
+"dfar", 0
+"di", 25, 24, 77, 90, 89
+"diagnos", 28
+"dialect", 6
+"dialog", 8, 16, 60, 65, 83, 143, 142, 141, 140, 139, 138, 137, 136, 135, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 172, 171, 188, 207, 199, 220, 217, 216, 215, 213, 211, 210, 209, 208
+"did", 35
+"dif", 16
+"diff", 4, 63, 58, 56
+"differ", 16, 36
+"differenc", 7, 4, 60, 58, 56, 49
+"different", 14, 1, 29, 28, 27, 24, 18, 16, 42, 41, 36, 77, 70, 83, 116, 185, 197
+"difficult", 63
+"dir", 3, 26, 39, 36, 32, 69, 82, 101, 96
+"dir1", 77
+"direct", 8, 0, 28, 26, 25, 48
+"direct3d", 0
+"directanimation", 0
+"directdraw", 0
+"directinput", 0
+"direction", 97
+"directiv", 8, 6, 5, 29, 23, 35
+"directori", 3, 28, 23, 36, 32, 58, 77, 69, 83, 82, 81, 105, 101, 96
+"directory", 15, 4, 0, 29, 28, 27, 26, 25, 23, 21, 17, 16, 44, 39, 36, 32, 58, 77, 69, 65, 64, 93, 90, 89, 83, 82, 108, 102, 101, 113, 143, 149, 145, 168, 162, 199, 218
+"directx", 0
+"directxj", 0
+"disabl", 12, 23, 20, 16
+"disadvantag", 7
+"discard", 8, 16, 41, 66, 121, 188
+"disclaim", 0
+"disclaimer", 0
+"disclosur", 0
+"discover", 63
+"discovery", 63
+"discus", 7, 16
+"discussion", 55
+"disk", 32, 82
+"display", 8, 7, 6, 5, 1, 29, 27, 24, 16, 42, 41, 37, 59, 56, 54, 52, 50, 49, 79, 78, 77, 70, 68, 66, 65, 83, 81, 99, 97, 120, 119, 142, 141, 138, 137, 136, 135, 134, 133, 131, 130, 159, 158, 157, 156, 173, 170, 168, 167, 166, 162, 161, 160, 190, 188, 187, 184, 182, 181, 180, 206, 205, 204, 203, 202, 200, 199, 198, 197, 196, 195, 193, 218, 217, 216, 214, 212, 208
+"display_hello_world", 25
+"display_messag", 25
+"distinguish", 83, 127, 129, 128
+"distribut", 14, 0, 16
+"distribution", 0, 28
+"divid", 56
+"do", 0, 17, 45
+"do_someth", 41
+"do_something_els", 41
+"document", 0
+"documentation", 0, 28, 19, 18, 55, 67, 207
+"don", 51, 217
+"dosometh", 163
+"dot", 58
+"doublespac", 0
+"down", 173, 172, 218
+"drivespac", 0
+"dump", 17
+"dur", 7, 23, 34, 32, 54, 74, 83, 82, 209
+"dversion1", 41
+"dversion2", 41
+"e", 9, 0, 62, 100
+"earli", 16
+"easi", 23, 36, 32
+"east", 79
+"echo", 16, 39
+"eclips", 0
+"edg", 6
+"edi", 25, 90, 89
+"edit", 8, 6, 21, 19, 200
+"editor", 56, 200
+"effect", 6, 5, 27, 23, 18, 38, 36, 69, 116
+"efficient", 7, 16
+"effort", 7
+"efi", 25, 93, 91
+"efu", 25, 95, 94, 92, 88
+"element", 0, 218
+"eliminat", 23
+"els", 7, 16, 41, 38, 53, 52, 51, 50, 85
+"email", 17, 79, 67
+"emb", 5, 39
+"embed", 5, 0, 36
+"empty", 73
+"enabl", 12, 2
+"encod", 83, 82
+"end", 8, 5, 0, 25, 16, 36, 35, 57, 76, 94, 93, 92, 91, 90, 89, 83, 100, 122, 116
+"endif", 41
+"endors", 0
+"engin", 0
+"enjoyment", 0
+"enough", 83
+"ent", 6, 21, 60, 65, 171, 169, 207
+"enter", 94, 81
+"entir", 6, 28, 23, 16, 32, 63, 68, 89, 96, 122, 156, 168
+"entirety", 0
+"entri", 8, 24, 21, 19, 175, 174, 177, 176
+"entry", 24, 19, 49, 74, 73, 68, 95, 94, 93, 92, 88, 82, 81, 175, 177
+"environment", 4, 3, 19, 16, 38, 36, 54, 69, 207
+"eof", 5
+"eq", 77
+"equal", 36, 69
+"equivalent", 42, 72, 69, 120
+"erich", 0
+"errexit", 7
+"error", 8, 5, 28, 37, 63, 54, 209
+"escap", 63, 65, 171
+"especial", 23, 66
+"europ", 79
+"eval", 63
+"evaluat", 63
+"evaluation", 39
+"even", 7, 5, 0, 29, 28, 23, 20, 16, 41, 36, 32, 63, 58, 73, 105, 103, 199
+"event", 0, 79, 213
+"eventual", 63, 94, 93, 89
+"every", 7, 23, 82, 182, 181
+"everyon", 7
+"everyth", 5
+"everywher", 85
+"exact", 8, 7, 6, 36, 63, 54, 81
+"examin", 7, 23, 16, 62, 107
+"exampl", 12, 11, 10, 8, 7, 6, 5, 25, 23, 16, 45, 42, 41, 40, 39, 36, 63, 57, 56, 54, 50, 78, 77, 73, 69, 82, 103, 102, 100, 116, 142, 165, 163, 162, 194
+"except", 0, 94, 93, 89
+"exception", 74
+"exclud", 9, 29, 28, 23, 32, 50, 49, 48, 84, 105
+"exec", 20, 36, 80
+"execut", 15, 12, 11, 20, 39, 33, 72, 70, 85, 81, 100
+"executabl", 13, 23, 21, 20, 16, 40, 38, 36, 50, 76, 73, 69, 142
+"execution", 16
+"exemplary", 0
+"exercis", 4, 28, 16, 63, 57, 53, 51, 50, 48, 109, 106, 124, 143, 133, 131, 130, 154, 153, 151, 150, 149, 147
+"exist", 6, 5, 16, 36, 60, 83
+"existenc", 16
+"exit", 15, 12, 11, 7, 3, 2, 20, 16, 39, 35, 33, 52, 50, 49, 72, 66, 84, 80, 121, 118, 186
+"expand", 23, 56, 102, 173, 177, 176, 194
+"expansion", 15
+"expat", 0
+"expect", 46
+"explicit", 5, 0, 56, 69
+"explor", 0
+"export", 3, 30, 25, 24, 42, 36, 60, 59, 58, 48, 77, 69, 66, 65, 95, 89, 88, 83, 111, 191
+"expres", 0, 28
+"expression", 63, 58
+"extend", 5, 36
+"extension", 15, 44, 62, 77
+"extent", 0
+"extra", 8, 7, 43
+"extract", 7, 5, 3, 27, 42, 77, 69, 111, 182, 181
+"extraction", 5
+"f", 9, 63
+"fact", 211
+"fail", 11, 10, 20, 16, 86
+"failur", 11, 10, 16
+"fals", 103
+"fapp2", 0
+"far", 0
+"fatal", 11, 45, 86
+"fax", 79
+"fd", 3, 31
+"fe", 0
+"feasibl", 63
+"featur", 7, 39, 53, 66
+"feedback", 67
+"few", 16, 58
+"fflush", 7
+"fi", 25, 24, 16, 77, 93, 91
+"field", 6, 25, 21, 95, 94, 93, 92, 91, 90, 89, 88, 96, 171, 207
+"figur", 16, 58
+"fil", 15, 14, 9, 8, 7, 6, 5, 4, 3, 1, 31, 29, 28, 27, 26, 25, 23, 21, 20, 19, 18, 17, 16, 45, 44, 42, 41, 40, 39, 36, 33, 32, 63, 62, 61, 60, 59, 58, 57, 56, 52, 51, 50, 49, 48, 79, 78, 77, 70, 69, 66, 65, 64, 95, 94, 93, 91, 90, 89, 88, 86, 83, 82, 81, 111, 110, 108, 105, 102, 101, 99, 98, 97, 96, 127, 122, 121, 120, 119, 118, 117, 112, 143, 129, 128, 159, 155, 149, 147, 145, 191, 190, 189, 188, 187, 186, 185, 183, 182, 181, 180, 207, 206, 205, 200, 194, 192, 218, 217, 216, 210
+"file1", 42, 77
+"file2", 42
+"filenam", 15, 21, 20, 16, 44, 36, 35, 33, 63, 60, 59, 58, 83, 102, 199
+"filesystem", 36, 58
+"fill", 17
+"fin", 2, 28, 50
+"final", 20, 36
+"find", 7, 23, 40, 38, 36, 63, 79, 69, 83, 122, 113
+"finish", 16
+"first", 8, 42, 54, 78, 75, 74, 73, 69, 68, 88, 87, 96, 122, 149
+"fit", 168, 167, 166
+"fitnes", 0
+"fix", 36, 63
+"flag", 12, 11, 26
+"flexlm", 0
+"follow", 7, 6, 5, 4, 3, 2, 0, 25, 24, 23, 21, 20, 19, 16, 42, 40, 33, 58, 57, 73, 68, 66, 94, 93, 92, 91, 90, 89, 88, 217
+"foo", 40, 39, 63
+"forbidden", 3, 32, 82
+"forc", 7, 4, 3, 26, 23, 16, 42, 41, 36, 32, 62, 61, 59, 57, 56, 51, 69, 64, 82, 101, 217
+"force_merg", 69
+"forcemerg", 69
+"fork", 20, 33
+"form", 8, 0, 63, 56, 77, 67, 100, 97
+"format", 8, 6, 4, 28, 25, 24, 34, 59, 56, 77, 66, 64, 96, 120, 191, 200
+"forth", 0
+"fortran", 6, 28
+"forward", 68
+"found", 0, 63
+"foundation", 0
+"four", 42, 57
+"fourth", 42
+"foxpro", 0
+"fprintf", 7
+"franc", 0
+"frequent", 116
+"frodo", 5
+"front", 16, 50, 77
+"frontpag", 0
+"fu", 25, 24, 77, 95, 94, 92, 88
+"full", 7, 23, 19, 36, 63, 89, 83, 102
+"fullpath", 8, 63
+"func", 93, 89, 96
+"function", 15, 14, 13, 12, 11, 10, 9, 7, 2, 29, 27, 26, 25, 20, 18, 16, 45, 41, 36, 33, 63, 52, 50, 49, 48, 77, 74, 73, 72, 71, 66, 64, 95, 94, 93, 92, 91, 90, 88, 86, 85, 84, 81, 80, 109, 106, 104, 103, 99, 96, 142, 141, 140, 139, 145, 180, 199, 218
+"funston", 0
+"furth", 18, 63, 58, 64
+"futur", 217
+"g", 9, 26, 16, 41, 40, 36, 58, 54, 50, 49, 84, 81, 109, 106, 104, 99, 218
+"gain", 82
+"gamma", 0
+"garbl", 41
+"gather", 104
+"gcc", 40
+"gdb", 26
+"general", 4, 26, 79
+"generat", 28, 23, 16, 42, 41, 36, 58, 56, 52, 71, 83, 81, 103
+"generic", 23, 63
+"genuin", 0
+"get", 4, 28, 53, 67
+"giv", 63, 68, 95, 88, 165, 163
+"given", 8, 16, 63, 57, 88, 82
+"global", 7, 32, 82, 101
+"globetrot", 0
+"glossary", 9
+"go", 6, 36, 58, 55, 123, 122
+"good", 7, 0
+"got", 60
+"gourio", 0
+"government", 0
+"grain", 2
+"grant", 0
+"granularity", 3, 33, 57
+"graphic", 60
+"graphical", 172, 205
+"great", 63
+"group", 7, 0, 21, 19, 63, 126, 125, 203
+"grow", 5
+"guid", 200
+"guidanc", 55
+"h", 9, 26, 45, 39
+"hall", 0
+"handl", 11, 3, 30, 23, 45, 41, 77, 86, 217
+"happen", 56, 142
+"harnes", 16, 39, 63
+"hash", 60
+"hav", 56
+"haven", 51
+"head", 7, 26, 23, 136
+"hello", 53
+"hello_world", 26, 25, 16, 54
+"helm", 0
+"help", 9, 3, 0, 28, 22, 39, 37, 36, 55, 79, 68, 87, 83, 97, 159, 158, 157, 156, 155, 161, 160, 206, 218
+"helpful", 16
+"hereby", 0
+"hid", 68, 134, 133, 195, 194
+"hierarchi", 68
+"hierarchical", 25
+"high", 68
+"highest", 70
+"highlight", 5, 1, 68, 127, 116, 132, 131, 130, 129, 128
+"hit", 57, 95, 88, 124, 120, 133
+"hold", 173, 172, 218
+"hom", 3, 26, 25, 23, 39, 36, 63, 58, 77, 69
+"howev", 7, 6, 5, 0, 16, 45, 41, 60, 58, 51, 48, 70, 83
+"hp", 26, 19, 43, 36
+"hshell", 0
+"html", 0
+"http", 0, 28, 55, 79, 67
+"hundred", 23
+"hyphen", 69
+"ibm", 0
+"icon", 54
+"id", 102
+"idea", 97
+"identical", 6
+"identifi", 4, 25, 63, 49, 198
+"identification", 0
+"identify", 39, 63, 83, 207
+"ifdef", 41
+"ign", 77
+"ignor", 10, 3, 26, 16, 45, 43, 40, 38, 77, 69, 86
+"ii", 0
+"iii", 0
+"illustrat", 16
+"immediate", 6, 27
+"imp", 136
+"implement", 55, 100
+"impli", 7, 0
+"implication", 7
+"implicit", 42
+"important", 36, 63, 84, 211
+"impossibl", 103
+"improv", 28, 23, 36, 32, 60
+"inc", 0
+"incidental", 0
+"includ", 7, 6, 4, 2, 0, 29, 28, 26, 24, 23, 21, 20, 19, 18, 17, 16, 45, 39, 33, 59, 56, 55, 54, 49, 79, 67, 66, 65, 64, 89, 82, 81, 102, 96, 120, 119, 136, 183, 205, 219
+"incomplet", 36
+"inconvenient", 63
+"incorporat", 0, 28, 16, 39, 53
+"incorrect", 8, 36, 63, 83
+"increment", 64
+"incremental", 14
+"incur", 84
+"indent", 25
+"index", 68, 67
+"indicat", 8, 7, 5, 25, 57, 56, 73, 64, 94, 93, 89, 96, 116, 142, 136, 198, 193
+"indirect", 0
+"individual", 7, 5, 0, 28, 25, 23, 16, 32, 52, 80, 109, 106, 116, 145
+"indivisib", 100
+"indivisibl", 81
+"influenc", 7, 58
+"inform", 62, 122, 217, 211, 209
+"informal", 7
+"information", 10, 8, 4, 3, 0, 29, 28, 27, 25, 23, 20, 19, 18, 16, 45, 43, 39, 34, 32, 63, 60, 58, 56, 55, 51, 49, 48, 79, 77, 71, 69, 68, 67, 66, 95, 94, 93, 92, 91, 90, 89, 88, 83, 82, 81, 104, 96, 121, 159, 158, 156, 161, 160, 185, 207, 206, 200, 218, 211
+"informational", 39
+"informativ", 45, 86
+"infringement", 0
+"initial", 7, 63
+"initializ", 74, 87
+"initialization", 37, 74, 73
+"inlin", 49, 71
+"input", 16, 42, 56
+"insert", 7, 6, 16, 54, 82, 108, 99
+"insertion", 82, 108
+"insid", 36, 95, 88
+"insp", 24
+"inspect", 9, 8, 7, 6, 5, 27, 24, 48, 78, 107, 103, 97, 114, 128, 146
+"inspection", 5
+"instal", 4, 28, 19, 18, 45, 39, 53, 67, 86, 113
+"install", 4, 65, 86
+"installation", 28, 23, 39
+"instead", 7, 6, 27, 24, 45, 36, 63, 57, 74, 73, 86, 165, 163
+"instruct", 42, 40, 34, 32, 111
+"instruction", 16, 54, 50, 88, 82, 81, 100
+"instrument", 13, 27, 26, 23, 20, 16, 47, 45, 43, 40, 38, 36, 33, 32, 52, 50, 69, 86, 84, 83, 82, 81, 111, 108, 105, 101
+"instrumentation", 9, 3, 23, 36, 34, 32, 54, 83, 108, 105
+"insufficient", 4
+"int", 15, 14, 13, 12, 11, 10, 8, 7, 165, 163
+"integra", 0
+"integration", 7
+"intelliey", 0
+"intellimirror", 0
+"intellisens", 0
+"intend", 36
+"interactiv", 28
+"interactive", 7, 6, 5, 28, 53, 66, 107, 98, 97, 116, 114
+"interdev", 0
+"interest", 10
+"interfac", 2, 19, 18, 172
+"interfer", 45
+"interferenc", 0
+"internal", 16, 45
+"international", 0
+"internet", 0
+"interpretation", 94, 93
+"interruption", 0
+"interspers", 31
+"intrinsync", 0
+"introduc", 63
+"invalid", 77, 83
+"invers", 131, 130, 218
+"invok", 20, 19, 42, 40, 36, 49, 72, 65, 86, 80
+"involv", 63
+"issu", 0, 23, 63
+"it", 9, 7, 0, 27, 20, 18, 42, 32, 50, 68, 86, 115
+"item", 24, 18, 39, 56, 49, 68, 158, 156, 154, 153, 152, 151, 150, 173, 161, 184, 179, 178, 198, 218, 208
+"itself", 0, 20, 48, 140, 139, 206
+"iv", 0
+"j", 9, 6, 0
+"j2e", 0
+"jakarta", 0
+"jam", 0
+"jan", 62
+"jar", 0
+"java", 0
+"javascript", 0
+"javascriptpkg", 0
+"javassh", 0
+"jclark", 0
+"job", 82
+"john", 0
+"johnson", 0
+"js", 0
+"jscript", 0
+"jsp", 79, 67
+"jump", 100
+"jun", 0
+"jurisdiction", 0
+"just", 16, 42, 63, 56, 50, 84, 136
+"k", 9, 6
+"keep", 11, 7, 16, 51
+"key", 6, 77, 123, 122
+"keyword", 5, 25, 77, 76, 95, 94, 93, 92, 91, 90, 89, 88, 96, 165
+"kind", 5, 0, 69, 183
+"know", 23, 16, 107, 114, 211
+"knowledg", 55
+"known", 89
+"ksh", 69
+"l", 9, 8, 36
+"ladebug", 26
+"lang", 32
+"languag", 100
+"larg", 16
+"last", 4, 16, 32, 63, 76, 75, 64, 82
+"lat", 63, 192
+"law", 0
+"ld", 40
+"lead", 23, 73
+"leak", 28, 54
+"least", 57, 115
+"leav", 217
+"led", 79
+"left", 6, 16, 58, 172, 198, 218
+"leftmost", 8, 167, 166
+"legal", 0, 28
+"legend", 0
+"length", 3, 36
+"les", 36, 84
+"let", 2, 121, 120, 132, 170, 191, 190, 189, 187, 205, 192
+"level", 9, 29, 24, 18, 33, 52, 50, 70, 68, 81, 109, 106, 104, 218
+"li", 25, 24, 95
+"liability", 0
+"liabl", 0
+"lib", 3, 23, 40, 36, 32
+"lib64", 26
+"libc", 29, 23, 84
+"libdriver", 23
+"libm", 29, 84
+"libmylib_pure_c8002_32", 36
+"librari", 0, 29, 28, 23, 43, 36, 32, 84, 82, 108, 105, 101
+"library", 29, 26, 23, 16, 36, 84
+"libx", 84
+"licens", 7, 3, 0, 28, 22, 16, 39, 79, 157
+"license", 0
+"lightweight", 80
+"like", 36, 84
+"likewis", 20, 33, 66
+"limit", 0, 63
+"limitation", 0
+"lin", 9, 8, 7, 6, 5, 3, 29, 27, 26, 25, 24, 23, 19, 16, 42, 41, 39, 38, 33, 63, 62, 61, 58, 57, 56, 54, 52, 51, 50, 49, 48, 77, 75, 73, 70, 69, 66, 64, 95, 94, 93, 92, 91, 90, 89, 88, 85, 84, 81, 111, 109, 107, 106, 104, 103, 100, 99, 96, 127, 126, 125, 124, 123, 122, 121, 120, 116, 114, 142, 140, 139, 136, 135, 134, 133, 132, 131, 130, 129, 128, 148, 146, 144, 171, 206, 218
+"lineshar", 0
+"link", 4, 3, 26, 23, 17, 16, 40, 38, 54, 51, 50, 69, 68, 65, 82
+"lint", 8
+"liquid", 0
+"list", 8, 4, 0, 31, 23, 45, 43, 42, 36, 32, 63, 62, 61, 57, 56, 69, 68, 65, 64, 83, 81, 172, 163, 182, 199
+"listing", 36, 83
+"liv", 15
+"llc", 0
+"lmylib", 36
+"load", 7, 66, 121, 188
+"local", 4, 40, 32, 63, 49, 77, 74, 73, 65, 115
+"locat", 4, 0, 26, 16, 63, 65, 83
+"location", 4, 29, 44, 36, 83, 81
+"lock", 3, 34
+"log", 9, 5, 3, 31, 19, 17, 36, 35, 50, 79, 69, 110, 102
+"logfil", 3, 31, 36, 69
+"login", 19, 18, 185, 207
+"logo", 0
+"long", 14, 37, 36, 60, 83, 82
+"longest", 36
+"look", 23, 16, 36, 63, 83
+"loop", 77
+"los", 0, 82
+"low", 6, 4, 29, 16, 62, 61, 52, 68
+"lowest", 68
+"m", 9, 82
+"mad", 7, 6, 5, 0, 63, 60, 56, 66
+"mail", 4, 0, 16, 62
+"main", 7, 25, 58, 77, 72
+"maintain", 7, 23, 105, 199
+"major", 77
+"mak", 8, 7, 6, 5, 0, 28, 27, 21, 19, 16, 41, 38, 36, 32, 63, 50, 48, 77, 69, 65, 98, 97, 169, 206, 199, 195, 194
+"makefil", 7, 5, 26, 16, 65, 82
+"makefile64", 16
+"malk", 0
+"malloc", 7
+"man", 45
+"manag", 32, 82, 183
+"management", 2, 0, 21, 19, 56, 185, 207, 194
+"mandatory", 26, 40
+"manipulat", 8, 48
+"manual", 8, 7, 5, 4, 0, 28, 23, 53, 51, 67, 116, 200, 217
+"many", 7, 0, 45, 36, 78, 69, 86, 84, 133
+"mapbas", 0
+"mapmanag", 0
+"mappoint", 0
+"mapvision", 0
+"mark", 7, 6, 5, 27, 24, 63, 57, 74, 68, 107, 98, 116, 114, 140, 139, 156, 148, 146, 144
+"marker", 8
+"mask", 63
+"mast", 63
+"mat", 73
+"match", 8, 5, 23, 16, 36, 63, 58, 57, 77, 94, 93, 92, 91, 90, 89, 122
+"material", 0, 17
+"max", 3, 46, 37
+"maximum", 46
+"maxwell", 0
+"me", 217
+"mean", 7, 5, 36, 72, 65
+"meaningles", 29, 16, 142
+"measur", 58
+"media", 0
+"medialib", 0
+"meet", 116
+"mellon", 0
+"memory", 7, 28, 42, 54
+"memset", 7
+"mention", 57
+"menu", 7, 1, 42, 60, 49, 68, 127, 121, 120, 119, 118, 117, 134, 133, 132, 131, 130, 129, 128, 159, 158, 157, 156, 155, 175, 174, 173, 172, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 205, 201, 200, 199, 198, 197, 196, 195, 194, 192, 218, 212
+"merchantability", 0
+"merg", 15, 14, 4, 3, 28, 26, 16, 42, 41, 62, 61, 59, 57, 56, 53, 51, 69, 64, 111, 187, 217
+"messag", 7, 19, 18, 45, 39, 37, 36, 34, 62, 61, 60, 50, 79, 69, 86, 110, 220, 214, 211, 209
+"met", 0
+"metacharacter", 63, 171
+"method", 7, 16
+"methodologi", 7
+"methodology", 7
+"microsoft", 0
+"microsystem", 0
+"middl", 79
+"might", 63
+"mind", 7
+"minimal", 23, 105
+"minimiz", 84
+"minimum", 61, 199
+"minor", 0
+"mis", 5, 36, 83
+"mislead", 81
+"mod", 9, 3, 16, 42, 41, 69, 111
+"model", 7
+"modifi", 7, 6, 5, 4, 27, 21, 63, 62, 51, 66, 93, 82, 200
+"modification", 0, 66, 97
+"modify", 7, 4, 0, 16, 38, 53, 51, 78, 127, 129, 128, 200
+"modular", 0
+"monitor", 28, 39, 33, 51, 50, 82, 108
+"most", 8, 7, 19, 63, 62, 58, 51, 143
+"motion", 0
+"mount", 3, 36
+"mous", 173, 172, 218
+"mov", 36, 68, 83, 126, 125, 179, 178
+"mozilla", 0
+"mozillapubliclicens", 0
+"mpack", 0
+"mpack_licens", 0
+"mpl", 0
+"ms", 0
+"msdn", 0
+"mtim", 63
+"much", 63, 89, 168
+"multi", 28, 49, 75, 80, 116, 115
+"multiblock", 57
+"multipl", 8, 0, 28, 23, 20, 16, 42, 58, 51, 70, 95, 88
+"multisit", 0
+"munpack", 0
+"mv", 16
+"my", 36
+"myclas", 165, 163
+"myfil", 5
+"myfunc", 77
+"myprog", 41, 40, 36, 62, 61, 58, 50, 77
+"myprog1", 41
+"myprog2", 41
+"myprogram", 31
+"n", 9, 7, 5, 77
+"nam", 15, 8, 7, 4, 3, 0, 23, 16, 45, 44, 40, 39, 38, 36, 63, 59, 58, 57, 56, 54, 77, 69, 65, 64, 95, 94, 93, 92, 91, 90, 89, 88, 86, 83, 82, 102, 169, 168, 167, 166, 165, 164, 163, 162, 181, 199, 212
+"narrow", 169, 199
+"nativ", 19, 18
+"navigation", 68
+"navigator", 68
+"navpan", 68
+"near", 81
+"nearby", 7
+"necessari", 5, 72, 95, 88, 136
+"necessary", 0, 26, 23, 19, 36, 63, 105
+"need", 2, 82
+"negligenc", 0
+"nerror", 7
+"nest", 5, 25, 77
+"net", 55
+"netmeet", 0
+"netscap", 0, 19, 18, 37, 68, 158
+"netscape_remot", 19
+"netscapepubliclicens", 0
+"netshow", 0
+"network", 0, 55
+"nev", 32, 103
+"new", 23, 21, 20, 16, 42, 36, 63, 60, 58, 56, 53, 52, 51, 69, 68, 66, 94, 93, 89, 82, 121, 192
+"newest", 16, 143
+"next", 7, 16, 52, 50, 71, 65, 125, 178, 200, 194
+"nf", 23, 36
+"night", 16, 58
+"no", 15, 7, 5, 3, 0, 31, 27, 23, 20, 18, 16, 45, 41, 40, 38, 36, 34, 33, 32, 63, 62, 61, 60, 59, 58, 57, 56, 49, 73, 71, 69, 64, 94, 93, 89, 83, 81, 122, 116, 142, 204
+"non", 45, 42, 40, 36, 35
+"nonstandard", 69
+"nor", 0
+"normal", 0, 23, 45, 56, 50, 72, 86, 110
+"north", 79
+"not", 8, 6, 5, 3, 1, 0, 27, 26, 23, 18, 16, 43, 42, 38, 32, 62, 56, 54, 50, 49, 48, 79, 70, 69, 64, 93, 84, 142, 136, 159, 158, 161, 185, 207, 206, 194, 218, 217
+"notic", 0, 28
+"notification", 217
+"notify", 16
+"notreach", 8
+"now", 16, 63, 198, 193, 217
+"npl", 0
+"nt", 0
+"null", 15, 7, 43, 36
+"num_byt", 7
+"numb", 6, 27, 25, 16, 46, 39, 58, 67, 64, 95, 94, 93, 88, 85, 82, 81, 96, 124, 123, 141, 139, 137, 134, 154, 153, 152, 148, 147, 146, 145, 144
+"number", 8, 17, 16, 41, 56, 79, 66, 64, 95, 88, 81, 103, 120, 134
+"o", 9, 7, 26, 16, 41, 54, 50, 81
+"objdebug", 3, 43
+"object", 0, 25, 23, 16, 41, 40, 36, 32, 49, 70, 88, 83, 82, 81, 111, 108, 101
+"objectim", 0
+"objectory", 0
+"obtain", 10, 23, 63, 77
+"occasion", 148
+"occur", 5, 45, 36, 74, 72, 213, 209
+"occurrenc", 122
+"oci", 82, 108
+"oct", 0
+"off", 7, 69, 195
+"offic", 0
+"often", 29, 16
+"old", 5, 23, 16, 36, 60, 58, 56, 53, 51, 82, 121
+"oldest", 16, 149
+"omit", 23, 135
+"on", 12, 10, 8, 7, 6, 5, 0, 30, 29, 27, 23, 18, 17, 16, 43, 42, 40, 39, 38, 36, 63, 62, 61, 60, 59, 58, 57, 56, 50, 77, 73, 71, 70, 68, 66, 65, 94, 93, 91, 89, 84, 83, 106, 105, 104, 100, 99, 96, 121, 116, 115, 162, 218, 217
+"onc", 23, 77, 69, 68
+"onefunc", 77
+"onlin", 9, 0, 79, 67
+"open", 5, 16, 37, 54, 52, 79, 77, 65, 83, 81, 188, 187, 180, 207, 201, 199, 198, 196, 217
+"openboot", 0
+"operat", 7, 82
+"operation", 3, 45, 194, 219, 213, 209
+"operator", 165, 199
+"opposit", 6, 57
+"opt", 32
+"option", 15, 9, 5, 4, 3, 31, 30, 26, 23, 21, 20, 17, 16, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 63, 59, 58, 56, 54, 51, 50, 49, 77, 70, 69, 66, 86, 83, 82, 81, 80, 111, 110, 109, 106, 104, 102, 101, 99, 168, 167, 166, 165, 164, 163, 162, 204, 203, 202, 218, 217
+"option_nam", 69
+"ord", 7, 6, 63, 58, 54, 69, 68, 67, 105, 198, 193
+"order", 81
+"ordinari", 19, 36, 83
+"org", 0
+"organiz", 77
+"organization", 0
+"orient", 0, 53
+"original", 21, 63, 82, 108
+"other", 8, 0, 93
+"otherwis", 6, 0, 16, 35, 33
+"out", 7, 0, 26, 17, 16, 45, 40, 38, 36, 34, 58, 52, 50, 69, 142
+"outlin", 24, 173
+"outlook", 0
+"output", 5, 4, 3, 31, 16, 47, 45, 42, 36, 63, 62, 56, 50, 65, 86, 83, 110, 170, 216
+"ov", 2, 16, 69, 93, 172
+"overall", 59, 56
+"overflow", 46
+"overhead", 23, 84, 105
+"overnight", 63
+"overrid", 19, 54, 69
+"overview", 49
+"overwrit", 42, 36, 108
+"own", 7, 4, 19, 36, 62, 49, 77, 86, 115, 205
+"p", 9, 20, 44, 33, 102
+"pacific", 79
+"pag", 45
+"pair", 5, 116
+"palo", 0
+"pan", 68
+"panel", 214
+"paper", 55
+"parameter", 77
+"parent", 20, 33
+"pars", 0, 63
+"part", 10, 5, 2, 0, 28, 23, 16, 63, 58, 54, 70, 115, 167, 166, 162
+"partial", 23, 70, 105
+"particular", 0, 16, 84
+"party", 0, 29, 28
+"pas", 16, 45, 36, 56, 76, 72, 86, 82
+"pat", 7, 25, 63, 62, 61, 60, 77
+"patent", 0
+"path", 5, 4, 3, 21, 20, 19, 42, 36, 57, 65, 83
+"pathnam", 23, 44, 36, 63, 65, 89, 83, 102, 168, 199
+"pattern", 0, 77
+"pc_annotat", 4, 57, 56, 70, 66, 120
+"pc_below", 4, 61
+"pc_build_diff", 4, 58, 65
+"pc_covdiff", 4, 56, 65
+"pc_diff", 4, 60, 51, 65
+"pc_email", 4, 35, 62
+"pc_select", 4, 63
+"pc_ssheet", 4, 64
+"pc_summary", 4, 59
+"pcach", 69
+"pct", 62, 61
+"pcv", 15, 9, 25, 23, 20, 16, 45, 44, 42, 41, 33, 63, 62, 61, 60, 59, 58, 57, 56, 52, 51, 50, 77, 66, 65, 64, 86, 112, 188, 187, 192, 217
+"pdf", 28
+"pdir", 26
+"pend", 0
+"per", 63
+"percent", 62, 61, 77, 140, 151, 150
+"percentag", 62, 61, 77, 64, 142, 140, 151, 150
+"perform", 19, 42, 194
+"performanc", 0, 28, 23, 32, 54
+"performancestudio", 0
+"periodical", 82
+"perl", 4, 63, 58, 77
+"permission", 0, 82, 101
+"permit", 12, 10, 7, 0
+"person", 7
+"pertain", 0
+"pflag", 26
+"phas", 14, 74
+"photodraw", 0
+"pid", 20, 33, 102
+"pinpoint", 28
+"pip", 63
+"pivotchart", 0
+"pivottabl", 0
+"plac", 21, 36, 82
+"placement", 7
+"plan", 16
+"platform", 0, 29, 23, 17, 50, 67
+"pleas", 0, 17, 67
+"plog", 36, 102
+"plu", 77
+"plugin", 0
+"point", 10, 7, 6, 5, 4, 49, 74, 73, 81, 126, 125, 122
+"popup", 172
+"portion", 8, 0, 16, 56, 167, 166
+"positional", 25
+"positiv", 12
+"possib", 220, 211
+"possibility", 0, 77
+"possibl", 7, 45, 50, 79, 95, 88, 86
+"powerpoint", 0
+"practic", 0, 63, 55
+"practical", 7
+"precedenc", 36, 54, 69
+"precise", 16
+"pref", 194
+"preferenc", 38
+"prefix", 3, 36, 63, 58, 165, 164, 199
+"prentic", 0
+"prepend", 36
+"pres", 6, 0, 67, 123, 122, 218
+"present", 19, 36, 84, 136
+"presentation", 3
+"prev", 126
+"prevent", 11, 23, 16, 82, 107, 114, 217
+"previou", 6, 16, 41, 36, 51, 126, 179, 194
+"previous", 23, 41, 114
+"primary", 0
+"print", 3, 26, 21, 16, 45, 39, 34, 63, 58, 77, 67, 86
+"print_goodby", 57
+"print_hello", 57
+"printabl", 28
+"printf", 5
+"printhomedir", 113
+"prior", 0, 28
+"pro", 0
+"problem", 23, 17, 63, 79, 67
+"procedur", 16
+"proceed", 7
+"proces", 8, 5, 4, 3, 0, 28, 25, 20, 18, 45, 35, 33, 63, 77, 72, 69, 66, 86, 80, 108, 102, 115
+"procurement", 0
+"produc", 17, 41, 40, 63, 58, 57, 56, 77, 65, 120
+"product", 0, 28, 17, 54, 79, 69, 67, 66, 84
+"productiv", 7
+"profil", 69
+"profit", 0
+"prog", 62, 61, 59, 57, 65, 64
+"prog1", 16
+"prog2", 16
+"program", 15, 14, 12, 11, 7, 3, 2, 0, 28, 27, 26, 24, 23, 21, 20, 16, 46, 45, 44, 41, 40, 38, 36, 35, 33, 32, 63, 62, 61, 60, 59, 58, 54, 53, 52, 51, 50, 79, 77, 72, 69, 66, 64, 86, 84, 81, 110, 109, 108, 102, 101, 121, 118, 112, 176, 218, 217, 209
+"programmatical", 66
+"progres", 214
+"prohibit", 0, 28
+"project", 0
+"prolong", 214
+"promot", 0
+"proportional", 84
+"proprietary", 0
+"protect", 0
+"provid", 8, 7, 0, 29, 28, 17, 16, 55, 51, 70, 69, 65, 94, 93, 83, 81, 109, 188
+"pstub", 26
+"ptr", 7
+"public", 0
+"publication", 67
+"publicity", 0
+"publish", 0
+"pull", 201, 198
+"pur", 3, 26, 37, 58, 50, 82
+"pure_clearquest_client", 19
+"pure_clearquest_databas", 19
+"pure_clearquest_url", 19
+"pure_clearquest_usernam", 19
+"pure_crm", 19, 207
+"pure_crms_command_str", 19
+"pure_fil", 32
+"pure_invoke_", 19
+"pure_invoke_clearquest", 21, 19
+"pure_invoke_ddt", 21, 19
+"pure_print", 21
+"pure_remove_old_fil", 21, 32, 82, 101
+"pure_submit_clearquest_defect", 21, 19
+"purecov", 7, 6, 5, 3, 1, 31, 30, 29, 26, 25, 23, 16, 42, 41, 40, 39, 36, 33, 60, 54, 52, 50, 78, 77, 69, 66, 65, 98, 97, 127, 119, 113, 129, 128, 200
+"purecov_clear_data", 10, 2, 26
+"purecov_disabl", 2
+"purecov_disable_sav", 12, 11, 16, 86
+"purecov_enable_sav", 12, 2
+"purecov_is_run", 13, 2
+"purecov_save_data", 14, 2
+"purecov_set_filenam", 15, 2, 20, 16, 33, 86
+"purecov_stub", 26
+"purecov_what_option", 21, 38, 69
+"purecoverag", 13, 12, 11, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 31, 30, 29, 28, 27, 26, 25, 23, 21, 20, 19, 18, 17, 16, 45, 43, 42, 41, 40, 39, 38, 37, 36, 34, 33, 32, 62, 61, 60, 59, 57, 56, 54, 53, 52, 51, 50, 49, 48, 79, 78, 77, 70, 69, 68, 67, 66, 65, 64, 89, 86, 85, 84, 83, 82, 81, 80, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 99, 98, 97, 122, 121, 118, 116, 115, 114, 113, 112, 159, 158, 157, 156, 175, 174, 173, 172, 161, 160, 191, 190, 189, 188, 187, 186, 185, 182, 181, 180, 179, 178, 177, 176, 207, 205, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 219, 218, 217, 216, 212, 208
+"purecovhom", 9, 4, 26, 23, 21, 19, 17, 16, 38, 32, 69, 65, 82, 101, 113, 207
+"purecovoption", 16, 38, 36, 54, 69
+"purecovout", 69
+"pureddt", 0
+"purelink", 0
+"pureoption", 38, 54, 69
+"purify", 0, 28, 21, 45, 36, 54, 69, 86, 84
+"purifyoption", 36, 54
+"purpos", 0
+"pursuant", 0
+"push", 77
+"pwd", 63
+"q", 9
+"qualifi", 15, 102
+"quantify", 0, 54, 69
+"question", 7, 28, 79, 68, 67, 156
+"quick", 28, 219
+"quickassembl", 0
+"quickbasic", 0
+"quickshelf", 0
+"quiet", 0
+"quot", 171
+"quotation", 63
+"r", 9
+"rais", 7
+"ralph", 0
+"rang", 8
+"rational", 0, 28, 23, 21, 19, 18, 17, 16, 62, 55, 54, 79, 67, 155, 185, 207
+"ratltool", 0
+"rc", 63, 62, 56
+"rcsdiff", 63, 56
+"reach", 26, 72, 64, 85, 103
+"reachabl", 5
+"read", 8, 23, 42, 32, 56, 77, 66, 64, 82, 121, 183, 207
+"readability", 36
+"readm", 159
+"ready", 79
+"real", 23, 36
+"real_num_byt", 7
+"reason", 7, 20, 16, 83
+"rebuild", 3, 23, 36, 32, 82, 101
+"receiv", 36, 62
+"recent", 8, 62, 93, 143
+"recogniz", 5, 36, 56, 122
+"recommend", 23
+"recompil", 7, 16, 51
+"record", 0, 29, 25, 46, 36, 50, 49, 77, 71, 85, 83, 81, 80, 109, 106, 205
+"redirect", 50
+"redistribution", 0
+"reduc", 23, 63
+"ref", 54
+"refer", 0
+"referenc", 5, 28, 36, 59, 103
+"reflect", 7, 5, 28, 24, 36, 52, 148, 146, 144, 200
+"refresh", 196
+"regard", 0
+"regardles", 2, 20, 32, 82, 81
+"region", 173
+"register", 0, 23, 36, 105
+"regular", 58, 51
+"reinstrument", 32, 82
+"relat", 0, 20, 18, 81, 142, 203
+"relativ", 15, 63, 102
+"relayon", 0
+"releas", 0, 23, 66, 159
+"reliabl", 41
+"reload", 188, 217
+"remain", 16, 38, 48, 69, 93, 89
+"remedy", 28
+"remind", 36
+"remot", 23, 36
+"remov", 6, 27, 23, 32, 48, 68, 82, 101, 97, 204
+"repair", 63
+"repeat", 92, 91, 90
+"replac", 6, 3, 36, 102
+"report", 4, 30, 28, 25, 24, 17, 16, 36, 32, 63, 62, 61, 60, 59, 58, 57, 56, 54, 52, 51, 48, 79, 77, 66, 65, 64, 120, 155, 170, 189, 216, 215
+"report_script", 65
+"represent", 85
+"representation", 0
+"reproduc", 0
+"reproduction", 0, 28
+"request", 21, 19, 18, 62, 56, 185, 207, 194
+"requir", 7, 6, 4, 23, 16, 36, 32, 63, 84, 82, 109, 101, 220
+"requirement", 7, 19
+"requisit", 0
+"requisitepro", 0
+"requisiteweb", 0
+"rerun", 53, 52, 51
+"research", 0
+"reserv", 0, 28, 212
+"reset", 10
+"resid", 16, 44, 36, 83, 102
+"resolv", 40, 36
+"resort", 198, 193
+"resourc", 7, 78
+"respect", 0
+"respectiv", 0
+"responsibl", 16, 62
+"rest", 16, 63
+"restor", 15
+"restrict", 0
+"result", 0, 16, 42, 41, 36, 35, 63, 60, 58, 51, 66, 65, 81, 116
+"resum", 207
+"retain", 0, 16
+"return", 13, 7, 39, 72, 123, 122
+"reusabl", 0
+"revers", 63
+"review", 5, 48
+"revision", 5
+"rewrit", 66, 119
+"rhino", 0
+"richard", 0
+"right", 6, 0, 28, 20, 16, 58, 68, 64, 173, 201, 198, 218
+"rightmost", 167, 166, 162
+"rm", 16
+"road", 0
+"root", 23, 58, 82
+"ros", 0
+"rough", 84
+"rout", 69
+"routin", 16
+"rsa", 0
+"rtlib", 34
+"rul", 7, 63
+"run", 14, 4, 3, 28, 27, 26, 25, 23, 21, 20, 19, 16, 42, 41, 39, 38, 36, 35, 32, 63, 60, 58, 56, 54, 52, 51, 50, 79, 78, 77, 74, 72, 70, 69, 65, 84, 82, 110, 101, 112, 143, 149, 147, 172, 171, 189, 188, 217, 216, 215
+"rup", 0
+"rushmor", 0
+"saf", 36, 82
+"safe", 16, 32, 101
+"safemalloc", 7
+"sam", 60
+"sampl", 28, 25, 16, 62, 61, 60, 59, 58, 57, 56, 53, 77, 64
+"san", 0
+"satisfy", 26
+"saturat", 64, 85
+"sav", 15, 12, 7, 5, 3, 2, 1, 19, 16, 45, 44, 42, 36, 32, 53, 52, 51, 50, 66, 65, 86, 84, 98, 97, 121, 120, 119, 112, 170, 191, 190, 192, 216
+"say", 7, 63
+"schem", 16, 58
+"schema", 21, 19, 18, 185
+"scratch", 16
+"script", 8, 7, 4, 0, 30, 25, 21, 19, 16, 39, 35, 32, 63, 62, 60, 59, 58, 57, 56, 52, 51, 48, 77, 70, 66, 65, 82, 101, 120, 172, 171, 170, 189, 216, 215
+"scrol", 180
+"sdiff", 56
+"se", 16
+"search", 19, 36, 63, 77, 68, 83, 122
+"second", 42, 37, 64, 100
+"section", 10, 7, 16, 49, 77, 142, 138, 137, 136, 135
+"security", 0
+"seen", 54
+"segment", 16, 162
+"segv", 45, 86
+"select", 7, 6, 5, 4, 1, 28, 27, 25, 22, 21, 19, 18, 16, 36, 63, 52, 51, 49, 68, 66, 65, 98, 158, 156, 175, 173, 172, 168, 167, 166, 165, 164, 163, 162, 161, 187, 180, 177, 207, 204, 203, 202, 198, 197, 195, 194, 193, 218, 217, 216, 210, 208
+"selection", 6, 16, 63, 65, 126, 125, 122, 143, 142, 141, 140, 139, 138, 137, 136, 135, 154, 153, 152, 151, 150, 149, 148, 147, 146, 145, 144, 217, 210, 208
+"self", 12, 11
+"sell", 0
+"send", 21, 16, 42, 67, 110
+"sens", 73
+"sensitiv", 122
+"sent", 36, 62
+"separat", 8, 6, 0, 31, 25, 21, 20, 16, 45, 43, 33, 32, 51, 70, 69, 64, 80, 115, 201
+"separate", 0, 16, 84
+"separator", 204, 203, 202, 201
+"sequenc", 40, 54, 79, 81, 100
+"sequential", 56
+"seri", 36, 63, 58, 122
+"servic", 0
+"session", 10, 28, 16, 35, 53, 95, 93, 88, 96, 143, 149, 147
+"set", 15, 12, 11, 7, 4, 0, 27, 26, 23, 21, 20, 19, 16, 46, 45, 42, 40, 38, 37, 36, 33, 32, 63, 56, 69, 68, 89, 101, 199, 218
+"setenv", 16, 69
+"setting", 78, 169, 168, 167, 166, 165, 164, 163, 162, 205, 199, 212
+"setup", 7
+"sever", 63
+"several", 10, 16, 38, 63
+"sh", 16, 39
+"shadow", 82, 101
+"shall", 0
+"shar", 29, 28, 20, 16, 36, 32, 58, 69, 84, 80, 101
+"shared_library", 36
+"sharepoint", 0
+"sheet", 79
+"shell", 35, 63, 65, 171
+"shifty", 60
+"ship", 23
+"shlib", 3, 43, 32
+"short", 5, 39
+"should", 5, 16, 36, 63, 56, 84, 97, 171
+"show", 6, 28, 25, 24, 16, 41, 33, 60, 58, 57, 54, 51, 77, 70, 68, 65, 81, 99, 124, 140, 139, 134, 133, 132, 162, 180, 194
+"showadjustedlinesxxxxx", 7
+"showlinesxxxxx", 7
+"showm", 0
+"shown", 8, 63, 77, 70
+"sid", 58, 56, 69
+"sigabrt", 45
+"sigalrm", 45
+"sigbu", 45
+"sigchld", 45
+"sigdil", 45
+"sigemt", 45
+"sigfp", 45
+"sigfreez", 45
+"sighup", 45
+"sigill", 45
+"siginfo", 45
+"sigint", 45
+"sigiot", 45
+"sigkill", 45
+"siglost", 45
+"sigmask", 45
+"sign", 69
+"signal", 11, 3, 45, 86
+"signatur", 163
+"significant", 203, 213
+"sigpip", 45
+"sigpoll", 45
+"sigquit", 45
+"sigreserv", 45
+"sigresv", 45
+"sigrtmax", 45
+"sigrtmin", 45
+"sigsegv", 45
+"sigstop", 45
+"sigsy", 45
+"sigterm", 45
+"sigthaw", 45
+"sigtrap", 45
+"sigusr1", 45
+"sigusr2", 45
+"sigxcpu", 45
+"sigxfsz", 45
+"silenc", 36
+"silent", 45
+"similar", 0, 59, 65
+"simpl", 77
+"sinc", 7, 20, 16, 45, 32, 63, 100
+"singl", 8, 7, 5, 25, 16, 39, 49, 70, 94, 93, 92, 91, 90, 96, 122
+"sit", 28, 23, 19, 18, 69
+"sitecheck", 0
+"siteload", 0
+"situation", 7, 28, 220
+"siz", 84, 82
+"skip", 45, 100
+"sl", 36
+"slash", 36
+"sleep", 45
+"slow", 84
+"sm", 0
+"small", 7, 26, 58
+"snapshot", 66, 121
+"soda", 0
+"softwar", 0, 28, 23, 19, 18, 17, 16, 45, 54, 79, 69, 67, 86, 155
+"solari", 0, 26, 19, 16, 40
+"solicitation", 0
+"solution", 79
+"som", 36
+"someon", 5, 38
+"someth", 5, 111
+"sometim", 8, 36
+"sort", 7, 6, 27, 77, 198, 193
+"sourc", 9, 8, 7, 6, 5, 4, 1, 0, 30, 29, 28, 27, 25, 23, 16, 42, 41, 40, 36, 63, 62, 60, 59, 58, 57, 56, 55, 52, 49, 48, 71, 70, 69, 66, 65, 95, 89, 88, 83, 81, 107, 103, 99, 98, 97, 96, 126, 125, 124, 123, 122, 121, 120, 119, 116, 114, 132, 148, 146, 144, 182, 181, 180, 206, 198, 194, 193
+"sourcesaf", 0
+"spac", 8, 6, 32, 69, 82, 169
+"spar", 169
+"sparc", 40
+"special", 0, 65
+"specifi", 30, 20, 19, 46, 44, 42, 40, 38, 36, 35, 33, 61, 58, 57, 56, 69, 83
+"specific", 0, 23, 48, 77, 68, 95, 94, 88, 82
+"specifical", 10, 0
+"specification", 38, 63, 58, 69
+"specify", 15, 3, 31, 20, 16, 45, 43, 42, 40, 39, 38, 36, 33, 32, 63, 62, 61, 60, 59, 58, 57, 56, 77, 69, 86, 83, 105, 102, 169, 199
+"spit", 213
+"split", 16, 77
+"spreadsheet", 4, 64
+"sprintf", 77
+"src", 63
+"ssh", 0
+"stack", 115
+"standard", 6, 29, 63, 49
+"staroffic", 0
+"start", 12, 8, 7, 4, 0, 28, 25, 21, 20, 19, 18, 16, 42, 38, 36, 53, 50, 67, 65, 82, 185, 200, 194
+"stat", 0
+"statement", 49, 76, 75, 73, 72, 100, 116
+"static", 40, 74, 73
+"statistic", 6, 30, 28, 27, 23, 52, 48, 97, 142, 138, 137, 136, 135, 218
+"statu", 20, 35
+"stderr", 8, 7, 31, 45, 36, 86, 110
+"stdin", 63, 60, 59, 58, 56, 65
+"stdout", 7, 31, 42, 39
+"step", 7, 5, 53, 50
+"still", 7, 5, 27, 63, 83
+"stop", 37, 63, 56, 72, 64
+"stor", 5, 16, 42, 78, 82, 108, 101
+"storag", 115
+"str", 15, 39, 69, 122
+"strategi", 7
+"strategy", 7
+"stream", 36
+"strict", 7, 0
+"string", 58
+"strip", 36, 58, 56
+"structur", 36, 77, 115
+"stub", 26
+"stuck", 63
+"studio", 0
+"styl", 8, 6, 5, 56, 53, 169, 168, 167, 166, 165, 164, 163, 162, 199, 212
+"subdir", 3, 32
+"subdirectori", 32, 82
+"subdirectory", 58
+"subject", 15, 0, 62
+"subsequent", 83
+"subset", 4, 63
+"substantial", 84
+"substitut", 0, 36
+"succeed", 16
+"successful", 12, 2, 20, 16
+"succession", 81, 100
+"sufficient", 16, 36, 53, 51
+"suggest", 7
+"suggestion", 67
+"suit", 2, 0, 16, 39, 63, 60
+"suitability", 0
+"sum", 94, 93, 89, 96
+"summari", 99
+"summariz", 4, 59
+"summary", 5, 4, 29, 25, 59, 58, 77, 81, 198
+"summit", 0
+"sun", 0, 40
+"sunfddi", 0
+"sunforum", 0
+"sunos4", 40
+"sunpci", 0
+"sunvt", 0
+"sup", 25
+"supplementary", 159
+"suppli", 58, 50
+"supplier", 0
+"support", 0, 28, 17, 43, 40, 36, 63, 62, 79, 69, 67, 80, 115
+"suppos", 16, 63, 58
+"suppres", 5, 24, 165, 164, 163, 199
+"sur", 28, 21, 17, 16, 38, 36, 63, 69, 65
+"surround", 95, 88
+"swap", 7
+"sweep", 172, 218
+"switch", 34, 49, 76
+"sy", 45
+"symbol", 25
+"symbolic", 23, 65
+"symlink", 3, 40
+"sync", 68
+"syntax", 15, 14, 13, 12, 11, 10, 25, 23, 36, 63, 62, 61, 60, 59, 58, 57, 56, 77, 69, 64
+"system", 7, 29, 26, 23, 21, 19, 40, 37, 36, 35, 32, 62, 68, 82, 80, 113, 158, 185, 207, 200, 194
+"tab", 8, 25, 56, 68, 64
+"tabl", 46, 68
+"tag", 107, 114
+"tak", 14, 7, 6, 23, 37, 62, 58, 69, 66, 97, 121
+"taken", 84, 169
+"target", 26, 16, 82
+"taso", 3, 40, 50
+"team", 36
+"tech", 0
+"technical", 28, 17, 79, 67
+"technology", 108
+"technot", 79
+"techpub", 67
+"tel", 21, 155
+"telephon", 79
+"tell", 16, 81
+"templat", 77
+"term", 9, 0, 58
+"terminal", 3, 40
+"terminat", 45, 35, 54, 80, 213
+"termination", 45, 86
+"terry", 62
+"test", 12, 11, 9, 8, 7, 5, 4, 3, 0, 28, 27, 25, 24, 17, 16, 42, 39, 35, 63, 60, 58, 54, 53, 50, 48, 78, 66, 81, 109, 107, 106, 103, 102, 97, 96, 121, 114, 129, 148, 188, 217
+"test1", 25, 16
+"test2", 25, 16
+"test3", 25, 16
+"test_program", 16
+"testcas", 63
+"testfactory", 0
+"testfoundation", 0
+"testhash", 60
+"testmat", 0
+"teststudio", 0
+"text", 0, 56, 66, 64, 120, 191, 190
+"th", 7
+"theory", 5, 0
+"therefor", 29, 23, 36, 72, 71, 70
+"thing", 63
+"third", 0, 29, 28, 100
+"thorough", 7, 28
+"though", 30, 36, 63, 58, 103
+"thre", 6, 5, 27, 42, 57, 77, 69
+"thread", 9, 3, 28, 46, 34, 80, 115
+"threshold", 62, 61
+"through", 5, 2, 1, 18, 76, 68, 66, 116
+"throughout", 51
+"tim", 14, 8, 7, 5, 3, 28, 23, 20, 17, 16, 42, 41, 39, 38, 36, 32, 63, 60, 56, 54, 50, 48, 78, 74, 70, 69, 65, 95, 94, 88, 85, 84, 83, 82, 81, 80, 110, 101, 124, 143, 141, 133, 149, 188, 200, 214
+"time_t", 8
+"timestamp", 16, 82
+"tipwizard", 0
+"titl", 0
+"tmp", 3, 32
+"tmp_mnt", 36
+"toc", 68
+"togeth", 16, 81, 100
+"tomcat", 0
+"tonight", 16
+"tool", 8, 0, 28, 18, 56, 55, 52
+"toolbar", 21, 19, 18, 54, 207, 195, 194, 219
+"topic", 8, 7, 0, 68, 158
+"tort", 0
+"tortiou", 0
+"total", 27, 25, 24, 64, 95, 88, 80, 96, 152
+"trac", 3, 17, 34
+"track", 28, 18, 16, 66, 82
+"trad", 0
+"trademark", 0
+"tradenam", 0
+"trail", 76
+"train", 55
+"transf", 77
+"tre", 58
+"treat", 27, 16, 72
+"trig", 35
+"tru", 24, 56
+"tru64", 28, 26, 40, 50
+"truncat", 56, 167, 166, 212
+"try", 37
+"tun", 28, 50
+"turn", 7, 1, 63, 69, 127, 129, 128, 195
+"tutorial", 53
+"tv", 0
+"two", 7, 5, 4, 16, 42, 41, 63, 60, 58, 56, 69, 64, 82
+"txt", 0
+"typ", 8, 7, 5, 1, 27, 25, 36, 63, 57, 52, 50, 77, 70, 69, 123, 122, 113, 137, 197
+"typical", 15, 29, 63, 60, 74, 84, 200
+"u", 9, 0
+"u46", 23
+"ucb", 32
+"uk", 0
+"ultra", 0
+"unabl", 36
+"unadjust", 30, 24
+"unchang", 16, 41, 56
+"uncover", 64
+"und", 7, 0, 23, 63, 52, 51, 50, 72
+"underly", 0
+"underscor", 69
+"understand", 8
+"understandabl", 56
+"undesirabl", 36
+"unifi", 0
+"uninstrument", 36, 101
+"uniqu", 95, 88
+"unit", 0
+"university", 0
+"unix", 8, 28, 26, 40, 50
+"unmodifi", 51
+"unnecessary", 9, 6, 5, 97, 116, 136
+"unqualifi", 15, 23, 102
+"unreachabl", 7, 71
+"unsort", 6, 198, 193
+"untest", 81, 107, 114
+"until", 217
+"unus", 58, 78, 77, 94, 93, 89, 84, 96, 126, 125, 116, 140, 139, 132, 130, 153, 152, 150
+"up", 12, 10, 7, 16, 36, 63, 50, 68, 82, 198
+"updat", 8, 7, 6, 5, 27, 23, 20, 42, 32, 63, 188, 200, 214
+"upon", 12, 45
+"uppercas", 8
+"url", 19
+"us", 8, 7, 5, 4, 3, 0, 19, 17, 16, 45, 42, 41, 36, 63, 62, 61, 49, 77, 86, 85, 83, 81, 104, 103, 200
+"usag", 7, 3, 0, 39, 34, 50, 77, 82
+"useful", 16, 32, 60, 51, 48, 66, 84, 82
+"user", 69, 200
+"usernam", 19
+"usr", 4, 25, 23, 45, 40, 32, 63, 62, 61, 60, 58, 77, 65
+"usual", 29, 18, 36, 54, 89
+"util", 62, 61, 60
+"utiliti", 0
+"utility", 21
+"utilization", 7
+"ux", 26, 19, 43, 36
+"v", 15, 9, 5, 0, 20, 44, 40, 33, 102
+"vad", 0
+"valid", 20, 16, 83
+"valu", 7, 21, 16, 45, 42, 38, 37, 36, 33, 32, 63, 56, 54, 69, 64, 86, 85
+"var", 32
+"vari", 16, 58, 49, 76
+"variabl", 3, 19, 16, 38, 63, 54, 49, 74, 73, 69, 207
+"variation", 49, 76, 75, 74, 73, 72, 71, 70
+"variety", 73
+"variou", 16, 63, 183
+"vary", 76
+"vcm", 0
+"vcmcvsssh", 0
+"vcmcvssshsrc", 0
+"verbos", 3, 34
+"verifi", 39
+"version", 4, 3, 0, 23, 21, 17, 16, 43, 41, 39, 32, 63, 56, 67, 82, 121, 143, 149, 147, 160
+"version1", 41
+"vertical", 204, 203, 202, 201
+"very", 63
+"vfork", 20
+"vi", 0
+"via", 23, 63, 58
+"video", 131, 130, 218
+"videoflash", 0
+"view", 8, 7, 6, 5, 3, 1, 30, 28, 27, 25, 19, 18, 16, 45, 42, 41, 36, 33, 60, 59, 56, 54, 53, 52, 51, 50, 49, 48, 71, 70, 69, 66, 65, 86, 85, 83, 81, 111, 127, 142, 140, 139, 136, 135, 134, 133, 132, 131, 130, 129, 128, 175, 174, 173, 169, 191, 190, 189, 188, 187, 185, 184, 182, 181, 180, 179, 178, 177, 176, 205, 204, 203, 202, 201, 200, 199, 198, 197, 196, 195, 194, 193, 192, 219, 218, 217, 212, 208
+"vii", 0
+"viii", 0
+"virtual", 0
+"visibl", 195, 194
+"visit", 28, 67
+"visual", 0
+"vizact", 0
+"vlissid", 0
+"void", 14, 13, 12, 11, 10, 7
+"volum", 23
+"voluntary", 0
+"vsflexgrid", 0
+"w", 9
+"wait", 3, 37, 63
+"warn", 5, 16, 41, 220
+"warranti", 0
+"warranty", 0
+"way", 24, 19, 73, 66, 194
+"web", 28, 19
+"webbot", 0
+"webpip", 0
+"wed", 62
+"week", 82
+"well", 5, 58, 54, 76, 83, 81, 109
+"wesley", 0
+"whatev", 63
+"whatsoev", 0
+"wherev", 5, 0
+"whichev", 19
+"whil", 10, 16, 39, 63, 77, 66, 121, 217
+"whit", 55
+"who", 7, 62
+"whol", 168
+"whos", 23, 36
+"why", 7
+"wid", 8, 23, 19, 56, 73, 212
+"widen", 169
+"width", 56, 169, 199
+"wildcard", 23, 122
+"win32", 0
+"win64", 0
+"window", 8, 7, 6, 5, 1, 0, 30, 29, 28, 27, 52, 49, 48, 71, 70, 68, 66, 65, 81, 107, 99, 98, 97, 126, 125, 124, 123, 122, 121, 119, 118, 117, 116, 114, 132, 158, 156, 173, 170, 161, 186, 184, 183, 180, 206, 200, 198, 196, 193, 216, 214, 212, 208
+"word", 6, 24, 16
+"work", 15, 7, 5, 28, 19, 42, 36, 63, 62, 61, 60, 58, 65, 83, 107, 102, 114, 207
+"workbench", 0
+"world", 53
+"wors", 60
+"would", 116, 165, 163, 162
+"writ", 15, 14, 12, 11, 4, 25, 20, 42, 33, 32, 51, 77, 66, 86, 82, 80, 102, 101, 98, 191, 183, 205, 192
+"writabl", 32
+"written", 15, 4, 0, 31, 28, 20, 45, 33, 32, 58, 51
+"www", 0, 28, 55, 79, 67
+"x", 9, 19, 43, 35, 78, 77, 200
+"xalan", 0
+"xd", 0
+"xddt", 19
+"xdefault", 7, 6, 1, 78, 127, 129, 128, 200
+"xenix", 0
+"xerc", 0
+"xlog", 36
+"xmit", 60
+"xml", 0
+"xml4j", 0
+"xresourc", 7
+"xwindow", 19
+"xxx", 72
+"xxxx", 58
+"y", 9
+"yes", 30, 40, 33, 69
+"your", 36
+"your_crmsystem_executabl", 19
+"yourdiff", 56
+"yourself", 53, 207
+"z", 9
+"zero", 14, 10, 20, 122
+"zip", 0
+
+
+[STOPWORDS=110]
+"a"
+"after"
+"all"
+"along"
+"already"
+"also"
+"am"
+"among"
+"an"
+"and"
+"another"
+"any"
+"are"
+"at"
+"be"
+"because"
+"been"
+"between"
+"but"
+"by"
+"can"
+"do"
+"does"
+"doesn"
+"done"
+"each"
+"either"
+"for"
+"from"
+"get"
+"has"
+"have"
+"here"
+"how"
+"i"
+"if"
+"in"
+"into"
+"is"
+"isn"
+"it"
+"like"
+"may"
+"maybe"
+"more"
+"must"
+"need"
+"non"
+"not"
+"of"
+"ok"
+"okay"
+"on"
+"or"
+"other"
+"rather"
+"re"
+"s"
+"same"
+"see"
+"so"
+"some"
+"such"
+"t"
+"than"
+"that"
+"the"
+"their"
+"them"
+"then"
+"there"
+"these"
+"they"
+"this"
+"those"
+"to"
+"too"
+"unless"
+"use"
+"used"
+"using"
+"was"
+"were"
+"ve"
+"want"
+"way"
+"what"
+"when"
+"whenever"
+"where"
+"when"
+"whether"
+"which"
+"will"
+"with"
+"within"
+"without"
+"yet"
+"you"
+"your"
+"1"
+"2"
+"3"
+"4"
+"5"
+"6"
+"7"
+"8"
+"9"
+"0"

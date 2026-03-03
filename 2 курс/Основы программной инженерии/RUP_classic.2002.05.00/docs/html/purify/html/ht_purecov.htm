@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+ <!-- $MVD$:fontset("Courier New","Courier New") -->
+ <SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix.css'>");}
+//-->
+ </SCRIPT>
+ <title>Using Rational PureCoverage with Purify                Rational Purify</title>
+ <META NAME="MS-HAID" CONTENT="purecov">
+ <META NAME="generator" CONTENT="RoboHELP by eHelp Corporation www.ehelp.com">
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../bsscdhtm.js" name="EHELP_DHTM">
+ </SCRIPT>
+ <script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+ </script>
+ <style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+ </style>
+ <script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+ </script>
+</HEAD>
+<BODY>
+ <SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_save_watchpoints.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_clearquest.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+ </SCRIPT>
+ <H1>Using Rational PureCoverage with Purify</H1>
+ <P>Rational Purify is designed to work closely with Rational PureCoverage, Rational Software's run-time test coverage tool. PureCoverage identifies the parts of your code you have not checked for errors so that you can improve your test cases.</P>
+ <P>To use PureCoverage with Purify, add both product names to the beginning of your link line. Include all <A href="ht_ov_p_options.htm"><span style="font-weight:bold; "><B>options</B></span></A> with the programs to which they refer. For example:</P>
+ <P class="rCode" >% purify &lt;purifyoptions&gt; purecov &lt;purecovoptions&gt; \<BR>&nbsp;cc -g hello_world.c -o hello_world</P>
+ <P>In this case, both <font  face='Courier'>&lt;purifyoptions&gt;</font> and <font  face='Courier'>&lt;purecovoptions&gt;</font> are used, as well as the values of the environment variables <font  face='Courier'>PURIFYOPTIONS</font>, <font  face='Courier'>PURECOVOPTIONS</font>, and <font  face='Courier'>PUREOPTIONS</font>, in that order of precedence. Where there are conflicting values, the first value seen is used. A value in <font  face='Courier'>&lt;purifyoptions&gt;</font> overrides a value in <font  face='Courier'>&lt;purecovoptions&gt;</font>. These options override environment variables.</P>
+ <P>When you run your program, you see both the Purify banner and the PureCoverage banner. Purify reports memory access errors and memory leaks as the program runs. </P>
+ <P>PureCoverage test-coverage data is available after the program terminates. You can open the PureCoverage Viewer from the Purify Viewer by clicking the PureCoverage icon <IMG src="../image/purecovbutton.gif" border="0" height="37" width="38" alt="image\purecovbutton.gif"> in the toolbar.</P>
+ <P class="rTipNoteGlossaryHeading" >Notes:</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >For a list of PureCoverage options, refer to the PureCoverage online Help.</P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >The instruction sequences that Purify inserts during instrumentation are not compatible with the instruction sequences inserted by Rational Quantify, Rational Software's performance analysis product. You cannot use Purify and Quantify at the same time.</P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >PureCoverage is not supported on Irix systems.</P></LI>
+ </UL>
+</BODY>
+</HTML>

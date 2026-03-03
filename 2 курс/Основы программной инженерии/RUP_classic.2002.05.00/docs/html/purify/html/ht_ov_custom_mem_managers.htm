@@ -1,0 +1,192 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>About custom memory managers                           Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1029>
+<meta name=layout-width content=816>
+<meta name=date content="05 18, 2001 3:47:24 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_tasks_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_tasks.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_sel_bugtracker.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_mod_fixedsize_allocators.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>About custom memory managers</h1>
+
+<p>An important part of Purify's error detection involves tracking <font 
+ style="font-family: Courier;"
+	face=courier>malloc</font> and <font style="font-family: Courier;"
+										face=courier>free</font> calls. 
+ If you use custom memory-management layers rather than calling <font style="font-family: Courier;"
+	face=courier>malloc</font> or <font style="font-family: Courier;"
+										face=courier>free</font> directly, 
+ you might need to modify them slightly to make them compatible with Purify.</p>
+
+<p>You can preserve your custom memory manager's semantics and implementation 
+ during normal operation, but provide an alternate implementation that 
+ uses <font style="font-family: Courier;"
+			face=courier>malloc</font> and <font style="font-family: Courier;"
+												face=courier>free</font> 
+ when the program is Purify'd.</p>
+
+<h2>Types of custom memory managers</h2>
+
+<p>There are five categories of custom memory managers: </p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B>Malloc 
+ veneers</B></span> are layers over <font style="font-family: Courier;"
+										face=courier>malloc</font> and 
+ <font style="font-family: Courier;"
+		face=courier>free</font> that check error returns so that the callers 
+ do not have to. You do not need to modify <font style="font-family: Courier;"
+												face=courier>malloc</font> 
+ veneers when you use Purify because the actual allocation and freeing 
+ is still done by <font style="font-family: Courier;"
+						face=courier>malloc</font> and <font style="font-family: Courier;"
+															face=courier>free</font>.</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><span 
+ style="font-weight: bold;"><B>Improved mallocs </B></span>are allocation packages 
+ that are better than the <font style="font-family: Courier;"
+								face=courier>malloc</font> and <font style="font-family: Courier;"
+	face=courier>free</font> in the C library. For example, they can reduce 
+ memory fragmentation or perform garbage collection. Improved <font style="font-family: Courier;"
+	face=courier>mallocs</font> present the same interface as the standard 
+ <font style="font-family: Courier;"
+		face=courier>malloc</font> and <font style="font-family: Courier;"
+											face=courier>free</font> functions. 
+ <br>
+	<br>
+	You do not need to modify improved <font style="font-family: Courier;"
+											face=courier>mallocs</font> 
+ when you use Purify because Purify does not replace the <font style="font-family: Courier;"
+	face=courier>malloc</font>, it merely intercepts calls to it. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><span 
+ style="font-weight: bold;"><B>Fixed-size allocators</B></span> work by requesting 
+ a large block of memory using <font style="font-family: Courier;"
+									face=courier>malloc</font> and then 
+ allocating many fixed size sub-blocks. These allocators are more efficient 
+ than <font style="font-family: Courier;"
+			face=courier>malloc</font> because the sub-blocks do not need 
+ any size overhead. <br>
+	<br>
+	You must <a href="ht_mod_fixedsize_allocators.htm"><span style="font-weight: bold;"><B>make 
+ minor changes to fixed-size allocators</B></span></a> when you use Purify.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><span 
+ style="font-weight: bold;"><B>Pool allocators</B></span> allow an application 
+ to specify a location identifier in addition to a size when making a memory 
+ allocation request, thus reducing the amount of paging. These memory managers 
+ can also support pool-level operations, such as printing or freeing an 
+ entire pool. <br>
+	<br>
+	You must <a href="ht_modify_pool_allocators.htm"><span style="font-weight: bold;"><B>make 
+ minor changes to pool allocators</B></span></a> when you use Purify. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><span 
+ style="font-weight: bold;"><B>Sbrk allocators</B></span> have application-specific 
+ semantics and use the system call <font style="font-family: Courier;"
+										face=courier>sbrk</font> to allocate 
+ memory rather than using <font style="font-family: Courier;"
+								face=courier>malloc</font>. To preserve 
+ compatibility with library routines, <font style="font-family: Courier;"
+											face=courier>sbrk</font> allocators 
+ generally implement a <font style="font-family: Courier;"
+							face=courier>malloc</font> interface in addition 
+ to their application-specific interface. <br>
+	<br>
+	You must <a href="ht_modify_sbrk_allocators.htm"><span style="font-weight: bold;"><B>make 
+ several changes to sbrk allocators</B></span></a> when you use Purify. </p></li>
+</ul>
+
+</body>
+
+</html>

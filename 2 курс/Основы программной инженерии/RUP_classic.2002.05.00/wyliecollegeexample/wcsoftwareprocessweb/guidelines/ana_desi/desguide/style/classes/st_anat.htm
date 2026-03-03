@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Standards: Attributes - Analysis</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/project.css">
+<meta name="Microsoft Border" content="rb, default">
+</head>
+
+<body><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+<table BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+  <tr>
+    <td></td>
+    <td VALIGN="TOP"><h2 class="banner" align="center"><a NAME="Top"></a>Standards: Attributes
+    - Analysis </h2>
+    <div align="center"><center><table BORDER="1" CELLSPACING="0" CELLPADDING="2" WIDTH="85%">
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong><img SRC="../../style/images/att.jpg" NOSAVE WIDTH="181" HEIGHT="100"></strong></td>
+        <td>An attribute is a named property of a class that describes a range of values that
+        instances of the property may hold.</td>
+      </tr>
+      <tr>
+        <td ALIGN="CENTER" VALIGN="CENTER"><strong>Related Information:</strong></td>
+        <td><ul>
+          <li><a HREF="../../style/classes/st_genat.htm"><font face="Times New Roman">Standards: Attributes - General</font></a></li>
+          <li><font face="Times New Roman"><a HREF="../../style/classes/st_desat.htm">Standards: Attributes - Design</a></font></li>
+          <li><font face="Times New Roman"><a HREF="../../style/classes/st_rosat.htm">Standards: Attributes in Rose</a></font></li>
+        </ul>
+        </td>
+      </tr>
+    </table>
+    </center></div><h3>Topics</h3>
+    <ul>
+      <li><a HREF="../../style/classes/st_anat.htm#Background">Background</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm#ValueTypes">Value Types</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm#Naming">Naming Standards</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm#Doc">General Documentation Standards</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm#Stereotypes">Stereotypes</a></li>
+      <li><a HREF="../../style/classes/st_anat.htm#Examples">Examples</a></li>
+    </ul>
+    <h3><a NAME="Background"></a>Background&nbsp;<a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The set of Types that can be used to define attributes (properties) in the analysis
+    model needs to be defined. The decision whether to define attributes (implying getters and
+    setters) or to define getters (implying the need for an attribute) in the analysis model,
+    to indicate knowledge, must be taken. </p>
+    <p>Given the conceptual nature of the analysis model and its implementation independence
+    we may need to define the set of value, or primitive types, that we are to use within the
+    analysis model. We may decide to use the implementation languages primitive types or the
+    set of user defined value types defined for use during design or a specialized set of
+    analysis value types. </p>
+    <p>To facilitate the identification of object attributes, all knowledge will be
+    modeled as attributes, and / or relationships. </p>
+    <p>In the value types section below is an illustrative set of value types for use during
+    analysis &#150; it is important to remember that this set can be overridden, customized or
+    that the design set of value types can be used instead. </p>
+    <h3><a NAME="ValueTypes"></a><b>Analysis Value Types&nbsp;</b><a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <ol>
+      <table BORDER="1" CELLPADDING="7" WIDTH="85%" BORDERCOLOR="#000000">
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Value
+          Type</b></font></td>
+          <td VALIGN="TOP" WIDTH="79%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Description</b></font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Number</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Any numeric value. Used to represent a
+          positive or negative number. The number may have a fractional part.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Integer</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">The set of integers, including 0. Used to
+          represent a positive or negative whole number.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">String</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Alphanumeric data. Used to represent any
+          information held as textual strings.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Date</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Any date.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Time</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Any time.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">DateTime</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Any moment specified by a date and a time.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Character</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Any character.</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Boolean</font></td>
+          <td VALIGN="TOP" WIDTH="79%"><font SIZE="-1">Used for true / false attribute assignments.</font></td>
+        </tr>
+      </table>
+      <p>Note: Rose98i comes with a set of fundamental types designed for use in the analysis
+      space: &nbsp; </p>
+      <table BORDER="1" CELLPADDING="7" WIDTH="85%" BORDERCOLOR="#000000">
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Value
+          Type</b></font></td>
+          <td VALIGN="TOP" WIDTH="79%" BGCOLOR="#000000"><font SIZE="-1" COLOR="#FFFFFF"><b>Description</b></font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Boolean</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Byte</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Currency</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Date</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Double</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Integer</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Long</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Object</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Single</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">String</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" WIDTH="21%"><font SIZE="-1">Variant</font></td>
+          <td VALIGN="TOP" WIDTH="79%">&nbsp;</td>
+        </tr>
+      </table>
+      <p>Which looks remarkably like the set of VB primitive types to me and not particularly
+      applicable as a set of Analysis value types.&nbsp; Object, Single and Variant seem
+      especially suspect to me. </p>
+      <p>Note: To implement the set of Analysis value types outlined above a new Rose Add In
+      would need to be developed (called say RUP Analysis). This could then be updated as the
+      need for additional analysis value types is identified. This is currently under
+      investigation by the author.</p>
+    </ol>
+    <h3><a NAME="Naming"></a>Naming Standards&nbsp;<a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The general attribute naming standards apply during analysis (See <a HREF="../../style/classes/st_genat.htm#Naming">Standards: Attributes - General</a>) </p>
+    <h3><a NAME="Doc"></a>General Documentation Standards&nbsp;<a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>The general attribute documentation standards apply during design (See <a HREF="../../style/classes/st_genat.htm#Doc">Standards: Attributes - General</a>). </p>
+    <p>During the analysis activities each attribute must be assigned a type from the set of
+    analysis value types (see <a HREF="../../style/classes/st_anat.htm#ValueTypes">Value Types</a> above). </p>
+    <p>There is no need to define whether attributes are derived or not in the analysis model
+    &#150; this is a design decision. </p>
+    <p>All attributes discovered during analysis are assumed to support full public access.
+    &nbsp; Decisions about read only attributes will be made during design.&nbsp; Note: the
+    attributes themselves will be private, it is their access that is assumed to be public. </p>
+    <p>When defining the attributes during analysis the most important thing is to
+    characterize the attribute and its responsibilities.&nbsp; This will enable the designer
+    to choose the correct implementation for the attribute and to assess its impact on the
+    other design mechanisms required by the class. </p>
+    <p>For details of how to document attributes in Rose see <a HREF="../../style/classes/st_rosat.htm">Standards:
+    Attributes in Rose</a>. </p>
+    <h3><a NAME="Stereotypes"></a>Stereotypes&nbsp;<a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>No analysis stereotypes have been identified for attributes. </p>
+    <h3><a NAME="Examples"></a>Examples&nbsp;<a HREF="../../style/classes/st_anat.htm#Top"><img SRC="../../images/top.gif" ALT="To top of page" NOSAVE BORDER="0" WIDTH="26" HEIGHT="20"></a></h3>
+    <p>None</td>
+    <td VALIGN="TOP" WIDTH="24"></td>
+    <td VALIGN="TOP" WIDTH="1%"><a HREF="../../dg_index.htm#Top"><img SRC="../../images/logo_dg.jpg" ALT="Back to Index" NOSAVE width="25" height="494"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p><a href="../../../../../index.htm"></a></p>
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="process_contents")
+  {
+     alert("The Organization Web is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="process_main")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_process_main=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_process_main_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_process_main_loc!=null)
+    {
+       top.location = new_process_main_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_process_main_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_process_main_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_process_main_loc = new_process_main_loc + "" + image;
+         return new_process_main_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+<a href="JavaScript:loadTop();" 
+onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Organization Process Web using frames'; return true" 
+onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true">
+<p><img src="../../../../../images/rup1.gif" border="0" 
+alt="Display Organization Process Web using frames" name="Home" width="20" height="110"></p></a>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><font face="Arial"><a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation&nbsp;</small></small></a></font>
+    </td>
+    <td width="50%">
+<p align="right"><font face="Arial"><small><small>Wylie College Process Web
+Example<br>
+              Version&nbsp;2001.02</small></small></font>
+          </td>
+  </tr>
+</table>
+</td></tr><!--msnavigation--></table></body>
+</html>

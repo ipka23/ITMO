@@ -1,0 +1,186 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Using the Function Detail window                       Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1979>
+<meta name=layout-width content=813>
+<meta name=date content="05 16, 2001 1:58:20 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_using_call_graph.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_using_annotated_source.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Using the Function Detail window</h1>
+
+<p>The Function Detail window presents detailed performance data for a 
+ single function showing its contribution to the overall execution of the 
+ program.</p>
+
+<p>For each function, Quantify reports both the time spent in the function's 
+ own code (its function time) and the time spent in all the functions that 
+ it called (its descendants time). Quantify distributes this accumulated 
+ function+descendants time to the function's immediate caller. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/fdw.gif' x-maintain-ratio='TRUE' width='794' height='452'>");}
+else
+{   document.write("<img src='../image/fdw.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 794px;  				height: 452px;  				float: none;' width='794' height='452'>");}
+//-->
+</SCRIPT></p>
+
+<p>Double-click a caller or descendant function to display function detail 
+ for that function. <!--kadov_tag{{<spaces>}}-->&nbsp;&nbsp;&nbsp;<!--kadov_tag{{</spaces>}}--></p>
+
+<p>The function time and the function+descendants time are shown as a percentage 
+ of <span style="font-family: Courier;">.root</span>, the total accumulated 
+ time for the entire run. These percentages help you understand how this 
+ function's computation contributed to the overall time of the run. These 
+ times correspond to the thickness of the lines in the call graph. </p>
+
+<p>If a function calls itself recursively, the percentages displayed in 
+ the Function Detail window can exceed 100 percent. For more information, 
+ read <a href="ht_recurs_fnct_hndling.htm" style="font-weight: bold;">How Quantify handles recursive functions</a>.</p>
+
+<p>Times for system calls and register window traps are shown only if times 
+ were recorded for the function. For more information, read <a href="ht_time_sys_calls.htm" style="font-weight: bold;">Timing system calls</a> and Timing register-window 
+ traps. </p>
+
+<h2>Understanding how time is distributed</h2>
+
+<p>Distribution to callers lists all the functions that called the current 
+ function. For each caller, Quantify lists the number of times it called 
+ the function and the percentage of time that was spent in the current 
+ function and its descendants on behalf of that caller.</p>
+
+<p>Contributions from descendants lists the immediate descendant functions 
+ called by the current function. For each descendant function, Quantify 
+ reports the number of times it was called by the current function and 
+ the percentage of time it contributed to the current function's accumulated 
+ time. </p>
+
+<p>For more information, read <a href="ht_how_q_records_func_time.htm" style="font-weight: bold;">How Quantify 
+ records function time</a>. </p>
+
+<h2>Changing the scale and precision of data</h2>
+
+<p>Quantify can display the recorded data in cycles (the number of machine 
+ cycles) and in microseconds, milliseconds, or seconds. To change the scale 
+ of data, select <span style="font-weight: bold;"><B>View &gt; Scale factors</B></span>. 
+ </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/fd_scalefactors.gif' x-maintain-ratio='TRUE' width='319' height='197'>");}
+else
+{   document.write("<img src='../image/fd_scalefactors.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 319px;  				height: 197px;  				float: none;' width='319' height='197'>");}
+//-->
+</SCRIPT></p>
+
+<p>To change the precision of data, select <span style="font-weight: bold;"><B>View&nbsp;&gt; 
+ Precision</B></span>.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/fl_precision.gif' x-maintain-ratio='TRUE' width='287' height='242'>");}
+else
+{   document.write("<img src='../image/fl_precision.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 287px;  				height: 242px;  				float: none;' width='287' height='242'>");}
+//-->
+</SCRIPT></p>
+
+<h2>Saving function detail data</h2>
+
+<p>To save the current function detail display to a file, select <span 
+ style="font-weight: bold;"><B>File&nbsp;&gt; Save current function detail 
+ as</B></span>. </p>
+
+<p>To append additional function detail displays to the same file, select 
+ <span style="font-weight: bold;"><B>File&nbsp;&gt; Append to current detail 
+ file. </B></span></p>
+
+</body>
+
+</html>

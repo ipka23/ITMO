@@ -1,0 +1,225 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<title>Concepts: The Lifecycle of Testing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/workflow.gif"> <a href="../ovu_core.htm">Disciplines</a> &gt;
+<img border=0 src="../../../applet/images/wf_green.gif"> <a href="../ovu_test.htm">Test</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> <a href="ov_tst_co.htm">Concepts</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> The Lifecycle of Testing
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+<h2 class="banner"><a name="Top"></a>Concepts:
+&nbsp;<rpw name="PresentationName">The Lifecycle of Testing</rpw><a name="XE_test_lifecycle__introduction_to"></a><a name="XE_test__lifecycle_of"></a></h2>
+
+<!---
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Introduction"">Introduction</a></li>
+  <li><a href="#Test Cycles"">Test Cycle approaches to the RUP lifecycle</a></li>
+  <li><a href="#Phases"">How the Evaluation Mission evolves over time</a></li>
+</ul>
+
+
+<h3><a name="Introduction">Introduction</a></h3>
+--->
+<p>In the RUP software development lifecycle, software is refined through iterations. 
+  In this process environment, the testing lifecycle benefits from following an 
+  equivalent iterative approach. In each iteration, the software development team 
+  will produce one or more Builds, each build being a potential candidate to be 
+  tested.</p>
+<p>Because the focus and objectives of the development team differ from iteration 
+  to iteration, the test team members must structure their test effort accordingly. 
+  We suggest that you keep the amount of upfront detailed test planning and design 
+  to the minimum, and where you need to do this, that you aim to produce this 
+  work as close to the time it will be used as possible&#151;we recommend you 
+  address upfront detailed test development no more than an iteration in advance.</p>
+<p>Additions, refinements and deletions are made to the tests that are implemented 
+  and executed for each build. Some of these test will be retained and accumulate 
+  in a body of tests, which are used for regression testing subsequent builds 
+  used in each future test cycle. This approach reworks and revises the tests 
+  throughout the process, just as the software itself is revised. There is no 
+  frozen software specification and there are no frozen tests.</p>
+<p align="center"><img src="images/lifec001.gif" width="374" height="215"></p>
+<p class="picturetext">Fig 1. Tests evolve over time</p>
+<p>This iterative approach&#151;coupled with the use of component architectures&#151;necessitates 
+  consideration of testing for regressions in product quality in each subsequent 
+  build. Any of the tests developed in iteration X are potential candidates for 
+  regression testing in iteration X+1, likewise in iteration X+2 and so on. When 
+  the same test is likely to be repeated several times, it is worth considering 
+  spending the effort to automate the test. Test automation provides an approach 
+  to the repeated testing of usage scenarios, that frees testing staff to explore 
+  testing in new functional areas.</p>
+
+<p>Look at the lifecycle of testing without the rest of the project in the same 
+  picture. This is the work detail breakdown for the Test discipline in a given 
+  iteration:</p>
+<!----- <p align="center"><img src="images/lifec002.gif" width="400" height="227"></p> ----->
+<p align="center"><img src="images/wf_tst.gif" width="266" height="525"></p>
+<p class="picturetext">Fig 2. The testing lifecycle.</p>
+<p>This lifecycle aligns with the iteration cycle followed by the rest of the 
+  development team. The Iteration begins with an investigation by the test team 
+  and negotiation with the Project Manager and other stakeholders regarding the 
+  most useful testing work that can be undertaken in the forthcoming iteration. 
+  Most test team members play a part in this work effort.</p>
+<p>Each iteration will usually contain at least one test cycle, as shown in Fig 
+  3. It's a fairly typical practice for multiple Builds to be produced per Iteration, 
+  and for a test cycle to be aligned with each build. However, in some cases, 
+  specific Builds will not be tested.</p>
+<p>At the same time that the core test effort is underway, a subset of the team 
+  members may also be investigating new testing techniques. This effort attempts 
+  to prove that the techniques work so that the team can rely on them, especially 
+  in subsequent iterations.</p>
+<p align="center"><img src="images/lifec003.gif" width="664" height="324"></p>
+<p class="picturetext">Fig 3. An iteration includes one or more test cycles.</p>
+<p>The testing lifecycle is a part of the software lifecycle; they should start 
+  in an equivalent timeframe. The design and development process for tests can 
+  be as complex and arduous as the process to develop the software product itself. 
+  If tests do not start in line with the first executable software releases, the 
+  test effort will back-load discovery of too many problems until late in the 
+  development cycle. This often results in a long bug-fixing period being appended 
+  to the end of the development schedule, which defeats the goals and eliminates 
+  the benefits of iterative development.</p>
+<p>While test planning and definition activities started early can expose important 
+  faults or flaws in the early specification work, we recommend you choose the 
+  testing work you do in advance carefully. As well as the potential for rework 
+  already mentioned, the test team need to be careful to maintain their role as 
+  impartial quality advisors and not derail the early requirements and design 
+  activities by acting as &quot;quality police&quot;. By their very nature these, 
+  early attempts by the project team at understanding the problem and solution 
+  spaces will be flawed. To make unreasonable demands about the quality of this 
+  early work risks alienation of the test team from the rest of the development 
+  group.</p>
+<p>Problems found during an iteration can either be solved within the same iteration, 
+  or postponed to the next&#151;a decision that ultimately rests with the Project 
+  Manager role. One of the major tasks for the test team and project managers 
+  is to measure how complete the iteration is by verifying that the iteration 
+  objectives as outlined in the Iteration Plan were met. There is ongoing &quot;requirements 
+  discovery&quot; from iteration to iteration, something you need to be aware 
+  of and be prepared to manage.</p>
+<p>The ways in which you will perform tests will depend on several factors: your 
+  application domain, your budget, your company policy, your risk tolerance, and 
+  your staff. How much you invest in testing depends on how you evaluate quality 
+  and tolerate risk in your particular environment.</p>
+<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Concepts: Modeling Large Organizations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/workflow.gif"> <a href="../ovu_core.htm">Disciplines</a> &gt;
+<img border=0 src="../../../applet/images/wf_red.gif"> <a href="../ovu_busm.htm">Business Modeling</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> <a href="cos_bm.htm">Concepts</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> Modeling Large Organizations
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Concepts:
+&nbsp;<rpw name="PresentationName">Modeling Large Organizations</rpw><a name="XE_business_modeling__large_organizations"></a><a name="Top"></a></h2>
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Small and Large Organizations"">Small and large organizations</a></li>
+  <li><a href="#High-Level and Detailed Business Use Cases"">High-level and
+    detailed business use cases</a></li>
+  <li><a href="#Super-Ordinate and Subordinate Models"">Superordinate and
+    subordinate models</a></li>
+  <li><a href="#Layered Business Models"">Layered business models</a></li>
+  <li><a href="#Core Business Use Cases versus Supporting Business Use Cases"">Core
+    business use cases versus supporting business use cases</a></li>
+  <li><a href="#Models of the Entire Organization"">Models of the entire
+    organization</a></li>
+</ul>
+<h3><a name="Small and Large Organizations">Small and Large Organizations</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The differences between a small and a large organization lie in the broader
+spectrum of products, often within several totally different product families.
+Generally the higher the complexity of products, the more distributed the
+organization and the market. This results in a larger number of more complex
+business use cases, involving many more employees with more specialized tasks.</p>
+<p>The techniques proposed here can be applied independently or in combination.</p>
+<h3><a name="High-Level and Detailed Business Use Cases">High-Level and Detailed
+Business Use Cases</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>A company’s executive management, as well as its process owners, are
+interested in their company’s business models—the management must work with
+the company’s strategic objectives, whereas the process owners and leaders
+need a detailed picture of how their process should be performed.</p>
+<p>If the differences between the executive’s and the process owners’ views
+of the organization are too great, you could satisfy their needs by developing
+two different, yet related, sets of business use cases, either maintained in one
+model or in two separate models; for the executives, a set of high-level
+business use cases that shows the intent and purpose of the organization; for
+the process owners, a detailed set of use cases that helps clarify how the
+organization needs to function internally. For each high-level business use
+case, define one, or several, detailed business use cases representing the same
+activities in the organization. For example, you can start with the primary
+business actor, detail the results and services she is interested in or even
+specialize the business actor itself, then develop a separate business use case
+for each detailed area.</p>
+<p>If you want to engineer your organization one business use case at a time,
+you can apply this technique incrementally for one business use case at a time.
+First, make a high-level, use-case model of the entire business, and rank the
+business use cases in an overview, then identify one or several detailed
+business use cases for the most highest ranked, high-level business use
+cases.&nbsp;</p>
+<p>There is a one-to-one relationship between a high-level business use case and
+its set of detailed business use cases. The relationships between business use
+cases of the two categories are represented as «refinement» relationships, a
+stereotype of dependency. A high-level business use case, and the group of
+detailed business use cases it represents, can be presented in the same diagram.</p>
+<p align="center"><img src="images/large1.gif" width="484" height="468"></p>
+<p align="center" class="picturetext">High-level business use cases and detailed
+business use cases. The detailed business use cases have been identified by
+detailing the results in which the Customer and Potential Customer are
+interested.&nbsp;</p>
+<h3><a name="Super-Ordinate and Subordinate Models">Superordinate and
+Subordinate Models</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The technique for modeling business use cases presented so far is most easily
+applied to companies that have a single business area and whose business
+activities are concentrated geographically at one location. For larger companies
+with several geographical distributed over several locations, it may be
+necessary to scale up the technique.</p>
+<p>Therefore, to model companies built of independent yet cooperating parts, you
+can build one superordinate business use-case model that describes the whole
+business, and then one subordinate business use-case model for each business
+area.</p>
+<p>To explore realizations of the superordinate business use cases, you can
+identify the organization units and show how they collaborate to perform the
+workflow. At this level, an organization unit would correspond to a business
+area. It can be useful to use <a href="../../artifact/ar_if.htm"">interfaces</a>
+at a business level to clarify the collaboration.&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><img alt="fig_3_4_3_1.gif (6920 bytes)" src="images/large2.gif" width="575" height="438"></p>
+<p align="center" class="picturetext">Superordinate and subordinate models of an
+organization</p>
+<p>Each business area can now be treated as an organization on its own,
+fulfilling the interfaces defined in the superordinate business object
+model.&nbsp;</p>
+<h3><a name="Layered Business Models">Layered Business Models</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>In software engineering, a technique used to master the complexity of very
+large systems is called layering. The idea behind this technique is to separate
+the application-specific parts from the more general parts of the system, so
+that the program units and program services can be reused. When structuring
+organizations, the same principles are often naturally applied. For example, in
+the bottom layer you find resources that provide general services, somewhere in
+the middle layer you often find resources that support business-specific
+activities, and in the top layer you find business area-specific or
+product-specific specialists, Research and Development, and sales force
+activities. Core business use cases use resources from all layers.</p>
+<p>Therefore, layering is not a question of qualifications or seniority, but of uniqueness and importance in relation to the company’s
+business ideas. A task handled by a business worker from the general skill layer
+could be as qualified as any other. The work in core business use
+cases and supporting business use cases where business-specific information
+systems, production lines, and other types of business infrastructure are
+developed, may require equally business-specific skills from the same layered
+organization.</p>
+<p>For an explanation of the terms core, supporting, and management business use
+case, see <a href="../../modguide/md_bucm.htm"">Guidelines: Business Use-Case
+Model</a> specifically the section on different categories of business use
+cases.&nbsp;</p>
+<h5>Business Use Cases and Classes in a Layered Model&nbsp;</h5>
+<p>Structuring the organization into layers does not change the business use
+case—the same results still need to be produced—but it does change the
+business use-case realization.</p>
+<p>Compared to a non-layered business object model, a layered business object
+model should be developed with two recommended restrictions in mind:
+<ul>
+  <li>A business worker in a certain layer never makes contact with a business
+    worker or manipulates a business entity of a higher layer, except on
+    explicit request from someone in the higher layer.
+  <li>A business worker has responsibilities only within his or her own layer.</li>
+</ul>
+<p>Without these restrictions, a layered structure quickly degenerates.</p>
+<p>When identifying business workers and assigning activities to business
+workers, the required skills needed in order to perform an activity needs to be
+understood. A business worker from the layer that organizes resources for those
+particular skills must perform an activity that by its nature requires a
+particular skill. Instead of having as few business workers as possible, which
+is the normal rule of thumb when designing a business use case, you should now
+have as few business workers as possible—with as wide responsibilities as
+possible—in each layer.</p>
+<p>Workflows, business workers, and business entities in lower layers should be
+designed with generality in mind to provide services shaped for reuse in several
+areas. Business workers and business entities are organized into organization
+units according to their business specificity. Organization units that include
+the most general competencies and phenomena are found in the bottom layer; while
+the most company-specific organization units can be found in the top layer.</p>
+<h3><a name="Core Business Use Cases versus Supporting Business Use Cases">Core
+Business Use Cases versus Supporting Business Use Cases</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Business use-case realizations will, to differing degrees, engage business
+workers from different layers. Business use-case realizations, with a high
+degree of top-layer involvement, set the profile of the company, should
+implement the business idea, and should be the profit centers. These correspond
+to core business use cases and supporting business use cases to provide core
+business use cases with essential, business-area-specific infrastructure.</p>
+<p>Business use-case realizations in lower layers, without top layer business
+workers, provide general services required to keep the company running. They can
+be abstract and define workflows performed as parts of other business use cases,
+for instance, billing activities that conclude a sales business use case. They
+can also be concrete, executing on their own and performing activities that do
+not need business area-specific competence, like bookkeeping. These normally
+correspond to supporting business use cases.</p>
+<p>A layered structure reflects those kinds of skills that are key to the
+business ideas, whether needed in core business use cases or supporting business
+use cases, and which skills are less specific. This could be a good starting
+point for systematically analyzing the company‘s available resources.</p>
+<h3><a name="Models of the Entire Organization">Models of the Entire
+Organization</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>In many cases, you would only be interested in detailed information about one
+or a few of you business processes. However, to give context it can be practical
+to identify the complete set of business process, and briefly describe each of
+them. This will result in a model that includes core business use cases,
+supporting business use cases, and management business use cases. See the
+section on different categories of business use cases in <a href="../../modguide/md_bucm.htm"">Guidelines:
+Business Use-Case Model</a>.</p>
+<p>Supporting business use cases—such as core business use cases,
+business-specific information systems, computer networks, and premises—are
+responsible for the development and maintenance of a company’s infrastructure,
+among others. From the modeling perspective, there are no real differences
+between core business use cases and supporting business use cases. Both types of
+business use cases should have the same requirements of usability and
+effectiveness. To perform successfully, both kinds of business use cases may
+require the same types of resource.</p>
+<p>A supporting business use case in one organization, for instance a software
+development business use case, might be a core business use case in another. The
+major difference is for whom the business use cases work. At the request of a
+business owner, the supporting business use cases develop the business in
+cooperation with the affected business use case owners and operators. In a model
+of the entire business, a typical business actor would be &quot;the Board&quot;.
+When the modeling is delimited to the supporting business use cases only,
+typical business actors are &quot;business use case Owner&quot; and
+&quot;business use case Operator&quot;.</p>
+<p>Management business use cases, on the other hand, are responsible for
+managing the business; that is, for running and developing the other business
+use cases according to directives from the owner, to initiate and supervise core
+business use cases, and supporting business use cases, according to directives
+from the owner. The object model describes how executives, resource owners,
+business use case owners, business use case leaders, and business use case
+operators need to cooperate. Typical business actors are &quot;the Owner&quot;
+or &quot;the Board&quot;.</p>
+<p align="center"><img alt="fig_3_4_5_1.gif (8371 bytes)" src="images/large3.gif" width="531" height="523"></p>
+<p class="picturetext">A model of an entire organization</p>
+<p>At the other end of the scale, there are many minor tasks that need to be
+taken care of, like keeping the computer network running, answering the phone,
+and cleaning the coffee machine, but these tasks are not part of a defined
+business use case. For instance, if you intend to be certified according to the
+ISO 9000 standard, these activities need to be included in the model as well. A
+straight-forward approach, if it is a full-time job, is to assign such
+activities to a specific business worker. If it is less than a full-time job,
+assign such activities to an existing business worker with the right skill
+requirements without trying to include them in any business use case.<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

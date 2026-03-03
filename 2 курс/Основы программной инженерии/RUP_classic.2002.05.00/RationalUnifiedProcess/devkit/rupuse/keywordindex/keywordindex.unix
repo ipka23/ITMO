@@ -1,0 +1,3 @@
+setenv CLASSPATH ${CLASSPATH}:../../ruptools/rup.jar
+
+java ruptools.KeyWordIndex keywordconfig.txt
