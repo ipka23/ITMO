@@ -1,0 +1,434 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Activity: Structure the Implementation Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/ovu_works.htm">Roles and Activities</a> &gt;
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/wks_developers.htm">Developer Role Set</a> &gt;
+<img border=0 src="../../applet/images/worker.gif"> <a href="../workers/wk_archt.htm">Software Architect</a> &gt;
+<img border=0 src="../../applet/images/activity.gif"> Structure the Implementation Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Activity:
+&nbsp;<rpw name="PresentationName">Structure the Implementation Model</rpw><a name="Top"></a><a name="XE_implementation_model__structuring"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2">
+  <tr>
+    <td colspan="2" height="35" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To establish the structure in which the implementation will reside.</li>
+      <li>To assign responsibilities for Implementation Subsystems and their
+        contents.</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" height="35" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Steps</font></strong></small>
+    <ul>
+      <li><a href="#Create the initial Implementation Model Structure"">Create
+        the initial implementation model structure</a></li>
+      <li><a href="#Adjust Subsystems"">Adjust implementation subsystems</a></li>
+      <li><a href="#Define Imports for Each Subsystem"">Define imports for each
+        implementation subsystems</a></li>
+      <li><a href="#Decide how to treat executables (and other derived objects)"">Decide
+        how to treat executables (and other derived objects)</a></li>
+      <li><a href="#Decide how to treat test assets"">Decide how to treat test
+        assets</a></li>
+      <li><a href="#Update the Implementation View"">Update the implementation
+        view</a></li>
+      <li><a href="#Evaluate the implementation model"">Evaluate the implementation model</a></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="255" height="25" valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Input
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_sspec.htm">Supplementary Specifications</a></li>
+<li><a href="../artifact/ar_desgl.htm">Design Guidelines</a></li>
+<li><a href="../artifact/ar_desmd.htm">Design Model</a></li>
+<li><a href="../artifact/ar_impmd.htm">Implementation Model</a></li>
+</ul>
+
+
+    
+</td>
+    <td width="255" height="25" style="text-indent: 0px" valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Resulting
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_impss.htm">Implementation Subsystem</a></li>
+<li><a href="../artifact/ar_sadoc.htm">Software Architecture Document</a></li>
+<li><a href="../artifact/ar_impmd.htm">Implementation Model</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="19" colspan="2" style="text-indent: 4px" bordercolor="#808080"><strong><font face="Arial"><small>Role:</small>
+    </font></strong><a href="../workers/wk_archt.htm">Software Architect</a></td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="25" colspan="2" style="text-indent: 4px" bordercolor="#808080"><small><font face="Arial"><strong>Guidelines:
+    </strong></font></small><ul>
+<li><a href="../modguide/md_impss.htm">Implementation Subsystem</a></li>
+</ul>
+</td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="25" colspan="2" style="text-indent: 4px" bordercolor="#808080"><small><font face="Arial"><strong>Tool
+    Mentor:</strong></font></small>
+    
+<ul>
+<li><a href="../../toolment/rose/tm_strim.htm">Structuring the Implementation Model Using Rational Rose</a></li>
+<li><a href="../../toolment/rose/tm_rose2cc.htm">Accessing Rational ClearCase from Rational Rose</a></li>
+<li><a href="../../toolment/clearcase/tm_epcmp.htm">Setting Up the Implementation Model Using Rational ClearCase</a></li>
+<li><a href="../../toolment/clearcase/tm_impucm.htm">Setting Up the Implementation Model with UCM Using Rational ClearCase</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+</table>
+<!-- Linked to Workflow Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" colspan="2" bordercolor="#808080"><small><font face="Arial"><strong>Workflow Details:</strong></font></small>
+<ul>
+<li><a href="../workflow/ovu_impl.htm">Implementation</a>
+	<ul>
+	<li><a href="../workflow/implemen/wfs_stim.htm">Structure the Implementation Model</a></li>
+	</ul>
+</li>
+<li><a href="../workflow/ovu_and.htm">Analysis & Design</a>
+	<ul>
+	<li><a href="../workflow/ana_desi/wfs_and2.htm">Refine the Architecture</a></li>
+	</ul>
+</li>
+</ul>
+
+
+</td>
+</tr>
+</table>
+<!-- Linked to Workflow End -->
+</center></div>
+
+<h3><br>
+<a name="Create the initial Implementation Model Structure">Create the initial
+implementation model structure</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To establish an initial structure for the Implementation Model.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>In moving from the 'design space' to the 'implementation space' start by
+mirroring the structure of the Design Model in the Implementation Model.</p>
+<p>Design Packages will have corresponding Implementation Subsystems, which will
+contain one or more components and all related files needed to implement the
+component. The mapping from the Design Model to the Implementation Model may
+change as each Implementation Subsystem is allocated to a specific layer in the
+architecture. Note that both classes and possibly <b>design</b> subsystems in
+the Design Model are mapped to components in the Implementation Model - although
+not necessarily one to one (see <a href="../workflow/implemen/co_mdesc.htm"">Concept:
+Mapping from Design to Code</a> and <a href="../artifact/ar_dsub.htm"">Artifact:
+Design Subsystem</a>).</p>
+<p>Create a Component Diagram to represent the Implementation Model Structure. A
+simple Component Diagram is shown below:</p>
+<p align="center"><img src="images/compdiag.gif" width="426" height="477"></p>
+<p class="picturetext">Example Component Diagram for a simple Automated Teller
+Machine</p>
+<h3><a name="Adjust Subsystems">Adjust implementation subsystems</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>Adapt the structure of the model to reflect team organization or
+        implementation language constraints.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>Decide whether the organization of subsystems needs to be changed, by
+addressing small tactical issues related to the implementation environment.
+Below are some examples of such tactical issues. Note that if you decide to
+change the organization of implementation subsystems you must also decide
+whether you should go back and update the design model, or the allow design
+model to differ from the implementation model.
+<ul>
+  <li><strong>Development team organization</strong>. The subsystem structure
+    must allow several implementers or teams of implementers to proceed in
+    parallel without too much overlap and agitation. It is recommended that each
+    implementation subsystem be the responsibility of one and only one team.
+    This means that you might want to split a subsystem in two (if it is large),
+    and assign the two pieces to be implemented by two implementers or two teams
+    of implementers,&nbsp; particularly if the two implementers (or teams) have
+    different build/release cycles.</li>
+  <li><strong>Declarations of types</strong>. In implementation you may realize
+    that a subsystem needs to import components from a another subsystem,
+    because a type is declared in that subsystem. Typically, this occurs when
+    you use typed programming languages, such as C++, Java and Ada. In this
+    situation, and in general, it may be a good idea to extract type
+    declarations into a separate subsystem.</li>
+</ul>
+<p class="exampleheading">Example</p>
+<p class="example">You extract some type declarations from <strong>Subsystem D</strong>,
+into a new subsystem Types, to make <strong>Subsystem A</strong> independent of
+changes to the public (visible) components in <strong>Subsystem D</strong>.</p>
+<p align="center"><img src="images/ac_stri1.gif" alt width="501" height="164"></p>
+<p class="picturetext">Type declarations are extracted from Subsystem D</p>
+<p>.
+<ul>
+  <li><strong>Existing legacy code and component systems.</strong> You may need
+    to incorporate legacy code, a library of reusable components, or
+    off-the-shelf products. If these have not been modeled in design, then
+    implementation subsystems must be added.</li>
+  <li><strong>Adjust dependencies.</strong> Assume that a subsystem A and a
+    subsystem B have import dependencies to each other. However, you may want to
+    make B less dependent on changes in subsystem A. Extract the components of A
+    that B imports and put in a new implementation subsystem A1 in a lower
+    layer.</li>
+</ul>
+<p align="center"><img src="images/ac_stri2.gif" alt width="404" height="102"></p>
+<p class="picturetext">Components are extracted from subsystem A, and placed in
+a new subsystem A1.</p>
+<h3><a name="Define Imports for Each Subsystem">Define imports for each
+implementation subsystem</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td width="365" height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To define dependencies between subsystems.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>For each subsystem, define which other subsystems it imports. This can be
+done for whole sets of subsystems, allowing all subsystems in one layer to
+import all subsystems in a lower layer. Generally, the dependencies in the
+Implementation Model will mirror those of the Design Model, except where the
+structure of the Implementation Model has been adjusted (see <a href="#Adjust Subsystems"">Adjust
+implementation subsystems</a>).</p>
+<p>Present the layered structure of subsystems in component diagrams.</p>
+<h3><a name="Decide how to treat executables (and other derived objects)">Decide
+how to treat executables (and other derived objects)</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Executables (and other derived objects) are the result of applying a build
+process to an implementation subsystem (or subsystems) or a part thereof, and so
+logically belong with the implementation subsystem. However, the software architect,
+working with the configuration manager, will need to decide the configuration
+item structure to be applied to the implementation model.&nbsp;</p>
+<p>For ease of selection and reference, particularly for deployment, the default
+recommendation is to define separate configuration items to contain the sets of
+executables that are deployable. Thus, in the simple case, for each
+implementation subsystem there would be a configuration item for the deployable
+executables and a configuration item to contain the source etc. used to produce
+them.&nbsp;The implementation subsystem can be considered to be represented by a
+composite configuration item containing these configuration items (and perhaps
+others, such as test assets).</p>
+<p>From a modeling point of view, a collection of executables produced by a
+build process can be represented as an <a href="../artifact/ar_build.htm"">Artifact:
+Build</a> (which is a package) contained within the associated implementation
+subsystem (itself a package).</p>
+<h3><a name="Decide how to treat test assets">Decide how to treat test assets</a>
+<a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td width="365" height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To add test artifacts to the Implementation Model.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>In general, test components and test subsystems are not treated much
+differently in the Rational Unified Process from other developed software.
+However, test components and subsystems do not usually form part of the deployed
+system, and often are not deliverable to the customer. Therefore the default
+recommendation is to align the test assets with the target-of-test (e.g.
+component for unit test, implementation subsystem for integration test, system
+for system test) but keep the test assets in, for example, separate test
+directories, if the project repository is organized as a set or hierarchy of
+directories. Distinct test subsystems (intended for testing above the unit test
+level) should be treated in the same way as other implementation subsystems - as
+distinct configuration items.</p>
+<p>For modeling, a collection of test components can be represented as an <a href="../artifact/ar_impss.htm"">Artifact:
+Implementation Subsystem</a> (a package). For unit test, such a test subsystem
+would normally be contained within the associated (tested) implementation
+subsystem. The software architect, in consultation with the configuration manager should
+decide whether test components at this level should be configured together with
+the components they test, or as separate configuration items. For integration
+and system test, the test subsystems may be peers of the implementation
+subsystems under test.</p>
+<h3><a name="XE_implementation_view__updating"></a><a name="Update the Implementation View">Update
+the implementation view</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td height="1" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To update the Implementation View of the Software Architecture
+        Document.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p>The Implementation View is described in the <a href="../artifact/ar_sadoc.htm"">&quot;Implementation
+View&quot; section of the Software Architecture Document</a>. This section
+contains component diagrams that show the layers and the allocation of
+implementation subsystems to layers, as well as import dependencies between
+subsystems.
+
+<h3><a name="Evaluate the implementation model">Evaluate the implementation
+model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>See <a href="chklists/ck_imdl.htm"">Checkpoints: Implementation Model</a>.&nbsp;
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

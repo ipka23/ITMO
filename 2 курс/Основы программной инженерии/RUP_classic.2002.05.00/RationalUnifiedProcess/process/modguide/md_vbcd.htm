@@ -1,0 +1,371 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guidelines: Designing Classes in Visual Basic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/artifacts.gif"> <a href="../artifact/arp_desmd.htm">Design Model...</a> &gt;
+<img border=0 src="../../applet/images/ar_class.gif"> <a href="../artifact/ar_class.htm">Design Class</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Designing Classes in Visual Basic
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Designing Classes in Visual Basic</rpw><a name="Top"></a><a name="XE_Visual_Basic__designing_classes_in"></a><a name="XE_designing_classes_in_Visual_Basic"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td width="147" valign="middle" bordercolor="#808080" height="210" align="center"><img src="images/vb_logo.jpg" width="157" height="98">
+    <p><img src="../../toolment/rose/images/rose98lo.jpg" width="138" height="65"></td>
+    <td width="359" valign="top" bordercolor="#808080" height="210">This is an
+    outline of class design guidelines applicable to a Visual Basic® project
+    using Rational Rose® as a modeling tool; these guidelines might be
+    further refined to fit into a specific project environment.
+    <p>These guidelines are structured according to the <a href="../activity/ac_cldes.htm"">Activity:
+    Class Design</a>, presenting specific guidelines for each step within that
+    activity.</td>
+  </tr>
+</table>
+</center></div>
+
+<h5>Topics</h5>
+<ul>
+  <li><a href="#References"">References</a></li>
+  <li><a href="#Terminology"">Terminology</a></li>
+  <li><a href="#Mapping the Design Model to Visual Basic Code"">Mapping the
+    Design Model to Visual Basic Code</a></li>
+  <li><a href="#Creating Initial Design Classes"">Creating Initial Design Classes</a></li>
+  <li><a href="#Defining Operations"">Defining Operations</a></li>
+  <li><a href="#Defining Attributes and Relationships"">Defining Attributes and
+    Relationships</a></li>
+  <li><a href="#Defining (UML) Methods"">Defining (UML) Methods</a></li>
+  <li><a href="#Defining States"">Defining States</a></li>
+  <li><a href="#Handling Non-Functional Requirements in General"">Handling
+    Non-Functional Requirements in General</a></li>
+</ul>
+<h3><a name="References"></a>References <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following books and documents are referred from these guidelines:
+<ul>
+  <li>Visual Basic® Books Online, Enterprise Edition, version 5.0.</li>
+  <li>Rational Rose® add-in help documentation, Enterprise/Professional
+    Visual Basic® Edition for Windows 95/NT 4.0.</li>
+</ul>
+<h3><a name="Terminology"></a>Terminology <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The Rational Unified Process (RUP) description is based on UML terminology, meaning
+that it in some cases need to be mapped onto corresponding Visual Basic® and
+COM terminology. There also exists an option in Rational Rose® that can be
+set to view the model using COM terminology; when doing this, the following
+terms are changed:</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="50%" bordercolor="#808080">
+    <p class="tableheading">RUP/UML</td>
+    <td width="50%" bordercolor="#808080">
+    <p class="tableheading">Visual Basic®/COM</td>
+  </tr>
+  <tr>
+    <td width="50%" bordercolor="#808080">operation</td>
+    <td width="50%" bordercolor="#808080">method</td>
+  </tr>
+  <tr>
+    <td width="50%" bordercolor="#808080">parameter</td>
+    <td width="50%" bordercolor="#808080">argument</td>
+  </tr>
+  <tr>
+    <td width="50%" bordercolor="#808080">attribute</td>
+    <td width="50%" bordercolor="#808080">property</td>
+  </tr>
+</table>
+</center></div>
+
+<p>This must be kept in mind when interpreting RUP descriptions.</p>
+<h3><a name="Mapping the Design Model to Visual Basic Code"></a>Mapping the
+Design Model to Visual Basic Code <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping.&quot;</p>
+<h3><a name="Creating Initial Design Classes"></a>Creating Initial Design
+Classes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<h4>Initial Boundary Class Designs</h4>
+<p>A boundary class representing a part of the user interface is likely to start
+out as a form.</p>
+<p>A boundary class representing interaction with external systems represents in
+most cases a reference to an ActiveX component or a DLL. This is done by
+declaring an object variable or a DLL procedure, respectively, and then use this
+variable or procedure to access functionality. We recommend that this object
+variable or procedure declaration is done within the same module, and that the
+usage of the variable or procedure is encapsulated within the module. This will
+localize changes to the external interaction.</p>
+<h4>Initial Entity Class Designs</h4>
+<p>An entity class is likely to start out as a class marked as persistent. When
+this &quot;data class&quot; has been refined, DDL scripts defining the
+corresponding database tables can be generated (see &quot;How to Handle
+Persistency&quot; below).</p>
+<h4>Initial Control Class Designs</h4>
+<p>A control class is likely to start out as a class module.</p>
+<h3><a name="Defining Operations"></a>Defining Operations <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Define Visual Basic methods in terms of sub, function and property
+procedures.</p>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Method Mappings,&quot; for details.</p>
+<p>For method naming guidelines, refer to &quot;Visual Basic® Programmer's
+Guide,&quot; part 2: &quot;What Can You Do With Visual Basic?,&quot; section
+&quot;Programming with Objects,&quot; subsection &quot;Naming Properties,
+Methods, and Events.&quot;</p>
+<h3><a name="Defining Attributes and Relationships"></a>Defining Attributes and
+Relationships <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<h4>Designing Attributes</h4>
+<p><b>Note</b>: &quot;Designing attributes&quot; means &quot;defining class
+properties&quot; in a Visual Basic® context.</p>
+<p>From Rational Rose, class properties are translated into data members. By
+default, Rational Rose® does not generate the property <strong>Get</strong>, <strong>Set</strong>
+and <strong>Let</strong> procedures corresponding to each property. A model
+property allows the user to turn on automatic generation of property procedures.</p>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Properties,&quot; for details.</p>
+<p>For property naming guidelines, refer to &quot;Visual Basic® Programmer's
+Guide,&quot; part 2: &quot;What Can You Do With Visual Basic?,&quot; section
+&quot;Programming with Objects,&quot; subsection &quot;Naming Properties,
+Methods, and Events.&quot;</p>
+<h4>Designing Associations</h4>
+<p>Associations map to pairs of data members in Visual Basic®. The name for
+each data member is taken from its association role name.</p>
+<p>You can use associations (and aggregations, see below) to model so called
+&quot;object models&quot; in Visual Basic®; refer to &quot;Visual Basic®
+Programmer's Guide,&quot; part 2: &quot;What Can You Do With Visual
+Basic?,&quot; section &quot;Programming with Objects,&quot; subsection
+&quot;Object Models.&quot;</p>
+<p>In Rational Rose, associations can be described in detail by assigning a
+variety of adornments and properties. These adornments include association
+direction, roles, multiplicity, navigability, aggregate, access, containment,
+role documentation and constraints, association classes, and qualifiers.</p>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Relationships,&quot; subsubsubsections
+&quot;Association Relationship and Advanced Relationship Mappings,&quot; for
+details.</p>
+<h4>Designing Aggregations</h4>
+<p>An aggregate relationship is conceptually the same as an association with the
+aggregate adornment set. Aggregate adornments have no effect on code generation,
+nor reverse engineering, in Rose. Also, the aggregate association is navigable
+on both ends, and data members are generated for each of the associated classes.</p>
+<p>Depending on the type of aggregation, you should clarify the design as
+follows:
+<ul>
+  <li>Define shared aggregates by setting the &quot;By-Reference&quot;
+    containment adornment.</li>
+  <li>Define composite aggregates by setting the &quot;By-Value&quot;
+    containment adornment.</li>
+</ul>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Relationships,&quot; subsubsubsections
+&quot;Aggregation Relationship and Advanced Relationship Mappings,&quot; for
+details.</p>
+<h4>Designing Generalizations</h4>
+<p>In Visual Basic®, the closest correspondence to the generalization
+relationship is the <strong>implements</strong> construct. Thus, for a
+generalization relationship between a subclass <strong>B</strong> and a
+superclass <strong>A</strong>, Rational Rose® generates the following code
+into <strong>B</strong>'s class module:</p>
+<p>· An <strong>Implements A</strong> statement</p>
+<p>· An object of the superclass</p>
+<p>· Copies of <strong>A</strong>'s public methods, including default
+dispatching implementations that delegate to the parent class <strong>A</strong></p>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Generalization Relationship,&quot; for
+details.</p>
+<p>Regarding the implements construct, refer to &quot;Visual Basic®
+Programmer's Guide,&quot; part 2: &quot;What Can You Do With Visual
+Basic?,&quot; section &quot;Programming with Objects,&quot; subsection
+&quot;Polymorphism.&quot;</p>
+<h4>Designing Subscribes-Relationships</h4>
+<p>Declare, raise, and handle the corresponding events.</p>
+<p>Refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;Reference,&quot; subsection &quot;Model to Visual
+Basic Mapping,&quot; subsubsection &quot;Events,&quot; for details.</p>
+<p>For event naming guidelines, refer to &quot;Visual Basic® Programmer's
+Guide,&quot; part 2: &quot;What Can You Do With Visual Basic?,&quot; section
+&quot;Programming with Objects,&quot; subsection &quot;Naming Properties,
+Methods, and Events.&quot;</p>
+<h3><a name="Defining (UML) Methods"></a>Defining (UML) Methods <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Methods (UML) can be specified on the Semantics tab of the (VB) method
+specification in Rational Rose. The (UML) method pseudo-or implementation code
+will be code-generated as a comment within the corresponding method in Visual
+Basic®. This comment can then be used as a starting point for the (VB) method
+implementation by removing the &quot;comment ticks.&quot;</p>
+<h3><a name="Defining States"></a>Defining States <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Rational Rose® does not support code generation from state machines.
+However, you should still define state machines in Rational Rose® if the
+objects of a class exhibit interesting state-controlled behavior; this will
+provide valuable information to the implementer of the class.</p>
+<h3><a name="Handling Non-Functional Requirements in General"></a>Handling
+Non-Functional Requirements in General <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<h4>How to Create the User Interface</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; sections &quot;Creating a User Interface
+and Using Visual Basic's Standard Controls.&quot;</p>
+<p>Also refer to <a href="md_uig.htm"">Guidelines: User Interface (General)</a>,
+for more information on how to create user interfaces.</p>
+<h4>How to Reuse ActiveX Components</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; section &quot;Programming with
+Components.&quot;</p>
+<p>Also refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;How to…,&quot; subsection &quot;Add Existing
+Software Components to a Model,&quot; for details.</p>
+<h4>How to Detect, Handle and Report Errors</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; section &quot;Debugging Your Code and
+Handling Errors.&quot;</p>
+<p>Also refer to the Rational Rose® add-in help file, &quot;Rose Visual
+Basic,&quot; section &quot;How to…,&quot; subsection &quot;Generate Visual
+Basic Code,&quot; subsubsection &quot;Generating Error Handling Code.&quot;</p>
+<h4>How to Handle Persistency</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; section &quot;Accessing Data.&quot;</p>
+<p>If you are using the professional and enterprise edition of Visual Basic,
+also refer to the &quot;Guide to Data Access Objects.&quot;</p>
+<p>Also refer to <a href="../activity/ac_dbdes.htm"">Activity: Database Design</a>,
+for more information on persistency issues.</p>
+<p>Also refer to the Rational Rose® add-in help file, &quot;Rational
+Rose,&quot; section &quot;Concepts,&quot; subsection &quot;DDL Code
+Generation,&quot; on how to generate DDL code.</p>
+<h4>How to Design for Performance and Compatibility</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; section &quot;Designing for Performance and
+Compatibility.&quot;</p>
+<h4>How to Handle International Issues</h4>
+<p>Refer to &quot;Visual Basic® Programmer's Guide,&quot; part 2: &quot;What
+Can You Do With Visual Basic?,&quot; section &quot;International Issues.&quot;<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

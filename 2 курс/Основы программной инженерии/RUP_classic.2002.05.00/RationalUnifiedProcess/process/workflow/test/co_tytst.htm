@@ -1,0 +1,285 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Concepts: Types of Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/workflow.gif"> <a href="../ovu_core.htm">Disciplines</a> &gt;
+<img border=0 src="../../../applet/images/wf_green.gif"> <a href="../ovu_test.htm">Test</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> <a href="ov_tst_co.htm">Concepts</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> Types of Test
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner"><a name="Top"></a>Concepts:
+&nbsp;<rpw name="PresentationName">Types of Test</rpw><a name="XE_test__stages_of"></a><a name="XE_stages_of_test__introduction_to"></a></h2>
+<p>There is much more to testing computer software than simply evaluating the 
+  functions, interface, and response time characteristics of a target-of-test. 
+  Additional tests must focus on characteristics / attributes such as the target-of-test's: 
+<ul>
+  <li>integrity (resistance to failure)</li>
+  <li>ability to be installed / executed on different platforms</li>
+  <li>ability to handle many requests simultaneously</li>
+  <li>...</li>
+</ul>
+<p>In order to achieve this, many different types of tests are implemented and 
+  executed, each test type having a specific objective and support technique. 
+  Each technique focuses on testing one or more characteristics or attributes 
+  of the target-of-test.</p>
+<p>The following test types are listed based on the most obvious quality dimension 
+  (see <a href="co_qtydm.htm"">Concepts: Quality Dimension</a>) they address:</p>
+<div align="center"><center>
+
+<table align="center" border="0" width="85%" cellpadding="4">
+  <tr>
+        <td width="331" height="41" valign="top" align="left"><b><font size="+1">Quality 
+          Dimension</font></b></td>
+        <td width="746" height="41" valign="top" align="left"><b><font size="+1">Type 
+          of Test</font></b> </td>
+  </tr>
+  <tr>
+    <td width="331" valign="top" align="left"><b>Functionality</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></td>
+        <td width="746"> 
+          <ul>
+            <li><b>Function test: </b>Tests focused on validating the target-of-test 
+              functions as intended, providing the required service(s), method(s), 
+              or use case(s). This test is implemented and executed against different 
+              target-of-tests, including units, integrated units, application(s), 
+              and systems.<br>
+              <br>
+            </li>
+            <li><b>Security test: </b>Tests focused on ensuring the target-of-test, 
+              data, (or systems) is accessible to only those actors intended. 
+              This test is implemented and executed various targets-of-test.<br>
+              <br>
+            </li>
+            <li><b>Volume </b><b>test: </b>Testing focused on verifying the target-of-test 
+              ability to handle large amounts of data, either as input and output 
+              or resident within the database. Volume testing includes test strategies 
+              such as creating queries that [would] return the entire contents 
+              of the database, or have so many restrictions that no data is returned, 
+              or data entry of the maximum amount of data in each field. </li>
+          </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="331" valign="top" align="left"><b>Usability</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a>
+      <p>See <a href="co_ustst.htm"">Concepts: Usability Testing</a> for
+    additional information</td>
+    <td width="746">
+    <ul>
+      <li><b>Usability test:</b> Tests which focus on:&nbsp;
+        <ul>
+          <li>human factors,
+          <li>aesthetics,
+          <li>consistency in the user interface,&nbsp;
+          <li>online and context-sensitive help,
+          <li>wizards and agents,
+          <li>user documentation, and&nbsp;
+          <li>training materials.</li>
+        </ul>
+      </li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="331" valign="top" align="left"><b>Reliability</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></td>
+    <td width="746">
+    <ul>
+      <li><b>Integrity test:</b> Tests which focus on assessing the
+        target-of-test's robustness (resistance to failure) and technical
+        compliance to language, syntax, and resource usage. This test is
+        implemented and executed against different target-of-tests, including
+        units and integrated units.<br><br></li>
+      <li><b>Structure test: </b>Tests that focus on assessing the
+        target-of-test's adherence to its design and formation. Typically, this
+        test is done for web-enabled applications ensuring that all links are
+        connected, appropriate content is displayed, and there is no orphaned
+        content. See <a href="co_stru.htm"">Concepts: Structure Testing</a> for
+        additional information.<br><br>
+      </li>
+            <li><b>Stress </b><b>test:</b> A type of reliability test that focuses 
+              on evaluating how the system responds under abnormal conditions. 
+              Stresses on the system may include extreme workloads, insufficient 
+              memory, unavailable services and hardware, or limited shared resources. 
+              These tests are often performed to gain a better understanding of 
+              how and in what areas the system will break, so that contingency 
+              plans and upgrade maintenance can be planned and budgeted for well 
+              in advance.</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="331" valign="top" align="left"><b>Performance</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a>
+    <p>See <a href="co_perfo.htm"">Concepts: Performance Testing</a> for
+    additional information</td>
+        <td width="746"> 
+          <ul>
+            <li><b>Benchmark </b><b>test:</b> A type of performance test that 
+              compares the performance of a [new or unknown] target-of-test to 
+              a known, reference-workload and system.<br>
+              <br>
+            </li>
+            <li><b>Contention</b> <b>test:</b> Tests focused on validating the 
+              target-of-test's can acceptably handle multiple actor demands on 
+              the same resource (data records, memory, etc.).<br>
+              <br>
+            </li>
+            <li><b>Load </b><b>test:</b> A type of performance test used to validate 
+              and assess acceptability of the operational limits of a system under 
+              varying workloads while the system-under-test remains constant. 
+              In some variants, the workload remains constant and the configuration 
+              of the the system-under-test is varied. Measurements are usually 
+              taken based on the workload throughput and in-line transaction response 
+              time. The variations in workload will usually include emulation 
+              of average and peak workloads that will occur within normal operational 
+              tolerances. <br>
+              <br>
+            </li>
+            <li><b>Performance profile: </b>A test in which the target-of-test's 
+              timing profile is monitored, including execution flow, data access, 
+              function and system calls to identify and address performance bottlenecks 
+              and inefficient processes.</li>
+          </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="331" valign="top" align="left"><b>Supportability</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></td>
+    <td width="746">
+    <ul>
+      <li><b>Configuration test: </b>Tests focused on ensuring the
+        target-of-test functions as intended on different hardware and / or
+        software configurations. This test may also be implemented as a system
+        performance test.<br><br></li>
+      <li><b>Installation test: </b>Tests focused on ensuring the
+        target-of-test installs as intended on different hardware and / or
+        software configurations and under different conditions (such as
+        insufficient disk space or power interrupt). This test is implemented
+        and executed against application(s) and systems.</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+<p>&nbsp;</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

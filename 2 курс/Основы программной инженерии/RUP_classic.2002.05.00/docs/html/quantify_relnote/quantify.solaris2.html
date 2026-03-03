@@ -1,0 +1,633 @@
+<HTML>
+<!-- Copyright (c) 2001 Rational Software Corp. -->
+<head>
+<title>Release Notes for Rational Quantify</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<pre>
+Release notes for Quantify version 2002a.06.00  Solaris 2
+
+
+Contents
+========
+
+  o Changes from previous releases
+
+  o Supported systems
+
+  o Restrictions and known issues
+
+
+New In This Release
+===================
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for Forte 7 compiler (compiler version 5.4).
+
+  - This release supports Java programs. JVM versions 
+    versions 1.3.1 and 1.4 are supported.  Refer to the 
+    Java supplement document for usage instructions. Please
+    see the section "Restrictions and Known Issues" for more 
+    details.
+
+  - This release does not support Solaris 2.5.1 (SunOS 5.5.1).
+    
+New in Quantify 2002.05.00
+=========================
+
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for Forte 6 Update 2 compiler (compiler version 5.3).
+
+  - Support for gcc 2.95.3 compiler.
+
+  - This is the last release to support Solaris 2.5.1 (SunOS 5.5.1).
+
+
+
+New In Quantify 2001a.04.00
+===========================
+  - Bug fixes and compatibility with OS patches.
+
+  - HTML-based online help system. See the "HTML Help" topic in the 
+    Restrictions and Known Issues section.
+
+  - New product versioning system. This release is the successor of:
+
+       Quantify 5.3 for Solaris
+
+  - Support for Forte 6 Update 1 compiler
+    (compiler version 5.2).
+
+  - Support for gcc 2.95.2 compiler.
+
+New In Quantify 5.3
+===================
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for Solaris 8, 32-bit and 64-bit development.
+
+  - Support for Forte 6 (compiler version 5.1) compiler. 
+
+New in Quantify 5.2
+===================
+  - Bug fixes and compatibility with OS patches.
+
+  - This release uses a new FlexLm based licensing. Read the new installation
+    guide before installing the product.  Use rs_install instead of 
+    pure_install for the installation.
+
+New In Quantify 5.1
+===================
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for 64-bit Solaris 7 applications Please see the Restrictions 
+    and Known Issues section for details.
+
+  - This is the last release to support Solaris 2.4.
+
+  - Support for Cygnus 98r2 compilers
+
+New In Quantify 4.5
+===================
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for Solaris 7 and Sun Visual Workshop 5.0.
+
+  - This is the last release to support SunOS 4. Apex Ada and Java are no
+    longer supported.
+
+New in Quantify 4.4
+===================
+
+  - Bug fixes and compatibility with OS patches.
+
+  - Support for gcc 2.8.1
+
+  - New product installation and licensing.  Supports FLEXlm based 
+    licensing when installed as part of RSDSU.
+
+New in Quantify 4.3
+===================
+
+  - Support for Apex 3.0.0 Ada and C++ on Solaris and HP-UX.
+
+  - bug fixes
+
+New in Quantify 4.2
+===================
+  - Support for Java
+    
+    This release supports Java. A modified version of the 1.1.6 version 
+    of the Java Virtual Machine is provided which includes the appropriate 
+    hooks for capturing performance data that can be analyzed using
+    the Quantify viewer.
+
+  - bug fixes
+
+New in Quantify 3.1.1
+=====================
+  - Updated Japanese translations
+
+    This release contains improvements in the Japanese translations for the
+    Online Help.
+
+New in Quantify 3.1
+===================
+
+  Miscellaneous
+  -------------
+  - Support for V8+ object files
+
+    This release supports EM_SPARC32PLUS object files which contain 
+    instructions from the SPARC V9 architecture.
+
+  - Solaris 2.6 support
+
+  - Extended compiler support
+
+    This release supports the Sun Workshop C 4.2 and C++ 4.2 compilers.
+
+  - Purela query script
+
+    This release contains a new utility, purela_show, which generates 
+    simplified reports from license and usage data maintained in a 
+    standard or aggregate PureLA database.
+
+New in Quantify 3.0
+===================
+  
+  Support for Solaris 2.5.1
+  -------------------------
+
+    Support has been added for the Solaris 2.5.1 operating system.
+
+  Pure License Advisor (PureLA)
+  -----------------------------
+
+    The "Simple License" advisor, PureLA, offers a number of new features 
+    to further simplify the administration of licenses to Rational
+    Software products.  See the Installation Guide for more details.
+
+  Miscellaneous
+  -------------
+
+  - Updated -use-machine option
+
+    When specifying a machine type for which to collect performance data, 
+    the clock rate may now also be specified.  This avoids the need
+    for Quantify to measure the speed of the machine on which it is 
+    currently running.  The new syntax is:
+
+          -use-machine=<machine>:<speed>Mhz
+
+    e.g.  -use-machine=sparcstation_5:60MHz
+
+==================================================
+
+
+Supported systems
+=================
+
+  Operating system and Hardware
+  -----------------------------
+
+    Quantify has been tested with Solaris versions 2.6, 7 and 8 on 
+    SPARC platforms.
+
+    Quantify has also been tested on normal and V9 SPARC programs on the 
+    UltraSPARC, and supports 64-bit applications.
+
+  Compilers
+  ---------
+
+    Quantify has been tested with the following compilers:
+    - Forte 7 (compiler version 5.4)
+    - Forte 6 Update 2 (compiler version 5.3)
+    - Forte 6 Update 1 (compiler version 5.2)
+    - Forte 6 (compiler version 5.1)
+    - Sun Workshop C and C++ 4.2 and 5.0
+    - GNU gcc and g++ versions 2.8.1, 2.95.X
+    - Cygnus GNUpro v.98r
+
+  Threads
+  -------
+
+    Quantify supports these threads packages:
+    - The native Solaris libthread library.
+    - The Solaris Pthreads library, libpthread.
+    - Transarc DCE threads.
+
+==================================================
+
+
+Restrictions and Known Issues
+=============================
+  Java Language Support
+  ---------------------
+  - Quantify for Java requires certain Java functions packaged in the
+    Rational.jar file. Part of the functionality provided by Rational.jar
+    is implemented in C/C++ and packaged as a shared object
+    libQProfJ.so. The default Java security manager disallows 
+    running these files when executing applets. We currently 
+    workaround this problem by placing the Rational.jar file in your 
+    <$JAVA_HOME>/jre/lib/ext directory. This is a special directory 
+    for Java and the files placed here are given special permissions. If
+    you do not have write access to $(JAVA_HOME)/jre/lib/ext, 
+    Quantify fails to place Rational.jar in the ext directory. 
+    In that case, you must manually copy or link 
+    Rational.jar from quantifyhome to 
+    the $(JAVA_HOME)/jre/lib/ext directory for Quantify to work.
+
+    While running certain Java-enabled programs such as Netscape, 
+    stderr and stdout are redirected to /dev/null and the messages
+    that Quantify generates about Rational.jar and java security are
+    not displayed. If you are running applets and, your program, when
+    run with Quantify, crashes early in the run, it may be because of
+    this security problem. Please first make sure
+    that Rational.jar is present in  $(JAVA_HOME)/jre/lib/ext and rerun
+    your program.
+
+  - Quantify for Java dumps core with some programs on Java 1.3.x.
+    This is most likely because of a JVMPI bug (bug number 4363175
+    in Sun's Java bug database). Please run the program with the
+    Java -Xint option. This restriction does not apply to Java 1.4.
+    The JVMPI bug is fixed in all versions of Java 1.4.
+
+  - The Quantify summary message, generated at the end of a run and 
+    for each PureAPI.SaveData API call, shows the name of the program
+    that runs the Java virtual machine, instead of the name of
+    your Java program.
+    For example, if you run:
+    "quantify -java java MyClass"
+    The Quantify summary message should display:
+    "Quantify: Resource Statistics for MyClass"
+    instead, it displays:
+    "Quantify: Resource Statistics for java"
+
+  - It is not possible to run Quantify for Java on Netscape version 4.7x.
+    To profile Java code running in Netscape, you must use 
+    Netscape version 6. Note that Netscape 6 requires Solaris 7 or 
+    later versions of the OS. 
+    The Netscape version restriction is only for profiling Java code
+    using Netscape. It does not apply to using Netscape to access 
+    online help.  Quantify online help works with Netscape version 4.7x
+    on all versions of Solaris. Refer to the section on "HTML help"
+    later in this file to view the help pages independent of Quantify. 
+
+  - Netscape 6 pipes all stdout, stderr output to /dev/null.
+    This implies that the messages that Quantify generates are
+    not displayed. When running Quantify with Netscape 6, 
+    please use the -debug option to Netscape to view Quantify output:
+    For example:
+    quantify -java ./netscape -debug
+
+  - Applications that support applets sometimes allow you to modify
+    the underlying Java source code, recompile and reload the applet
+    into the running application. This means, there are two versions
+    of some class files loaded into the application.
+    The appletviewer, shipped with the Sun jdk, treats the reloaded
+    classes as new classes and assigns new internal ids to them.
+    Because of these new internal ids Quantify treats these as 
+    new classes and displayes two copies of these reloaded methods
+    in the "File List" window. Annotated Source listing may also not
+    be accurate. To workaround this limitation, please restart your
+    application when you wish to Quantify a modified applet.
+
+  - On some machines, selecting "Help" from the Quantify viewer, when
+    running a Java application, fails with the following error:
+
+	netscape: couldn't find our resources?
+	This could mean that there is an inappropriate `Netscape' file
+        installed in the app-defaults directory.  Check these environment
+        variables and the directories to which they point:
+
+        $XAPPLRESDIR
+        $XFILESEARCHPATH
+        $XUSERFILESEARCHPATH
+
+        Also check for this file in your home directory, or in the
+        directory called `app-defaults' somewhere under /usr/lib/.
+
+    This is a side effect of Java processing the LANG env variable and
+    happens when LANG is set to "C".  There are 2 ways to workaround this:
+    1. Save the Quantify view file by doing a "Save & Exit" and 
+       run "qv <saved view file name>". 
+    2. Unset the LANG variable, or set it to en_US for English and 
+       rerun Quantify.
+
+  - The option -copy_fd_output_to_logfile is not working with java.
+    
+
+  Licensing Troubleshooting
+  -------------------------
+  - When Quantify is properly installed, a .lm_license_file file is
+    created in the product home directory to allow Quantify to locate
+    your licenses even when LM_LICENSE_FILE is not set appropriately
+    in the user's environment. If you get a message such as:
+
+      Error: Unable to open /product_home/.lm_license_file.
+      Your installation is incomplete. Did you run rs_install? ...
+
+    Check your product home directory to see if .lm_license_file exists
+    and is readable by you. If the file does not exist, your installation
+    is incomplete. You may need to re-run rs_install or license_setup.
+    If the permissions are incorrect, change them so that the file is
+    readable by all expected users of Quantify.
+
+  - If you manually change the location of your licenses (e.g. without
+    using license_setup), the .lm_license_file will not be updated and
+    you will not be able to checkout a license unless you set the env
+    var LM_LICENSE_FILE to point to the new location. You should always
+    use license_setup to make changes to your licenses.
+
+  - Be sure you install the products that correspond to your license(s).
+    Do not install PurifyPlus unless you have a PurifyPlus license. To
+    check your license, locate the "INCREMENT" line(s) in your license
+    file (*.dat) or license update file (*.upd). The license feature name
+    is the first word on the line after "INCREMENT". For example:
+
+      INCREMENT PurifyPlusUNIX rational 5.0 10-jan-2001 1 1234556789012
+                ^^^^^^^^^^^^^^
+
+    If you do not see "PurifyPlusUNIX" on the increment line, you do not
+    have a PurifyPlus license and should not install PurifyPlus.
+
+  HTML Help
+  ---------
+  As of version 2001a.04.00, the online help has been replaced by a more 
+  robust HTML based help system. The new online help incorporates all the 
+  information from the product user manual.
+
+  The following restrictions and notes apply to using the HTML help system:
+
+  - The only supported browser for the HTML based help system is 
+    Netscape Navigator, versions 4.7.x. The HTML based help system
+    does not work with pre 4.7 versions or with 6.x versions.
+
+  - You may view the help in stand-alone mode by pointing your browser to
+    the following:
+
+      product_home/UI/html/qunix.htm
+
+    (Where "product_home" is the installation location of Quantify. e.g. the 
+    result of the -printhomedir option.)
+
+  - Netscape must be on your path when you run your instrumented program. 
+    Your path is used to locate the browser.
+
+  - The first time you request help from a viewer, a new netscape session 
+    will be started, even if you already have netscape running. This session 
+    will be re-used by subsequent help requests unless you re-use the 
+    launched browser for another purpose.  If you close the browser, a new 
+    browser will be launched upon the next help request.
+
+  - The new help system uses Javascript. On some platforms, the MOZILLA_HOME
+    environment variable must be set in order for Javascript based web pages
+    to work properly. If you experience Java related problems with the help:
+
+    Make sure your netscape installation directory is on your path and that
+    MOZILLA_HOME is either not set at all (we will set it for you) or is set to
+    the same installation directory.
+
+    If MOZILLA_HOME is set but does not point to the same netscape installation
+    as the netscape on your path, the help may not work correctly.
+
+    If MOZILLA_HOME is not set at all, Quantify will attempt to set it when
+    we start netscape. But we will be unable to set it correctly if the 
+    netscape found on your path does not resolve to an actual installation 
+    directory. For example, if netscape actually references a wrapper script 
+    in /usr/local/bin. In this case, you will need to set MOZILLA_HOME 
+    explicitly.
+
+    See the Netscape release notes for more information on MOZILLA_HOME.
+
+  - Use the Help->Help Topics menu item to access the top level of the
+    help system. In Quantify, you can also access the top level of the
+    help system using the Help button on the initial Quantify Control
+    Panel.
+
+  - Context sensitive help is available on leaf menu items and on buttons
+    ONLY. For information about a window, use the Help->On Window menu item.
+
+  - PDF versions of the Quantify Quick Reference card is available in the
+    doc/pdf section of your installation, if you have installed PDF
+    documentation. Otherwise, see the corresponding area of your
+    installation CD.
+
+  64-bit Development
+  ----------------------------
+  - Quantify supports both 32-bit and 64-bit application development, and 
+    will select the correct mode of operation automatically based on inputs. 
+    The product banner will report the mode of operation during instrumentation
+    and at runtime. However, the "-version" option will always report 32-bit
+    mode; the product version is the same for both modes.
+
+  - Starting in version 5.1, the product home directory has been reorganized 
+    to support both 32 and 64-bit development.
+    This organization should be transparent for all 32-bit users and most 
+    64-bit users. However, the location of the Quantify stubs library is 
+    different for 64-bit applications:
+
+    32-bit libraries have been moved to the lib32 sub-directory:
+
+       quantifyhome/lib32/quantify_stubs.a
+       quantifyhome/lib32/libquantify_stubs.a
+
+    To preserve backward compatibility, the following links are provided 
+    in quantifyhome:
+
+       quantifyhome/quantify_stubs.a
+       quantifyhome/libquantify_stubs.a
+
+    32-bit API users are encouraged to use the libraries from the lib32 
+    sub-directory, and not from quantifyhome.
+
+    64-bit API users must link against the equivalent library in the 
+    lib64 sub-directory:
+
+       quantifyhome/lib64/quantify_stubs.a
+       quantifyhome/lib64/libquantify_stubs.a
+
+    The API header file has not moved and is shared for both development 
+    modes.
+
+  - If you use 'quantify -printhomedir' to prefix internal product libraries
+    such as libinternal, you must qualify the library path with the 
+    appropriate lib sub-directory:
+
+    `quantify -printhomedir`/lib32/solaris2_threads.so
+    `quantify -printhomedir`/lib64/solaris2_threads.so
+
+    Reference to these libraries is rarely necessary.
+
+  - The "full" code size model is not supported - object files and 
+    libraries must be addressable within 32-bits. The address range 
+    spanned by all instructions in a single object module should
+    be less than 2GB. There are no limitations on the size of data.
+
+
+  General
+  -------
+  - Quantify does not present accurate line-by-line performance data in
+    the annotated source window if the code is compiled with both debug 
+    and optimization flags.
+
+  - If Quantify is run in "/tmp" or "/usr/tmp" or "/var/tmp" the generated 
+    instrumented *.o files are deleted in these directories.
+    So please do not use commands like :
+    Quantify cc -nolink ld file.o
+    in "/tmp" or "/usr/tmp" or "/var/tmp" . 
+    However there is a work-around for this , You can use the option "-save-tmp-files"
+    to tell Quantify not to delete the generated objects. So using:
+    Quantify -save-tmp-files cc -nolink ld file.o
+    will generate the instrumented file_pure_*.o in 
+    "/tmp" or "/usr/tmp" or "/var/tmp". 
+    Otherwise you can use -always-use-cache-dir so that the generated file_pure*.o
+    is generated in cache-dir where it is not deleted
+    (Note: if cache-directory is installed in "/tmp","/usr/tmp","/var/tmp" the 
+    generated *_pure_*.o in cache are not deleted , so you can have the 
+    cache-directory safely in "/tmp","/usr/tmp","/var/tmp")
+    
+
+  - Quantify may not work properly with applications that use Java 1.2 
+    libraries. For details, please search the solutions knowledge base
+    at:
+
+      http://eservice.rational.com/solutions
+
+    Or contact Rational Technical Support.
+
+  - Archive libraries containing both 32-bit and 64-bit libraries are 
+    not supported.  All components of a link must be of the same ELF type.
+
+  - gcc/g++ 2.8.1 is supported, but there are known problems with C++ shared 
+    libraries containing gcc/g++ produced objects files containing exception 
+    handling code.
+
+  - Because of operating system differences, programs instrumented on one 
+    version of Solaris may crash or generate incorrect results if run on 
+    a different version of the operating system.
+
+  - If you are running your application on a different machine from the one
+    on which it was built, please ensure that both the machines have the 
+    same operating system. Further, the system libraries on the two machines
+    should be identical. Otherwise, Quantify might generate a warning message.
+    For more details on how to build and run on different machines, please 
+    please see solution #5829 at:
+
+      http://eservice.rational.com/solutions
+
+    Or contact Rational Technical Support and reference Solution #5829.
+
+  - Quantify does not support use of the LD_PRELOAD environment variable.
+
+  - The SPARCWorks incremental linker, ild, is automatically disabled by 
+    Quantify due to an incompatibility with file naming conventions.
+   
+  - Static data checking is not supported with the Forte 6 compiler.
+
+
+  Data Collection
+  ---------------
+
+  - Calls to dlclose() that would cause the library to be unmapped can 
+    cause qv to incorrectly attribute data to the improper functions.  
+    Quantify intercepts calls to dlclose() and prevents libraries from being
+    unmapped.
+
+  User Interface
+  --------------
+
+  - Under most window managers, if a non-explicit focus policy is used, 
+    qv can steal the focus from a non-qv window.  Click on the window
+    title to reestablish proper focus.
+
+  - Under twm and tvtwm, Quantify dialogs can be iconified. Once iconified, 
+    however, they cannot be de-iconified and qv will no longer respond. You 
+    should avoid iconifying dialogs under these window managers.
+
+  - Under olvwm, dialogs are sometimes placed on the wrong virtual screen 
+    unless qv is running on the main virtual screen.  This is fixed in
+    the latest version of olvwm.
+
+  - A bug in the libX library shipped with OpenWindows 5.3 causes X client 
+    programs to either hang or crash when the display refuses a connection.  
+    This problem is especially notable when displaying to HP-UX displays.
+    This bug effects all X programs (for example, xterm) and is not a 
+    Quantify bug.
+
+    To workaround this problem, ensure that display permission for the client 
+    machine has been granted on the X server machine, e.g.,
+
+       % xhost + machineName
+
+  - There is a bug in version 3.3 of the OpenWindows X server shipped 
+    with Tadpole SPARCbooks.  The server loses track of a client 
+    application's Graphics Contexts (GCs) after the first time the GCs 
+    are used.  As a result, among other things, buttons and menus of client 
+    applications which are supposed to be greyed out don't look greyed out.
+
+    You can see the same bug in other X applications such as xterm.  In xterm,
+    use control-middle-click in the xterm window to pop up the xterm 
+    VTOptions pop-up menu.  Notice that the menu item "Show Alternate
+    Screen" (close to the bottom of the menu) is greyed out.  Now let go 
+    of the menu (without selecting anything), and popup the menu again.
+    Note that the same menu item is no longer greyed out.
+
+  - The Quantify GUI menus and buttons become inaccessible if either the 
+    NumLock or ScrollLock key is activated. The workaround is to switch 
+    them off, or add the following line(s) to your $HOME/.Xdefaults file.
+ 
+      ! Ignore the NumLock and ScrollLock keys on 
+      ! mouse buttons
+      Quantify*ignoreModifierMask: Mod3|Mod2
+ 
+    This second workaround will take effect for a new Quantify viewer after 
+    you restart your X-session or run a command like 'xrdb -merge 
+    $HOME/.Xdefaults'.
+
+  Compilers
+  ---------
+
+  - FORTRAN routines with multiple entry points are not supported when 
+    compiled -g.
+ 
+  - FORTRAN routines with formatted READ or WRITE statements which use 
+    the END= or ERR= specifiers are not supported when compiled -g.
+  - The GNU gcc extensions are not tested against Quantify.  Most gcc 
+    extensions will probably work fine.  Known limitations at present 
+    include problems with nested functions (e.g.: making a pointer to a 
+    nested function and attempting to call through it will not work).
+
+  Threads
+  -------
+
+  - Customers using unsupported threads packages should contact Rational 
+    Software technical support (support@rational.com) to ensure compatibility.
+
+  - When running threaded programs, setting the LD_BIND_NOW environment 
+    variable to a non-null value simplifies the resulting callgraph and
+    excludes time spent in the dynamic loader.  When LD_BIND_NOW is set, the 
+    runtime linker processes all relocation prior to the start of the 
+    program. See the "Linker and Libraries Guide" in the AnswerBook.  
+
+  Copyright Notice
+  ----------------
+
+  The following copyright applies to portions of the ClearQuest
+  integration and HTML based help system. 
+
+  Copyright 1996 Netscape Communications Corporation, all rights reserved.
+  Created: Jamie Zawinski (jwz@netscape.com), 24-Dec-94.  Permission to
+  use, copy, modify, distribute, and sell this software and its
+  documentation for any purpose is hereby granted without fee, provided
+  that the above copyright notice appear in all copies and that both 
+  that copyright notice and this permission notice appear in supporting
+  documentation.  No representations are made about the suitability of
+  this software for any purpose. It is provided "as is" without express
+  or implied warranty.
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,655 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Guidelines: Data Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/ar_datmd.gif"> <a href="../artifact/ar_datmd.htm">Data Model</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Data Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Data Model</rpw><a name="Top"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2" style="border: 1px" cellspacing="0">
+  <tr>
+    <td width="152" bordercolor="#808080">
+    <p align="center"><img src="../artifact/images/ar_datmd.jpg" alt width="71" height="46"><br>
+    <strong><font face="Arial" size="2">Data Model</font></strong></td>
+    <td width="383" bordercolor="#808080" valign="middle" align="left">The <b>data
+    model</b> is a subset of the implementation model which describes the
+    logical and physical representation of persistent data in the system.</td>
+  </tr>
+</table>
+</center></div>
+ 
+
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Relational Databases and Object Orientation"">Relational
+    Databases and Object Orientation</a>
+    <ul>
+      <li><a href="#The Relational Data Model"">The Relational Data Model</a></li>
+      <li><a href="#The Object Model"">The Object Model</a></li>
+    </ul>
+  </li>
+  <li><a href="#Persistence Frameworks"">Persistence Frameworks</a></li>
+  <li><a href="#Essential characteristics of an object-relational framework"">Essential
+    characteristics of an object-relational framework</a></li>
+  <li><a href="#Common Object-Relational Services"">Common Object-Relational
+    Services</a>
+    <ul>
+      <li><a href="#Persistence"">Persistence</a></li>
+      <li><a href="#Query"">Query</a></li>
+      <li><a href="#Transactions"">Transactions</a></li>
+      <li><a href="#Concurrency"">Concurrency</a></li>
+      <li><a href="#Relationships"">Relationships</a></li>
+    </ul>
+  </li>
+  <li><a href="#Mapping Persistent Classes to Tables"">Mapping Persistent Classes
+    to Tables</a></li>
+  <li><a href="#Persistent Attributes"">Persistent Attributes and Keys</a></li>
+  <li><a href="#Primary Key Identification"">Primary Key Identification</a></li>
+  <li><a href="#Mapping Associations between Persistent Objects to the Data Model"">Mapping
+    Associations between Persistent Objects to the Data Model</a></li>
+  <li><a href="#Mapping Aggregation Associations to the Data Model"">Mapping
+    Aggregation Associations to the Data Model</a></li>
+  <li><a href="#Modeling Inheritance"">Modeling Generalization Relationships in the
+    Data Model</a></li>
+  <li><a href="#Modeling Many-to-Many Associations"">Modeling Many-to-Many
+    Associations in the Data Model</a></li>
+  <li><a href="#Implementing Referential Integrity"">Implementing Referential
+    Integrity</a></li>
+  <li><a href="#How_Complete_Is_The_Data_Model_After_Elaboration"">How Complete 
+    is the Data Model after Elaboration?</a></li>
+ 
+
+  </ul>
+  <h3><a name="XE_relational_databases__and_object_orientation"></a><a name="XE_persistence__relational_databases_and_object_orientation"></a><a href="#Modeling Inheritance""></a>
+  <a name="Relational Databases and Object Orientation">Relational Databases and
+  Object Orientation</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Relational databases and object orientation are not entirely compatible. They
+represent two different views of the world: in an RDBMS, all you see is data; in
+an Object-Oriented system, all you see is behavior. It is not that one
+perspective is better than the other: the Object-Oriented model tends to work
+well for systems with complex behavior and state-specific behavior in which data
+is secondary, or systems in which data is accessed navigationally in a natural
+hierarchy (for example, bills of materials). The RDBMS model is well-suited to
+reporting applications and systems in which the relationships are dynamic or
+ad-hoc.</p>
+<p>The real fact of the matter is that a lot of information is stored in
+relational databases, and if Object-Oriented applications want access to that
+data, they need to be able to read and write to an RDBMS. In addition,
+Object-Oriented systems often need to share data with non-Object-Oriented
+systems. It is natural, therefore, to use an RDBMS as the sharing mechanism.</p>
+<p>While object-oriented and relational design share some common characteristics
+(an objects attributes are conceptually similar to an entities columns),
+fundamental differences make seamless integration a challenge. The fundamental
+difference is that data models expose data (through column values) while object
+models hide data (encapsulating it behind its public interfaces).</p>
+<h4><a name="The Relational Data Model">The Relational Data Model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>The relational model is composed of entities and relations. An entity may be
+a physical table or a logical projection of several tables also known as a view.
+The figure below illustrates LINEITEM and PRODUCT tables and the various
+relationships between them. A relational model has the following elements:</p>
+<p align="center"><img src="images/md_dmdl1.gif" width="440" height="164"></p>
+<p class="picturetext">A Relational Model</p>
+<p>An entity has columns. Each column is identified by a name and a type. In the
+figure above, the LINEITEM entity has the columns LineItem_Id (the primary key),
+Description, Price, Quantity, Product_Id and Order_Id (the latter two are
+foreign keys that link the LINEITEM entity to the ORDER and PRODUCT entities).</p>
+<p>An entity has records or rows. Each row represents a unique set of
+information which typically represents an object's persistent data.</p>
+<p>Each entity has one or more primary keys. The primary keys uniquely
+identifies each record (for example, Id is the primary key for LINEITEM table).</p>
+<p>Support for relations is vendor specific. The example illustrates the logical
+model and the relation between the PRODUCT and LINEITEM tables. In the physical
+model relations are typically implemented using foreign key / primary key
+references. If one entity relates to another, it will contain columns which are
+foreign keys. Foreign key columns contain data which can relate specific records
+in the entity to the related entity.</p>
+<p>Relations have multiplicity (also known as cardinality). Common cardinalities
+are one to one (1:1), one to many (1:m), many to one (m:1), and many to many (m:n).
+In the example, LINEITEM has a 1:1 relationship with PRODUCT and PRODUCT has a
+0:m relationship with LINEITEM.</p>
+<h4><a name="The Object Model">The Object Model </a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>An object model contains, among other things, classes (see [<a href="../referenc.htm#UML99"">UML99</a>]
+for a complete definition of an object model). Classes define the structure and
+behavior of a set of objects, sometimes called objects <strong>instances</strong>.
+The structure is represented as attributes (data values) and associations
+(relationships between classes). The following figure illustrates a simple class
+diagram, showing only attributes (data) of the classes.</p>
+      <p align="center"><img src="images/md_dmdl3.gif" width="446" height="364"></p>
+<p class="picturetext">An Object Model (Class Diagram)</p>
+<p>An Order has a number (the Order Number), and an association to 1 or more
+(1..*) Line Items. Each Line Item has a quantity (the quantity ordered).</p>
+<p>The object model supports inheritance. A class can inherit data and behavior
+from another class (for example, SoftwareProduct and HardwareProduct products
+inherit attributes and methods from Product class).</p>
+<h3><a name="XE_persistence__frameworks"></a><a name="Persistence Frameworks">Persistence
+Frameworks</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The majority of business applications utilize relational technology as a
+physical data store. The challenge facing object-oriented applications
+developers is to sufficiently separate and encapsulate the relational database
+so that changes in the data model do not &quot;break&quot; the object model, and
+vice versa. Many solutions exist which let applications directly access
+relational data; the challenge is in achieving a seamless integration between
+the object model and the data model.</p>
+<p>Database APIs come in standard flavors (for example, Microsoft's Open Data
+Base Connectivity API, or ODBC) and are proprietary (native bindings to specific
+databases). The APIs provide data manipulation language (DML) pass through
+services which allow applications to access raw relational data. In
+object-oriented applications, the data must undergo object-relational
+translation prior to being used by the application. This requires considerable
+amount of application code to translate raw database API results into
+application objects. The purpose of the object-relational framework is to
+generically encapsulate the physical data store and to provide appropriate
+object translation services.</p>
+<p align="center"><img src="images/md_rdb5.gif" width="266" height="242"></p>
+<p class="picturetext">The Purpose of a Persistence Framework</p>
+<p>Application developers spend over 30% of their time implementing relational
+database access in object-oriented applications. If the object-relational
+interface is not correctly implemented, the investment is lost. Implementing an
+object-relational framework captures this investment. The object-relational
+framework can be reused in subsequent applications reducing the
+object-relational implementation cost to less than 10% of the total
+implementation costs. The most important cost to consider when implementing any
+system is maintenance. Over 60% percent of the total costs of a system over its
+entire life-cycle can be attributed to maintenance. A poorly implemented object
+relational system is both a technical and financial maintenance nightmare.</p>
+<h3><a name="XE_persistence__object-relational_frameworks,_characteristics_of"></a><a name="Essential characteristics of an object-relational framework">Essential
+characteristics of an object-relational framework</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<ul>
+  <li><strong>Performance</strong>. Close consideration must be given towards
+    decomposing objects into data and composing objects from data. In systems
+    where data through-put is high and critical, this is often an Achilles heel
+    of an inadequately designed access layer.</li>
+  <li><strong>Minimize design compromises</strong>. A familiar pattern to object
+    technologists who have built systems which utilize relational databases is
+    to adjust the object model to facilitate storage into relational systems,
+    and to alter the relational model for easier storage of objects. While minor
+    adjustments are often needed, a well designed access layer minimizes both
+    object and relational model design degradation.</li>
+  <li><strong>Extensibility</strong>. The access layer is a white-box framework
+    which allows application developers to extend the framework if certain
+    functionality is desired in the framework. Typically, an access layer will
+    support without extension 65-85% of an application's data storage
+    requirements. If the access layer is not designed as an extensible
+    framework, achieving the last 35-15% of an application's data storage
+    requirements can be very difficult and costly.</li>
+  <li><strong>Documentation</strong>. The access layer is a both a black-box
+    component, and a white-box framework. The API of the black-box component
+    must be clearly defined, well documented, and easily understood. As
+    previously mentioned, the access layer is designed to be extended. An
+    extensible framework must be very thoroughly documented. Classes which are
+    intended to be subclassed must be identified. The characteristics of each
+    relevant class's protocol must be specified (for example, public, private,
+    protected, final, …). Moreover, a substantial portion of the access layer
+    framework's design must be exposed and documented to facilitate
+    extensibility.</li>
+  <li><strong>Support for common object-relational mappings</strong>. An access
+    layer should provide support for some basic object-relational mappings
+    without the need for extension. These object-relational mappings are
+    discussed further in a subsequent section of this document.</li>
+  <li><strong>Persistence Interfaces</strong>: In an object oriented
+    application, the business model for an object application captures semantic
+    knowledge of the problem domain. Developers should manipulate and interact
+    with objects without having to worry too much about the data storage and
+    retrieval details. A well defined subset of persistent interfaces (save,
+    delete, find) should be provided to application developers.</li>
+</ul>
+<h3><a name="XE_common_object-relational_services"></a><a name="XE_persistence__object-relational_service"></a><a name="XE_persistence__common_object-relational_services"></a><a name="Common Object-Relational Services">Common
+Object-Relational Services</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Common patterns are emerging for object-relational applications. IT
+professionals who have repeatedly crossed the chasm are beginning to understand
+and recognize certain structures and behaviors which successful
+object-relational applications exhibit. These structures and behaviors have been
+formalized by the high-level CORBA Services specifications (which apply equally
+well to COM/DCOM-based systems as well).<br>
+<br>
+The CORBA service specifications which are applicable and useful to consider for
+object-relational mapping are:
+<ul>
+  <li><a href="#Persistence"">Persistence</a></li>
+  <li><a href="#Query"">Query</a></li>
+  <li><a href="#Transactions"">Transactions</a></li>
+  <li><a href="#Concurrency"">Concurrency</a></li>
+  <li><a href="#Relationships"">Relationships</a></li>
+</ul>
+<p>The following sections will use these categories to structure a discussion of
+common object-relational services. The reader is encouraged to reference the
+appropriate CORBA specifications for further details.</p>
+<h4><a name="Persistence">Persistence</a>  <a href="#Common Object-Relational Services""><img src="../../images/top.gif" alt="To start of section" border="0" width="26" height="20"></a></h4>
+<p>Persistence is a term used to describe how objects utilize a secondary
+storage medium to maintain their state across discrete sessions. Persistence
+provides the ability for a user to save objects in one session and access them
+in a later session. When they are subsequently accessed, their state (for
+example, attributes) will be exactly the same as it was the previous session. In
+multi-user systems, this may not be the case since other users may access and
+modify the same objects. Persistence is interrelated with other services
+discussed in this section. The consideration of relationship, concurrency and
+others is intentional (and consistent with CORBA's decomposition of the
+services).</p>
+<p>Examples of specific services provided by persistence are:
+<ul>
+  <li><strong>Data source connection management</strong>: Object-relational
+    applications must initiate connection to the physical data source.
+    Relational database systems typically require identification of the server
+    and database. The specifics of connection management tends to be database
+    vendor specific and the framework must accordingly be designed in a flexible
+    accommodating manner.</li>
+  <li><strong>Object retrieval</strong>: When objects are restored from the
+    database, data is retrieved from the database and translated into objects.
+    This process involves extracting data from database specific structures
+    retrieved from the data source, marshaling the data from database types into
+    the appropriate object types and/or classes, creation of the appropriate
+    object, and setting the specific object attributes.</li>
+  <li><strong>Object storage</strong>: The process of object storage mirrors
+    object retrieval. The values of the appropriate attributes are extracted
+    from the object, a database specific structure is created with the attribute
+    values (this may be a SQL string, stored procedure, or special remote
+    procedure call), and the structure is submitted to the database.</li>
+  <li><strong>Object deletion</strong>: Objects that are deleted from within a
+    system, must have their associated data deleted from the relational
+    database. Object deletion requires that appropriate information be extracted
+    from the object, a deletion request be constructed (this may be a SQL
+    string, stored procedure, or special remote procedure call), and the request
+    submitted to the database. Note that in some languages (for example,
+    Smalltalk and Java), explicit deletion is not supported; instead, a strategy
+    called <strong>garbage collection</strong> is supported. Persistence
+    frameworks supporting these languages must provide an alternative way to
+    remove data from the database once applications no longer reference the
+    data. One common way is for the database to maintain <strong>reference-counts
+    </strong>of the number of times an object is referenced by other objects.
+    When the reference count for an object drops to zero, no other objects
+    reference it, and it <strong>may</strong> be possible to delete it. It <strong>may
+    be acceptable </strong>to delete objects with a reference count of zero,
+    since even when an object is no longer referenced, it may still be queried.
+    A database-wide policy on when object deletion is allowed is still needed.</li>
+</ul>
+<h4><a name="XE_query__as_object-relational_service"></a><a name="XE_persistence__query,_as_object-relational_service"></a><a name="Query">Query</a>
+ <a href="#Common Object-Relational Services""><img src="../../images/top.gif" alt="To start of section" border="0" width="26" height="20"></a></h4>
+<p>Persistent object storage is of little use without a mechanism to search for
+and retrieve specific objects. Query facilities allow applications to
+interrogate and retrieve objects based on a variety of criteria. The basic query
+operations provided by an object-relational mapping framework are find and find
+unique. The find unique operation will retrieve a specific object and find will
+return a collection of objects based on a query criteria.</p>
+<p>Data store query facilities vary significantly. Simple file-based data stores
+may implement rigid home-grown query operations, while relational systems
+provide a flexible data manipulation language. Object-relational mapping
+frameworks extend the relational query model to make it object-centric rather
+than data centric. Pass-through mechanisms are also implemented to leverage
+relational query flexibility and vendor-specific extensions (for example,
+stored-procedures).</p>
+<p>Note that there is some potential conflict between database-based query
+mechanisms and the object paradigm: database query mechanisms are driven by <strong>values</strong>
+of attributes (columns) in a table. In the corresponding objects, the principle
+of encapsulation prevents us from seeing the values of attributes; they are <strong>encapsulated</strong>
+by the operations of the class. The reason for encapsulation is that it makes
+applications easier to change: we can alter the internal structure of a class
+without concern for dependent classes as long as the publicly-visible operations
+of the class do not change. A query mechanism based on the database is dependent
+on the internal representation of a class, effectively <strong>breaking </strong>encapsulation.
+The challenge for the framework is to prevent queries from making applications
+brittle to change.</p>
+<h4><a name="XE_transaction__object-relational_service"></a><a name="Transactions">Transactions</a>
+ <a href="#Common Object-Relational Services""><img src="../../images/top.gif" alt="To start of section" border="0" width="26" height="20"></a></h4>
+<p>Transactional support enables the application developer to define an atomic
+unit of work. In database terminology, it means that the system must be able to
+apply a set of changes to the database, or it must ensure that none of the
+changes are applied. The operations within a transaction either all execute
+successfully or the transaction fails as whole. Object-relational frameworks at
+a minimum should provide a relational database-like commit/rollback transaction
+facility. Designing object-relational frameworks in a multi-user environment can
+present many challenges and careful thought should be given to it.</p>
+<p>In addition to the facilities provided by the persistence framework, the
+application must understand how to handle errors. When a transaction fails or is
+aborted, the system must be able to restore its state to a stable prior state,
+usually by reading the prior state information from the database. Thus, there is
+a close interaction between the persistence framework and the error handling
+framework.</p>
+<h4><a name="XE_concurrency_control"></a><a name="XE_concurrency__object-relational_service"></a><a name="Concurrency">Concurrency</a>
+ <a href="#Common Object-Relational Services""><img src="../../images/top.gif" alt="To start of section" border="0" width="26" height="20"></a></h4>
+<p>Multi-user object-oriented systems must control concurrent access to objects.
+When an object is accessed simultaneously by many users, the system must provide
+a mechanism to insure modifications to the object in the persistent store occur
+in a predictable and controlled manner. Object-relational frameworks may
+implement pessimistic and/or optimistic concurrency controls.
+<ul>
+  <li><strong>Pessimistic concurrency control</strong> requires that the
+    application developer specify their intent when the object is retrieved from
+    the data store (for example, read only, write lock, …). If objects are
+    locked, other users may block when accessing the object and wait for the
+    lock to be relinquished. Pessimistic concurrency should be used and
+    implemented with caution as it is possible to create dead-lock situations.</li>
+  <li><strong>Optimistic concurrency control </strong>assumes that it is
+    unlikely that the same object will be simultaneously accessed. Concurrency
+    conflicts are detected when the modifications are saved to the database.
+    Typically, if the object has been modified by another user since its
+    retrieval, an error will be returned to the application indicating failure
+    of the modify operation. It is the application's responsibility to detect
+    and handle the error. This calls for the framework to cache the concurrent
+    values of objects and compare them against the database. Optimistic
+    concurrency is less costly if there are few concurrency conflicts, but more
+    expensive if the number of conflicts is fairly large (because of the need to
+    re-do work when conflicts occur).</li>
+</ul>
+<p>All applications using shared data must use the same concurrency strategy;
+you cannot mix optimistic and pessimistic concurrency control in the same shared
+data or corruption may occur. The need for a consistent concurrency strategy is
+best handled through a persistence framework.</p>
+<h4><a name="XE_relationships__object-relational_service"></a><a name="Relationships">Relationships</a>
+ <a href="#Common Object-Relational Services""><img src="../../images/top.gif" alt="To start of section" border="0" width="26" height="20"></a></h4>
+<p>Objects have relationships to other objects. An Order object has many Line
+Item objects. A Book object has many Chapter objects. An Employee object belongs
+to exactly one Company object. In relational systems, relations between entities
+are implemented using foreign key / primary key references. In object-oriented
+systems relations are usually explicitly implemented through attributes. If an
+Order object has LineItem's, then Order will contain an attribute named
+lineItems. The lineItems attribute of Order will contain many LineItem objects.<br>
+<br>
+The relationship aspects of an object-relational framework are interdependent
+with the persistence, transaction, and query services. When an object is stored,
+retrieved, transacted, or queried consideration must be given to its related
+objects:
+<ul>
+  <li>When an object is retrieved, should associated objects be retrieved as
+    well? Simplistically, yes, but doing so when the associated objects are not
+    needed is very expensive. A good framework will allow a mix of strategies.</li>
+  <li>When an object is stored, should associated objects be stored as well if
+    they have been changed? Again, the answer depends on the context.</li>
+</ul>
+<p>While it is conceptually advantageous to consider common object-relational
+services separately, their object-relational framework implementations will be
+codependent. The services must be implemented consistently across not only
+individual organizations, but all applications which share the same data. A
+framework is the only economical way to achieve this.</p>
+<h3><a name="XE_tables__mapping_persistent_classes_to_tables"></a><a name="XE_persistence__mapping_persistent_classes_to_tables"></a><a name="XE_design_package__mapping_to_a_relational_data_model"></a><a name="XE_data_model__mapping_persistent_classes_to_tables"></a><a name="Mapping Persistent Classes to Tables">Mapping
+Persistent Classes to Tables </a><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The persistent classes in the Design Model represent the information the
+system must store. Conceptually, these classes may resemble a relational design
+(for example, the classes in the design model may be reflected in some fashion
+as entities in the relational schema). As we move from elaboration into
+construction, however, the goals of the Design Model and the Relational Data
+Model diverge. This divergence is caused because the objective of relational
+database development is to normalize data whereas the goal of The Design Model
+is to encapsulate increasingly complex behavior. The divergence of these two
+perspectives - data and behavior - leads to the need for mapping between related
+elements in the two models.</p>
+<p>In a relational database written in third normal form, every row in the
+tables – every &quot;tuple&quot; – is regarded as an object. A column in a
+table is equivalent to a persistent attribute of a class (keep in mind that a
+persistent class may have transient attributes). So, in the simple case where we
+have no associations to other classes, the mapping between the two worlds is
+simple. The data type of the attribute corresponds to one of the allowable data
+types for columns.</p>
+<p class="exampleheading">Example</p>
+<p class="example">The class Customer:</p>
+      <p align="center"><img src="images/md_rdb1.gif" alt="Customer Class" width="130" height="87"></p>
+<p class="example">when modeled in the RDBMS would translate to a table called <strong>Customer</strong>,
+with the columns Name, Address and Customer_ID.</p>
+<p>We can visualize an instance of this table as:</p>
+<p align="CENTER"><img src="images/md_rdb2.gif" width="428" height="118"></p>
+<h3><a name="XE_key_(in_relational_databases)__mapping_persistent_attributes_to_data_model"></a><a name="XE_key_(in_relational_databases)__persistent_attributes"></a><a name="XE_data_model__persistent_attributes_and_keys"></a><a name="Persistent Attributes">Persistent
+Attributes</a> and Keys <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>For each persistent attribute, additional information is required to
+appropriately model the persistent object in a relational data model:
+<ul>
+  <li>Can it serve as a key or part of a key? Example: &quot;attribute X,
+    together with attribute Z, uniquely identifies the object.&quot; In the
+    Customer table, the Customer_ID represents a primary key.</li>
+  <li>What are the minimum and maximum values for the attribute?</li>
+  <li>Will it be possible to search using this attribute as a key? It might, for
+    instance, be part of a filter in a Select statement such as &quot;It is
+    common to search for all instances where Y &gt; 1000&quot;.</li>
+  <li>The attribute should have a description, for example, &quot;attribute X is
+    the number of retransmissions per 100 000 transmitted characters</li>
+  <li>Possible numerical values and desired conversions between different
+    numerical values.</li>
+  <li>Who is allowed to update the attribute? Example: &quot;T may only be
+    changed by people in authority class nn&quot;.</li>
+  <li>Who is allowed to read the attribute? Examples: &quot;P may be read by
+    people in authority classes yy and zz&quot; or &quot;&quot;P is included in
+    views Vi and Vj&quot;.</li>
+  <li>Information about volumes and frequencies. Examples: &quot;There are up to
+    50 000 occurrences of A&quot; or &quot;On average 2000 As are changed per
+    day&quot;.</li>
+  <li>Is the attribute unique? For example, only one person can have the same
+    driver’s license number.</li>
+</ul>
+<h3><a name="XE_key_(in_relational_databases)__primary_key_identification"></a><a name="XE_data_model__primary_key_identification"></a><a name="Primary Key Identification">Primary
+Key Identification</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Rows in tables need to have unique identity; they are uniquely identified by
+their primary key values. The primary key will be used as a reference to a tuple
+in this table from other tables, and it will uniquely identify the row/object
+for searches. As a result, it must never change. Names in plain text are not
+suitable; people change their names, and names are not unique. Because numeric
+comparisons are less resource-consumptive than string comparisons, primary keys
+should be numeric, and preferably system-assigned so that they do not change.</p>
+<p>Generally, primary keys are <strong>indexed </strong>for performance. This,
+however, is an implementation decision and is independent of the object to table
+mapping.</p>
+<h3><a name="XE_persistence__mapping_persistent_objects_to_the_data_model"></a><a name="XE_persistent_attributes__mapping_to_data_model"></a><a name="XE_key_(in_relational_databases)__mapping_associations_between_persistent_objects"></a><a name="XE_association__mapping_associations_between_persistent_objects"></a><a name="XE_data_model__mapping_associations_between_persistent_objects"></a><a name="Mapping Associations between Persistent Objects to the Data Model">Mapping
+Associations between Persistent Objects to the Data Model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Associations between two persistent objects are realized as <strong>foreign</strong>
+keys to the associated objects. A <strong>foreign key</strong> is a column in
+one table which contains the <strong>primary key</strong> value of associated
+object.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Assume we have the following association between Order and
+Customer:</p>
+      <p align="center"><img src="images/md_rdb4.gif" width="135" height="211"></p>
+<p class="example">When we map this into relational tables, we get an Order
+table and a Customer table. The Order table will have columns for attributes
+listed, plus an additional column Customer_ID which contains foreign-key
+references to the primary key of associated rows in the Customer table; for a
+given Order, the Customer_ID column will contain the identifier of the Customer
+to whom the Order is associated. Foreign keys allow the RDBMS to <strong>join</strong>
+related information together.</p>
+<p class="example">Note: the customerID attribute of the Customer class is a
+String; for optimal performance, it is best to convert this to a Number in the
+database schema (queries and joins work faster on numbers than strings, since
+number comparisons are faster in general than string comparisons).</p>
+<h3><a name="XE_aggregation__mapping_to_data_model"></a><a name="XE_data_model__mapping_aggregation_associations"></a><a name="Mapping Aggregation Associations to the Data Model">Mapping
+Aggregation Associations to the Data Model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Aggregation is also modeled using foreign key relationships.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Assume we have the following association between Order and
+LineItem:</p>
+      <p align="center"><img src="images/md_rdb3.gif" alt="Order and Line Item Classes" width="343" height="74"></p>
+<p class="example">When we map this into relational tables, we get an Order
+table and a Line_Item table. The Line_Item table will have columns for
+attributes listed, plus an additional column Order_ID which contains foreign-key
+references to associated rows in the Order table. For a given Line Item, the
+Order_ID column will contain the Order_ID of the Order that the Line Item is
+associated with. Foreign keys allow the RDBMS to <strong>join</strong> related
+information together.</p>
+<p>In addition, to provide referential integrity in the data model, we would
+also want to implement a <strong>cascading delete </strong>constraint, so that
+whenever the Order is deleted, all of their Line Items are deleted as well.</p>
+<p>Note that in the object model, a customer <strong>knows</strong> about its
+purchase orders; in the relational data model, a purchase order knows about its
+customers. This is a feature of the way relationships are represented in a
+relational data model.</p>
+<h3><a name="XE_inheritance__modeling_generalization_relationships_in_data_model"></a><a name="XE_data_model__modeling_generalization_relationships"></a><a name="Modeling Inheritance">Modeling
+Generalization Relationships</a> in the Data Model <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The standard relational data model does not support modeling inheritance in a <strong>direct</strong> way. There are a number of strategies
+which can be used to model inheritance. These are summarized as follows:
+<ul>
+  <li>Use separate tables to represent the super-class and sub-class. Have, in
+    the sub-class table, a foreign key reference to the super-class table. In
+    order to ‘instantiate’ a sub-class object, the two tables would have to
+    be joined together. This approach is conceptually easier, and makes changes
+    to the model easier, but it often performs poorly due to the extra work.</li>
+  <li>Duplicate all inherited attributes and associations as separate columns in
+    the sub-class table. This is similar to <strong>de-normalization </strong>in
+    the standard relational data model.</li>
+</ul>
+<h3><a name="XE_association__modeling_many-to-many_associations_in_data_model"></a><a name="XE_data_model__modeling_many-to-many_associations"></a><a name="Modeling Many-to-Many Associations">Modeling
+Many-to-Many Associations</a> in the Data Model <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>A standard technique in relational modeling is to use an <strong>intersection
+entity </strong>to represent many-to-many associations. The same approach should
+be used here: an intersection table should be used to represent the association.</p>
+<p class="exampleheading">Example</p>
+<p class="example">If Suppliers can supply many Products, and a Product can be
+supplied by many Suppliers, the solution is to create a Supplier/Product table.
+This table would only contain the primary keys of the Supplier and Product
+tables, and serves to link the Suppliers and their related Products. There is no
+analog for this table in the object model; it is strictly used to represent the
+associations in the relational data model.</p>
+<h3><a name="XE_referential_integrity__implementing"></a><a name="XE_association__implementing_referential_integrity"></a><a name="XE_data_model__implementing_referential_integrity"></a><a name="Implementing Referential Integrity">Implementing
+Referential Integrity</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>In the object model, referential integrity is not an issue; objects refer to
+each other <strong>directly</strong>. In the relational data model, rows refer
+to other rows by their primary key values. Referential integrity rules are
+needed to ensure that foreign key references remain valid. Typically, these
+rules are implemented as <strong>integrity constraints</strong>, or in some
+cases as <strong>triggers</strong>. The RDBMS reference manuals can provide more
+direction on the appropriate implementation technique.</p>
+<h3><a name="How_Complete_Is_The_Data_Model_After_Elaboration"></a><a name="XE_data_model__completeness_of">How 
+  Complete is the Data Model after Elaboration</a>?<a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The goal of elaboration is to eliminate technical risk and to produce a
+stable (baselined) architecture. In a large class of business systems, poor
+performance resulting from a poorly designed data model is a major architectural
+concern. As a result, both data modeling and developing an architectural
+prototype that allows the performance of the database to be evaluated is
+essential to achieving a stable architecture.</p>
+<p>The major database structures (tables, indexes, primary and foreign key
+columns) should be put in place to support the architecturally significant
+scenarios. In addition, representative data volumes should be loaded into the
+databases to support architectural performance testing. Based on the results of
+performance testing, the data model may need to be optimized, including but not
+limited to de-normalization, optimizing physical storage attributes or
+distribution, or indexing.</p>
+<p>In the construction phase, additional columns may be added to tables, views
+may be created to support query and reporting requirements, and indexes may be
+created to optimize performance, but major restructuring of tables should not
+occur (this would be a sign that the architecture was not stabilized and that
+the start of the construction phase was premature).</p>
+ 
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

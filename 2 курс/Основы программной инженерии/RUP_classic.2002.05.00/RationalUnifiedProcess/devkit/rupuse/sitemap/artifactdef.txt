@@ -1,0 +1,232 @@
+includesubtree	false
+wwwroot	../../../applet/
+datafile	tree_sitemap.dat
+startDir	../../../
+resultfile	/sitemap/artifacts.htm
+relativepath	..
+bgcolor	#C0C0C0
+fgcolor	#336699
+levelfont	defaultfont	Times	Plain	-2
+levelfont	headlinefont	Times	Bold	+1
+levelfont	1	Times	Plain	-2
+headerfile	artifactpreamble.txt
+footerfile	sitepostamble.txt
+maxlevels	10
+delimeters	*
+defaulttitlelength	25
+
+
+<--
+label	Artifacts
+level	0
+row	1
+col	1
+colspan	6
+cellcolor	true
+-->
+
+
+<--
+label	Requirements Artifact Set
+level	1
+row	2
+col	1
+colspan	2
+colwidth	33%
+cellcolor	true
+titlelength	40
+-->
+
+
+<--	
+label	Analysis & Design Artifact Set
+level	1
+row	2
+col	2
+colspan	2
+colwidth	33%
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Implementation Artifact Set
+level	1
+row	2
+col	3
+colspan	1
+colwidth	17%
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Test Artifact Set
+level	1
+row	2
+col	4
+colspan	1
+colwidth	17%
+cellcolor	true
+titlelength	40
+-->
+
+
+<--
+label	Glossary
+level	2
+row	3
+col	1
+colspan	1
+rowspan	1
+colwidth	17%
+-->
+
+<--
+label	User-Interface Prototype
+level	2
+row	3
+col	2
+colspan	1
+rowspan	1
+colwidth	17%
+-->
+
+<--	
+label	Software Architecture Document
+level	2
+row	3
+col	3
+colspan	1
+rowspan	1
+colwidth	17%
+-->
+
+<--	
+label	Data Model
+level	2
+row	3
+col	4
+colspan	1
+rowspan	1
+colwidth	17%
+-->
+
+<--	
+label	Implementation Model...
+level	2
+row	3
+col	5
+colspan	1
+rowspan	1
+colwidth	16%
+-->
+
+<--	
+label	Test Plan
+level	2
+row	3
+col	6
+colspan	1
+rowspan	1
+colwidth	16%
+-->
+
+
+<--
+label	Deployment Artifact Set
+level	1
+row	4
+col	1
+colspan	1
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Configuration & Change Management Artifact Set
+level	1
+row	4
+col	2
+colspan	1
+cellcolor	true
+titlelength	50
+-->
+
+<--
+label	Project Management Artifact Set
+level	1
+row	4
+col	3
+colspan	2
+cellcolor	true
+titlelength	40
+-->
+
+<--
+label	Environment Artifact Set
+level	1
+row	4
+col	5
+colspan	2
+cellcolor	true
+titlelength	40
+-->
+
+
+<--
+label	Product...
+level	2
+row	5
+col	1
+colspan	1
+rowspan	1
+-->
+
+<--
+label	Change Request
+level	2
+row	5
+col	2
+colspan	1
+rowspan	1
+-->
+
+<--
+label	Business Case
+level	2
+row	5
+col	3
+colspan	1
+rowspan	1
+-->
+
+
+<--
+label	More Project Management Artifacts
+level	2
+row	5
+col	4
+colspan	1
+rowspan	1
+-->
+
+<--
+label	Development Case
+level	2
+row	5
+col	5
+colspan	1
+rowspan	1
+-->
+
+<--
+label	More Environment Artifacts
+level	2
+row	5
+col	6
+colspan	1
+rowspan	1
+-->
+
+

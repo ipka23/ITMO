@@ -1,0 +1,168 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guidelines: Class Diagram in the Business Object Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_bm.htm">Business Modeling Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/artifacts.gif"> <a href="../artifact/arp_bom.htm">Business Object Model...</a> &gt;
+<img border=0 src="../../applet/images/ar_bom.gif"> <a href="../artifact/ar_bom.htm">Business Object Model</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Class Diagram in the Business Object Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Class Diagram in the Business Object Model</rpw><a name="Top"></a><a name="XE_class_diagrams_in_business-object_model__guidelines_for"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)" boordercolordark="#FFFFFF">
+  <tr>
+    <td width="135" valign="middle" bordercolor="#808080" align="center"><img src="images/cls_diag.gif" width="66" height="38"><br>
+    <strong><font face="Arial" size="2">Class Diagram</font></strong></td>
+    <td width="371" valign="top" bordercolor="#808080">A <strong>class diagram</strong>
+    shows a collection of declarative (static) model elements, such as classes,
+    packages, and their contents and relationships.</td>
+  </tr>
+</table>
+</center></div>
+
+<p>Class diagrams show associations, aggregations and generalizations between
+business workers and business entities. The following kinds of class diagrams
+might be of interest:
+<ul>
+  <li>Inheritance hierarchies.</li>
+  <li>Aggregates of business workers and business entities.</li>
+  <li>How business workers and entities are related by means of associations.</li>
+</ul>
+Class diagrams show generic structures in the business object model, but can
+also be part of the documentation of a business-use-case realization (see <a href="md_bucr.htm"">Guidelines:
+Business Use-Case Realization</a>) by showing it participating business workers
+and business entities.&nbsp;
+<p align="center"><br>
+<img border="0" src="images/bcoldm1.gif" width="426" height="308"></p>
+<p class="picturetext">A class diagram showing participating business workers
+and business entities in the business use case Individual Check-in.<br>
+</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Using and customizing Purify scripts                   Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1926>
+<meta name=layout-width content=526>
+<meta name=date content="11 27, 2001 9:00:34 AM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_customizing_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_customizing.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_customize_viewer.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_customize_program_ctrls.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Using and customizing Purify scripts</h1>
+
+<p>Purify includes the following scripts in the <font style="font-family: Courier;"
+														face=courier>&lt;<a href="../html_notoc/ht_gloss_purifyhome.htm" style="font-weight: bold;">purifyhome</a>&gt;</font> directory:</p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><font 
+ style="font-family: Courier;"
+	face=courier>pure_invoke_clearquest</font> or <font style="font-family: Courier;"
+														face=courier>pure_invoke_ddts</font> 
+ starts your defect-tracking application when you click the File a Change 
+ Request icon 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' width='39' height='39' border='0'>");}
+else
+{   document.write("<img src='../image/ddtsbutton.gif' alt='image\ddtsbutton.gif' style='width: 39px;  							height: 39px;  							border-style: none;' width='39' height='39' border='0'>");}
+//-->
+</SCRIPT> in the toolbar. See <a href="ht_sel_bugtracker.htm" style="font-weight: bold;">Configuring 
+ a change request management system</a> for details. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><font 
+ style="font-family: Courier;"
+	face=courier>pure_submit_clearquest_defect<span style="font-family: Helvetica, sans-serif;"> 
+ is called by </span><span style="font-family: Courier, monospace;">pure_invoke_clearquest</span><span 
+ style="font-family: Helvetica, sans-serif;">. The script makes automated 
+ entries in fields in Rational ClearQuest. You can customize the script 
+ to enter the appropriate values in any fields defined in your group's 
+ ClearQuest schema.<br>&nbsp;</span></font></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_invoke_purecov</font> starts the <a href="ht_purecov.htm" style="font-weight: bold;">Rational 
+ PureCoverage application</a> when you click the PureCoverage icon 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/purecovbutton.gif' alt='image\purecovbutton.gif' width='38' height='37' border='0'>");}
+else
+{   document.write("<img src='../image/purecovbutton.gif' alt='image\purecovbutton.gif' style='width: 38px;  			height: 37px;  			border-style: none;' width='38' height='37' border='0'>");}
+//-->
+</SCRIPT> in the toolbar.</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_run</font> starts a new run of the current Purify'd 
+ program when you click the Run button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/run.gif' alt='image\run.gif' width='52' height='22' border='0'>");}
+else
+{   document.write("<img src='../image/run.gif' alt='image\run.gif' style='width: 52px;  													height: 22px;  													border-style: none;' width='52' height='22' border='0'>");}
+//-->
+</SCRIPT> in the program controls.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_debug</font> starts a debugger when you click the 
+ Debug button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/debug.gif' alt='image\debug.gif' width='66' height='23' border='0'>");}
+else
+{   document.write("<img src='../image/debug.gif' alt='image\debug.gif' style='width: 66px;  							height: 23px;  							border-style: none;' width='66' height='23' border='0'>");}
+//-->
+</SCRIPT> in the program controls. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_edit</font> starts an editor when you click the Edit 
+ program control 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/edit.gif' alt='image\edit.gif' width='13' height='13' border='0'>");}
+else
+{   document.write("<img src='../image/edit.gif' alt='image\edit.gif' style='width: 13px;  								height: 13px;  								border-style: none;' width='13' height='13' border='0'>");}
+//-->
+</SCRIPT> or the Edit button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/editbutton.gif' alt='image\editbutton.gif' width='52' height='21' border='0'>");}
+else
+{   document.write("<img src='../image/editbutton.gif' alt='image\editbutton.gif' style='width: 52px;  	height: 21px;  	border-style: none;' width='52' height='21' border='0'>");}
+//-->
+</SCRIPT>.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_print</font> sends an ASCII version of your Purify 
+ run to the printer when you select <span style="font-weight: bold;"><B>File 
+ &gt; Print</B></span>.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_jit_debug</font> starts <a href="ht_enable_jit.htm" style="font-weight: bold;">just-in-time 
+ debugging</a> when you select <span style="font-weight: bold;"><B>Options 
+ &gt; JIT Debug</B></span><span style="font-size: 8pt;"><FONT SIZE=1 style="font-size:8pt;">.<br>&nbsp;</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="margin-bottom: 0;"><font 
+ style="font-family: Courier;"
+	face=courier>pure_checkout</font> checks out from your configuration 
+ management system the file containing the selection currently highlighted 
+ in the Purify Viewer. Click the Check out button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/checkout.gif' alt='image\checkout.gif' width='38' height='37' border='0'>");}
+else
+{   document.write("<img src='../image/checkout.gif' alt='image\checkout.gif' style='width: 38px;  	height: 37px;  	border-style: none;' width='38' height='37' border='0'>");}
+//-->
+</SCRIPT> to invoke 
+ the script.<br>
+	<br>
+	Rational Software's ClearCase is the default configuration management 
+ system in the checkout, checkin, and uncheckout scripts. For specific 
+ information about designating an alternative configuration management 
+ system, click <a href="ht_integrate_with_cc.htm">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' width='14' height='14' border='0'>");}
+else
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' style='width: 14px;  	height: 14px;  	border-style: none;' width='14' height='14' border='0'>");}
+//-->
+</SCRIPT></a><br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_checkin</font> checks files back into your configuration 
+ management system. Click the Check&nbsp;in button 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/checkin.gif' alt='image\checkin.gif' width='38' height='35' border='0'>");}
+else
+{   document.write("<img src='../image/checkin.gif' alt='image\checkin.gif' style='width: 38px;  	height: 35px;  	border-style: none;' width='38' height='35' border='0'>");}
+//-->
+</SCRIPT> to invoke 
+ the script. <br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><font style="font-family: Courier;"
+	face=courier>pure_uncheckout</font> undoes a checkout from your configuration 
+ management system, returning the file unchanged. Click the Cancel&nbsp;checkout&nbsp;button 
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/checkcan.gif' alt='image\checkcan.gif' width='38' height='36' border='0'>");}
+else
+{   document.write("<img src='../image/checkcan.gif' alt='image\checkcan.gif' style='width: 38px;  				height: 36px;  				border-style: none;' width='38' height='36' border='0'>");}
+//-->
+ </SCRIPT> to invoke the script.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><a href="ht_manage_cached_files.htm"><span 
+ style="font-weight: bold;"><B><font style="font-family: Courier;"
+									face=courier>pure_remove_old_files</font></B></span></a> 
+ cleans your cache directory.<br>&nbsp;</p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet
+										style="font-family: Courier; font-weight: normal;">purify_what_options 
+ &lt;executable filename&gt;<span style="font-family: Helvetica, sans-serif;"> 
+ tells you what Purify options were used when the program was built.<br>&nbsp;</span></p></li>
+</ul>
+
+<h2>To customize a Purify script </h2>
+
+<ol>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number>Copy the script 
+ to a separate directory. </p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number>Edit the script. 
+ </p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number>Set your path to 
+ include the path of the modified script. Make sure the new path is placed 
+ before the original path. </p></li>
+</ol>
+
+</body>
+
+</html>

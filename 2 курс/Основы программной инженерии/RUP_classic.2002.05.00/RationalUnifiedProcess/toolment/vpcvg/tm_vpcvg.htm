@@ -1,0 +1,303 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Tool Mentor: Evaluating Code Coverage Using Rational PureCoverage and Rational PurifyPlus (Windows)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/tools.gif"> <a href="../toolment.htm">Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/coverage.gif"> <a href="vpcvg.htm">Rational PureCoverage Tool Mentors</a> &gt;
+<img border=0 src="../../applet/images/toolmentor.gif"> Evaluating Code Coverage Using Rational PureCoverage and Rational PurifyPlus (Windows)
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+<h2 class="banner"><a name="Top"></a>Tool Mentor:
+&nbsp;<rpw name="PresentationName">Evaluating Code Coverage Using Rational PureCoverage
+ and Rational PurifyPlus (Windows)</rpw>
+</h2>
+<h3>Purpose</h3>
+<p>This tool mentor provides an overview of how to use Rational PureCoverage<font size="3">®</font> to
+quickly and easily identify the gaps in your testing of Visual C/C++, Visual
+Basic, and Java applications, and Visual Studio.Net managed applications. This tool mentor is applicable for use with systems
+running Microsoft Windows.</p>
+<p> PurifyPlus is a Rational product that includes PureCoverage
+functionality.</p>
+<p> Note that you can also use Rational Purify to identify gaps in test coverage 
+  while you run your program to find memory leaks and errors; read the information 
+  about coverage data in the <a href="../purify/tm_purfy.htm"">Purify Tool Mentor</a>.&nbsp;</p>
+<p><IMG SRC="../../images/Book.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="15">
+ To learn more about PureCoverage, including how to merge and compare runs,
+focus on coverage for specific parts of your program, and fine-tune data
+collection, read the <i>Getting Started</i> manual for the PurifyPlus product
+family (Windows version).&nbsp;</p>
+<p><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+For step-by-step information about
+using PureCoverage, see the PureCoverage online Help.</p>
+
+<p>Related Rational Unified Process information:</p>
+<ul>
+  <li><a href="../../process/activity/ac_untst.htm"">Activity: Perform Unit Tests</a>, 
+    refer to the section titled &quot;Execute Unit Test&quot;.</li>
+  <li><a href="../../process/activity/ac_tst_anltstflr.htm"">Activity: Analyze 
+    Execution Failures</a>, refer to the section titled &quot;Evaluate Execution 
+    of Test&quot;</li>
+  <li><a href="../../process/activity/ac_tst_dtrtstrsl.htm"">Activity: Determine 
+    Test Results</a>, refer to the section titled &quot;Evaluate 
+    Code-based Test Coverage&quot;</li>
+</ul>
+
+<h3>Overview</h3>
+<p> PureCoverage monitors your program as it runs and reports exactly what parts
+of your program have and have not been exercised. You can use PureCoverage on
+whatever scale you want: you can collect data from informal tests of specific
+program functionalities, or combine data from all the runs controlled by your
+test suite. Used with Purify, PureCoverage can tell you what parts of your
+program have not been checked for memory errors and leaks, which helps you
+significantly improve the quality of the code you ship to customers.&nbsp;
+<h4>Tool Steps</h4>
+<p> To improve the
+effectiveness of your testing coverage:
+<ol>
+  <ol>
+    <li><a href="#Step1"">Run a program using PureCoverage to collect coverage
+      data</a></li>
+    <li><a href="#Step2"">Use PureCoverage tools to analyze the
+      coverage data</a></li>
+    <li><a href="#Use your analysis to retest  your program more thoroughly"">Use
+      your analysis to retest your program more thoroughly</a></li>
+  </ol>
+</ol>
+    <h3>1. <a name="Step1"></a><b>Run a program using PureCoverage to collect
+    coverage data&nbsp;</b><a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20"></a></h3>
+<p>The first step in improving coverage is to collect the coverage data for a
+run of your program.</p>
+<p>You can do this by starting PureCoverage from your desktop, clicking the <b>Run</b>
+button on the Welcome screen, and specifying and running your program in the Run
+Program dialog. You can also run a program under PureCoverage from within
+Microsoft Visual Studio or Microsoft Visual Basic; first select the menu item <b>PureCoverage&nbsp;&gt;
+Engage PureCoverage Integration</b>, then run your program as usual.
+<p>As you exercise your code, PureCoverage keeps track of which lines and which
+functions, procedures, or methods (collectively referred to here as <b>functions</b>)
+have been exercised, and displays a current coverage summary so that you can
+gauge the progress of your testing.
+<p>You can pause and resume data recording at any time, and so check specific
+portions of code. You can also take a snapshot of the current coverage data,
+which enables you to examine code coverage in stages.
+<p>When you exit your program, PureCoverage displays the coverage data it has
+collected. Because the dataset can be very large, PureCoverage applies default
+filters to hide non-critical data about system libraries and other modules
+before it displays the program's coverage details. As you analyze the coverage
+data, you can choose to display more or less data.
+<p><b>Tip:</b> You can also use PureCoverage's command line interface to
+incorporate PureCoverage into your test scripts for automated testing. For
+instructions, look up <i>scripts</i> in the PureCoverage online Help index.&nbsp;</p>
+
+  <p align="left">
+  <b><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics in
+  the PureCoverage online Help index:</p>
+
+<ul>
+  <li>
+    <p align="left"><i>running&nbsp; programs</i></li>
+  <li>
+    <p align="left"><i>coverage levels</i></li>
+  <li>
+    <p align="left"><i>run summary</i></li>
+  <li>
+    <p align="left"><i>snapshots</i></li>
+  <li>
+    <p align="left"><i>filters</i></li>
+</ul>
+
+    <h3>2. <a name="Step2"></a><b>Use PureCoverage tools to analyze
+    the&nbsp;coverage data&nbsp;</b><a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20"></a></h3>
+<p>The second step in improving coverage is to analyze the code coverage data
+that you have collected.</p>
+<p>When you exit the program for which PureCoverage has been collecting data,
+the Coverage Browser window displays information such as the number of functions
+and lines hit and missed by your tests. In addition, you can see the percentage
+of functions and lines hit, and the number of times each function was called.
+<p>You can use PureCoverage's other windows to further examine the program's
+code coverage. To review coverage data for all functions in the current run, and
+to sort them by various criteria, use the Function List window. If debug line
+information is available, and you monitored functions at line level, you can use
+the Annotated Source window to analyze a specific function's coverage line by
+line.
+<p>PureCoverage provides several ways to display only the data you're interested
+in. For example, you can filter out data on the basis of module name, source
+file name, or function name. You can also use the Show/Hide Columns dialog to
+display only the type of information you are currently interested in.
+<p>By default, PureCoverage creates an Auto Merge entry in the Navigator window
+so you can easily analyze the total coverage of the program over multiple runs.
+You can also merge specific runs yourself.</p>
+
+  <p align="left">
+  <b><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics in the PureCoverage online
+Help
+index:</p>
+
+<ul>
+  <li>
+    <p align="left"><i>coverage browser window</i></li>
+  <li>
+    <p align="left"><i>function
+  list window</i></li>
+  <li>
+    <p align="left"><i>annotated source window</i></li>
+  <li>
+    <p align="left"><i>filters</i></li>
+  <li>
+    <p align="left"><i>merging
+  runs</i></li>
+  <li>
+    <p align="left"><i>debug data&nbsp;</i></li>
+</ul>
+
+<h3>3. <a name="Step3"></a><b><a name="Use your analysis to retest  your program more thoroughly">Use
+your analysis to retest&nbsp; your program more thoroughly</a>&nbsp;</b><a href="#Top""><img src="../../images/top.gif" border="0" width="26" height="20"></a></h3>
+The third and final step in improving coverage is to use your coverage analysis
+to modify your tests so that they exercise previously untested lines and
+functions, and then to use PureCoverage to verify the improvements.&nbsp;
+<p>Using the modified tests, rerun your program under PureCoverage. Then click
+the PureCoverage <b>Diff</b> tool to compare the new results to the baseline
+dataset you collected for your initial analysis.
+<p>Use the Navigator window to keep track of all the runs you're working with.
+You can save coverage data as a PureCoverage data file (.cfy) to use for further
+analysis or to share with other PureCoverage users. You can save data to a
+tab-delimited ASCII text file (.txt) to use outside of PureCoverage; for
+example, in test scripts or in Microsoft Excel. You can also copy data from the
+Coverage Browser window to use in a text editor or from the Function List window
+to perform further analysis in Microsoft Excel.
+<p>To track your code coverage from release to release, archive your saved .cfy
+files with your product releases.
+<p><b>Tip:</b> If you have incorporated PureCoverage into your test scripts, you
+can automatically save coverage data to a text file (.txt).&nbsp;&nbsp;</p>
+
+  <p>
+  <b><IMG SRC="../../images/HelpBook.gif" VSPACE="0" HSPACE="0" BORDER="0" width="16" height="16">
+  </b>For more information, look up the following topics
+  in the PureCoverage online Help index:</p>
+<ul>
+  <li><i>scripts</i></li>
+  <li><i>navigator window&nbsp;</i></li>
+  <li><i>saving data&nbsp;</i></li>
+</ul>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

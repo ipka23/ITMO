@@ -1,0 +1,17 @@
+p.indexlevel1
+{
+ font-weight: bold;
+ font-size: 125%;
+ margin-top: -0px; 
+margin-bottom: -2px;
+}
+
+p.indexlevel2
+{
+ text-indent: -16px; 
+ font-size: 70%;
+ margin-left: +16px;
+ margin-top: -1px; 
+margin-bottom: -2px;
+}
+

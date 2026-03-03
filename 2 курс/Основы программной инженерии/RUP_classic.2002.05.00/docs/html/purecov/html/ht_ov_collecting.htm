@@ -1,0 +1,261 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Collecting coverage data                               Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1391>
+<meta name=layout-width content=559>
+<meta name=date content="04 30, 2002 3:02:32 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_overview.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_ov_viewing.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1><span style="font-weight: bold;"><B><span face=HELVETICA
+											color=navy
+											style="font-family: Helvetica;
+													font-size: 18pt;
+													color: #000080;
+													font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Collecting 
+ coverage data</B></FONT></span></B></span></h1>
+
+<p><span face=HELVETICA
+		style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To collect coverage 
+ data:</FONT></span></p>
+
+<ol>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number><span face=HELVETICA>Compile 
+ and link your application under PureCoverage to </span><a href="../html_notoc/ht_gloss_instr.htm"><span 
+ face=HELVETICA
+	style="font-weight: bold;"><B>instrument</B></span></a><span face=HELVETICA> 
+ the program with coverage monitoring instructions:<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span face=Courier
+												style="font-family: Courier;">% 
+ purecov cc </span><a href="../html_notoc/ht_gloss_debug.htm"><span face=Courier
+	style="font-family: Courier; font-weight: bold;"><B>-g</B></span></a><span 
+ face=Courier
+	style="font-family: Courier;"> &lt;myprog&gt;.o</span><span face=HELVETICA><br>
+	<br>
+	or, if you compile and link at the same time:<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span face=Courier
+												style="font-family: Courier;">% 
+ purecov cc -g &lt;myprog&gt;.c</span><span face=HELVETICA><br>
+	<br>
+	The </span><span face=HELVETICA
+					style="font-family: Courier;">-g</span><span face=HELVETICA> 
+ option supplies debug data that makes it possible for PureCoverage to 
+ collect coverage data at the </span><a href="../html_notoc/ht_gloss_linelevel.htm"><span 
+ face=HELVETICA
+	style="font-weight: bold;"><B>line level</B></span></a><span face=HELVETICA>; 
+ without it, PureCoverage can collect data only at the </span><a href="../html_notoc/ht_gloss_functionlevel.htm"><span 
+ face=HELVETICA
+	style="font-weight: bold;"><B>function level</B></span></a><span face=HELVETICA>.</span><span 
+ face=HELVETICA><br>
+	&nbsp;</span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number><span face=HELVETICA>Run 
+ the application to collect coverage data.<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span face=Courier
+												style="font-family: Courier;">% 
+ a.out</span><span face=HELVETICA>&nbsp;</span><span face=HELVETICA><br>
+	<br>
+	The application displays its normal output on the console, just as 
+ if it were not instrumented. In addition, PureCoverage displays its start-up 
+ banner and recording message. For an example, click </span><a href="ht_output.htm">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/shortcut.gif' alt='image\shortcut.gif' width='14' height='14' border='0'>");}
+else
+{   document.write("<img src='../image/shortcut.gif' alt='image\shortcut.gif' style='width: 14px;  			height: 14px;  			border-style: none;' width='14' height='14' border='0'>");}
+//-->
+</SCRIPT></a><span face=HELVETICA><br>
+	<br>
+	As you exercise the program, PureCoverage records data about function 
+ and line usage. When you exit the program, PureCoverage saves the coverage 
+ data in a </span><a href="../html_notoc/ht_gloss_pcv.htm"><span face=HELVETICA
+	style="font-weight: bold;"><B>PureCoverage data file (.pcv)</B></span></a><span 
+ face=HELVETICA>.</span></p></li>
+</ol>
+
+<p><span face=HELVETICA>The next step in using PureCoverage is to </span><a href="ht_ov_viewing.htm"><span face=HELVETICA
+								style="font-weight: bold;"><B>view the coverage 
+ data</B></span></a><span face=HELVETICA>.</span><span face=HELVETICA><br>
+&nbsp;</span></p>
+
+<p class=rTipNoteGlossaryHeading><span style="font-weight: bold;"><B><span 
+ face=HELVETICA
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>What else can you do?</B></FONT></span></B></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><a href="ht_excluding.htm"><span 
+ style="font-weight: bold;"><B><span face=HELVETICA
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Exclude 
+ files</B></FONT></span></B></span></a><span face=HELVETICA
+								style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ from coverage monitoring.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Fine-tune data collection 
+ with PureCoverage </FONT></span><a href="ht_about_pc_api.htm"><span face=HELVETICA
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>API functions</B></FONT></span></a><span face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Redirect all PureCoverage 
+ run-time messages to a file using the </FONT></span><a href="ht_opt_fileid.htm#MID_LOGFILE"><span 
+ style="font-weight: bold;"><B><span face=HELVETICA
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>-log-file 
+ option</B></FONT></span></B></span></a><span face=HELVETICA
+								style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=HELVETICA
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Use PureCoverage in 
+ </FONT></span><a href="ht_automated_testing.htm"><span face=HELVETICA
+												style="font-family: Helvetica;
+														font-size: 14pt;
+														font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>automated 
+ testing</B></FONT></span></a><span face=HELVETICA
+						style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p></li>
+</ul>
+
+<p class=rTipNoteGlossaryHeading>Notes:</p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number
+										style="margin-bottom: 0;">To instrument 
+ a program on Tru64 UNIX, you have the option of adding <span style="font-family: Courier;">purecov</span> 
+ in front of the compile/link command line as on other platforms, or of 
+ instrumenting the executable:<font style="font-family: Courier;"
+									face=courier><br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% purecov a.out</font><br>
+	<br>
+	To run the program, type:<font style="font-family: Courier;"
+									face=courier><br>
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% a.out.pure</font></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Number><p class=List-Number
+										style="margin-bottom: 0;">On Tru64 
+ UNIX, use the <span style="font-family: Courier, monospace; font-weight: bold;"><B><a href="ht_opt_link_collect.htm">-taso</a></B></span> option if your executable 
+ was linked with the <span style="font-family: Courier, monospace;">-taso</span> 
+ option. </p></li>
+</ul>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+ <!-- $MVD$:fontset("Courier New","Courier New") -->
+ <SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_messages_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_messages.css'>");}
+//-->
+ </SCRIPT>
+ <title>MRE: malloc reentrancy error                           Rational Purify</title>
+ <META NAME="generator" CONTENT="RoboHELP by eHelp Corporation www.ehelp.com">
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../bsscdhtm.js" name="EHELP_DHTM">
+ </SCRIPT>
+ <script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+ </script>
+ <style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+ </style>
+ <script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+ </script>
+</HEAD>
+<BODY>
+ <SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_m_mlk.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_m_mse.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+ </SCRIPT>
+ <H1>MRE: malloc reentrancy error</H1>
+ <P>An MRE message indicates that a reentrant call to <font  face='Courier'>malloc</font>, <font  face='Courier'>free</font>, or a related function has been made. Since most default <font  face='Courier'>malloc</font> implementations are not reentrant, this will likely cause problems. </P>
+ <P><IMG src="../image/mre.gif" border="0" height="504" width="565" alt="image\mre.gif"><font  face='NewCenturySchlbk'> </font></P>
+ <P class="rTipNoteGlossaryHeading" >Note:</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >A number of C library functions call <font  face='Courier'>malloc</font> as a side effect. Avoid using these in interrupt/signal handlers.</P></LI>
+ </UL>
+</BODY>
+</HTML>

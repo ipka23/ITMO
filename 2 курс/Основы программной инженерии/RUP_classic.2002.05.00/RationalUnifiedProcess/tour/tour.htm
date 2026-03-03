@@ -1,0 +1,598 @@
+
+<html>
+
+<head>
+<link rel="stylesheet" href="../rop.css" type="text/css">
+<title>Getting Started - Rational Unified Process</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="expires" content="0">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+
+
+
+<h1 class="banner"><a name="Top"></a>Getting Started</h1>
+<p align="center">
+      
+<script language="JavaScript">
+
+function setCookie (value) 
+{
+	var name = "RUP";
+	var expdate = new Date ();
+	expdate.setTime (expdate.getTime() + (86400000*9999)); // Almost infinite
+	document.cookie = name + "=" + escape (value) + "; expires=" + expdate.toGMTString() +  "; path=/"; 
+}                                                     
+
+function getCookie (name) 
+{
+	var dcookie = document.cookie; 
+	var cname = name + "=";
+	var clen = dcookie.length;
+	var cbegin = 0;
+	while (cbegin < clen) 
+	{
+		var vbegin = cbegin + cname.length;
+		if (dcookie.substring(cbegin, vbegin) == cname) 
+		{ 
+			var vend = dcookie.indexOf (";", vbegin);
+			if (vend == -1) 
+		      {
+				vend = clen;
+			}
+			return unescape(dcookie.substring(vbegin, vend));
+		}
+
+		cbegin = dcookie.indexOf(" ", cbegin) + 1;
+		if (cbegin == 0) 
+		{
+			break;
+		}
+	}
+	return null;
+}
+</script>
+
+<div align="center"><center>
+
+<table border="1" style="font-family: sans-serif; font-size: xx-small; border: medium outset" cellspacing="0">
+  <tr>
+    <td style="border-right: medium none">
+    <form>
+      <script language="Javascript">
+		if (getCookie("RUP") == "checked") 
+		{
+		document.writeln("<input type=\"checkbox\" name=\"C1\" value=\"checked\" onClick=\"javaScript:setCookie()\" checked>");
+		}
+		else
+		{
+		document.writeln("<input type=\"checkbox\" name=\"C1\" value=\"checked\" onClick=\"javaScript:setCookie('checked')\">");
+		}
+		</script>
+
+    </form>
+    </td>
+    <td style="border-left: medium none">Do not show this page each time RUP is started.</td>
+  </tr>
+</table>
+</center></div>
+
+<p align="center"><img src="../applet/images/compass.gif" alt="How to navigate within the process" border="0" width="16" height="16"><b>
+ <font size="4"><a target="_self" href="#Introductory Tour">Start with a Tour!</a>
+ </font></b><img src="../applet/images/compass.gif" alt="How to navigate within the process" border="0" width="16" height="16">&nbsp;
+<p align="left"><b><a name="prereq"></a>Prerequisite reading</b>: after completing 
+  the tour, read the following pages: 
+<ul>
+  <li><a target="ory_doc" href="../process/navtools.htm" ><img src="../applet/images/compass.gif" alt="How to navigate within the process" border="0" width="16" height="16"></a> 
+    <a target="ory_doc" href="../process/navtools.htm"><strong>Navigating the 
+    Process</strong></a><strong> </strong>— how to navigate effectively.</li>
+  <li><a target="ory_doc" href="../manuals/intro/im_bp.htm" ><img src="../applet/images/cup.gif" alt="goals of the process" border="0" width="17" height="17"></a> 
+    <a target="ory_doc" href="../manuals/intro/im_bp.htm"><strong>Best Practices</strong></a> 
+    &#151 commercially proven approaches to software development.</li>
+  <li><a target="ory_doc" href="../manuals/intro/im_keymc.htm" ><img src="../applet/images/concept.gif" alt="the concepts behind the process" border="0" width="16" height="16"></a> 
+    <a target="ory_doc" href="../manuals/intro/im_keymc.htm"><strong>Key Concepts</strong></a> 
+    &#151 terms and concepts underlying the process.</li>
+  <li><a target="ory_doc" href="../manuals/intro/im_keymc.htm" ><img src="../applet/images/concept.gif" alt="essentials of an effective process" border="0" width="16" height="16"></a> 
+    <a target="ory_doc" href="../manuals/intro/im_esstl.htm"><strong>Process Essentials</strong></a> 
+    &#151 essential activities and artifacts that every software project requires.</li>
+  <li><a target="ory_doc" href="../process/modguide/md_tailr.htm"><img src="../applet/images/guidelin.gif" alt="key tailoring guidelines" border="0" width="16" height="16"></a> 
+    <b><a target="ory_doc" href="../process/modguide/md_tailr.htm">Tailoring the Process</a></b> 
+    &#151 key concepts for getting the right level process for your project.</li>
+</ul>
+<p>After reading the prerequisite pages above, you can navigate the Rational 
+  Unified Process® or RUP® product in a variety of ways. The following are some useful starting 
+  points:</p>
+<ul>
+  <li><a target="ory_doc" href="tour2.htm"><img src="../applet/images/workers.gif" alt="information about the different roles you may play on a project" border="0" width="16" height="16"></a> 
+    <a  target="ory_doc" href="tour2.htm"><strong>Role-based Overviews</strong></a> 
+    &#151 overviews from specific role perspectives: Analyst, Developer, Tester, 
+    or Manager. </li>
+  <li><a href="roadmaps.htm" target="ory_doc""><img src="../applet/images/roadmap.gif" alt="how to apply the process to different kinds of development efforts" border="0" width="16" height="16"></a> 
+    <a target="ory_doc" href="roadmaps.htm"><strong>Roadmaps</strong></a><strong> 
+    </strong>&#151<strong> </strong>solutions to specific types of problems.</li>
+  <li><a href="../process/navtools.htm" target="ory_doc""><img src="../applet/images/rup1.gif" alt="Implementing the Rational Unified Process" border="0" width="16" height="16"></a> 
+    <a target="ory_doc" href="../process/workflow/environm/co_rup.htm"><strong>Implementing 
+    the Process</strong></a><strong> </strong>&#151<strong> </strong>enabling 
+    the process to fit your organization and/or project.</li>
+  <li><a href="../toolment/toolment.htm" target="ory_doc""><img src="../applet/images/ar_tools.gif" border="0" alt="how tools support the process" width="16" height="16"></a> 
+    <a target="ory_doc" href="../toolment/toolment.htm"><strong>Tools</strong></a> 
+    &#151 tools which support specific process activities.</li>
+</ul>
+<h1><a name="Introductory Tour">Introductory Tour</a><font size="5"><a href="#Top""><img alt="To top of page" border="0" src="../images/top.gif" width="26" height="20"></a></font></h1>
+    <table border="0" cellPadding="5">
+<tbody>
+      <tr>
+        <td vAlign="top"><font face="Arial" size="2"><self ><p 5.5 Process Unified Rational Tour Guided>This tour consists of an
+          introduction to the <b>RUP</b>.<b> </b> This tour takes
+          15 to 20 minutes to complete.<p>The RUP is a software engineering process that enhances team productivity
+        and delivers software best practices via guidelines, templates, and tool
+          guidance for all
+        critical software development activities. </p>
+        <p>During this tour you will find that there are many ways to easily find the information
+        you are looking for. It describes key concepts, the structure, and an overview of what is
+        inside the product.</p>
+        <p><b>RUP — Guided
+        Tour</b></p></font>
+        <table align="left" border="1" cellPadding="2" cellSpacing="2">
+
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top"><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top"><font face="Arial" size="2"> Place
+              the main window to the right
+            of the screen and resize and place this window to the left. You should now be able to both
+            see the guided tour to the left and the RUP to the right. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top"><font face="Arial" size="2"><b>ACTION</b></font></td>
+          </tr>
+          <tr>
+            <td vAlign="top" align="left"><font face="Arial" size="2">The <b>ACTION</b> column provides
+            you with instructions on what to do and with links to the RUP. &nbsp;
+            The links can be used to verify that you are at the right place in the
+              RUP. You will also be provided images that show how the tree browser should look like
+            at certain point in the guided tour. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top"><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top"><font face="Arial" size="2">The
+            <b><i>Comment</i></b> column provides you with more details on key concepts and
+            terminology that you need to understand. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b></font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Click on the
+            Overview in the tree browser. <p><img src="images/00overv.gif" width="201" height="232"><br>
+            <br>
+              <a href="../process/ovu_proc.htm" target="ory_doc""><i>You
+            should be here</i></a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">We
+            structure the process in two dimensions.<p>The horizontal axis is
+              the <i>Time Dimension.&nbsp; </i>It shows how a project
+            progresses over time, describing phases, milestones, and iterations. </p>
+            <p>The vertical axis is the <i>Content Dimension.</i>  It describes how <i>Activities </i>are grouped together in
+            what we call <i>Disciplines</i>. The RUP covers the full lifecycle and
+            has <i>Disciplines</i> for Business Modeling, Requirements, Analysis &amp; Design,
+            Implementation, Test, Deployment, Project Management, and Configuration &amp; Change
+            Management. </p>
+            <p>The <i>Iteration Model graph</i> shows how the emphasis on each <i>Discipline </i>varies
+            over time. In early <i>Iterations</i>, we spend more time on <i>Requirements</i>, and in
+            later <i>Iterations</i> we spend more time on for example <i>Implementation</i>.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand <i>Phases.</i><br>
+            Expand and Select<i> Inception</i> </font><p><img src="images/phases.gif" width="221" height="189"></p>
+            <font face="Arial" size="2"><p><a target="ory_doc" href="../process/itrwkfls/iwf_iii.htm"><i>You should be here</i></a>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">From
+            a management perspective, the software lifecycle of the RUP is
+            decomposed over time into four sequential phases, each concluded by a major milestone;
+            each phase is essentially a span of time between two major milestones. </font><p><font face="Arial" size="2"><a target="ory_doc" href="../process/itrwkfls/ms_lco.htm">Milestone:</a> Here you
+            can see the goal, what artifacts to produce, and the success criteria for the phase.</font></p>
+            <p><font face="Arial" size="2"><a target="ory_doc" href="../process/itrwkfls/sip_iii.htm">Sample Iteration Plan:</a>
+            Here we describe how you typically will work in this phase.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand <i>Overview.</i><br>
+            Select<i> Key Concepts</i> </font><p><img src="images/2concept.gif" width="188" height="181"><font face="Arial" size="2"> <br>
+            </font></p>
+            <font face="Arial" size="2"><p><a href="../manuals/intro/im_keymc.htm" target="ory_doc""><i>You
+            should be here</i></a> </p>
+            <p>Click on any icon to read more. Use <i>Back </i>to come back to the graphic. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Let's
+            take a look at some key concepts we use to describe the process. <p>A process should
+            describe <b>Who </b>is doing <b>What</b> and <b>How</b>. The RUP has
+            a key concept corresponding to each element of this question: <ul>
+              <li><b>Who </b>is described by the concept of <i>Role. </i>A team member can typically
+                wear many hats, that is, take on multiple <i>Roles</i>. Several team members
+                may also take on the same <i>Role</i></li>
+              <li><b>What </b>is described by the concept of <i>Artifact,</i> Examples of <i>Artifacts</i>
+                are <i>Test Case</i>, <i>Business Plan</i>, or <i>Design Class.</i> </li>
+              <li><b>How </b>to produce an <i>Artifact </i>is described by the concept of <i>Activity.</i>
+              </li>
+            </ul>
+            <p>RUP enhances team communication by providing all team members with
+            a common language and process. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Click on the
+            Overview in the tree browser.<br>
+            <br>
+            <img src="images/6ovvw.gif" width="190" height="196"> <p>Click on the hot link <i>Requirements
+            </i>in the <i>Iteration Model Graph</i>.</p>
+            </font><p><font face="Arial" size="2"><a href="../process/workflow/ovu_req.htm" target="ory_doc""><i>You
+            should be here</i></a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Let's
+            take a look at the <i>Requirements Discipline.</i> <p>In the<i> Overview</i> for
+              requirements, we see an activity diagram that shows what we do in requirements. </p>
+            <p>Analyze the Problem, Define the System, Manage the Scope of the System, Manage Changing
+            Requirements, and so forth. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Click on the hot
+            link <em>Analyze the Problem</em>. </font><p><font face="Arial" size="2"><a target="ory_doc" href="../process/workflow/requirem/wfs_anpr.htm"><i>You should
+            now be here</i></a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Let's
+            take a look at <em>Analyze the Problem</em>. Here you see what roles are
+              involved</font>&#151<font face="Arial" size="2">customers, end users, system analyst</font>&#151<font face="Arial" size="2">the resulting artifacts and what activities to
+            do. We also have work guidelines with different techniques to find the problem.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Click on the hot
+            link <i>Find Actors and Use Cases.</i> <p><a href="../process/activity/ac_facuc.htm" target="ory_doc""><i>You
+            should now be here</i></a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Let's
+            take a closer look at the <i>Activity</i>: <i>Find Actors and Use
+              Cases.</i></font> <font face="Arial" size="2">We can see the purpose of the <i>Activity</i>, and that it consists of a number of smaller
+            steps. We also see <i>Input </i>and <i>Output Artifacts</i> for the <i>Activity.</i> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Select <i>Step Find
+            Use Cases.</i> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">When
+            you select a <i>Step</i>, you find detailed information on how to carry out the work. <p>Let's
+            see what the process says about finding use cases. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Select the <i>Up </i><em>Arrow</em>
+            to go to the top of the page<p>At the bottom of the table, Tool Mentors:<br>
+            Select <i>Finding Actors and Use Cases Using Rational Rose.</i> </p>
+            <p><a href="../toolment/rose/tm_fauc2.htm" target="ory_doc""><i>You
+            should be here</i></a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">The
+              RUP is written independent from tools. However, if you are using a
+            Rational tool, we provide guidance in how to use our tools to effectively carry out the
+            various <i>Activities</i> in the process. This guidance is called <i>Tool Mentor</i>. <p>A
+            <i>Tool Mentor</i> provides you with very detailed guidance, describing what menus to pull
+            down, and what dialog boxes to fill in to carry out the various <i>Activities.</i> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Click on the button <em>Where
+            am I</em> on the top of the page. <p>It should now look like this.<br>
+            <img src="images/7where.gif" width="83" height="22"></p></font>
+            <p><img src="images/8tool.gif" width="251" height="323"><font face="Arial" size="2"><br>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">As
+            you see in the <i>Tree Browser</i>, we provide <i>Tool Mentors</i> for Rational tools<i>.</i>
+              <p>If you are using non-Rational tools, you can write your own <i>Tool Mentor</i>.&nbsp;
+              See the <i>Process Engineer Toolkit</i> for details. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Select and Expand <i>Work
+            Guidelines</i> </font><p><img src="images/1vg.gif" width="291" height="378"></p>
+            <p><font face="Arial" size="2"><a href="../process/workguid/ovu_work.htm" target="ory_doc""><i>You
+            should now be here</i></a><br>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Here
+            you see an overview of all of the work guidelines we have, such as <em>Use-Case Workshop</em>, <em>Assessment
+            Workshop</em>, and so forth.</font><p><font face="Arial" size="2">You can expand any of the entries
+            in the tree browser on the left to find more detailed information on a topic of interest. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand <em>Roles
+              and Activities</em><br>
+            Expand <em>Managers</em><br>
+            Select <i>Project Manager</i> in the list of the roles. <p><img src="images/3pmgr.gif" width="231" height="250"> </p></font>
+            <font face="Arial" size="2"><p><a href="../process/workers/wk_projm.htm" target="ory_doc""><i>You
+            should be here</i></a> <br>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2"><p>Now we have the focus on the <em>Project
+            Manager</em> and can see all artifacts that the Project Manager is responsible for and all
+            activities that guide the person to produce these artifacts. The activities are organized
+            regarding what to do at <em>Project Start</em> and at <em>Iteration Start-End,</em>
+              and so on.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand <em>Overview</em><br>
+            Select <em>Roadmaps</em> <p><a href="roadmaps.htm" target="ory_doc""><i>You should be here</i></a> </p>
+            <p><img src="images/12roadm.gif" width="215" height="179"> 
+            <br> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2"><em>Roadmaps</em>
+            show how the RUP can be used for specific types of projects. </font><p><font face="Arial" size="2">We have <em>roadmaps</em> for: </font>
+            <ul>
+              <li><font face="Arial" size="2">Small Projects</font></li>
+              <li><font face="Arial" size="2">Agile Practices in RUP</font></li>
+              <li><font face="Arial" size="2">Developing e-business Solutions 
+                </font></li>
+              <li><font face="Arial" size="2">Developing Component Solutions </font></li>
+              <li><font face="Arial" size="2">Evaluating Quality throughout the 
+                Lifecycle</font></li>
+              <li><font face="Arial" size="2">Usability Engineering</font></li>
+            </ul>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Select <em>Developing
+              e-business Solutions</em> <p><a target="ory_doc" href="rm_ebus.htm"><i>You should be here</i></a>&nbsp; </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">This
+            roadmap will jumpstart e-business projects on how to use RUP for
+            e-business development. The road map describe what characterizes a typical e-business
+            development project in each phase: inception, elaboration, construction, and
+              transition.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand and
+            Select&nbsp;<i>Templates. <p><img border="0" src="images/9templ.gif" width="235" height="220"></p></i></font>
+            <p><font face="Arial" size="2"><i><a href="../process/templates.htm" target="ory_doc"">You should be
+            here</a> </i></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">As
+            you see in the <i>Tree Browser</i>, we provide Templates for artifacts in Microsoft Word,
+            FrameMaker, and HTML format.<p>We have three different Microsoft
+            Project templates for the phases <em>Inception, Elaboration</em>, and <em>Construction.</em>
+            </p>
+            <p>You can also download FrameMaker templates from the <em>Resource Center</em>. </p>
+            <p>Reports for the RUP can be generated with Rational SoDA. SoDA has
+            12 reports for the RUP. </p>
+            <p>Rational RequisitePro has a project based on the RUP, with
+            templates for <em>Vision, Glossary, Use-Case,</em>  and so on. </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" width="311"><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" width="311"><font face="Arial" size="2">Open the
+              <em>RationalProjectWebExample</em>
+            from <a href="../../RationalProjectWebExample/index.htm" target="_blank"">here</a>. <p>Select
+            <em>Project Members.</em></p>
+            <p>Click on the link<em> Project Manager.</em></p>
+            <p>See how the information on <em>Project Manager </em>comes up in the<em> </em>RUP
+            browser Window. Your project specific Web site has links to the
+            underlying knowledge base, the RUP.</p></font>
+            <p><img src="images/projw.gif" width="229" height="194"><font face="Arial" size="2"><br>
+            </font></td>
+            </tr>
+            <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" width="311"><font face="Arial" size="2">Most
+            projects today have a Project Web Site, where all project artifacts and other project-specific information is stored. A template for that is part of the
+              RUP. The template has links to the process and placeholders for your project-specific
+            information. </font></td>
+            </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">The last part of
+            this tour is to look at the <i>Search Engine</i> and the <i>Glossary.</i></font><p><font face="Arial" size="2">Note: The response times for these features are depending on the
+            speed on your Internet connection. This is not an issue when you are running the product
+            from your local machine or your Intranet.</font></p>
+            <p><font face="Arial" size="2">Select the browser window with RUP.</font></p>
+            <p><font face="Arial" size="2">Select <i>Search</i> on top of <i>Right Pane. <br>
+            Enter &quot;Patterns&quot;. <br>
+            Select Search.</i> <br>
+            <img border="0" src="images/10search.gif" width="79" height="22"> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">If
+            you are uncertain of how to find some information, you can always use the <i>Search Engine</i>.
+            <p>Let's see what information we find on <i>Patterns</i>.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Double-click on
+            Concepts: Web Architecture Patterns. <p><a target="ory_doc" href="../process/workflow/ana_desi/co_warchpatt.htm">You should
+            be here</a> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top" ><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top" ><font face="Arial" size="2">Here
+            we find information on various types of <em>Web Architecture Patterns</em>. <p>The process
+            describes <em>Thin Web Client</em>,&nbsp; <em>Thick Web Client</em>, and
+              <em>Web Delivery</em>.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>ACTION</b>
+            </font></td>
+          </tr>
+          <tr>
+            <td align="left" vAlign="top" ><font face="Arial" size="2">Expand <em><i>Overview</i></em>
+            <br>
+            Select <i>Glossary.</i> Select<i> &quot;S&quot;. </i><p><i></i>When you've finished looking at
+            the glossary, remember to close the Glossary window. </p>
+            <p><img border="0" src="images/11gloss.gif" width="204" height="179"> </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#CCCCFF" vAlign="top"><font face="Arial" size="2"><b><i>Comment</i></b></font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top"><font face="Arial" size="2">To
+            facilitate communication, it's essential that everybody in the development team agrees
+            on a common vocabulary. The RUP comes with a <em>Glossary</em>
+              that defines and explains every important concept.</font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#cccc66" vAlign="top" ><font face="Arial" size="2"><b>End
+            of Tour</b>&nbsp; </font></td>
+          </tr>
+          <tr>
+            <td align="left" bgColor="#FFFFFF" vAlign="top"><font face="Arial" size="2">You
+            now have an overview of the RUP and an idea of how easy it is to find
+            various types of information by navigating through the <i>Tree Browser, Graphs, and
+              Search
+            Engine.</i>&nbsp; </font>
+              
+            <p><font face="Arial" size="2">For an excellent introductory book 
+              on the RUP, please refer to <a href="../process/referenc.htm#KRU00" target="ory_doc"">[KRU00]</a>.</font></p>
+            <p><font face="Arial" size="2">Continue your familiarization with 
+              RUP with the <a href="#prereq"">prerequisite reading</a>.</font></p>
+            </td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+
+    </table>
+
+
+
+ 
+<p><font face="Arial">
+<a href="../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+ 
+
+</body>
+
+</html>
+

@@ -1,0 +1,214 @@
+<HTML>
+ <HEAD>
+  <TITLE>Tool Mentor: Creating Use-Case Realizations
+       Using Rational Rose</TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+ <LINK REL="StyleSheet" HREF="../../rop.css" TYPE="text/css">
+</HEAD>
+ <BODY>
+ <P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+ <img border=0 src="../../applet/images/tools.gif"> <a href="../toolment.htm">Tool Mentors</a> &gt;
+ <img border=0 src="../../applet/images/toolset.gif"> <a href="tms_rose.htm">Rational Rose Tool Set</a> &gt;
+ <img border=0 src="../../applet/images/rose.gif"> <a href="rose.htm">Rational Rose Tool Mentors</a> &gt;
+ <img border=0 src="../../applet/images/toolmentor.gif"> Creating Use-Case Realizations Using Rational Rose
+ </FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+      <H2 CLASS="banner">        Tool Mentor:
+<rpw name="PresentationName">Creating Use-Case Realizations Using Rational Rose</rpw><A NAME="Top" msnavigation></A>
+</H2>
+      <H3>
+       Purpose</H3>
+      <P>
+       This tool mentor describes how to represent use-case realizations in 
+       Rational Rose.</P>
+      
+<P> Related Rational Unified Process information: <a href="../../process/activity/ac_arcan.htm"">Activity: 
+  Architectural Analysis</a>.</P>
+
+      <H3>
+       Overview</H3>
+      <P>
+       The following is a summary of the steps you perform to create the <a href="../../process/artifact/ar_ucrea.htm"">Artifact:
+        Use-Case Realization</a>:</P>
+      <OL>
+       <LI CLASS="mvd-P">
+       <P>
+        <a href="tm_ucrea.htm#Create the UC Realization Pkg"">Create the <STRONG><SPAN STYLE="font-weight : normal;">Use-Case
+         Realization</SPAN></STRONG> package in the appropriate model</a>
+        <LI CLASS="mvd-P"><a href="tm_ucrea.htm#Creating a Use-Case Realization"">Create
+         a Use-Case Realization</a>
+        <LI CLASS="mvd-P"><a href="tm_ucrea.htm#Creating traceability"">Create
+          traceability between a use case and its Use-Case Realization</a>
+       </OL>
+      <H3>
+       1. <A NAME="Create the UC Realization Pkg"></A>Create the <STRONG>Use-Case
+        Realization</STRONG>  package in the appropriate model <a href="tm_ucrea.htm#Top""><IMG SRC="../../images/top.gif" VSPACE="0" HSPACE="0" ALT="To top of page" BORDER="0" width="26" height="20"></a></H3>
+      <P>
+       Use-Case Realizations may be created in either the <a href="../../process/artifact/ar_amdl.htm"">Artifact:
+        Analysis Model</a> or the <a href="../../process/artifact/ar_desmd.htm"">Artifact:
+        Design Model</a>, or both. These artifacts are in turn represented 
+       as packages in the &quot;Logical View&quot; of your model. Please 
+       refer to <a href="tm_ucana.htm"">Tool Mentor: Capturing the Results of 
+       Use-Case Analysis</a> and <a href="tm_desmd.htm"">Tool Mentor: 
+       Managing the Design Model</a> for information on creating of these 
+       packages. When you create the package, name it &quot;Use-Case 
+       Realizations.&quot; When you create a new class diagram for the 
+       package, name it &quot;Traceabilities.&quot;</P>
+      <H3>
+       2. <A NAME="Creating a Use-Case Realization"></A>Create a Use-Case 
+       Realization <a href="tm_ucrea.htm#Top""><IMG SRC="../../images/top.gif" VSPACE="0" HSPACE="0" ALT="To top of page" BORDER="0" width="26" height="20"></a></H3>
+      <P>
+       A use-case realization represents the design perspective of a use 
+       case. It is an organization model element used to group a number of 
+       artifacts related to the use case design. Use cases are separate from 
+       use-case realizations so you can manage each individually and so you 
+       can change the design of the use case without affecting the baseline 
+       use case. For each use case in the use-case model, there is a 
+       use-case realization in the design model with a dependency 
+       (stereotyped &#171;realize&#187;) to the use case.</P>
+      <P>
+       To create a Use-Case Realization you create and name a new Use Case 
+       in the Use Case View package then drag and drop it into the &quot;Use-Case
+        Realizations&quot; package. Using the Use Case Specification, assign 
+       the stereotype «use-case realization» to the use case. If a 
+       dialog appears indicating the Use Case exists in two name spaces, 
+       click <b>OK</b>. In the Use-Case Realizations package you 
+       created, create a package to manage the Use-Case Realization, giving 
+       it the same name as the use-case realization. See <a href="tm_desmd.htm"">Tool
+       Mentor: Managing the Design Model</a> for information about creating 
+       and naming packages. In the browser, drag and drop the use-case 
+       realization into this newly created package. The use-case realization 
+       now exists in the Design or Analysis model, in a package of its own, 
+       organized together with all other use-case realizations. Having a 
+       package per use-case realization makes independent management and 
+       versioning of the artifact possible.</P>
+      <H3>
+       3. <A NAME="Creating traceability"></A>Create traceability between 
+       a use case and its Use-Case Realization <a href="tm_ucrea.htm#Top""><IMG SRC="../../images/top.gif" VSPACE="0" HSPACE="0" ALT="To top of page" BORDER="0" width="26" height="20"></a></H3>
+      <P>
+       To create traceability between a use case and its Use-Case 
+       Realization you drag the use case from the &quot;Use Case View&quot; 
+       and drop it on to the Traceabilities diagram in the Use-Case 
+       Realizations package. From the Use-Case Realizations package, drag 
+       the Use-Case Realization onto the Traceabilities diagram putting it 
+       close to the Use Case. Then, using the association tool from the 
+       diagram toolbar, draw an association between the Use-Case Realization 
+       and the Use Case. Open the Association Specification and assign it 
+       the stereotype «realize».</P>
+
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

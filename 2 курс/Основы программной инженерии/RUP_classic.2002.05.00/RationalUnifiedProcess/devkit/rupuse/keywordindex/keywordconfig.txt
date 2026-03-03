@@ -1,0 +1,20 @@
+wwwroot	../../..
+relativepath	..
+mainresultfile	/index/index.htm
+indexresultfile	/index/navig.htm
+keywordresultfile	/index/contents.htm
+target	ory_doc
+indextarget	index_t
+keywordtarget	keyword_t
+indexheight	25
+headerfile	keywordpreamble.txt
+footerfile	keywordpostamble.txt
+keywordfile	keywords.txt
+leaveDir	_border
+mulitdocumentkeyword	false
+showdocumenttitle	false
+prefix	XE_
+levelstyle	defaultstyle	indexlevel2
+levelstyle	1	indexlevel1
+levelstyle	2	indexlevel2
+levelstyle	headlinestyle	indexheading

@@ -1,0 +1,155 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Compiling with the debug option -g                     Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=615>
+<meta name=layout-width content=655>
+<meta name=date content="09 18, 2001 12:46:17 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ov_files_created.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ov_finding_source_files.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span style="font-weight: bold;"><B><span 
+ face=HELVETICA
+	color=navy
+	style="font-family: Helvetica;
+			font-size: 18pt;
+			color: #000080;
+			font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Compiling with the debug option -g</B></FONT></span></B></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">PureCoverage 
+ adds an instruction sequence for each function to record the number of 
+ times the function is entered. (The exact location of the instruction 
+ sequence, at or near the entry point of the function, depends on your 
+ compiler.) PureCoverage always provides the same summary information for 
+ the functions in your program, as well as for the files and directories, 
+ regardless of which compilation options you use. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">When 
+ you compile code using the -g debug option, the compiler includes debugging 
+ information in the resulting object file, relating source line numbers 
+ to the program instructions. In this case, PureCoverage adds a count sequence 
+ at the beginning of each basic block of code. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">A 
+ basic block is an indivisible sequence of instructions always executed 
+ together in succession. PureCoverage uses this information to generate 
+ an annotated source listing that shows the lines that are tested and untested 
+ within a function.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If 
+ you compile code without the -g option, PureCoverage does not provide 
+ coverage data below the function level. It cannot annotate source code 
+ with line coverage data because there is no way to tell which program 
+ instructions relate to which lines. Although you can display summary information 
+ for this code in the Viewer, you cannot open the Annotated Source window 
+ for it.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=HELVETICA
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Do 
+ not use PureCoverage to instrument files that were compiled with both 
+ -g and -O at the same time. The -O option changes instruction ordering, 
+ so that data for line counts can be misleading. </FONT></span></p>
+
+</body>
+
+</html>

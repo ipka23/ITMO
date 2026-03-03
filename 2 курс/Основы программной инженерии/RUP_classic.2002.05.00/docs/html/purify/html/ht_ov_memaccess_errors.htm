@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+ <!-- $MVD$:fontset("Courier New","Courier New") -->
+ <SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_mem_access_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_mem_access.css'>");}
+//-->
+ </SCRIPT>
+ <title>About memory access errors                             Rational Purify</title>
+ <META NAME="generator" CONTENT="RoboHELP by eHelp Corporation www.ehelp.com">
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../bsscdhtm.js" name="EHELP_DHTM">
+ </SCRIPT>
+ <script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+ </script>
+ <style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+ </style>
+ <script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+ </script>
+</HEAD>
+<BODY>
+ <SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_ov_purify_messages.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_how_p_finds_memacc_errs.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+ </SCRIPT>
+ <H1>About memory access errors</H1>
+ <P>Memory access errors, such as <A href="ht_ov_memaccess_errors.htm#MID_ARRAYBOUNDSERRORS"><span style="font-weight:bold; "><B>array-bounds errors</B></span></A>, <A href="ht_ov_memaccess_errors.htm#MID_DANGLINEPOINTERS"><span style="font-weight:bold; "><B>dangling pointers</B></span></A>, <A href="ht_ov_memaccess_errors.htm#MID_UNINITIALIZED_MR"><span style="font-weight:bold; "><B>uninitialized memory reads</B></span></A>, and <A href="ht_ov_memaccess_errors.htm#MID_MEMALLOCATIONERRORS"><span style="font-weight:bold; "><B>memory allocation errors</B></span></A>, are among the most difficult to detect. The symptoms of incorrect memory use typically occur far from the cause of the error and are unpredictable, so that a program that appears to work correctly really works only by accident. </P>
+ <H2><A name="MID_ARRAYBOUNDSERRORS"></A>Array bounds errors</H2>
+ <P>When your program writes memory past the bounds of an allocated block, the memory could belong to another data structure in the program, which would become corrupted when it is overwritten. Reading from beyond the memory block might appear less critical because memory is not corrupted. However, the behavior of the program comes to depend on the values accessed, which are unpredictable. If the exact layout of memory is changed, the memory block adjacent to the block for which the reference was intended might be totally different and contain different values.</P>
+ <P>Purify inserts guard zones around statically and dynamically allocated memory to catch this type of access error. Purify reports an <A href="ht_m_abr.htm"><span style="font-weight:bold; "><B>array bounds read (ABR)</B></span></A> or an <A href="ht_m_abw.htm"><span style="font-weight:bold; "><B>array bounds write (ABW)</B></span></A> message at the time it detects the error. </P>
+ <H2><A name="MID_DANGLINEPOINTERS"></A>Accessing through dangling pointers</H2>
+ <P>When a dynamically allocated block of memory is freed, the memory is often reallocated to a new data structure in a different part of the program. If a program uses a dangling pointer to read values from a recently-freed memory block, and the freed memory hasn't been reallocated yet, the expected value might still be present. Although the program appears to work, it could fail if the memory allocation pattern changes and the freed memory block is reallocated earlier. </P>
+ <P>In a threaded program, the reallocation can happen in another thread, in which case the failure becomes dependent upon specific timing issues. For example, the program might fail only on a multi-processor machine where the second processor allocates the memory while the first processor is still accessing it. </P>
+ <P>Similarly, if a program uses a dangling pointer to write a value to a recently-freed memory block, the program might continue to work. However, if the memory is already being used by another data structure, the write will corrupt that other data structure. The corruption is apparent only later in the run when it's difficult to identify the cause. </P>
+ <P>Purify tracks freed memory and reports invalid memory accesses as <A href="ht_m_fmr.htm"><span style="font-weight:bold; "><B>free memory read (FMR)</B></span></A> or <A href="ht_m_fmw.htm"><span style="font-weight:bold; "><B>free memory write (FMW)</B></span></A> errors at the time the errors occur. </P>
+ <H2><A name="MID_UNINITIALIZED_MR"></A>Uninitialized memory reads</H2>
+ <P>In C and C++, local variables are allocated from memory on the stack at the time the function or block defining the variable is entered. Initially, the variables contain whatever values the stack memory last held, and are considered uninitialized. If your program attempts to use the value of such a variable without first setting it, the value is undefined. Unfortunately, the value is not random, but depends on how that memory was last used. Similarly, memory you get from <font  face='Courier'>malloc</font> or <font  face='Courier'>new</font> starts out uninitialized.</P>
+ <P>Purify tracks new memory blocks as they are allocated and reports any attempt to read or use a value from the block before it's initialized as an <A href="ht_m_umr.htm"><span style="font-weight:bold; "><B>uninitialized memory read (UMR)</B></span></A> error.</P>
+ <H2><A name="MID_MEMALLOCATIONERRORS"></A>Memory allocation errors</H2>
+ <P>If your program incorrectly uses memory-allocation primitives, it might continue to run in spite of the error. However, in this case you risk corrupted heap data structures and failures at a later point in your program's run.</P>
+ <P>Purify intercepts all calls to memory allocation API functions such as <font  face='Courier'>malloc</font>, <font  face='Courier'>new</font>, <font  face='Courier'>new[]</font>, <font  face='Courier'>calloc</font>, <font  face='Courier'>realloc</font> and related functions, to warn you about their incorrect use. For example, when you use an incorrect function to free memory, such as calling <font  face='Courier'>free</font> on memory obtained from <font  face='Courier'>new</font>, Purify generates a <A href="ht_m_fmm.htm"><span style="font-weight:bold; "><B>freeing mismatched memory (FMM)</B></span></A> message. </P>
+ <P class="rTipNoteGlossaryHeading" >Notes:</P>
+ <UL>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >For information about how Purify finds memory access errors, click <A href="ht_how_p_finds_memacc_errs.htm"><IMG src="../image/shortcut.gif" border="0" height="14" width="14" alt="image\SHORTCUT.gif"></A> </P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >For a memory access error example, click <A href="ht_ex_testhash.htm"><IMG src="../image/shortcut.gif" border="0" height="14" width="14" alt="image\SHORTCUT.gif"></A> </P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >For a list of command-line options related to memory access, click <A href="ht_opt_mem_access.htm"><IMG src="../image/shortcut.gif" border="0" height="14" width="14" alt="image\SHORTCUT.gif"></A>.</P></LI>
+  <LI style="font-size:14pt; ">
+  <P class="List-Bullet" >For a list of API functions related to memory access, click <A href="ht_api_mem_access.htm"><IMG src="../image/shortcut.gif" border="0" height="14" width="14" alt="image\SHORTCUT.gif"></A>.</P></LI>
+ </UL>
+</BODY>
+</HTML>

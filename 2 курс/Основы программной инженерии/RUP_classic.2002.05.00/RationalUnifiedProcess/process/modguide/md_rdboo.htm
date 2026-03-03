@@ -1,0 +1,641 @@
+
+<html>
+
+<head>
+<title>Guidelines: Reverse-engineering Relational Databases</title>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/ar_datmd.gif"> <a href="../artifact/ar_datmd.htm">Data Model</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Reverse-engineering Relational Databases
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Reverse-engineering Relational Databases</rpw><a name="Top"></a><a name="XE_relational_databases__reverse_engineering"></a><a name="XE_design_model__reverse-engineering_relational_databases"></a><a name="XE_data_model__reverse-engineering_relational_databases"></a></h2>
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Replicating RDBMS Tables in the Design Model"">Replicating RDBMS
+    Tables in the Design Model</a>
+    <ul>
+      <li><a href="#Create a Class for each Table"">Create a Class for each Table</a></li>
+      <li><a href="#Identify Embedded or Implicit Classes"">Identify Embedded or
+        Implicit Classes</a></li>
+      <li><a href="#Handle Foreign-Key Relationships"">Handle Foreign-Key
+        Relationships</a></li>
+      <li><a href="#Handle Many-to-Many Relationships"">Handle Many-to-Many
+        Relationships</a></li>
+      <li><a href="#Introduce Generalization"">Introduce Generalization</a></li>
+    </ul>
+  </li>
+  <li><a href="#Replicating RDBMS Behavior in the Design Model"">Replicating
+    RDBMS Behavior in the Design Model</a></li>
+</ul>
+<p>The following procedure can be followed to produce an object model from a
+relational database schema.</p>
+<h3><a name="Replicating RDBMS Tables in the Design Model">Replicating RDBMS
+Tables in the Design Model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Replicating the structure of the database in a class model is relatively
+straight-forward. The process listed below describes the algorithm for
+converting a relational database schema to an object model.</p>
+<h3><a name="Create a Class for each Table">Create a Class for each Table</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>For each table the you wish to reverse-engineer, create a class to represent
+the table. For each column, create an attribute on the class with the
+appropriate data type. Try to match the data type of the attribute and the data
+type of the associated column as closely as possible.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Consider the database table <strong>Customer</strong>, with
+the following structure, shown in the following figure:</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="55%" bordercolor="#808080"><u><strong>Column Name</strong></u></td>
+    <td width="45%" bordercolor="#808080"><u><strong>Data Type</strong></u></td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">Customer_ID</td>
+    <td width="45%" bordercolor="#808080">Number</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">Name</td>
+    <td width="45%" bordercolor="#808080">Varchar</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">Street</td>
+    <td width="45%" bordercolor="#808080">Varchar</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">City</td>
+    <td width="45%" bordercolor="#808080">Varchar</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">State/Province</td>
+    <td width="45%" bordercolor="#808080">Char(2)</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">Zip/Postal Code</td>
+    <td width="45%" bordercolor="#808080">Varchar</td>
+  </tr>
+  <tr>
+    <td width="55%" bordercolor="#808080">Country</td>
+    <td width="45%" bordercolor="#808080">Varchar</td>
+  </tr>
+</table>
+</center></div>
+
+<p class="picturetext">Table definition for <strong>Customer </strong>table</p>
+<p class="example">Starting from this point, we create a class, <strong>Customer,
+</strong>with the structure shown in the following figure:</p>
+      <p class="example" align="center"><img src="images/rdb-oo1.gif" alt="Customer class definition" width="147" height="154"></p>
+<p class="picturetext">Initial <strong>Customer</strong> class</p>
+<p class="example">In this initial <strong>Customer</strong> class, there is an
+attribute for each column in the <strong>Customer</strong> table. Each attribute
+has <strong>public</strong> visibility, since any of the columns in the
+originating table may be queried.</p>
+<p class="example">Note, the <img src="images/rdb-oo7.gif" alt="public" width="14" height="15">icon
+listed to the left of the attribute indicates that the attribute is 'public'; by
+default, all attributes derived from RDBMS tables should be public, since the
+RDBMS generally allows any column to be queried without restriction.</p>
+<h3><a name="Identify Embedded or Implicit Classes">Identify Embedded or
+Implicit Classes</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The class that results from the direct table-class mapping will often contain
+attributes that can be separated into a separate class, especially in cases
+where the attributes appear in a number of translated classes. These 'repeated
+attributes' may have resulted from denormalization of tables for performance
+reasons, or may have been the result of an oversimplified data model. In these
+cases, split the corresponding class into two or more classes to represent a
+normalized view of the tables.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Nearly immediately after defining the <strong>Customer</strong>
+class above, however, we can define an <strong>Address </strong>class which
+contains all address information (assuming that there will be other things with
+addresses in our system), leaving us with the following classes:</p>
+      <p class="example" align="center"><img src="images/rdb-oo2.gif" width="433" height="150"></p>
+<p class="picturetext">revised <strong>Customer</strong> class, with extracted <strong>Address
+</strong>class</p>
+<p class="example">The association drawn between these two is an <strong>aggregation</strong>,
+since the customer's address can be thought of as being <strong>part-of</strong>
+the customer.</p>
+<h3><a name="Handle Foreign-Key Relationships">Handle Foreign-Key Relationships</a>
+<a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>For each foreign-key relationship in the table, create an association between
+the associated classes, removing the attribute from the class which mapped to
+the foreign-key column. If the foreign-key column was represented initially as
+an attribute, remove it from the class.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Assume the structure for the <strong>Order</strong> table
+listed below:</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="38%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="62%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+  </tr>
+  <tr>
+    <td width="38%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+    <td width="62%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+  </tr>
+  <tr>
+    <td width="38%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Customer_ID</td>
+    <td width="62%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+  </tr>
+</table>
+</center></div>
+
+<p class="picturetext">Structure for the <strong>Order</strong> table</p>
+<p class="example">In the <strong>Order </strong>table listed above, the <strong>Customer_ID</strong>
+column is a <strong>foreign-key reference</strong>; this column contains the
+primary key value of the Customer associated with the Order. We would represent
+this in the Design Model as shown below:</p>
+      <p class="example" align="center"><img src="images/rdb-oo3.gif" width="156" height="209"></p>
+<p class="picturetext">Representation of foreign-key Relationships in the Design
+Model</p>
+<p class="example">The foreign-key is represented as an association between the
+classes <strong>Order </strong>and <strong>Item</strong>.</p>
+<h3><a name="Handle Many-to-Many Relationships">Handle Many-to-Many
+Relationships</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>RDBMS data models represent many-to-many relationships with what has been
+called a <strong>join table</strong>, or an <strong>association table</strong>.
+These tables enable many-to-many relationships to be represented using an
+intermediate table which contains the primary keys of two different tables which
+may be joined together. The reason join tables are needed is because a foreign
+key reference can only contain a reference to a single foreign key value; when a
+single row may relate to many other rows in another table, a join table is
+needed to associate them.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Consider the case of <strong>Products</strong>, which may be
+provided by any one of a number of <strong>Suppliers</strong>, and any <strong>Supplier</strong>
+may provide any number of <strong>Products</strong>. The <strong>Product </strong>and
+<strong>Supplier </strong>tables have the structure defined below:</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><strong>Product
+    Table</strong></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><strong>Supplier
+    Table</strong></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Product_ID</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Supplier_ID</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Name</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Name</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Description</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Street</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Price</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">City</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">State/Province</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Char(2)</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Zip/Postal
+    Code</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Country</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Varchar</td>
+    <td width="10%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p class="picturetext">Product and Supplier Table Definitions</p>
+<p class="example" align="left">In order to link these two tables together to
+find the products offered by a particular supplier, we need a <strong>Product-Supplier
+</strong>table, which is defined in the table below.</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="100%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080" colspan="2" align="center"><strong>Product-Supplier
+    Table</strong></td>
+  </tr>
+  <tr>
+    <td width="60%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="40%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+  </tr>
+  <tr>
+    <td width="60%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Product_ID</td>
+    <td width="40%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+  </tr>
+  <tr>
+    <td width="60%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Supplier_ID</td>
+    <td width="40%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+  </tr>
+</table>
+</center></div>
+
+<p class="picturetext">Product-Supplier Table Definition</p>
+<p class="example">This <strong>join table</strong> contains the primary keys of
+products and suppliers, linking them together. An row in the table would
+indicate that a particular supplier offers a particular product. All rows whose
+Supplier_ID column matches a particular supplier ID would provide a listing of
+all products offered by that supplier.</p>
+<p class="example">In the Design Model, this intermediate table is redundant,
+since an object model can represent many-to-many associations directly. The <strong>Supplier</strong>
+and <strong>Product</strong> classes and their relationships is shown in Figure
+8, along with the <strong>Address</strong> class, which is extracted from the <strong>Supplier</strong>,
+according to the previous discussion.</p>
+      <p class="example" align="center"><img src="images/rdb-oo4.gif" width="409" height="301"></p>
+<p class="picturetext">Product and Supplier Class Representation</p>
+<h3><a name="Introduce Generalization">Introduce Generalization</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Often, you will find tables which have some similar structure. In the
+Relational Data Model, there is no concept of generalization, so there is not a
+way to represent that two or more tables have some structure in common.
+Sometimes common structure results from denormalization for performance, such as
+was the case above with the 'implicit' <strong>Address </strong>table which we
+extracted into a separate class. In other cases, tables share more fundamental
+characteristics which we can extract into a generalized parent class with two or
+more sub-classes. To find generalization opportunities, look for repeated
+columns in several tables, where the tales are more similar than they are
+different.</p>
+<p class="exampleheading">Example</p>
+<p class="example">Consider the following tables, <strong>SoftwareProduct</strong>
+and <strong>HardwareProduct</strong>, as shown below:</p>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><strong>SoftwareProduct
+    Table</strong></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><strong>HardwareProduct
+    Table</strong></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Column
+    Name</strong></u></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><u><strong>Data
+    Type</strong></u></td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Product_ID</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Number</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Product_ID</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Number</font></td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Name</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Varchar</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Name</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Varchar</font></td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Description</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Varchar</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Description</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Varchar</font></td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Price</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Number</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Price</font></td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><font color="#0000FF">Number</font></td>
+  </tr>
+  <tr>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Version</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <pre> </pre>
+    </td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Assembly</td>
+    <td width="20%" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Number</td>
+  </tr>
+</table>
+</center></div>
+
+<p class="picturetext">SoftwareProduct and HardwareProduct Tables</p>
+<p class="example">Notice that the columns highlighted in blue are identical;
+these two tables share most of their definition in common, and only differ
+slightly. We can represent this by extracting a common <strong>Product</strong>
+class, with <strong>SoftwareProduct</strong> and <strong>HardwareProduct</strong>
+as sub-classes of the <strong>Product</strong>, as shown in the following
+figure:</p>
+      <p class="example" align="center"><img src="images/rdb-oo5.gif" width="320" height="231"></p>
+<p class="picturetext">SoftwareProduct and HardwareProduct Classes, showing
+generalization to the Product class</p>
+<p class="example">Putting all of the class definitions together, figure below
+shows a consolidated class diagram for the Order Entry system (major classes
+only)</p>
+      <p class="example"><img src="images/rdb-oo6.gif" width="643" height="588"></p>
+<p class="picturetext">Consolidated Class diagram for the Order Entry System</p>
+<h3><a name="Replicating RDBMS Behavior in the Design Model">Replicating RDBMS
+Behavior in the Design Model</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Replicating behavior is more difficult, since typically relational databases
+are not object-oriented and do not appear to have anything analogous to
+operations on a class in the object model. The following steps can help
+re-construct the behavior of the classes identified above:
+<ol>
+  <li><strong>Create operations to get and set each attribute. </strong>There
+    needs to be a way to set, change and query the values of the attributes of
+    objects. Since the only way to access the attributes of an object is through
+    operations the class provides, such operations must be defined on the class.
+    When creating the operations that set the value of an attribute, be sure to
+    incorporate any validation constraints that may operate on the associated
+    column. If there are no validation constraints, one may choose to simply
+    represent the fact that the attributes can be <strong>get</strong> and <strong>set</strong>
+    by marking them as having &quot;public&quot; visibility, as the has been
+    done in the diagrams above (with the icon to the left of the attribute
+    name).</li>
+  <li><strong>Create an operation on the class for each stored procedure which
+    operates upon the associated table.</strong> Stored procedures are
+    executable subroutines which execute within the DBMS itself. This logic
+    needs to be translated into the Design Model. If a stored procedure operates
+    only on one class, create an operation on the class with the same parameters
+    and the same return type as the stored procedure. Document the behavior of
+    the stored procedure in the operation, making sure to note in the <strong>method</strong>
+    description that the operation is implemented by the stored procedure.</li>
+  <li><strong>Create operations to manage associations between classes. </strong>When
+    there is an association between two classes, there must be a way to create,
+    manage and remove associations. Associations between objects are managed
+    through object references, so to create an association between an <strong>Order</strong>
+    and a <strong>LineItem </strong>(i.e. to add the <strong>LineItem</strong>
+    to the <strong>Order</strong>), an operation on <strong>Order</strong> would
+    be invoked, passing the <strong>LineItem </strong>as an argument (i.e. <strong>Order.add(aLineItem)</strong>).
+    There must also be ways to remove and update the association as well (i.e. <strong>Order.remove(aLineItem)
+    </strong>and <strong>Order.change(aLineItem,aNewLineItem)</strong>).</li>
+  <li><strong>Handle Object Deletion. </strong>If the target language supports
+    explicit deletion, add behavior to the class's destructor which implements
+    referential integrity checking. In cases where there are referential
+    integrity constraints in the database, such as <strong>cascade delete</strong>,
+    the behavior needs to be replicated in the appropriate classes. For example,
+    the database may define a constraint that says that whenever an <strong>Order</strong>
+    is deleted, all associated <strong>LineItems</strong> should be deleted as
+    well. If the target language supports garbage collection, create a mechanism
+    by which rows can be removed from tables when the associated object is
+    garbage-collected. Note that this is harder than it sounds (and it sounds
+    hard), because you will need to implement a mechanism for ensuring that no
+    database client has any references to the object which is to be garbage
+    collected; it is not enough to rely upon the garbage collection capabilities
+    of the execution environment/virtual machine since this is simple one
+    client's view of the world.</li>
+  <li><strong>Handle Behavior Implied by Queries. </strong>Examine Select
+    statements which access the table to see how information is retrieved and
+    manipulated. For each column directly returned by a Select statement, set
+    the <strong>public </strong>property of the associated attribute to <strong>true</strong>;
+    all other attributes should be <strong>private</strong>. For each computed
+    column in a Select statement, create an operation on the associated class to
+    compute and return the value. When considering Select statements, also
+    include the Select statements embedded in View definitions.</li>
+</ol>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

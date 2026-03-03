@@ -1,0 +1,142 @@
+rpw_img.zip*
+0* Rational Suite AnalystStudio Tool Mentors*../toolment/anastudio/anastudio.htm* *suiteas.gif*suiteas.gif*f*
+  1*Eliciting Stakeholder Requests Using Rational ClearQuest*../toolment/anastudio/tm_er_cq.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Managing Stakeholder Requests Using Rational ClearQuest and Rational RequisitePro*../toolment/anastudio/tm_feat_cqrp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Managing Use Cases Using Rational Rose and Rational RequisitePro*../toolment/anastudio/tm_iucm.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Administrator Tool Mentors*../toolment/admin/admin.htm* *admin.gif*admin.gif*f*
+  1* Configuring Projects Using the Rational Administrator*../toolment/admin/tm_raconf.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational ClearCase Tool Mentors*../toolment/clearcase/c_case.htm* *cc.gif*cc.gif*f*
+  1*Checking Out and Checking In Configuration Items Using Rational ClearCase*../toolment/clearcase/tm_cico.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Comparing Baselines Using Rational ClearCase*../toolment/clearcase/tm_cmpbl.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating Baselines Using Rational ClearCase*../toolment/clearcase/tm_escme.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating Multiple Sites Using Rational ClearCase*../toolment/clearcase/tm_msite.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Development Workspace Using Rational ClearCase*../toolment/clearcase/tm_wowi2.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating an Integration and Building Workspace Using Rational ClearCase*../toolment/clearcase/tm_builp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Delivering Your Work Using Rational ClearCase*../toolment/clearcase/tm_delucm.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Linking Configuration Management and Change Request Management Using Rational ClearQuest and Rational ClearCase*../toolment/clearcase/tm_ucmcq.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Promoting Project Baselines Using Rational ClearCase*../toolment/clearcase/tm_wowi1.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Policies Using Rational ClearCase*../toolment/clearcase/tm_stplc.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up the Implementation Model Using Rational ClearCase*../toolment/clearcase/tm_epcmp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up the Implementation Model with UCM Using Rational ClearCase*../toolment/clearcase/tm_impucm.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Updating Your Project Work Area Using Rational ClearCase*../toolment/clearcase/tm_rebucm.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Using UCM Change Sets with Rational ClearCase*../toolment/clearcase/tm_actucm.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational ClearQuest Tool Mentors*../toolment/clearquest/c_quest.htm* *clrqst.gif*clrqst.gif*f*
+  1*Creating Multiple Sites Using Rational ClearQuest*../toolment/clearquest/tm_cqmst.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Defining Change and Review Notifications Using Rational ClearQuest*../toolment/clearquest/tm_crnot.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Establishing a Change Request Process Using Rational ClearQuest*../toolment/clearquest/tm_escrp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Reporting Defect Trends and Status Using Rational ClearQuest*../toolment/clearquest/tm_repdd.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Reporting Review and Work Status Using Rational ClearQuest*../toolment/clearquest/tm_query.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Submitting Change Requests Using Rational ClearQuest*../toolment/clearquest/tm_cplcr.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Viewing the History of a Defect Using Rational ClearQuest*../toolment/clearquest/tm_mthis.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Process Workbench Tool Mentors*../toolment/rpw/rpw.htm* *rup1.gif*rup1.gif*f*
+  1*Defining a Custom Process Using Rational Process Workbench*../toolment/rpw/tm_defproc.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Developing a Process Model Using Rational Process Workbench*../toolment/rpw/tm_devmodel.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Managing Process Content Using Rational Process Workbench*../toolment/rpw/tm_mgmcnt.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Publishing a Process Using Rational Process Workbench*../toolment/rpw/tm_publish.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up and Configuring the Rational Process Workbench Tool*../toolment/rpw/tm_suconfig.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up and Managing the Rational Process Workbench Workspace*../toolment/rpw/tm_sumanage.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational ProjectConsole Tool Mentors*../toolment/pjc/pjc.htm* *pjc.gif*pjc.gif*f*
+  1*Browsing Project Artifacts Using Rational ProjectConsole*../toolment/pjc/tm_pjc_browsepa.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Static or Portable Copy of your Rational ProjectConsole Web Site Using Rational ProjectConsole*../toolment/pjc/tm_pjc_createcopy.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Displaying Artifacts Related to Specific Objects on a Diagram Using Rational ProjectConsole*../toolment/pjc/tm_pjc_displayart.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational PureCoverage Tool Mentors*../toolment/vpcvg/vpcvg.htm* *coverage.gif*coverage.gif*f*
+  1*Evaluating Code Coverage Using Rational PureCoverage and Rational PurifyPlus (UNIX)*../toolment/vpcvg/tm_vpcvgu.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Evaluating Code Coverage Using Rational PureCoverage and Rational PurifyPlus (Windows)*../toolment/vpcvg/tm_vpcvg.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Purify Tool Mentors*../toolment/purify/purify.htm* *purify.gif*purify.gif*f*
+  1*Detecting Run-Time Errors Using Rational Purify and Rational PurifyPlus (UNIX)*../toolment/purify/tm_purfyu.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Detecting Run-time Errors Using Rational Purify and Rational PurifyPlus (Windows)*../toolment/purify/tm_purfy.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Profiling Java Memory Usage Using Rational Purify and Rational PurifyPlus (Windows)*../toolment/purify/tm_pfj.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Profiling Memory Usage in Managed Code Using Rational Purify&reg; and Rational PurifyPlus (Windows) *../toolment/purify/tm_purfymngcode.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational QualityArchitect Tool Mentors*../toolment/rqa/rqa.htm* *quality_architect.gif*quality_architect.gif*f*
+  1* Implementing an Automated Component Test using Rational QualityArchitect*../toolment/rqa/tm_rqa_implautoct.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Quantify Tool Mentors*../toolment/vqtfy/vqtfy.htm* *quantify.gif*quantify.gif*f*
+  1*Finding Performance Bottlenecks Using Rational Quantify and Rational PurifyPlus (UNIX)*../toolment/vqtfy/tm_vqtfyu.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Finding Performance Bottlenecks Using Rational Quantify and Rational PurifyPlus (Windows)*../toolment/vqtfy/tm_vqtfy.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational RequisitePro Tool Mentors*../toolment/reqpro/reqpro.htm* *reqpro.gif*reqpro.gif*f*
+  1*Adding Templates to Your Rational RequisitePro Project*../toolment/reqpro/tm_adtpl.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Archiving Requirements Using Rational RequisitePro*../toolment/reqpro/tm_rarchive.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Baselining a Rational RequisitePro Project*../toolment/reqpro/tm_rbase.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Capturing a Common Vocabulary Using Rational RequisitePro*../toolment/reqpro/tm_ccvcb.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Detailing a Business Use Case Using Rational RequisitePro*../toolment/reqpro/tm_debuc.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Detailing a Use Case Using Rational RequisitePro*../toolment/reqpro/tm_desuc.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Developing a Vision Using Rational RequisitePro*../toolment/reqpro/tm_dvisn.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Eliciting Stakeholder Requests Using Rational RequisitePro*../toolment/reqpro/tm_elstk.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Managing Dependencies Using Rational RequisitePro*../toolment/reqpro/tm_mgdep.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Reviewing Requirements Using Rational RequisitePro*../toolment/reqpro/tm_review.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up Rational RequisitePro for a Project*../toolment/reqpro/tm_setup.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Viewing Requirement History Using Rational RequisitePro*../toolment/reqpro/tm_rhist.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Robot Tool Mentors*../toolment/robot/robot.htm* *robot.gif*robot.gif*f*
+  1*Creating an Automated Performance Test Script Using Rational Robot *../toolment/robot/tm_tstscr.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Executing Test Suites Using Rational Robot*../toolment/robot/tm_extst.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Implementing Test Scripts Using Rational Robot*../toolment/robot/tm_imtst.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up the Test Environment in Rational Robot *../toolment/robot/tm_tsten.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Rose Tool Set*../toolment/rose/tms_rose.htm* *toolset.gif*toolset.gif*f*
+  1*Rational Rose RealTime Tool Mentors*../addin_realtime/toolment/rosert/rosert.htm* *rosert.gif*rosert.gif*f*
+    2*Capturing a Concurrency Architecture using Rational Rose RealTime*../addin_realtime/toolment/rosert/tm_rrtconcur.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Designing with Active Objects in Rational Rose RealTime*../addin_realtime/toolment/rosert/tm_rrtobjdesign.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Setting Up Version Control using Rational Rose RealTime with Rational ClearCase*../addin_realtime/toolment/rosert/tm_rrtclearcase.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Rational Rose Tool Mentors*../toolment/rose/rose.htm* *rose.gif*rose.gif*f*
+    2*Accessing Rational ClearCase from Rational Rose*../toolment/rose/tm_rose2cc.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Capturing the Results of Use-Case Analysis Using Rational Rose*../toolment/rose/tm_ucana.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Comparing and Merging Rational Rose Models Using Model Integrator*../toolment/rose/tm_usingmi.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Creating Use-Case Realizations Using Rational Rose*../toolment/rose/tm_ucrea.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Designing and Modeling Databases Using Rational Rose Data Modeler*../toolment/rose/tm_dtmod.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Detailing a Use Case Using Rational Rose*../toolment/rose/tm_desuc.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Documenting the Deployment Model Using Rational Rose*../toolment/rose/tm_dist.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Documenting the Process View Using Rational Rose*../toolment/rose/tm_proc.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Finding Actors and Use Cases Using Rational Rose*../toolment/rose/tm_fauc2.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Generating Elements from a Model Using Rational Rose*../toolment/rose/tm_rosefe.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing Classes Using Rational Rose*../toolment/rose/tm_class.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing Collaboration Diagrams Using Rational Rose*../toolment/rose/tm_ucds2.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing Interfaces Using Rational Rose*../toolment/rose/tm_ards3.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing Sequence Diagrams Using Rational Rose*../toolment/rose/tm_ucds1.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing Subsystems Using Rational Rose*../toolment/rose/tm_dssub.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Managing the Design Model Using Rational Rose*../toolment/rose/tm_desmd.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Publishing Web-based Rational Rose Models Using Web Publisher*../toolment/rose/tm_webpubmod.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Reverse-Engineering Code Using Rational Rose*../toolment/rose/tm_ards5.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Setting Up Rational Rose for a Project*../toolment/rose/tm_setup.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Structuring the Implementation Model Using Rational Rose*../toolment/rose/tm_strim.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Structuring the Use-Case Model Using Rational Rose*../toolment/rose/tm_stucm.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Rational Rose Tool Mentors for Business Modeling*../toolment/rose/rose_bm.htm* *rose2.gif*rose2.gif*f*
+    2*Detailing Business Workers and Entities Using Rational Rose*../toolment/rose/tm_dbwke.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Detailing a Business Use Case Using Rational Rose*../toolment/rose/tm_debuc.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Finding Actors and Use Cases Using Rational Rose*../toolment/rose/tm_fauc2.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Finding Business Actors and Use Cases Using Rational Rose*../toolment/rose/tm_fbau2.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Finding Business Workers and Entities Using Rational Rose*../toolment/rose/tm_fbwke.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Publishing Web-based Rational Rose Models Using Web Publisher*../toolment/rose/tm_webpubmod.htm* *toolmentor.gif*toolmentor.gif*f*
+    2*Structuring the Business Use-Case Model Using Rational Rose*../toolment/rose/tm_sbucm.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational SoDA Tool Mentors*../toolment/soda/soda.htm* *soda.gif*soda.gif*f*
+  1*Creating a Business Entity Report Using Rational SoDA*../toolment/soda/tm_bent.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Business Object Model Survey Using Rational SoDA*../toolment/soda/tm_bom.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Business Use-Case Model Survey Using Rational SoDA*../toolment/soda/tm_bucm.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Business Use-Case Realization Report Using Rational SoDA*../toolment/soda/tm_bucr.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Business Worker Report Using Rational SoDA*../toolment/soda/tm_bwk.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Class Report Using Rational SoDA*../toolment/soda/tm_clrep.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Design Model Survey Using Rational SoDA*../toolment/soda/tm_desms.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Package Report Using Rational SoDA*../toolment/soda/tm_pkrep.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Software Architecture Document Using Rational SoDA*../toolment/soda/tm_sad.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Use-Case Model Survey Using Rational SoDA*../toolment/soda/tm_ucmsv.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Use-Case Realization Report Using Rational SoDA*../toolment/soda/tm_ucrrp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Use-Case Report Using Rational SoDA*../toolment/soda/tm_ucrep.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating a Use-Case Storyboard Report Using Rational SoDA*../toolment/soda/tm_ucstb.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Creating an Actor Report Using Rational SoDA*../toolment/soda/tm_actor.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational Test RealTime Tool Mentors*../addin_realtime/toolment/test_realtime/test_rt.htm* *testrt.gif*testrt.gif*f*
+  1*Analyzing Test Execution Using Rational Test RealTime*../addin_realtime/toolment/test_realtime/tm_rtrteva.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Executing Test Components Using Rational Test RealTime*../addin_realtime/toolment/test_realtime/tm_rtrtexe.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Implementing Test Components Using Rational Test RealTime*../addin_realtime/toolment/test_realtime/tm_rtrtimp.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational TestFactory Tool Mentors*../toolment/testfact/testfact.htm* *testfact.gif*testfact.gif*f*
+  1* Evaluating Test Coverage Using Rational TestFactory*../toolment/testfact/tm_tfvsc.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Evaluating the Results of Executing a Test Suite Using Rational TestFactory*../toolment/testfact/tm_tfvts.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Executing a Test Suite Using Rational TestFactory*../toolment/testfact/tm_tfts.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Implementing Generated Test Scripts Using Rational TestFactory*../toolment/testfact/tm_tfgen.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Structuring the Test Implementation with Rational TestFactory*../toolment/testfact/tm_tfcap.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Using Rational TestFactory to Measure and Evaluate Code-based Test Coverage on Rational Robot Test Scripts*../toolment/testfact/tm_tfcvg.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Viewing Logs and Evaluating the Execute Test Suite Using the Rational TestManager*../toolment/testfact/tm_tfvtp.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Setting Up the Test Environment in Rational TestFactory*../toolment/testfact/tm_tfenv.htm* *toolmentor.gif*toolmentor.gif*f*
+0*Rational TestManager Tool Mentors*../toolment/testmgr/testmgr.htm* *tstmgr.gif*tstmgr.gif*f*
+  1* Creating Performance Test Suites with Rational TestManager*../toolment/testmgr/tm_perftstsuite.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Creating a Test Case Using Rational TestManager*../toolment/testmgr/tm_tstcs.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Creating a Test Plan Using Rational TestManager*../toolment/testmgr/tm_tstpln.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Executing a Test Suite Using Rational TestManager*../toolment/testmgr/tm_extstsuite.htm* *toolmentor.gif*toolmentor.gif*f*
+  1* Performing Test Activities Using Rational TestManager*../toolment/testmgr/tm_tstmn.htm* *toolmentor.gif*toolmentor.gif*f*
+  1*Implementing an Automated Test Suite Using Rational TestManager*../toolment/testmgr/tm_tstsuite.htm* *toolmentor.gif*toolmentor.gif*f*

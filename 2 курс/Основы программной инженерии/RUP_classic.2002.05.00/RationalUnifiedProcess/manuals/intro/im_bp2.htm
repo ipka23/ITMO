@@ -1,0 +1,340 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Best Practice: Manage Requirements</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/humpchart.gif"> <a href="../../process/ovu_proc.htm">Overview</a> &gt;
+<img border=0 src="../../applet/images/cup.gif"> <a href="im_bp.htm">Best Practices</a> &gt;
+<img border=0 src="../../applet/images/cup.gif"> Manage Requirements
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner"><a name="Top">Best Practice: Manage Requirements</a></h2>
+<h5>Topics</h5>
+<ul>
+  <li><a href="#What is Requirements Management"">What is Requirements
+    Management?</a>
+  </li>
+  <li><a href="#Use-Case Driven Development"">How is Development Driven by Use
+    Cases?</a></li>
+</ul>
+<h2><a name="What is Requirements Management">What is Requirements Management?</a>
+<a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h2>
+<p>Requirements management is a systematic approach to finding, documenting,
+organizing, and tracking a system's changing requirements.</p>
+<p>We define a <a href="../../process/workflow/requirem/co_req.htm"">requirement</a>
+ as &quot;a condition or capability to which the system must conform&quot;.</p>
+<p>We formally define requirements management as a systematic
+approach to both:
+<ul>
+  <li>eliciting, organizing, and documenting the <a href="../../process/workflow/requirem/co_reqty.htm"">requirements
+    of the system</a></li>
+  <li>establishing and maintaining agreement between the customer and the
+    project team on the system's changing requirements</li>
+</ul>
+<p>Keys to effective requirements management include maintaining a <a href="../../process/workflow/requirem/co_reqty.htm"">clear
+statement of the requirements</a>, along with applicable <a href="../../process/artifact/ar_rattr.htm"">attributes</a>
+and <a href="../../process/workflow/requirem/co_trace.htm"">traceability</a> to
+other requirements and other project artifacts.</p>
+<p>Collecting requirements may sound like a rather straightforward task. In reality,
+however, projects run into difficulties for the following reasons:
+<ul>
+  <li>Requirements are not always obvious, and can come from many sources.</li>
+  <li>Requirements are not always easily or clearly expressed in words.</li>
+  <li>There are many different types of requirements at different levels of
+    detail.</li>
+  <li>The number of requirements can become unmanageable if they're not controlled.</li>
+  <li>Requirements are related to one another and also to other deliverables of
+    the software engineering process.</li>
+  <li>Requirements have unique properties or property values. For example, they
+    are not necessarily equally important nor equally easy to meet.</li>
+  <li>There are many interested parties, which means requirements need to be
+    managed by cross-functional groups of people.</li>
+  <li>Requirements change.</li>
+</ul>
+<p>So, what skills do you need to develop in your organization to help you
+manage these difficulties? We've learned that the following skills are
+important to master:
+<ul>
+  <li><a href="#Problem Analysis"">Analyzing the problem</a></li>
+  <li><a href="#Understanding Stakeholder Needs"">Understanding stakeholder needs</a></li>
+  <li><a href="#Defining the System"">Defining the system</a></li>
+  <li><a href="#Managing the Scope of the Project"">Managing the scope of the project</a></li>
+  <li><a href="#Refining the System Definition"">Refining the system definition</a></li>
+  <li><a href="#Managing Changing Requirements"">Managing changing requirements</a></li>
+</ul>
+<h3><a name="Problem Analysis">Analyzing the problem</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Problems are analyzed to understand problems and initial stakeholder needs,
+and to propose high-level solutions. It's an act of reasoning and analysis to find
+&quot;the problem behind the problem&quot;. During problem analysis, agreement
+is gained on what the real problems are and on who the stakeholders are. From a business perspective
+you also define the boundaries of the solution and any business constraints on the solution.
+The business
+case for the project must also be analyzed so there is a good understanding of what return is
+expected on the investment made in the system being built.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_anpr.htm"">Workflow
+Detail: Analyze the Problem</a> in the Requirements discipline for more
+information on this topic.</p>
+<h3><a name="Understanding Stakeholder Needs">Understanding stakeholder needs</a>
+<a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Requirements come from many sources; for example, customers, partners,
+end users, and domain experts. You need to know how to determine what the best
+sources should be, how to access those sources, and how to elicit
+information from them most effectively. The individuals who provide the primary sources for this
+information are referred to as stakeholders in the project.&nbsp;</p>
+<p> If you’re
+developing an information system to be used internally within your company, you
+may include people with end-user experience and business domain expertise in
+your development team. Very often you will start the discussions at a business
+model level rather than at a system level. If you’re developing a product to be
+sold to a specific marketplace, you may make extensive use of your marketing people to
+better understand the needs of customers in that market.</p>
+<p>Elicitation activities may occur using techniques such as interviews,
+brainstorming, conceptual prototyping, questionnaires, and competitive analysis.
+The result of the elicitation is a list of requests or needs that are
+described textually and graphically, and that have been given priority relative
+to one another.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_unsh.htm"">Workflow
+Detail: Understand Stakeholder Needs</a> for further details on this topic.</p>
+<h3><a name="Defining the System">Defining the system</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Defining the system means translating and organizing the understanding of
+stakeholder needs into a meaningful description of the system to be built. Early
+in system definition, decisions are made about what constitutes a requirement,
+documentation format, language formality, degree of requirements specificity
+(how many and in what detail), request priority and estimated effort (two very
+different valuations usually determined by different people in separate
+exercises), technical and management risks, and initial scope. Part of this
+activity may include early prototypes and design models directly related to the
+most important stakeholder requests. The outcome of system definition is a
+description of the system that uses both natural language and graphical
+representations.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_defs.htm"">Workflow
+Detail: Define the System</a> in the Requirements discipline for more details on
+this topic.</p>
+<h3><a name="Managing the Scope of the Project">Managing the scope of the
+project</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>To efficiently run a project, you need to carefully prioritize the
+requirements based on input from all stakeholders and manage its scope. Too
+many projects suffer from developers working on so called &quot;Easter
+eggs&quot; (features the developer finds interesting and challenging), rather
+than early focusing on tasks that mitigate a risk to the project or stabilize
+the architecture of the application. Make sure that you resolve or mitigate
+risks in a project as early as possible, by developing your system
+incrementally, carefully choosing requirements for each increment that mitigates
+known risks in the project. This means you need to negotiate the scope of each
+iteration with the project's stakeholders. Typically this requires good
+skills in managing expectations of the output from the project in its different
+phases. You also need to control the sources of the requirements, how the
+deliverables of the project look, as well as the development process itself.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_sco.htm"">Workflow
+Detail: Manage the Scope of the System</a> in the Requirements discipline for
+additional information on this topic.</p>
+<h3><a name="Refining the System Definition">Refining the system definition</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The detailed definition of the system needs to be presented in such a way
+that your stakeholders can understand, agree to, and sign off on them. It needs
+to cover not only functionality, but also compliance with any legal or
+regulatory requirements, usability, reliability, performance, supportability,
+and maintainability. A frequent error is believing that what you feel
+is complex to build, needs to have a complex definition. This leads to
+difficulties in explaining the purpose of the project and the system. People may
+be impressed, but they will not give good input because they don’t understand.
+Special attention needs to be given to understanding the audience for whom the
+artifacts are being produced; often, different kinds of description are needed for
+different audiences.</p>
+<p>We have seen that the use-case methodology, often in combination with simple
+visual prototypes, is a very efficient way of communicating the purpose and defining the details of the system. Use cases help put requirements
+into a context; they tell a story of how the system will be used.</p>
+<p>Another component of the detailed definition of the system is to state how
+the system should be tested. Test plans and definitions of what tests to perform
+tell us what system capabilities will be verified.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_refs.htm"">Workflow
+Detail: Refine the System Definition</a> in the Requirements discipline for more
+information.</p>
+<h3><a name="Managing Changing Requirements">Managing changing requirements</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>No matter how carefully you've defined your requirements, there will
+always be things that change. What makes changing requirements complex to manage
+is not only that a changed requirement means that time has to be
+spent on implementing a particular new feature, but also that a change to one
+requirement may have an impact on other requirements. You need to make sure that
+you give your requirements a structure that is resilient to changes, and
+you need to use traceability links to represent dependencies between requirements and
+other artifacts of the development lifecycle. Managing change includes such activities
+as establishing a baseline, determining which dependencies are important to
+trace, establishing traceability between related items, and implementing change control.</p>
+<p>See the <a href="../../process/workflow/requirem/wfs_mnch.htm"">Workflow
+Detail: Manage Changing Requirements</a> in the Requirements discipline and the <a href="../../process/workflow/conf_mgt/wfd_mgchrq.htm"">Workflow
+Detail: Manage Change Requests</a> in the Configuration &amp; Change Management
+discipline for further details on this topic.</p>
+<h2><a name="Use-Case Driven Development">How is Development Driven by Use
+Cases?</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h2>
+<p>Our recommended method for organizing your functional requirements is using 
+  <a href="../../process/glossary.htm#use-case (class)"">use cases</a>. Instead 
+  of a bulleted list of requirements, organize them in a way that tells a story 
+  of how someone may use the system. This provides for greater completeness and 
+  consistency, and also provides a better understanding of the importance of a 
+  requirement from a user's perspective.</p>
+<p>From a traditional object-oriented system model, it's often difficult to tell
+how a system does what it's supposed to do. This difficulty stems from the lack
+of a &quot;red thread&quot; through the system when it performs certain tasks.
+In the Rational Unified Process (RUP), use cases are that thread because they define
+the behavior performed by a system. Use cases are not part of traditional object orientation, but their importance has become
+even more apparent. This is further emphasized by the fact that use cases are
+part of the Unified Modeling Language.</p>
+<p>The RUP employs a &quot;use-case driven approach&quot;,
+which means that use cases defined for a system are the basis for
+the entire development process.</p>
+<p>Use cases play a part in several disciplines.
+<ul>
+  <li>The concept of use cases can be used to represent business processes, as
+    defined in the <a href="../../process/workflow/ovu_busm.htm"">business
+    modeling</a>   discipline. We call this use-case variant a &quot;business
+    use case&quot;.</li>
+  <li>The <a href="../../process/glossary.htm#use-case model"">use-case model</a>
+    is the result of the <a href="../../process/workflow/ovu_req.htm"">requirements</a>
+    discipline. In this early process, you need the use cases to model what the
+    system needs to do from the user's point of view. Use cases constitute
+    an important fundamental concept that must be acceptable to both the
+    customer and the developers of the system.</li>
+  <li>In <a href="../../process/workflow/ovu_and.htm"">analysis &amp; design</a>,
+    use cases are realized in a design model. You create <a href="../../process/glossary.htm#use-case realization"">use-case
+    realizations</a>, which describe how the use case is performed in terms of
+    interacting objects in the design model. This model describes, in terms of
+    design objects, the different parts of the implemented system, and how the
+    parts need to interact to perform the use cases.</li>
+  <li>During <a href="../../process/workflow/ovu_impl.htm"">implementation</a>,
+    the <a href="../../process/glossary.htm#design model"">design model</a> is
+    the implementation specification. Because use cases are the basis for the
+    design model, they are implemented in terms of design classes.</li>
+  <li>During <a href="../../process/workflow/ovu_test.htm"">test</a>, the use
+    cases constitute the basis for identifying <a href="../../process/glossary.htm#test case"">test
+    cases</a> and <a href="../../process/glossary.htm#test procedure"">test
+    procedures</a>; that is, the system is verified by performing each use case.</li>
+  <li>In the <a href="../../process/workflow/ovu_mgm.htm"">project management</a>
+    discipline, use cases are used as a basis for planning iterative development.</li>
+  <li>In the <a href="../../process/workflow/ovu_dep.htm"">deployment</a>
+    discipline, use cases form a foundation for what is described in user's manuals. Use
+    cases can also be used to define ordering units of the product. For example,
+    a customer can get a system configured with a particular mix of use cases.</li>
+</ul>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,342 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Activity: Structure the Use-Case Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/ovu_works.htm">Roles and Activities</a> &gt;
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/wks_analysts.htm">Analyst Role Set</a> &gt;
+<img border=0 src="../../applet/images/worker.gif"> <a href="../workers/wk_sysan.htm">System Analyst</a> &gt;
+<img border=0 src="../../applet/images/activity.gif"> Structure the Use-Case Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Activity:
+&nbsp;<rpw name="PresentationName">Structure the Use-Case Model</rpw><a name="Top"></a></h2>
+<div align="center"><center>
+
+<table border="1" cellspacing="0" cellpadding="2" width="85%">
+  <tr>
+    <td colspan="2" height="35" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Purpose</font></strong></small>
+    <ul>
+      <li>To extract behavior in use cases that need to be considered as
+        abstract use cases. Examples of such behavior are common behavior,
+        optional behavior, exceptional behavior, and behavior that is to be
+        developed in later iterations.</li>
+      <li>To find new abstract actors that define roles that are shared by
+        several actors.</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" height="35" valign="top" bordercolor="#808080"><small><strong><font face="Arial">Steps</font></strong></small>
+    <ul>
+      <li><a name="XE_use_case__establish_relationships_between"></a><a href="#Establish Include-Relationships Between Use Cases"">Establish
+        Include-Relationships Between Use Cases</a></li>
+      <li><a href="#Establish Extend-Relationships Between Use Cases"">Establish
+        Extend-Relationships Between Use Cases</a></li>
+      <li><a href="#Establish Generalizations Between Use Cases"">Establish
+        Generalizations Between Use Cases</a></li>
+      <li><a href="#Establish Generalizations Between Actors"">Establish
+        Generalizations Between Actors</a></li>
+      <li><a href="#Evaluate Your Results"">Evaluate Your Results</a></li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="255" height="25" valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Input
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_gloss.htm">Glossary</a></li>
+<li><a href="../artifact/ar_ucmgl.htm">Use-Case Modeling Guidelines</a></li>
+<li><a href="../artifact/ar_sspec.htm">Supplementary Specifications</a></li>
+<li><a href="../artifact/ar_ucmod.htm">Use-Case Model</a></li>
+<li><a href="../artifact/ar_uc.htm">Use Case</a></li>
+<li><a href="../artifact/ar_ucpkg.htm">Use-Case Package</a></li>
+</ul>
+
+
+    
+</td>
+    <td width="255" height="25" style="text-indent: 0px" valign="top" bordercolor="#808080"><small><font face="Arial"><strong>Resulting
+    Artifacts:</strong></font></small>
+    
+<ul>
+<li><a href="../artifact/ar_ucmod.htm">Use-Case Model</a></li>
+<li><a href="../artifact/ar_uc.htm">Use Case</a></li>
+<li><a href="../artifact/ar_ucpkg.htm">Use-Case Package</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="19" colspan="2" style="text-indent: 4px" bordercolor="#808080"><strong><font face="Arial"><small>Role:</small>
+    </font></strong><a href="../workers/wk_sysan.htm">System Analyst</a></td>
+  </tr>
+  <tr>
+    <td width="596" valign="top" height="23" colspan="2" style="text-indent: 4px" bordercolor="#808080"><small><font face="Arial"><strong>Tool
+    Mentors: </strong></font></small>
+    
+<ul>
+<li><a href="../../toolment/rose/tm_stucm.htm">Structuring the Use-Case Model Using Rational Rose</a></li>
+</ul>
+
+
+    
+</td>
+  </tr>
+</table>
+<!-- Linked to Workflow Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" colspan="2" bordercolor="#808080"><small><font face="Arial"><strong>Workflow Details:</strong></font></small>
+<ul>
+<li><a href="../workflow/ovu_req.htm">Requirements</a>
+	<ul>
+	<li><a href="../workflow/requirem/wfs_mnch.htm">Manage Changing Requirements</a></li>
+	</ul>
+</li>
+</ul>
+
+
+</td>
+</tr>
+</table>
+<!-- Linked to Workflow End -->
+</center></div>
+
+<h3><a name="XE_include-relationship__establish_between_use_cases"></a><a name="Establish Include-Relationships Between Use Cases">Establish
+Include-Relationships Between Use Cases</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>If a use case contains a segment of behavior of which only the result, not
+the method for getting the result, is of any importance to the rest of the use
+case, this behavior can be factored out to a new <strong>inclusion use case</strong>.
+The original use case then becomes the <strong>base use case</strong> in an
+include-relationship with the inclusion use case. See also <a href="../modguide/md_ucmod.htm"">Guidelines:
+Use-Case Model</a> and <a href="../modguide/md_incl.htm"">Guidelines:
+Include-Relationship</a>.</p>
+<p>An include-relationship between two use cases means that a use-case instance
+following the description of the base use case also needs to follow the
+description of the inclusion use case in order to be complete.</p>
+<p>The include-relationship can help clarify a use case by:
+<ul>
+  <li>Isolating and encapsulating complex details so they do not obscure the
+    real meaning of the use case.</li>
+  <li>Improving consistency by including behavior which are included in several
+    base use cases.</li>
+</ul>
+<p>Generally, more than one use case must include an inclusion use case to make
+it worth it to maintain an extra use case and the include-relationship.</p>
+<p>Only the base use case knows of the relationship between the two use cases;
+no inclusion use case knows what other use cases includes it.</p>
+<p>Describe the include-relationship by briefly stating the purpose of the
+inclusion, as well as the location in the base use case at which the inclusion
+is to be inserted.</p>
+<p>When describing the flow of events of the base use case, you should refer to
+the inclusion at the location in which the inclusion is inserted.</p>
+<h3><a name="XE_extend-relationship__establish_between_use_cases"></a><a name="Establish Extend-Relationships Between Use Cases">Establish
+Extend-Relationships Between Use Cases</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>If a use case has segments of behavior that are optional or exceptional in
+character, and that do not add to the understanding of the primary purpose of
+the use case, factor those out to a new <strong>extension use case</strong>. The
+original use case then becomes a <strong>base use case</strong>, to which the
+extension use case has an extend-relationship. See also <a href="../modguide/md_ucmod.htm"">Guidelines:
+Use-Case Model</a> and <a href="../modguide/md_exrel.htm"">Guidelines:
+Extend-Relationship</a>.</p>
+<p>In the base use case you declare extension points, which define where in the
+base use case extensions may be made. See also <a href="../modguide/md_uc.htm"">Guidelines:
+Use Case</a>.</p>
+<p>Complex sub-flows and optional behavior are the first candidates for being
+partitioned out into extension use cases. Often this behavior can be quite
+complex and hard to describe: including it in the flow of events of a use case
+can make the &quot;normal&quot; behavior harder to see. Extracting it should
+improve the comprehensibility of the use-case model.</p>
+<p>Make sure that the flow of events of the base use case is still complete and
+understandable by itself, without any reference to the extension use case.</p>
+<p>Only the extension use case knows of the relationship between the two use
+cases. The base use case only knows it has extension points, it doesn't know
+what extension use cases are using them.</p>
+<p>Briefly describe every extend-relationship you define. Define the conditions
+that must be met for the extension to occur. Make sure to define the extension
+point in the base use case at which the extension should be inserted.</p>
+<ul>
+  <li>If you do not define any conditions, it means the extension always is
+    performed.&nbsp;</li>
+  <li>If the extension use case has several behavior segments that are to be
+    inserted at different extension points in the base use case, make sure to
+    define these segments and the extension point for each segment in the base
+    use case.</li>
+</ul>
+<h3><a name="XE_use-case-generalization__establish_between_use_cases"></a><a name="Establish Generalizations Between Use Cases">Establish
+Generalizations Between Use Cases</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>If two or more use cases have similarities in structure and behavior, you can 
+  factor out the common behavior to create a new <strong>parent use case</strong>. 
+  The original use cases will then be <strong>child use cases</strong> in generalization-relationships 
+  with the parent. The child use case inherits all behavior described for the 
+  parent use case. See also <a href="../modguide/md_ucmod.htm"">Guidelines: Use-Case 
+  Model</a> and <a href="../modguide/md_ucgen.htm"">Guidelines: Use-Case-Generalization</a>.</p>
+<p>A generalization-relationship between two use cases means that when a
+use-case instance follows the description of a child use case, it also needs to
+follow the description of the parent use case in order to be considered
+complete.</p>
+<p>Generally, for it to be worth it to maintain a parent use case and a
+generalization-relationship with a child, there needs to be at least two child
+use cases inheriting from the same parent. An exception is if you have two use
+cases where one is a specialization of the other, but both need to be
+independently instantiable.</p>
+<p>Only the child use case knows of the relationship between the two use cases;
+no parent use case knows what child use cases are specializing it.</p>
+<p>To assist others in understanding the model, you should briefly describe the
+generalization-relationship. Explain why you created the
+generalization-relationship.</p>
+<p>In the flow of events of the child use case you need to explain how the child
+will modify the inherited behavior sequences by inserting new segments of
+behavior.</p>
+<h3><a name="XE_actor-generalization__establishing"></a><a name="Establish Generalizations Between Actors">Establish
+Generalizations Between Actors</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Actors will have common characteristics that you should model by using
+actor-generalizations. This part of the work is best performed after you have
+made your first attempts at a use-case model.</p>
+<p>Write a brief description of the actor-generalizations, and include them in
+use-case diagrams for further clarification.</p>
+<p>See also <a href="../modguide/md_actgn.htm"">Guidelines: Actor-Generalization</a>.</p>
+<h3><a name="Evaluate Your Results">Evaluate Your Results</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>You should continuously discuss the incorporation of include-, extend-, and
+generalization-relationships with the customer and the users, and see that they
+have a clear understanding of the resulting use cases and actors, and that they
+agree on their descriptions.</p>
+<p>Check the use-case model at this stage to verify that your work is on track,
+but do not review the model in detail. You should review and discuss the newly
+incorporated use cases and relationships with the customer and users so that
+they have a clear understanding of the use cases and agree on their
+descriptions.</p>
+<p>If needed, you may decide to organize the use cases into <a href="../artifact/ar_ucpkg.htm"">use-case
+packages</a>. See <a href="../modguide/md_ucpkg.htm"">Guidelines: Use-Case
+Package</a> for more information on when to consider this option.</p>
+<p>You should also consider the checkpoints for the use-case model while you are
+working on it. See especially checkpoints for actor, use case and use-case model
+in <a href="ac_rvucm.htm"">Activity: Review Requirements</a>.</p>
+&nbsp;
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

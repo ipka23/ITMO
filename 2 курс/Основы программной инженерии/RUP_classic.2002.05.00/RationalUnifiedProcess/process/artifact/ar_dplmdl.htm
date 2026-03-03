@@ -1,0 +1,369 @@
+
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Artifact: Deployment Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/additional.gif"> <a href="arp_dsg_add.htm">{More Analysis & Design Artifacts}</a> &gt;
+<img border=0 src="../../applet/images/ar_dplmod.gif"> Deployment Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Artifact:
+&nbsp;<rpw name="PresentationName">Deployment Model</rpw><a name="Top"></a><a name="XE_deployment_model__as_artifact"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" style="border: 1px solid rgb(128,128,128)" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="135" height="34" valign="middle" bordercolor="#808080" align="center"><img src="images/dplmod.jpg" width="86" height="57" ><br>
+    <font face="Arial" size="2"><strong>Deployment Model</strong></font></td>
+    <td width="371" height="34" valign="top" bordercolor="#808080"><font size="3">The
+    Deployment Model shows the configuration of processing nodes at run-time,
+    the communication links between them, and the component instances and
+    objects that reside on them.</font></td>
+  </tr>
+  <tr>
+    <td width="148" valign="top" style="text-indent: 4px" align="left" bordercolor="#808080"><strong><font face="Arial"><small>Role:</small></font></strong></td>
+    <td width="358" valign="top" style="text-indent: 4px" align="left" bordercolor="#808080"><a href="../workers/wk_archt.htm">Software Architect</a></td>
+  </tr>
+    <tr>
+    <td width="152" valign="top" height="23" style="text-indent: 4px" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><strong><small><font face="Arial">More
+    information:</font></small></strong></td>
+    <td width="354" valign="top" height="23" style="text-indent: 4px" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+        
+    </td>
+  </tr>
+  <tr>
+    <td width="506" valign="top" style="text-indent: 4px" colspan="2" align="left" bordercolor="#808080">
+    <ul>
+      <li><a href="#Purpose"">Purpose</a></li>
+      <li><a href="#Properties"">Properties</a></li>
+      <li><a href="#Representation"">Representation</a></li>
+      <li><a href="#Timing"">Timing</a></li>
+      <li><a href="#Responsibility"">Responsibility</a></li>
+      <li><a href="#Tailoring"">Tailoring</a></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+<!-- Input_Output Activity Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" width="50%" bordercolor="#808080"><small><font face="Arial"><strong>Input to Activities:</strong></font></small><ul>
+<li><a href="../activity/ac_tst_imptst.htm">Implement Test</a></li>
+<li><a href="../activity/ac_tst_imptstste.htm">Implement Test Suite</a></li>
+<li><a href="../activity/ac_tst_idntstids.htm">Identify Test Ideas</a></li>
+<li><a href="../activity/ac_relss.htm">Create Deployment Unit</a></li>
+<li><a href="../activity/ac_archpoc.htm">Construct Architectural Proof-of-Concept</a></li>
+<li><a href="../activity/ac_tst_dfntstapr.htm">Define Test Approach</a></li>
+<li><a href="../activity/ac_tst_dfntstenvcnf.htm">Define Test Environment Configurations</a></li>
+<li><a href="../activity/ac_tst_idntstmch.htm">Identify Testability Mechanisms</a></li>
+<li><a href="../activity/ac_tst_dfntstelm.htm">Define Testability Elements</a></li>
+<li><a href="../activity/ac_distr.htm">Describe Distribution</a></li>
+</ul>
+
+
+
+</td>
+<td valign="top" width="50%" bordercolor="#808080"><small><font face="Arial"><strong>Output from Activities:</strong></font></small><ul>
+<li><a href="../activity/ac_arcan.htm">Architectural Analysis</a></li>
+<li><a href="../activity/ac_distr.htm">Describe Distribution</a></li>
+</ul>
+
+
+
+</td>
+</tr>
+</table>
+<!-- Input_Output Activity End -->
+</center></div>
+
+<h3><a name="XE_deployment_model__purpose"></a><a name="Purpose">Purpose</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The purpose of the Deployment Model is to capture the configuration of
+processing elements, and the connections between processing elements, in the
+system.&nbsp; The Deployment Model consists of one or more <b>nodes</b>
+(processing elements with at least one processor, memory, and possibly other
+devices), <b>devices </b>(stereotyped nodes with no processing capability at the
+modeled level of abstraction), and <b>connectors</b>, between nodes, and between
+nodes and devices. The Deployment Model also maps <b>processes</b> on to these
+processing elements, allowing the distribution of behavior across nodes to be
+represented.
+<p>The following roles use the Deployment Model:
+<ul>
+  <li>The <strong>software architect</strong>, to capture and understand the physical
+    execution environment of the system, and to understand distribution issues.</li>
+  <li>The <strong>designers </strong>(including software <i>and</i> database
+    designers), to understand the distribution of processing and data in the
+    system.</li>
+  <li>The <strong>system manager</strong>, to understand the physical
+    environment in which the system executes.</li>
+  <li>The <b>project manager</b>, in estimating costs, for the Business Case,
+    and for acquisition, installation and maintenance planning.</li>
+</ul>
+<h3><a name="Properties">Properties</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<div align="center"><center>
+
+<table border="1" colspec="L15 L18 L10" width="85%">
+  <tr>
+    <td width="102" bordercolor="#808080">
+    <p class="tableheading"><strong>Property Name</strong></td>
+    <td width="196" bordercolor="#808080">
+    <p class="tableheading"><strong>Brief Description</strong></td>
+    <td width="182" bordercolor="#808080">
+    <p class="tableheading"><strong>UML Representation</strong></td>
+  </tr>
+  <tr>
+    <td width="102" bordercolor="#808080">Introduction</td>
+    <td width="196" bordercolor="#808080">A textual description that serves as a
+    brief introduction to the model.</td>
+    <td width="182" bordercolor="#808080">Tagged value, of type &quot;short
+    text&quot;.</td>
+  </tr>
+  <tr>
+    <td width="102" bordercolor="#808080">Nodes</td>
+    <td width="196" bordercolor="#808080">Processing elements in the system.
+    <p>Nodes may have the following properties:</p>
+    <ul>
+      <li>Name</li>
+      <li>A description, providing information about the processor, storage
+        capacity, memory capacity, or any other information about the
+        capabilities of the device.</li>
+      <li>A list of the processes and threads that execute on the processor.
+        This list may also enumerate the software components that execute within
+        each process.</li>
+      <li>A list of the <a href="ar_prdct.htm"">deployment units</a> that will be
+        installed on the node.</li>
+    </ul>
+    </td>
+    <td width="182" bordercolor="#808080">node</td>
+  </tr>
+  <tr>
+    <td width="102" bordercolor="#808080">Devices</td>
+    <td width="196" bordercolor="#808080">Physical devices, having no processing
+    capability (at the modeled level of abstraction), that support the processor
+    nodes.
+    <p>Devices may have the following properties:</p>
+    <ul>
+      <li>Name</li>
+      <li>A description, providing information about the capabilities of the
+        device.&nbsp;</li>
+    </ul>
+    </td>
+    <td width="182" bordercolor="#808080">stereotyped node</td>
+  </tr>
+  <tr>
+    <td width="102" bordercolor="#808080">Connectors</td>
+    <td width="196" bordercolor="#808080">Connections between nodes, and between
+    nodes and devices.
+    <p>Connectors may have associated information regarding the capacity or
+    bandwidth of the connector.</td>
+    <td width="182" bordercolor="#808080">association, possibly stereotyped, to
+    model different kinds of connectors, for example.</td>
+  </tr>
+  <tr>
+    <td width="102" bordercolor="#808080">Diagrams</td>
+    <td width="196" bordercolor="#808080">The diagrams in the model, owned by
+    the packages.</td>
+    <td width="182" bordercolor="#808080">&nbsp;</td>
+  </tr>
+</table>
+</center></div>
+
+<h3><a name="Representation">Representation</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The Deployment Model is typically depicted in a diagram such as the one shown
+below:</p>
+<p align="center"><img src="../activity/images/dist1.gif" width="594" height="456"></p>
+ 
+<h3><a name="Timing">Timing</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<h4>Inception Phase</h4>
+<p>In the inception phase, the model will be produced at a <b>conceptual level</b>
+- if the deployment environment does not already exist - as part of
+architectural synthesis, when the software architect is trying to identify at least one
+viable architecture that will meet requirements - particularly non-functional
+requirements. The Project Manager will also use the Deployment Model in
+estimating costs for the <a href="ar_bcase.htm"">Business Case</a>.</p>
+<p>However, if the system will be deployed into an environment that exists
+already, that environment will be documented.&nbsp; The key elements to captured
+are:&nbsp;</p>
+<ul>
+  <li>The <i>types</i> of nodes in the system (there is no need to document the
+    entire topology of the system; a characterization will do)
+    <ul>
+      <li>Information about the capacity and performance of the nodes</li>
+      <li>Information about the software already running on these nodes</li>
+    </ul>
+  </li>
+  <li>The configuration of the network connecting the nodes
+    <ul>
+      <li>The capacity of the connections</li>
+      <li>The reliability of the connections</li>
+    </ul>
+  </li>
+</ul>
+<h4>Elaboration Phase</h4>
+<p>In the elaboration phase, the Deployment Model will be refined to a <b>specification
+level</b>, allowing the software architect to predict performance with confidence, before
+finally taking the model to the <b>physical level</b>, where it specifies the
+actual hardware and model numbers to be used, and becomes a plan for the
+acquisition, installation and maintenance of the system.</p>
+<p>If the deployment environment already exists, it will be examined to
+determine whether it is capable of supporting the new capabilities of the system
+being developed.&nbsp; If changes are needed to the deployment environment,
+these are identified in this phase.</p>
+<p>If the deployment environment does not yet exist, the numbers, types and
+configurations of nodes and the connection between nodes needed to support the
+architecture will be defined.&nbsp; Key deployment aspects of the architecture
+are examined and addressed, including:</p>
+<ul>
+  <li>reliability and availability</li>
+  <li>distribution of processing, capacity and performance</li>
+  <li>cost</li>
+  <li>ease of support and administration.</li>
+</ul>
+<h4>Construction Phase</h4>
+<p>The allocation of components to nodes, or deployment units to nodes, is
+updated if or when the components change.</p>
+<p>If the deployment environment does not yet exist, there is typically a
+hardware procurement and installation effort running in parallel to the software
+development effort. It is recommended that commitment to final hardware purchase
+be delayed as long as possible, to mitigate the performance risk (that the
+deployed software does demonstrate acceptable capacity, response time or
+throughput characteristics), and to take advantage of technology and
+price/performance improvements. If performance issues arise during construction,
+the software architect ideally should have the freedom to modify the Deployment Model as
+well as the architecture of the software itself, when addressing these issues.</p>
+<h4>Transition Phase</h4>
+<p>The deployment environment is readied for the system to be installed.&nbsp;
+One or more <i>test/trial</i> deployments occur as the software undergoes one or
+more beta tests. The software is eventually transitioned into the deployment
+environment.</p>
+<h3><a name="Responsibility">Responsibility</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The software architect is responsible for the Deployment Model.</p>
+<h3><a name="Tailoring">Tailoring</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The Deployment Model is optional for single-processor systems, or simple
+systems with little or no distribution of processing.</p>
+<p>It is mandatory for systems with complex network or processor
+configurations.&nbsp;</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

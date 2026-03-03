@@ -1,0 +1,362 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guidelines: Design Subsystem</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/artifacts.gif"> <a href="../artifact/arp_desmd.htm">Design Model...</a> &gt;
+<img border=0 src="../../applet/images/ar_dssub.gif"> <a href="../artifact/ar_dsub.htm">Design Subsystem</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Design Subsystem</rpw><a name="Top"></a><a name="XE_layering__layering_guidelines_for_design_subsystems"></a><a name="XE_design_subsystem__guidelines_for"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2" style="border: 1px" cellspacing="0">
+  <tr>
+    <td width="152" bordercolor="#808080">
+    <p align="center"><img src="../artifact/images/dessub.jpg" alt="subsystem.gif (1376 bytes)" width="54" height="40"><br>
+    <strong><font face="Arial" size="2">Design Subsystem</font></strong></td>
+    <td width="383" bordercolor="#808080"><a name="XE_design_subsystem__definition"></a>A
+    model element which has the semantics of a package (it can contain other
+    model elements) and a class (it has behavior). The behavior of the subsystem
+    is provided by classes or other subsystems it contains. A subsystem realizes
+    one or more interfaces, which define the behavior it can perform.</td>
+  </tr>
+</table>
+</center></div>
+
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Subsystem Usage"">Subsystem Usage</a></li>
+  <li><a href="#Identifying Subsystems from Class Collaborations"">Identifying
+    Subsystems from Class Collaborations</a></li>
+  <li><a href="#Documenting Subsystems"">Documenting Subsystems</a></li>
+  <li><a href="#Subsystems and Components"">Subsystems and Components</a></li>
+  <li><a href="#Subsystems That Represent Existing Products"">Subsystems that
+    Represent Existing Products</a></li>
+  <li><a href="#Subsystem Dependency Restrictions"">Subsystem Dependency
+    Restrictions</a></li>
+</ul>
+<h3><a name="XE_design_subsystem__partitioning_patterns"></a><a name="Subsystem Usage">Subsystem
+Usage</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p><a name="XE_layering__partitioning_patterns"></a>Subsystems can be used in a
+number of complementary ways, to partition the system into units which
+<ul>
+  <li>can be independently ordered, configured, or delivered</li>
+  <li>can be independently developed, as long as the interfaces remain unchanged</li>
+  <li>can be independently deployed across a set of distributed computational
+    nodes</li>
+  <li>can be independently changed without breaking other parts of the systems</li>
+</ul>
+<p>In addition, subsystems can
+<ul>
+  <li>partition the system into units which can provide restricted security over
+    key resources</li>
+  <li>represent existing products or external systems in the design.</li>
+</ul>
+<h3><a name="XE_design_subsystem__identifying_subsystems_from_class_collaborations"></a><a name="Identifying Subsystems from Class Collaborations">Identifying
+Subsystems from Class Collaborations</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>If the classes in a collaboration interact only with each other to produce a
+well-defined set of results, the collaboration and its classes should be
+encapsulated within a subsystem.</p>
+<p>This rule can be applied to subsets of collaborations as well. Anywhere part
+or all of a collaboration can be encapsulated and simplified, doing so will make
+the design easier to understand.</p>
+<h4>Hints</h4>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2">
+  <tr>
+    <td width="216" height="14" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <blockquote>
+      <p align="center" class="tableheading">Hint</p>
+    </blockquote>
+    </td>
+    <td width="440" height="14" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <p align="center" class="tableheading">Details</td>
+  </tr>
+  <tr>
+    <td width="216" height="46" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    for optionality</td>
+    <td width="440" height="46" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">If
+    a particular collaboration (or sub-collaboration) represents optional
+    behavior, enclose it in a subsystem. Features which may be removed,
+    upgraded, or replaced with alternatives should be considered independent.</td>
+  </tr>
+  <tr>
+    <td width="216" height="67" rowspan="2" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    to the user interface of the system.</td>
+    <td width="440" height="34" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">If
+    the user interface is relatively independent of the entity classes in the
+    system (i.e. the two can and will change independently), create subsystems
+    which are horizontally integrated: group related user interface boundary
+    classes together in a subsystem, and group related entity classes together
+    in another subsystem.</td>
+  </tr>
+  <tr>
+    <td width="440" height="33" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">If
+    the user interface and the entity classes it displays are tightly coupled
+    (i.e. a change in one triggers a change in the other), create subsystems
+    which are vertically integrated: enclose related boundary and entity classes
+    in common subsystem.</td>
+  </tr>
+  <tr>
+    <td width="216" height="50" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    to the Actors</td>
+    <td width="440" height="50" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Separate
+    functionality used by two different actors, since each actor may
+    independently change their requirements on the system.</td>
+  </tr>
+  <tr>
+    <td width="216" height="79" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    for coupling and cohesion between classes</td>
+    <td width="440" height="79" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Highly
+    coupled or cohesive classes collaborate to provide some set of services.
+    Organize highly coupled classes into subsystems, separating classes along
+    lines of weak coupling. In some cases, weak coupling can be eliminated
+    entirely by splitting classes into smaller classes with more cohesive
+    responsibilities.</td>
+  </tr>
+  <tr>
+    <td width="216" height="19" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    at substitution</td>
+    <td width="440" height="19" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">If
+    there are several levels of service specified for a particular capability
+    (example: high, medium and low availability), represent each service level
+    as a separate subsystem, each of which will realize the same set of
+    interfaces. By doing so, the subsystems are substitutable for one another.</td>
+  </tr>
+  <tr>
+    <td width="216" height="35" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Look
+    at distribution</td>
+    <td width="440" height="35" valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><span style="mso-fareast-font-family: Times New Roman; mso-bidi-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: HE">Although
+      there can be multiple instances of a particular subsystem, each executing
+      on different nodes, in many architectures it is not possible for a single
+      instance of a component to be split across nodes. In the cases where
+      subsystem behavior must be split across nodes, it is recommended that you
+      decompose the subsystem into smaller subsystems (each representing a
+      single component) with more restricted functionality.<span style="mso-spacerun: yes; mso-fareast-font-family: Times New Roman; mso-bidi-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: HE">&nbsp;
+      </span>Determine the functionality that must reside upon each node and
+      create a new subsystem to ‘own’ that functionality, distributing the
+      responsibilities and related elements of the original subsystem
+      appropriately.<span style="mso-spacerun: yes; mso-fareast-font-family: Times New Roman; mso-bidi-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: HE">&nbsp;
+      </span>The new subsystems are internal to the original subsystem.</span></td>
+  </tr>
+</table>
+</center></div>
+
+<p>Once classes have been organized into subsystems, update the use-case
+realizations accordingly.</p>
+<h3><a name="Documenting Subsystems">Documenting
+Subsystems</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Once the subsystem has been created:
+<ul>
+  <li>Each subsystem must be given a name and a short description.</li>
+  <li>Where tools support packages but not subsystems, packages can be used to
+    document subsystems; the package stereotype «subsystem» should be used to
+    denote a subsystem in this context.</li>
+  <li>The responsibilities of the original analysis class should be transferred
+    to the newly-created subsystem, using the description of the subsystem to
+    document the responsibilities.</li>
+</ul>
+<h3><a name="Subsystems and Components">Subsystems and Components</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Components are implementation things; to represent the component in the
+design, a subsystem can be used as a proxy for the component.
+<ul>
+  <li>Each part of the system should be as independent as possible from other
+    parts of the system.</li>
+  <li>Ideally, it should be possible to replace any part of the system with a
+    new part, provided the new part supports the same interfaces.</li>
+  <li>It should be possible to evolve different parts of the system
+    independently from other parts of the system.</li>
+</ul>
+<p>To this end, Design Subsystems provide an ideal way to represent components
+in the Design Model: they are design elements which encapsulate the behavior of
+a number of classes (as components encapsulate the behavior of a number of class
+instances), and their behavior is only accessed via the interfaces they realize
+(as is the case with components).</p>
+<h3><a name="Subsystems That Represent Existing Products">Subsystems That
+Represent Existing Products</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Where an existing product is one that exports interfaces, i.e. operations
+(and perhaps <a href="../glossary.htm#reception""><b>receptions</b></a>), but
+otherwise keeps all details of implementation hidden, then it may be modeled as
+a subsystem in the logical view.&nbsp; Examples of products the system uses that
+you may be able to represent by a subsystem include:
+<ul>
+  <li>Communication software (middleware).</li>
+  <li>Database access support (RDBMS mapping support).</li>
+  <li>Application-specific products.</li>
+</ul>
+<p>Some existing products such as collections of types and data structures (e.g.
+stacks, lists, queues) may be better represented as packages, because they
+reveal more than behavior, and it is the particular contents of the package that
+are important and useful and not the package itself, which is simply a
+container.&nbsp;</p>
+<p>Common utilities, such as math libraries, could be represented as subsystems,
+if they simply export interfaces, but whether this is necessary or makes sense
+depends on the designer's judgment about the nature of the thing modeled.&nbsp;
+Subsystems are object-oriented constructs that are classifiers as well as
+packages: a subsystem can have instances (if the designer so indicates). UML
+provides another way to model groups of global variables and procedures in the <a href="../glossary.htm#utility""><b>utility</b></a>,
+which is a stereotype of class - the utility has no instances.&nbsp;</p>
+<p>When defining the subsystem to represent the product, also define one or more
+interfaces to represent the product interfaces.</p>
+<h3><a name="Subsystem Dependency Restrictions">Subsystem Dependency
+Restrictions</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Subsystems differ from packages in their semantics: a subsystem is a kind of
+package which provides behavior through one or more interfaces which it
+realizes. Packages provide no behavior; they are simply containers of things
+which provide behavior.</p>
+<p>The reason for using a subsystem instead of a package is that subsystems
+completely encapsulate their contents, providing behavior only through their
+interfaces. The benefit of this is that, unlike a package, the contents and
+internal behaviors of a subsystem can change with complete freedom so long as
+the subsystem's interfaces remain constant. Subsystems also provide a
+'replaceable design' element: any two subsystems (or classes, for that matter)
+which realize the same interfaces are interchangeable.</p>
+<p>In order to ensure that subsystems are replaceable elements in the model, a
+few rules need to be enforced:
+<ul>
+  <li>A Subsystem should not expose any of its contents (i.e. no element
+    contained by a subsystem should have 'public' visibility); no element
+    outside the subsystem should depend on the existence of a particular element
+    inside the subsystem.</li>
+  <li>A Subsystem should only depend on the interfaces of other model elements,
+    so that it is not directly dependent on any specific model elements outside
+    the subsystem. The exceptions are cases where a number of subsystems share a
+    set of class definitions in common, in which case those subsystems 'import'
+    the contents of the packages which contain the common classes. This should
+    only be done with packages in lower layers in the architecture, and only to
+    ensure that common definitions of classes which must pass between subsystems
+    are consistently defined.</li>
+</ul>
+<p>An example of Subsystem and Package dependencies is shown below:</p>
+<p align="center"><img src="images/md_dsub1.gif" width="370" height="240"></p>
+<p class="picturetext">Subsystem and Package Dependencies in the Design Model<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

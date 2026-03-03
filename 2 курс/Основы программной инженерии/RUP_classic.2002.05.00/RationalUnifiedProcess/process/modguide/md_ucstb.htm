@@ -1,0 +1,622 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guidelines: Use-Case Storyboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_req.htm">Requirements Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/additional.gif"> <a href="../artifact/arp_req_add.htm">{More Requirements Artifacts}</a> &gt;
+<img border=0 src="../../applet/images/ar_ucsb.gif"> <a href="../artifact/ar_ucstb.htm">Use-Case Storyboard</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Use-Case Storyboard</rpw><a name="Top"></a><a name="XE_use-case_storyboard__guidelines_for"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+  <tr>
+    <td width="20%" valign="middle" bordercolor="#808080" height="58" align="center"><font face="Bookman" size="2"><img src="../artifact/images/ucstb.jpg" width="98" height="44"></font><br>
+    <strong><font face="Arial" size="2">Use-Case Storyboard</font></strong></td>
+    <td width="80%" valign="top" bordercolor="#808080" height="58">
+    <blockquote>
+      <p><a name="XE_use-case_storyboard__definition_of"></a>A <strong>use-case
+      storyboard</strong> is a logical and conceptual description of how a use
+      case is provided by the user interface, including the interaction required
+      between the actor(s) and the system.</p>
+    </blockquote>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><b>More Information</b>: <a href="../workflow/requirem/co_ucd.htm"">Concepts:
+User-Centered Design</a></p>
+<h5>Topics</h5>
+<ul>
+  <li><a href="#Explanation"">Explanation</a></li>
+  <li><a href="#Describing the Flow of Events - Storyboard"">Describing the flow
+    of events - storyboard</a></li>
+  <li><a href="#Desired Guidance"">Desired guidance</a></li>
+  <li><a href="#Average Attribute Values and Volumes of Objects"">Average
+    attribute values and volumes of objects</a></li>
+  <li><a href="#Average Action Usage"">Average action usage</a></li>
+  <li><a href="#Summary: Flow of Events - Storyboard"">Summary: Flow of events -
+    storyboard</a></li>
+  <li><a href="#Creating Boundary Class Diagrams"">Creating boundary class
+    diagrams</a></li>
+  <li><a href="#Creating Boundary Object Interaction Diagrams"">Creating boundary
+    object interaction diagrams</a></li>
+  <li><a href="#Complementing the Diagrams of a Use-Case Storyboard"">Complementing
+    the diagrams of a use-case storyboard</a></li>
+  <li><a href="#Capturing Usability Requirements on the Use-Case Storyboard"">Capturing
+    usability requirements on the use-case storyboard</a></li>
+  <li><a href="#Referring to the User-Interface Prototype from the Use-Case Storyboard"">Referring
+    to the user-interface prototype from the use-case storyboard</a></li>
+  <li><a href="#Use"">Use</a></li>
+</ul>
+<h3><a name="XE_use-case_storyboard__explanation"></a><a name="Explanation"></a>Explanation 
+  <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Use-case storyboards are used to understand and reason about the requirements
+of the user interface, including usability requirements. They represent a
+high-level understanding of the user interface, and are much faster to develop
+than the actual user interface. The use-case storyboards can thus be used to
+create and reason about several versions of the user interface before it is
+prototyped, designed, and implemented.</p>
+<p>A use-case storyboard is described in terms of boundary classes and their
+static and dynamic relationships, such as aggregations, associations, and links.
+Each boundary class is in turn a high-level representation of a window or
+similar construct in the user interface. The benefits of this approach are the
+following:
+<ul>
+  <li>It provides a high-level view of static window relationships such as
+    window containment hierarchies and other associations between objects in the
+    user interface.</li>
+  <li>It provides a high-level view of dynamic window relationships such as
+    window navigation paths and other navigation paths between objects in the
+    user interface.</li>
+  <li>It provides a way of capturing the requirements of each window or similar
+    construct in the user interface, by describing a corresponding boundary
+    class. This is because each boundary class defines responsibilities,
+    attributes, relationships, etc. that have a straightforward mapping to the
+    corresponding construct in the user interface.</li>
+  <li>It provides a trace to a specific use case, thereby providing a seamless
+    integration with a use-case-driven approach for software engineering. As a
+    result, the user interface will be driven by the use cases that the system
+    is required to provide, and by the actors' (users) roles in, and
+    expectations of, these use cases.</li>
+</ul>
+<p align="center"><img src="../activity/images/stb_trac.gif" width="279" height="83"></p>
+<p class="picturetext">A use-case storyboard in the analysis model is traced
+(one-to-one) to a use case in the use-case model.</p>
+<h3><a name="XE_use-case_storyboard__flow_of_events¸_describing"></a><a name="XE_use-case_storyboard__describing_flow_of_events"></a><a name="Describing the Flow of Events - Storyboard"></a>Describing
+the Flow of Events - Storyboard <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The following are guidelines on how to describe a flow of events -
+storyboard:
+<ul>
+  <li><strong>Start by clarifying the use case itself - not its user interface.</strong>
+    Start by keeping the description independent of the user interface,
+    especially if the use case is unexplored. This will help you capture the <i>essence</i>
+    of the use case, similar to the <a name="XE_use-case_storyboard__essential_use_cases,_use_in"></a>&quot;essential
+    use cases&quot; described in <a href="../workflow/requirem/co_ucd.htm"">Concepts:
+    User-Centered Design</a>.&nbsp; Then, later on, as the use case is
+    understood, the flow of events - storyboard can be augmented with user
+    interface and usability aspects.</li>
+  <li><strong>Keep action statements brief.</strong> The description does not
+    necessarily have to be self-contained, because it does not have to be
+    comprehensible to people other than user-interface designers. Action
+    statements that consist of brief steps give a better overview, since it
+    makes the use-case descriptions shorter. For example, when you describe how
+    the use case exchanges data with an actor, you should keep the description
+    brief and comprehensive; you can list the exchanged data at the end of the
+    line, within parentheses: &quot;create person (name, address,
+    telephone).&quot;</li>
+  <li><strong>Avoid sequences and modes.</strong> Human actors can often perform
+    the actions of the use case in different sequences, especially in
+    user-interface-intensive systems where the user is in control. Sequences
+    often imply modes of the user interface, and you should avoid modes if
+    possible. Thus, you should specify only the sequences that are mandatory in
+    the use case. For example, that the user must identify himself before he can
+    withdraw money from an ATM, or that the system must show the invoices to the
+    user, before the user can accept or refuse them.</li>
+  <li><strong>Be consistent with the use case.</strong> Since the use-case
+    storyboard can be described more or less in parallel with the corresponding
+    use case, these two artifacts should be kept consistent with, and give
+    feedback to, each other. In particular, the flow of events - storyboard of a
+    use-case storyboard should be kept consistent with the flow of events of the
+    corresponding use case. Note that this often requires an extensive
+    communication and feedback loop between the use-case author responsible for
+    the use case and the user-interface designer responsible for the use-case
+    storyboard.</li>
+</ul>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of an initial flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages,
+before it is augmented with usability aspects.</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages.</p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject.</p>
+    <p class="example">d) Read the text of a mail message.</p>
+    <p class="example">e) Save a mail message as a file.</p>
+    <p class="example">f) Save a mail-message attachment as a file.</p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages.</p>
+</blockquote>
+<p class="example">Note that this initial flow of events - storyboard is similar
+to a step-by-step description of the corresponding use case as it may have been
+described in the <a href="../activity/ac_facuc.htm""><font color="#0000FF">Activity:
+Find Actors and Use Cases</font></a>. Thus, use the step-by-step description of
+the corresponding use case as input when creating the initial flow of events -
+storyboard description.</p>
+<p>This initial flow of events - storyboard description is then augmented with
+various usability aspects, such as <a href="#Desired Guidance"">desired guidance</a>,
+<a href="#Average Attribute Values and Volumes of Objects"">average attribute
+values and volumes of objects</a>, and <a href="#Average Action Usage"">average
+action usages</a> (see below).</p>
+<h3><a name="XE_use-case_storyboard__desired_guidance"></a><a name="Desired Guidance"></a>Desired
+Guidance <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>A really usable system not only helps the user by automating simple and
+repetitive tasks, but it also provides guidance, typically by (implicitly)
+providing information for the tasks which cannot be automated. Such guidance can
+for example be provided by &quot;balloon help,&quot; or context derived
+on-screen help.<br>
+This important input to the design of the user interface should be represented
+by identifying the need for such desired guidance at specific points in the flow
+of events of the use case.</p>
+<p>The user-interface designer should walk through the flow of events, and
+consider the following issues at each step:
+<ul>
+  <li>What guidance could the user possibly need?</li>
+  <li>What guidance could the system possibly provide?</li>
+  <li>What should be represented as desired guidance and what should not?</li>
+</ul>
+<p>From the flow of events, the basic functionality of the system can be
+identified. From the desired guidance, you should be able to identify
+&quot;optional&quot; functionality that is not crucial for the user to be able
+to carry out his work, but that might help him carry out the work by
+(implicitly) providing him with information that he needs. Thus, anything that
+could help you find such optional functionality should be represented as desired
+guidance. You should not, however, represent desired guidance that only
+identifies functionality we would find anyway, just by using good user-interface
+shaping practice (for example, don't represent that the system should give the
+user feedback on his operations, or show the user all the different options he
+has, etc.).</p>
+<p>Desired guidance can also be used to tell you what not to show, thus enabling
+you to shape the user interface so that the user doesn't get swamped by
+irrelevant information.</p>
+<p>Desired guidance is not &quot;requirements&quot; in the same way as the flow
+of events-it is more like &quot;wants,&quot; or &quot;nice-to-haves.&quot; When
+you identify and describe desired guidance, you should not think in terms of
+what the system shall eventually provide, but in terms of what the user might
+need in addition to that; otherwise, you restrict our thinking. So, remember
+that the desired guidance is not absolutely necessary, it is merely a means of
+increasing usability.</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of the flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages
+augmented with desired guidance (within <font color="#FF0000">[]</font>).</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages. <font color="#FF0000">[The
+  user should be able to differentiate between new, read, and unread messages;
+  the user should also see the sender, subject, and priority of each message.]</font></p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject.</p>
+    <p class="example">d) Read the text of a mail message.</p>
+    <p class="example">e) Save a mail message as a file.</p>
+    <p class="example">f) Save a mail-message attachment as a file. <font color="#FF0000">[The
+    user should be able to see the file types of the attachments.]</font></p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages.</p>
+</blockquote>
+<p>Desired guidance is often required in actions where the user has to make a
+decision. The following points often apply to such decisions:
+<ul>
+  <li>They are non-trivial to the user.</li>
+  <li>They impact peoples life or businesses surrounding the system (peoples or
+    businesses surrounding the system usually means the business, the user, and
+    the task the user is trying to carry out.)</li>
+  <li>They matter once the use case has terminated.</li>
+</ul>
+<p class="exampleheading">Example:</p>
+<p class="example">In the flow of events - storyboard of the use case Manage
+Incoming Mail Messages, step f), to save an attachment, is an obvious decision
+made by the user. It therefore requires some guidance.</p>
+<h3><a name="XE_use-case_storyboard__volumes_of_objects"></a><a name="XE_use-case_storyboard__average_attributes"></a><a name="Average Attribute Values and Volumes of Objects"></a>Average
+Attribute Values and Volumes of Objects <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>It is often important to capture average attribute values and volumes of
+objects that need to be managed by, or presented to, the user. The user
+interface can then be optimized for these average values and volumes.</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of the flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages,
+augmented with average attribute values and volumes (within <font color="#008040">{
+}</font>).</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages. <font color="#008040">{An
+  average of 100 unread mail messages are shown simultaneously; and in 90% of
+  the cases, the subject line of a message is less than 40 characters.}</font></p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject.</p>
+    <p class="example">d) Read the text of a mail message. <font color="#008040">{The
+    message text contains 100 characters on average.}</font></p>
+    <p class="example">e) Save a mail message as a file.</p>
+    <p class="example">f) Save a mail-message attachment as a file.<font color="#008040">{In
+    95% of the cases, there are less than two attachments.}</font></p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages.</p>
+</blockquote>
+<h3><a name="XE_use-case_storyboard__average_action_usage"></a><a name="Average Action Usage"></a>Average
+Action Usage <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Average action usage is captured to find actions that are heavily used as
+opposed to actions that are seldom used. As a result, we will find both common
+and uncommon sequences (flows) through the use case. This is important
+information that can be used to prioritize and focus on intensively used parts
+of the user interface and its navigation hierarchies (for example, by providing
+shortcuts or additional toolbars in the user interface to perform common
+actions).</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of the flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages,
+augmented with average action usage (within <font color="#800080">()</font>).</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages.</p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject. <font color="#800080">(Done
+    in more than 60% of the cases.)</font></p>
+    <p class="example">d) Read the text of a mail message. <font color="#800080">(Done
+    in more than 75% of the cases.)</font></p>
+    <p class="example">e) Save a mail message as a file. <font color="#800080">(Done
+    in less than 5% of the cases.)</font></p>
+    <p class="example">f) Save a mail-message attachment as a file.</p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages.</p>
+</blockquote>
+<p class="example">The conclusion from this description is that steps c) and d)
+need a thorough user-interface support.</p>
+<h3><a name="XE_use-case_storyboard__flow_of_events¸_summary"></a><a name="Summary: Flow of Events - Storyboard"></a>Summary:
+Flow of Events - Storyboard <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of the final flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages,
+augmented with the various usability aspects.</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages. <font color="#FF0000">[The
+  user should be able to differentiate between new, read, and unread messages;
+  the user should also see the sender, subject, and priority of each message.]</font><font color="#008040">
+  {An average of 100 unread mail messages are shown simultaneously; and in 90%
+  of the cases, the subject line of a message is less than 40 characters.}</font></p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject. <font color="#800080">(Done
+    in more than 60% of the cases.)</font></p>
+    <p class="example">d) Read the text of a mail message. <font color="#008040">{The
+    message text contains 100 characters on average.}</font><font color="#800080">
+    (Done in more than 75% of the cases.)</font></p>
+    <p class="example">e) Save a mail message as a file. <font color="#800080">(Done
+    in less than 5% of the cases.)</font></p>
+    <p class="example">f) Save a mail-message attachment as a file. <font color="#FF0000">[The
+    user should be able to see the file types of the attachments.]</font><font color="#008040">
+    {In 95% of the cases, there are less than two attachments.}</font></p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages.</p>
+</blockquote>
+<p>Thus, the basic idea with the flow of events - storyboard is to augment the
+flow of events description with various usability aspects; this information is
+then used further on to design a usable user interface. Also note that the
+usability aspects as shown in the example above may be modified or extended with
+other aspects, depending on the needs of the particular application type or
+user-interface technology in use.</p>
+<h3><a name="XE_use-case_storyboard__boundary_class_diagrams¸_creating"></a><a name="Creating Boundary Class Diagrams"></a>Creating
+Boundary Class Diagrams <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>A use-case storyboard is realized by boundary classes and their interacting
+objects. To illustrate the boundary classes participating in the use-case
+storyboard, together with their relationships, we create class diagrams and
+include them as part of the use-case storyboard.</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is a class diagram owned by the use-case
+storyboard corresponding to the Manage Incoming Mail Messages use case:</p>
+<p align="center"><img src="images/mail_cdi.gif" width="331" height="161"></p>
+<p class="picturetext">Class diagram including the Mail User actor and the
+boundary classes Mail Box, Mail Message, and Attachment, participating in a
+use-case storyboard corresponding to the Manage Incoming Mail Messages use case.
+We let it be understood from the context that a Mail User interacts with all
+objects contained in the aggregation hierarchy under Mail Box.</p>
+<p>For more information on the boundary classes and their relationships, refer
+to <a href="md_bcls.htm""><font color="#0000FF">Guidelines: Boundary Class
+(Modeling the User Interface</font></a>).</p>
+<h3><a name="XE_use-case_storyboard__boundary_object_interaction_diagrams¸_creating"></a><a name="Creating Boundary Object Interaction Diagrams"></a>Creating
+Boundary Object Interaction Diagrams <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>To illustrate the boundary objects participating in the use-case storyboard,
+and their interactions with the user, we use collaboration or sequence diagrams.
+This is useful for use cases with complex sequences or flows of events.</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is a collaboration diagram owned by the
+use-case storyboard corresponding to the Manage Incoming Mail Messages use case.</p>
+<p align="center"><img src="images/mail_idi.gif" width="373" height="210"></p>
+<p align="center" class="picturetext">Collaboration diagram including the Mail
+User actor and boundary objects of Mail Box, Mail Message, and Attachment,
+participating in a use-case storyboard realizing the Manage Incoming Mail
+Messages use case.</p>
+<h3><a name="XE_use-case_storyboard__diagrams¸_complementing"></a><a name="Complementing the Diagrams of a Use-Case Storyboard"></a>Complementing
+the Diagrams of a Use-Case Storyboard <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>If necessary, the diagrams of a use-case storyboard may be further clarified
+by using the flow of events - storyboard as a complementary textual description.
+This can be done by augmenting the flow of events - storyboard with the boundary
+classes involved.</p>
+<p class="exampleheading">Example:</p>
+<p class="example">The following is an example of the flow of events -
+storyboard of a storyboard for the use case Manage Incoming Mail Messages,
+augmented with boundary classes (within <font color="#808000">&quot;&quot;</font>).</p>
+<blockquote>
+  <p class="example">a) The use case starts when the mail user requests to
+  manage mail messages, and the system displays the messages. <font color="#FF0000">[The
+  user should be able to differentiate between new, read, and unread messages;
+  the user should also see the sender, subject, and priority of each message.]</font><font color="#008040">
+  {An average of 100 unread mail messages are shown simultaneously; and in 90%
+  of the cases, the subject line of a message is less than 40 characters.} </font><font color="#808000">&quot;Mail
+  Box&quot;</font></p>
+  <p class="example">b) The mail user may then follow one or more of these
+  steps:</p>
+  <blockquote>
+    <p class="example">c) Arrange mail messages according to sender or subject. <font color="#800080">(Done
+    in more than 60% of the cases.) </font><font color="#808000">&quot;Mail
+    Box&quot;</font></p>
+    <p class="example">d) Read the text of a mail message. <font color="#008040">{The
+    message text contains 100 characters on average.}</font><font color="#800080">
+    (Done in more than 75% of the cases.) </font><font color="#808000">&quot;Mail
+    Message&quot;</font></p>
+    <p class="example">e) Save a mail message as a file. <font color="#800080">(Done
+    in less than 5% of the cases.)</font><font color="#808000"> &quot;Mail
+    Message&quot;</font></p>
+    <p class="example">f) Save a mail-message attachment as a file. <font color="#FF0000">[The
+    user should be able to see the file types of the attachments.]</font><font color="#008040">
+    {In 95% of the cases, there are less than two attachments.}</font><font color="#808000">
+    &quot;Mail Message&quot; &quot;Attachment&quot;</font></p>
+  </blockquote>
+  <p class="example">g) The use case terminates when the mail user requests to
+  quit managing incoming mail messages. <font color="#808000">&quot;Mail
+  Box&quot;</font></p>
+</blockquote>
+<h3><a name="XE_use-case_storyboard__usability_requirements¸_capturing"></a><a name="XE_usability_requirements__capturing_in_use-case_storyboard"></a><a name="Capturing Usability Requirements on the Use-Case Storyboard"></a>Capturing
+Usability Requirements on the Use-Case Storyboard <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Usability requirements may define how high the usability of the user
+interface must be. Such requirements may for example be found in the <a href="../artifact/ar_sspec.htm""><font color="#0000FF">Artifact:
+Supplementary Specifications</font></a>. This means that the usability
+requirements should not be set to what you believe that the system can achieve,
+but to the lowest level of usability that the system must achieve, in order to
+be used.</p>
+<p>What the system must achieve, in order to be used, depends mostly on what the
+alternative to using the system is. It is reasonable to require that the system
+should be significantly more usable than the alternatives. The alternatives can
+be to utilize:
+<ul>
+  <li>Existing manual procedures.</li>
+  <li>Legacy system(s).</li>
+  <li>Competing products.</li>
+  <li>Earlier version(s) of the system.</li>
+</ul>
+<p>Usability requirements can also come from the need to economically justify
+the new system: if the customer has to pay $3 million for the new system, he
+might want to impose usability requirements that imply that he will save perhaps
+$1 million per year because of decreased workload on his human resources.</p>
+<p>Usability requirements on a use-case storyboard typically specify:
+<ul>
+  <li>Maximum execution time - how long it should take a trained user to execute
+    a common scenario of the use case.</li>
+  <li>Maximum error rate - how many errors a trained user will average for a
+    common scenario of the use case.</li>
+</ul>
+<p>The only errors that are relevant to measure are those that are unrecoverable
+and will have negative effects on the organization, such as losing business, or
+causing damage to monitored hardware. If the only consequence of an error is
+that it takes time to fix, this will affect the measured execution time.</p>
+<p>The learning time should be measured as the time it takes before the user can
+execute a scenario faster than the specified maximum execution time.</p>
+<p>Note that the usability requirements should not work as a target, i.e., upper
+limit. Usability requirements should define the absolute lowest acceptable
+system usability. Thus, you should not necessarily stop improving usability when
+usability requirements are fulfilled.</p>
+<p>Example:</p>
+<p class="example">The following is an example of usability requirements on the
+use case Manage Incoming Mail Messages, as captured on its corresponding
+use-case storyboard.
+<ul>
+  <li>
+    <p class="example">The Mail User should be able to arrange Mail Messages
+    with a single mouse click.</p>
+  </li>
+  <li>
+    <p class="example">The Mail User should be able to scroll Mail Message texts
+    by pressing single keyboard buttons.</p>
+  </li>
+  <li>
+    <p class="example">The Mail User should not be disturbed by incoming Mail
+    Messages when reading existing Mail Messages.</p>
+  </li>
+</ul>
+<h3><a name="XE_use-case_storyboard__user-interface_prototype¸_referring_to"></a><a name="Referring to the User-Interface Prototype from the Use-Case Storyboard"></a>Referring
+to the User-Interface Prototype from the Use-Case Storyboard <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>To further clarify the use-case storyboard, it can refer to the parts (e.g.,
+windows) of the user-interface prototype corresponding to its participating
+boundary classes. This can be useful if parts of the user-interface prototype
+already exist when the storyboard is described.</p>
+<h3><a name="Use"></a>Use <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Use-case storyboards are primarily used in initial stages of development,
+before the user interface is prototyped, as a &quot;reasoning&quot; tool to
+capture requirements on the user interface.</p>
+<p>Use-case storyboards are often considered as transient artifacts, and may be
+left unmaintained once the project is up to speed prototyping or implementing
+the user interface. However, in some cases it might be of value to maintain the
+use-case storyboards through a number of iterations, for example if there are
+complex requirements posed on the user interface which take time (over several
+iterations) to be understood.</p>
+<p>The use-case storyboards need not be described with any other readers in mind
+than use-case designers, since the use-case storyboards are conceptual and
+high-level, and may appear ambiguous to other individuals. Instead, it is their
+concrete manifestation (i.e. the user interface itself or a prototype of it)
+that is discussed, reviewed, and use tested with other stakeholders such as
+end-users. Still, the use-case storyboards can be used by the user-interface
+designer as a reference during use testing to focus on the right issues to test
+(e.g., complex interaction sequences).</p>
+<p>There is a compromise in the recommendation above; if it is significantly
+cheaper to develop the storyboards than the actual user-interface prototype, it
+might be worth while having users reviewing the storyboards directly before the
+prototype is implemented. The cost for this is that the descriptions of the
+storyboards need to be clear and self-contained so that they can be understood
+by the users; creating such descriptions can require substantial development
+resources.</p>
+<p>In cases where use-case storyboards are outlined in the requirements
+discipline, and a user interface prototype is created, the corresponding boundary
+classes are a good input to analysis activities. However, one sometimes also
+needs to create use-case storyboards during analysis to trig corresponding
+user-interface design and implementation activities, because:
+<ul>
+  <li>Some projects do not create a user-interface prototype; instead, they
+    design and implement the user interface directly with no prototype as input.</li>
+  <li>Some projects do create a user-interface prototype, but only for a small
+    number of use cases. The rest of the use cases do not have their user
+    interface prototyped.</li>
+</ul>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

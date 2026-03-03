@@ -1,0 +1,1725 @@
+
+
+<html>
+
+
+
+<head>
+
+<link rel="stylesheet" href="../../rop.css" type="text/css">
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>Toolkit: RUP Styleguide</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/toolboxc.gif"> <a href="../../devkit/index.htm">Process Engineer Toolkit</a> &gt;
+<img border=0 src="../../applet/images/toolboxc.gif"> <a href="../../toolment/devkit/tm_use.htm">User's Guide</a> &gt;
+<img border=0 src="../../applet/images/toolboxc.gif"> <a href="../../toolment/devkit/tm_web.htm">Working with Project Webs</a> &gt;
+<img border=0 src="../../applet/images/toolboxc.gif"> <a href="../../toolment/devkit/tm_webpa.htm">Authoring Process Web Pages</a> &gt;
+<img border=0 src="../../applet/images/tools.gif"> Rational Unified Process Styleguide
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+
+
+
+
+
+<h2 class="banner">Toolkit:&nbsp;
+
+<rpw name="PresentationName">Rational Unified Process Styleguide</rpw><a name="Top"></a></h2>
+
+
+
+<h3>Topics</h3>
+
+<p>The Rational Unified Process Styleguide describes the conventions to use when
+
+modifying the Rational Unified Process Web site.&nbsp; You may also wish to use
+
+these guidelines, or a tailored version of these guidelines, for developing your
+
+project Web site.</p>
+
+<p>This guide is organized in these
+
+subsections:</p>
+
+<div align="center"><center>
+
+
+
+<table border="0" cellspacing="1" width="75%">
+
+  <tr>
+
+    <td><a href="#Cascading Style Sheets"">Cascading Style Sheets</a> (Styles)</td>
+
+    <td><a href="#Pictures"">Pictures</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Theme"">Theme</a></td>
+
+    <td><a href="#Hotspot Pictures"">Hotspot Pictures</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Templates"">Templates</a></td>
+
+    <td><a href="#Using Colors"">Using Colors</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Title Banner"">Title Banner</a></td>
+
+    <td><a href="#Tables"">Tables</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Top2"">Top</a></td>
+
+    <td><a href="#References"">References</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Bullets"">Bullets</a></td>
+
+    <td><a href="#Vertical White Space"">Vertical White Space</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Italics and Bold"">Italics and Bold</a></td>
+
+    <td><a href="#Filenaming"">File naming</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Chapter and Section Numbering"">Chapter and Section Numbering</a></td>
+
+    <td><a href="#Word Template"">Microsoft® Word Template</a></td>
+
+  </tr>
+
+  <tr>
+
+    <td><a href="#Examples"">Examples</a></td>
+
+    <td><a href="#Index Online"">Index Online</a></td>
+
+  </tr>
+
+</table>
+
+</center></div>
+
+
+
+<p>The style of a Web site is enforced by theme, style sheet, and
+
+templates all of which are covered in the following subsections, along with some
+
+additional style issues.</p>
+
+<p>Use these guidelines to keep a uniform look throughout your documentation. If
+
+applying them in a given situation looks strange or confusing, skip the
+
+guideline and use common sense.</p>
+
+<h3><a name="Cascading Style Sheets">Cascading Style Sheets</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>Each page is linked to a Cascading Style Sheet.&nbsp;</p>
+
+<p> The style sheet for the Rational
+
+Unified Process is located at the top-level folder of the Rational Unified
+
+Process.&nbsp; To link the style sheet file to a page, the following line must be
+
+included in the header, which is the section between &lt;head&gt; and
+
+&lt;/head&gt;:</p>
+
+<p>&lt;link rel=&quot;stylesheet&quot; href=&quot;../../rop.css&quot;
+
+type=&quot;text/css&quot;&gt;</p>
+
+<p>The path given above assumes that rop.css is located in the Parent-Parent
+
+folder. Adjust according to your actual relative path.</p>
+
+<p> The style sheet for the Rational Project Web Example is called project.css,
+
+and is in the css folder below the top level folder.&nbsp; To link the style sheet file to a page, the
+
+same instruction apply as above, except that the relative path would be &quot;../../css/project.css&quot;</p>
+
+<p>The Rational Unified Process templates have a link to the rop.css file
+
+already. In most cases Microsoft FrontPage® manages to figure out the relative
+
+path once you save the new file in your directory structure. If, for some reason, it
+
+doesn't work, edit the HTML code appropriately.</p>
+
+<p>There is a potential for overlapping between the <a href="#Theme"">theme</a>
+
+and the style sheet. However, the Rational Unified Process and the Rational
+
+Project Web Example do <strong>not</strong>
+
+use the Microsoft FrontPage® theme.</p>
+
+<p>In the style sheet, there are so-called classes defined for different HTML
+
+markups. When a file linked to a style sheet is loaded in the FrontPage editor,
+
+the style list displays the classes from which&nbsp; you can choose.</p>
+
+<p>Updates to the style sheet are immediately reflected without any changes in
+
+the actual files. Sometimes the FrontPage editor does not register the change,
+
+however, a Web-browser will once you reload.</p>
+
+<p>Information on syntax and other details for style sheets is found in <a href="http://www.htmlhelp.com/reference/css/quick-tutorial.html" target="_blank"">Cascading
+
+Style Sheets</a>.</p>
+
+<h3>Style Classes <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<div align="center"><center>
+
+
+
+<table border="0" width="100%">
+
+  <tr>
+
+    <td width="19%" valign="top">Banner headings</td>
+
+    <td width="81%" valign="top">Heading 1.banner and Heading 2.banner<br>
+
+    Puts a colored background under the text.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Example heading</td>
+
+    <td width="81%" valign="top">Heading 5 (H5)<br>
+
+    This should say &quot;Example:&quot;.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Example</td>
+
+    <td width="81%" valign="top">Indent using the &quot;Increase
+
+    indentation&quot; button, next to the buttons for bulleted list and numbered
+
+    list, or use Normal.example.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Picture text</td>
+
+    <td width="81%" valign="top">Normal.picturetext</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Definition</td>
+
+    <td width="81%" valign="top">Normal.definition<br>
+
+    Used for definitions of modeling concepts. Do <strong>not</strong> use the
+
+    predefined Definition for this purpose.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Table heading</td>
+
+    <td width="81%" valign="top">Normal.tableheading<br>
+
+    Give table headings a bolder appearance.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Table text</td>
+
+    <td width="81%" valign="top">Normal.tabletext<br>
+
+    Adjusts text to the left in tables.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">a,b,c lists</td>
+
+    <td width="81%" valign="top">Numbered List.alpha.<br>
+
+    Note that the FrontPage editor doesn't show the alpha characters, however,
+
+    you can see them in the preview pane and in a &quot;real&quot; Web browser.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Bullets and Numbers</td>
+
+    <td width="81%" valign="top">For bulleted and numbered lists, use the
+
+    predefined Bulleted List and Numbered List.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="19%" valign="top">Plus and Minus bullets</td>
+
+    <td width="81%" valign="top">Bulleted List.plus and Bulleted List.minus<br>
+
+    Uses a plus or a minus sign for bullet.</td>
+
+  </tr>
+
+</table>
+
+</center></div>
+
+
+
+<h3><a name="Different Browser Support">Different Browser Support</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>Microsoft Internet Explorer 4.0 supports all the style sheet features used in
+
+the Rational Unified Process.</p>
+
+<p>Netscape Navigator 4.04 and 4.05 show the following signs that indicate a
+
+lack of support:</p>
+
+<div align="center"><center>
+
+
+
+<table border="0" cellpadding="4" width="100%" style="border: 0">
+
+  <tr>
+
+    <td width="29%">
+
+    <ul>
+
+      <li>Active link color</li>
+
+    </ul>
+
+    </td>
+
+    <td width="71%">Defaults to red instead of the specified electric blue.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="29%">
+
+    <ul>
+
+      <li>Table indentations</li>
+
+    </ul>
+
+    </td>
+
+    <td width="71%">The margin-specifier is ignored. To work-around, set table
+
+    width to 85% if it's wider than the text and center alignment.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="29%">
+
+    <ul>
+
+      <li>Bullets</li>
+
+    </ul>
+
+    </td>
+
+    <td width="71%">No special bullets appear; that is, the specifier
+
+    &quot;list-style-image&quot; is ignored, therefore regular bullets, and plus
+
+    and minus bullets, do not show up. Default bullets are used.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="29%">
+
+    <ul>
+
+      <li>Alphanumeric lists</li>
+
+    </ul>
+
+    </td>
+
+    <td width="71%">Lists with letters instead of numbers turn out as numbers.
+
+    (Style Numbered List.alpha)</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="29%">
+
+    <ul>
+
+      <li>Blue banners</li>
+
+    </ul>
+
+    </td>
+
+    <td width="71%">The blue heading banners don't stretch all the way across,
+
+    which is a cosmetic problem.</td>
+
+  </tr>
+
+</table>
+
+</center></div>
+
+
+
+<h3><a name="Theme">Theme</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p><img src="../../images/warning.gif" width="16" height="16"> Rational Unified
+
+Process and Rational Project Web Example do <strong>not</strong> use the Microsoft FrontPage® theme.</p>
+
+<p>A theme governs navigation buttons, bullets, background, link colors, font
+
+styles, and sizes for regular text, headings, and more. Here are some of the
+
+features and disadvantages:
+
+<ul>
+
+  <li>One of the strengths with themes is that Microsoft® FrontPage® supports
+
+    creating and laying out navigation buttons and page banners. This is done
+
+    using the navigation view information. However, Rational Unified Process Web
+
+    sites do <strong>not</strong> use this feature. Other features with themes can
+
+    be implemented with <a href="#Cascading Style Sheets"">cascading style sheets</a>
+
+    and, because we aren't using the navigation bar feature, we can rely
+
+    entirely on style sheets. See <a href="#Cascading Style Sheets"">Cascading
+
+    Style Sheets</a> above, under the heading <a href="#Different Browser Support"">Different
+
+    Browser Support</a> for some of the problems experienced with Netscape
+
+    Navigator.</li>
+
+</ul>
+
+<ul>
+
+  <li>Bulleted lists composed with a theme in place are actually implemented
+
+    using tables rather than the HTML unordered list tag &lt;UL&gt;. When
+
+    migrating to Microsoft Word®, bulleted lists are converted to tables with
+
+    images instead of bulleted lists. Another problem is that indenting text
+
+    with style sheets does not work for bulleted lists.</li>
+
+</ul>
+
+<ul>
+
+  <li>Themes are proprietary to Microsoft and are not an adopted standard,
+
+    whereas style sheets are a standard. Netscape Navigator and Microsoft
+
+    Internet Explorer show different things in some instances; for example,
+
+    table borders show in Navigator when the theme dictates they should be
+
+    white, that is, invisible on a white background.</li>
+
+</ul>
+
+<ul>
+
+  <li>It's unclear how themes and style sheets work together.</li>
+
+</ul>
+
+<ul>
+
+  <li>Opening HTML pages with a theme causes some Microsoft Word installations to crash.</li>
+
+</ul>
+
+<ul>
+
+  <li>When updating a theme, as well as a shared border, all files are visited,
+
+    which means that all files must be checked in and the baseline frozen every
+
+    time this is done. Style sheet updates do not affect any other files.</li>
+
+</ul>
+
+<h4>If you are using a Microsoft FrontPage theme</h4>
+
+<p>A FrontPage theme can be edited using the Theme Designer, which can be
+
+installed from the FrontPage CD.</p>
+
+<p>It takes quite some time to re-apply a theme to a site of this size, because
+
+every file is visited. This means that all files must be checked out when
+
+re-applying a theme.</p>
+
+<p>Theme files are kept in the Themes folder of the FrontPage installation
+
+folder.</p>
+
+<h4>The sizes of the different buttons</h4>
+
+<p>To maintain compatibility with pre-defined themes, FrontPage dictates certain
+
+sizes for theme button images. If your buttons have other sizes, things will
+
+move around when you apply another theme. Although the current theme does not
+
+follow these guidelines, here are the required dimensions:</p>
+
+<div align="center"><center>
+
+
+
+<table border="1" width="100%">
+
+  <tr>
+
+    <td width="32%">Global navigation</td>
+
+    <td width="68%">95 x 20 pixels</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="32%">Horizontal and vertical navigation</td>
+
+    <td width="68%">140 x 60 pixels</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="32%">Up, Home, Next, Previous</td>
+
+    <td width="68%">100 x 20</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="32%">Banner</td>
+
+    <td width="68%">600 x 60</td>
+
+  </tr>
+
+</table>
+
+</center></div>
+
+
+
+<p>The actual image can be smaller than specified, but the bitmap needs to have
+
+the above dimensions.</p>
+
+<h3><a name="Templates">Templates</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>When creating a new page in the Rational Unified Process, there are templates to get you started and help you
+
+stay with the style of the site. These templates need to be installed in the
+
+FrontPage Pages folder.
+
+<ul>
+
+  <li>FrontPage 98 users must follow the instructions from <a href="../../ruptmpl/fp_tmpl.htm"">Toolkit:
+    Installing FrontPage Templates</a> to copy the RUP FrontPage Templates into the Pages folder of your FrontPage installation
+
+    folder; for example,<br>
+
+    C:/Program Files/Microsoft FrontPage/pages. The Rational Unified Process
+
+    template folders should end with .tem and be at the same level as the other
+
+    template folders. FrontPage 2000 users can skip this step.</li>
+
+  <li>In the FrontPage editor, choose <b>File-&gt;New</b>.</li>
+
+  <li>From the list of templates, select the one you want. The Rational Unified
+
+    Process templates are named &quot;RUP xxx&quot;.</li>
+
+</ul>
+
+<p>See <a href="../../toolment/devkit/tm_bauth.htm#Creating a new file"">Toolkit:
+
+Basic Authoring of Process Web Pages</a> for more details.</p>
+
+<h3><a name="Top2">Top</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>In order to quickly return to the top of a web page, place a top bookmark there
+
+and, after each major heading, add the top-arrow with a link to the top.
+
+<ul>
+
+  <li>If there are top-arrows with links to the top, the easiest way to add
+
+    another is to <b>Copy</b>, then <b>Paste</b> it.</li>
+
+  <li>If not, here is the procedure:
+
+    <ol>
+
+      <li>Place the cursor before the title.</li>
+
+      <li>Choose <b>Edit-&gt;Bookmark...</b> and write &quot;Top&quot; in the
+
+        name field.&nbsp;</li>
+
+      <li>Check to make sure it isn't already included in the list. If it is,
+
+        make sure it's placed before the title. Click <b>OK</b>.</li>
+
+      <li>Copy this icon <img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20">.
+
+        Yes, we mean this icon right here.</li>
+
+      <li>Paste the icon after the heading. Add a space between the icon and the
+
+        heading text. Make sure the link to #Top was copied correctly too by
+
+        moving the mouse over the icon and checking the status bar. It should
+
+        say #Top.</li>
+
+    </ol>
+
+  </li>
+
+</ul>
+
+<h3><a name="Bullets">Bullets</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>Be consistent using uppercase or lowercase letters, periods, and commas
+
+within a set of bullets. Use the style best suited for the information.</p>
+
+<p>Use bullets to list an unordered series of items other than a sequence of
+
+events or steps.</p>
+
+<h4>Example: Full sentences</h4>
+
+<ul>
+
+  <li>Begin each bullet with a capital letter.</li>
+
+  <li>End each bullet with a period, question mark or exclamation mark if it's a
+
+    full sentence.</li>
+
+  <li>This is the preferred style and it's especially important for check points
+
+    and longer bullets.</li>
+
+</ul>
+
+<h4>Example: A comma-separated list</h4>
+
+<ul>
+
+  <p>Use a comma-separated list where:</lt> </p>
+
+  <li>each bullet begins with a lower case letter,</li>
+
+  <li>ends with a comma,</li>
+
+  <li>it's the next to last bullet with either &quot;, or&quot;, &quot;,
+
+    and&quot; or something similar, and</li>
+
+  <li>the last bullet ends with a period, question mark, or exclamation mark.</li>
+
+</ul>
+
+<h4>Example: Simple list</h4>
+
+<p>When you have a list of concepts, names, and so on, begin each bullet with a
+
+lower case letter. Don't use any commas, periods or other punctuation. For
+
+example:
+
+<p>There are four different models in the Rational Unified process:</lt> 
+
+<ul>
+
+  <li>use-case model</li>
+
+  <li>design model</li>
+
+  <li>implementation model</li>
+
+  <li>test model</li>
+
+</ul>
+
+<h4>Numbered lists</h4>
+
+<p>Use numbered lists for ordered lists, such as a sequence of steps. Let each
+
+item be a full sentence.</p>
+
+<h4>Alpha lists</h4>
+
+<p>Use style Numbered List.alpha to create an ordered list with a, b, c, ...
+
+This type of list is used if you'll be referring to any of the items in other
+
+text; for example, see item a. above.</p>
+
+<h3><a name="Italics and Bold">Italics and Bold</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>Use <strong>bold </strong>to emphasize. Do not use <em>italics</em>. Italic
+
+fonts are hard to read online and may not work correctly in all Web browsers.</p>
+
+<h3><a name="Chapter and Section Numbering">Chapter and Section Numbering</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>Whether to number headings or not is still a debate. Customers have requested
+
+a way to easily and uniquely reference sections of the material. Because of the
+
+dynamic nature of hypertext, numbered headings are difficult to interpret
+
+because the headings may be displayed outside of the context of the numbered
+
+document. To avoid confusion, use unique names for section headings and fully
+
+qualify section references using the name of the page as well as the name of the
+
+subsection if it's ambiguous.</p>
+
+<p>Where you must number, such as in brief outlines for documents, use the
+
+following convention:</p>
+
+<p>1 Heading level 1 (three spaces between the number and the heading title)</p>
+
+<p>1.1 Heading level 2</p>
+
+<p>1.1.1 Heading level 3</p>
+
+<p>Heading level 4 - 6 (no numbering)</p>
+
+<p>Heading levels deeper than 6 are not used.</p>
+
+<p>An appendix is named using letters: Appendix A, Appendix B, Appendix C, and
+
+so on.</p>
+
+<h3><a name="Examples">Examples</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<h5>Normal.example</h5>
+
+<p>Examples described separately from the body text should have the <i>Normal.example</i>
+
+style. Of course things can be exemplified directly in the body text as well.</p>
+
+<p>Every text with the <i>Normal.example</i> style should be preceded by a line
+
+with the text &quot;Example:&quot; as a <i>Heading 5 (H5)</i>.</p>
+
+<h3><a name="Title Banner">Title Banner</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>In the Rational Unified Process, we do not use the FrontPage component for
+
+page banners. One reason is that they require updating in the Navigation View,
+
+which is a central file. Another reason is that we do not need the Navigation
+
+View for anything else, such as navigation bars, and it leaves one less thing to
+
+worry about.</p>
+
+<p>What <strong>do</strong> we use? There are two styles in the style sheet for
+
+the top title:</p>
+
+<h1 class="banner">Heading 1.banner</h1>
+
+<p>and</p>
+
+<h2 class="banner">Heading 2.banner</h2>
+
+<p>Heading 1.banner is used in major discipline chapters and other big titles
+
+having few words. Heading 2.banner is used for all objects in the process,
+
+because these usually have long names; for example, Activity, Role, Guideline.
+
+The templates show when they are used.</p>
+
+<p>Unfortunately Netscape Navigator® and Microsoft Internet Explorer® treat
+
+background color for text differently. Internet Explorer colors the entire line
+
+from margin to margin, whereas Navigator only colors the area occupied by the
+
+text.</p>
+
+<h4>Banners, Navigation View, and HTML tag &lt;title&gt;</h4>
+
+<p>If you use the Navigation View and the FrontPage component for the banner,
+
+this might be good to know:
+
+<ul>
+
+  <li>If the page exists and you drop it into the Navigation view, it will get
+
+    the title, as specified, with the HTML tag &lt;title&gt;. This is just a
+
+    copy and there is no magical relationship between these two titles. Updating
+
+    the page name in the Navigation View will <strong>not</strong> update the
+
+    title in the &lt;title&gt; tag. Changing the page title will <strong>not</strong>
+
+    update the banner either, unless you remove the file from the Navigation
+
+    view and add it again, but it's just as easy to edit the name.</li>
+
+</ul>
+
+<h3><a name="Pictures">Pictures</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<ul>
+
+  <li>Pictures and tables are centered in the text column.</li>
+
+  <li>Pictures in tables are left-adjusted or centered.</li>
+
+  <li>Do <b>not</b> use frames around the pictures. With hyperlinked pictures,
+
+    set border width to zero in Image properties.</li>
+
+  <li>Keep pictures small. The maximum width for a picture is 12 cm.</li>
+
+  <li>Download all pictures in CorelDraw format from the <a href="../rescenter.htm"">RUP Resource Center</a>.</li>
+
+</ul>
+
+<h4>Printed documentation</h4>
+
+<p>For pictures that go into printed documentation as well as online, do <b>not</b>
+
+use bitmaps. The exception to this rule is screen dumps. CorelDraw is used to
+
+draw the diagrams in the Rational Unified Process, which are exported from the
+
+CorelDraw format to the GIF-format.</p>
+
+<p>When creating printed documentation, the original CorelDraw picture is
+
+inserted into the proper chapter in Microsoft Word.</p>
+
+<p>Some pictures are smaller than the minimum size CorelDraw allows for
+
+exporting to GIF. These may need a CorelDraw version, as well as a separately
+
+made bitmap version. See the section titled &quot;CorelDraw tips&quot; for more
+
+information..</p>
+
+<h4>Small images for online only</h4>
+
+<p>Icons, bullets, buttons, and so forth used only for online documentation can
+
+be created with a bitmap paint tool such as Image Composer, which comes with
+
+FrontPage, or CorelPaint. Adobe PhotoShop is also a current favorite. All of
+
+these tools require some experimentation to become familiar with them. Export
+
+pictures as GIF files. CorelDraw has a minimum size for exporting GIF files and,
+
+if it's not small enough, you have to scale the picture, which usually gives an
+
+ugly result.</p>
+
+<p>If icons are to be included in the printed version too, you'll need
+
+corresponding CorelDraw icons for them.</p>
+
+<h4>CorelDraw tips</h4>
+
+<p>This is not meant to replace the CorelDraw manual, but solely to share
+
+experience.
+
+<ul>
+
+  <li>Reuse similar pictures when creating new ones.</li>
+
+  <li>Bezier curves and lines can be copied and pasted, then easily reformed.
+
+    You get the same line thickness and type of arrow head. Experiment with
+
+    Bezier curves as they're easy and fun to use once you get the hang of them.
+
+    Double clicking on a node to open a tool box allows you to remove and add
+
+    new nodes.</li>
+
+  <li>You'll want to group icons with their text to create easy-to-move picture
+
+    elements. Remember to adjust icon and text; for example, center text under
+
+    roles and activities. Reusing groups for icons and text will preserve the
+
+    distance between the icon and the text, creating a uniform look to the whole
+
+    picture.</li>
+
+  <li>The font style and size for text under all icons should be in Arial bold
+
+    10pt.</li>
+
+  <li>If you round the corners of rectangles, out-of-proportion scaling will
+
+    also change the roundness of the corners. It is better to draw the rectangle
+
+    in the approximate proportions you want it before rounding the corners; for
+
+    example, swim-lanes in workflow diagrams.</li>
+
+  <li>Adjust and distribute the picture elements to each other when you're done
+
+    to avoid time-consuming, unnecessary adjusting.</li>
+
+</ul>
+
+<h4>Exporting to GIF from CorelDraw</h4>
+
+<p>To export a picture to GIF, follow this procedure:
+
+<ol>
+
+  <li>Select the entire picture. It's a good idea to group it.</li>
+
+  <li>From the right mouse button menu or <b>File</b> menu, choose <b>export</b>.</li>
+
+  <li>In the displayed dialog box, name the GIF file. Type the extension .gif
+
+    with lowercase letters to make sure you get lowercase letters because UNIX
+
+    servers are very picky with case and it's important to keep it uniform.
+
+    Check the box for exporting only the selection.</li>
+
+  <li>On the next dialogue that displays, specify:
+
+    <ul>
+
+      <li>Color: Paletted (8 bit)</li>
+
+      <li>Size: one-to-one</li>
+
+      <li>Resolution: 75 dpi</li>
+
+    </ul>
+
+  </li>
+
+  <li>In the final dialogue that displays, specify:
+
+    <ul>
+
+      <li>89a-format</li>
+
+      <li>Check <b>interlaced</b> if you want; the picture loads with stepwise
+
+        finer resolution</li>
+
+      <li>If relevant, choose a transparent color. This is usually white, index
+
+        215 in the default palette</li>
+
+    </ul>
+
+  </li>
+
+</ol>
+
+<h4>Reusing pictures in many places</h4>
+
+<p>You can reuse a picture, even hotspot pictures, by placing them in an
+
+HTML-file by themselves then include them where you want them. This is useful
+
+for pictures that appear in more than one place.
+
+<ol>
+
+  <li>Choose <b>Insert-&gt;FrontPage Component...</b>.</li>
+
+  <li>Select <b>Include Page</b>.</li>
+
+  <li>Specify the URL.</li>
+
+  <li>Click <b>OK</b>.</li>
+
+</ol>
+
+<h3><a name="Hotspot Pictures">Hotspot Pictures</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>It's very easy to create hotspots in pictures in FrontPage.
+
+<ol>
+
+  <li>Select the picture you want hot spots in and a picture toolbar appears.</li>
+
+  <li>Mark the hotspots with the hotspot area tools, which are to the left in
+
+    the toolbar.</li>
+
+  <li>The displayed dialog asks for the URL to which you want to link the
+
+    hotspot. You can double-click on hotspot areas to edit them.</li>
+
+  <li>Once you deselect the picture, the hotspot frames become invisible.</li>
+
+</ol>
+
+<h3><a name="Using Colors">Using Colors</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>First of all, colors take up lots of space—think twice before using them!</p>
+
+<p>Web browsers use 216 colors from what is known as the <i>color cube</i>.
+
+Using the RGB scheme, the 216 colors are made up from a triplet of {00, 51, 102,
+
+153, 204, 255): in hex that is {00, 33, 66, 99, cc, ff}. These ones are already
+
+in CorelDraw's standard palette.</p>
+
+<p>We use a subset of these colors to keep the online version harmonious from a
+
+color standpoint. In the picture below, you can see the colors in our subset,
+
+and how they're used. As you may notice, we aren't using all of them yet. The
+
+names of the colors are shown to help you choose the right ones in CorelDraw.
+
+The RGB value is also indicated.</p>
+
+<p>There is a custom palette, with the colors below as well as black and white,
+
+that you can use as follows:
+
+<ol>
+
+  <li>Download the palette file <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">rup_palette.cpl</a>.
+
+    You might want to save it in the Corel installation folder, where the
+
+    pre-defined palette files reside. In Corel8, it's in the Custom folder.</li>
+
+  <li>In CorelDraw, right-click the Color Palette's border, then click <b>Open</b>.</li>
+
+  <li>Choose the drive where the template is stored from the Look In list box.
+
+    Color palettes have the extension .CPL.</li>
+
+  <li>Double-click the folder where the file is stored.</li>
+
+  <li>Double-click the palette's file name.<br>
+
+  </li>
+
+</ol>
+
+<p><img src="images/colors.gif" width="644" height="560"></p>
+
+<h3><a name="Tables">Tables</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>For headings in tables, use the style Normal.tableheading.</p>
+
+<p>The theme rules that there should be no borders around tables. In fact, they
+
+are there, but they're white. If you really want visible borders, override with
+
+local settings.</p>
+
+<h4>Table placement</h4>
+
+<ul>
+
+  <li>Tables are centered in the text column.</li>
+
+</ul>
+
+<h4>Text alignment in cells</h4>
+
+<ul>
+
+  <li>Vertical alignment should be Top.</li>
+
+  <li>Horizontal alignment should be Default.</li>
+
+</ul>
+
+<h3><a name="References">References</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>A <strong>&quot;thing&quot; </strong>is a role, artifact, guideline,
+
+activity, and so on. A <b>&quot;</b><strong>thing page</strong><b>&quot;</b> is
+
+a page with an activity, role, artifact, guideline, and so forth.</p>
+
+
+
+<table border="1" width="100%">
+
+  <tr>
+
+    <td width="163" bordercolor="#000000" align="left">
+
+    <p class="tableheading">Kind of references</td>
+
+    <td width="345" bordercolor="#000000" align="left">
+
+    <p class="tableheading">Examples</td>
+
+    <td width="178" bordercolor="#000000" align="left">
+
+    <p class="tableheading">Comment</td>
+
+  </tr>
+
+  <tr>
+
+    <td rowspan="2" valign="top" width="163" bordercolor="#000000"><em>To a
+
+    'thing page'</em></td>
+
+    <td width="345" bordercolor="#000000">See <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Activity:
+
+    Find Use Cases and Actors</a>.</td>
+
+    <td width="178" bordercolor="#000000"><em>Alt 1: In the text.</em></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="345" bordercolor="#000000">See <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Guideline:
+
+    Use Case</a>.</td>
+
+    <td width="178" bordercolor="#000000"><em>Alt 2: In parenthesis.</em></td>
+
+  </tr>
+
+  <tr>
+
+    <td valign="top" width="163" bordercolor="#000000"><em>To a section in a
+
+    'thing page'</em></td>
+
+    <td width="345" bordercolor="#000000">See the section titled &quot;Timing&quot; in <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Artifact:
+
+    Software-Architecture Document</a>.</td>
+
+    <td width="178" bordercolor="#000000"><em>Hyperlink to a page. The user is
+
+    supposed to find the section.</em></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="163" bordercolor="#000000"><em>Hyperlink references to a chapter
+
+    in a manual.</em></td>
+
+    <td width="345" valign="top" bordercolor="#000000">See
+
+    the section titled <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Overview</a>
+
+    in <em>&quot;</em>Rational Unified Process—An Introduction&quot;.</td>
+
+    <td width="178" valign="top" bordercolor="#000000"><em>The manual within
+
+    quotation marks.</em></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="163" bordercolor="#000000"><em>Non-hyperlink references.</em></td>
+
+    <td width="345" valign="top" bordercolor="#000000">See
+
+    the section titled &quot;Overview&quot; in &quot;Rational Unified Process—An
+
+    Introduction&quot;.</td>
+
+    <td width="178" valign="top" bordercolor="#000000"><em>The section within
+
+    quotation marks, the manual in quotation marks.</em></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="163" bordercolor="#000000"><em>In-text reference (preferred
+
+    alternative)</em></td>
+
+    <td width="345" bordercolor="#000000">Another technique is to perform
+
+    role playing. See <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Role Playing</a>,
+
+    in which people act as business actors, business workers, and business
+
+    entities.</td>
+
+    <td width="178" bordercolor="#000000">
+
+    <pre>&nbsp;</pre>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="163" bordercolor="#000000"><em>In-text reference<br>
+
+    (second alternative)</em></td>
+
+    <td width="345" bordercolor="#000000">Another technique is to perform <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">role
+
+    playing</a>, in which people act as business actors, business workers, and
+
+    business entities.</td>
+
+    <td width="178" bordercolor="#000000"><em>Warning: Avoid this style of
+
+    reference.</em></td>
+
+  </tr>
+
+</table>
+
+<p>General guidelines for cross-references are provided here:
+
+<ol>
+
+  <li>In the tables:<br>
+
+    Create hyperlink to the thing with no prefix, such as <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Use
+
+    Case</a>.<br>
+
+    Do <strong>not </strong>have the prefix, such as <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Artifact:
+
+    Use Case</a>.</li>
+
+  <li>Do not mention the process when we reference as a &quot;thing&quot; in the
+
+    process.<br>
+
+    <strong>Write </strong>'see <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Activity:
+
+    Use-Case Analysis</a>'.<br>
+
+    <strong>Do not write </strong>'see <a href="../../rpw_gen/noinc.htm"><img src="../../rpw_gen/no_rup.gif" alt="This file in not present in this generated website" border="0">Rational
+
+    Unified Process - Activity: Use-Case Analysis</a>'.</li>
+
+  <li>Avoid referencing a bookmark in another page. Use the style recommended
+
+    above for references &quot;To a section in a page&quot;. Of course, this
+
+    requires that the named section ( called &quot;Timing&quot; in the example)
+
+    is visible on the page. Otherwise you may consider a reference to a
+
+    bookmark. There is also a problem that FrontPage doesn't support bookmarks
+
+    very well.</li>
+
+</ol>
+
+<h3>Return and Shift-Return (<a name="Vertical White Space">Vertical White Space</a>) <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<ul>
+
+  <li>A return means make a new paragraph. In HTML you will get a &lt;p&gt;-tag
+
+    or some other tag indicating a block of some sort. Usually, this is what you
+
+    want.</li>
+
+  <li>A shift-return only inserts a new-line in the current paragraph, whereas
+
+    in HTML a &lt;BR&gt;-tag is inserted. The shift-return is useful when:
+
+    <ul>
+
+      <li>a return gives you more vertical white space than you want; for
+
+        example, an outline description</li>
+
+      <li>you want to control where the line breaks in a bulleted list or in any
+
+        paragraph for that matter</li>
+
+    </ul>
+
+  </li>
+
+</ul>
+
+<h3><a name="Filenaming">File Naming</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>File names should be no more than 20 characters long and should contain only
+
+alphabets, numbers, and underscores (_). Spaces and most symbols such as &amp;,
+
+*, ; should not be used. It is also highly recommended that all file names be
+
+named using lowercase letters.</p>
+
+<p>The current file naming convention uses the abbreviations listed in the
+
+following table, and an abbreviated name of the file contents, separated by an
+
+underscore. For example, the artifact Use-Case Model is called ar_ucm.htm and
+
+the modeling guideline for the Use-Case Model is md_ucm.htm.</p>
+
+<p>We are considering a different way to name files to accommodate the
+
+requirements of unambiguous page referencing. Customers have expressed a need to
+
+reference items in the process in an easier way and it makes sense to use the
+
+same numbering or code in the file name, or at least some sort of obvious
+
+mapping.</p>
+
+
+
+<table border="0" width="51%">
+
+  <tr>
+
+    <td width="61%"><strong>Concept</strong></td>
+
+    <td width="39%"><strong>Abbreviation</strong></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">concept</td>
+
+    <td width="39%">co_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">activity</td>
+
+    <td width="39%">ac_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">role</td>
+
+    <td width="39%">wk_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">artifact</td>
+
+    <td width="39%">ar_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">report</td>
+
+    <td width="39%">re_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">discipline introduction</td>
+
+    <td width="39%">int_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">workflow detail</td>
+
+    <td width="39%">wfs_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">workflow graph</td>
+
+    <td width="39%">wfsg_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">iteration workflow</td>
+
+    <td width="39%">iwf_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">guidelines (for models, model elements, and artifacts)</td>
+
+    <td width="39%">md_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">work guidelines</td>
+
+    <td width="39%">wg_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">check lists</td>
+
+    <td width="39%">ck_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">manual pages</td>
+
+    <td width="39%">im_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">overview</td>
+
+    <td width="39%">ovu_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">examples</td>
+
+    <td width="39%">ex_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">Microsoft Word templates</td>
+
+    <td width="39%">wd_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">Rational SoDA templates</td>
+
+    <td width="39%">so_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">HTML templates</td>
+
+    <td width="39%">wb_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">guideline overviews</td>
+
+    <td width="39%">mdov_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">introduction manual</td>
+
+    <td width="39%">im_</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="61%">tool mentors</td>
+
+    <td width="39%">tm_</td>
+
+  </tr>
+
+</table>
+
+<h4><a name="Word Template">Microsoft Word template</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+
+<p>There is a Microsoft Word template for creating manuals in print called <a href="../../ruptmpl/rup.dot" target="_blank"">rup.dot</a>.
+
+We suggest that you create a separate folder for Rational Unified Process
+
+Microsoft Word templates named, for example, &quot;RUP&quot; in Microsoft Word's template
+
+folder, which is typically C:\Program Files\Microsoft Office\Templates. Place a
+
+copy of this template file and others there. For more information on using Microsoft
+
+Word,
+
+see <a href="../../toolment/devkit/tm_bauth.htm"">Toolkit: Basic Web Page
+
+Authoring</a> to find out how to, and how <b>not</b> to, use Microsoft Word
+
+for HTML authoring.</p>
+
+<h3><a name="Index Online">Index Online</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+
+<p>See <a href="../../toolment/devkit/tm_rupto.htm"">Toolkit: Preparing for Publication</a> 
+
+for information on how to generate an index.</p>
+
+<p>See the <a href="../../devkit/ruptools/application/keywordindex/doc/index.htm"">KeyWordIndex</a>
+
+for more information on how to enter keywords into Rational Unified Process
+
+pages.<br>
+
+<br>
+
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

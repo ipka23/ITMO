@@ -1,0 +1,334 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Comparing program runs with qxdiff                     Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2379>
+<meta name=layout-width content=823>
+<meta name=date content="05 16, 2001 5:30:00 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_automate_analysis.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_manage_cached_files.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Comparing program runs with qxdiff</h1>
+
+<p>The <font style="font-family: Courier;"
+			face=courier>qxdiff</font> script compares two export data 
+ files from runs of a Quantify'd program and reports any changes in performance. 
+ To use the <font style="font-family: Courier;"
+					face=courier>qxdiff</font> script:</p>
+
+<p class=List-Number><span style="font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><font style="font-family: Helvetica;"
+															face=helvetica>1.</font></FONT></span><span 
+ style="font-size: 8pt;
+		font-family='Times: New Roman;
+		letter-spacing=0pt: ;
+		font-weight=normal: ;"><FONT SIZE=1 style="font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></span>Save 
+ baseline performance data to an export file. Select <span style="font-weight: bold;"><B>File 
+ &gt; Export Data As</B></span><span style="font-style: italic;"> <I></I></span>in 
+ any data analysis window. </p>
+
+<p class=List-Number><span style="font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><font style="font-family: Helvetica;"
+															face=helvetica>2.</font></FONT></span><span 
+ style="font-size: 8pt;
+		font-family='Times: New Roman;
+		letter-spacing=0pt: ;
+		font-weight=normal: ;"><FONT SIZE=1 style="font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></span>Change 
+ the program and run Quantify on it again. </p>
+
+<p class=List-Number><span style="font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><font style="font-family: Helvetica;"
+															face=helvetica>3.</font></FONT></span><span 
+ style="font-size: 8pt;
+		font-family='Times: New Roman;
+		letter-spacing=0pt: ;
+		font-weight=normal: ;"><FONT SIZE=1 style="font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></span>Select 
+ <span style="font-weight: bold;"><B>File &gt; Export Data As </B></span>to export 
+ the performance data for the new run. </p>
+
+<p class=List-Number><span style="font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><font style="font-family: Helvetica;"
+															face=helvetica>4.</font></FONT></span><span 
+ style="font-size: 8pt;
+		font-family='Times: New Roman;
+		letter-spacing=0pt: ;
+		font-weight=normal: ;"><FONT SIZE=1 style="font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></span>Use 
+ the <font style="font-family: Courier;"
+			face=courier>qxdiff</font> script to compare the two export 
+ data files. For example:<font style="font-family: Courier;"
+								face=courier><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% qxdiff -i testHash.pure.20790.0.qx &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;improved_testHash.pure.20854.0.qx</font></p>
+
+<p>You can use the <font style="font-family: Courier;"
+						face=courier>-i</font> option to ignore functions 
+ that make calls to system calls. </p>
+
+<p>Below is the output from this example. </p>
+
+<p class="@First-Paragraph">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/scripts2.gif' x-maintain-ratio='TRUE' width='804' height='266'>");}
+else
+{   document.write("<img src='../image/scripts2.gif' x-maintain-ratio='TRUE' style='border: none;  										width: 804px;  										height: 266px;  										float: none;' width='804' height='266'>");}
+//-->
+</SCRIPT></p>
+
+<h2><a name=qxdiff_ann></a></h2>
+
+<h2>What qxdiff annotations mean</h2>
+
+<p class="@First-Paragraph">Each line in the <span style="font-family: Courier;">qxdiff</span> 
+ report lists a function whose time has changed. The annotations on each 
+ line mean the following: </p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				border-spacing: 0;
+				width: 55.823%;"
+		width=55.823%
+		cellspacing=0>
+<col style="width: 24.037%;">
+<col style="width: 75.963%;">
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=24.037%>
+<p><span style="font-weight: bold;"><B>Symbol</B></span><br>&nbsp;</p></td>
+<td style="border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=75.963%>
+<p class="@First-Paragraph"
+	style="font-weight: bold;">Meaning</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=24.037%>
+<p class="@First-Paragraph">-<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=75.963%>
+<p class="@First-Paragraph">Called in the baseline run only</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=24.037%>
+<p class="@First-Paragraph">!<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=75.963%>
+<p>Called in both runs; timing changed</p></td></tr>
+
+<tr valign=top>
+<td style="border-left-style: Solid;
+			border-left-color: #000000;
+			border-left-width: 1px;
+			border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=24.037%>
+<p>+<br>&nbsp;</p></td>
+<td style="border-right-style: Solid;
+			border-right-color: #000000;
+			border-right-width: 1px;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=75.963%>
+<p>Called in the changed run only</p></td></tr>
+</table>
+
+<p class="@First-Paragraph">&nbsp;</p>
+
+<p class="@First-Paragraph">Unless you change the calling structure of 
+ the program, <span style="font-family: Courier;">qxdiff</span> reports 
+ only the functions whose performance has changed (lines marked “!”). You 
+ can use the <span style="font-family: Courier;">-l</span> option to print 
+ a description of the columns and annotations in the <span style="font-family: Courier;">qxdiff</span> 
+ report.</p>
+
+<p class="@First-Paragraph">The <span style="font-family: Courier;">qxdiff</span> 
+ report summarizes the total number of differences, the change in the total 
+ function time count, and the overall percentage change between the baseline 
+ and the changed run. The <span style="font-family: Courier;">qxdiff</span> 
+ script prints the report to <span style="font-family: Courier;">stdout</span>. 
+ </p>
+
+<p class="@First-Paragraph">By default, <span style="font-family: Courier;">qxdiff</span> 
+ reports changes in operating system call times. These changes can be caused 
+ by a different number of calls or changed network traffic loads. You can 
+ use the <span style="font-family: Courier;">-i</span> option to tell <span 
+ style="font-family: Courier;">qxdiff</span> to ignore functions that make 
+ system calls in order to focus on the changes in compute-bound functions 
+ only. </p>
+
+<p class="@First-Paragraph">The following example shows the effect of the 
+ <span style="font-family: Courier;">-i</span> option, used here<span style="margin-bottom: 0;"> 
+ to see the effect of a different compiler optimization level on the </span><span 
+ style="margin-bottom: 0; font-family: Courier;">improved_testHash</span><span 
+ style="margin-bottom: 0;"> program.</span></p>
+
+<p class="@First-Paragraph"
+	style="margin-bottom: 0;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/scripts3.gif' x-maintain-ratio='TRUE' width='762' height='114'>");}
+else
+{   document.write("<img src='../image/scripts3.gif' x-maintain-ratio='TRUE' style='border: none;  											width: 762px;  											height: 114px;  											float: none;' width='762' height='114'>");}
+//-->
+</SCRIPT></p>
+
+<p class="@First-Paragraph"
+	style="margin-bottom: 0;">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/scripts4.gif' x-maintain-ratio='TRUE' width='762' height='762'>");}
+else
+{   document.write("<img src='../image/scripts4.gif' x-maintain-ratio='TRUE' style='border: none;  											width: 762px;  											height: 762px;  											float: none;' width='762' height='762'>");}
+//-->
+</SCRIPT></p>
+
+</body>
+
+</html>

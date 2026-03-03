@@ -1,0 +1,532 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../../rop.css" type="text/css">
+<title>Concepts: Key Measures of Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../applet/images/workflow.gif"> <a href="../ovu_core.htm">Disciplines</a> &gt;
+<img border=0 src="../../../applet/images/wf_green.gif"> <a href="../ovu_test.htm">Test</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> <a href="ov_tst_co.htm">Concepts</a> &gt;
+<img border=0 src="../../../applet/images/concept.gif"> Key Measures of Test
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+<h2 class="banner"><a name="Top"></a>Concepts:
+&nbsp;<rpw name="PresentationName">Key Measures of Test</rpw><a name="XE_test__measures"></a><a name="XE_measures__in_test"></a></h2>
+<ul>
+  <li><a href="#Introduction"">Introduction</a></li>
+  <li><a href="#Coverage"">Coverage Measures</a>
+    <ul>
+      <li><a href="#Requirements-based test coverage"">Requirements-based Test
+        Coverage</a></li>
+      <li><a href="#Code-based test coverage"">Code-based Test Coverage</a></li>
+    </ul>
+  </li>
+  <li><a href="#Quality"">Quality Measures</a></li>
+  <li><a href="#Defect Reports"">Defect Reports</a>
+    <ul>
+      <li><a href="#Defect Density Reports:"">Defect Density</a></li>
+      <li><a href="#Defect Aging Reports:"">Defect Aging</a></li>
+      <li><a href="#Defect Trend Reports:"">Defect Trend</a></li>
+    </ul>
+  </li>
+  <li><a href="#Performance"">Performance Measures</a>
+    <ul>
+      <li><a href="#Dynamic Monitoring"">Dynamic Monitoring</a></li>
+      <li><a href="#Response Time / Throughput Reports"">Response Time /
+        Throughput</a></li>
+      <li><a href="#Percentile Reports"">Percentile Reports</a></li>
+      <li><a href="#Comparison Reports"">Comparison Reports</a></li>
+      <li><a href="#Trace and Profile Reports"">Trace and Profile Reports</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+<h3><b><a name="Introduction">Introduction</a> </b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>The key measures of a test include coverage and quality.</p>
+<p>Test coverage is the measurement of testing completeness, and is based on the
+coverage of testing, expressed either by the coverage of test requirements and
+test cases, or the coverage of executed code.</p>
+<p>Quality is a measure is of reliability, stability, and the performance of the
+target-of-test (system or application-under-test). Quality is based upon the
+evaluation of test results and the analysis of change requests (defects)
+identified during the testing.</p>
+<h3><a name="XE_measures__coverage"></a><b><a name="Coverage">Coverage Measures</a>
+</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Coverage metrics provides answers to the question &quot;How complete is the
+testing?&quot; The most commonly used coverage measures are requirements-based
+and code-based test coverage. In brief, test coverage is any measure of
+completeness with respect to either a requirement (requirement-based) or the
+code's design / implementation criterion (code-based), such as the verification
+of use cases (requirement-based) or execution of all lines of code (code-based).</p>
+<p>Any systematic testing activity is based on at least one test coverage
+strategy. The coverage strategy guides the design of test cases by stating the
+general purpose of the testing. The statement of coverage strategy can be as
+simple as verifying all performance.</p>
+<p>If the requirements are completely cataloged, a requirements-based coverage
+strategy may be sufficient for yielding a quantifiable measure of testing
+completeness. For example, if all performance test requirements have been
+identified, then the test results can be referenced to get measures, such as 75
+percent of the performance test requirements have been verified.</p>
+<p>If code-based coverage is applied, test strategies are formulated in terms of
+how much of the source code has been executed by tests. This type of test
+coverage strategy is very important for safety-critical systems.</p>
+<p>Both measures can be derived manually (equations given below), or may be
+calculated by test automation tools.</p>
+<h4><a name="Requirements-based test coverage">Requirements-based test coverage</a>
+<a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Requirements-based test coverage is measured several times during the test
+life cycle and provides the identification of the test coverage at a milestone
+in the testing life cycle (such as the planned, implemented, executed, and
+successful test coverage).
+<ul>
+  <li>Test coverage is calculated by the following equation:</li>
+</ul>
+<blockquote>
+  <blockquote>
+    <p class="example">Test Coverage = T<sup><sup>(p,i,x,s)</sup></sup> / RfT<br>
+    <br>
+    where:<br>
+    T is the number of Tests (planned, implemented, executed, or successful) as
+    expressed as test procedures or test cases.</p>
+    <p class="example">RfT is the total number of Requirements for Test.</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li>In the Plan Test activity, the test coverage is calculated to determine
+    the planned test coverage and is calculated in the following manner:</li>
+</ul>
+<blockquote>
+  <blockquote>
+    <p class="example">Test Coverage (planned) = T<sup><sup>p</sup></sup> / RfT<br>
+    <br>
+    where:<br>
+    T<sup><sup>p</sup></sup> is the number of planned Tests as expressed as test
+    procedures or test cases.</p>
+    <p class="example">RfT is the total number of Requirements for Test.</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li>In the Implement Test activity, as test procedures are being implemented
+    (as test scripts), test coverage is calculated using the following equation:</li>
+</ul>
+<blockquote>
+  <blockquote>
+    <p class="example">Test Coverage (implemented) = T<sup><sup>i</sup></sup> /
+    RfT<br>
+    <br>
+    where:<br>
+    T<sup><sup>i</sup></sup> is the number of Tests implemented as expressed by
+    the number of test procedures or test cases for which there are
+    corresponding test scripts.</p>
+    <p class="example">RfT is the total number of Requirements for Test.</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li>In the Execute Test activity, there are two test coverage measures used,
+    one identifies the test coverage achieved by executing the tests, while the
+    second identifies the successful test coverage (those tests that executed
+    without failures, such as defects or unexpected results).
+    <p>These coverage measures are calculated by the following equations:</p>
+    <blockquote>
+      <p class="example">Test Coverage (executed) = T<sup><sup>x</sup></sup> /
+      RfT</p>
+      <p class="example">where:<br>
+      T<sup><sup>x</sup></sup> is the number of Tests executed as expressed as
+      test procedures or test cases.</p>
+      <p class="example">RfT is the total number of Requirements for Test.</p>
+    </blockquote>
+  </li>
+  <blockquote>
+    <p>&nbsp;</p>
+  </blockquote>
+</ul>
+<blockquote>
+  <blockquote>
+    <p class="example">Successful Test Coverage (executed) = T<sup><sup>s</sup></sup>
+    / RfT</p>
+  </blockquote>
+  <blockquote>
+    <p class="example">where:<br>
+    T<sup><sup>s</sup></sup> is the number of Tests executed as expressed as
+    test procedures or test cases which completed successfully and without
+    defects.</p>
+  </blockquote>
+  <blockquote>
+    <p class="example">RfT is the total number of Requirements for Test.</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <blockquote>
+    <p>&nbsp;</p>
+  </blockquote>
+</ul>
+<p>Turning the above ratios into percentages allows the following statement of
+requirements-based test coverage:</p>
+<blockquote>
+  <p>x% of test cases (T<sup><sup>(p,i,x,s)</sup></sup> in the above equations)
+  have been covered with a success rate of y%</p>
+</blockquote>
+<p>This is a meaningful statement of test coverage that can be matched against a
+defined success criteria. If the criteria have not been met, then the statement
+provides a basis for predicting how much testing effort remains.</p>
+<h4><a name="Code-based test coverage">Code-based test coverage</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Code-based test coverage measures how much code has been executed during the
+test, compared to how much code there is left to execute. Code coverage can
+either be based on control flows (statement, branch, or paths) or data flows. In
+control-flow coverage, the aim is to test lines of code, branch conditions,
+paths through the code, or other elements of the software's flow of control. In
+data-flow coverage, the aim is to test that data states remain valid through the
+operation of the software, for example, that a data element is defined before it
+is used.</p>
+<p>Code-based test coverage is calculated by the following equation:</p>
+<blockquote>
+  <p class="example">Test Coverage = I<sup><sup>e</sup></sup> / TIic</p>
+</blockquote>
+<blockquote>
+  <p class="example">where:<br>
+  I<sup><sup>e</sup></sup> is the number of items executed expressed as code
+  statements, code branches, code paths, data state decision points, or data
+  element names.</p>
+</blockquote>
+<blockquote>
+  <p class="example">TIic is the total number of items in the code.</p>
+</blockquote>
+<p>Turning this ratio into a percentage allows the following statement of
+code-based test coverage:</p>
+<blockquote>
+  <p>x% of test cases (I in the above equation) have been covered with a success
+  rate of y%</p>
+</blockquote>
+<p>This is a meaningful statement of test coverage that can be matched against a
+defined success criteria. If the criteria have not been met, then the statement
+provides a basis for predicting how much testing effort remains.</p>
+<h3><a name="XE_measures__quality"></a><b><a name="Quality">Quality Measures</a>
+</b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>While the evaluation of test coverage provides the measure of testing
+completion, an evaluation of defects discovered during testing provides the best
+indication of software quality. Quality is the indication of how well the
+software meets the requirements, so in this context, defects are identified as a
+type of change request in which the target-of-test failed to meet the
+requirements.</p>
+<p>Defect evaluation may be based on methods that range from simple defect
+counts to rigorous statistical modeling.</p>
+<p>Rigorous evaluation uses assumptions about the arrival or discovery rates of
+defects during the testing process. A common model assumes that the rate follows
+a Poisson distribution. The actual data about defect rates are then fit to the
+model. The resulting evaluation estimates the current software reliability and
+predicts how the reliability will grow if testing and defect removal continue.
+This evaluation is described as software-reliability growth modeling and is an
+area of active study. Due to the lack of tool support for this type of
+evaluation, you should carefully balance the cost of doing it with the value it
+adds.</p>
+<p>Defects analysis means to analyze the distribution of defects over the values
+of one or more the parameters associated with a defect. Defect analysis provides
+an indication of the reliability of the software.</p>
+<p>For defect analysis, there are four main defect parameters commonly used:
+<ul>
+  <li>Status the current state of the defect (open, being fixed, closed, etc.).</li>
+  <li>Priority the relative importance of this defect having to be addressed and
+    resolved.</li>
+  <li>Severity the relative impact of this defect. The impact to the end-user,
+    an organization, third parties, etc.</li>
+  <li>Source where and what is the originating fault that results in this
+    defect, or what component will be fixed to eliminate the defect.</li>
+</ul>
+<p><br>
+Defect counts can be reported as a function of time, creating a <strong>Defect
+Trend</strong><i> </i>diagram or report, defect counts can be reported as a
+function of one or more defect parameters, like severity or status, in a <strong>Defect
+Density</strong><i> </i>report. These types of analysis provide a perspective on
+the trends or distribution of defects that reveal the software's reliability,
+respectively.<br>
+<br>
+For example, it is expected that defect discovery rates will eventually diminish
+as the testing and fixing progresses. A threshold can be established below which
+the software can be deployed. Defect counts can also be reported based on the
+origin in the implementation model, allowing detection of &quot;weak
+modules&quot;, &quot;hot spots&quot;, parts of the software that keep being
+fixed again and again, indicating some more fundamental design flaw.</p>
+<p>Defects included in an analysis of this kind have to be confirmed defects.
+Not all reported defects report an actual flaw, as some may be enhancement
+requests, out of the scope of the project, or describe an already reported
+defect. However, there is value to looking at and analyzing why there are many
+defects being reported that are either duplicates or not confirmed defects.</p>
+<h4><b><a name="Defect Reports">Defect Reports</a> </b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>The Rational Unified Process® recommends defect evaluation based on three
+categories of reports:
+<ul>
+  <li>Defect distribution (density) reports allow defect counts to be shown as a
+    function of one or two defect parameters.</li>
+  <li>Defect age reports are a special type of defect distribution report.
+    Defect age reports show how long a defect has been in a particular state,
+    such as Open. In any age category, defects can also be sorted by another
+    attribute, like Owner.</li>
+  <li>Defect trend reports show defect counts, by status (new, open, or closed),
+    as a function of time. The trend reports can be cumulative or
+    non-cumulative.</li>
+  <li>Test results and progress reports show the results of test procedure
+    execution over a number of iterations and test cycles for the
+    application-under-test.</li>
+</ul>
+<p>Many of these reports are valuable in assessing software quality. The usual
+test criteria include a statement about the allowable numbers of open defects in
+particular categories, such as severity class. This criterion is easily checked
+with a defect distribution evaluation. By filtering or sorting on test
+requirements, this evaluation can be focused on different sets of requirements.</p>
+<p>To be effective producing reports of this kind normally requires tool
+support.</p>
+<h4><b><a name="Defect Density Reports:">Defect Density Reports</a> </b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<h4><b>Defect Status Versus Priority</b></h4>
+<p>Each defect should be given a priority; usually it is practical to have four
+priority levels:
+<ol>
+  <li>Resolve immediately</li>
+  <li>High priority</li>
+  <li>Normal queue</li>
+  <li>Low priority</li>
+</ol>
+<p>Criteria for a successful test could be expressed in terms of how the
+distribution of defects over these priority levels should look. For example, to
+a successful test criteria might be no Priority 1 defects and fewer than five
+Priority 2 defects are open. A defect distribution diagram, such as the
+following, should be generated:</p>
+<p>&nbsp;</p>
+<p align="center"><img src="images/keymeas1.gif" width="378" height="233"></p>
+<p>&nbsp;</p>
+<p>It is clear that the criterion has not been met. Note that this diagram needs
+to include a filter to show only open defects as required by the test criterion.</p>
+<h4><b>Defect Status Versus Severity</b></h4>
+<p>Defect severity reports show how many defects there are of each severity
+class (for example: fatal error, major function not performed, minor annoyance).</p>
+<h4><b>Defect Status Versus Location in the Implementation Model</b></h4>
+<p>Defect source reports show distribution of defects on elements in the
+implementation model.</p>
+<h4><b><a name="Defect Aging Reports:">Defect Aging Reports</a> </b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Defect age analyses provide good feedback on the effectiveness of the testing
+and the defect removal activities. For example, if the majority of older,
+unresolved defects are in a pending-validation state, it probably means that not
+enough resources are applied to the re-testing effort.</p>
+<h4><b><a name="Defect Trend Reports:">Defect Trend Reports</a> </b><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Trend reports identify defect rates and provide a particularly good view of
+the state of the testing. Defect trends follow a fairly predictable pattern in a
+testing cycle. Early in the cycle, the defect rates rise quickly. Then they
+reach a peak and fall at a slower rate over time.</p>
+<p>&nbsp;</p>
+<p align="center"><img src="images/keymeas2.gif" width="373" height="230"></p>
+<p>&nbsp;</p>
+<p>To find problems, the project schedule can be reviewed in light of this
+trend. For example, if the defect rates are still rising in the third week of a
+four-week test cycle, the project is clearly not on schedule.</p>
+<p>This simple trend analysis assumes that defects are being fixed promptly and
+that the fixes are being tested in subsequent builds, so that the rate of
+closing defects should follow the same profile as the rate of finding defects.
+When this does not happen, it indicates a problem with the defect-resolution
+process; the defect fixing resources or the resources to re-test and validate
+fixes might be inadequate.</p>
+<p>&nbsp;</p>
+<p align="center"><img src="images/keymeas3.gif" width="469" height="230"></p>
+<p>&nbsp;</p>
+<p>The trend reflected in this report shows that new defects are discovered and
+opened quickly at the beginning of the project, and that they decrease over
+time. The trend for open defects is similar to that for new defects, but lags
+slightly behind. The trend for closing defects increases over time as open
+defects are fixed and verified. These trends depict a successful effort.<br>
+<br>
+If your trends deviate dramatically from these, they may indicate a problem and
+identify when additional resources may need to be applied to specific areas of
+development or testing.</p>
+<p>When combined with the measures of test coverage, the defect analyses provide
+a very good assessment on which to base the test completion criteria.</p>
+<h3><a name="Performance">Performance Measures</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>Several measures are used for assessing the performance behaviors of the
+target-of-test and focus on capturing data related to behaviors such as response
+time, timing profiles, execution flow, operational reliability and limits.
+Primarily, these measures are assessed in the Evaluate Test activity, however,
+there are performance measures that are used during the Execute Test activity to
+evaluate test progress and status.</p>
+<p>The primary performance measures include:
+<ul>
+  <li>Dynamic monitoring - real-time capturing and display of the status and
+    state of each test script being executed during the test execution.</li>
+  <li>Response Time / Throughput -<font face="Times New Roman" color="#000000">
+    measurement of the response times or throughput of the target-of-test for
+    specified actors, and / or use cases.</font></li>
+  <li>Percentile Reports - p<font face="Times New Roman" color="#000000">ercentile
+    measurement / calculation of the data collected values.</font></li>
+  <li><font face="Times New Roman" color="#000000">Comparison Reports -
+    differences or trends between two (or more) sets of data representing
+    different test executions.</font></li>
+  <li><font face="Times New Roman" color="#000000">Trace Reports - details of
+    the messages / conversations between the actor (test script) and the
+    target-of-test.</font></li>
+</ul>
+<h4><a name="Dynamic Monitoring">Dynamic Monitoring</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Dynamic monitoring provides real-time display / reporting, typically in the
+form of a histogram or graph. The report is used to monitor or assess
+performance test execution during test execution by displaying the current
+state, status, and progress the test scripts being executed.<br>
+</p>
+<p align="center"><img src="images/keymeas4.gif" alt="keymeas4.gif (4149 bytes)" width="501" height="333"></p>
+<p align="left">For example, in the above histogram, we have 80 test scripts
+executing the same use case. In this display, 14 test scripts are in the Idle
+state, 12 in the Query, 34 in SQL Execution, 4 in SQL Connect, and 16 in the
+Other state. As the test progresses, we would expect to see the number of
+scripts in each state change. The displayed output would be typical of a test
+execution that is executing normally and is in the middle of the execution.
+However, if during test execution, test scripts remain in one state or are not
+showing changes, this could indicate a problem with the test execution or the
+need to implement or evaluate other performance measures.</p>
+<h4><a name="Response Time / Throughput Reports">Response Time / Throughput
+Reports</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Response time / Throughput reports, as their name implies measures and
+calculates the performance behaviors related to time and / or throughput (number
+of transactions processed). Typically these reports are displayed as a graph
+with response time (or number of transactions) on the &quot;y&quot; axis and
+events on the &quot;x&quot; axis.</p>
+<p align="center"><img src="images/keymeas5.gif" alt="keymeas5.gif (6939 bytes)" width="499" height="333"></p>
+<p><font face="Times New Roman" color="#000000">In addition to showing the
+actual performance behaviors, it is often valuable to calculate and display
+statistical information such as the mean and standard deviation of the data
+values.</font></p>
+<h4><a name="Percentile Reports">Percentile Reports</a> <a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p>Percentile reports provide another statistical calculation of performance by
+displaying <font face="Times New Roman" color="#000000">population percentile
+values for data types collected.</font></p>
+<p align="center"><img src="images/keymeas6.gif" alt="keymeas6.gif (5644 bytes)" width="499" height="333"></p>
+<h4><font color="#000000"><a name="Comparison Reports">Comparison Reports</a> </font><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p><font face="Times New Roman" color="#000000">It is highly desirable to
+compare the results of one performance test execution with that of another, to
+evaluate the impact of changes made between test executions the on the
+performance behaviors. Comparison reports should be used to display the
+difference between two sets of data (each representing different test
+executions) or trends between many executions of test.</font></p>
+<h4><font color="#000000"><a name="Trace and Profile Reports">Trace and Profile
+Reports</a> </font><a href="#Top""><img src="../../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h4>
+<p><font face="Times New Roman" color="#000000">When performance behaviors are
+acceptable, or performance monitoring indicates the possible bottlenecks (such
+as when test scripts remain in a given state for exceedingly long periods) trace
+reporting may be the most valuable report. Trace and Profile reports display
+lower level information. This information includes the messages between the
+actor and the target-of-test, </font>execution flow, data access, and the
+function and system calls.<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+-f "toc.htm"
+-u "../../../devkit/rupuse/search/toc.htm"
+
+-xu *.zip
+-xu *.class
+-xu *.cab
+-xu *.cpl
+-xu *.css
+-xu *.dat
+-xu *.doc
+-xu *.dot
+-xu *.ext
+-xu *.gif
+-xu *.inf
+-xu *.java
+-xu *.jpg
+-xu *.mdb
+-xu *.mdl
+-xu *.mpp
+-xu *.mpt
+-xu *.mpx
+-xu *.pdf
+-xu *.txt
+-xu *.utf8
+-xu *.ws
+-xu *.xml
+
+-xu *loading.htm
+-xu *contents.htm
+
+-xu _*/*.*
+-xu */_*/*.*
+-xu */*/_*/*.*
+-xu */*/*/_*/*.*
+-xu */*/*/*/_*/*.*
+-xu */_*
+-xu */examples/course_reg/*
+-xu */examples/csports/*
+-xu */examples/*
+-xu */applet/*.*
+
+-xu rpw/*
+-xu rpw/templates/*.htm
+-xu index/*.*
+-xu devkit/rupuse/sitemap/*.htm
+-xu devkit/rupuse/search/*.htm
+-xu sitemap/*.htm
+-xu */toc.htm
+-xu *tour/*.htm
+-xu webtmpl/templates/*/*.htm
+-xu *thereisnopage.htm
+-xu *exclude.htm
+-xu *navig.htm
+-xu *header.htm
+-xu *index.htm
+-xu */process_maturity.htm
+-xu *rup_relnotes.htm
+-xu *spscreen.htm
+-xu *orytree.htm
+-xu *buttons.htm
+
+-xn
+-xwf searchexclude.htm

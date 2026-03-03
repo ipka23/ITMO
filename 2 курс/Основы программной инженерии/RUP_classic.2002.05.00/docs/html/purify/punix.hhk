@@ -1,0 +1,3848 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="FrameName" value="bsscright">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="#ifdef and purify_is_running">
+    <param name="Name" value="Miscellaneous API functions#MID_IFDEF">
+    <param name="Local" value="html/ht_api_misc.htm#MID_IFDEF">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="% conversion character syntax">
+    <param name="Name" value="Annotation API function">
+    <param name="Local" value="html/ht_api_annotation.htm">
+    <param name="Name" value="conversion characters">
+    <param name="Local" value="html_notoc/ht_gloss_conversion.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="* (asterisk) in options">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-&lt;Purify option&gt;">
+    <param name="Name" value="About Purify options">
+    <param name="Local" value="html/ht_ov_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-g debug option">
+    <param name="Name" value="debug data">
+    <param name="Local" value="html_notoc/ht_gloss_debug.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-O compiler option">
+    <param name="Name" value="debug data">
+    <param name="Local" value="html_notoc/ht_gloss_debug.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".pure file">
+    <param name="Name" value=".pure file">
+    <param name="Local" value="html_notoc/ht_gloss_purefile.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".purify files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages in">
+      <param name="Name" value="Using suppressions for multiple programs">
+      <param name="Local" value="html/ht_share_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="system default">
+      <param name="Name" value="Suppression option">
+      <param name="Local" value="html/ht_opt_suppression.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".purify.Xdefaults for customizing the Viewer">
+    <param name="Name" value="Customizing the Purify Viewer">
+    <param name="Local" value="html/ht_customize_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".pv files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="opening">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving error data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".watchpoints file">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="format">
+      <param name="Name" value="Saving watchpoints#MID_WATCH">
+      <param name="Local" value="html/ht_save_watchpoints.htm#MID_WATCH">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ABR message">
+    <param name="Name" value="ABR: array bounds read">
+    <param name="Local" value="html/ht_m_abr.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="example">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ABW message">
+    <param name="Name" value="ABW: array bounds write">
+    <param name="Local" value="html/ht_m_abw.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="example">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="allocators">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="fixed size">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="modifying fixed-size allocators">
+      <param name="Name" value="Modifying fixed-size allocators">
+      <param name="Local" value="html/ht_mod_fixedsize_allocators.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="pool allocators">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+      <param name="Name" value="Accessing auxiliary data">
+      <param name="Local" value="html/ht_access_aux_data.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="sbrk allocators">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="annotating Purify output">
+    <param name="Name" value="Annotating Purify output">
+    <param name="Local" value="html/ht_annotate_output.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="annotation API function">
+    <param name="Name" value="Annotation API function">
+    <param name="Local" value="html/ht_api_annotation.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="annotation option">
+    <param name="Name" value="Annotation option">
+    <param name="Local" value="html/ht_opt_annotation.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="API function list">
+    <param name="Name" value="About Purify API functions">
+    <param name="Local" value="html/ht_ov_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="API functions">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about API functions">
+      <param name="Name" value="About Purify API functions">
+      <param name="Local" value="html/ht_ov_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="annotation function">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="calling API functions">
+      <param name="Name" value="Calling Purify API functions">
+      <param name="Local" value="html/ht_howto_call_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="exit processing">
+      <param name="Name" value="Exit processing API functions">
+      <param name="Local" value="html/ht_api_exit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptor">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory access">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="message batching">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="return values">
+      <param name="Name" value="About Purify API functions">
+      <param name="Local" value="html/ht_ov_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="threads">
+      <param name="Name" value="Threads API function">
+      <param name="Local" value="html/ht_api_threads.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="API functions (by name)">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="pure_name_thread">
+      <param name="Name" value="Threads API function">
+      <param name="Local" value="html/ht_api_threads.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_assert_is_readable">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_assert_is_writable">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_describe">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_exit">
+      <param name="Name" value="Exit processing API functions">
+      <param name="Local" value="html/ht_api_exit.htm">
+      <param name="Name" value="Reporting Purify status at exit">
+      <param name="Local" value="html/ht_report_status.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_get_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_get_user_data">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_is_running">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_logfile_printf">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_map_pool">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_map_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+      <param name="Name" value="Memory leaks example">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_printf">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_printf_with_call_chain">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_set_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_set_user_data">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_start_batch">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_batch">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_here">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_here_internal">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_info">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_n">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_r">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_remove">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_remove_all">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_rw">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_what colors">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="array bounds errors">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="array bounds read example">
+    <param name="Name" value="Memory access tutorial">
+    <param name="Local" value="html/ht_ex_testhash.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="array bounds write example">
+    <param name="Name" value="Memory access tutorial">
+    <param name="Local" value="html/ht_ex_testhash.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ASCII text files">
+    <param name="Name" value="Saving error data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="automated testing with Purify">
+    <param name="Name" value="Automating error data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="auxiliary data">
+    <param name="Name" value="Accessing auxiliary data">
+    <param name="Local" value="html/ht_access_aux_data.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="background color">
+    <param name="Name" value="Customizing the Purify Viewer">
+    <param name="Local" value="html/ht_customize_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="batching messages">
+    <param name="Name" value="Controlling message batching">
+    <param name="Local" value="html/ht_control_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="blue memory">
+    <param name="Name" value="How Purify finds memory access errors">
+    <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="breakpoints">
+    <param name="Name" value="Memory leaks example">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="BRK message">
+    <param name="Name" value="BRK: misuse of brk or sbrk">
+    <param name="Local" value="html/ht_m_brk.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="BSR message">
+    <param name="Name" value="BSR: ead">
+    <param name="Local" value="html/ht_m_bsr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="BSW message">
+    <param name="Name" value="BSW: beyond stack write">
+    <param name="Local" value="html/ht_m_bsw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="bug reports">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing from Purify">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing with Rational Software">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="bug-tracking tool selection">
+    <param name="Name" value="Selecting a defect-tracking tool">
+    <param name="Local" value="html/ht_sel_bugtracker.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="build-time options">
+    <param name="Name" value="About Purify options#MID_OPTLIST_BUILDTIME">
+    <param name="Local" value="html/ht_ov_p_options.htm#MID_OPTLIST_BUILDTIME">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="building the testHash example">
+    <param name="Name" value="Building and running the testHash example program">
+    <param name="Local" value="html/ht_build_example.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="C++ memory leaks">
+    <param name="Name" value="How Purify finds and reports memory leaks">
+    <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="cache files">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="call chains">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="displaying messages in">
+      <param name="Name" value="Customizing Purify messages">
+      <param name="Local" value="html/ht_customize_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages in">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="call failures">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="calling Purify API functions">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="cancelling checkout">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="change request management system selection">
+    <param name="Name" value="Selecting a defect-tracking tool">
+    <param name="Local" value="html/ht_sel_bugtracker.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="change requests">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing from Purify">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing with Rational Software">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="checking files in and out">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="classes and message suppression">
+    <param name="Name" value="Suppressing messages in the Viewer">
+    <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ClearCase">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="selecting a configuration management system">
+      <param name="Name" value="Selecting a configuration management system">
+      <param name="Local" value="html/ht_integrate_with_cc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with Purify">
+      <param name="Name" value="Using Rational ClearCase with Purify">
+      <param name="Local" value="html/ht_clearcase.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ClearDDTS">
+    <param name="Name" value="Selecting a defect-tracking tool">
+    <param name="Local" value="html/ht_sel_bugtracker.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ClearQuest">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="selecting a defect-tracking tool">
+      <param name="Name" value="Selecting a defect-tracking tool">
+      <param name="Local" value="html/ht_sel_bugtracker.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with Purify">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="code coverage data">
+    <param name="Name" value="Using Rational PureCoverage with Purify">
+    <param name="Local" value="html/ht_purecov.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="colors">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="changing highlight colors">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="color coding messages">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for memory">
+      <param name="Name" value="How Purify finds memory access errors">
+      <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="compiler option -O">
+    <param name="Name" value="debug data">
+    <param name="Local" value="html_notoc/ht_gloss_debug.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="conditional compilation for fixed-size allocators">
+    <param name="Name" value="Modifying fixed-size allocators">
+    <param name="Local" value="html/ht_mod_fixedsize_allocators.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="configuration management">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="checking files in and out">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Rational ClearCase and Purify">
+      <param name="Name" value="Using Rational ClearCase with Purify">
+      <param name="Local" value="html/ht_clearcase.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="selecting a system">
+      <param name="Name" value="Selecting a configuration management system">
+      <param name="Local" value="html/ht_integrate_with_cc.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="contacting Rational Software">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing bug reports with Rational Software">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Rational Software Technical Publications:contacting">
+      <param name="Name" value="Contacting Technical Publications">
+      <param name="Local" value="html/ht_tech_pubs.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Rational Software Technical Support">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="context-sensitive Help">
+    <param name="Name" value="Using the Purify help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="controlling message batching">
+    <param name="Name" value="Controlling message batching">
+    <param name="Local" value="html/ht_control_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="conversion characters">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in Purify options">
+      <param name="Name" value="conversion characters">
+      <param name="Local" value="html_notoc/ht_gloss_conversion.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="printf partial support">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="COR message">
+    <param name="Name" value="COR: core dump imminent">
+    <param name="Local" value="html/ht_m_cor.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="counters">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="coverage data">
+    <param name="Name" value="Using Rational PureCoverage with Purify">
+    <param name="Local" value="html/ht_purecov.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="cron job for removing files">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="custom memory managers">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="customizing">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="annotating output">
+      <param name="Name" value="Annotating Purify output">
+      <param name="Local" value="html/ht_annotate_output.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="controlling message batching">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing the thread summary message">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="default configuration management system">
+      <param name="Name" value="Selecting a configuration management system">
+      <param name="Local" value="html/ht_integrate_with_cc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="distribution of Purify output">
+      <param name="Name" value="Mailing Purify output to team members">
+      <param name="Local" value="html/ht_mail_output.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="Customizing Purify">
+      <param name="Local" value="html/ht_ov_customizing_purify.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="program control toolbar">
+      <param name="Name" value="Customizing the program controls">
+      <param name="Local" value="html/ht_customize_program_ctrls.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify messages">
+      <param name="Name" value="Customizing Purify messages">
+      <param name="Local" value="html/ht_customize_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify scripts">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify Viewer">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="dbx">
+    <param name="Name" value="Finding memory leaks in testHash">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Debug control button">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="debug option -g">
+    <param name="Name" value="debug data">
+    <param name="Local" value="html_notoc/ht_gloss_debug.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="debuggers">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and JIT debugging">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and watchpoints">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="calling Purify API functions">
+      <param name="Name" value="Calling Purify API functions">
+      <param name="Local" value="html/ht_howto_call_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="changing list of available debuggers">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="dbx">
+      <param name="Name" value="Finding memory leaks in testHash">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="setting breakpoints">
+      <param name="Name" value="Building and running the testHash example program#MID_STOP">
+      <param name="Local" value="html/ht_build_example.htm#MID_STOP">
+      <param name="Name" value="Finding memory leaks in testHash#MID_BREAK">
+      <param name="Local" value="html/ht_ex_memleaks.htm#MID_BREAK">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="stopping at watchpoints">
+      <param name="Name" value="Calling Purify watchpoint functions">
+      <param name="Local" value="html/ht_call_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoints compared with Purify watchpoints">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="xdb">
+      <param name="Name" value="Memory leaks example">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="debugging the testHash example">
+    <param name="Name" value="Building and running the testHash example program">
+    <param name="Local" value="html/ht_build_example.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="defect reports">
+    <param name="Name" value="Using Rational ClearQuest with Purify">
+    <param name="Local" value="html/ht_clearquest.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing from Purify">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing with Rational Software">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="defect-tracking tool selection">
+    <param name="Name" value="Selecting a defect-tracking tool">
+    <param name="Local" value="html/ht_sel_bugtracker.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="definitions of Purify terms">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+    <param name="WindowName" value="gloss">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="delete function">
+    <param name="Name" value="How Purify finds and reports memory leaks">
+    <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="descriptors">
+    <param name="Name" value="File descriptor leak example">
+    <param name="Local" value="html/ht_ex_filedescriptor.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="directories for caching">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="disabling memory leaked messages">
+    <param name="Name" value="Disabling memory leaked messages">
+    <param name="Local" value="html/ht_disable_ml_messages.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="displaying messages">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="options">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressed messages">
+      <param name="Name" value="Viewing suppressed messages">
+      <param name="Local" value="html/ht_view_suppressed_messages.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="documentation feedback">
+    <param name="Name" value="Contacting Technical Publications">
+    <param name="Local" value="html/ht_tech_pubs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Edit control button">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="editing code">
+    <param name="Name" value="Correcting errors">
+    <param name="Local" value="html/ht_ov_correcting.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="enabling just-in-time debugging">
+    <param name="Name" value="Enabling just-in-time debugging">
+    <param name="Local" value="html/ht_enable_jit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="environment variables">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="errno and watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="error correction">
+    <param name="Name" value="Correcting errors">
+    <param name="Local" value="html/ht_ov_correcting.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="error detection limitations">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="error messages">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="analyzing">
+      <param name="Name" value="Analyzing Purify error messages">
+      <param name="Local" value="html/ht_ov_viewing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="color coding">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="controlling batching">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="first-only mode">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FIU (example)">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="from automated testing">
+      <param name="Name" value="Automating error data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="repeated">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="examples">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ABR">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ABW">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="auxiliary data (pool allocators)">
+      <param name="Name" value="Accessing auxiliary data">
+      <param name="Local" value="html/ht_access_aux_data.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptors">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="hello_world (message suppression)">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="testHash memory access tutorial">
+      <param name="Name" value="Building and running the testHash example program">
+      <param name="Local" value="html/ht_build_example.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="UMR">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoints">
+      <param name="Name" value="Calling Purify watchpoint functions">
+      <param name="Local" value="html/ht_call_watchpoints.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="exit and shell scripts">
+    <param name="Name" value="Running shell scripts at exit">
+    <param name="Local" value="html/ht_run_shellscripts_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="exit processing API functions">
+    <param name="Name" value="Exit processing API functions">
+    <param name="Local" value="html/ht_api_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="exit processing options">
+    <param name="Name" value="Exit processing options">
+    <param name="Local" value="html/ht_opt_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="exit reports">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="exit status summary">
+      <param name="Name" value="Exit status summary">
+      <param name="Local" value="html/ht_exit_status_summary.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaked summary">
+      <param name="Name" value="Memory leaked summary">
+      <param name="Local" value="html/ht_memory_leaked_summary.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="failed runs flagged">
+    <param name="Name" value="Reporting Purify status at exit">
+    <param name="Local" value="html/ht_report_status.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="file descriptor API functions">
+    <param name="Name" value="File API functions">
+    <param name="Local" value="html/ht_api_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="file descriptor options">
+    <param name="Name" value="File descriptor options">
+    <param name="Local" value="html/ht_opt_file_descriptor.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="file descriptors">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and vfork">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="example">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptors message">
+      <param name="Name" value="File descriptors message">
+      <param name="Local" value="html/ht_file_desc_mess.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="About file descriptor leaks">
+      <param name="Local" value="html/ht_ov_file_descriptors.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value=".pure">
+      <param name="Name" value=".pure file">
+      <param name="Local" value="html_notoc/ht_gloss_purefile.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value=".purify files">
+      <param name="Name" value="Suppression option">
+      <param name="Local" value="html/ht_opt_suppression.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value=".watchpoint file">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and configuration management system">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="cache files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for saved watchpoints">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="instrumented">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="libpurify_stubs.a">
+      <param name="Name" value="Calling Purify API functions#MID_STUBS">
+      <param name="Local" value="html/ht_howto_call_p_api.htm#MID_STUBS">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="libpurify_stubs.so">
+      <param name="Name" value="Calling Purify API functions#MID_STUBS">
+      <param name="Local" value="html/ht_howto_call_p_api.htm#MID_STUBS">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="locating Purify files">
+      <param name="Name" value="Viewing suppressed messages">
+      <param name="Local" value="html/ht_view_suppressed_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="naming of cache files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify.h">
+      <param name="Name" value="Calling Purify API functions#MID_CALL_API_FROM_PROG">
+      <param name="Local" value="html/ht_howto_call_p_api.htm#MID_CALL_API_FROM_PROG">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify.xdefaults">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stubs.a">
+      <param name="Name" value="Calling Purify API functions#MID_STUBS">
+      <param name="Local" value="html/ht_howto_call_p_api.htm#MID_STUBS">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing old files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages in">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="filtering messages">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filtering messages from the Viewer">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filtering messages in a .purify file">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="About suppressing messages">
+      <param name="Local" value="html/ht_ov_suppressing_messages.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FIU message">
+    <param name="Name" value="FIU: file descriptors in use">
+    <param name="Local" value="html/ht_m_fiu.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="disabling">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="fixed-size allocator modification">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="floating matches">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FMM message">
+    <param name="Name" value="FMM: freeing mismatched memory">
+    <param name="Local" value="html/ht_m_fmm.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FMR message">
+    <param name="Name" value="FMR: free memory read">
+    <param name="Local" value="html/ht_m_fmr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FMW message">
+    <param name="Name" value="FMW: free memory write">
+    <param name="Local" value="html/ht_m_fmw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FNH message">
+    <param name="Name" value="FNH: freeing non-heap memory">
+    <param name="Local" value="html/ht_m_fnh.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="font color and size">
+    <param name="Name" value="Customizing the Purify Viewer">
+    <param name="Local" value="html/ht_customize_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="FUM message">
+    <param name="Name" value="FUM: freeing unallocated memory">
+    <param name="Local" value="html/ht_m_fum.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="function names and suppressions">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="gdb and watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="global data improperly overwritten">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="glossary">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+    <param name="WindowName" value="gloss">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="green memory">
+    <param name="Name" value="How Purify finds memory access errors">
+    <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="guard zones">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="guide for getting started with Purify">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_basic_steps.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="header file for Purify API functions">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="help">
+    <param name="Name" value="Using the Purify help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="allowing time to display the help system">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify help system">
+      <param name="Name" value="Using the Purify help system">
+      <param name="Local" value="html/ht_using_help.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Technical Publications">
+      <param name="Name" value="Contacting Technical Publications">
+      <param name="Local" value="html/ht_tech_pubs.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Technical Support">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Hide Navpane">
+    <param name="Name" value="Using the Purify help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="highlight colors in the Viewer">
+    <param name="Name" value="Customizing the Purify Viewer">
+    <param name="Local" value="html/ht_customize_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="HP-UX and xdb">
+    <param name="Name" value="Memory leaks example">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="improved mallocs">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="incrementation errors and watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Insertion (OCI)">
+    <param name="Name" value="instrumentation">
+    <param name="Local" value="html_notoc/ht_gloss_instr.htm">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="instrumenting programs">
+    <param name="Name" value="Instrumenting and running your program">
+    <param name="Local" value="html/ht_ov_instr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="integrating Purify with ClearCase">
+    <param name="Name" value="Selecting a configuration management system">
+    <param name="Local" value="html/ht_integrate_with_cc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="interrupt signals and Purify watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="introduction">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify">
+      <param name="Name" value="Rational Purify:What it does">
+      <param name="Local" value="html/ht_intro_purify.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify Viewer">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="IPR message">
+    <param name="Name" value="IPR: invalid pointer read">
+    <param name="Local" value="html/ht_m_ipr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="IPW message">
+    <param name="Name" value="IPW: invalid pointer write">
+    <param name="Local" value="html/ht_m_ipw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="IRIX stubs libraries">
+    <param name="Name" value="Calling Purify API functions#MID_STUBS">
+    <param name="Local" value="html/ht_howto_call_p_api.htm#MID_STUBS">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="JIT debugging">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and watchpoints">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="enabling">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="kernel trap handlers and Purify watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Kill control button">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ld failure message">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ld.so warning">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="leaks">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about memory leaks">
+      <param name="Name" value="About memory leaks">
+      <param name="Local" value="html/ht_ov_mem_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="finding new memory leaks">
+      <param name="Name" value="Using the new leaks button">
+      <param name="Local" value="html/ht_use_newleaks_button.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leak API functions">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leak options">
+      <param name="Name" value="Memory leak options">
+      <param name="Local" value="html/ht_opt_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaked summary">
+      <param name="Name" value="Memory leaked summary">
+      <param name="Local" value="html/ht_memory_leaked_summary.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="libpurify_stubs.a">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="libpurify_stubs.so (IRIX)">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="libraries">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="errors in">
+      <param name="Name" value="About errors in third-party code and libraries">
+      <param name="Local" value="html_notoc/ht_ov_thirdparty_code.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify stubs libraries">
+      <param name="Name" value="Calling Purify API functions#MID_STUBS">
+      <param name="Local" value="html/ht_howto_call_p_api.htm#MID_STUBS">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="lightweight processes">
+    <param name="Name" value="Customizing the thread summary message">
+    <param name="Local" value="html/ht_customize_thread_message.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="limitations on error detection">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="limitations on reported function names">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="link line for specifying options">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="location identifiers for memory allocation">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="location of suppressions">
+    <param name="Name" value="Suppressing messages in the Viewer">
+    <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="log file annotations">
+    <param name="Name" value="Annotating Purify output">
+    <param name="Local" value="html/ht_annotate_output.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="MAF message">
+    <param name="Name" value="MAF: malloc failure">
+    <param name="Local" value="html/ht_m_maf.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="mail mode option">
+    <param name="Name" value="Mail mode option">
+    <param name="Local" value="html/ht_opt_mail.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="mailing output">
+    <param name="Name" value="Mailing Purify output to team members">
+    <param name="Local" value="html/ht_mail_output.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Make control button">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="makefiles and purify">
+    <param name="Name" value="Automating error data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="malloc">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="failure">
+      <param name="Name" value="Troubleshooting">
+      <param name="Local" value="html/ht_ts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="improved malloc">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="used by Purify">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="veneers">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="mangled function names">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="manual for getting started with Purify">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_basic_steps.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="color states">
+      <param name="Name" value="How Purify finds memory access errors">
+      <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="monitoring a region of memory">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory access API functions">
+    <param name="Name" value="Memory access API functions">
+    <param name="Local" value="html/ht_api_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory access errors">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="how Purify finds them">
+      <param name="Name" value="How Purify finds memory access errors">
+      <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="monitoring">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="About memory access errors">
+      <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory access options">
+    <param name="Name" value="Memory access options">
+    <param name="Local" value="html/ht_opt_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory leak API functions">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory leak options">
+    <param name="Name" value="Memory leak options">
+    <param name="Local" value="html/ht_opt_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory leaked messages disabled">
+    <param name="Name" value="Disabling memory leaked messages">
+    <param name="Local" value="html/ht_disable_ml_messages.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory leaked summary">
+    <param name="Name" value="Memory leaked summary">
+    <param name="Local" value="html/ht_memory_leaked_summary.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory leaks">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About memory leaks">
+      <param name="Local" value="html/ht_ov_mem_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="finding new leaks">
+      <param name="Name" value="Using the new leaks button">
+      <param name="Local" value="html/ht_use_newleaks_button.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="how Purify finds leaks: pointers:and memory leaks">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in testHash">
+      <param name="Name" value="Memory leaks example">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="locating the source">
+      <param name="Name" value="Memory leaks example">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="malloc">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="messages">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory management routines">
+    <param name="Name" value="How Purify finds and reports memory leaks">
+    <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="memory managers">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="custom">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="fixed-size allocators">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="pool allocators">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify limitations">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="sbrk allocators">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="message appearance options">
+    <param name="Name" value="Message appearance options">
+    <param name="Local" value="html/ht_opt_message_appearance.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="message batching API functions">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="message batching option">
+    <param name="Name" value="Message batching option">
+    <param name="Local" value="html/ht_opt_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="message suppressions">
+    <param name="Name" value="Removing and editing suppressions">
+    <param name="Local" value="html/ht_remove_suppressions.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="messages">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="analyzing error messages">
+      <param name="Name" value="Analyzing Purify error messages">
+      <param name="Local" value="html/ht_ov_viewing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="batching">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="color coding">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="disabling memory leaked messages">
+      <param name="Name" value="Disabling memory leaked messages">
+      <param name="Local" value="html/ht_disable_ml_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filtering">
+      <param name="Name" value="About suppressing messages">
+      <param name="Local" value="html/ht_ov_suppressing_messages.htm">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="first-only mode">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaks">
+      <param name="Name" value="How Purify finds and reports memory leaks">
+      <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="repeated">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing">
+      <param name="Name" value="About suppressing messages">
+      <param name="Local" value="html/ht_ov_suppressing_messages.htm">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="system messages">
+      <param name="Name" value="Troubleshooting">
+      <param name="Local" value="html/ht_ts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="thread summary">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="messages (by name)">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ABR">
+      <param name="Name" value="ABR: array bounds read">
+      <param name="Local" value="html/ht_m_abr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ABW">
+      <param name="Name" value="ABW: array bounds write">
+      <param name="Local" value="html/ht_m_abw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="BRK">
+      <param name="Name" value="BRK: misuse of brk or sbrk">
+      <param name="Local" value="html/ht_m_brk.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="BSR">
+      <param name="Name" value="BSR: ead">
+      <param name="Local" value="html/ht_m_bsr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="BSW">
+      <param name="Name" value="BSW: beyond stack write">
+      <param name="Local" value="html/ht_m_bsw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="COR">
+      <param name="Name" value="COR: core dump imminent">
+      <param name="Local" value="html/ht_m_cor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FIU">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+      <param name="Name" value="FIU: file descriptors in use">
+      <param name="Local" value="html/ht_m_fiu.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FMM">
+      <param name="Name" value="FMM: freeing mismatched memory">
+      <param name="Local" value="html/ht_m_fmm.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FMR">
+      <param name="Name" value="FMR: free memory read">
+      <param name="Local" value="html/ht_m_fmr.htm">
+      <param name="Name" value="FMW: free memory write">
+      <param name="Local" value="html/ht_m_fmw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FNH">
+      <param name="Name" value="FNH: freeing non-heap memory">
+      <param name="Local" value="html/ht_m_fnh.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FUM">
+      <param name="Name" value="FUM: freeing unallocated memory">
+      <param name="Local" value="html/ht_m_fum.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="IPR">
+      <param name="Name" value="IPR: invalid pointer read">
+      <param name="Local" value="html/ht_m_ipr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="IPW">
+      <param name="Name" value="IPW: invalid pointer write">
+      <param name="Local" value="html/ht_m_ipw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="MAF">
+      <param name="Name" value="MAF: malloc failure">
+      <param name="Local" value="html/ht_m_maf.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="MIU">
+      <param name="Name" value="MIU: memory in use">
+      <param name="Local" value="html/ht_m_miu.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="MLK">
+      <param name="Name" value="MLK: memory leak">
+      <param name="Local" value="html/ht_m_mlk.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="MRE">
+      <param name="Name" value="MRE: malloc reentrancy error">
+      <param name="Local" value="html/ht_m_mre.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="MSE">
+      <param name="Name" value="MSE: memory segment error">
+      <param name="Local" value="html/ht_m_mse.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="NPR">
+      <param name="Name" value="NPR: null pointer read">
+      <param name="Local" value="html/ht_m_npr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="NPW">
+      <param name="Name" value="NPW: null pointer write">
+      <param name="Local" value="html/ht_m_npw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PAR">
+      <param name="Name" value="PAR: bad parameter">
+      <param name="Local" value="html/ht_m_par.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PLK">
+      <param name="Name" value="PLK: potential memory leak">
+      <param name="Local" value="html/ht_m_plk.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PMR">
+      <param name="Name" value="PMR: partial UMR">
+      <param name="Local" value="html/ht_m_pmr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="SBR">
+      <param name="Name" value="SBR: stack array bounds read">
+      <param name="Local" value="html/ht_m_sbr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="SBW">
+      <param name="Name" value="SBW: stack array bounds write">
+      <param name="Local" value="html/ht_m_sbw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="SIG">
+      <param name="Name" value="SIG: signal message">
+      <param name="Local" value="html/ht_m_sig.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="SOF">
+      <param name="Name" value="SOF: stack overflow">
+      <param name="Local" value="html/ht_m_sof.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="UMC">
+      <param name="Name" value="UMC: uninitialized memory copy">
+      <param name="Local" value="html/ht_m_umc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="UMR">
+      <param name="Name" value="UMR: unitialized memory read">
+      <param name="Local" value="html/ht_m_umr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="WPM">
+      <param name="Name" value="WPM: watchpoint malloc">
+      <param name="Local" value="html/ht_m_wpm.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="WPN">
+      <param name="Name" value="WPN: watchpoint entry">
+      <param name="Local" value="html/ht_m_wpn.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="WPR">
+      <param name="Name" value="WPR: watchpoint read">
+      <param name="Local" value="html/ht_m_wpr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="WPW">
+      <param name="Name" value="WPW: watchpoint write">
+      <param name="Local" value="html/ht_m_wpw.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="WPX">
+      <param name="Name" value="WPX: watchpoint exit">
+      <param name="Local" value="html/ht_m_wpx.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ZPR">
+      <param name="Name" value="ZPR: zero page read">
+      <param name="Local" value="html/ht_m_zpr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="ZPW">
+      <param name="Name" value="ZPW: zero page write">
+      <param name="Local" value="html/ht_m_zpw.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="MIU message">
+    <param name="Name" value="MIU: memory in use">
+    <param name="Local" value="html/ht_m_miu.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="MLK message">
+    <param name="Name" value="MLK: memory leak">
+    <param name="Local" value="html/ht_m_mlk.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="modifying pool allocators">
+    <param name="Name" value="Modifying pool allocators">
+    <param name="Local" value="html/ht_modify_pool_allocators.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="modifying sbrk allocators">
+    <param name="Name" value="Modifying sbrk allocators">
+    <param name="Local" value="html/ht_modify_sbrk_allocators.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="mprof defects">
+    <param name="Name" value="How Purify finds and reports memory leaks">
+    <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="MRE message">
+    <param name="Name" value="MRE: malloc reentrancy error">
+    <param name="Local" value="html/ht_m_mre.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="MSE message">
+    <param name="Name" value="MSE: memory segment error">
+    <param name="Local" value="html/ht_m_mse.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="multiple error tracking">
+    <param name="Name" value="Finding memory leaks in testHash">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="names">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and conversion characters">
+      <param name="Name" value="conversion characters">
+      <param name="Local" value="html_notoc/ht_gloss_conversion.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="cached files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="instrumented files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="new in C++">
+    <param name="Name" value="How Purify finds and reports memory leaks">
+    <param name="Local" value="html/ht_how_p_finds_leaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="new leaks button">
+    <param name="Name" value="Using the new leaks button">
+    <param name="Local" value="html/ht_use_newleaks_button.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="NPR message">
+    <param name="Name" value="NPR: null pointer read">
+    <param name="Local" value="html/ht_m_npr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="NPW message">
+    <param name="Name" value="NPW: null pointer write">
+    <param name="Local" value="html/ht_m_npw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="objdebug options">
+    <param name="Name" value="Build-time options#MID_IGNORE_OBJ">
+    <param name="Local" value="html/ht_opt_buildtime.htm#MID_IGNORE_OBJ">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Object Code">
+    <param name="Name" value="instrumentation">
+    <param name="Local" value="html_notoc/ht_gloss_instr.htm">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="OCI">
+    <param name="Name" value="instrumentation">
+    <param name="Local" value="html_notoc/ht_gloss_instr.htm">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="operating system based message suppression">
+    <param name="Name" value="Sharing suppressions between programs">
+    <param name="Local" value="html/ht_share_suppressions.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="options">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About Purify options">
+      <param name="Local" value="html/ht_ov_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="listed">
+      <param name="Name" value="About Purify options">
+      <param name="Local" value="html/ht_ov_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="syntax">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using Purify options">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="output mode options">
+    <param name="Name" value="Output mode options">
+    <param name="Local" value="html/ht_opt_output_mode.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="overhead from Purify">
+    <param name="Name" value="Purify overhead">
+    <param name="Local" value="html/ht_ov_overhead.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="overriding message suppressions">
+    <param name="Name" value="Removing and editing suppressions">
+    <param name="Local" value="html/ht_remove_suppressions.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="overviews">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="basic steps for using Purify">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify features">
+      <param name="Name" value="Rational Purify:What it does">
+      <param name="Local" value="html/ht_intro_purify.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify Viewer">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PAR message">
+    <param name="Name" value="PAR: bad parameter">
+    <param name="Local" value="html/ht_m_par.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="performance">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and watchpoints">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="effect of Purify on performance">
+      <param name="Name" value="Purify overhead">
+      <param name="Local" value="html/ht_ov_overhead.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PLK message">
+    <param name="Name" value="PLK: potential memory leak">
+    <param name="Local" value="html/ht_m_plk.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PMR message">
+    <param name="Name" value="PMR: partial UMR">
+    <param name="Local" value="html/ht_m_pmr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pool allocation API functions">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pool allocators">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="pool allocators:auxiliary data">
+      <param name="Name" value="Accessing auxiliary data">
+      <param name="Local" value="html/ht_access_aux_data.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="support for">
+      <param name="Name" value="About custom memory managers">
+      <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="precedence of suppressions">
+    <param name="Name" value="Sharing suppressions between programs">
+    <param name="Local" value="html/ht_share_suppressions.htm">
+    <param name="Name" value="Suppressing messages in the Viewer">
+    <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="prestarting the Purify Viewer">
+    <param name="Name" value="Using Purify options#MID_PRESTART_VIEWER">
+    <param name="Local" value="html/ht_using_p_options.htm#MID_PRESTART_VIEWER">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="printf conversion syntax">
+    <param name="Name" value="Annotating Purify output">
+    <param name="Local" value="html/ht_annotate_output.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="program control customization">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_checkin script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_checkout script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_debug script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_edit script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_invoke_ddts script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_invoke_purecov script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_jit_debug script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_name_thread">
+    <param name="Name" value="Threads API function">
+    <param name="Local" value="html/ht_api_threads.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_print script">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_run">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pure_uncheckout">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage and Purify">
+    <param name="Name" value="Using Rational PureCoverage with Purify">
+    <param name="Local" value="html/ht_purecov.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PUREOPTIONS environment variable">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="basic steps for using">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="integrating with configuration management">
+      <param name="Name" value="Selecting a configuration management system">
+      <param name="Local" value="html/ht_integrate_with_cc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="introduction to features">
+      <param name="Name" value="Rational Purify:What it does">
+      <param name="Local" value="html/ht_intro_purify.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overhead from running">
+      <param name="Name" value="Purify overhead">
+      <param name="Local" value="html/ht_ov_overhead.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="user's manual URL">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with ClearCase">
+      <param name="Name" value="Using Rational ClearCase with Purify">
+      <param name="Local" value="html/ht_clearcase.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with ClearQuest">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with PureCoverage">
+      <param name="Name" value="Using Rational PureCoverage with Purify">
+      <param name="Local" value="html/ht_purecov.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify API function list">
+    <param name="Name" value="About Purify API functions">
+    <param name="Local" value="html/ht_ov_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify API functions">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about API functions">
+      <param name="Name" value="About Purify API functions">
+      <param name="Local" value="html/ht_ov_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="annotation function">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="calling">
+      <param name="Name" value="Calling Purify API functions">
+      <param name="Local" value="html/ht_howto_call_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="exit processing">
+      <param name="Name" value="Exit processing API functions">
+      <param name="Local" value="html/ht_api_exit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptor">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory access">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="message batching">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="return values">
+      <param name="Name" value="About Purify API functions">
+      <param name="Local" value="html/ht_ov_p_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="threads">
+      <param name="Name" value="Threads API function">
+      <param name="Local" value="html/ht_api_threads.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify API functions (by name)">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="pure_name_thread">
+      <param name="Name" value="Threads API function">
+      <param name="Local" value="html/ht_api_threads.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_all_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_assert_is_readable">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_assert_is_writable">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_clear_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_describe">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_exit">
+      <param name="Name" value="Exit processing API functions">
+      <param name="Local" value="html/ht_api_exit.htm">
+      <param name="Name" value="Reporting Purify status at exit">
+      <param name="Local" value="html/ht_report_status.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_get_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_get_user_data">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_is_running">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_logfile_printf">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_map_pool">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_map_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_fds_inuse">
+      <param name="Name" value="File API functions">
+      <param name="Local" value="html/ht_api_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_inuse">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_leaks">
+      <param name="Name" value="Memory leak API functions">
+      <param name="Local" value="html/ht_api_mem_leak.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_new_messages">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_printf">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_printf_with_call_chain">
+      <param name="Name" value="Annotation API function">
+      <param name="Local" value="html/ht_api_annotation.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_set_pool_id">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_set_user_data">
+      <param name="Name" value="Pool allocation API functions">
+      <param name="Local" value="html/ht_api_pool_alloc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_start_batch">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_batch">
+      <param name="Name" value="Message batching API functions">
+      <param name="Local" value="html/ht_api_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_here">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_stop_here_internal">
+      <param name="Name" value="Miscellaneous API functions">
+      <param name="Local" value="html/ht_api_misc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_info">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_n">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_r">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_remove">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_remove_all">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_watch_rw">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purify_what colors">
+      <param name="Name" value="Memory access API functions">
+      <param name="Local" value="html/ht_api_mem_access.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify data files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="opening">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving error data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify messages">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="analyzing">
+      <param name="Name" value="Analyzing Purify error messages">
+      <param name="Local" value="html/ht_ov_viewing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="batching">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="color coding">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing">
+      <param name="Name" value="Customizing Purify messages">
+      <param name="Local" value="html/ht_customize_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="first-only mode">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="FIU">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="repeated">
+      <param name="Name" value="Controlling message batching">
+      <param name="Local" value="html/ht_control_message_batching.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="thread summary">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify options">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About Purify options">
+      <param name="Local" value="html/ht_ov_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="listed">
+      <param name="Name" value="About Purify options">
+      <param name="Local" value="html/ht_ov_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="syntax">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify output">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in Purify Viewer">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving error data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify Quick Reference">
+    <param name="Name" value="Purify Quick Reference">
+    <param name="Local" value="html/ht_pqrc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify scripts">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="list of">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify Viewer">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Help">
+      <param name="Name" value="Using the Purify help system">
+      <param name="Local" value="html/ht_using_help.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="specifying options">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify watchpoint functions">
+    <param name="Name" value="Calling Purify watchpoint functions">
+    <param name="Local" value="html/ht_call_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify.h">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify.xdefaults">
+    <param name="Name" value="Enabling just-in-time debugging">
+    <param name="Local" value="html/ht_enable_jit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_* (API functions)">
+    <param name="Name" value="About Purify API functions">
+    <param name="Local" value="html/ht_ov_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_all_fds_inuse">
+    <param name="Name" value="File API functions">
+    <param name="Local" value="html/ht_api_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_all_inuse">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_all_leaks">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_all_messages">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_assert_is_readable">
+    <param name="Name" value="Memory access API functions">
+    <param name="Local" value="html/ht_api_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_assert_is_writable">
+    <param name="Name" value="Memory access API functions">
+    <param name="Local" value="html/ht_api_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_clear_fds_inuse">
+    <param name="Name" value="File API functions">
+    <param name="Local" value="html/ht_api_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_clear_inuse">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_clear_leaks">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_clear_messages">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_describe">
+    <param name="Name" value="Memory access API functions">
+    <param name="Local" value="html/ht_api_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_exit">
+    <param name="Name" value="Exit processing API functions">
+    <param name="Local" value="html/ht_api_exit.htm">
+    <param name="Name" value="Reporting Purify status at exit">
+    <param name="Local" value="html/ht_report_status.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_get_pool_id">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_get_user_data">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_is_running">
+    <param name="Name" value="Miscellaneous API functions">
+    <param name="Local" value="html/ht_api_misc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_logfile_printf">
+    <param name="Name" value="Annotation API function">
+    <param name="Local" value="html/ht_api_annotation.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_map_pool">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_map_pool_id">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_new_fds_inuse">
+    <param name="Name" value="File API functions">
+    <param name="Local" value="html/ht_api_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_new_inuse">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_new_leaks">
+    <param name="Name" value="Memory leak API functions">
+    <param name="Local" value="html/ht_api_mem_leak.htm">
+    <param name="Name" value="Memory leaks example">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_new_messages">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_printf">
+    <param name="Name" value="Annotation API function">
+    <param name="Local" value="html/ht_api_annotation.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_printf_with_call_chain">
+    <param name="Name" value="Annotation API function">
+    <param name="Local" value="html/ht_api_annotation.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_set_pool_id">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_set_user_data">
+    <param name="Name" value="Pool allocation API functions">
+    <param name="Local" value="html/ht_api_pool_alloc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_start_batch">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_stop_batch">
+    <param name="Name" value="Message batching API functions">
+    <param name="Local" value="html/ht_api_message_batching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_stop_here">
+    <param name="Name" value="Miscellaneous API functions">
+    <param name="Local" value="html/ht_api_misc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_stop_here_internal">
+    <param name="Name" value="Miscellaneous API functions">
+    <param name="Local" value="html/ht_api_misc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_stubs.a">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_info">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_n">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_r">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_remove">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_remove_all">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_watch_rw">
+    <param name="Name" value="Watchpoint API functions">
+    <param name="Local" value="html/ht_api_watchpoint.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purify_what colors">
+    <param name="Name" value="Memory access API functions">
+    <param name="Local" value="html/ht_api_mem_access.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PURIFYOPTIONS environment variable">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ranlib warning">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational ClearCase">
+    <param name="Name" value="Selecting a configuration management system">
+    <param name="Local" value="html/ht_integrate_with_cc.htm">
+    <param name="Name" value="Using Rational ClearCase with Purify">
+    <param name="Local" value="html/ht_clearcase.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational ClearQuest">
+    <param name="Name" value="Using Rational ClearQuest with Purify">
+    <param name="Local" value="html/ht_clearquest.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Developer Network">
+    <param name="Name" value="Accessing the Rational Developer's Network">
+    <param name="Local" value="html/ht_rdn.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational PureCoverage">
+    <param name="Name" value="Using Rational PureCoverage with Purify">
+    <param name="Local" value="html/ht_purecov.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Purify">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="basic steps for using">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="integrating with configuration management">
+      <param name="Name" value="Selecting a configuration management system">
+      <param name="Local" value="html/ht_integrate_with_cc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="introduction to features">
+      <param name="Name" value="Rational Purify:What it does">
+      <param name="Local" value="html/ht_intro_purify.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overhead from running">
+      <param name="Name" value="Purify overhead">
+      <param name="Local" value="html/ht_ov_overhead.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="user's manual URL">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with ClearCase">
+      <param name="Name" value="Using Rational ClearCase with Purify">
+      <param name="Local" value="html/ht_clearcase.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with ClearQuest">
+      <param name="Name" value="Using Rational ClearQuest with Purify">
+      <param name="Local" value="html/ht_clearquest.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using with PureCoverage">
+      <param name="Name" value="Using Rational PureCoverage with Purify">
+      <param name="Local" value="html/ht_purecov.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Software Technical Publications">
+    <param name="Name" value="Contacting Technical Publications">
+    <param name="Local" value="html/ht_tech_pubs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Software Technical Support">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="contacting">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing bugs">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="red memory">
+    <param name="Name" value="How Purify finds memory access errors">
+    <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="redirecting Purify output">
+    <param name="Name" value="Saving error data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="registers and purify watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="removing">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="cache files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="message suppressions">
+      <param name="Name" value="Removing and editing suppressions">
+      <param name="Local" value="html/ht_remove_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saved watchpoints">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="reporting Purify status at exit">
+    <param name="Name" value="Reporting Purify status at exit">
+    <param name="Local" value="html/ht_report_status.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="restricting caching">
+    <param name="Name" value="Managing cached object files">
+    <param name="Local" value="html/ht_manage_cached_files.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Run control button">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="run status reporting">
+    <param name="Name" value="Reporting Purify status at exit">
+    <param name="Local" value="html/ht_report_status.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="run-time options">
+    <param name="Name" value="About Purify options#MID_OPTLIST_RUNTIME">
+    <param name="Local" value="html/ht_ov_p_options.htm#MID_OPTLIST_RUNTIME">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="running shell scripts at exit">
+    <param name="Name" value="Running shell scripts at exit">
+    <param name="Local" value="html/ht_run_shellscripts_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="saving">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Purify error data">
+      <param name="Name" value="Saving error data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressions">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoints">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SBR message">
+    <param name="Name" value="SBR: stack array bounds read">
+    <param name="Local" value="html/ht_m_sbr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="sbrk allocators">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SBW message">
+    <param name="Name" value="SBW: stack array bounds write">
+    <param name="Local" value="html/ht_m_sbw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="scope and watchpoints">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="scripts">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="list of Purify scripts">
+      <param name="Name" value="Customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="running at exit">
+      <param name="Name" value="Running shell scripts at exit">
+      <param name="Local" value="html/ht_run_shellscripts_exit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="scripts:pure_remove_old_files">
+      <param name="Name" value="Managing cached object files">
+      <param name="Local" value="html/ht_manage_cached_files.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="selecting a defect-tracking tool">
+    <param name="Name" value="Selecting a defect-tracking tool">
+    <param name="Local" value="html/ht_sel_bugtracker.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="sharing message suppressions">
+    <param name="Name" value="Sharing suppressions between programs">
+    <param name="Local" value="html/ht_share_suppressions.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="shell scripts">
+    <param name="Name" value="Running shell scripts at exit">
+    <param name="Local" value="html/ht_run_shellscripts_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SIG message">
+    <param name="Name" value="SIG: signal message">
+    <param name="Local" value="html/ht_m_sig.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="site-wide options">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SOF message">
+    <param name="Name" value="SOF: stack overflow">
+    <param name="Local" value="html/ht_m_sof.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="source code display">
+    <param name="Name" value="Customizing the Purify Viewer">
+    <param name="Local" value="html/ht_customize_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="statically allocated memory checking">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="About memory access errors">
+      <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="static checking options">
+      <param name="Name" value="Static checking options">
+      <param name="Local" value="html/ht_opt_static_check.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="stubs library">
+    <param name="Name" value="Calling Purify API functions">
+    <param name="Local" value="html/ht_howto_call_p_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="summaries">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="exit status">
+      <param name="Name" value="Exit status summary">
+      <param name="Local" value="html/ht_exit_status_summary.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptors in use">
+      <param name="Name" value="File descriptors message">
+      <param name="Local" value="html/ht_file_desc_mess.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="memory leaked">
+      <param name="Name" value="Memory leaked summary">
+      <param name="Local" value="html/ht_memory_leaked_summary.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="support">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="contacting Rational technical support">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing bugs with Rational software">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="suppressions">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About suppressing messages">
+      <param name="Local" value="html/ht_ov_suppressing_messages.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="editing">
+      <param name="Name" value="Removing and editing suppressions">
+      <param name="Local" value="html/ht_remove_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for specific operating systems">
+      <param name="Name" value="Sharing suppressions between programs">
+      <param name="Local" value="html/ht_share_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="location of suppressions">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overriding">
+      <param name="Name" value="Removing and editing suppressions">
+      <param name="Local" value="html/ht_remove_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="precedence">
+      <param name="Name" value="Sharing suppressions between programs">
+      <param name="Local" value="html/ht_share_suppressions.htm">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing">
+      <param name="Name" value="Removing and editing suppressions">
+      <param name="Local" value="html/ht_remove_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="sharing">
+      <param name="Name" value="Sharing suppressions between programs">
+      <param name="Local" value="html/ht_share_suppressions.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages from Viewer">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages in a .purify file">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppression option">
+      <param name="Name" value="Suppression option">
+      <param name="Local" value="html/ht_opt_suppression.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using wildcards">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="viewing suppressed messages">
+      <param name="Name" value="Viewing suppressed messages">
+      <param name="Local" value="html/ht_view_suppressed_messages.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Suppressions (Options menu)">
+    <param name="Name" value="Suppressing messages in the Viewer">
+    <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="swap space low">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="symbol table warning">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sync TOC">
+    <param name="Name" value="Using the Purify help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="syntax for Purify options">
+    <param name="Name" value="Using Purify options">
+    <param name="Local" value="html/ht_using_p_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="system call intermittent failures">
+    <param name="Name" value="About watchpoints">
+    <param name="Local" value="html/ht_ov_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="system messages">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Technical Support">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="contacting">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing bug reports">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="terms in Purify">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+    <param name="WindowName" value="gloss">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="test harnesses and Purify">
+    <param name="Name" value="Automating error data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="testHash example">
+    <param name="Name" value="Building and running the testHash example program">
+    <param name="Local" value="html/ht_build_example.htm">
+    <param name="Name" value="Memory access tutorial">
+    <param name="Local" value="html/ht_ex_testhash.htm">
+    <param name="Name" value="Memory leaks example">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="text files">
+    <param name="Name" value="Saving error data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="third-party code and libraries">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="errors in">
+      <param name="Name" value="About errors in third-party code and libraries">
+      <param name="Local" value="html_notoc/ht_ov_thirdparty_code.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="suppressing messages in">
+      <param name="Name" value="About suppressing messages">
+      <param name="Local" value="html/ht_ov_suppressing_messages.htm">
+      <param name="Name" value="Suppressing messages in the Viewer">
+      <param name="Local" value="html/ht_suppress_messages_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="threads">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="how Purify identifies threads">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="summary message">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="supported packages">
+      <param name="Name" value="Customizing the thread summary message">
+      <param name="Local" value="html/ht_customize_thread_message.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="threads API function">
+    <param name="Name" value="Threads API function">
+    <param name="Local" value="html/ht_api_threads.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="threads options">
+    <param name="Name" value="Threads options">
+    <param name="Local" value="html/ht_opt_threads.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="toolbar">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="tracking defects">
+    <param name="Name" value="Using Rational ClearQuest with Purify">
+    <param name="Local" value="html/ht_clearquest.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="tracking memory">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="trapping with watchpoints">
+    <param name="Name" value="Calling Purify watchpoint functions">
+    <param name="Local" value="html/ht_call_watchpoints.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="tutorials">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file descriptor leaks">
+      <param name="Name" value="File descriptor leak example">
+      <param name="Local" value="html/ht_ex_filedescriptor.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="finding memory access errors">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="finding memory leaks">
+      <param name="Name" value="Memory leaks example">
+      <param name="Local" value="html/ht_ex_memleaks.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="introduction to Purify">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_basic_steps.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="tutorials:testHash">
+    <param name="Name" value="Building and running the testHash example program">
+    <param name="Local" value="html/ht_build_example.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="UMC message">
+    <param name="Name" value="UMC: uninitialized memory copy">
+    <param name="Local" value="html/ht_m_umc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="UMR message">
+    <param name="Name" value="UMR: unitialized memory read">
+    <param name="Local" value="html/ht_m_umr.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="example">
+      <param name="Name" value="Memory access tutorial">
+      <param name="Local" value="html/ht_ex_testhash.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="unanchored matches">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="undetected array bounds errors">
+    <param name="Name" value="About memory access errors">
+    <param name="Local" value="html/ht_ov_memaccess_errors.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="undoing file checkout">
+    <param name="Name" value="Customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="uninitialized bytes in system messages">
+    <param name="Name" value="Troubleshooting">
+    <param name="Local" value="html/ht_ts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="uninitialized memory read example">
+    <param name="Name" value="Memory access tutorial">
+    <param name="Local" value="html/ht_ex_testhash.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="unqualified filenames in suppressions">
+    <param name="Name" value="Specifying suppressions in a .purify file">
+    <param name="Local" value="html/ht_suppress_messages_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="unsuppress directive">
+    <param name="Name" value="Removing and editing suppressions">
+    <param name="Local" value="html/ht_remove_suppressions.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="user's manual URL">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_basic_steps.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="veneers for malloc and free">
+    <param name="Name" value="About custom memory managers">
+    <param name="Local" value="html/ht_ov_custom_mem_managers.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="vfork and file descriptors">
+    <param name="Name" value="File descriptor leak example">
+    <param name="Local" value="html/ht_ex_filedescriptor.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="view file annotations">
+    <param name="Name" value="Annotating Purify output">
+    <param name="Local" value="html/ht_annotate_output.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="View menu program control customization">
+    <param name="Name" value="Customizing the program controls">
+    <param name="Local" value="html/ht_customize_program_ctrls.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Viewer">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving contents to a text file">
+      <param name="Name" value="Saving error data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="specifying options">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Using the Purify Viewer">
+      <param name="Local" value="html/ht_use_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="viewing suppressed messages">
+    <param name="Name" value="Viewing suppressed messages">
+    <param name="Local" value="html/ht_view_suppressed_messages.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="watchpoints">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="and JIT debugging">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="examples">
+      <param name="Name" value="Calling Purify watchpoint functions">
+      <param name="Local" value="html/ht_call_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="files">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="kernel trap handlers">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing saved watchpoints">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="stop automatic saving">
+      <param name="Name" value="Saving watchpoints">
+      <param name="Local" value="html/ht_save_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="stopping at in debugger">
+      <param name="Name" value="Calling Purify watchpoint functions">
+      <param name="Local" value="html/ht_call_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="system calls">
+      <param name="Name" value="About watchpoints">
+      <param name="Local" value="html/ht_ov_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoint API functions">
+      <param name="Name" value="Watchpoint API functions">
+      <param name="Local" value="html/ht_api_watchpoint.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoint functions">
+      <param name="Name" value="Calling Purify watchpoint functions">
+      <param name="Local" value="html/ht_call_watchpoints.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="watchpoint option">
+      <param name="Name" value="Watchpoint option">
+      <param name="Local" value="html/ht_opt_watchpoint.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="welcome to Rational Purify">
+    <param name="Name" value="Rational Purify:What it does">
+    <param name="Local" value="html/ht_intro_purify.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="what's-this Help">
+    <param name="Name" value="Using the Purify help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="wildcards">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in options">
+      <param name="Name" value="Using Purify options">
+      <param name="Local" value="html/ht_using_p_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in suppressions">
+      <param name="Name" value="Specifying suppressions in a .purify file">
+      <param name="Local" value="html/ht_suppress_messages_file.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPF  watchpoint free">
+    <param name="Name" value="WPF: watchpoint free">
+    <param name="Local" value="html/ht_m_wpf.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPM message">
+    <param name="Name" value="WPM: watchpoint malloc">
+    <param name="Local" value="html/ht_m_wpm.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPN message">
+    <param name="Name" value="WPN: watchpoint entry">
+    <param name="Local" value="html/ht_m_wpn.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPR message">
+    <param name="Name" value="WPR: watchpoint read">
+    <param name="Local" value="html/ht_m_wpr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPW message">
+    <param name="Name" value="WPW: watchpoint write">
+    <param name="Local" value="html/ht_m_wpw.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="WPX message">
+    <param name="Name" value="WPX: watchpoint exit">
+    <param name="Local" value="html/ht_m_wpx.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="xdb for debugging">
+    <param name="Name" value="Memory leaks example">
+    <param name="Local" value="html/ht_ex_memleaks.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="xdefaults">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for customizing the Viewer">
+      <param name="Name" value="Customizing the Purify Viewer">
+      <param name="Local" value="html/ht_customize_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for making debuggers available">
+      <param name="Name" value="Enabling just-in-time debugging">
+      <param name="Local" value="html/ht_enable_jit.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="yellow memory">
+    <param name="Name" value="How Purify finds memory access errors">
+    <param name="Local" value="html/ht_how_p_finds_memacc_errs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ZPR message">
+    <param name="Name" value="ZPR: zero page read">
+    <param name="Local" value="html/ht_m_zpr.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ZPW message">
+    <param name="Name" value="ZPW: zero page write">
+    <param name="Local" value="html/ht_m_zpw.htm">
+  </object>
+</ul>
+</html>

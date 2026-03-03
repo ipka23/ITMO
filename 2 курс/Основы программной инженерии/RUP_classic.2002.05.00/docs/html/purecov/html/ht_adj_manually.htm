@@ -1,0 +1,648 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Making adjustments using source code directives        Rational PureCoverage</title>
+
+<!--(Meta)==========================================================-->
+
+<meta NAME=MS-HAID CONTENT="adj src">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2722>
+<meta name=layout-width content=635>
+<meta name=date content="02 4, 2002 2:57:28 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../pcu_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../pcu.css'>");}
+//-->
+</SCRIPT>
+<!--(Style Sheet)===================================================-->
+
+<style>
+<!--
+
+body {
+	background-color: #ffffff;
+}
+
+-->
+</style>
+
+
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body style="font-family: Helvetica;
+				font-size: 14pt;
+				background-color: #ffffff;">
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../pcu.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../pcu.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht__illustration_adj_as.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_adj_nteractively.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1 style="font-size: 12pt;
+			margin-top: 8.00pt;
+			margin-bottom: 4.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	color=navy
+	style="font-family: Helvetica;
+			font-size: 18pt;
+			color: #000080;
+			font-weight: bold;"><FONT SIZE=5 COLOR=navy style="font-size:18.000000pt;"><B>Making adjustments using source code directives</B></FONT></span></B></span></h1>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ make adjustments by marking them in your code:</FONT></span></p>
+
+<ol>
+	
+	<li style="font-size: 14pt;
+				/*begin!kadov{{*/ font-family: Helvetica;
+				font-size: 14pt; /*}}end!kadov*/ "
+		class=kadov-p-CList-Number><p class=List-Number><a href="ht_adj_manually.htm#embed_adj"><span 
+ style="font-weight: bold;"><B><span face=Helvetica
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Embed adjustment 
+ directives</B></FONT></span></B></span></a><span face=Helvetica
+									style="font-family: Helvetica; font-size: 14pt;"> 
+ <FONT SIZE=4 style="font-size:14pt;"></FONT></span><span style="font-style: italic;"><I><span face=Helvetica
+												style="font-family: Helvetica;
+														font-size: 14pt;
+														font-style: italic;"><FONT SIZE=4 style="font-size:14pt;"><I>as&nbsp;comme</I></FONT></span></I></span><span 
+ style="font-style: italic;"><I><span face=Helvetica
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-style: italic;"><FONT SIZE=4 style="font-size:14pt;"><I>nts</I></FONT></span></I></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> in your source code. 
+ </FONT></span></p></li>
+	
+	<li style="font-size: 14pt;
+				/*begin!kadov{{*/ font-family: Helvetica;
+				font-size: 14pt; /*}}end!kadov*/ "
+		class=kadov-p-CList-Number><p class=List-Number><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Then </FONT></span><a href="ht_adj_manually.htm#extract_adj"><span 
+ style="font-weight: bold;"><B><span face=Helvetica
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>extract 
+ the directives</B></FONT></span></B></span></a><span face=Helvetica
+										style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ and apply them </FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">in 
+ calculating coverage data.</FONT></span></p></li>
+</ol>
+
+<h2 style="font-size: 12pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><a name=embed_adj></a><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 16pt;
+			font-weight: bold;"><FONT SIZE=5 style="font-size:16pt;"><B>Embedding adjustment directives</B></FONT></span></B></span></h2>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Each 
+ directive is a comment consisting of the keyword </FONT></span><span style="font-weight: bold;"><B><span 
+ face=Courier
+	style="font-family: Courier;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>purecov</B></FONT></span></B></span><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ followed by a colon (:), and then the type of adjustment.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Two 
+ styles of directives are available:</FONT></span><span style="font-style: italic;"><I><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-style: italic;"> <FONT SIZE=4 style="font-size:14pt;"><I></I></FONT></span></I></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>single-line</B></FONT></span></B></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">, each of which affects 
+ one line of code</FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>block,</B></FONT></span></B></span><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> 
+ which indicate the beginning and end of an adjusted block of lines</FONT></span></p></li>
+	
+	<!--(Table)=====================================================-->
+	<table x-use-null-cells
+			style="width: 576px;
+					border-top: 0.50pt solid #000000;
+					border-bottom: 0.50pt solid #000000;
+					border-left: 0.50pt solid #000000;
+					border-right: 0.50pt solid #000000;
+					border-spacing: 0px;"
+			cellspacing=0
+			width=576>
+	<col style="width: 388px;">
+	<col style="width: 176px;">
+	
+	<tr style="x-cell-content-align: top;"
+		valign=top>
+	<td style="height: 32px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=32
+		width=388>
+	<p class=rTableHead><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Directive</B></FONT></span></B></span></p></td>
+	<td style="height: 32px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=32
+		width=176>
+	<p class=rTableHead><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Meaning</B></FONT></span></B></span></p></td></tr>
+	
+	<tr style="x-cell-content-align: top;"
+		valign=top>
+	<td style="background-color: #d8d8d8;
+				height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		bgcolor=#D8D8D8
+		width=388>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>For deadcode</B></FONT></span></B></span></p>
+	<p class=rTableHead><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Single-line style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: deadcode */</FONT></span></p>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Block style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: begin deadcode */<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: end */</FONT></span></p></td>
+	<td style="background-color: #d8d8d8;
+				height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		bgcolor=#D8D8D8
+		width=176>
+	<p class=rTableText><span face=Helvetica
+								style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ indicated lines are not reachable, even in theory.</FONT></span></p></td></tr>
+	
+	<tr style="x-cell-content-align: top;"
+		valign=top>
+	<td style="height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		width=388>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>For tested code</B></FONT></span></B></span></p>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Single line style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;</FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;&nbsp;&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">/* purecov: tested */</FONT></span></p>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Block style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: begin tested */<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: end */</FONT></span></p></td>
+	<td style="height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		width=176>
+	<p class=rTableText><span face=Helvetica
+								style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ indicated lines have been tested by someone, at some point, and should 
+ be considered as working.</FONT></span></p></td></tr>
+	
+	<tr style="x-cell-content-align: top;"
+		valign=top>
+	<td style="background-color: #d8d8d8;
+				height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		bgcolor=#D8D8D8
+		width=388>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>For inspected code</B></FONT></span></B></span></p>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Single-line style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: inspected */</FONT></span></p>
+	<p class=rTableText><span style="font-weight: bold;"><B><span face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 14pt;
+			font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>&nbsp;&nbsp;&nbsp;Block style</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: begin inspected */<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* purecov: end */</FONT></span></p></td>
+	<td style="background-color: #d8d8d8;
+				height: 160px;
+				border-top: 0.50pt solid #000000;
+				border-bottom: 0.50pt solid #000000;
+				border-left: 0.50pt solid #000000;
+				border-right: 0.50pt solid #000000;
+				padding-left: 1px;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-bottom: 1px;"
+		height=160
+		bgcolor=#D8D8D8
+		width=176>
+	<p class=rTableText><span face=Helvetica
+								style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The 
+ indicated lines have been through some kind of code inspection or review, 
+ and are believed to be correct.</FONT></span></p></td></tr>
+	</table>
+	
+	<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">For example, the following 
+ line is marked as </FONT></span><span face=Courier
+								style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">deadcode</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">:</FONT></span></p>
+	
+	<p class=rCode><span face=Courier
+						style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">printf(&quot;bar!\n&quot;); 
+ /* purecov: deadcode */</FONT></span></p>
+	
+	<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If you use </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">begin</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> and </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">end</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> pairs, the adjustment 
+ applies to the lines containing the comment, as well as all lines in between.<br>
+	&nbsp;</FONT></span></p>
+	
+	<p class=rTipNoteGlossaryHeading><span face=Helvetica
+											style="font-family: Helvetica;
+													font-size: 14pt;
+													font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>Notes:<br>
+	&nbsp;</B></FONT></span></p>
+	
+	<ul>
+		
+		<li style="font-size: 14pt;"
+			class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">When you do not conclude 
+ a </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">begin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> block comment with 
+ an explicit </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">end</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> comment, PureCoverage 
+ uses the line of the EOF as the missing end line. Note that if the file 
+ grows, this adjustment still extends only to the old EOF unless you extract 
+ the adjustments from the file again.</FONT></span></p></li>
+		
+		<li style="font-size: 14pt;"
+			class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">The </FONT></span><span face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">begin</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> and </FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">end</FONT></span><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> pairs do not nest, 
+ even if they are the same type of adjustment. It is not necessarily an 
+ error for a </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">begin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> to exist without 
+ a matching </FONT></span><span face=Courier
+						style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">end</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">: Everything in the 
+ file after the </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">begin</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> is adjusted. However, 
+ a warning that there is no corresponding </FONT></span><span face=Courier
+														style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">end</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> appears on the output.</FONT></span></p></li>
+		
+		<li style="font-size: 14pt;"
+			class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Directives are recognized 
+ wherever they occur, even if they are not in comments. </FONT></span></p></li>
+		
+		<li style="font-size: 14pt;"
+			class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">If there is no code 
+ on an adjusted line, the adjustment has no effect on the coverage data, 
+ so there is no danger in something like this:</FONT></span><span face=Courier
+															style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+		<br>
+		/* $Log: myfile.c,v $<br>
+		* Revision 2.54 1999/01/16 12:32:02 frodo<br>
+		* added &quot;purecov: deadcode&quot; directives<br>
+		*/</FONT></span><span face=Courier
+						style="font-family: Courier; font-size: 8pt;"><FONT SIZE=1 style="font-size:8pt;">&nbsp;</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+		<br>
+		Be aware, however, that PureCoverage also suppresses a line like 
+ this:</FONT></span><span face=NewCenturySchlbk
+					style="font-family: newcenturyschlbk, 'times new roman'; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">&nbsp;</FONT></span><span 
+ face=Courier
+	style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"><br>
+		<br>
+		printf(&quot;/* purecov: deadcode */\n&quot;); </FONT></span></p></li>
+		
+		<li style="font-size: 14pt;"
+			class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica>If 
+ you mark an </span><span face=Helvetica
+							style="font-weight: bold;"><B><a href="../html_notoc/ht_gloss_unnecessary.htm">unnecessary 
+ adjustment</a></B></span><span face=Helvetica>, PureCoverage indicates it 
+ by highlighting the three adjustment columns (</span><span face=Courier
+															style="font-family: Courier;">D</span><span 
+ face=Helvetica>, </span><span face=Courier
+								style="font-family: Courier;">I</span><span 
+ face=Helvetica>, and </span><span face=Courier
+									style="font-family: Courier;">T</span><span 
+ face=Helvetica>) for the line in the Annotated Source window.</span></p></li>
+	</ul>
+</ul>
+
+<h2 style="font-size: 12pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><a name=extract_adj></a><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 16pt;
+			font-weight: bold;"><FONT SIZE=5 style="font-size:16pt;"><B>Extracting adjustments from source files</B></FONT></span></B></span></h2>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">PureCoverage 
+ extracts adjustments from an individual file automatically when you open 
+ the Annotated Source window for that file. </FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">To 
+ extract adjustments from all files referenced in the PureCoverage Viewer:</FONT></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica>Select 
+ </span><span face=Helvetica
+				style="font-weight: bold;"><B>Adjustments &gt; Extract</B></span><span 
+ face=Helvetica
+	style="font-weight: bold;"><B> adjustments from all source files</B></span><span 
+ face=Helvetica> in the PureCoverage Viewer. </span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Or use the command 
+ </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">purecov 
+ -extract *.c </FONT></span><span face=Helvetica
+							style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">before 
+ opening the Viewer. This extracts all adjustments from all source files 
+ and stores them in </FONT></span><span face=Courier
+								style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">~/.purecov.adjust</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">.</FONT></span></p></li>
+</ul>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Extract 
+ the adjustments each time the source file is modified. You can do this 
+ automatically by adding the </FONT></span><span face=Courier
+											style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">-extract</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> option in the makefile 
+ as part of the </FONT></span><span face=Courier
+							style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">cc 
+ -c</FONT></span><span face=Helvetica
+				style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> step.</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">Whenever 
+ PureCoverage extracts adjustments, it outputs a short summary of the extraction 
+ process. For example:</FONT></span></p>
+
+<p class=rCode><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">% purecov 
+ -extract bim.c<br>
+Updating adjustments for /canonical/path/to/bim.c: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23 lines of dead code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42 manually tested lines</FONT></span></p>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">When 
+ you open the PureCoverage Viewer, PureCoverage applies the adjustments 
+ in </FONT></span><span face=Courier
+				style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">~/.purecov.adjust</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> to the display. The 
+ adjustments are reflected in:</FONT></span></p>
+
+<ul>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">the PureCoverage Viewer</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"> <FONT SIZE=4 style="font-size:14pt;"></FONT></span></p></li>
+	
+	<li style="font-size: 14pt;"
+		class=kadov-p-CList-Bullet><p class=List-Bullet><span face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">the Annotated Source 
+ window</FONT></span><span face=Helvetica
+					style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">, 
+ where you can make additional adjustments </FONT></span><a href="ht_adj_nteractively.htm"><span 
+ style="font-weight: bold;"><B><span face=Helvetica
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>interactively</B></FONT></span></B></span></a><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"> <FONT SIZE=4 style="font-size:14pt;"></FONT></span></p></li>
+</ul>
+
+<h2 style="font-size: 12pt;
+			margin-top: 6.00pt;
+			margin-bottom: 0.00pt;"><span style="font-weight: bold;"><B><span 
+ face=Helvetica
+	style="font-family: Helvetica;
+			font-size: 16pt;
+			font-weight: bold;"><FONT SIZE=5 style="font-size:16pt;"><B>Saving adjustments</B></FONT></span></B></span></h2>
+
+<p style="margin-top: 6.00pt; margin-bottom: 0.00pt;"><span face=Helvetica
+															style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">You 
+ can save the adjustments you have made in the source file and in the adjustments 
+ file </FONT></span><span face=Courier
+					style="font-family: Courier; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;">~/.purecov.adjust</FONT></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> by selecting </FONT></span><span 
+ style="font-weight: bold;"><B><span face=Helvetica
+									style="font-family: Helvetica;
+											font-size: 14pt;
+											font-weight: bold;"><FONT SIZE=4 style="font-size:14pt;"><B>File&nbsp;&gt;&nbsp;Save</B></FONT></span></B></span><span 
+ face=Helvetica
+	style="font-family: Helvetica; font-size: 14pt;"><FONT SIZE=4 style="font-size:14pt;"> in the Annotated 
+ Source window.</FONT></span></p>
+
+</body>
+
+</html>

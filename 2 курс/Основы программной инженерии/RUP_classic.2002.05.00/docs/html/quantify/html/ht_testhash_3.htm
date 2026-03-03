@@ -1,0 +1,224 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Improving testHash performance                         Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=3374>
+<meta name=layout-width content=979>
+<meta name=date content="02 15, 2002 4:51:23 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_testhash_2.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_customize_gui.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Improving testHash performance</h1>
+
+<p>The data Quantify reported indicates that much of the expense of the 
+ hashing operation is the number of <span style="font-family: Courier;">strcmp</span> 
+ comparisons that must be performed to find the requested entry. Avoiding 
+ these excessive <span style="font-family: Courier;">strcmp</span> comparisons 
+ would significantly improve the speed of the hash package. </p>
+
+<p>There are several possible approaches you could take to improve the 
+ performance of the hashtable package. You could improve the hash key function 
+ itself in order to distribute items more uniformly in the hashtable, thereby 
+ shortening the hash buckets and thus the number of items that must be 
+ inspected to retrieve the requested item. Or, you could double the size 
+ of the hashtable array. This would distribute items into more buckets 
+ and make better use of the information in the computed hash key.</p>
+
+<p>The approach you will use in this example is based on the idea that 
+ the full hash key is effectively a compressed version of the key string 
+ itself. The modulo operation, however, uses only a small fraction of the 
+ compressed information to form the index into the hashtable. The rest 
+ of the information encoded in the hash key is ignored. Since the <span 
+ style="font-family: Courier;">hashIndex</span> function computes the same 
+ value for identical strings, the <span style="font-family: Courier;">testHash</span> 
+ program could save the full hash key on the hash entry, compare the full 
+ hash keys, and then call the <span style="font-family: Courier;">strcmp</span> 
+ routine only if the keys were identical. This hash key comparison would 
+ be much quicker than calling <span style="font-family: Courier;">strcmp</span>.</p>
+
+<p>The source code for the improved <span style="font-family: Courier;">testHash</span> 
+ program is in the file <span style="font-family: Courier;">&lt;quantifyhome&gt;/example_quantify/improved_hash.c</span>. 
+ The<span style="font-weight: bold; font-family: Courier;"><B> bold code</B></span> 
+ shown here indicates changes that were made in order to implement the 
+ hash key comparison:</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/improved.gif' x-maintain-ratio='TRUE' width='592' height='760'>");}
+else
+{   document.write("<img src='../image/improved.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 592px;  				height: 760px;  				float: none;' width='592' height='760'>");}
+//-->
+</SCRIPT></p>
+
+<h2>Running the improved_testHash program</h2>
+
+<p>Run the improved_testHash program.</p>
+
+<p class=rCode>% improved_testHash.pure 500 test_words</p>
+
+<p>Compare this program summary for the <span style="font-family: Courier;">improved_testHash</span> 
+ program with the <a href="ht_testhash_1.htm#mid_progsummary" style="font-weight: bold;">original program summary</a>.</p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/progsum2.gif' x-maintain-ratio='TRUE' width='768' height='384'>");}
+else
+{   document.write("<img src='../image/progsum2.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 768px;  				height: 384px;  				float: none;' width='768' height='384'>");}
+//-->
+</SCRIPT></p>
+
+<p>The counts for <span style="font-family: Courier;">Time in your code</span> 
+ has decreased by 1.26 million cycles—from 5.03 million cycles to 3.77 
+ million cycles. It's now 25 percent faster. </p>
+
+<p>Display the Function Detail window for the <span style="font-family: Courier;">getHash</span> 
+ function. </p>
+
+<p>You can see that the number of calls to strcmp from <span style="font-family: Courier;">getHash</span> 
+ has decreased dramatically, from 17,563 to 750. </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/fdget2.gif' x-maintain-ratio='TRUE' width='960' height='478'>");}
+else
+{   document.write("<img src='../image/fdget2.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 960px;  				height: 478px;  				float: none;' width='960' height='478'>");}
+//-->
+</SCRIPT></p>
+
+<p>The time for <span style="font-family: Courier;">getHash</span> has 
+ decreased because, even though the routine is now comparing hash keys 
+ before calling <span style="font-family: Courier;">strcmp</span>, it is 
+ saving time by avoiding the cost of calling <span style="font-family: Courier;">strcmp</span>. 
+ Overall, the function+descendants time for <span style="font-family: Courier;">getHash</span> 
+ has decreased from the first to the second run.</p>
+
+<h2>Verifying the performance improvement</h2>
+
+<p>Save the export data from the <span style="font-family: Courier;">improved_testHash</span> 
+ run, then exit Quantify. </p>
+
+<p>You can use Quantify's <span style="font-family: Courier;">qxdiff</span> 
+ script to compare the performance of the original <span style="font-family: Courier;">testHash</span> 
+ program with the performance of the <span style="font-family: Courier;">improved_testHash</span> 
+ run. The <span style="font-family: Courier;">qxdiff</span> script compares 
+ two export data files and reports any performance changes. Since you are 
+ interested only in the time spent in the code itself, you can use the 
+ <span style="font-family: Courier;">-i</span> option to ignore functions 
+ that make system calls.</p>
+
+<p class=rCode>% qxdiff -i testHash.pure.20790.0.qx improved_testHash.pure.20854.0.qx</p>
+
+<p>The <span style="font-family: Courier;">qxdiff</span> report confirms 
+ a 25 percent improvement in the performance of the <span style="font-family: Courier;">testHash</span> 
+ program: </p>
+
+<p>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/qxd_tut.gif' x-maintain-ratio='TRUE' width='860' height='230'>");}
+else
+{   document.write("<img src='../image/qxd_tut.gif' x-maintain-ratio='TRUE' style='border: none;  				width: 860px;  				height: 230px;  				float: none;' width='860' height='230'>");}
+//-->
+</SCRIPT></p>
+
+<p>The <span style="font-family: Courier;">putHash</span>, <span style="font-family: Courier;">getHash</span>, 
+ and <span style="font-family: Courier;">remHash</span> functions are faster 
+ because they now avoid unnecessary calls to <span style="font-family: Courier;">strcmp</span>. 
+ The <span style="font-family: Courier;">hashIndex</span> function is slightly 
+ slower because it is saving the full hash key into a global variable.</p>
+
+<p>For more information about using the <span style="font-family: Courier;">qxdiff</span> 
+ script, read <a href="ht_compare_prog_runs_qxdiff.htm" style="font-weight: bold;">Comparing program runs with 
+ qxdiff</a>.</p>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

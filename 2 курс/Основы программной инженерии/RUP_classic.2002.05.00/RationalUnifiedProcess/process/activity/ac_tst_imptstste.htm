@@ -1,0 +1,531 @@
+
+<html>
+
+<head>
+<title>Activity: Implement Test Suite</title>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/ovu_works.htm">Roles and Activities</a> &gt;
+<img border=0 src="../../applet/images/workers.gif"> <a href="../workers/wks_testers.htm">Tester Role Set</a> &gt;
+<img border=0 src="../../applet/images/worker.gif"> <a href="../workers/wk_tstr.htm">Tester</a> &gt;
+<img border=0 src="../../applet/images/activity.gif"> Implement Test Suite
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner"><a name="Top"></a>Activity:
+&nbsp;<rpw name="PresentationName">Implement Test Suite</rpw><a name="XE_system_test__implementing_a_test_suite"></a></h2>
+
+<div align="center">
+<table border="1" width="85%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+ <tbody valign="top">
+  <tr>
+      <td colspan="2"><font face="Arial" size="-1"><b>Purpose</b></font> 
+        <ul>
+          <li>To arrange or assemble collections of tests to be executed together 
+            in a valuable way</li>
+          <li>To facilitate both breadth and depth of the test effort by exercising 
+            as many required test combinations as possible</li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><font face="Arial" size="-1"><b>Steps</b></font> 
+      <ul>
+          <li><a href="#ExamineTestSuiteOutlines"">Examine candidate Test Suites</a></li>
+          <li><a href="#ExamineTestScriptTargets"">Examine related Test Scripts and 
+            Target Test Items</a></li>
+          <li><a href="#IdentifyDependencies"">Identify script dependencies</a></li>
+          <li><a href="#IdentifyReuse"">Identify opportunities for reuse</a></li>
+          <li><a href="#ApplyInfrastructure"">Apply necessary infrastructure 
+            utilities</a></li>
+          <li><a href="#DetermineRecovery"">Determine recovery requirements</a></li>
+          <li><a href="#ImplementRecovery"">Implement recovery requirements</a></li>
+          <li><a href="#StabilizeTestSuite"">Stabilize the Test Suite</a></li>
+          <li><a href="#Traceability"">Maintain traceability relationships</a></li>
+          <li><a href="#EvaluateResults"">Evaluate and verify your results</a></li>
+    </ul>
+    </td>
+  </tr>
+    <!-- Input_Output Artifact Begin -->
+    <tr>
+      <td width="50%"><font face="Arial" size="-1"><b>Input Artifacts:</b></font> 
+        <ul>
+<li><a href="../artifact/ar_tstpl.htm">Test Plan</a></li>
+<li><a href="../artifact/ar_tstgl.htm">Test Guidelines</a></li>
+<li><a href="../artifact/ar_build.htm">Build</a></li>
+<li><a href="../artifact/ar_tools.htm">Tools</a></li>
+<li><a href="../artifact/ar_togls.htm">Tool Guidelines</a></li>
+<li><a href="../artifact/ar_tstatmarc.htm">Test Automation Architecture</a></li>
+<li><a href="../artifact/ar_dplmdl.htm">Deployment Model</a></li>
+<li><a href="../artifact/ar_tstdta.htm">Test Data</a></li>
+<li><a href="../artifact/ar_tstste.htm">Test Suite</a></li>
+<li><a href="../artifact/ar_tstenv.htm">Test Environment Configuration</a></li>
+<li><a href="../artifact/ar_tstsc.htm">Test Script</a></li>
+</ul>
+</td>
+      <td width="50%"><font face="Arial" size="-1"><b>Resulting Artifacts:</b></font> 
+        <ul>
+<li><a href="../artifact/ar_crqst.htm">Change Request</a></li>
+<li><a href="../artifact/ar_tstlog.htm">Test Log</a></li>
+<li><a href="../artifact/ar_tstste.htm">Test Suite</a></li>
+<li><a href="../artifact/ar_tstenv.htm">Test Environment Configuration</a></li>
+<li><a href="../artifact/ar_tstsc.htm">Test Script</a></li>
+</ul>
+</td>
+    </tr>
+    <!-- Input_Output Artifact End -->
+    <!-- Activity Frequency -->
+    <tr> 
+      <td colspan="2"><font face="Arial" size="-1"><b>Frequency:</b></font> This 
+        activity is typically conducted multiple times per iteration. .</td>
+    </tr>
+    <!-- Activity Responsible Role -->
+    <tr>
+      <td colspan="2"><font face="Arial" size="-1"><b>Role:</b></font> 
+	    <a href="../workers/wk_tstr.htm">Tester</a></td>
+    </tr>
+    <!-- Activity Tool Mentors -->
+    <tr> 
+      <td colspan="2"><font face="Arial" size="-1"><b>Tool Mentors:</b></font> 
+        <ul>
+<li><a href="../../toolment/robot/tm_imtst.htm">Implementing Test Scripts Using Rational Robot</a></li>
+<li><a href="../../toolment/robot/tm_tstscr.htm">Creating an Automated Performance Test Script Using Rational Robot </a></li>
+<li><a href="../../toolment/testfact/tm_tfgen.htm"> Implementing Generated Test Scripts Using Rational TestFactory</a></li>
+<li><a href="../../toolment/testfact/tm_tfts.htm"> Executing a Test Suite Using Rational TestFactory</a></li>
+<li><a href="../../toolment/testmgr/tm_tstsuite.htm">Implementing an Automated Test Suite Using Rational TestManager</a></li>
+<li><a href="../../addin_realtime/toolment/test_realtime/tm_rtrtimp.htm">Implementing Test Components Using Rational Test RealTime</a></li>
+</ul>
+</td>
+    </tr>
+    <!-- Activity More Information -->
+    <tr>
+      <td colspan="2"><font face="Arial" size="-1"><b>More Information:</b></font> 
+        <ul>
+</ul>
+
+		<ul>
+</ul>
+
+		<ul>
+</ul>
+
+        <li><a href="../workguid/wg_mnttstste.htm"">Work Guidelines: Maintaining Automated Test Suites</a></li></td>
+    </tr>
+  </tbody> 
+</table>
+<br>
+<!-- Linked to Workflow Begin -->
+<table border="1" width="85%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="top">
+    <tr>
+      <td colspan="2"><font face="Arial" size="-1"><b>Workflow Details:</b></font> 
+        <ul>
+<li><a href="../workflow/ovu_test.htm">Test</a>
+	<ul>
+	<li><a href="../workflow/test/wfs_vrftstapr.htm">Verify Test Approach</a></li>
+	<li><a href="../workflow/test/wfs_achmsnacp.htm">Achieve Acceptable Mission</a></li>
+	<li><a href="../workflow/test/wfs_tstandevl.htm">Test and Evaluate</a></li>
+	<li><a href="../workflow/test/wfs_imptstast.htm">Improve Test Assets</a></li>
+	</ul>
+</li>
+</ul>
+</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Linked to Workflow End -->
+</div>
+
+
+<h3><a name="ExamineTestSuiteOutlines">Examine candidate Test Suites</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To understand the Test Suites and select which candidates 
+        will be implemented.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Start by reviewing any existing Test Suite outlines, and determine which Test 
+  Suites are good candidates for implementation at the current time. Use the Iteration 
+  Test Plan, Test Ideas Lists and Test Cases as a basis for making your decision.</p>
+
+
+<h3><a name="ExamineTestScriptTargets">Examine related Test Scripts and Target 
+  Test Items</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To understand the relationships between the Target Test 
+        Items and the available Test Scripts.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>For each Test Suite selected, identify what Target Test Items and associated 
+  Test Scripts are candidates for the Test Suite.</p>
+
+
+<h3><a name="IdentifyDependencies">Identify script dependencies</a>
+   <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To identify any dependencies the Test Scripts have, both 
+        in terms of system state and in terms of other Test Scripts.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Begin by considering the Test Environment Configuration and specific system 
+  start state. Consider what specific setup requirements there will be, such as 
+  the starting data set for dependent databases. Where one Target Environment 
+  Configuration will be used for various Test Suites, identify any configuration 
+  settings that may need to be managed by each Test Suite, such as Display Resolution 
+  or Regional settings.</p>
+<p>Now determine any specific relationships between the Test Scripts. Look for 
+  dependencies where the execution of one Test Script included in the Test Suite 
+  will result in a system state change required as a precondition of another Test 
+  Script.</p>
+<p>Once you've identified all of these dependencies, determine the correct sequence 
+  of execution for the dependent Test Scripts.</p>
+
+
+<h3><a name="IdentifyReuse">Identify opportunities for reuse</a>
+   <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To improve Test Suite maintainability, both by reusing 
+        existing assets and consolidating new assets.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>One of the main challenges in maintaining a Test Suite&#151;especially an automated 
+  one&#151;is ensuring that ongoing changes are easy to make. It's a good idea 
+  when possible and deemed useful to maintain a central point of modification 
+  for elements that are used in multiple places. That's especially true if those 
+  same elements are likely to change.</p>
+<p>While the Test Scripts themselves form a natural units of modularity, assembly 
+  of the Test Scripts into a Test Suite often identifies duplicate procedural 
+  elements across multiple Test Scripts that could be more effectively maintained 
+  if the were consolidated. Take the opportunity to identify any potential Test 
+  Scripts that might be refactored to assist ongoing maintenance.</p>
+
+
+<h3><a name="ApplyInfrastructure">Apply necessary infrastructure utilities</a> 
+  <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To factor out complex test implementation support behavior 
+        as simplified utility functions.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Most test efforts require the use of one or more &quot;utilities&quot; that 
+  generate, gather, diagnose, convert and compare information used during test 
+  implementation and execution. These utilities typically simplify both complex 
+  and laborious tasks that would be prone to error if performed manually. This 
+  step relates to applying existing utility functions within the Test Suite, and 
+  identifying new utilities that are required.</p>
+<p>It's a good idea to simplify the interfaces to these utilities, encapsulating 
+  as much complexity as possible within the private implementation of the utility. 
+  It's also a good idea to develop the utility in such a way that it can be reused 
+  where required for both manual and automated test efforts.</p>
+<p>We recommend you don't hide the information that characterizes an individual 
+  test within these utilities: instead, limit the utility to the complex mechanics 
+  of gathering information, or comparing actual values to expected results etc. 
+  but where possible, pass the specific characteristics of each individual test 
+  in as input from&#151;and return the individual actual results an output to&#151;a 
+  controlling Test Script or Test Suite.</p>
+
+
+<h3><a name="DetermineRecovery">Determine recovery requirements</a>
+   <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To enable Test Suites to be recovered without requiring 
+        the complete re-execution of the Test Suite.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Determine the appropriate points within the Test Suite to provide recovery 
+  if the Test Suite fails during execution. This step gains importance where the 
+  Test Suite will contain a large number of Test Scripts, or will run for an extended 
+  period of time&#151;often unattended. While most often identified as a requirement 
+  for automated Test Suites, it is also important to consider recovery points 
+  for manually executed Test Suites.</p>
+<p>In addition to recovery or restart points you may also want&#151;in the case 
+  of automated Test Suites&#151;to consider automated Test Suite recovery. Two 
+  approaches to auto-recovery are 1) basic recovery where the existing Test Suite 
+  can self-recover from a minor error that occurs in one of it's Test Scripts, 
+  typically recovering execution at the next Test Script in the Test Suite or 
+  2) sophisticated recovery that cleans up after the failed Test Script, resetting 
+  appropriate system state including operating system reboot and data restoration 
+  if necessary. As in the first approach, the Test Suite then determines the script 
+  that failed and selects the next Test Script to execute.</p>
+
+
+<h3><a name="ImplementRecovery">Implement recovery requirements</a>
+   <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To implement and verify that the recovery process works 
+        as required.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Depending on the level of sophistication required, it will require effort to 
+  implement and stabilize recovery processing. You'll need to allow time to simulate 
+  a number of likely (and a few unlikely) failures to prove the recovery processing 
+  works.</p>
+<p>In the case of automated recovery, both approaches outlined in the previous 
+  step have strengths and weaknesses. You should consider carefully the cost of 
+  sophisticated automated recovery, both in terms of initial development but also 
+  ongoing maintenance effort. Sometimes manual recovery is good enough.</p>
+
+
+<h3><a name="StabilizeTestSuite">Stabilize the Test Suite</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To resolve any dependency problems both in terms of System 
+        State and Test Script execution sequences.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>You should take time to stabilize the Test Suite by one or more trial test 
+  executions where possible. The difficulty in achieving stability increases proportionally 
+  to the complexity of the Test Suite, and where there is excessively tight coupling 
+  between unrelated and and low cohesion between related Test Scripts.</p>
+<p>There is the possibility of errors occurring when Test Scripts are executed 
+  together within a given Test Suite, that were not encountered when the individual 
+  Test Scripts were executed independently. These errors are often the most difficult 
+  to track down and diagnose, especially when the are encountered halfway though 
+  a length automated test run. Where practical, it's a good idea to rerun the 
+  Test Suite regularly as you add addition Test Scripts. This will help you isolate 
+  a small number of potential candidate Test Scripts to be diagnosed to identify 
+  the problem.</p>
+
+
+<h3><a name="Traceability">Maintain traceability relationships</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+      <td colspan="2" >To enable impact analysis and assessment reporting to be 
+        performed on the traced items.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<p>Using the Traceability requirements outlined in the Test Plan, update the traceability 
+  relationships as necessary. Test Suites might be traced to defined Test Cases 
+  or to Test Ideas. Optionally, they may be traced to Use Cases, software specification 
+  elements, Implementation Model elements and to one or more measures of Test 
+  Coverage.</p>
+
+
+<h3><a name="EvaluateResults">Evaluate and verify your results</a> <a href="#Top""><img src="../../images/top.gif"alt="To top of page" border="0" width="26" height="20"></a></h3> 
+<div align="left">
+<table border="1" width="92%" cellspacing="0" cellpadding="4" style="border: 1px solid rgb(128,128,128)" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+  <tbody valign="center">
+    <tr>
+      <td colspan="2" width="5%"><font face="Arial" size="-1"><b>Purpose:</b></font></td>
+        
+      <td colspan="2">To verify that the activity has been completed appropriately 
+        and that the resulting artifacts are acceptable.</td>
+     </tr>
+   </tbody>
+</table>
+<br>
+</div>
+
+<p>Now that you have completed the work, it is beneficial to verify that the work 
+  was of sufficient value, and that you did not simply consume vast quantities 
+  of paper. You should evaluate whether your work is of appropriate quality, and 
+  that it is complete enough to be useful to those team members who will make 
+  subsequent use of it as input to their work. Where possible, use the checklists 
+  provided in RUP to verify that quality and completeness are &quot;good enough&quot;.</p>
+<p>Have the people performing the downstream activities that rely on your work 
+  as input take part in reviewing your interim work. Do this while you still have 
+  time available to take action to address their concerns. You should also evaluate 
+  your work against the key input artifacts to make sure you have represented 
+  them accurately and sufficiently. It may be useful to have the author of the 
+  input artifact review your work on this basis.</p>
+<p>Try to remember that that RUP is an iterative process and that in many cases 
+  artifacts evolve over time. As such, it is not usually necessary&#151;and is 
+  often counterproductive&#151;to fully-form an artifact that will only be partially 
+  used or will not be used at all in immediately subsequent work. This is because 
+  there is a high probability that the situation surrounding the artifact will 
+  change&#151;and the assumptions made when the artifact was created proven incorrect&#151;before 
+  the artifact is used, resulting in wasted effort and costly rework. Also avoid 
+  the trap of spending too many cycles on presentation to the detriment of content 
+  value. In project environments where presentation has importance and economic 
+  value as a project deliverable, you might want to consider using an administrative 
+  resource to perform presentation tasks.</p>
+<br>
+<br>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+
+</body>
+
+</html>

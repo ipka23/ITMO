@@ -1,0 +1,180 @@
+includesubtree	false
+wwwroot	../../../applet/
+datafile	tree.dat
+startDir	../../../
+resultfile	/sitemap/sitemap.htm
+relativepath	..
+bgcolor	#C0C0C0
+fgcolor	#336699
+levelfont	defaultfont	Times	Plain	-2
+levelfont	headlinefont	Times	Bold	+1
+levelfont	1	Times	Plain	-2
+headerfile	sitepreamble.txt
+footerfile	sitepostamble.txt
+maxlevels	10
+defaulttitlelength	25
+
+<--
+label	Overview
+level	0
+row	1
+col	1
+cellcolor	true
+-->
+
+<--
+label	Developer's Kit
+level	2
+row	1
+col	2
+cellcolor	true
+-->
+
+<--
+label	Core Workflows
+level	0
+row	1
+col	3
+cellcolor	true
+-->
+
+<--
+label	Workers and Activities
+level	0
+row	1
+col	4
+cellcolor	true
+-->
+
+<--
+label	Introduction
+level	1
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	Artifact Guidelines Overview
+level	0
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	White Papers
+level	0
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	Glossary
+level	0
+row	2
+col	1
+rowspan	3
+-->
+
+<--
+label	Configuration Tools
+level	3
+row	2
+col	2
+rowspan	1
+-->
+
+<--
+label	Business Modeling
+level	1
+row	2
+col	3
+rowspan	3
+-->
+
+<--
+label	Any Worker
+level	1
+row	2
+col	4
+rowspan	3
+-->
+
+<--
+label	Iteration Workflows
+level	0
+row	3
+col	2
+rowspan	1
+cellcolor	true
+-->
+
+<--
+label	Define Vision & Business Case
+level	1
+row	4
+col	2
+rowspan	1
+-->
+
+<--
+label	Artifacts
+level	0
+row	5
+col	1
+colspan	2
+cellcolor	true
+-->
+
+<--
+label	Tool Mentors
+level	0
+row	5
+col	3
+cellcolor	true
+-->
+
+<--
+label	Templates
+level	0
+row	5
+col	4
+cellcolor	true
+-->
+
+
+<--
+label	Management Set
+level	1
+row	6
+col	1
+colspan	2
+-->
+
+
+<--
+label	ClearCase
+level	1
+row	6
+col	3
+-->
+
+<--
+label	Microsoft Word
+level	1
+row	6
+col	4
+-->
+
+
+
+
+
+
+
+
+
+
+

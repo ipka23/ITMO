@@ -1,0 +1,7 @@
+0*Artifacts*../artifacts/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+1*Requirements*../artifacts/requirements/overview.htm* *artfc_w.gif*artfo_w.gif*f*
+2*Glossary*../artifacts/requirements/pt_glossary.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Vision*../artifacts/requirements/pt_vision.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Requirements Management Plan*../artifacts/requirements/pt_reqmngplan.htm* *ar_doc.gif*ar_doc.gif*f*
+2*Use Case Model*../artifacts/requirements/pt_ucm.htm* *ar_ucmod.gif*ar_ucmod.gif*f*
+2*Supplementary Specification*../artifacts/requirements/pt_supplspec.htm* *ar_doc.gif*ar_doc.gif*f*

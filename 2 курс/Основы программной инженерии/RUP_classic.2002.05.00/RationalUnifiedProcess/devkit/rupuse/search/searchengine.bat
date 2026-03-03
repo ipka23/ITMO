@@ -1,0 +1,1 @@
+..\..\..\..\common\java\jre\bin\java  -mx64m -ms8m -classpath ..\..\..\applet\ ruptools.SearchEngine -r searchresponse.txt -s -lw word.html -gw ../../../applet/searchdb

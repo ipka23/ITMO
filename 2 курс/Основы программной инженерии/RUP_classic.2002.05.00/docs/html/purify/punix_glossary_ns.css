@@ -1,0 +1,310 @@
+P { 
+   margin-top:6.00pt; 
+   margin-bottom:1; 
+   font-family:'Helvetica'; 
+   font-size:14pt;  }
+H1 { 
+    margin-top:8.00pt; 
+    margin-bottom:4.00pt; 
+    font-family:'Helvetica'; 
+    font-size:18pt; 
+    color:navy; 
+    font-weight:bold;  }
+H2 { 
+    margin-top:6.00pt; 
+    margin-bottom:1; 
+    font-family:'Helvetica'; 
+    font-size:16pt; 
+    font-weight:bold;  }
+H3 { 
+    margin-left:18.00pt; 
+    margin-top:12.00pt; 
+    margin-bottom:3.00pt; 
+    font-family:'Helvetica'; 
+    font-size:14pt; 
+    font-weight:bold;  }
+H4 { 
+    margin-left:18.00pt; 
+    margin-top:6.00pt; 
+    margin-bottom:1; 
+    font-family:'Helvetica'; 
+    font-size:14pt; 
+    text-decoration:underline; 
+    font-weight:bold;  }
+H5 { 
+    margin-top:12.00pt; 
+    margin-bottom:3.00pt; 
+    font-family:'Helvetica'; 
+    font-size:11pt; 
+    font-weight:bold;  }
+H6 { 
+    margin-top:12.00pt; 
+    margin-bottom:3.00pt; 
+    font-family:'Helvetica'; 
+    font-size:11pt; 
+    font-style:italic; 
+    font-weight:bold;  }
+H6.Heading7 { 
+             margin-top:12.00pt; 
+             margin-bottom:3.00pt; 
+             font-family:'Helvetica'; 
+             font-size:14pt;  }
+H6.Heading8 { 
+             margin-top:12.00pt; 
+             margin-bottom:3.00pt; 
+             font-family:'Helvetica'; 
+             font-size:14pt; 
+             font-style:italic;  }
+H6.Heading9 { 
+             margin-top:12.00pt; 
+             margin-bottom:3.00pt; 
+             font-family:'Helvetica'; 
+             font-size:9pt; 
+             font-style:italic;  }
+P.@Topic-Text-Bulleted { 
+                        margin-left:15.10pt; 
+                        margin-top:6.00pt; 
+                        margin-bottom:1; 
+                        text-indent:0; 
+                        font-family:'Helvetica'; 
+                        font-size:14pt;  }
+P.@APIbullet { 
+              margin-left:9.35pt; 
+              margin-top:6.00pt; 
+              margin-bottom:1; 
+              text-indent:0; 
+              font-family:'Helvetica'; 
+              font-size:14pt;  }
+P.@APIHead2 { 
+             margin-top:10.00pt; 
+             margin-bottom:1; 
+             font-family:'Helvetica'; 
+             font-size:16pt; 
+             font-weight:bold;  }
+P.Normal-Indent { 
+                 margin-left:36.00pt; 
+                 margin-top:6.00pt; 
+                 margin-bottom:1; 
+                 font-family:'Helvetica'; 
+                 font-size:14pt;  }
+P.Tip-Note-Heading { 
+                    margin-top:8.00pt; 
+                    margin-bottom:4.00pt; 
+                    font-family:'Helvetica'; 
+                    font-size:18pt; 
+                    color:navy; 
+                    font-weight:bold;  }
+P.Tip-Note-Text { 
+                 margin-left:15.10pt; 
+                 margin-top:6.00pt; 
+                 margin-bottom:1; 
+                 font-family:'Helvetica'; 
+                 font-size:14pt;  }
+P.Tip-Note-Text-Bulleted { 
+                          margin-left:15.10pt; 
+                          margin-top:6.00pt; 
+                          margin-bottom:1; 
+                          text-indent:0; 
+                          font-family:'Helvetica'; 
+                          font-size:14pt;  }
+P.Topic-Text-Bulleted { 
+                       margin-left:15.10pt; 
+                       margin-top:6.00pt; 
+                       margin-bottom:1; 
+                       text-indent:0; 
+                       font-family:'Helvetica'; 
+                       font-size:14pt;  }
+P.Topic-Text-Indent { 
+                     margin-left:15.10pt; 
+                     margin-top:6.00pt; 
+                     margin-bottom:1; 
+                     font-family:'Helvetica'; 
+                     font-size:14pt;  }
+P.Topic-Text-Numbered { 
+                       margin-left:15.10pt; 
+                       margin-top:6.00pt; 
+                       margin-bottom:1; 
+                       text-indent:0; 
+                       font-family:'Helvetica'; 
+                       font-size:14pt;  }
+P.Topic-Text-Onestep { 
+                      margin-left:15.10pt; 
+                      margin-top:6.00pt; 
+                      margin-bottom:1; 
+                      text-indent:0; 
+                      font-family:'Helvetica'; 
+                      font-size:14pt;  }
+P.@code { 
+         margin-left:14.40pt; 
+         margin-top:6.00pt; 
+         margin-bottom:1; 
+         font-family:'Courier'; 
+         font-size:14pt;  }
+P.@First-Paragraph { 
+                    margin-top:6.00pt; 
+                    margin-bottom:1; 
+                    font-family:'Helvetica'; 
+                    font-size:14pt;  }
+P.@Glossary-Heading { 
+                     margin-top:6.00pt; 
+                     margin-bottom:1; 
+                     font-family:'Helvetica'; 
+                     font-size:14pt; 
+                     font-weight:bold;  }
+P.@Glossary-Text { 
+                  margin-top:6.00pt; 
+                  margin-bottom:1; 
+                  font-family:'Helvetica'; 
+                  font-size:14pt;  }
+P.@list { 
+         margin-left:18.70pt; 
+         margin-top:1.45pt; 
+         margin-bottom:1; 
+         text-indent:0; 
+         font-family:'Helvetica'; 
+         font-size:14pt;  }
+P.macro { 
+         margin-top:1; 
+         margin-bottom:1; 
+         font-family:'Courier'; 
+         font-size:10pt;  }
+P.@Macro-Text-First { 
+                     margin-top:6.00pt; 
+                     margin-bottom:1; 
+                     font-family:'Courier'; 
+                     font-size:10pt;  }
+P.@Macro-Text-Last { 
+                    margin-top:1; 
+                    margin-bottom:6.00pt; 
+                    font-family:'Courier'; 
+                    font-size:10pt;  }
+P.@space { 
+          margin-left:4.30pt; 
+          margin-right:4.30pt; 
+          margin-top:6.00pt; 
+          margin-bottom:3.00pt; 
+          font-family:'Helvetica'; 
+          font-size:14pt; 
+          color:black;  }
+P.@Table-Head---M { 
+                   margin-left:109.45pt; 
+                   margin-top:6.00pt; 
+                   margin-bottom:1; 
+                   text-indent:0; 
+                   font-family:'Helvetica'; 
+                   font-size:14pt; 
+                   font-weight:bold;  }
+P.@Table-Text---Indent { 
+                        margin-left:126.00pt; 
+                        margin-top:6.00pt; 
+                        margin-bottom:1; 
+                        text-indent:0; 
+                        font-family:'Helvetica'; 
+                        font-size:14pt;  }
+P.@Table-Text---M { 
+                   margin-left:109.45pt; 
+                   margin-top:6.00pt; 
+                   margin-bottom:1; 
+                   text-indent:0; 
+                   font-family:'Helvetica'; 
+                   font-size:14pt;  }
+P.@Tip-Note-Heading { 
+                     margin-top:6.00pt; 
+                     margin-bottom:1; 
+                     font-family:'Helvetica'; 
+                     font-size:10pt; 
+                     font-weight:bold;  }
+P.@Tip-Note-Text { 
+                  margin-left:15.10pt; 
+                  margin-top:6.00pt; 
+                  margin-bottom:1; 
+                  font-family:'Helvetica'; 
+                  font-size:14pt;  }
+P.@Tip-Note-Text-Bulleted { 
+                           margin-left:15.10pt; 
+                           margin-top:6.00pt; 
+                           margin-bottom:1; 
+                           text-indent:0; 
+                           font-family:'Helvetica'; 
+                           font-size:14pt;  }
+P.@Topic-Text-Indent { 
+                      margin-left:15.10pt; 
+                      margin-top:6.00pt; 
+                      margin-bottom:1; 
+                      font-family:'Helvetica'; 
+                      font-size:14pt;  }
+P.footnote-text { 
+                 margin-top:6.00pt; 
+                 margin-bottom:1; 
+                 font-family:'Helvetica'; 
+                 font-size:14pt;  }
+P.rTipNoteGlossaryHeading { 
+                           margin-top:6.00pt; 
+                           margin-bottom:1; 
+                           font-family:'Helvetica'; 
+                           font-size:14pt; 
+                           font-weight:bold;  }
+P.rCode { 
+         margin-left:14.40pt; 
+         margin-top:6.00pt; 
+         margin-bottom:1; 
+         font-family:'Courier'; 
+         font-size:14pt;  }
+P.rFirst-Paragraph { 
+                    margin-top:6.00pt; 
+                    margin-bottom:1; 
+                    font-family:'Helvetica'; 
+                    font-size:14pt;  }
+P.rTableHead { 
+              margin-top:6.00pt; 
+              margin-bottom:1; 
+              font-family:'Helvetica'; 
+              font-size:14pt; 
+              font-weight:bold;  }
+P.rTableText { 
+              margin-top:6.00pt; 
+              margin-bottom:1; 
+              font-family:'Helvetica'; 
+              font-size:14pt;  }
+P.List-Bullet { 
+               margin-left:18.00pt; 
+               margin-top:12.00pt; 
+               margin-bottom:6.00pt; 
+               text-indent:0; 
+               font-family:'Helvetica'; 
+               font-size:14pt;  }
+P.List-Number { 
+               margin-left:18.00pt; 
+               margin-top:12.00pt; 
+               margin-bottom:6.00pt; 
+               text-indent:0; 
+               font-family:'Helvetica'; 
+               font-size:14pt;  }
+P.List-Continue-2 { 
+                   margin-left:36.00pt; 
+                   margin-top:1; 
+                   margin-bottom:1; 
+                   font-family:'Helvetica'; 
+                   font-size:14pt;  }
+P.header { 
+          margin-top:6.00pt; 
+          margin-bottom:1; 
+          font-family:'Helvetica'; 
+          font-size:14pt;  }
+P.footer { 
+          margin-top:6.00pt; 
+          margin-bottom:1; 
+          font-family:'Helvetica'; 
+          font-size:14pt;  }
+BODY { 
+      font-family:'Helvetica'; 
+      font-size:14pt; 
+      background-color:white;  }
+ol ol { 
+       maring-top:6px;  }
+ol ul { 
+       maring-top:6px;  }
+ul ul { 
+       maring-top:6px;  }
+ul ol { 
+       maring-top:6px;  }

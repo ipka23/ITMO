@@ -1,0 +1,1605 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="FrameName" value="bsscright">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-always-use-cache-dir option">
+    <param name="Name" value="Options for managing cache files##MID_ALWAYS">
+    <param name="Local" value="html/ht_opt_caching.htm##MID_ALWAYS">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-append-logfile">
+    <param name="Name" value="Options for specifying files and directories#MID_APPEND">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_APPEND">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-apply-adjustments option">
+    <param name="Name" value="An option for handling adjustments">
+    <param name="Local" value="html/ht_opt_adjust.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-auto-mount-prefix option">
+    <param name="Name" value="Options for file identification">
+    <param name="Local" value="html/ht_opt_fileid.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-cache-dir option">
+    <param name="Name" value="Options for caching">
+    <param name="Local" value="html/ht_opt_caching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-collector option">
+    <param name="Name" value="Linker and collector options##MID_COLL">
+    <param name="Local" value="html/ht_opt_link_collect.htm##MID_COLL">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-counts-file option">
+    <param name="Name" value="An option for saving data">
+    <param name="Local" value="html/ht_opt_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-export option">
+    <param name="Name" value="Mode options for analyzing data#MID_EXPORT">
+    <param name="Local" value="html/ht_opt_mode.htm#MID_EXPORT">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-extract option">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="making adjustments in code">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="option definition">
+      <param name="Name" value="Mode options for analyzing data#MID_EXTRACT">
+      <param name="Local" value="html/ht_opt_mode.htm#MID_EXTRACT">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-follow-child-processes option">
+    <param name="Name" value="An option for data collection">
+    <param name="Local" value="html/ht_opt_data_collect.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-forbidden-directories option">
+    <param name="Name" value="Options for managing cache files##MID_FORBID">
+    <param name="Local" value="html/ht_opt_caching.htm##MID_FORBID">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-force-merge option">
+    <param name="Name" value="An option for merging data">
+    <param name="Local" value="html/ht_opt_merging.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-force-rebuild option">
+    <param name="Name" value="Options for managing cache files##MID_FORCE">
+    <param name="Local" value="html/ht_opt_caching.htm##MID_FORCE">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-g debug option">
+    <param name="Name" value="Compiling with the debug option -g">
+    <param name="Local" value="html/ov_debug_option.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-handle-signals option">
+    <param name="Name" value="Options for signal handling">
+    <param name="Local" value="html/ht_opt_signal.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-ignore-run-time-environment option">
+    <param name="Name" value="An option for controlling run-time conditions">
+    <param name="Local" value="html/ht_opt_ignore.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-ignore-signals option">
+    <param name="Name" value="Options for signal handling">
+    <param name="Local" value="html/ht_opt_signal.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-lib-path-length option">
+    <param name="Name" value="Options for specifying files and directories#MID_LIB">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_LIB">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-linker option">
+    <param name="Name" value="Options for linker and collector">
+    <param name="Local" value="html/ht_opt_link_collect.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-log-file option">
+    <param name="Name" value="Options for specifying files and directories#MID_LOGFILE">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_LOGFILE">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-merge option">
+    <param name="Name" value="Mode options for analyzing data#MID_MERGE">
+    <param name="Local" value="html/ht_opt_mode.htm#MID_MERGE">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-O compiler option">
+    <param name="Name" value="Compiling with the debug option -g">
+    <param name="Local" value="html/ov_debug_option.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-print-home-dir option">
+    <param name="Name" value="Informational options##MID_PRINTHD">
+    <param name="Local" value="html/ht_opt_info.htm##MID_PRINTHD">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-program-name option">
+    <param name="Name" value="Options for specifying files and directories#MID_PROGNAME">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_PROGNAME">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-replace-path option">
+    <param name="Name" value="Options for specifying files and directories#MID_REPLACE">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_REPLACE">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-run-at-exit option">
+    <param name="Name" value="An option for exit processing">
+    <param name="Local" value="html/ht_opt_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-user-path option">
+    <param name="Name" value="Options for specifying files and directories#MID_USER">
+    <param name="Local" value="html/ht_opt_fileid.htm#MID_USER">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-version option">
+    <param name="Name" value="Informational options##MID_VERSION">
+    <param name="Local" value="html/ht_opt_info.htm##MID_VERSION">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="-view options">
+    <param name="Name" value="Mode options for analyzing data#MID_VIEW">
+    <param name="Local" value="html/ht_opt_mode.htm#MID_VIEW">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".pcv files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="separating">
+      <param name="Name" value="Automating coverage data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value=".Xdefaults">
+    <param name="Name" value="Using X Resources to customize PureCoverage">
+    <param name="Local" value="html/ht_xres.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="actual coverage data">
+    <param name="Name" value="About adjustments">
+    <param name="Local" value="html/ht_ov_adjusting.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="adjusted coverage data">
+    <param name="Name" value="About adjustments">
+    <param name="Local" value="html/ht_ov_adjusting.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="adjusting coverage">
+    <param name="Name" value="About adjustments">
+    <param name="Local" value="html/ht_ov_adjusting.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="adjustments">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-apply-adjustments option">
+      <param name="Name" value="An option for handling adjustments">
+      <param name="Local" value="html/ht_opt_adjust.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustment files">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="displayed in the Annotated Source window">
+      <param name="Name" value="How the Annotated Source window displays adjustments">
+      <param name="Local" value="html/ht__illustration_adj_as.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="displayed in the Viewer">
+      <param name="Name" value="How the Viewer displays adjustments">
+      <param name="Local" value="html/ht_illustration_adj_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="effect on export format">
+      <param name="Name" value="How adjustments affect export format">
+      <param name="Local" value="html/ht_export_and_adjustments.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="extracting">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="file format for adjustments">
+      <param name="Name" value="Adjustments file format">
+      <param name="Local" value="html/ht_adjustment_file_format.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="making in code">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="making in the Annotated Source window">
+      <param name="Name" value="Making adjustments in the Annotated Source window">
+      <param name="Local" value="html/ht_adj_nteractively.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="processing with scripts">
+      <param name="Name" value="Adjustments file format">
+      <param name="Local" value="html/ht_adjustment_file_format.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov.adjust files">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing">
+      <param name="Name" value="Making adjustments in the Annotated Source window">
+      <param name="Local" value="html/ht_adj_nteractively.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="tested code">
+      <param name="Name" value="tested code">
+      <param name="Local" value="html_notoc/ht_gloss_tested.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="unnecessary">
+      <param name="Name" value="Adjustments file format">
+      <param name="Local" value="html/ht_adjustment_file_format.htm">
+      <param name="Name" value="How the Annotated Source window displays adjustments">
+      <param name="Local" value="html/ht__illustration_adj_as.htm">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Annotated differences report">
+    <param name="Name" value="Annotated differences report">
+    <param name="Local" value="html/ht_rep_anndiff.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Annotated source report">
+    <param name="Name" value="Annotated source report">
+    <param name="Local" value="html/ht_rep_annsource.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Annotated Source window">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="illustration">
+      <param name="Name" value="Annotated Source window">
+      <param name="Local" value="html_notoc/idd_ann_src.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving contents">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="annotation variations">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in C++ inline functions">
+      <param name="Name" value="C++ inline functions (annotation variations)">
+      <param name="Local" value="html/ht_var_cpp.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in complex source lines">
+      <param name="Name" value="Complex source lines (annotation variations)">
+      <param name="Local" value="html/ht_var_complex.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in exit() statements">
+      <param name="Name" value="exit() statements (annotation variations)">
+      <param name="Local" value="html/ht_var_exit.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in function entry points">
+      <param name="Name" value="Function entry points (annotation variations)">
+      <param name="Local" value="html/ht_var_function.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in local variable declarations">
+      <param name="Name" value="Local variable declarations (annotation variations)">
+      <param name="Local" value="html/ht_var_local.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in multi-line statements">
+      <param name="Name" value="Multi-line statements (annotation variations)">
+      <param name="Local" value="html/ht_var_multi.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="in switch statements">
+      <param name="Name" value="Switch statements (annotation variations)">
+      <param name="Local" value="html/ht_var_switch.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="Annotation variations: overview">
+      <param name="Local" value="html/ht_ov_ann_variations.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="API function list">
+    <param name="Name" value="About PureCoverage API functions">
+    <param name="Local" value="html/ht_about_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="API functions">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About PureCoverage API functions">
+      <param name="Local" value="html/ht_about_pc_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="calling">
+      <param name="Name" value="Calling PureCoverage API functions">
+      <param name="Local" value="html/ht_howto_call_pc_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_clear_data">
+      <param name="Name" value="purecov_clear_data">
+      <param name="Local" value="html/ht_api_purecov_clear_data.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_disable_save">
+      <param name="Name" value="purecov_disable_save">
+      <param name="Local" value="html/ht_api_purecov_disable_save.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_enable_save">
+      <param name="Name" value="purecov_enable_save">
+      <param name="Local" value="html/ht_api_purecov_enable_save.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_is_running">
+      <param name="Name" value="purecov_is_running">
+      <param name="Local" value="html/ht_api_purecov_is_running.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_save_data">
+      <param name="Name" value="purecov_save_data">
+      <param name="Local" value="html/ht_api_purecov_save_data.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov_set_filename">
+      <param name="Name" value="purecov_set_filename">
+      <param name="Local" value="html/ht_api_purecov_set_filename.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="arguments for scripts">
+    <param name="Name" value="Running report scripts">
+    <param name="Local" value="html/ht_running_report_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ASCII text file for saving output">
+    <param name="Name" value="Saving coverage data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="automated testing with PureCoverage">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="bl (export format keyword)">
+    <param name="Name" value="Block&quot;bl&quot;">
+    <param name="Local" value="html_notoc/ht_export_block.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="block comments for adjustments">
+    <param name="Name" value="Making adjustments in your code">
+    <param name="Local" value="html/ht_adj_manually.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="bug reports about PureCoverage">
+    <param name="Name" value="Filing bug reports with Rational Software">
+    <param name="Local" value="html/ht_bug_report.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="bug tracking system configuration">
+    <param name="Name" value="Configuring a change request management system">
+    <param name="Local" value="html/ht_config_cmrs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Build differences summary report">
+    <param name="Name" value="Build differences summary report">
+    <param name="Local" value="html/ht_rep_builddiffsum.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="cache files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="names and locations">
+      <param name="Name" value="PureCoverage cache files">
+      <param name="Local" value="html/ov_files_created.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing">
+      <param name="Name" value="PureCoverage cache files">
+      <param name="Local" value="html/ov_files_created.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="caching options">
+    <param name="Name" value="Options for caching">
+    <param name="Local" value="html/ht_opt_caching.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="calling PureCoverage API functions">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="canonical pathnames">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="change request management system configuration">
+    <param name="Name" value="Configuring a change request management system">
+    <param name="Local" value="html/ht_config_cmrs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="child processes">
+    <param name="Name" value="An option for data collection">
+    <param name="Local" value="html/ht_opt_data_collect.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ClearQuest and PureCoverage">
+    <param name="Name" value="Using Rational ClearQuest with PureCoverage">
+    <param name="Local" value="html/ht_clearquest.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="ClearQuest configuration">
+    <param name="Name" value="Configuring a change request management system">
+    <param name="Local" value="html/ht_config_cmrs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="collapsing items in the Viewer">
+    <param name="Name" value="Collapse (Actions menu, PureCoverage Viewer)">
+    <param name="Local" value="html_notoc/idc_viewer_toolbar.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="compiler option -O">
+    <param name="Name" value="Compiling with the debug option -g">
+    <param name="Local" value="html/ov_debug_option.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="compilers and annotation variations">
+    <param name="Name" value="Annotation variations: overview">
+    <param name="Local" value="html/ht_ov_ann_variations.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="contacting Rational Software">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Filing bug reports">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Technical Publications">
+      <param name="Name" value="Contacting Technical Publications">
+      <param name="Local" value="html/ht_tech_pubs.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Technical Support">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="counters">
+    <param name="Name" value="About PureCoverage counters">
+    <param name="Local" value="html/ov_pc_counters.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="coverage data">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="converting to export format">
+      <param name="Name" value="Using export format">
+      <param name="Local" value="html/ht_export_format.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="from automated testing">
+      <param name="Name" value="Automating coverage data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="removing">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="separating for individual runs">
+      <param name="Name" value="Automating coverage data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Coverage summary report">
+    <param name="Name" value="Coverage summary report">
+    <param name="Local" value="html/ht_rep_covsummary.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="custom report scripts">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="accessing in the Viewer">
+      <param name="Name" value="Running report scripts">
+      <param name="Local" value="html/ht_running_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="writing">
+      <param name="Name" value="Writing custom report scripts">
+      <param name="Local" value="html/ht_writing_report_scripts.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="customizing PureCoverage">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustments to coverage">
+      <param name="Name" value="About adjustments">
+      <param name="Local" value="html/ht_ov_adjusting.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="customizing utility scripts">
+      <param name="Name" value="Using and customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="exclusion from coverage">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using X Resources">
+      <param name="Name" value="Using X Resources to customize PureCoverage">
+      <param name="Local" value="html/ht_xres.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="DDTS configuration">
+    <param name="Name" value="Configuring a change request management system">
+    <param name="Local" value="html/ht_config_cmrs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="debug option -g">
+    <param name="Name" value="Compiling with the debug option -g">
+    <param name="Local" value="html/ov_debug_option.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="debugger and PureCoverage API functions">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="definitions of PureCoverage terms">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="deleting coverage data for excluded files">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Differences report">
+    <param name="Name" value="Differences report">
+    <param name="Local" value="html/ht_rep_differences.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="directives for exclusions">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="directories">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="excluding from instrumentation">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PureCoverage home directory">
+      <param name="Name" value="Informational options">
+      <param name="Local" value="html/ht_opt_info.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="directory (export format keyword)">
+    <param name="Name" value="Directory&quot;di&quot;">
+    <param name="Local" value="html_notoc/ht_export_directory.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="documentation feedback">
+    <param name="Name" value="Contacting Technical Publications">
+    <param name="Local" value="html/ht_tech_pubs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="e-mail for low-coverage reports">
+    <param name="Name" value="Low coverage mail report">
+    <param name="Local" value="html/ht_rep_lowcovmail.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="edi (export format keyword)">
+    <param name="Name" value="End Directory--&quot;edi&quot;">
+    <param name="Local" value="html_notoc/ht_export_enddir.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="efi (export format keywords)">
+    <param name="Name" value="efi--End File">
+    <param name="Local" value="html_notoc/ht_export_endfile.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="efu (export format keyword)">
+    <param name="Name" value="End Function&quot;efu&quot;">
+    <param name="Local" value="html_notoc/ht_export_endfunc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="examples">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustment strategies">
+      <param name="Name" value="Strategies for using adjustments">
+      <param name="Local" value="html/ht_adj_strategies.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="annotated differences report">
+      <param name="Name" value="Annotated differences report">
+      <param name="Local" value="html/ht_rep_anndiff.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="annotated source report">
+      <param name="Name" value="Annotated source report">
+      <param name="Local" value="html/ht_rep_annsource.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="basic block">
+      <param name="Name" value="basic block">
+      <param name="Local" value="html_notoc/ht_gloss_basic_block.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="custom report script">
+      <param name="Name" value="Writing custom report scripts">
+      <param name="Local" value="html/ht_writing_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="export file">
+      <param name="Name" value="Using export format#MID_SAMPLE">
+      <param name="Local" value="html/ht_export_format.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="merging data">
+      <param name="Name" value="An option for merging data">
+      <param name="Local" value="html/ht_opt_merging.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="excluding files from coverage">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="exit processing">
+    <param name="Name" value="An option for exit processing">
+    <param name="Local" value="html/ht_opt_exit.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="expanding items in the Viewer">
+    <param name="Name" value="Collapse (Actions menu, PureCoverage Viewer)">
+    <param name="Local" value="html_notoc/idc_viewer_toolbar.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="export format">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustments and export format">
+      <param name="Name" value="How adjustments affect export format">
+      <param name="Local" value="html/ht_export_and_adjustments.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="bl">
+      <param name="Name" value="Block&quot;bl&quot;">
+      <param name="Local" value="html_notoc/ht_export_block.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="di">
+      <param name="Name" value="Directory&quot;di&quot;">
+      <param name="Local" value="html_notoc/ht_export_directory.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="edi">
+      <param name="Name" value="End Directory--&quot;edi&quot;">
+      <param name="Local" value="html_notoc/ht_export_enddir.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="efi">
+      <param name="Name" value="efi--End File">
+      <param name="Local" value="html_notoc/ht_export_endfile.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="efu">
+      <param name="Name" value="End Function&quot;efu&quot;">
+      <param name="Local" value="html_notoc/ht_export_endfunc.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="fi">
+      <param name="Name" value="File&quot;fi&quot;">
+      <param name="Local" value="html_notoc/ht_export_file.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="fu">
+      <param name="Name" value="Function&quot;fu&quot;">
+      <param name="Local" value="html_notoc/ht_export_function.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="li">
+      <param name="Name" value="Line&quot;li&quot;">
+      <param name="Local" value="html_notoc/ht_export_line.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="sample export file">
+      <param name="Name" value="Using export format#MID_SAMPLE">
+      <param name="Local" value="html/ht_export_format.htm#MID_SAMPLE">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving coverage data in export format">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="to">
+      <param name="Name" value="Total&quot;to&quot;">
+      <param name="Local" value="html_notoc/ht_export_total.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using export format">
+      <param name="Name" value="Using export format">
+      <param name="Local" value="html/ht_export_format.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="extracting adjustments">
+    <param name="Name" value="Making adjustments in your code">
+    <param name="Local" value="html/ht_adj_manually.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="fi (export format keyword)">
+    <param name="Name" value="End File&quot;efi&quot;">
+    <param name="Local" value="html_notoc/ht_export_endfile.htm">
+    <param name="Name" value="File&quot;fi&quot;">
+    <param name="Local" value="html_notoc/ht_export_file.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="file identification options">
+    <param name="Name" value="Options for file identification">
+    <param name="Local" value="html/ht_opt_fileid.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value=".purecov.adjust files">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustment files">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="excluding from instrumentation">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="purecov.h">
+      <param name="Name" value="Calling PureCoverage API functions">
+      <param name="Local" value="html/ht_howto_call_pc_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PureCoverage cache files">
+      <param name="Name" value="PureCoverage cache files">
+      <param name="Local" value="html/ov_files_created.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="PureCoverage data files">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="separating output files">
+      <param name="Name" value="Automating coverage data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="fu (export format keyword)">
+    <param name="Name" value="Function&quot;fu&quot;">
+    <param name="Local" value="html_notoc/ht_export_function.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="glossary">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="guide for PureCoverage">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="header file for PureCoverage">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="help">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="context-sensitive help">
+      <param name="Name" value="Using context-sensitive help">
+      <param name="Local" value="html/ht_using_help.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Hide Navpane button">
+    <param name="Name" value="Using the PureCoverage help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="home directory for PureCoverage">
+    <param name="Name" value="Informational options">
+    <param name="Local" value="html/ht_opt_info.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="illustrations">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustments in the Annotated Source window">
+      <param name="Name" value="How the Annotated Source window displays adjustments">
+      <param name="Local" value="html/ht__illustration_adj_as.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="adjustments in the Viewer">
+      <param name="Name" value="How the Viewer displays adjustments">
+      <param name="Local" value="html/ht_illustration_adj_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="insertion (OCI)">
+    <param name="Name" value="PureCoverage cache files">
+    <param name="Local" value="html/ov_files_created.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="instrumentation">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="definition">
+      <param name="Name" value="instrumentation">
+      <param name="Local" value="html_notoc/ht_gloss_instr.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="partial">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="keywords in export format">
+    <param name="Name" value="Using export format">
+    <param name="Local" value="html/ht_export_format.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="li (export format keyword)">
+    <param name="Name" value="Line&quot;li&quot;">
+    <param name="Local" value="html_notoc/ht_export_line.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="libraries">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-lib-path-length and -replace-dir">
+      <param name="Name" value="Options for specifying files and directories#MID_LIB">
+      <param name="Local" value="html/ht_opt_fileid.htm#MID_REPLACE">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="coverage of">
+      <param name="Name" value="About library coverage">
+      <param name="Local" value="html/ht_library_coverage.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="excluding from instrumentation">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="lint">
+    <param name="Name" value="Adjustments file format">
+    <param name="Local" value="html/ht_adjustment_file_format.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="low coverage mail report">
+    <param name="Name" value="Low coverage mail report">
+    <param name="Local" value="html/ht_rep_lowcovmail.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="low coverage report">
+    <param name="Name" value="Low coverage report">
+    <param name="Local" value="html/ht_rep_lowcov.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="mailing reports automatically">
+    <param name="Name" value="Low coverage mail report">
+    <param name="Local" value="html/ht_rep_lowcovmail.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="makefiles">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="manual for PureCoverage">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="merging coverage data">
+    <param name="Name" value="An option for merging data">
+    <param name="Local" value="html/ht_opt_merging.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="multi-threaded processes">
+    <param name="Name" value="Covering multi-threaded processes">
+    <param name="Local" value="html/ov_cover_multithreaded.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="multiple processes">
+    <param name="Name" value="Covering multiple processes">
+    <param name="Local" value="html/ht_covering_multi_proc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="OCI (Object Code Insertion)">
+    <param name="Name" value="PureCoverage cache files">
+    <param name="Local" value="html/ov_files_created.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="option list">
+    <param name="Name" value="About PureCoverage options">
+    <param name="Local" value="html/ht_about_pc_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="options">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-extract (in makefiles)">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-force-rebuild (excluding elements)">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About PureCoverage options">
+      <param name="Local" value="html/ht_about_pc_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="listed">
+      <param name="Name" value="About PureCoverage options">
+      <param name="Local" value="html/ht_about_pc_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Using PureCoverage options">
+      <param name="Local" value="html/ht_using_pc_options.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="overhead from PureCoverage">
+    <param name="Name" value="PureCoverage overhead">
+    <param name="Local" value="html/ov_overhead.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="overview of using PureCoverage">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="partial instrumentation">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="pathnames for exclusions">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Perl custom report script">
+    <param name="Name" value="Writing custom report scripts">
+    <param name="Local" value="html/ht_writing_report_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov.h">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_clear_data">
+    <param name="Name" value="purecov_clear_data">
+    <param name="Local" value="html/ht_api_purecov_clear_data.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_disable_save">
+    <param name="Name" value="purecov_disable_save">
+    <param name="Local" value="html/ht_api_purecov_disable_save.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_enable_save">
+    <param name="Name" value="purecov_enable_save">
+    <param name="Local" value="html/ht_api_purecov_enable_save.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_is_running">
+    <param name="Name" value="purecov_is_running">
+    <param name="Local" value="html/ht_api_purecov_is_running.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_save_data">
+    <param name="Name" value="purecov_save_data">
+    <param name="Local" value="html/ht_api_purecov_save_data.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_set_filename">
+    <param name="Name" value="purecov_set_filename">
+    <param name="Local" value="html/ht_api_purecov_set_filename.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="purecov_stubs.a">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overhead from running">
+      <param name="Name" value="PureCoverage overhead">
+      <param name="Local" value="html/ov_overhead.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="steps for using">
+      <param name="Name" value="The basic steps">
+      <param name="Local" value="html/ht_overview.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage API function list">
+    <param name="Name" value="About PureCoverage API functions">
+    <param name="Local" value="html/ht_about_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage API functions">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About PureCoverage API functions">
+      <param name="Local" value="html/ht_about_pc_api.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="calling">
+      <param name="Name" value="Calling PureCoverage API functions">
+      <param name="Local" value="html/ht_howto_call_pc_api.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage counters">
+    <param name="Name" value="About PureCoverage counters">
+    <param name="Local" value="html/ov_pc_counters.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage data file">
+    <param name="Name" value="Saving coverage data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage home directory">
+    <param name="Name" value="Informational options">
+    <param name="Local" value="html/ht_opt_info.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage option list">
+    <param name="Name" value="About PureCoverage options">
+    <param name="Local" value="html/ht_about_pc_options.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage options">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-extract (in makefiles)">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="-force-rebuild (excluding elements)">
+      <param name="Name" value="Excluding libraries, directories, and files">
+      <param name="Local" value="html/ht_excluding.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About PureCoverage options">
+      <param name="Local" value="html/ht_about_pc_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="listed">
+      <param name="Name" value="About PureCoverage options">
+      <param name="Local" value="html/ht_about_pc_options.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using">
+      <param name="Name" value="Using PureCoverage options">
+      <param name="Local" value="html/ht_using_pc_options.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage user's manual">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PureCoverage Viewer">
+    <param name="Name" value="PureCoverage Viewer">
+    <param name="Local" value="html_notoc/idd_viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Purify used with PureCoverage">
+    <param name="Name" value="Using Rational Purify with PureCoverage">
+    <param name="Local" value="html/ht_purify.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational ClearQuest">
+    <param name="Name" value="Using Rational ClearQuest with PureCoverage">
+    <param name="Local" value="html/ht_clearquest.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Developer Network">
+    <param name="Name" value="Accessing the Rational Developer Network">
+    <param name="Local" value="html/ht_rdn_pc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rational Purify">
+    <param name="Name" value="Using Rational Purify with PureCoverage">
+    <param name="Local" value="html/ht_purify.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="removing cache files">
+    <param name="Name" value="PureCoverage cache files">
+    <param name="Local" value="html/ov_files_created.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="removing coverage data for excluded files">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="report formats">
+    <param name="Name" value="Annotated differences report">
+    <param name="Local" value="html/ht_rep_anndiff.htm">
+    <param name="Name" value="Annotated source report">
+    <param name="Local" value="html/ht_rep_annsource.htm">
+    <param name="Name" value="Build differences summary report">
+    <param name="Local" value="html/ht_rep_builddiffsum.htm">
+    <param name="Name" value="Coverage summary report">
+    <param name="Local" value="html/ht_rep_covsummary.htm">
+    <param name="Name" value="Differences report">
+    <param name="Local" value="html/ht_rep_differences.htm">
+    <param name="Name" value="Low coverage mail report">
+    <param name="Local" value="html/ht_rep_lowcovmail.htm">
+    <param name="Name" value="Low coverage report">
+    <param name="Local" value="html/ht_rep_lowcov.htm">
+    <param name="Name" value="Selected tests report">
+    <param name="Local" value="html/ht_rep_seltests.htm">
+    <param name="Name" value="Spreadsheet report">
+    <param name="Local" value="html/ht_rep_spreadsheet.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="report scripts">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="about">
+      <param name="Name" value="About PureCoverage report scripts">
+      <param name="Local" value="html/ht_about_pc_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="running">
+      <param name="Name" value="Running report scripts">
+      <param name="Local" value="html/ht_running_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="writing custom report scripts">
+      <param name="Name" value="Writing custom report scripts">
+      <param name="Local" value="html/ht_writing_report_scripts.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Run script dialog box">
+    <param name="Name" value="Run script dialog box">
+    <param name="Local" value="html_notoc/idd_run_script.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="run-time conditions overridden">
+    <param name="Name" value="An option for controlling run-time conditions">
+    <param name="Local" value="html/ht_opt_ignore.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="running report scripts">
+    <param name="Name" value="Running report scripts">
+    <param name="Local" value="html/ht_running_report_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="saturating counters">
+    <param name="Name" value="About PureCoverage counters">
+    <param name="Local" value="html/ov_pc_counters.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="saving data">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="automating data saving">
+      <param name="Name" value="Automating coverage data collection">
+      <param name="Local" value="html/ht_automated_testing.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="from the Viewer">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving reports generated by scripts">
+      <param name="Name" value="Running report scripts">
+      <param name="Local" value="html/ht_running_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="to a logfile">
+      <param name="Name" value="Options for specifying files and directories#MID_LOGFILE">
+      <param name="Local" value="html/ht_opt_fileid.htm#MID_LOGFILE">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="using the counts-file option">
+      <param name="Name" value="An option for saving data">
+      <param name="Local" value="html/ht_opt_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="with -counts-file option">
+      <param name="Name" value="An option for saving data">
+      <param name="Local" value="html/ht_opt_saving.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="with API functions">
+      <param name="Name" value="About PureCoverage API functions">
+      <param name="Local" value="html/ht_about_pc_api.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Script dialog">
+    <param name="Name" value="Running report scripts">
+    <param name="Local" value="html/ht_running_report_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Script Output window">
+    <param name="Name" value="Running report scripts">
+    <param name="Local" value="html/ht_running_report_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="scripts">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="for processing adjustments">
+      <param name="Name" value="Adjustments file format">
+      <param name="Local" value="html/ht_adjustment_file_format.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="report scripts">
+      <param name="Name" value="About PureCoverage report scripts">
+      <param name="Local" value="html/ht_about_pc_report_scripts.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="utility scripts">
+      <param name="Name" value="Using and customizing Purify scripts">
+      <param name="Local" value="html/ht_customize_scripts.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Selected tests report">
+    <param name="Name" value="Selected tests report">
+    <param name="Local" value="html/ht_rep_seltests.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="separating data for test runs">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="separating output files">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="shared libraries and coverage">
+    <param name="Name" value="About library coverage">
+    <param name="Local" value="html/ht_library_coverage.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Show Navpane button">
+    <param name="Name" value="Using the PureCoverage help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="signal handling">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="handling and ignoring">
+      <param name="Name" value="Options for signal handling">
+      <param name="Local" value="html/ht_opt_signal.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="overview">
+      <param name="Name" value="About signal handling">
+      <param name="Local" value="html/ov_signal_handling.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="single-line comments for adjustments">
+    <param name="Name" value="Making adjustments in your code">
+    <param name="Local" value="html/ht_adj_manually.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="snapshots of annotated source">
+    <param name="Name" value="Saving coverage data">
+    <param name="Local" value="html/ht_saving.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="source files">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="extracting adjustments">
+      <param name="Name" value="Making adjustments in your code">
+      <param name="Local" value="html/ht_adj_manually.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="how PureCoverage locates source files">
+      <param name="Name" value="How PureCoverage finds source files">
+      <param name="Local" value="html/ov_finding_source_files.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Spreadsheet report">
+    <param name="Name" value="Spreadsheet report">
+    <param name="Local" value="html/ht_rep_spreadsheet.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="stubs library">
+    <param name="Name" value="Calling PureCoverage API functions">
+    <param name="Local" value="html/ht_howto_call_pc_api.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="support from Rational Software">
+    <param name="Name" value="Contacting Technical Support">
+    <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="symbolic links and exclusions">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sync Toc button">
+    <param name="Name" value="Using the PureCoverage help system">
+    <param name="Local" value="html/ht_using_help.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="system libraries and coverage">
+    <param name="Name" value="About library coverage">
+    <param name="Local" value="html/ht_library_coverage.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Technical Publications contact information">
+    <param name="Name" value="Contacting Technical Publications">
+    <param name="Local" value="html/ht_tech_pubs.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Technical Support">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="contacting">
+      <param name="Name" value="Contacting Technical Support">
+      <param name="Local" value="html/idh_cmn_help_tech_support.htm">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="filing bug reports">
+      <param name="Name" value="Filing bug reports with Rational Software">
+      <param name="Local" value="html/ht_bug_report.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="terms used in PureCoverage defined">
+    <param name="Name" value="Glossary">
+    <param name="Local" value="html/ht_alphabet.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="test harnesses and PureCoverage">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="test runs and separating data">
+    <param name="Name" value="Automating coverage data collection">
+    <param name="Local" value="html/ht_automated_testing.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="third-party libraries and coverage">
+    <param name="Name" value="About library coverage">
+    <param name="Local" value="html/ht_library_coverage.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="thread handling">
+    <param name="Name" value="Options for threads">
+    <param name="Local" value="html/ht_opt_threads.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="toolbar">
+    <param name="Name" value="Collapse (Actions menu, PureCoverage Viewer)">
+    <param name="Local" value="html_notoc/idc_viewer_toolbar.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="total (export format keyword)">
+    <param name="Name" value="Total&quot;to&quot;">
+    <param name="Local" value="html_notoc/ht_export_total.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="tutorial for using PureCoverage">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="unqualified file names in exclude directives">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="user's manual">
+    <param name="Name" value="The basic steps">
+    <param name="Local" value="html/ht_overview.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="utility scripts">
+    <param name="Name" value="Using and customizing Purify scripts">
+    <param name="Local" value="html/ht_customize_scripts.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Viewer">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="illustration">
+      <param name="Name" value="PureCoverage Viewer">
+      <param name="Local" value="html_notoc/idd_viewer.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="saving contents to an ASCII text file">
+      <param name="Name" value="Saving coverage data">
+      <param name="Local" value="html/ht_saving.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="welcome">
+    <param name="Name" value="Rational PureCoverage: What it does">
+    <param name="Local" value="html/ht_intro_pc.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="wildcards in exclude directives">
+    <param name="Name" value="Excluding libraries, directories, and files">
+    <param name="Local" value="html/ht_excluding.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="windows">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Annotated Source: illustration">
+      <param name="Name" value="Annotated Source window">
+      <param name="Local" value="html_notoc/idd_ann_src.htm">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Viewer">
+      <param name="Name" value="PureCoverage Viewer">
+      <param name="Local" value="html_notoc/idd_viewer.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="X Resources and PureCoverage customization">
+    <param name="Name" value="Using X Resources to customize PureCoverage">
+    <param name="Local" value="html/ht_xres.htm">
+  </object>
+</ul>
+</html>

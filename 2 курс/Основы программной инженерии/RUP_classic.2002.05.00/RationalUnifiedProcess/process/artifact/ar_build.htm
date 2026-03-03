@@ -1,0 +1,293 @@
+
+<html>
+
+<head>
+<meta name="Generator" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Artifact: Build</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="ars_impl.htm">Implementation Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/ar_build.gif"> Build
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Artifact:
+&nbsp;<rpw name="PresentationName">Build</rpw><a name="XE_build__as_artifact"></a><a name="Top"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+
+  <tr>
+    <td width="135" height="34" valign="middle" bordercolor="#808080" align="center"><img src="images/build.jpg" width="53" height="40" ><br>
+    <font face="Arial" size="2"><strong>Build</strong></font></td>
+              <td height="34" valign="top" bordercolor="#808080">A build is an 
+                operational version of a system or part of a system that demonstrates 
+                a subset of the capabilities to be provided in the final product. 
+                A build comprises one or more components (often executable), each 
+                constructed from other components, usually by a process of compilation 
+                and linking of source code.</td>
+  </tr>
+  <tr>
+    <td width="137" height="35" valign="top" bordercolor="#808080"><small><strong><font face="Arial">UML
+    representation:</font></strong></small></td>
+    <td height="35" valign="top" bordercolor="#808080">Package in the
+    implementation model (either its top-level package or an implementation
+    subsystem), stereotyped as «build».</td>
+  </tr>
+  <tr>
+    <td width="137" valign="top" height="22" style="text-indent: 4px" bordercolor="#808080"><strong><font face="Arial"><small>Role:</small></font></strong></td>
+    <td width="392" valign="top" height="22" style="text-indent: 4px" bordercolor="#808080"><a href="../workers/wk_syint.htm">Integrator</a></td>
+  </tr>
+  <tr>
+    <td width="535" valign="top" height="23" style="text-indent: 4px" colspan="2" bordercolor="#808080">
+    <ul>
+      <li><a href="#Purpose"">Purpose</a></li>
+      <li><a href="#Properties"">Properties</a></li>
+      <li><a href="#Timing"">Timing</a></li>
+      <li><a href="#Responsibility"">Responsibility</a></li>
+      <li><a href="#Tailoring"">Tailoring</a></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+<!-- Input_Output Activity Begin -->
+<p><table border="1" width="85%" cellspacing="0" cellpadding="2" style="border: 1px solid rgb(128,128,128)">
+<tr>
+<td valign="top" width="50%" bordercolor="#808080"><small><font face="Arial"><strong>Input to Activities:</strong></font></small><ul>
+<li><a href="../activity/ac_tst_exctstste.htm">Execute Test Suite</a></li>
+<li><a href="../activity/ac_tst_imptst.htm">Implement Test</a></li>
+<li><a href="../activity/ac_tst_imptstste.htm">Implement Test Suite</a></li>
+<li><a href="../activity/ac_vfycr.htm">Verify Changes in Build</a></li>
+<li><a href="../activity/ac_relss.htm">Create Deployment Unit</a></li>
+<li><a href="../activity/ac_dinst.htm">Develop Installation Artifacts</a></li>
+<li><a href="../activity/ac_train.htm">Develop Training Materials</a></li>
+<li><a href="../activity/ac_deusm.htm">Develop Support Materials</a></li>
+</ul>
+
+
+
+</td>
+<td valign="top" width="50%" bordercolor="#808080"><small><font face="Arial"><strong>Output from Activities:</strong></font></small><ul>
+<li><a href="../activity/ac_intsy.htm">Integrate System</a></li>
+<li><a href="../activity/ac_intsu.htm">Integrate Subsystem</a></li>
+</ul>
+
+
+
+</td>
+</tr>
+</table>
+<!-- Input_Output Activity End -->
+</center></div>
+
+<h3><a href="../workers/wk_archt.htm""></a><a name="Purpose">Purpose</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="24" height="18"></a></h3>
+<p>The purpose of a build, constructed from other components in the
+implementation model, is to deliver a testable subset of the run-time functions
+and capabilities of the system. The Rational Unified Process (RUP) suggests that a
+sequence of builds be constructed during an iteration, adding capability with
+each, as components from implementation subsystems are added or improved.&nbsp;
+Builds can be constructed at all levels of a system, encompassing single or
+multiple subsystems, but in the RUP, we are concerned in
+particular with the builds that are defined in the <a href="ar_intbp.htm"">Artifact:
+Integration Build Plan</a>, because these are the stepping stones to the
+completion of the iteration.&nbsp; If the system size or complexity warrants it,
+the Integration Build Plan can be refined into multiple plans, covering
+individual subsystems.</p>
+<p>Note that informal builds can be constructed by an implementer for several
+reasons&#151unit testing, for example - using components from the implementer's
+private development workspace and the subsystem and system integration
+workspaces, as appropriate. However, as the term is used here, builds are
+constructed by an integrator, from identified versions of components delivered
+by the implementers into the subsystem or system integration workspaces, as
+defined in the <a href="ar_intbp.htm"">Artifact: Integration Build Plan</a>.</p>
+<h3><a href="../workers/wk_archt.htm""></a><a name="Properties">Properties</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="24" height="18"></a></h3>
+<div align="center"><center>
+
+<table border="1" colspec="L15 L17 L12" width="85%" cellpadding="2">
+  <tr>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <p class="tableheading">Property Name</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <p class="tableheading">Brief Description</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">
+    <p class="tableheading">UML Representation</td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Description</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">A
+    brief textual description of the build</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Tagged
+    value, of type &quot;short text&quot;</td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Implementation
+    Subsystems</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">The
+    subsystems represented in the build</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Owned
+    via the meta-association &quot;represents&quot;, or recursively via the
+    meta-aggregation &quot;owns&quot;</td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Components</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">The
+    components in the build, owned by the subsystems</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Owned
+    recursively via the meta-aggregation &quot;owns&quot;</td>
+  </tr>
+  <tr>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Integration
+    Build Plan Reference</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Reference
+    to the detailed build description in the corresponding Integration Build
+    Plan</td>
+    <td valign="top" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Tagged
+    value</td>
+  </tr>
+</table>
+</center></div>
+
+<h3><a name="Timing">Timing</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="24" height="18"></a></h3>
+<p>Builds will be constructed as defined in the <a href="ar_intbp.htm"">Artifact:
+Integration Build Plan</a> for each iteration. The RUP does
+not require any particular timing or frequency: these are selected to suit a
+project's specific needs. It is certainly possible, with the right degree of
+automation, to adopt a strategy of daily builds, taking a steady stream of
+components from the implementers, integrating these and testing the resulting
+build overnight. This will not suit all projects, particularly those that are
+large and require lengthy regression testing.</p>
+<h3><a name="Responsibility">Responsibility</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="24" height="18"></a></h3>
+<p>The <a href="../workers/wk_syint.htm"">Integrator</a> is responsible for the
+production of builds. If the development is planned around subsystems (with
+associated teams), which are then integrated into the system, there may be
+several individuals playing the role of Integrator, perhaps, for example, one in
+each subsystem team (to do subsystem-level integration) and one to do
+system-level integration.</p>
+<h3><a name="Tailoring">Tailoring</a> <a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="24" height="18"></a></h3>
+<p>Builds are obviously mandatory, however, the <i>kinds</i> of builds that a
+project produces will change over the lifecycle. In the inception phase, the
+concern may be to produce prototypes as a way to better understand the problem
+or communicate with the customer; in elaboration, to produce a stable
+architecture, and in construction, to add functionality. In transition, the
+focus shifts to ensuring that the software reaches deliverable quality.</p>
+&nbsp;
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

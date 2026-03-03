@@ -1,0 +1,378 @@
+<html>
+
+<head>
+<title>SearchEngine: Building the Dependency List</title>
+<link rel="StyleSheet" href="../../../../../rop.css" type="text/css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="FFFFFF">
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../index.htm">Process Engineer Toolkit</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../../../toolment/devkit/tm_use.htm">User's Guide</a> &gt;
+<img border=0 src="../../../../../applet/images/toolboxc.gif"> <a href="../../../doc/index.htm">Tools Reference</a> &gt;
+<img border=0 src="../../../../../applet/images/tools.gif"> <a href="index.htm">Search Engine</a> &gt;
+<img border=0 src="../../../../../applet/images/tools.gif"> Dependency List
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+  
+<h1 class="banner"><a name="XE_SearchEngine__Building_dependency_list"></a><a name="Top"></a>SearchEngine: 
+  Building the Dependency List</h1>
+<h5>Topics</h5>
+<dl>
+  <dd>
+    <ul>
+      <li><a href="dependency.htm#XE_SearchEngine__File_name_conventions"">File 
+        name conventions</a> </li>
+      <li><a href="#Start_Point"">The start point</a> </li>
+      <li><a href="dependency.htm#XE_SearchEngine__Removing_documents"">Removing 
+        documents from the list</a> </li>
+      <li><a href="dependency.htm#XE_SearchEngine__Generating_the_dependency_list"">Generating 
+        the list</a> </li>
+    </ul>
+  </dd>
+  <dd></dd>
+</dl>
+<p>The word database is constructed by parsing a series of <samp>HTML</samp> or 
+  plain text files. This chapter explains how the dependency list is constructed, 
+  specifying a start file, and the process of parsing linked files.<br>
+  File filters are also discussed, to avoid parsing non-text files, and to exclude 
+  file types or single or multiple <samp>HTML</samp> documents from the dependency 
+  list. </p>
+<h3><a name="XE_SearchEngine__File_name_conventions"></a>File name conventions 
+  <a href="#Top""><img src="../../../../../images/top.gif" width="26" height="20" border="0"></a> 
+</h3>
+<p>Some confusion can arise when the system path separator character is not the 
+  same as the URL path separator character <samp><b>&quot;/&quot;</b></samp>. 
+  There are two simple rules which help distinguish which character should be 
+  used: </p>
+<dl> 
+  <h4>File names and paths</h4>
+  <dd>When specifying a filename or filepath, use the system path separator, for 
+    example: 
+    <pre>
+-f <i>filename</i>    the root HTML filename (required)
+-p <i>filepath</i>    intermediate data filepath
+
+-f \www\rational\application\search\search\index.html
+-p \www\rational\application\search\search\data\
+</pre>
+  </dd>
+</dl>
+<h4><b>URLs</b></h4>
+<dl>
+  <dd>When specifying a URL (i.e. a reference to one or more of the <samp>HTML</samp> 
+    documents to be parsed) use the URL path separator, for example: 
+    <pre>
+-xwu <i>url</i>       exclude URL from word list
+
+-xwu /www/rational/application/search/doc/index.html
+</pre>
+  </dd>
+</dl>
+<h3><a name="XE_SearchEngine__The_start_point"></a><a name="Start_Point"></a>The 
+  start point <a href="#Top""><img src="../../../../../images/top.gif" width="26" height="20" border="0"></a></h3>
+<p>The <samp>-f</samp> option is the only required SearchEngine option. It tells 
+  the SearchEngine the name of the <samp>HTML</samp> file to use in constructing 
+  the dependency list. This file is parsed for words, and all links, such as <samp>&lt;a 
+  href=&quot;filename.html&quot;&gt;</samp> are then checked. <br>
+  Any link not specifically excluded (see <a href="dependency.htm#XE_SearchEngine__Removing_documents"">removing 
+  files from the list</a> below), and which also resides on local storage, is 
+  then added to the dependency list. The SearchEngine repeats this process by 
+  parsing the next file on the pending dependency list until that list is exhausted. 
+</p>
+<p>In order to reduce recompilation time, the SearchEngine stores the parsed information 
+  to local storage, so that only <samp>HTML</samp> files which have been modified 
+  since the last compilation need to be parsed again. </p>
+<p>These intermediary data files are stored in a <samp>data</samp> directory, 
+  appended to the current working directory. For example, if the current working 
+  directory is: </p>
+<blockquote>
+  <pre>
+/www/rational/application/search/doc/
+</pre>
+</blockquote>
+<p>and the file to parse is: </p>
+<blockquote>
+  <pre>
+/www/html/index.html
+</pre>
+</blockquote>
+<p>then the intermediary data file is stored in: </p>
+<blockquote>
+  <pre>
+/www/rational/application/search/doc/data/www/html/index.html.data
+</pre>
+</blockquote>
+<p>You may override this default data directory by specifying your own using the 
+  <samp>-p</samp> option. </p>
+        
+<h3><a name="XE_SearchEngine__Removing_documents"></a>Removing documents from 
+  the list <a href="#Top""><img src="../../../../../images/top.gif" width="26" height="20" border="0"></a></h3>
+<p>In some circumstances, linked documents must be excluded from the dependency 
+  list. There are many reasons for doing so; the link might not be a text document, 
+  such as a reference to a <samp>.zip</samp> file, or <samp>.tar</samp> file, 
+  or might be a programming language file, or an applet page. </p>
+<p>Other examples are links to other manuals or groups of <samp>HTML</samp> documents, 
+  which have their own separate search databases. How easy or difficult this is 
+  to achieve depends on how the <samp>HTML</samp> documents are structured. If 
+  they are all lumped together in one directory, then each document must be fully 
+  specified, if they are in different directories, then it is enough to specify 
+  the directory and use a filter. 
+<dl> 
+  <h4 class="banner">Removing a specific document from the dependency list</h4>
+</dl>
+<p>To remove a specific document from the dependency list, use the <samp>-xu</samp> 
+  option, and specify the document's <samp>URL</samp> path and filename components, 
+  for example: </p>
+<blockquote> 
+  <pre>
+-xu /www/rational/application/search/doc/index.html
+</pre>
+</blockquote>
+<dl> 
+  <h4 class="banner">Removing multiple documents from the dependency list</h4>
+</dl>
+<p>To remove multiple documents from the dependency list, use the <samp>-xu</samp> 
+  option and a filter using the wildcard character <samp>'*'</samp>. For example: 
+</p>
+<blockquote> 
+  <pre>
+-xu */index.html
+</pre>
+</blockquote>
+<p>In this example, all <samp>URL</samp>s <i>ending</i> with <samp>/index.html</samp> 
+  will be excluded from the dependency list. </p>
+<p>Another more dangerous example of filtering is: </p>
+<blockquote> 
+  <pre>
+-xu /www/extawt/*
+</pre>
+</blockquote>
+<p>In the above example, all <samp>URL</samp>s <i>beginning</i> with <samp>/www/extawt/</samp> 
+  will be excluded from the dependency list. </p>
+<p>Finally an even more dangerous example of filtering is: </p>
+<blockquote> 
+  <pre>
+-xu */extawt/*
+</pre>
+</blockquote>
+<p>In this example, all <samp>URL</samp>s <i>containing</i> <samp>/extawt/</samp> 
+  will be excluded from the dependency list. </p>
+<p>No other combinations of the wildcard character <samp>'*'</samp> are valid. 
+  A filter definition of <samp>*/extawt/*remove.*</samp> will result in a (probably 
+  useless) filter to ignore all <samp>URL</samp>s containing <samp>/extawt/*remove.</samp>, 
+  and <b>not</b> the probable intention of ignoring all <samp>URL</samp>s containing 
+  <samp>/extawt/</samp> <cite>and also</cite> <samp>remove</samp>. </p>
+<p>The wildcard character <samp>'*'</samp> can appear at the start of the <samp>URL</samp>, 
+  and/or at the end of the <samp>URL</samp>, anywhere else it is treated as an 
+  ordinary character. </p>
+<h4><a name="XE_SearchEngine__Warning"></a>Warning: Filters can damage your database...</h4>
+<p>The last two examples of filtering above are dangerous in that they can do 
+  more filtering than perhaps originally intended. To understand what can go wrong, 
+  we'll look at an example for a fictitious sports site. We assume that the site 
+  documents are all stored in a root directory, called <samp>/sport</samp>, with 
+  the various sports being sub-directories of this, for example <samp>/sport/sailing</samp>, 
+  <samp>/sport/skiing</samp>, etc, and that there are links not only from each 
+  sport to the root directory, but also between sports. </p>
+<dl> 
+  <p>We decide that we want to build a general database, using <samp>sport</samp> 
+    and all sub-directories not related to a specific sport, and several specialized 
+    databases, one for each specific sport. </p>
+  <p>In the first case, we could remove all the specific sport sub-directories 
+    from the dependency list by using a filter for each one; </p>
+  <blockquote> 
+    <pre>
+-xu /sport/sailing/*
+-xu /sport/skiing/*
+-xu /sport/surfing/*
+...
+</pre>
+  </blockquote>
+  <p>However, when we come to creating the dependency list for the <samp>/sport/sailing</samp> 
+    sub-directory we want to remove all documents in the root <samp>/sport</samp> 
+    directory from the dependency list, because they are already covered by the 
+    general database. At first you might think that the following does just that; 
+  </p>
+  <blockquote> 
+    <pre>
+-xu /sport/*
+-xu /sport/skiing/*
+-xu /sport/surfing/*
+...
+</pre>
+  </blockquote>
+  <p>with the first line removing all documents in the root directory. </p>
+  <p>When you compile the list, starting with say <samp>/sport/sailing/index.html</samp>, 
+    the resulting dependency list contains only that document. So where are all 
+    those other <samp>/sport/sailing</samp> documents? The answer is that that 
+    first line filter removed them from the list - remember, <samp>/sport/*</samp> 
+    means: remove all documents <cite>beginning</cite> with <samp>/sport/</samp>, 
+    so a document such as <samp>/sport/sailing/AmericasCup.html</samp>, which 
+    <b>does</b> begin with <samp>/sport/</samp> will be removed from the dependency 
+    list. </p>
+  <p>How, then, can the <samp>/sport</samp> directory be removed, without having 
+    to specify each document in that directory separately? You use a directory 
+    exclusion filter: </p>
+  <blockquote> 
+    <pre>
+-xu /sport//
+</pre>
+  </blockquote>
+  <p>By placing two <samp>URL</samp> path separator characters <samp>&quot;//&quot;</samp> 
+    at the end of the <samp>URL</samp>, we can tell the SearchEngine to remove 
+    all documents in the <samp>/sport</samp> directory from the dependency list, 
+    but <b>not</b> documents in sub-directories of <samp>/sport</samp>. </p>
+</dl>
+<p>Similarly, if you want to create a database of a sub-topic, say <samp>/sport/sailing/windsurfing</samp> 
+  you will have to add directory exclusion filters for each level; <samp>/sport</samp> 
+  and <samp>/sport/sailing</samp>; </p>
+<dl> 
+  <blockquote> 
+    <pre>
+-xu /sport//
+-xu /sport/sailing//</pre>
+  </blockquote>
+</dl>
+        
+<h3><a name="XE_SearchEngine__Generating_the_dependency_list"></a>Generating the 
+  list <a href="#Top""><img src="../../../../../images/top.gif" width="26" height="20" border="0"></a></h3>
+<p>In addition to the dependency list, the SearchEngine also accumulates a list 
+  of non-text documents, such as images, or sound files, links to other sites, 
+  and missing links.<br>
+  Though the SearchEngine is not strictly designed for this purpose, such a list 
+  is useful for debugging a series of <samp>HTML</samp> documents for broken links. 
+  The <samp>-lu <i>filename</i></samp> option causes the SearchEngine to write 
+  these lists to the specified filename. </p>
+<p>As an example, the list generated for this manual is presented below: </p>
+<blockquote>
+  <pre>
+Document dependency list for file://C:/www/rational/application/search/doc/index.html
+
+file://C:/www/rational/application/search/doc/index.html
+file://C:/www/rational/application/search/doc/applet.html
+file://C:/www/rational/application/search/doc/database.html
+file://C:/www/rational/application/search/doc/dependency.html
+file://C:/www/rational/application/search/doc/filters.html
+file://C:/www/rational/application/search/doc/installing.html
+file://C:/www/rational/application/search/doc/overview.html
+
+Data dependency list for file://C:/www/rational/application/search/doc/index.html
+
+file://C:/www/images/green-ball.gif
+file://C:/www/images/background.gif
+
+External links list for file://C:/www/rational/application/search/doc/index.html
+
+http://www.javasoft.com
+mailto:bill@microsoft.com</pre>
+</blockquote>
+ 
+<p><font face="Arial">
+<a href="../../../../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../../../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../../../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../../../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+</html>

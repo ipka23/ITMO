@@ -1,0 +1,1 @@
+..\..\..\..\common\java\jre\bin\java  -classpath ..\..\..\applet ruptools.SearchEngineHelper -d ../../../ -rf toc.htm -t ../../../

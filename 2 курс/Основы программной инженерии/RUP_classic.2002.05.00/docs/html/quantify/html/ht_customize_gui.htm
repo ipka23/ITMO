@@ -1,0 +1,149 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Customizing Quantify's display                         Rational Quantify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=783>
+<meta name=layout-width content=680>
+<meta name=date content="05 16, 2001 2:02:03 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../qunix_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../qunix.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../qunix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../qunix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_testhash_3.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='ht_avoid_recording.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Customizing Quantify's display</h1>
+
+<p>You can modify the appearance of Quantify's graphical interface using 
+ X resources. You can change:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">The windows that Quantify 
+ creates by default</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Fonts in titles and 
+ menus</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Foreground and background 
+ colors </p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">Colors of function lines 
+ in the Call Graph window</p></li>
+</ul>
+
+<p>You can also specify the following default menu settings for each window:</p>
+
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">The data to display 
+ </p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">The scale factors to 
+ apply</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">The precision to use</p></li>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">C++ name suppressions 
+ to apply</p></li>
+</ul>
+
+<h2>Editing the .qvrc file</h2>
+
+<p>When you run Quantify interactively, in addition to any resources you 
+ have set using <span style="font-family: Courier;">.Xdefaults</span> (or 
+ the HP VUE resource support mechanism for HP-UX machines), Quantify loads 
+ any X resources specified in the <span style="font-family: Courier;">.qvrc</span> 
+ file in your home directory. If there is no <span style="font-family: Courier;">.qvrc</span> 
+ file in your home directory, Quantify creates one when you exit Quantify.</p>
+
+<p>You can edit your <span style="font-family: Courier;">.qvrc</span> file 
+ to specify alternative values for Quantify's X resources. The <span style="font-family: Courier;">.qvrc</span> 
+ file lists the values that can be changed and provides extensive comments 
+ about each value. You can remove the comments from the resource specifications 
+ and change the values. The changed values will take effect the next time 
+ you run Quantify. </p>
+
+<p style="margin-bottom: 0;">If you need a fresh copy of the <span style="font-family: Courier;">.qvrc</span> 
+ file, delete the current version. The next time you run Quantify interactively, 
+ it will use the default settings, and then write a copy of the <span style="font-family: Courier;">.qvrc</span> 
+ file on exit. </p>
+
+</body>
+
+</html>

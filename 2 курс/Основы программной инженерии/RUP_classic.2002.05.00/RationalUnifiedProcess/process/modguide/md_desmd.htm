@@ -1,0 +1,226 @@
+
+<html>
+
+<head>
+<link rel="StyleSheet" href="../../rop.css" type="text/css">
+<title>Guidelines: Design Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+<P style="MARGIN: -14px 0px +2px"><FONT face=Arial size=1>
+<img border=0 src="../../applet/images/artfc_w.gif"> <a href="../artifact/ovu_arts.htm">Artifacts</a> &gt;
+<img border=0 src="../../applet/images/artfc_y.gif"> <a href="../artifact/ars_dsg.htm">Analysis & Design Artifact Set</a> &gt;
+<img border=0 src="../../applet/images/artifacts.gif"> <a href="../artifact/arp_desmd.htm">Design Model...</a> &gt;
+<img border=0 src="../../applet/images/ar_desmd.gif"> <a href="../artifact/ar_desmd.htm">Design Model</a> &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Guidelines &gt;
+<img border=0 src="../../applet/images/guidelin.gif"> Design Model
+</FONT></P>
+
+ 
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top">
+
+ 
+
+
+
+<h2 class="banner">Guidelines:
+&nbsp;<rpw name="PresentationName">Design Model</rpw><a name="Top"></a></h2>
+<div align="center"><center>
+
+<table border="1" width="85%" cellpadding="2" style="border: 1px" cellspacing="0">
+  <tr>
+    <td width="152" bordercolor="#808080">
+    <p align="center"><img src="images/desmod.gif" alt width="81" height="53"><br>
+    <strong><font face="Arial" size="2">Design Model</font></strong></td>
+    <td width="383" bordercolor="#808080" valign="middle" align="left"><a href="#Characteristics of a Good Design Model""></a>The
+    <a href="../artifact/ar_desmd.htm"">Artifact: Design Model</a> is an object
+    model describing the realization of use cases, and serves as an abstraction
+    of the implementation model and its source code.</td>
+  </tr>
+</table>
+</center></div>
+
+<h5>Topics</h5>
+<ul>
+  <li><a href="#fromAnalysis"">Mapping from the Analysis Model</a></li>
+  <li><a href="#toImplementation"">Mapping to the Implementation Model</a></li>
+  <li><a href="#Characteristics of a Good Design Model"">Characteristics of a
+    good Design Model</a></li>
+</ul>
+<h3><a href="#Characteristics of a Good Design Model" name="XE_design_model__mapping_from_the_Analysis_Model""></a><a name="fromAnalysis">Mapping
+from the Analysis Model </a><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p><a href="../artifact/ar_aclss.htm"">Artifact: Analysis Class</a>es represent
+roles played by instances of design elements; these roles may be fulfilled by
+one or more design model elements. In addition, a single design element may
+fulfill multiple roles. The following observations discuss the ways the analysis
+roles may be fulfilled:
+<ul>
+  <li>An analysis class can become one single class in the design model.</li>
+  <li>An analysis class can become a part of a class in the design model.</li>
+  <li>An analysis class can become an aggregate class in the design model.
+    (Meaning that the parts in this aggregate may not be explicitly modeled in
+    the analysis model.)</li>
+  <li>An analysis class can become a group of classes that inherits from the
+    same class in the design model.</li>
+  <li>An analysis class can become a group of functionally related classes in
+    the design model.</li>
+  <li>An analysis class can become a package in the design model (meaning that
+    it can become a component.)</li>
+  <li>An analysis class can become a relationship in the design model.</li>
+  <li>A relationship between analysis classes can become a class in the design
+    model.</li>
+  <li>Analysis classes handle primarily functional requirements, and model
+    objects from the &quot;problem&quot; domain; design classes handle
+    non-functional requirements, and model objects from the &quot;solution&quot;
+    domain.</li>
+  <li>Analysis classes can be used to represent &quot;the objects we want the
+    system to support,&quot; without taking a decision on how much of them to
+    support with hardware and how much with software. Thus, part of an analysis
+    class can be realized by hardware, and not modeled in the design model at
+    all.</li>
+</ul>
+<p>Any combination of the above are also possible.</p>
+<h3><a name="XE_design_model__mapping_to_the_Implementation_Model"></a><a name="toImplementation">Mapping
+to the Implementation Model </a><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p>You should decide before the design starts how classes in the design model
+should relate to implementation classes; this should be described in the Design
+Guidelines specific to the project.</p>
+<p>The design model can be more or less close to the implementation model,
+depending on how you map its classes, packages and subsystems to components,
+packages and subsystems in the implementation model. During implementation, you
+will often address small tactical issues related to the implementation
+environment that shouldn't have impact on the design model. For example, classes
+and subsystems can be added during implementation to handle parallel
+development, or to adjust import dependencies. For more information, refer to <a href="../activity/ac_strim.htm"">Activity:
+Structure the Implementation Model</a> and <a href="../workflow/implemen/co_mdesc.htm"">Concepts:
+Mapping from Design to Code</a>.</p>
+<p>There should be a consistent mapping from the design model to the
+implementation model. The <a href="../artifact/ar_desgl.htm"">Artifact: Design
+Guidelines</a> should define this mapping, and a consistent level of abstraction
+should be applied across the design model.</p>
+<h3><b><a name="Characteristics of a Good Design Model">Characteristics of a
+Good Design Model</a> </b><a href="#Top""><img src="../../images/top.gif" alt="To top of page" border="0" width="26" height="20"></a></h3>
+<p><a name="XE_design_model__characteristics_of_a_good"></a>A good design model
+has the following characteristics:
+<ul>
+  <li>It satisfies the system requirements.</li>
+  <li>It is resistant to changes in the implementation environment.</li>
+  <li>It is easy to maintain in relation to other possible object models and to
+    system implementation.</li>
+  <li>It is clear how to implement.</li>
+  <li>It does not include information that is best documented in program code.</li>
+  <li>It is easily adapted to changes in requirements.</li>
+</ul>
+<p>For specific characteristics, see <a href="../activity/chklists/ck_dmdl.htm"">Checkpoints:
+Design Model</a>.</p>
+
+
+ 
+<p><font face="Arial">
+<a href="../../copyrite/copyrite.htm"><small><small>Copyright&nbsp;
+© 1987 - 2001 Rational Software Corporation</small></small></a>
+</font></p>
+
+</td><td valign="top" width="24"></td><td valign="top" width="1%">
+<p>
+<a href="../../index.htm"></a>
+</p>
+
+<script language="JavaScript">
+<!--
+function loadTop()
+{
+  if(parent.frames.length!=0 && parent.frames[1].name=="ory_toc")
+  {
+     alert("The Rational Unified Process is already displayed using frames");
+  }
+  else
+  {
+    if(window.name=="ory_doc")
+    {
+      window.name = "xyz1234";
+    }
+    var expires = new Date();
+    expires.setTime (expires.getTime() + (1000 * 20));
+    document.cookie = "rup_ory_doc=" + escape (document.URL) +
+    "; expires=" + expires.toUTCString() +  "; path=/";
+
+    var new_ory_doc_loc = null;
+
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href;
+         break;
+       }
+    }
+
+    if(new_ory_doc_loc!=null)
+    {
+       top.location = new_ory_doc_loc;
+    }
+   }
+}
+// -->
+</script>
+<script language="JavaScript">
+<!--
+  function getImageUrl(image)
+  {
+    var new_ory_doc_loc=null;
+    for(i=document.links.length-1;i>=0;i--)
+    {
+       if(document.links[i].href.indexOf("index.htm")!=-1)
+       {
+         new_ory_doc_loc = document.links[i].href.substring(0,document.links[i].href.lastIndexOf("/"));
+         new_ory_doc_loc = new_ory_doc_loc + "" + image;
+         return new_ory_doc_loc;
+       }
+    }
+    return null;
+  }
+// -->
+</script>
+<script
+language="JavaScript">
+<!--
+MSFPhover =
+(((navigator.appName == "Netscape") &&
+  (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") &&
+  (parseInt(navigator.appVersion) >= 4 )));
+
+  function MSFPpreload(img)
+  {
+     var a=new Image();
+     a.src=img;
+     return a;
+  }
+// -->
+</script>
+<script language="JavaScript">
+<!--
+    if(MSFPhover)
+    {
+        RupGray=MSFPpreload(getImageUrl('/images/rup1.gif'));
+        RupBlue=MSFPpreload(getImageUrl('/images/rup1_a.gif'));
+    }
+// -->
+</script>
+
+<a href="JavaScript:loadTop();" onmouseover="if(MSFPhover) document['Home'].src=RupBlue.src; self.status='Display Rational Unified Process using frames'; return true" onmouseout="if(MSFPhover) document['Home'].src=RupGray.src; self.status= ' ';return true"> <br> <img src="../../images/rup1.gif" border="0" alt="Display Rational Unified Process using frames" name="Home" width="20" height="110"></a>
+</td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+<p align="right"><font face="Arial"><small><small>Rational Unified
+Process&nbsp;&nbsp; 
+<img border="0" width="63" height="7" src="../../_borders/rupversion.gif">
+</small></small></font>
+</td></tr></table>
+ 
+
+</body>
+
+</html>

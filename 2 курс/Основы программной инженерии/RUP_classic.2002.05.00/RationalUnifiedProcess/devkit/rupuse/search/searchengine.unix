@@ -1,0 +1,4 @@
+setenv CLASSPATH ${CLASSPATH}:../../ruptools/rup.jar
+
+java ruptools.SearchEngine -r searchresponse.txt -s -gw ../../../applet/searchdb
+

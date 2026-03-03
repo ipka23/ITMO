@@ -1,0 +1,231 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Miscellaneous API functions                            Rational Purify</title>
+
+<!--(Meta)==========================================================-->
+
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=1211>
+<meta name=layout-width content=836>
+<meta name=date content="05 18, 2001 4:55:48 PM">
+
+
+<!--(Links)=========================================================-->
+
+<SCRIPT language="javascript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<LINK rel='StyleSheet' href='../punix_api_ns.css'>");}
+else
+{   document.write("<LINK rel='StyleSheet' href='../punix_api.css'>");}
+//-->
+</SCRIPT>
+<script language="javascript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) >= 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+//-->
+</script>
+<style>
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script src="../bsscnbar.js" language="JavaScript" title="WebHelpNavBarExtJs" >
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<SCRIPT language="JavaScript" title="WebHelpNavBar">
+<!--
+if (parseInt(navigator.appVersion) >=3  && window.name.indexOf("BSSCPopup") == -1)
+{
+var strNvHome=""; var strNvBrowse=""; var strNvWebSearch="";
+if ((typeof (BsscNavHasNavFrame) != "undefined") &&
+ (typeof(BsscNavIsList) == "undefined" || !BsscNavIsList())) 
+{
+  if (!BsscNavHasNavFrame()) {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavShow('../punix.htm');return false;\"><img src='../bsscnav1.gif' width=85 height=18 border=no></a>";
+  } else {
+    strNvHome  = "<a href=\"javascript:void(0);\" onclick=\"onBsscNavHide();return false;\"><img src='../bsscnav2.gif' width=77 height=18 border=no></a>";
+  }
+  strNvHome += "<a href=\"javascript:void(0);\" onclick=\"onBsscNavSync('../punix.htm');return false;\"><img src='../bsscnav3.gif' width=59 height=18 border=no></a>";
+}
+strNvBrowse="<a href='ht_api_watchpoint.htm'><img src='../bsscnav4.gif' width=22 height=18 border=no></a><a href='idh_cmn_help_tech_support.htm'><img src='../bsscnav5.gif' width=22 height=18 border=no></a>"
+if ((strNvHome.length != 0) || (strNvBrowse.length != 0) || (strNvWebSearch.length != 0)) {
+  document.write("<p id='NavBar' align='right' class=WebHelpNavBar><nobr><font size=1>");
+  if (strNvHome.length != 0) document.write(strNvHome);
+  if (strNvBrowse.length != 0) document.write(strNvBrowse);
+  if (strNvWebSearch.length != 0) document.write(strNvWebSearch);
+  document.write("</font>&nbsp;&nbsp;&nbsp;</nobr></p>");
+  }
+}
+//-->
+</SCRIPT>
+<h1>Miscellaneous API functions</h1>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells
+		style="width: 583px; border-spacing: 0px;"
+		cellspacing=0
+		width=583>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableHead>int &nbsp;purify_is_running&nbsp;(void) </p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableText>Returns <font style="font-family: Courier;"
+									face=courier>1</font> if the executable 
+ is Purify'd, <font style="font-family: Courier;"
+					face=courier>0</font> otherwise. You can use this function 
+ to enclose special purpose application code to execute in the Purify'd 
+ environment. For example:</p>
+<p style="margin-bottom: 6.00pt; font-family: Courier;">if&nbsp;(purify_is_running())&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;install_gui_leaks_button();<br>
+&nbsp;}</p>
+<p style="margin-bottom: 6.00pt; font-family: Helvetica, sans-serif;">You 
+ can also use this function to wrap around calls to other Purify API functions 
+ so that they are not called when your program is not <a href="../html_notoc/ht_gloss_instr.htm" style="font-weight: bold;">instrumented</a>. 
+ <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->For example:</p>
+<p style="margin-bottom: 6.00pt; font-family: Courier;"><span>if (purify_is_running())</span></p>
+<p style="margin-bottom: 6.00pt; font-family: Courier;"><span>{<br>
+purify_printf(&quot;Note this part of the code.&quot;); <br>
+purify_describe(my_ptr);<br>
+purify_what_colors(my_ptr, 24);</span><span><br>
+}</span></p>
+<p class=rTipNoteGlossaryHeading>Notes:</p>
+<ul>
+	
+	<li class=kadov-p><p style="margin-bottom: 0;">It is safe to call these 
+ functions in uninstrumented programs because the <a href="ht_howto_call_p_api.htm#MID_STUBS" style="font-weight: bold;">stubs 
+ library</a> handles them, but using <span style="font-family: Courier;">purify_is_running</span> 
+ improves runtime performance, in proportion to the number of Purify API 
+ functions that you call. </p></li>
+	
+	<li>
+	<a name=MID_IFDEF></a>
+	
+	<p style="margin-bottom: 0;"><span style="margin-bottom: 0;">An alternative 
+ to calling <font style="font-family: Courier;"
+					face=courier>purify_is_running</font> is to use the 
+ compile-time directive <font style="font-family: Courier;"
+								face=courier>#ifdef PURIFY</font>; however, 
+ the run-time cost of calling <font style="font-family: Courier;"
+									face=courier>purify_is_running</font> 
+ is negligible, and <font style="font-family: Courier;"
+							face=courier>#ifdef</font> <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->requires 
+ that you re-compile your program with the <font style="font-family: Courier;"
+												face=courier>-DPURIFY</font> 
+ flag set. </span></p>
+	</li>
+</ul></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableHead>int purify_stop_here (void) </p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableText>Set a breakpoint on <span style="font-family: Courier;">purify_stop_here</span> 
+ to cause your debugger to stop on every Purify error message after Purify 
+ reports the message but just before the error actually occurs. This allows 
+ you to look at the information Purify provides and to examine the environment 
+ before an error such as an <a href="ht_m_abw.htm" style="font-weight: bold;">ABW</a> occurs 
+ and corrupts memory.</p>
+<p class=rTableText>Note that you cannot call <font style="font-family: Courier;"
+													face=courier>purify_stop_here</font> 
+ directly from your program to break execution at a specific point. To 
+ do this, you must call <font style="font-family: Courier;"
+								face=courier>purify_stop_here_internal<span 
+ style="font-family: Helvetica, sans-serif;"> in your code</font>, and 
+ </span>set a breakpoint on <font style="font-family: Courier;"
+									face=courier>purify_stop_here</font>.</p>
+<p class=rTableText>For an example of how to use this function, click <a href="ht_build_example.htm">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if (navigator.appName=="Netscape")
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' width='14' height='14' border='0'>");}
+else
+{   document.write("<img src='../image/shortcut.gif' alt='image\SHORTCUT.gif' style='width: 14px;  											height: 14px;  											border-style: none;' width='14' height='14' border='0'>");}
+//-->
+</SCRIPT></a></p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="background-color: #e5e5e5;
+			width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;"
+	bgcolor=#E5E5E5>
+<p class=rTableHead>int purify_stop_here_internal (void) </p></td></tr>
+
+<tr style="x-cell-content-align: top;"
+	valign=top>
+<td style="width: 583px;
+			padding-left: 1px;
+			padding-top: 1px;
+			padding-right: 1px;
+			padding-bottom: 1px;">
+<p class=rTableText>Use this function if you want to trigger a <span style="font-family: Courier;">purify_stop_here</span> 
+ from within your code. Note that you have to set a breakpoint on <span 
+ style="font-family: Courier;">purify_stop_here</span> in your debugger 
+ for this to work.</p>
+<p class=rTableText>&nbsp;</p></td></tr>
+</table>
+
+</body>
+
+</html>
