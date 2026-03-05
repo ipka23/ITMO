@@ -55,3 +55,14 @@ end:
     load          is_palindrome
     store_ind     output_addr
     halt
+
+
+
+/* testcase_result */
+/app/variants/is_binary_palindrome/1.yaml: ExitSuccess
+/app/variants/is_binary_palindrome/2.yaml: ExitSuccess
+/app/variants/is_binary_palindrome/3.yaml: ExitFailure 1
+/app/variants/is_binary_palindrome/4.yaml: ExitSuccess
+/app/variants/is_binary_palindrome/5.yaml: ExitSuccess
+/app/variants/is_binary_palindrome/6.yaml: ExitFailure 1
+/app/variants/is_binary_palindrome/7.yaml: ExitSuccess

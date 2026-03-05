@@ -2,11 +2,12 @@
 .org 0x100
 input_addr:      .word 0x80
 output_addr:     .word 0x84
-i:               .word  32
+i:               .word  16
 left_mask:       .word  0x80000000
 right_mask:      .word  0x00000001
 l:               .word  0
 r:               .word  0                  ; дополнительная ячейка
+n:               .word  0
 const_1:         .word  1
 is_palindrome:   .word  1
 shift_31:        .word  0x1F               ; переменная для хранения количества битов для сдвига, инициализированная 31
@@ -19,21 +20,26 @@ tmp:             .word  0
 _start:
     load         input_addr ; load_addr
     load_acc
-    store        l
-    store        r
+
+    store        n
+    load_imm    0
+    store counter
+    load const_1
+    store is_palindrome
+    load_imm 16
+    store i
     load         i
 
 while:
-    load         l
+    beqz         end
+    load         n
     shiftl       counter
-    store        l
     and          left_mask
     shiftr       shift_31
     store        tmp
 
-    load         r
+    load         n
     shiftr       counter
-    store        r
     and          right_mask
 
     xor          tmp
@@ -48,7 +54,7 @@ while:
     load         i
     sub          const_1
     store        i
-    beqz         end
+
     jmp          while
 
 end:
