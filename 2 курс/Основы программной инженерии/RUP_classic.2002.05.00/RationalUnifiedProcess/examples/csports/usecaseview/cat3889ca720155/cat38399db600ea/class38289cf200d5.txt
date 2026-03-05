@@ -1,1 +1,0 @@
-The Pager Gateway is a system which gathers pages to be sent to subscribers, formats them, and transmits them to the paging service.

@@ -1,1 +1,0 @@
-This value indicates how many subscribers have yet to view this content or headline for the first time.
