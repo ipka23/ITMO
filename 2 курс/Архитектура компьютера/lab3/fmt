@@ -1,0 +1,1 @@
+.\wrench-fmt is_binary_palindrome.s --isa acc32 > is_binary_palindrome.s 

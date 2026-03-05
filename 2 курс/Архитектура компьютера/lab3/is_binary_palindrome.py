@@ -16,5 +16,3 @@ assert is_binary_palindrome(5) == 0
 assert is_binary_palindrome(15) == 0
 assert is_binary_palindrome(4026531855) == 1
 assert is_binary_palindrome(3221225474) == 0
-# numio[0x80]: [] >>> [101, 1111, 11110000000000000000000000001111, 11000000000000000000000000000010]
-#

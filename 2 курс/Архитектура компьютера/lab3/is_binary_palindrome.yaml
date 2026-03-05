@@ -1,19 +1,18 @@
-limit: 400
-memory_size: 0x1000
-memory_mapped_io:
-  0x80: [5, 15, 4026531855, 3221225474]
+limit: 1000
+memory_size: 0x300
+input_streams:
+  0x80: [5]
   0x84: []
 reports:
   - name: Step-by-step
     slice: all
     view: |
-      {pc}:	{instruction}	{pc:label}
+      pc={pc} {pc:label} | instr={instruction}
   - name: Result
     slice: last
     view: |
       numio[0x80]: {io:0x80:dec}
       numio[0x84]: {io:0x84:dec}
-      {memory:0:16}
     assert: |
       numio[0x80]: [] >>> []
-      numio[0x84]: [] >>> [0, 0, 1, 0]
+      numio[0x84]: [] >>> [0]
