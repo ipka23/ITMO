@@ -38,7 +38,7 @@ void sortZoo(const string& lettersInput) {
   }
 
   if (!zooIsValid(lettersInput, lettersList)) {
-    cout << "Impossible";
+    cout << "Impossible" << endl;
   } else {
     string answerStr;
     while (!lettersList.empty()) {
@@ -61,12 +61,12 @@ void sortZoo(const string& lettersInput) {
         lettersList.erase(lettersList.begin() + static_cast<int>(mid) + 1);
         lettersList.erase(lettersList.begin() + static_cast<int>(mid));
       } else {
-        cout << "Impossible";
+        cout << "Impossible" << endl;
         return;
       }
     }
-    cout << "Possible\n";
-    cout << answerStr;
+    cout << "Possible" << endl;
+    cout << answerStr << endl;
   }
 }
 
