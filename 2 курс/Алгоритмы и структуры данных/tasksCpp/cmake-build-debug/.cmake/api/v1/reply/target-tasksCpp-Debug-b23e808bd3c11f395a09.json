@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "tasksCpp"
+			"path" : "tasksCpp.exe"
+		},
+		{
+			"path" : "tasksCpp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics"
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
 				}
 			],
 			"language" : "CXX",
@@ -65,14 +68,14 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
-				"role" : "flags"
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "tasksCpp",
-	"nameOnDisk" : "tasksCpp",
+	"nameOnDisk" : "tasksCpp.exe",
 	"paths" : 
 	{
 		"build" : ".",
