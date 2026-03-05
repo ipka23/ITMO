@@ -1,1 +1,0 @@
-..\..\..\..\common\java\jre\bin\java  -classpath ..\..\..\applet ruptools.KeyWordIndex -r keywordconfig.txt

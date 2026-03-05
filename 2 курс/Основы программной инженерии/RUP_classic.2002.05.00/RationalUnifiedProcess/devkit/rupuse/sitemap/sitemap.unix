@@ -1,3 +1,0 @@
-setenv CLASSPATH ${CLASSPATH}:../../ruptools/rup.jar
-
-java ruptools.SiteMap sitemapdef.txt
