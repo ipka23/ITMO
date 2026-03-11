@@ -1,69 +1,63 @@
-// #include <iostream>
-// #include <vector>
-// #include <string>
-//
-// using namespace std;
-//
-// vector<int> countLettersFrequency(const vector<char>& zooList) {
-//   vector<int> lettersFrequency(26, 0);
-//   for (char c : zooList) {
-//     int ind = tolower(c) - 'a';
-//     lettersFrequency[ind]++;
-//   }
-//   return lettersFrequency;
-// }
-//
-// bool zooIsValid(const string& lettersInput, const vector<char>& lettersList) {
-//   if (lettersInput.length() % 2 != 0) {
-//     return false;
-//   }
-//
-//   vector<int> lettersFrequency = countLettersFrequency(lettersList);
-//   for (int freq : lettersFrequency) {
-//     if (freq != 2 && freq != 0) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-//
-// void sortZoo(const string& lettersInput) {
-//   vector<char> lettersList;
-//   for (char c : lettersInput) {
-//     lettersList.push_back(c);
-//   }
-//
-//   if (!zooIsValid(lettersInput, lettersList)) {
-//     cout << "Impossible" << endl;
-//     return;
-//   }
-//
-//   int i = 0;
-//   string answerStr;
-//
-//   while (!lettersList.empty()) {
-//     i++;
-//     answerStr += to_string(i) + " ";
-//
-//     int mid = lettersList.size() / 2 - 1;
-//     char cage = lettersList[mid];
-//     char animal = lettersList[mid + 1];
-//
-//     if (cage != animal && tolower(cage) == tolower(animal)) {
-//       lettersList.erase(find(lettersList.begin(), lettersList.end(), cage));
-//       lettersList.erase(find(lettersList.begin(), lettersList.end(), animal));
-//     } else {
-//       cout << "Impossible" << endl;
-//       return;
-//     }
-//   }
-//
-//   cout << answerStr << endl;
-// }
-//
-// int main() {
-//   string lettersInput;
-//   cin >> lettersInput;
-//   sortZoo(lettersInput);
-//   return 0;
-// }
+#include <cctype>
+#include <iostream>
+#include <stack>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main() {
+  string s;
+  cin >> s;
+  int n = s.size();
+  if (n % 2 != 0) {
+    cout << "Impossible\n";
+    return 0;
+  }
+
+  vector<int> animalNum(n, 0);
+  vector<int> ans(n, 0);
+  stack<int> st;
+  int animalCounter = 0;
+
+  for (int i = 0; i < n; ++i) {
+    char ch = s[i];
+    if (islower(ch)) {
+      ++animalCounter;
+      animalNum[i] = animalCounter;
+    }
+
+    if (!st.empty()) {
+      int topIdx = st.top();
+      char topCh = s[topIdx];
+      if (toupper(ch) == toupper(topCh) && islower(ch) != islower(topCh)) {
+        if (islower(ch)) {
+          ans[topIdx] = animalNum[i];
+        } else {
+          ans[i] = animalNum[topIdx];
+        }
+        st.pop();
+        continue;
+      }
+    }
+    st.push(i);
+  }
+
+  if (!st.empty()) {
+    cout << "Impossible\n";
+  } else {
+    cout << "Possible\n";
+    bool first = true;
+    for (int i = 0; i < n; ++i) {
+      if (isupper(s[i])) {
+        if (!first)
+          cout << ' ';
+        cout << ans[i];
+        first = false;
+      }
+    }
+    cout << '\n';
+  }
+
+  return 0;
+}

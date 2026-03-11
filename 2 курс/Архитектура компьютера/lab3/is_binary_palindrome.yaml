@@ -1,18 +1,18 @@
 limit: 1000
-memory_size: 0x300
+memory_size: 300
 input_streams:
-  0x80: [5]
-  0x84: []
+  128: [5, 15, 4026531855, 3221225474]
+  132: []
 reports:
   - name: Step-by-step
     slice: all
     view: |
       pc={pc} {pc:label} | instr={instruction}
   - name: Result
-    slice: last
+    slice: all
     view: |
       numio[0x80]: {io:0x80:dec}
       numio[0x84]: {io:0x84:dec}
     assert: |
       numio[0x80]: [] >>> []
-      numio[0x84]: [] >>> [0]
+      numio[0x84]: [] >>> [0, 0, 1, 0]

@@ -1,49 +1,46 @@
     .data
-.org 0x100
-input_addr:      .word 0x80
-output_addr:     .word 0x84
-i:               .word  32
-left_mask:       .word  0x80000000
-right_mask:      .word  0x00000001
-l:               .word  0
-r:               .word  0                  ; дополнительная ячейка
-const_1:         .word  1
-is_palindrome:   .word  1
+.org             140
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+i:               .word  16                 ; счетчик итераций
+n:               .word  0                  ; переменная для хранения числа из input
+mask_31_bit:     .word  0x80000000
+mask_0_bit:      .word  0x00000001
+is_palindrome:   .word  1                  ; переменная для накопления логического значения результата сравнений
 shift_31:        .word  0x1F               ; переменная для хранения количества битов для сдвига, инициализированная 31
-counter:         .word  0
+shift_counter:   .word  0                  ; cчетчик сдвигов, инициализированный 0
+const_1:         .word  1
 tmp:             .word  0
-
 
     .text
 
 _start:
-    load         input_addr ; load_addr
+    load         input_addr
     load_acc
-    store        l
-    store        r
-    load         i
+    store        n
 
 while:
-    load         l
-    shiftl       counter
-    store        l
-    and          left_mask
+    load         n
+    shiftl       shift_counter               ; сдвигаем аккумулятор влево на число равное номеру текущей итерации
+    and          mask_31_bit
     shiftr       shift_31
+    and          mask_0_bit                  ; обнуляем все биты кроме 0 чтобы не было ошибки из-за знакового сдвига
     store        tmp
 
-    load         r
-    shiftr       counter
-    store        r
-    and          right_mask
+    load         n
+    shiftr       shift_counter               ; сдвигаем аккумулятор вправо на число равное номеру текущей итерации
+    and          mask_0_bit                  ; обнуляем все биты кроме 0 чтобы не было ошибки из-за знакового сдвига
 
-    xor          tmp
-    and          is_palindrome
+    xor          tmp                         ; сравниваем соответствующие биты левой и правой части числа
+    not
+
+    and          is_palindrome               ; all(is_palindrome)
     store        is_palindrome
     beqz         end                         ; если хоть один бит не совпал то завершаем программу
 
-    load         counter
+    load         shift_counter
     add          const_1
-    store        counter
+    store        shift_counter
 
     load         i
     sub          const_1
@@ -52,6 +49,6 @@ while:
     jmp          while
 
 end:
-    load          is_palindrome
-    store_ind     output_addr
+    load         is_palindrome
+    store_ind    output_addr
     halt

@@ -2,6 +2,18 @@
 	"entries" : 
 	[
 		{
+			"name" : "CLANG_FORMAT_EXE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "CLANG_FORMAT_EXE-NOTFOUND"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[

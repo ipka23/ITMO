@@ -15,6 +15,9 @@
 ########################
 
 //Path to a program.
+CLANG_FORMAT_EXE:FILEPATH=CLANG_FORMAT_EXE-NOTFOUND
+
+//Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Program Files/JetBrains/CLion 2025.2.2/bin/mingw/bin/addr2line.exe
 
 //Path to a program.

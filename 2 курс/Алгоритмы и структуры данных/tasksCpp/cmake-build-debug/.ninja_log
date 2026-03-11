@@ -1,7 +1,8 @@
 # ninja log v6
 660	801	1772549595665801118	tasksCpp	968ab493338abf84
-2	61	7944050006486491	build.ninja	b4c4f656e9264a38
-2	51	7944050421209704	CMakeFiles/tasksCpp.dir/A.cpp.obj	aab7480ffdb95c87
-5	52	7944050421229704	CMakeFiles/tasksCpp.dir/B.cpp.obj	23496da9d767b2c7
-6	682	7944050421249823	CMakeFiles/tasksCpp.dir/B_2.cpp.obj	ba7345e602d3b259
-684	783	7944050428019995	tasksCpp.exe	dda964260ffc0ecf
+2	61	7945303778220032	build.ninja	b4c4f656e9264a38
+6	49	7945246406114874	CMakeFiles/tasksCpp.dir/D.cpp.obj	28f4cbcdb6c55f26
+4	48	7945246406094894	CMakeFiles/tasksCpp.dir/A.cpp.obj	aab7480ffdb95c87
+4	723	7945262843686653	CMakeFiles/tasksCpp.dir/B.cpp.obj	23496da9d767b2c7
+5	49	7945262896472751	CMakeFiles/tasksCpp.dir/B_2.cpp.obj	ba7345e602d3b259
+49	150	7945262896912259	tasksCpp.exe	f159aa2755522755
