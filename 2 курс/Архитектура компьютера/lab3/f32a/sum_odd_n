@@ -1,0 +1,46 @@
+    .data
+
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+mask_odd:        .word  0x00000001
+    .text
+
+_start:
+    @p input_addr a! @       \  1: mem[input_addr]:[] == 0x80:[] 2: mem[0x80]:[] = n:[]
+
+    sum_odd_n
+
+    @p output_addr a! !      \  1: mem[output_addr]:[] == 0x84:[] 2: mem[0x84] <- dataStack.pop() ==> res:[]
+
+    halt
+
+
+    \ можно сделать либо проверку на четность (1) либо просто сумму с шагом=2 начиная с единицы
+sum_odd:
+    dup                      \ n:n:[]
+    @p mask_odd              \ 1:n:n:[]
+    and                      \ 1:n:[] or 0:n:[]
+    -if sum_odd_do           \ n:[]         if odd
+    lit -1 +                 \ n-1:[]
+    sum_odd ;
+
+sum_odd_do:
+    dup                      \ n:n:[]
+    lit -2 +                 \ n-2:n:[]
+    +
+    next sum_odd_do          \ val:[]
+    ;
+
+
+
+sum_odd_n:
+    dup dup                 \ n:n:n:[]
+
+    \>r                      \ n:n:[]   todo (n // 2 + n % 2) >r
+    \if sum_odd_n_finish     \ n:[]
+
+    sum_odd
+
+sum_odd_n_finish:
+    drop
+    ;
