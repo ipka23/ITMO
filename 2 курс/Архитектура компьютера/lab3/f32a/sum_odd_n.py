@@ -5,9 +5,9 @@ def sum_odd_n(n):
     total = 0
     for i in range(1, n + 1):
         if i % 2 != 0:
-            print(i)
+            # print(i)
             total += i
-    print("---")
+    # print("---")
     return total
 
 
@@ -26,12 +26,15 @@ def sum_n(n):
 # assert sum_odd_n(90000) == 2025000000
 
 
-# print(sum_odd_n(5))
-c = 0
-n = 5
-for i in range(1, n + 1):
-    if i % 2 != 0:
-        c += 1
-print(c)
-print("---")
-print(n // 2 + n % 2)
+
+# c = 0
+n = 10
+#
+# for i in range(1, n + 1):
+#     if i % 2 != 0:
+#         c += 1
+# print(c)
+# print("---")
+for n in range(1, n + 1):
+    print(f"n = {n} | s1 = {(n // 2 + n % 2)**2} | s2 = {sum_odd_n(n)}")
+# print(5//2)
