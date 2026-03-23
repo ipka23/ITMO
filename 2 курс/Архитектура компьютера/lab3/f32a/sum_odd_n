@@ -44,3 +44,11 @@ sum_odd_n:
 sum_odd_n_finish:
     drop
     ;
+
+
+divide:
+    lit 31 >r
+divide_do:
+    +/
+    next divide_do
+    ;
