@@ -1,54 +1,85 @@
     .data
-
+.org             0x100
 input_addr:      .word  0x80
 output_addr:     .word  0x84
-mask_odd:        .word  0x00000001
+divisor_addr:    .word  0x90
+n_odd:           .word  0
+
     .text
-
 _start:
-    @p input_addr a! @       \  1: mem[input_addr]:[] == 0x80:[] 2: mem[0x80]:[] = n:[]
-
+    @p input_addr a! @       \ n:[]
+    dup dup a!               \ n:n:[]
     sum_odd_n
 
-    @p output_addr a! !      \  1: mem[output_addr]:[] == 0x84:[] 2: mem[0x84] <- dataStack.pop() ==> res:[]
+    @p output_addr a! !      \  1: mem[output_addr]:res:[] == 0x84:res:[] 2: mem[0x84] <- dataStack.pop() ==> :[]
 
     halt
-
-
-    \ можно сделать либо проверку на четность (1) либо просто сумму с шагом=2 начиная с единицы
-sum_odd:
-    dup                      \ n:n:[]
-    @p mask_odd              \ 1:n:n:[]
-    and                      \ 1:n:[] or 0:n:[]
-    -if sum_odd_do           \ n:[]         if odd
-    lit -1 +                 \ n-1:[]
-    sum_odd ;
-
-sum_odd_do:
-    dup                      \ n:n:[]
-    lit -2 +                 \ n-2:n:[]
-    +
-    next sum_odd_do          \ val:[]
-    ;
-
-
-
-sum_odd_n:
-    dup dup                 \ n:n:n:[]
-
-    \>r                      \ n:n:[]   todo (n // 2 + n % 2) >r
-    \if sum_odd_n_finish     \ n:[]
-
-    sum_odd
-
-sum_odd_n_finish:
-    drop
-    ;
-
 
 divide:
     lit 31 >r
 divide_do:
     +/
     next divide_do
+    ;
+
+multiply:
+    lit 31 >r
+multiply_do:
+    +*
+    next multiply_do
+    drop drop a
+    ;
+
+check_overflow:
+    dup                      \res:res:[]
+    lit 0x80000000           \ 0x80000000:res:res:[]
+    and
+    \ x:res:[]; if x < 0 then is_overflow else return
+    if not_overflow          \ x:res:[]
+
+is_overflow:
+    lit 0
+    ;
+
+not_overflow:
+    lit 1
+    ;
+
+sum_odd_n:
+    if is_zero
+    inv
+    -if is_negative
+
+    @p divisor_addr b!       \ B <- 0x90 \ :[]
+    lit 2 !b                 \ :[]
+    \ :[]
+    lit 0 dup                \ инициализируем ячейки для хранения частного и остатка нулями
+    \ 0:0:[]
+    divide
+
+    \ quotient:remainder:[]
+    +
+    \ n_odd:[]
+
+    dup a!                   \ n_odd:[]
+    lit 0                    \ кладем 0 на стек для хранения частичных результатов умножений \ 0:n_odd:[]
+    multiply                 \ res:[]
+
+    check_overflow           \ 0:res:[] or 1:res:[]
+    if overflow              \ res:[]
+
+sum_odd_n_finish:
+    ;
+
+is_negative:
+    lit -1
+    ;
+
+is_zero:
+    lit -1
+    ;
+
+overflow:
+    drop                     \ :[]
+    lit 0xCCCCCCCC
     ;
