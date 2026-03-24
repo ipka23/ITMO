@@ -28,13 +28,17 @@ def sum_n(n):
 
 
 # c = 0
-n = 10
+n = 100000
 #
 # for i in range(1, n + 1):
 #     if i % 2 != 0:
 #         c += 1
 # print(c)
 # print("---")
-for n in range(1, n + 1):
-    print(f"n = {n} | s1 = {(n // 2 + n % 2)**2} | s2 = {sum_odd_n(n)}")
-# print(5//2)
+# for n in range(1, n + 1):
+#     print(f"n = {n} | s1 = {(n // 2 + n % 2)**2} | s2 = {sum_odd_n(n)}")
+# print(5//2)'
+print(sum_odd_n(100000))
+print(hex(2**31))
+print(hex(-1794967296))
+print(hex(2**31 - 1794967296))

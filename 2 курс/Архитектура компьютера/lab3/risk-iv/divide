@@ -1,0 +1,28 @@
+    .data
+
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+divisor_addr:    .word  0x90
+    .text
+_start:
+    @p input_addr a! @ \ n:[]
+    a! \ :[]
+
+    @p divisor_addr b!    \ B <- 0x90 \ n:[]
+    lit 2 !b              \ n:[]
+              \ n:[]; n -> A
+    lit 0 dup  \ инициализируем ячейки для хранения результата и остатка
+    \ 0:0:[]
+    divide
+
+    \ quotient:remainder:[]
+    @p output_addr a! !      \  1: mem[output_addr]:[] == 0x84:[] 2: mem[0x84] <- dataStack.pop() ==> :[]
+
+    halt
+
+divide:
+    lit 31 >r
+divide_do:
+    +/
+    next divide_do
+    ;
