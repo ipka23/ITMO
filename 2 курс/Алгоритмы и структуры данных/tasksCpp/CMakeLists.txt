@@ -3,7 +3,8 @@ project(tasksCpp)
 
 set(CMAKE_CXX_STANDARD 20)
 find_program(CLANG_FORMAT_EXE clang-format)
-add_executable(tasksCpp A.cpp B.cpp
-        D.cpp
-        c.cpp
+add_executable(tasksCpp
+        E.cpp
+        F.cpp
+        G.cpp
 )
