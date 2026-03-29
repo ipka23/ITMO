@@ -7,4 +7,5 @@ add_executable(tasksCpp
         E.cpp
         F.cpp
         G.cpp
+        test.cpp
 )
