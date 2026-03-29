@@ -1,24 +1,24 @@
 s = input()
 freq = [0] * 26
-l = []
-
-
+sorted = []
+weights = input().split()
+print(weights)
 def getChar(index):
     return chr(ord('a') + index)
 def countWeight():
     pass
 for i in range(len(s)):
-    l.append(s[i])
-for _ in range(len(l) - 1):
-    for i in range(len(l) - 1):
-        if l[i] < l[i + 1]:
-            tmp = l[i + 1]
-            l[i + 1] = l[i]
-            l[i] = tmp
+    sorted.append(s[i])
+for _ in range(len(sorted) - 1):
+    for i in range(len(sorted) - 1):
+        if sorted[i] < sorted[i + 1]:
+            tmp = sorted[i + 1]
+            sorted[i + 1] = sorted[i]
+            sorted[i] = tmp
 ans_i = len(s)
 ans = [""] * ans_i
 
-for n in l:
+for n in sorted:
     freq[ord(n) - 97] += 1
 
 print(freq)
