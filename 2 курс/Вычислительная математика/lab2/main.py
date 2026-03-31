@@ -1,9 +1,11 @@
-import numpy as np
+import math
+
 eps = 10 ** -2
 funct1 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]
 funct2 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]  # todo
 funct3 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]  # todo
 n = 1
+
 
 # l - коэффициент умножения
 # add - слагаемое для прибавления к функции
@@ -24,8 +26,8 @@ def f(x, l=1, add=0):
     return res + add
 
 
-def calcDiff(x):
-    return (f(x + eps) - f(x)) / eps
+def calcDiff(func, x):
+    return (func(x + eps) - func(x)) / eps
 
 
 def fi(x, l):
@@ -34,7 +36,7 @@ def fi(x, l):
 
 def simpleIteration(a, b):
     x_curr = a
-    l = -1 / max(calcDiff(a), calcDiff(b))
+    l = -1 / max(calcDiff(f, a), calcDiff(f, b))
     n = 1
     while True:
         x_next = fi(x_curr, l)
@@ -53,12 +55,12 @@ def simpleIteration(a, b):
 def tangents(a, b):
     x_mid = (a + b) / 2
     x_prev = x_mid
-    if calcDiff(x_mid) > 0:
+    if calcDiff(f, x_mid) > 0:
         x_prev = a
-    elif calcDiff(x_mid) < 0:
+    elif calcDiff(f, x_mid) < 0:
         x_prev = b
     while True:
-        h_prev = f(x_prev) / calcDiff(x_prev)
+        h_prev = f(f, x_prev) / calcDiff(f, x_prev)
         x_curr = x_prev - h_prev
         if abs(x_curr - x_prev) <= eps:
             break
@@ -108,10 +110,61 @@ def solveEquation():
     tangents(a3, b3)
 
 
-def solveSystemOfEquation():
+def calcDiffX(func, x, y):
+    return (func(x + eps, y) - func(x, y)) / eps
+
+
+def calcDiffY(func, x, y):
+    return (func(x, y + eps) - func(x, y)) / eps
+
+
+def f1(x, y):
+    return math.sin(x + y) - 1.5 * x + 0.1
+
+
+def f2(x, y):
+    return x ** 2 + 2 * y ** 2 - 1
+
+
+def solveSystemOfLinearEquation(a11, a12, a21, a22, b1, b2):
     pass
+
+
+def calcDet(A):
+    return A[0][0] * A[1][1] - A[1][0] * A[0][1]
+
+
+def calcJacobian(func1, func2, x0, y0):
+    j11 = calcDiffX(func1, x0, y0)
+    j12 = calcDiffY(func1, x0, y0)
+    j21 = calcDiffX(func2, x0, y0)
+    j22 = calcDiffY(func2, x0, y0)
+    return [[j11, j12], [j21, j22]]
+
+
+def invertMatrix(M):
+    c = 1 / calcDet(M)
+    return [[c * M[1][1], -1 * c * M[0][1]], [-1 * c * M[1][0], c * M[0][0]]]
+
+
+def solveSystemOfNonLinearEquation(x, y):
+    x0, y0 = 0, 0
+    while True:
+        if abs(x - x0) <= eps and abs(y - y0) <= eps:
+            return x, y
+        j = calcJacobian(f1, f2, x, y)
+        j_inv = invertMatrix(j)
+        dx = -1 * (f1(x, y) * j_inv[0][0] + f2(x, y) * j_inv[0][1])
+        dy = -1 * (f1(x, y) * j_inv[1][0] + f2(x, y) * j_inv[1][1])
+        x0 = x
+        y0 = y
+        x = x + dx
+        y = y + dy
 
 
 if __name__ == "__main__":
     # solveEquation()
-    solveSystemOfEquation()
+    x1 = 0.7
+    y1 = 0.5
+    x, y = solveSystemOfNonLinearEquation(x1, y1)
+    print(f"x = {x} | y = {y}")
