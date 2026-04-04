@@ -1,20 +1,25 @@
 s = input()
 freq = [0] * 26
 sorted = []
-weights = input().split()
+weights = list(map(int, input().split()))
+
 print(weights)
+lettersWithWeights = {}
+
+
 def getChar(index):
     return chr(ord('a') + index)
-def countWeight():
-    pass
+
+
 for i in range(len(s)):
     sorted.append(s[i])
 for _ in range(len(sorted) - 1):
     for i in range(len(sorted) - 1):
         if sorted[i] < sorted[i + 1]:
-            tmp = sorted[i + 1]
+            fills = sorted[i + 1]
             sorted[i + 1] = sorted[i]
-            sorted[i] = tmp
+            sorted[i] = fills
+
 ans_i = len(s)
 ans = [""] * ans_i
 
@@ -22,28 +27,34 @@ for n in sorted:
     freq[ord(n) - 97] += 1
 
 print(freq)
-tmp = []
-
-for i in range(len(freq) - 1, -1, -1):
+fills = []
+candidates = []
+for i in range(26):
     char = getChar(i)
     fr = freq[i]
     if fr >= 2:
-        ans[ans_i - 1] = char
-        ans[-ans_i] = char
-        ans_i -= 1
-        while fr - 2 != 0:
-            tmp.append(char)
-            fr -= 1
-    elif fr == 1:
-        tmp.append(char)
+        candidates.append((weights[i], char, fr))
+    else:
+        fills.append(char)
+
+candidates.sort(reverse=True)
+print(candidates)
+
 n = len(ans)
+left = 0
+right = n - 1
+for weight, char, freq in candidates:
+    ans[left] = char
+    ans[right] = char
+    left += 1
+    right -= 1
+    for _ in range(freq - 2):
+        fills.append(char)
+
 j = 0
 for i in range(len(ans)):
     if ans[i] == "":
-        ans[i] = tmp[j]
+        ans[i] = fills[j]
         j += 1
-
-# print(ans)
-# print(tmp)
 
 print("".join(ans))

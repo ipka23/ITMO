@@ -1,81 +1,74 @@
+// #include <algorithm>
 // #include <iostream>
-// #include <sstream>
+// #include <numeric>
 // #include <string>
 // #include <vector>
 //
 // using namespace std;
 //
-// char getChar(int index) {
-//   return 'a' + index;
-// }
-//
 // int main() {
 //   string s;
-//   getline(cin, s);
+//   cin >> s;
 //
-//   vector<char> l;
-//   for (int i = 0; i < s.length(); i++) {
-//     l.push_back(s[i]);
+//   vector<long long> weight(26);
+//   for (int i = 0; i < 26; ++i) {
+//     cin >> weight[i];
 //   }
-//   string line;
-//   getline(cin, line);
-//   vector<string> weights;
-//   stringstream ss(line);
-//   string weight;
-//
-//   while (ss >> weight) {
-//     weights.push_back(weight);
-//   }
-//
-//   for (int _ = 0; _ < l.size() - 1; _++) {
-//     for (int i = 0; i < l.size() - 1; i++) {
-//       if (l[i] < l[i + 1]) {
-//         char tmp = l[i + 1];
-//         l[i + 1] = l[i];
-//         l[i] = tmp;
-//       }
-//     }
-//   }
-//
-//   int ans_i = s.length();
-//   vector<string> ans(ans_i, "");
 //
 //   vector<int> freq(26, 0);
-//   for (char n : l) {
-//     freq[n - 'a']++;
+//   for (char c : s) {
+//     freq[c - 'a']++;
 //   }
 //
-//   vector<string> tmp;
+//   vector<int> order(26);
+//   iota(order.begin(), order.end(), 0);
+//   sort(order.begin(), order.end(), [&](int a, int b) {
+//     if (weight[a] != weight[b])
+//       return weight[a] > weight[b];
+//     return a < b;
+//   });
 //
-//   for (int i = 25; i >= 0; i--) {
-//     char ch = getChar(i);
-//     int fr = freq[i];
-//     if (fr >= 2) {
-//       ans[ans_i - 1] = string(1, ch);
-//       ans[s.length() - ans_i] = string(1, ch);
-//       ans_i--;
-//       while (fr - 2 != 0) {
-//         tmp.push_back(string(1, ch));
-//         fr--;
+//   int n = (int)s.size();
+//   string ans(n, '\0');
+//   int left = 0, right = n - 1;
+//
+//   while (true) {
+//     vector<int> candidates;
+//     for (int id : order) {
+//       if (freq[id] >= 2) {
+//         candidates.push_back(id);
 //       }
-//     } else if (fr == 1) {
-//       tmp.push_back(string(1, ch));
+//     }
+//
+//     if (candidates.empty() || left > right) {
+//       break;
+//     }
+//
+//     for (int id : candidates) {
+//       if (left > right)
+//         break;
+//
+//       ans[left++] = char('a' + id);
+//       ans[right--] = char('a' + id);
+//       freq[id] -= 2;
 //     }
 //   }
 //
-//   int n = ans.size();
-//   int j = 0;
-//   for (int i = 0; i < ans.size(); i++) {
-//     if (ans[i] == "") {
-//       ans[i] = tmp[j];
-//       j++;
+//   string middle;
+//   for (int id : order) {
+//     while (freq[id] > 0) {
+//       middle.push_back(char('a' + id));
+//       --freq[id];
 //     }
 //   }
 //
-//   for (int i = 0; i < ans.size(); i++) {
-//     cout << ans[i];
+//   int idx = 0;
+//   for (int i = 0; i < n; ++i) {
+//     if (ans[i] == '\0') {
+//       ans[i] = middle[idx++];
+//     }
 //   }
-//   cout << endl;
 //
+//   cout << ans << '\n';
 //   return 0;
 // }
