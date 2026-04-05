@@ -1,8 +1,17 @@
+import itertools
+
 overflow_error_value = 0xCCCCCCCC
 
 
-def read_line():
-    pass
+def read_line(s, buf_size):
+    """Read line from input with buffer size limits."""
+    assert "\n" in s, "input should have a newline character"
+    line = "".join(itertools.takewhile(lambda x: x != "\n", s))
+
+    if len(line) > buf_size - 1:
+        return None, s[buf_size:]
+
+    return line, s[len(line) + 1:]
 
 
 def hello_user_pstr(input):
