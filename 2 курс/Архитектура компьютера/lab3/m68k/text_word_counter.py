@@ -1,13 +1,24 @@
+import itertools
+
 overflow_error_value = 0xCCCCCCCC
 
 
-def cstr():
-    pass
+def read_line(s, buf_size):
+    """Read line from input with buffer size limits."""
+    assert "\n" in s, "input should have a newline character"
+    line = "".join(itertools.takewhile(lambda x: x != "\n", s))
+
+    if len(line) > buf_size - 1:
+        return None, s[buf_size:]
+
+    return line, s[len(line) + 1:]
 
 
-def read_line():
-    pass
-
+def cstr(s, buf_size):
+    """Make content for buffer with pascal string (default value for cell: `_`)."""
+    assert len(s) + 1 <= buf_size
+    buf = s + "\0" + ("_" * (buf_size - len(s) - 1))
+    return "".join(itertools.takewhile(lambda c: c != "\0", s)), buf
 
 def text_word_counter(input):
     """Count word frequencies in text with max word length of 3 symbols.
@@ -94,3 +105,5 @@ def text_word_counter(input):
 assert text_word_counter('a bb ccc a ccc a\n') == ('3 1 2', '')
 assert text_word_counter('cat dog cat\n') == ('2 1', '')
 assert text_word_counter('a,b.c a\n') == ('2 1 1', '')
+
+print(text_word_counter('a b c d e f g h g k l m m\n'))
