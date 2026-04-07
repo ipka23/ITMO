@@ -4,8 +4,7 @@ eps = 10 ** -2
 funct1 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]
 funct2 = [(1, 3), (-3.125, 2), (-3.5, 1), (2.458, 0)]
 funct3 = [(4.45, 3), (7.81, 2), (-9.62, 1), (-8.17, 0)]
-equationNum = -1
-mode = 1
+equationNum = "1"
 input_file = "input"
 output_file = "output"
 input_dict = {}
@@ -27,28 +26,24 @@ def getRes(x, n):
 # l - коэффициент умножения
 # add - слагаемое для прибавления к функции
 def f(x, l=1, add=0):
+    global equationNum
     res = 0
     # x = round(x, 2)
-    if equationNum == 1:
+    if equationNum == "1":
         for tup in funct1:
             # print(f"===\nl={l}, c0={c[0]}, x={x}, c1={c[1]}\n")
             res += l * tup[0] * x ** tup[1]
             # print(f"r = {l * c[0] * x ** c[1]}\n===")
-    elif equationNum == 2:
+    elif equationNum == "2":
         for tup in funct2:
             res += l * tup[0] * x ** tup[1]
-    elif equationNum == 3:
+    elif equationNum == "3":
         for tup in funct3:
             res += l * tup[0] * x ** tup[1]
     return res + add
 
 
 def calcDiff(func, x):
-    print("=====calcDiff======")
-    print(func(x + eps))
-    print( - func(x))
-    print("=====calcDiff======")
-
     return (func(x + eps) - func(x)) / eps
 
 
@@ -57,10 +52,10 @@ def fi(x, l):
 
 
 def simpleIteration(a, b):
-    print(a)
-    print(b)
-    print(calcDiff(f, a))
-    print(calcDiff(f, b))
+    # print(a)
+    # print(b)
+    # print(calcDiff(f, a))
+    # print(calcDiff(f, b))
     # print(max(calcDiff(f, a), calcDiff(f, b)))
     x_curr = a
     l = -1 / max(calcDiff(f, a), calcDiff(f, b))
@@ -76,8 +71,12 @@ def simpleIteration(a, b):
         x_curr = x_next
     s = getRes(x_curr, n)
     if outToFile:
-        with open(outToFile) as file:
+        with open(output_file, "w") as file:
             file.write(s)
+            print("=" * 100)
+            print(f"Решение было записано в файл '{output_file}'")
+            print("=" * 100)
+            print("\n")
     else:
         print(s)
 
@@ -99,8 +98,12 @@ def newton(a, b):
         x_prev = x_curr
     s = getRes(x_curr, n)
     if outToFile:
-        with open(outToFile) as file:
+        with open(output_file, "w") as file:
             file.write(s)
+            print("=" * 100)
+            print(f"Решение было записано в файл '{output_file}'")
+            print("=" * 100)
+            print("\n")
     else:
         print(s)
 
@@ -118,25 +121,42 @@ def chords(a, b):
             a = x_curr
     s = getRes(x_curr, n)
     if outToFile:
-        with open(outToFile, 'w') as file:
+        # open(output_file, 'w').close()
+        with open(output_file, "w") as file:
             file.write(s)
+            print("=" * 100)
+            print(f"Решение было записано в файл '{output_file}'")
+            print("=" * 100)
+            print("\n")
     else:
         print(s)
 
 
 def solveEquation(methodNum):
+    global eps
     if inFromFile:
         a = float(input_dict["a"])
         b = float(input_dict["b"])
-        print(calcDiff(f, a))
-        print(calcDiff(f, b))
-        print("+++")
+        if f(a) * f(b) > 0:
+            print("На заданном в файле интервале (a, b) нет решений")
+            return
     else:
         while True:
             try:
                 print("Введите начальное приближение - (a, b):")
                 a = float(input("a = ").strip())
                 b = float(input("b = ").strip())
+                if f(a) * f(b) > 0:
+                    print("На заданном в файле интервале (a, b) нет решений")
+                    continue
+                else:
+                    break
+            except ValueError:
+                print("Введите корректное значение!")
+        while True:
+            try:
+                print("Введите погрешность вычислений (epsilon):")
+                eps = float(input("epsilon = ").strip())
                 break
             except ValueError:
                 print("Введите корректное значение!")
@@ -146,7 +166,27 @@ def solveEquation(methodNum):
         case "2":
             newton(a, b)
         case "3":
-            simpleIteration(a, b)
+            x = (a + b) / 2
+            l = -1 / max(calcDiff(f, a), calcDiff(f, b))
+            q = abs(calcDiff(lambda x: fi(x, l), x))
+            if not q < 1:
+                print(
+                    f"На выбранном интервале (a, b) = ({a}, {b}) последовательность решений уравнения не сходится к истинному;")
+                while True:
+                    try:
+                        print("Введите начальное приближение - (a, b):")
+                        a = float(input("a = ").strip())
+                        b = float(input("b = ").strip())
+                        if f(a) * f(b) > 0:
+                            print("На заданном в файле интервале (a, b) нет решений")
+                            continue
+                        else:
+                            simpleIteration(a, b)
+                            break
+                    except ValueError:
+                        print("Введите корректное значение!")
+            else:
+                simpleIteration(a, b)
 
 
 def calcDiffX(func, x, y):
@@ -208,20 +248,13 @@ def inputNEq():
             print(
                 "Выберите уравнение (1/2/3):\n1: -1,8x^3 - 2,94x^2 + 10,37x + 5,38\n2: x^3 - 3,125x^2 - 3,5x + 2,458\n3: 4,45x^3 + 7,81x^2 - 9,62x - 8,17")
             n = input(">>> ").strip()
+            if n not in ["1", "2", "3"]:
+                print("Введите корректное значение!\n\n")
+                continue
+            else:
+                equationNum = n
+                break
 
-            match n:
-                case "1":
-                    equationNum = 1
-                    break
-                case "2":
-                    equationNum = 2
-                    break
-                case "3":
-                    equationNum = 3
-                    break
-                case _:
-                    print("Введите корректное значение!\n\n")
-                    continue
         while True:
             print("Каким методом вы хотите решить:\n1 – Метод хорд\n2 – Метод Ньютона\n3 – Метод простой итерации")
             n = input(">>> ").strip()
@@ -242,69 +275,71 @@ def inputNEq():
 def userInput():
     global mode, input_file, output_file, equationNum, input_dict, inFromFile, outToFile
     while True:
-        print(
-            "Выберите режим работы (1/2/3/4):\n1 - ввод и вывод в консоли\n2 - ввод из файла, вывод в файл\n3 - ввод в консоли, вывод в файл\n4 - ввод из файла, вывод в консоль")
-        n = input(">>> ").strip()
-        match n:
-            case "1":
-                inFromFile = False
-                outToFile = False
-            case "2":
-                inFromFile = True
-                outToFile = True
-            case "3":
-                inFromFile = False
-                outToFile = True
-            case "4":
-                inFromFile = True
-                outToFile = False
-            case _:
-                print("Введите корректное значение!\n\n")
-                continue
-        break
-    # if inFromFile and outToFile:
-    #     while True:
-    #         try:
-    #             input_file = input("Введите имя файла с входными данными: ").strip()
-    #             output_file = input("Введите имя файла для записи результата работы программы: ").strip()
-    #             break
-    #         except FileNotFoundError as e:
-    #             print(f"Не существует такого файла: {e.filename}")
-    # elif inFromFile and not outToFile:
-    #     while True:
-    #         try:
-    #             input_file = input("Введите имя файла с входными данными: ").strip()
-    #             break
-    #         except FileNotFoundError as e:
-    #             print(f"Не существует такого файла: {e.filename}")
-    while True:
-        if not inFromFile:
+        while True:
+            print(
+                "Выберите режим работы (1/2/3/4):\n1 - ввод и вывод в консоли\n2 - ввод из файла, вывод в файл\n3 - ввод в консоли, вывод в файл\n4 - ввод из файла, вывод в консоль")
+            n = input(">>> ").strip()
+            match n:
+                case "1":
+                    inFromFile = False
+                    outToFile = False
+                case "2":
+                    inFromFile = True
+                    outToFile = True
+                case "3":
+                    inFromFile = False
+                    outToFile = True
+                case "4":
+                    inFromFile = True
+                    outToFile = False
+                case _:
+                    print("Введите корректное значение!\n\n")
+                    continue
+            break
+        if inFromFile and outToFile:
             while True:
-                print(
-                    "Выберите что вы хотите решить (1/2):\n1 - нелинейное уравнение\n2 - систему нелинейных уравнений")
-                typeOfProgram = input(">>> ").strip()
+                try:
+                    input_file = input("Введите имя файла с входными данными: ").strip()
+                    output_file = input("Введите имя файла для записи результата работы программы: ").strip()
+                    break
+                except FileNotFoundError as e:
+                    print(f"Не существует такого файла: {e.filename}")
+        elif inFromFile and not outToFile:
+            while True:
+                try:
+                    input_file = input("Введите имя файла с входными данными: ").strip()
+                    break
+                except FileNotFoundError as e:
+                    print(f"Не существует такого файла: {e.filename}")
+        while True:
+            if not inFromFile:
+                while True:
+                    print(
+                        "Выберите что вы хотите решить (1/2):\n1 - нелинейное уравнение\n2 - систему нелинейных уравнений")
+                    typeOfProgram = input(">>> ").strip()
+                    match typeOfProgram:
+                        case "1":
+                            inputNEq()
+                        case "2":
+                            inputSNEq()
+                        case _:
+                            print("Введите корректное значение!\n\n")
+            else:
+                with open(input_file) as file:
+                    for line in file:
+                        key, val = line.split(" = ")[0].strip(), line.split(" = ")[1].strip()
+                        input_dict[key] = val
+                typeOfProgram = input_dict["typeOfProgram"]
+                equationNum = input_dict["equationNum"]
                 match typeOfProgram:
                     case "1":
                         inputNEq()
+                        break
                     case "2":
                         inputSNEq()
+                        break
                     case _:
                         print("Введите корректное значение!\n\n")
-        else:
-            with open(input_file) as file:
-                for line in file:
-                    key, val = line.split(" = ")[0].strip(), line.split(" = ")[1].strip()
-                    input_dict[key] = val
-                print(input_dict)
-            typeOfProgram = input_dict["typeOfProgram"]
-            equationNum = input_dict["equationNum"]
-            match typeOfProgram:
-                case "1":
-                    inputNEq()
-                case "2":
-                    inputSNEq()
-                case _:
-                    print("Введите корректное значение!\n\n")
 
 
 if __name__ == "__main__":
