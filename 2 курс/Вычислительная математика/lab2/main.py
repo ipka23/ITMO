@@ -1,23 +1,65 @@
 import math
+import os
 
+import matplotlib.pyplot as plt
+import numpy as np
+from setuptools.command.rotate import rotate
+
+# NEq
 eps = 10 ** -2
 funct1 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]
 funct2 = [(1, 3), (-3.125, 2), (-3.5, 1), (2.458, 0)]
 funct3 = [(4.45, 3), (7.81, 2), (-9.62, 1), (-8.17, 0)]
 equationNum = "1"
-input_file = "input"
-output_file = "output"
-input_dict = {}
+inputFile = "in"
+outputFile = "out"
+inputDict = {}
 inFromFile = False
 outToFile = False
+leftBound = None
+rightBound = None
+x_0 = None
+
+# SNEq
+u1 = lambda x, y: np.sin(x + y) - 1.5 * x + 0.1
+u2 = lambda x, y: x ** 2 + 2 * y ** 2 - 1
+
+v1 = lambda x, y: np.tan(x * y) - x ** 2
+v2 = lambda x, y: 0.8 * x ** 2 + 2 * y ** 2 - 1
+
+w1 = lambda x, y: np.tan(x * y + 0.2) - x ** 2
+w2 = lambda x, y: x ** 2 + 2 * y ** 2 - 1
+
+systemDict = {
+    "1.1": u1,
+    "1.2": u2,
+    "2.1": v1,
+    "2.2": v2,
+    "3.1": w1,
+    "3.2": w2,
+}
+
+systemNum = "1"
 
 
-def getRes(x, n):
+def getResNEq(x, n):
     s = "\n\n"
     s += "=" * 100 + "\n"
     s += "Результат работы программы\n"
     s += "=" * 100 + "\n"
-    s += f"x_0 = {x:.3f}\nf(x_0) = {f(x):.3f}\nКоличество итераций: {n}\n"
+    s += f"Корень уравнения x_0 = {x:.3f}\nf(x_0) = {f(x):.3f}\nКоличество итераций: {n}\n"
+    s += "=" * 100 + "\n"
+    s += "\n\n"
+    return s
+
+
+def getResSNEq(x, y, n, delta):
+    s = "\n\n"
+    s += "=" * 100 + "\n"
+    s += "Результат работы программы\n"
+    s += "=" * 100 + "\n"
+    s += f"Вектор неизвестных (x_0, y_0) = ({x:.3f}, {y:.3f})\nКоличество итераций: {n}\n"
+    s += f"Вектор погрешностей |x_{n}^({n}) - x_{n}^({n - 1})| = {delta:.4f}\n"
     s += "=" * 100 + "\n"
     s += "\n\n"
     return s
@@ -52,11 +94,7 @@ def fi(x, l):
 
 
 def simpleIteration(a, b):
-    # print(a)
-    # print(b)
-    # print(calcDiff(f, a))
-    # print(calcDiff(f, b))
-    # print(max(calcDiff(f, a), calcDiff(f, b)))
+    global x_0
     x_curr = a
     l = -1 / max(calcDiff(f, a), calcDiff(f, b))
     n = 0
@@ -69,12 +107,13 @@ def simpleIteration(a, b):
             print("Введите более точные границы, с текущими последовательность решений не сходится к истинному")
             break
         x_curr = x_next
-    s = getRes(x_curr, n)
+    x_0 = x_curr
+    s = getResNEq(x_curr, n)
     if outToFile:
-        with open(output_file, "w") as file:
+        with open(outputFile, "w") as file:
             file.write(s)
             print("=" * 100)
-            print(f"Решение было записано в файл '{output_file}'")
+            print(f"Решение было записано в файл '{outputFile}'")
             print("=" * 100)
             print("\n")
     else:
@@ -82,6 +121,7 @@ def simpleIteration(a, b):
 
 
 def newton(a, b):
+    global x_0
     x_mid = (a + b) / 2
     x_prev = x_mid
     n = 0
@@ -96,12 +136,13 @@ def newton(a, b):
         if abs(x_curr - x_prev) <= eps:
             break
         x_prev = x_curr
-    s = getRes(x_curr, n)
+    x_0 = x_curr
+    s = getResNEq(x_curr, n)
     if outToFile:
-        with open(output_file, "w") as file:
+        with open(outputFile, "w") as file:
             file.write(s)
             print("=" * 100)
-            print(f"Решение было записано в файл '{output_file}'")
+            print(f"Решение было записано в файл '{outputFile}'")
             print("=" * 100)
             print("\n")
     else:
@@ -109,6 +150,7 @@ def newton(a, b):
 
 
 def chords(a, b):
+    global x_0
     n = 0
     while True:
         n += 1
@@ -119,13 +161,14 @@ def chords(a, b):
             b = x_curr
         else:
             a = x_curr
-    s = getRes(x_curr, n)
+    x_0 = x_curr
+    s = getResNEq(x_curr, n)
     if outToFile:
         # open(output_file, 'w').close()
-        with open(output_file, "w") as file:
+        with open(outputFile, "w") as file:
             file.write(s)
             print("=" * 100)
-            print(f"Решение было записано в файл '{output_file}'")
+            print(f"Решение было записано в файл '{outputFile}'")
             print("=" * 100)
             print("\n")
     else:
@@ -133,10 +176,12 @@ def chords(a, b):
 
 
 def solveEquation(methodNum):
-    global eps
+    global eps, leftBound, rightBound
     if inFromFile:
-        a = float(input_dict["a"])
-        b = float(input_dict["b"])
+        a = float(inputDict["a"])
+        b = float(inputDict["b"])
+        leftBound = a
+        rightBound = b
         if f(a) * f(b) > 0:
             print("На заданном в файле интервале (a, b) нет решений")
             return
@@ -146,6 +191,8 @@ def solveEquation(methodNum):
                 print("Введите начальное приближение - (a, b):")
                 a = float(input("a = ").strip())
                 b = float(input("b = ").strip())
+                leftBound = a
+                rightBound = b
                 if f(a) * f(b) > 0:
                     print("На заданном в файле интервале (a, b) нет решений")
                     continue
@@ -177,6 +224,8 @@ def solveEquation(methodNum):
                         print("Введите начальное приближение - (a, b):")
                         a = float(input("a = ").strip())
                         b = float(input("b = ").strip())
+                        leftBound = a
+                        rightBound = b
                         if f(a) * f(b) > 0:
                             print("На заданном в файле интервале (a, b) нет решений")
                             continue
@@ -197,14 +246,6 @@ def calcDiffY(func, x, y):
     return (func(x, y + eps) - func(x, y)) / eps
 
 
-def f1(x, y):
-    return math.sin(x + y) - 1.5 * x + 0.1
-
-
-def f2(x, y):
-    return x ** 2 + 2 * y ** 2 - 1
-
-
 def calcDet(A):
     return A[0][0] * A[1][1] - A[1][0] * A[0][1]
 
@@ -222,27 +263,122 @@ def invertMatrix(M):
     return [[c * M[1][1], -1 * c * M[0][1]], [-1 * c * M[1][0], c * M[0][0]]]
 
 
-def solveSystemOfNonLinearEquation(x, y):
+def checkSystemSolution(f1, f2, x, y):
+    global eps
+    return abs(f1(x, y)) <= eps and abs(f2(x, y)) <= eps
+
+
+def solveSystemOfNonLinearEquationNewton(xVect, yVect):
+    x1, x2 = xVect
+    y1, y2 = yVect
     x0, y0 = 0, 0
+    n = 0
     while True:
-        if abs(x - x0) <= eps and abs(y - y0) <= eps:
-            return x, y
-        j = calcJacobian(f1, f2, x, y)
+        n += 1
+        f1 = systemDict[systemNum + ".1"]
+        f2 = systemDict[systemNum + ".2"]
+        if abs(x2 - x0) <= eps and abs(y2 - y0) <= eps:
+            res = getResSNEq(x2, y2, n, abs(x2 - x0))
+            if not outToFile:
+                print(res)
+                if not checkSystemSolution(f1, f2, x2, y2):
+                    print("Решение неверное!")
+                    print("=" * 100)
+            else:
+                with open(outputFile, "w") as file:
+                    file.write(res)
+                    print("=" * 100)
+                    print(f"Решение было записано в файл '{outputFile}'")
+                    print("=" * 100)
+                    print("\n")
+            break
+        j = calcJacobian(f1, f2, x2, y2)
         j_inv = invertMatrix(j)
-        dx = -1 * (f1(x, y) * j_inv[0][0] + f2(x, y) * j_inv[0][1])
-        dy = -1 * (f1(x, y) * j_inv[1][0] + f2(x, y) * j_inv[1][1])
-        x0 = x
-        y0 = y
-        x = x + dx
-        y = y + dy
+        dx = -1 * (f1(x2, y2) * j_inv[0][0] + f2(x2, y2) * j_inv[0][1])
+        dy = -1 * (f1(x2, y2) * j_inv[1][0] + f2(x2, y2) * j_inv[1][1])
+        x0 = x2
+        y0 = y2
+        x2 = x2 + dx
+        y2 = y2 + dy
+
+
+def drawGraphSNEq(systemNumber):
+    xValues = np.linspace(-1.5, 1.5, 1000)
+    yValues = np.linspace(-1.5, 1.5, 1000)
+    func1 = systemDict[systemNumber + ".1"]
+    func2 = systemDict[systemNumber + ".2"]
+    x, y = np.meshgrid(xValues, yValues)
+    axes = plt.gca()
+    axes.set_xticks(np.arange(-1.5, 1.5, 0.1), minor=True)
+    axes.set_yticks(np.arange(-1.5, 1.5, 0.1), minor=True)
+    axes.set_xticks(np.arange(-1.5, 1.5, 0.5))
+    axes.set_yticks(np.arange(-1.5, 1.5, 0.5))
+    axes.spines['bottom'].set_position('zero')
+    axes.spines['left'].set_position('zero')
+    axes.text(1.6, 0, 'x')
+    axes.text(0, 1.6, 'y')
+    zValues1 = func1(x, y)
+    zValues2 = func2(x, y)
+
+    plt.contour(x, y, zValues1, levels=[0], colors="red")
+    plt.contour(x, y, zValues2, levels=[0], colors="blue")
+
+    plt.axvline(x=0, color='black', linewidth=1)
+    plt.axhline(y=0, color='black', linewidth=1)
+    plt.grid(True, which="both")
+    plt.tight_layout()
+    plt.show()
 
 
 def inputSNEq():
-    pass
+    global systemNum
+    if not inFromFile:
+        while True:
+            print("Выберите систему (1/2/3):")
+
+            print("1: / sin(x + y) = 1,5x - 0,1")
+            print("  <")
+            print("   \\ x^2 + 2y^2 = 1")
+            print("-" * 100)
+            print("2: / tg(xy) = x^2")
+            print("  <")
+            print("   \\ 0,8x^2 + 2y^2 = 1")
+            print("-" * 100)
+            print("3: / tg(xy + 0,2) = x^2")
+            print("  <")
+            print("   \\ x^2 + 2y^2 = 1")
+            n = input(">>> ").strip()
+            if n not in ["1", "2", "3"]:
+                print("Введите корректное значение!\n\n")
+                continue
+            else:
+                systemNum = n
+                break
+        drawGraphSNEq(systemNum)
+        x1, x2 = 0, 0
+        y1, y2 = 0, 0
+        while True:
+            try:
+                print("Введите начальное приближение по оси x \nx1 <= x0 <= x2")
+                x1 = float(input("x1 = ").strip())
+                x2 = float(input("x2 = ").strip())
+                print("Введите начальное приближение по оси y \ny1 <= y0 <= y2")
+                y1 = float(input("y1 = ").strip())
+                y2 = float(input("y2 = ").strip())
+                break
+            except ValueError:
+                print("Введите корректное значение!\n\n")
+                continue
+    else:
+        x1, x2 = int(inputDict["x1"]), int(inputDict["x2"])
+        y1, y2 = int(inputDict["y1"]), int(inputDict["y2"])
+    x = (x1, x2)
+    y = (y1, y2)
+    solveSystemOfNonLinearEquationNewton(x, y)
 
 
 def inputNEq():
-    global equationNum
+    global equationNum, x_0
     if not inFromFile:
         while True:
             print(
@@ -265,15 +401,16 @@ def inputNEq():
             break
 
     else:
-        m = input_dict["method"]
+        m = inputDict["method"]
         if m not in ["1", "2", "3"]:
             print("Введите корректное значение method в файле!\n\n")
         else:
             solveEquation(m)
+    drawGraphNEq()
 
 
 def userInput():
-    global mode, input_file, output_file, equationNum, input_dict, inFromFile, outToFile
+    global inputFile, outputFile, equationNum, inputDict, inFromFile, outToFile, systemNum
     while True:
         while True:
             print(
@@ -298,19 +435,19 @@ def userInput():
             break
         if inFromFile and outToFile:
             while True:
-                try:
-                    input_file = input("Введите имя файла с входными данными: ").strip()
-                    output_file = input("Введите имя файла для записи результата работы программы: ").strip()
+                inputFile = input("Введите имя файла с входными данными: ").strip()
+                outputFile = input("Введите имя файла для записи результата работы программы: ").strip()
+                if not os.path.exists(inputFile):
+                    print(f"Не существует такого файла: {inputFile}")
+                else:
                     break
-                except FileNotFoundError as e:
-                    print(f"Не существует такого файла: {e.filename}")
         elif inFromFile and not outToFile:
             while True:
-                try:
-                    input_file = input("Введите имя файла с входными данными: ").strip()
+                inputFile = input("Введите имя файла с входными данными: ").strip()
+                if not os.path.exists(inputFile):
+                    print(f"Не существует такого файла: {inputFile}")
+                else:
                     break
-                except FileNotFoundError as e:
-                    print(f"Не существует такого файла: {e.filename}")
         while True:
             if not inFromFile:
                 while True:
@@ -325,26 +462,41 @@ def userInput():
                         case _:
                             print("Введите корректное значение!\n\n")
             else:
-                with open(input_file) as file:
+                with open(inputFile) as file:
                     for line in file:
                         key, val = line.split(" = ")[0].strip(), line.split(" = ")[1].strip()
-                        input_dict[key] = val
-                typeOfProgram = input_dict["typeOfProgram"]
-                equationNum = input_dict["equationNum"]
+                        inputDict[key] = val
+                typeOfProgram = inputDict["typeOfProgram"]
                 match typeOfProgram:
                     case "1":
+                        equationNum = inputDict["equationNum"]
                         inputNEq()
                         break
                     case "2":
+                        systemNum = inputDict["systemNum"]
                         inputSNEq()
                         break
                     case _:
                         print("Введите корректное значение!\n\n")
 
 
+def drawGraphNEq():
+    xValues = np.linspace(leftBound, rightBound, 1000)
+    yValues = []
+    func = funct1 if equationNum == "1" else (funct2 if equationNum == "2" else funct3)
+    for x in xValues:
+        res = 0
+        for tup in func:
+            res += tup[0] * x ** tup[1]
+        yValues.append(res)
+    plt.plot(xValues, yValues, color="red", linewidth=1)
+    plt.plot(x_0, 0, markersize=4, color="black", marker='o')
+    plt.axvline(x=0, color='black', linewidth=1)
+    plt.axhline(y=0, color='black', linewidth=1)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
 if __name__ == "__main__":
     userInput()
-    # x1 = 0.7
-    # y1 = 0.5
-    # x, y = solveSystemOfNonLinearEquation(x1, y1)
-    # print(f"x = {x} | y = {y}")
