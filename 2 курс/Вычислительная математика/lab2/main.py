@@ -1,10 +1,7 @@
-import math
 import os
 
 import matplotlib.pyplot as plt
 import numpy as np
-from setuptools.command.rotate import rotate
-
 # NEq
 eps = 10 ** -2
 funct1 = [(-1.8, 3), (-2.94, 2), (10.37, 1), (5.38, 0)]
