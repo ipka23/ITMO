@@ -7,7 +7,8 @@
 
 1 курс/Программирование/*/*/**/**/**/test
 2 курс/Веб-программирование/*/*/**/**/**/test
-
+**/.git/
+**/.svn/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -59,3 +60,4 @@ venv.bak/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
