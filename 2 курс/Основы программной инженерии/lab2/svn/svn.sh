@@ -1,37 +1,32 @@
 rm -rf "svnRepo"
 rm -rf "workingCopy"
 svnadmin create "svnRepo"
-
 REPO_URL="file://$(pwd)/svnRepo"
-
 svn mkdir "${REPO_URL}/trunk" "${REPO_URL}/branches" -m "init"
-
 TRUNK="${REPO_URL}/trunk"
 ALT_RED="${REPO_URL}/branches/altRed"
+
 ALT_BLUE="${REPO_URL}/branches/altBlue"
 COMMITS="../../commits"
-
 svn checkout "$TRUNK" "workingCopy"
-cd "workingCopy" || exit 1
+cd workingCopy
 
 unzip -o "${COMMITS}/commit0.zip" -d "src"
 svn add *
 svn commit -m "r0" --username="Red"
-
 unzip -o "${COMMITS}/commit1.zip" -d "src"
 svn add *
 svn commit -m "r1" --username="Red"
-
 unzip -o "${COMMITS}/commit2.zip" -d "src"
 svn add *
 svn commit -m "r2" --username="Red"
 
+svn copy "$TRUNK" "$ALT_RED" -m "creating altRed branch"
+svn switch "$ALT_RED"
+
 unzip -o "${COMMITS}/commit3.zip" -d "src"
 svn add *
 svn commit -m "r3" --username="Red"
-
-svn copy "$TRUNK" "$ALT_RED" -m "creating altRed branch"
-svn switch "$ALT_RED"
 
 unzip -o "${COMMITS}/commit4.zip" -d "src"
 svn add *
@@ -39,7 +34,6 @@ svn commit -m "r4" --username="Red"
 
 svn copy "$TRUNK" "$ALT_BLUE" -m "creating altBlue branch"
 svn switch "$ALT_BLUE"
-
 unzip -o "${COMMITS}/commit5.zip" -d "src"
 svn add *
 svn commit -m "r5" --username="Blue"
@@ -74,12 +68,14 @@ unzip -o "${COMMITS}/commit11.zip" -d "src"
 svn add *
 svn commit -m "r11" --username="Red"
 svn merge "$ALT_BLUE"
+svn commit -m "merge altBlue into altRed"
 
 svn switch "$TRUNK"
 unzip -o "${COMMITS}/commit12.zip" -d "src"
 svn add *
 svn commit -m "r12" --username="Red"
 svn merge "$ALT_RED"
+svn commit -m "merge altRed into trunk"
 
 unzip -o "${COMMITS}/commit13.zip" -d "src"
 svn add *
