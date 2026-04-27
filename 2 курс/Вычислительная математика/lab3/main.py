@@ -240,6 +240,7 @@ def main():
 
     methodName, methodFunc, order = methods[methodChoice]
 
+
     if breakType == "1":
         result, nFinal = improperIntegralLeft(f_imp, a, b, eps, methodFunc, order)
     elif breakType == "2":
