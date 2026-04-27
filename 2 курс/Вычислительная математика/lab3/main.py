@@ -157,7 +157,7 @@ def main():
         a = float(input("Введите a: "))
         b = float(input("Введите b: "))
 
-    eps = float(input("Введите точность вычислений (например, 0.001): "))
+    eps = float(input("Введите точность вычислений: "))
 
     print("\nДоступные методы:")
     print("1. Левые прямоугольники (p=1)")
@@ -180,13 +180,13 @@ def main():
 
     methodName, methodFunc, order = methods[methodChoice]
 
-    result, n_final = rungeRule(f, a, b, methodFunc, order, eps)
+    result, nFinal = rungeRule(f, a, b, methodFunc, order, eps)
 
     if result is not None:
         print("\n" + "=" * 60)
         print("РЕЗУЛЬТАТ:")
         print(f"  Интеграл ≈ {result:.8f}")
-        print(f"  Число разбиений n = {n_final}")
+        print(f"  Число разбиений n = {nFinal}")
         print(f"  Требуемая точность {eps} достигнута")
         print("=" * 60)
     else:
@@ -207,7 +207,7 @@ def main():
         a = float(input("Введите a: "))
         b = float(input("Введите b: "))
 
-    eps = float(input("Введите точность вычислений (например, 0.001): "))
+    eps = float(input("Введите точность вычислений: "))
 
     print("\nВыберите тип разрыва:")
     print("1. Разрыв в точке a")
@@ -241,17 +241,17 @@ def main():
     methodName, methodFunc, order = methods[methodChoice]
 
     if breakType == "1":
-        result, n_final = improperIntegralLeft(f_imp, a, b, eps, methodFunc, order)
+        result, nFinal = improperIntegralLeft(f_imp, a, b, eps, methodFunc, order)
     elif breakType == "2":
-        result, n_final = improperIntegralRight(f_imp, a, b, eps, methodFunc, order)
+        result, nFinal = improperIntegralRight(f_imp, a, b, eps, methodFunc, order)
     else:
-        result, n_final = improperIntegralMiddle(f_imp, a, b, c, eps, methodFunc, order)
+        result, nFinal = improperIntegralMiddle(f_imp, a, b, c, eps, methodFunc, order)
 
     if result is not None:
         print("\n" + "=" * 60)
         print("РЕЗУЛЬТАТ:")
         print(f"  Интеграл ≈ {result:.8f}")
-        print(f"  Число разбиений n = {n_final}")
+        print(f"  Число разбиений n = {nFinal}")
         print(f"  Требуемая точность {eps} достигнута")
         print("=" * 60)
     else:
