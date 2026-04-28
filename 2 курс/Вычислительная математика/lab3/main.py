@@ -12,6 +12,8 @@ def f3(x):
     return 2*x**3 - 9*x**2 - 7*x + 11
 
 def f4(x):
+    if x == 0:
+        return math.inf
     return 1 / math.sqrt(x)
 
 def f5(x):
@@ -32,9 +34,9 @@ def selectFunction():
 
 def selectImproperFunction():
     print("Выберите функцию для несобственного интеграла:")
-    print("1: 1/sqrt(x) (разрыв в 0)")
-    print("2: 1/sqrt(1-x^2) (разрыв в 1)")
-    print("3: 1/(x-1) (разрыв в 1, расходящийся)")
+    print("1: 1/sqrt(x)")
+    print("2: 1/sqrt(1-x^2)")
+    print("3: 1/(x-1)")
     choice = input("Введите номер функции (1-3): ")
     while choice not in ["1", "2", "3"]:
         choice = input("Неверный ввод. Введите 1-3: ")
@@ -85,12 +87,12 @@ def simpson(f, a, b, n):
             result += 4 * f(a + i * h)
     return result * h / 3
 
-def rungeRule(f, a, b, method, p, eps, n0=4):
+def rungeRule(f, a, b, method, k, eps, n0=4):
     n = n0
     while True:
         I_n = method(f, a, b, n)
         I_2n = method(f, a, b, 2 * n)
-        error = abs(I_2n - I_n) / (2 ** p - 1)
+        error = abs(I_2n - I_n) / (2 ** k - 1)
         if error < eps:
             return I_2n, 2 * n
         n *= 2
@@ -160,11 +162,11 @@ def main():
     eps = float(input("Введите точность вычислений: "))
 
     print("\nДоступные методы:")
-    print("1. Левые прямоугольники (p=1)")
-    print("2. Правые прямоугольники (p=1)")
-    print("3. Средние прямоугольники (p=2)")
-    print("4. Трапеции (p=2)")
-    print("5. Симпсона (p=4)")
+    print("1. Левые прямоугольники")
+    print("2. Правые прямоугольники")
+    print("3. Средние прямоугольники")
+    print("4. Трапеции")
+    print("5. Симпсона")
 
     methodChoice = input("Выберите метод (1-5): ")
     while methodChoice not in ["1", "2", "3", "4", "5"]:
@@ -178,14 +180,14 @@ def main():
         "5": ("Симпсона", simpson, 4)
     }
 
-    methodName, methodFunc, order = methods[methodChoice]
+    methodName, methodFunc, k = methods[methodChoice]
 
-    result, nFinal = rungeRule(f, a, b, methodFunc, order, eps)
+    result, nFinal = rungeRule(f, a, b, methodFunc, k, eps)
 
     if result is not None:
         print("\n" + "=" * 60)
         print("РЕЗУЛЬТАТ:")
-        print(f"  Интеграл ≈ {result:.8f}")
+        print(f"  Интеграл ≈ {result:.3f}")
         print(f"  Число разбиений n = {nFinal}")
         print(f"  Требуемая точность {eps} достигнута")
         print("=" * 60)
@@ -224,34 +226,33 @@ def main():
             c = float(input("Точка разрыва должна быть внутри (a, b). Введите снова: "))
 
     if not checkConvergence(f_imp):
-        print("Интеграл не существует (расходится)")
+        print("Интеграл не существует")
         return
 
     print("\nДоступные методы:")
-    print("1. Левые прямоугольники (p=1)")
-    print("2. Правые прямоугольники (p=1)")
-    print("3. Средние прямоугольники (p=2)")
-    print("4. Трапеции (p=2)")
-    print("5. Симпсона (p=4)")
+    print("1. Левые прямоугольники")
+    print("2. Правые прямоугольники")
+    print("3. Средние прямоугольники")
+    print("4. Трапеции")
+    print("5. Симпсона")
 
     methodChoice = input("Выберите метод (1-5): ")
     while methodChoice not in ["1", "2", "3", "4", "5"]:
         methodChoice = input("Неверный ввод. Выберите 1-5: ")
 
-    methodName, methodFunc, order = methods[methodChoice]
-
+    methodName, methodFunc, k = methods[methodChoice]
 
     if breakType == "1":
-        result, nFinal = improperIntegralLeft(f_imp, a, b, eps, methodFunc, order)
+        result, nFinal = improperIntegralLeft(f_imp, a, b, eps, methodFunc, k)
     elif breakType == "2":
-        result, nFinal = improperIntegralRight(f_imp, a, b, eps, methodFunc, order)
+        result, nFinal = improperIntegralRight(f_imp, a, b, eps, methodFunc, k)
     else:
-        result, nFinal = improperIntegralMiddle(f_imp, a, b, c, eps, methodFunc, order)
+        result, nFinal = improperIntegralMiddle(f_imp, a, b, c, eps, methodFunc, k)
 
     if result is not None:
         print("\n" + "=" * 60)
         print("РЕЗУЛЬТАТ:")
-        print(f"  Интеграл ≈ {result:.8f}")
+        print(f"  Интеграл ≈ {result:.3f}")
         print(f"  Число разбиений n = {nFinal}")
         print(f"  Требуемая точность {eps} достигнута")
         print("=" * 60)
@@ -259,4 +260,5 @@ def main():
         print("Не удалось достичь требуемой точности")
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
