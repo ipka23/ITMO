@@ -1,6 +1,6 @@
 import math
 
-epsil = 0.01
+epsilon = 0.01
 
 
 def f1(x):
@@ -100,66 +100,22 @@ def simpson(f, a, b, n):
     return result * h / 3
 
 
-def rungeRule(f, a, b, method, k, eps, n0=4):
-    n = n0
+def solveRunge(f, a, b, method, k, eps, alpha=0.0, delta=0.0):
+    n = 4
     while True:
-        I_n = method(f, a, b, n)
-        I_2n = method(f, a, b, 2 * n)
+        I_n = method(f, a + alpha, b - delta, n)
+        I_2n = method(f, a + alpha / 2, b - delta / 2, 2 * n)
         error = abs(I_2n - I_n) / (2 ** k - 1)
         if error < eps:
             return I_2n, 2 * n
         n *= 2
-        if n > 1000000:
-            return None, None
-
-
-def improperIntegralLeft(f, a, b, eps, method, p):
-    n = 4
-    delta = eps
-    while True:
-        I_n = method(f, a + delta, b, n)
-        I_2n = method(f, a + delta / 2, b, 2 * n)
-        error = abs(I_2n - I_n) / (2 ** p - 1)
-        if error < eps:
-            return I_2n, 2 * n
-        n *= 2
+        alpha /= 2
         delta /= 2
         if n > 1000000:
             return None, None
-
-
-def improperIntegralRight(f, a, b, eps, method, p):
-    n = 4
-    delta = eps
-    while True:
-        I_n = method(f, a, b - delta, n)
-        I_2n = method(f, a, b - delta / 2, 2 * n)
-        error = abs(I_2n - I_n) / (2 ** p - 1)
-        if error < eps:
-            return I_2n, 2 * n
-        n *= 2
-        delta /= 2
-        if n > 1000000:
-            return None, None
-
-
-def improperIntegralMiddle(f, a, b, c, eps, method, p):
-    try:
-        n_left = 4
-        n_right = 4
-        delta = eps
-        I_2n_left, n_left = improperIntegralLeft(f, a, c, eps, method, p)
-        I_2n_right, n_right = improperIntegralRight(f, c, b, eps, method, p)
-        if n_left > 1000000 or n_right > 1000000:
-            return None, None
-        else:
-            return I_2n_left + I_2n_right, n_left + n_right
-    except Exception:
-        return None, None
 
 
 def main():
-    # global c
     print("=" * 60)
     print("ЧИСЛЕННОЕ ИНТЕГРИРОВАНИЕ")
     print("=" * 60)
@@ -196,7 +152,7 @@ def main():
 
     methodName, methodFunc, k = methods[methodChoice]
 
-    result, nFinal = rungeRule(f, a, b, methodFunc, k, eps)
+    result, nFinal = solveRunge(f, a, b, methodFunc, k, eps)
 
     if result is not None:
         print("\n" + "=" * 60)
@@ -256,11 +212,16 @@ def main():
     methodName, methodFunc, k = methods[methodChoice]
 
     if breakType == "1":
-        result, nFinal = improperIntegralLeft(f_imp, a, b, eps, methodFunc, k)
+        result, nFinal = solveRunge(f_imp, a, b, methodFunc, k, eps, alpha=eps)
+
     elif breakType == "2":
-        result, nFinal = improperIntegralRight(f_imp, a, b, eps, methodFunc, k)
+        result, nFinal = solveRunge(f_imp, a, b, methodFunc, k, eps, delta=eps)
     else:
-        result, nFinal = improperIntegralMiddle(f_imp, a, b, c, eps, methodFunc, k)
+        I_2n_left, n_left = solveRunge(f_imp, a, c, eps, methodFunc, k, delta=eps)
+        I_2n_right, n_right = solveRunge(f_imp, c, b, eps, methodFunc, k, alpha=eps)
+        if n_left > 1000000 or n_right > 1000000:
+            print("Интеграл не существует")
+        result, nFinal = I_2n_left + I_2n_right, n_left + n_right
 
     if result is not None:
         print("\n" + "=" * 60)
@@ -278,5 +239,5 @@ if __name__ == "__main__":
     try:
         while True:
             main()
-    except ValueError:
-        print("Интеграл не существует")
+    except Exception as e:
+        print(f"Ошибка выполнения:\n{e}")
