@@ -20,7 +20,7 @@ def f4(x):
 
 
 def f5(x):
-    return 1 / math.sqrt(1 - x ** 2)
+    return 1 / math.sqrt(-1 * x)
 
 
 def f6(x):
@@ -40,8 +40,8 @@ def selectFunction():
 
 def selectImproperFunction():
     print("Выберите функцию для несобственного интеграла:")
-    print("1: 1/sqrt(x)")
-    print("2: 1/sqrt(1-x^2)")
+    print("1: 1/√x")
+    print("2: 1/√-x")
     print("3: 1/(x-1)")
     choice = input("Введите номер функции (1-3): ")
     while choice not in ["1", "2", "3"]:
@@ -49,10 +49,25 @@ def selectImproperFunction():
     return [f4, f5, f6][int(choice) - 1]
 
 
-def checkConvergence(f):
-    if f == f6:
-        return False
-    return True
+def getBreakpoints(f, a, b, n=4):
+    breakpoints = []
+    h = (b - a) / n
+    c = (a + b) / 2
+    val = None
+    try:
+        val = a
+        f(a)
+        val = b
+        f(b)
+        val = c
+        f(c)
+        for i in range(1, n + 1):
+            c = a + i * h
+            val = c
+            f(c)
+    except ZeroDivisionError:
+        breakpoints.append(val)
+    return breakpoints
 
 
 def leftRectangles(f, a, b, n):
@@ -103,11 +118,11 @@ def simpson(f, a, b, n):
 def solveRunge(f, a, b, method, k, eps, alpha=0.0, delta=0.0):
     n = 4
     while True:
-        I_n = method(f, a + alpha, b - delta, n)
-        I_2n = method(f, a + alpha / 2, b - delta / 2, 2 * n)
-        error = abs(I_2n - I_n) / (2 ** k - 1)
+        I_h = method(f, a + alpha, b - delta, n)
+        I_h2 = method(f, a + alpha / 2, b - delta / 2, 2 * n)
+        error = abs(I_h2 - I_h) / (2 ** k - 1)
         if error < eps:
-            return I_2n, 2 * n
+            return I_h2, 2 * n
         n *= 2
         alpha /= 2
         delta /= 2
@@ -115,50 +130,21 @@ def solveRunge(f, a, b, method, k, eps, alpha=0.0, delta=0.0):
             return None, None
 
 
-def main():
-    print("=" * 60)
-    print("ЧИСЛЕННОЕ ИНТЕГРИРОВАНИЕ")
-    print("=" * 60)
+methods = {
+    "1": ("левых прямоугольников", leftRectangles, 1),
+    "2": ("правых прямоугольников", rightRectangles, 1),
+    "3": ("средних прямоугольников", middleRectangles, 2),
+    "4": ("трапеций", trapezoid, 2),
+    "5": ("Симпсона", simpson, 4)
+}
 
-    f = selectFunction()
 
-    a = float(input("Введите нижний предел a: "))
-    b = float(input("Введите верхний предел b: "))
-    while a >= b:
-        print("Ошибка: a должно быть меньше b")
-        a = float(input("Введите a: "))
-        b = float(input("Введите b: "))
-
-    eps = float(input("Введите точность вычислений: "))
-
-    print("\nДоступные методы:")
-    print("1. Левые прямоугольники")
-    print("2. Правые прямоугольники")
-    print("3. Средние прямоугольники")
-    print("4. Трапеции")
-    print("5. Симпсона")
-
-    methodChoice = input("Выберите метод (1-5): ")
-    while methodChoice not in ["1", "2", "3", "4", "5"]:
-        methodChoice = input("Неверный ввод. Выберите 1-5: ")
-
-    methods = {
-        "1": ("левых прямоугольников", leftRectangles, 1),
-        "2": ("правых прямоугольников", rightRectangles, 1),
-        "3": ("средних прямоугольников", middleRectangles, 2),
-        "4": ("трапеций", trapezoid, 2),
-        "5": ("Симпсона", simpson, 4)
-    }
-
-    methodName, methodFunc, k = methods[methodChoice]
-
-    result, nFinal = solveRunge(f, a, b, methodFunc, k, eps)
-
+def finalPrompt(result, n, eps):
     if result is not None:
         print("\n" + "=" * 60)
         print("РЕЗУЛЬТАТ:")
         print(f"  Интеграл ≈ {result:.3f}")
-        print(f"  Число разбиений n = {nFinal}")
+        print(f"  Число разбиений n = {n}")
         print(f"  Требуемая точность {eps} достигнута")
         print("=" * 60)
     else:
@@ -166,77 +152,124 @@ def main():
 
     print("\n\n")
 
+
+def firstTask():
     print("=" * 60)
-    print("НЕСОБСТВЕННЫЕ ИНТЕГРАЛЫ 2 РОДА")
+    print("ЧИСЛЕННОЕ ИНТЕГРИРОВАНИЕ")
     print("=" * 60)
 
-    f_imp = selectImproperFunction()
-    a = float(input("Введите нижний предел a: "))
-    b = float(input("Введите верхний предел b: "))
+    f = selectFunction()
+
+    a, b, eps = input_A_B_EPS()
+
+    methodChoice = getMethod()
+
+    methodName, methodFunc, k = methods[methodChoice]
+    result, nFinal = solveRunge(f, a, b, methodFunc, k, eps)
+
+    finalPrompt(result, nFinal, eps)
+
+
+def isNumber(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+
+def input_A_B_EPS():
+    a = input("Введите нижний предел a: ")
+    while not isNumber(a):
+        a = input("Введите нижний предел a: ")
+    b = input("Введите верхний предел b: ")
+    while not isNumber(b):
+        b = input("Введите нижний предел b: ")
+    a, b = float(a), float(b)
     while a >= b:
         print("Ошибка: a должно быть меньше b")
         a = float(input("Введите a: "))
         b = float(input("Введите b: "))
-
     eps = float(input("Введите точность вычислений: "))
+    return a, b, eps
 
-    print("\nВыберите тип разрыва:")
-    print("1. Разрыв в точке a")
-    print("2. Разрыв в точке b")
-    print("3. Разрыв внутри отрезка [a, b]")
 
-    breakType = input("Введите номер (1-3): ")
-    while breakType not in ["1", "2", "3"]:
-        breakType = input("Неверный ввод. Введите 1-3: ")
-
-    if breakType == "3":
-        c = float(input("Введите точку разрыва внутри отрезка: "))
-        while c <= a or c >= b:
-            c = float(input("Точка разрыва должна быть внутри (a, b). Введите снова: "))
-
-    if not checkConvergence(f_imp):
-        print("Интеграл не существует")
-        return
-
+def getMethod():
     print("\nДоступные методы:")
     print("1. Левые прямоугольники")
     print("2. Правые прямоугольники")
     print("3. Средние прямоугольники")
     print("4. Трапеции")
     print("5. Симпсона")
-
     methodChoice = input("Выберите метод (1-5): ")
     while methodChoice not in ["1", "2", "3", "4", "5"]:
         methodChoice = input("Неверный ввод. Выберите 1-5: ")
+    return methodChoice
 
+
+def secondTask():
+    print("=" * 60)
+    print("НЕСОБСТВЕННЫЕ ИНТЕГРАЛЫ 2 РОДА")
+    print("=" * 60)
+    breakpoints = []
+    f_imp = selectImproperFunction()
+
+    while True:
+        a, b, eps = input_A_B_EPS()
+
+        try:
+            breakpoints = getBreakpoints(f_imp, a, b)
+            break
+        except ValueError:
+            print("=" * 60)
+            print(
+                "Область допустимых значений функции √x = [0, +inf)\nОбласть допустимых значений функции √-x = (-inf, 0]\nВведите корректные значения пределов интегрирования!")
+            continue
+
+    breakType = None
+    c = None
+    if breakpoints:
+        print(f"Обнаружены точки разрыва: {breakpoints[0]}")
+        for i in range(len(breakpoints)):
+            if a == breakpoints[i]:
+                breakType = "1"
+                print(f"Разрыв в точке a = {a}")
+            elif b == breakpoints[i]:
+                breakType = "2"
+                print(f"Разрыв в точке b = {b}")
+            else:
+                breakType = "3"
+                c = breakpoints[i]
+                print(f"Разрыв внутри отрезка [a, b] в точке {c}")
+    methodChoice = getMethod()
     methodName, methodFunc, k = methods[methodChoice]
 
     if breakType == "1":
         result, nFinal = solveRunge(f_imp, a, b, methodFunc, k, eps, alpha=eps)
-
     elif breakType == "2":
         result, nFinal = solveRunge(f_imp, a, b, methodFunc, k, eps, delta=eps)
     else:
-        I_2n_left, n_left = solveRunge(f_imp, a, c, eps, methodFunc, k, delta=eps)
-        I_2n_right, n_right = solveRunge(f_imp, c, b, eps, methodFunc, k, alpha=eps)
-        if n_left > 1000000 or n_right > 1000000:
+        I_2n_left, n_left = solveRunge(f_imp, a, c, methodFunc, k, eps, delta=eps)
+        I_2n_right, n_right = solveRunge(f_imp, c, b, methodFunc, k, eps, alpha=eps)
+        if n_left is None or n_right is None:
+            print("=" * 60)
             print("Интеграл не существует")
+            print("=" * 60)
+            print("\n\n")
+            return
         result, nFinal = I_2n_left + I_2n_right, n_left + n_right
 
-    if result is not None:
-        print("\n" + "=" * 60)
-        print("РЕЗУЛЬТАТ:")
-        print(f"  Интеграл ≈ {result:.3f}")
-        print(f"  Число разбиений n = {nFinal}")
-        print(f"  Требуемая точность {eps} достигнута")
-        print("=" * 60)
-    else:
-        print("Не удалось достичь требуемой точности")
-    print("\n" + "=" * 60)
+    finalPrompt(result, nFinal, eps)
 
-if __name__ == "__main__":
+
+def main():
     try:
         while True:
-            main()
+            firstTask()
+            secondTask()
     except Exception as e:
-        print(f"Ошибка выполнения:\n{e}")
+        print(f"Ошибка выполнения: {e}")
+
+
+if __name__ == "__main__":
+    main()
