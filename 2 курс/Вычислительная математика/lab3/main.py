@@ -234,7 +234,6 @@ def main():
         print("Не удалось достичь требуемой точности")
     print("\n" + "=" * 60)
 
-
 if __name__ == "__main__":
     try:
         while True:
