@@ -1,26 +1,31 @@
 import math
 
-eps = 0.01
+epsil = 0.01
+
 
 def f1(x):
-    return 2*x**3 - 3*x**2 + 5*x - 9
+    return 2 * x ** 3 - 3 * x ** 2 + 5 * x - 9
+
 
 def f2(x):
-    return x**3 - 3*x**2 + 7*x - 10
+    return x ** 3 - 3 * x ** 2 + 7 * x - 10
+
 
 def f3(x):
-    return 2*x**3 - 9*x**2 - 7*x + 11
+    return 2 * x ** 3 - 9 * x ** 2 - 7 * x + 11
+
 
 def f4(x):
-    if x == 0:
-        return math.inf
     return 1 / math.sqrt(x)
 
+
 def f5(x):
-    return 1 / math.sqrt(1 - x**2)
+    return 1 / math.sqrt(1 - x ** 2)
+
 
 def f6(x):
     return 1 / (x - 1)
+
 
 def selectFunction():
     print("Выберите функцию:")
@@ -32,6 +37,7 @@ def selectFunction():
         choice = input("Неверный ввод. Введите 1-3: ")
     return [f1, f2, f3][int(choice) - 1]
 
+
 def selectImproperFunction():
     print("Выберите функцию для несобственного интеграла:")
     print("1: 1/sqrt(x)")
@@ -42,10 +48,12 @@ def selectImproperFunction():
         choice = input("Неверный ввод. Введите 1-3: ")
     return [f4, f5, f6][int(choice) - 1]
 
+
 def checkConvergence(f):
     if f == f6:
         return False
     return True
+
 
 def leftRectangles(f, a, b, n):
     h = (b - a) / n
@@ -54,12 +62,14 @@ def leftRectangles(f, a, b, n):
         result += f(a + i * h)
     return result * h
 
+
 def rightRectangles(f, a, b, n):
     h = (b - a) / n
     result = 0
     for i in range(1, n + 1):
         result += f(a + i * h)
     return result * h
+
 
 def middleRectangles(f, a, b, n):
     h = (b - a) / n
@@ -68,12 +78,14 @@ def middleRectangles(f, a, b, n):
         result += f(a + (i + 0.5) * h)
     return result * h
 
+
 def trapezoid(f, a, b, n):
     h = (b - a) / n
     result = (f(a) + f(b)) / 2
     for i in range(1, n):
         result += f(a + i * h)
     return result * h
+
 
 def simpson(f, a, b, n):
     if n % 2 != 0:
@@ -87,6 +99,7 @@ def simpson(f, a, b, n):
             result += 4 * f(a + i * h)
     return result * h / 3
 
+
 def rungeRule(f, a, b, method, k, eps, n0=4):
     n = n0
     while True:
@@ -99,12 +112,13 @@ def rungeRule(f, a, b, method, k, eps, n0=4):
         if n > 1000000:
             return None, None
 
+
 def improperIntegralLeft(f, a, b, eps, method, p):
     n = 4
     delta = eps
     while True:
         I_n = method(f, a + delta, b, n)
-        I_2n = method(f, a + delta/2, b, 2 * n)
+        I_2n = method(f, a + delta / 2, b, 2 * n)
         error = abs(I_2n - I_n) / (2 ** p - 1)
         if error < eps:
             return I_2n, 2 * n
@@ -112,13 +126,14 @@ def improperIntegralLeft(f, a, b, eps, method, p):
         delta /= 2
         if n > 1000000:
             return None, None
+
 
 def improperIntegralRight(f, a, b, eps, method, p):
     n = 4
     delta = eps
     while True:
         I_n = method(f, a, b - delta, n)
-        I_2n = method(f, a, b - delta/2, 2 * n)
+        I_2n = method(f, a, b - delta / 2, 2 * n)
         error = abs(I_2n - I_n) / (2 ** p - 1)
         if error < eps:
             return I_2n, 2 * n
@@ -126,26 +141,25 @@ def improperIntegralRight(f, a, b, eps, method, p):
         delta /= 2
         if n > 1000000:
             return None, None
+
 
 def improperIntegralMiddle(f, a, b, c, eps, method, p):
-    n = 4
-    delta = eps
-    while True:
-        I_n_left = method(f, a, c - delta, n)
-        I_n_right = method(f, c + delta, b, n)
-        I_2n_left = method(f, a, c - delta/2, 2 * n)
-        I_2n_right = method(f, c + delta/2, b, 2 * n)
-        I_n = I_n_left + I_n_right
-        I_2n = I_2n_left + I_2n_right
-        error = abs(I_2n - I_n) / (2 ** p - 1)
-        if error < eps:
-            return I_2n, 2 * n
-        n *= 2
-        delta /= 2
-        if n > 1000000:
+    try:
+        n_left = 4
+        n_right = 4
+        delta = eps
+        I_2n_left, n_left = improperIntegralLeft(f, a, c, eps, method, p)
+        I_2n_right, n_right = improperIntegralRight(f, c, b, eps, method, p)
+        if n_left > 1000000 or n_right > 1000000:
             return None, None
+        else:
+            return I_2n_left + I_2n_right, n_left + n_right
+    except Exception:
+        return None, None
+
 
 def main():
+    # global c
     print("=" * 60)
     print("ЧИСЛЕННОЕ ИНТЕГРИРОВАНИЕ")
     print("=" * 60)
@@ -201,7 +215,6 @@ def main():
     print("=" * 60)
 
     f_imp = selectImproperFunction()
-
     a = float(input("Введите нижний предел a: "))
     b = float(input("Введите верхний предел b: "))
     while a >= b:
@@ -258,7 +271,12 @@ def main():
         print("=" * 60)
     else:
         print("Не удалось достичь требуемой точности")
+    print("\n" + "=" * 60)
+
 
 if __name__ == "__main__":
-    while True:
-        main()
+    try:
+        while True:
+            main()
+    except ValueError:
+        print("Интеграл не существует")
