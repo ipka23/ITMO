@@ -1,10 +1,8 @@
 rm -rf gitRepo
 git init gitRepo
 cd gitRepo
-
 git config user.name "Red"
 git config user.email red@gmail.com
-
 git branch -m master main
 
 unzip -o ../../commits/commit0.zip -d src
@@ -42,20 +40,22 @@ git add .
 git commit -m "r6"
 
 git checkout altRed
+
 unzip -o ../../commits/commit7.zip -d src
 git add .
 git commit -m "r7"
 
 git checkout main
+
 unzip -o ../../commits/commit8.zip -d src
 git add .
 git commit -m "r8"
 
 git checkout altRed
+
 unzip -o ../../commits/commit9.zip -d src
 git add .
 git commit -m "r9"
-
 
 git checkout altBlue
 unzip -o ../../commits/commit10.zip -d src
@@ -63,12 +63,14 @@ git add .
 git commit -m "r10" --author="Blue <blue@gmail.com>"
 
 git checkout altRed
+
 unzip -o ../../commits/commit11.zip -d src
 git add .
 git commit -m "r11"
 git merge altBlue -m "merge altBlue into altRed"
 
 git checkout main
+
 unzip -o ../../commits/commit12.zip -d src
 git add .
 git commit -m "r12"

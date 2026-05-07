@@ -1,0 +1,208 @@
+.header {
+    font-family: "fantasy";
+    font-size: 24px;
+    padding: 5%;
+    background: #00BFFF;
+    color: white;
+    text-align: center;
+}
+
+span {
+    font-family: "fantasy";
+}
+
+.main-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 12px 25px;
+    background: #00BFFF;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "fantasy";
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #0099CC;
+}
+
+.main-btn:hover {
+    background: #0099CC;
+}
+
+.main {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.statsTableDiv {
+    margin-top: 30px;
+    width: 100%;
+    overflow-y: auto;
+    height: 380px;
+    border: 2px solid #00BFFF;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.statsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "fantasy";
+}
+
+.statsTable th {
+    background: #00BFFF;
+    color: white;
+    padding: 12px 8px;
+    font-weight: bold;
+    border: 1px solid #0099CC;
+}
+
+.statsTable td {
+    text-align: center;
+    padding: 10px 8px;
+    border: 1px solid #ddd;
+    font-family: "fantasy";
+}
+
+.statsTable tr:hover {
+    background-color: #e6f7ff;
+}
+
+.coordinates {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #00BFFF;
+    margin-left: 20px;
+}
+
+.coordinates span {
+    display: block;
+    margin: 10px 0 5px 0;
+    color: #333;
+    font-weight: bold;
+}
+
+svg#mainSvg {
+    display: block;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid #00BFFF;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.coordinates input[type="radio"] {
+    margin-right: 5px;
+}
+
+.coordinates input[type="text"] {
+    padding: 8px;
+    border: 2px solid #00BFFF;
+    border-radius: 4px;
+    width: 150px;
+    font-family: "fantasy";
+    font-size: 14px;
+}
+
+.coordinates input[type="text"]:focus {
+    outline: none;
+    border-color: #0099CC;
+}
+
+.coordinates .submitButton {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #00BFFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "fantasy";
+    cursor: pointer;
+    width: 100%;
+}
+
+.coordinates .submitButton:hover {
+    background: #0099CC;
+}
+
+.faces-message {
+    display: block;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    font-family: "fantasy";
+    font-size: 14px;
+}
+@keyframes successFadeOut {
+    from {
+        opacity: 1;
+        background: #fffde6;
+        color: green;
+        border: 1px solid #c1f397;
+    }
+    to {
+        opacity: 0;
+        background: transparent;
+        color: transparent;
+        border: none;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        background: #ffe6e6;
+        color: red;
+        border: 1px solid #ffcccc;
+    }
+    to {
+        opacity: 0;
+        background: transparent;
+        color: transparent;
+        border: none;
+    }
+}
+
+.mainCell {
+    text-align: center;
+    vertical-align: top;
+}
+
+.Y {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 80px;
+    min-width: 80px;
+}
+
+table.main {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px;
+    margin-bottom: 20px;
+}
+
+table.main td {
+    vertical-align: top;
+    padding: 15px;
+}
+
+svg text {
+    font-family: "fantasy";
+    font-size: 14px;
+}
+
+circle:hover {
+    r: 2.5%;
+    stroke: #333;
+    stroke-width: 1;
+}

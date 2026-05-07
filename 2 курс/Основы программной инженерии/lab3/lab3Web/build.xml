@@ -1,0 +1,31 @@
+<project name="lab3Web" default="build" basedir=".">
+
+    <property file="build.properties"/>
+
+    <target name="init">
+        <mkdir dir="${dir.classes}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${dir.src}" destdir="${dir.classes}"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <junit>
+            <classpath>
+                <pathelement location="${dir.classes}"/>
+            </classpath>
+            <test name="TestHitChecker"/>
+        </junit>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dir.build}"/>
+    </target>
+
+    <target name="package" depends="compile">
+        <jar destfile="${dir.build}/${ant.project.name}.jar">
+
+        </jar>
+    </target>
+</project>
