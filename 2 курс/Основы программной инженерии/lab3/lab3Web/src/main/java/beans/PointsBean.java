@@ -3,6 +3,7 @@ package beans;
 import controllers.DBManager;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.Getter;
@@ -13,10 +14,7 @@ import entities.Point;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Named("pointsBean")
 @SessionScoped
@@ -63,8 +61,12 @@ public class PointsBean implements Serializable {
 
     public void addPoint() {
         double startTime = System.nanoTime();
+        FacesContext context = FacesContext.getCurrentInstance();
+        ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgs");
+        String hit = bundle.getString("hit");
+        String miss = bundle.getString("miss");
 
-        status = HitChecker.check(x, y, r) ? "Попадание" : "Промах";
+        status = HitChecker.check(x, y, r) ? hit : miss;
         currentTime = new SimpleDateFormat("HH:mm dd-MM-yyyy").format(Calendar.getInstance().getTime());
         double endTime = System.nanoTime();
         double t = (endTime - startTime) / FORMAT_TO_MILLIS;

@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.17
+Created-By: ipka23
+MD5: 275ccbfebf755083f045a9fd8a379103
+SHA1: 5eea1b1f841e065d9a8bef1a172026df3411ce92
+
