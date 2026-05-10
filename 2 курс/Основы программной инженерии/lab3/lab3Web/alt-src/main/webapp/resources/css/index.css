@@ -1,0 +1,56 @@
+header {
+    font-family: "fantasy";
+    font-size: 24px;
+    padding: 5%;
+    background: #00BFFF;
+    color: white;
+    text-align: center;
+}
+
+.main-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    background: #00BFFF;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "fantasy";
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #0099CC;
+}
+
+.main-btn:hover {
+    background: #0099CC;
+}
+
+.clockPanel {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+    padding: 15px;
+    border: 2px solid #00BFFF;
+    border-radius: 8px;
+    background: white;
+    max-width: 300px;
+}
+
+.digitalTime {
+    font-family: "fantasy";
+    font-size: 32px;
+    color: #00BFFF;
+    display: block;
+    line-height: 1.2;
+}
+
+.digitalDate {
+    font-family: "fantasy";
+    font-size: 20px;
+    color: #666;
+    display: block;
+    line-height: 1.2;
+    margin-top: 8px;
+}
+

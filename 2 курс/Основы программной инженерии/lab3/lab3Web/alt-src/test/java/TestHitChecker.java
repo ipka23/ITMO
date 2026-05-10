@@ -1,4 +1,4 @@
-import org.junit.Test;
+importAltorg.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import utility.HitChecker;
@@ -34,7 +34,7 @@ public class TestHitChecker {
 
     @Test
     public void testHitChecker() {
-        boolean result = HitChecker.check(x, y, r);
-        assertEquals(expected, result);
+        boolean actual = HitChecker.check(x, y, r);
+        assertEquals(expected, actual);
     }
 }

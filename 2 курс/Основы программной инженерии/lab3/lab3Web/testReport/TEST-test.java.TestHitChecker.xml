@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="ipka23s-Air-M2.netis.cc" name="test.java.TestHitChecker" skipped="0" tests="1" time="0.0" timestamp="2026-05-10T01:31:58">
+  <properties>
+    <property name="dir.classes" value="build/classes" />
+    <property name="ant.library.dir" value="/opt/homebrew/Cellar/ant/1.10.17/libexec/lib" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.specification.version" value="21" />
+    <property name="scp.port" value="2222" />
+    <property name="ant.project.name" value="lab3Web" />
+    <property name="team.dir" value="last3Revisions" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.class.path" value="/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/apiguardian-api-1.1.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/gson-2.8.9.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/hamcrest-core-1.3.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/hibernate-core-6.2.5.Final.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.annotation-api-2.1.1.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.ejb-api-4.0.1.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.enterprise.cdi-api-4.0.1.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.faces-api-4.1.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.inject-api-2.0.1.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.jakartaee-core-api-11.0.0.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.persistence-api-3.1.0.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.servlet-api-6.0.0.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/jakarta.servlet.jsp.jstl-3.0.1-javadoc.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/javax.faces-api-2.3.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-4.13.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-jupiter-api-5.13.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-jupiter-engine-5.13.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-jupiter-params-5.13.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-platform-commons-6.0.3.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-platform-console-standalone-6.0.3.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/junit-platform-engine-6.0.3.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/lombok-1.18.30.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/opentest4j-1.2.0.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/lib/postgresql-42.6.2.jar:/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/build/classes:/opt/homebrew/Cellar/ant/1.10.17/libexec/lib/ant-launcher.jar:/opt/homebrew/Cellar/ant/1.10.17/libexec/lib/ant.jar:/opt/homebrew/Cellar/ant/1.10.17/libexec/lib/ant-junit.jar:/opt/homebrew/Cellar/ant/1.10.17/libexec/lib/ant-junit4.jar" />
+    <property name="team.rev1" value="1" />
+    <property name="java.vm.vendor" value="Eclipse Adoptium" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.vendor.url" value="https://adoptium.net/" />
+    <property name="java.vm.specification.version" value="21" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="dir.asciiResources" value="${resources}/ascii" />
+    <property name="scp.password" value="bpUq*3874" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="user.country" value="RU" />
+    <property name="sun.boot.library.path" value="/Users/ipka23/.sdkman/candidates/java/21.0.4-tem/lib" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner test.java.TestHitChecker skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=true formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/testReport/TEST-test.java.TestHitChecker.xml crashfile=/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/junitvmwatcher14451766058260285657.properties propsfile=/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/junit16313474092141934269.properties" />
+    <property name="ant.file.lab3Web" value="/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/build.xml" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="scp.dir" value="/home/studs/s467204/OPI/lab3" />
+    <property name="jdk.debug" value="release" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="user.home" value="/Users/ipka23" />
+    <property name="user.language" value="ru" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.version.date" value="2024-07-16" />
+    <property name="java.home" value="/Users/ipka23/.sdkman/candidates/java/21.0.4-tem" />
+    <property name="basedir" value="/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web" />
+    <property name="file.separator" value="/" />
+    <property name="dir.alt" value="alt-src" />
+    <property name="media.sound" value="quack.wav" />
+    <property name="java.vm.compressedOopsMode" value="Zero based" />
+    <property name="team.rev3" value="3" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="team.rev2" value="2" />
+    <property name="ant.java.version" value="21" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.file.type.lab3Web" value="file" />
+    <property name="apple.awt.application.name" value="JUnitTestRunner" />
+    <property name="scp.host" value="helios.cs.ifmo.ru" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="dir.java" value="${main}/java" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.runtime.version" value="21.0.4+7-LTS" />
+    <property name="user.name" value="ipka23" />
+    <property name="ant.file" value="/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web/build.xml" />
+    <property name="stdout.encoding" value="UTF-8" />
+    <property name="path.separator" value=":" />
+    <property name="env.javaHome" value="/Users/ipka23/.sdkman/candidates/java" />
+    <property name="os.version" value="14.5" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="ant.project.invoked-targets" value="test" />
+    <property name="scp.user" value="s467204" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="env.java" value="/Users/ipka23/.sdkman/candidates/java/21.0.4-tem" />
+    <property name="java.vendor.version" value="Temurin-21.0.4+7" />
+    <property name="dir.lib" value="lib" />
+    <property name="dir.main" value="${src}/main" />
+    <property name="dir.docs" value="docs" />
+    <property name="ant.core.lib" value="/opt/homebrew/Cellar/ant/1.10.17/libexec/lib/ant.jar" />
+    <property name="dir.testReport" value="testReport" />
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues" />
+    <property name="java.io.tmpdir" value="/var/folders/rz/rlnb9k5x0kn3w9mtjg2g6lsc0000gn/T/" />
+    <property name="java.version" value="21.0.4" />
+    <property name="dir.resources" value="${main}/resources" />
+    <property name="user.dir" value="/Users/ipka23/ITMO/2 курс/Основы программной инженерии/lab3/lab3Web" />
+    <property name="os.arch" value="aarch64" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.javaVersion" value="21.0.4-tem" />
+    <property name="ant.home" value="/opt/homebrew/Cellar/ant/1.10.17/libexec" />
+    <property name="native.encoding" value="UTF-8" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.17 compiled on April 6 2026" />
+    <property name="java.library.path" value="/Users/ipka23/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor" value="Eclipse Adoptium" />
+    <property name="stderr.encoding" value="UTF-8" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.vm.version" value="21.0.4+7-LTS" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="dir.src" value="src" />
+    <property name="dir.build" value="build" />
+    <property name="java.class.version" value="65.0" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ant.project.default-target" value="build" />
+  </properties>
+  <error message="test.java.TestHitChecker" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: test.java.TestHitChecker
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+</error>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
