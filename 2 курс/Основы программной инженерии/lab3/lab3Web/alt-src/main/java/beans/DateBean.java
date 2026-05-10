@@ -1,4 +1,4 @@
-packageAltbeans;
+package beans;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
@@ -15,9 +15,8 @@ import java.util.Date;
 @Setter
 @Getter
 @ApplicationScoped
-public class DateBean implements Serializable {
+public class AltDateBean implements Serializable {
     private String timezone = "UTC";
-
     private Date currentDateTime;
 
     public void setTimezone(String zone) {

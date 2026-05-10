@@ -1,0 +1,1 @@
+unzip -p build/lab3Web.jar META-INF/MANIFEST.MF

@@ -1,4 +1,4 @@
-packageAltbeans;
+package beans;
 
 import controllers.DBManager;
 import jakarta.annotation.PostConstruct;
@@ -20,7 +20,7 @@ import java.util.*;
 @SessionScoped
 @Getter
 @Setter
-public class PointsBean implements Serializable {
+public class AltPointsBean implements Serializable {
     private BigDecimal x;
     private BigDecimal y;
     private BigDecimal r;
@@ -36,7 +36,7 @@ public class PointsBean implements Serializable {
     private static final double SVG_CENTER_Y = SVG_HEIGHT / 2;
     private static final double FORMAT_TO_MILLIS = 1_000_000;
 
-    public PointsBean() {
+    public AltPointsBean() {
     }
 
     @PostConstruct

@@ -1,4 +1,4 @@
-packageAltcontrollers;
+package controllers;
 
 import jakarta.ejb.Singleton;
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import entities.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
 @Singleton
-public class DBManager implements Serializable {
+public class AltDBManager implements Serializable {
     @PersistenceContext(unitName = "persistenceUnit")
     private EntityManager em;
 

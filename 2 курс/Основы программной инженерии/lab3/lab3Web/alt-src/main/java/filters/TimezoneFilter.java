@@ -1,4 +1,4 @@
-packageAltfilters;
+package filters;
 
 import beans.DateBean;
 import jakarta.enterprise.inject.spi.CDI;
@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 
-public class TimezoneFilter implements Filter {
-
+public class AltTimezoneFilter implements Filter {
+    //
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }

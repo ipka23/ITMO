@@ -1,4 +1,4 @@
-importAltorg.junit.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import utility.HitChecker;
@@ -10,14 +10,14 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class TestHitChecker {
+public class AltTestHitChecker {
 
     private final BigDecimal x;
     private final BigDecimal y;
     private final BigDecimal r;
     private final boolean expected;
 
-    public TestHitChecker(BigDecimal x, BigDecimal y, BigDecimal r, boolean expected) {
+    public AltTestHitChecker(BigDecimal x, BigDecimal y, BigDecimal r, boolean expected) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -34,7 +34,7 @@ public class TestHitChecker {
 
     @Test
     public void testHitChecker() {
-        boolean actual = HitChecker.check(x, y, r);
-        assertEquals(expected, actual);
+        boolean result = HitChecker.check(x, y, r);
+        assertEquals(expected, result);
     }
 }

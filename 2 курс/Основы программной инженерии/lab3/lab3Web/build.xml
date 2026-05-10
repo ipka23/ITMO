@@ -40,7 +40,7 @@
     <target name="test" depends="build">
         <mkdir dir="${dir.testReport}"/>
 
-        <junit printsummary="on" haltonfailure="true" showoutput="true" fork="true">
+        <junit printsummary="on" haltonfailure="true" showoutput="true">
             <classpath>
                 <path refid="classpath"/>
                 <pathelement location="${dir.classes}"/>
@@ -50,7 +50,6 @@
 
             <batchtest todir="${dir.testReport}">
                 <fileset dir="${dir.src}">
-<!--                    <include name="**/Test*.java"/>-->
                     <include name="**/TestHitChecker.class"/>
                 </fileset>
             </batchtest>
@@ -137,8 +136,6 @@
             <matches string="${gitDiffOutput}" pattern="${regex.pattern}"/>
         </condition>
         <property name="paramsChanged" value="false"/>
-
-
         <if>
             <equals arg1="${paramsChanged}" arg2="false"/>
             <then>
@@ -151,6 +148,11 @@
                     <arg value="commit"/>
                     <arg value="-m"/>
                     <arg value="another commit"/>
+                </exec>
+                <exec executable="git">
+                <arg value="push"/>
+                <arg value="origin"/>
+                <arg value="main"/>
                 </exec>
             </then>
             <else>
@@ -167,7 +169,7 @@
         </java>
 
         <jar destfile="${dir.build}/${ant.project.name}.jar"
-        update="true">
+             update="true">
             <manifest>
                 <attribute name="Manifest-Version" value="1.0"/>
                 <attribute name="Created-By" value="ipka23"/>
@@ -178,7 +180,7 @@
 
     <target name="team">
         <mkdir dir="${team.dir}"/>
-<!--        1-->
+        <!--        1-->
         <exec executable="svn">
             <arg value="export"/>
             <arg value="${basedir}"/>
@@ -199,7 +201,7 @@
             <arg value="${basedir}"/>
         </exec>
 
-<!--        2-->
+        <!--        2-->
         <exec executable="svn">
             <arg value="export"/>
             <arg value="${basedir}"/>
@@ -220,7 +222,7 @@
             <arg value="${basedir}"/>
         </exec>
 
-<!--        3-->
+        <!--        3-->
         <exec executable="svn">
             <arg value="export"/>
             <arg value="${basedir}"/>
@@ -246,7 +248,7 @@
             <fileset dir="${team.dir}" includes="**/*.jar"/>
         </zip>
 
-    <delete dir="${team.dir}"/>
+        <delete dir="${team.dir}"/>
     </target>
 
     <target name="history">
@@ -269,7 +271,7 @@
         </trycatch>
     </target>
 
-    <target name="alt" >
+    <target name="alt">
         <delete dir="${dir.alt}"/>
         <mkdir dir="${dir.alt}"/>
 

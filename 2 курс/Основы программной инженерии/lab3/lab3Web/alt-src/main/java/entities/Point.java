@@ -1,4 +1,4 @@
-packageAltentities;
+package entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "points")
-public class Point {
+public class AltPoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,7 @@ public class Point {
     @Column(name = "exectime", nullable = false)
     private String executionTime;
 
-    public Point(BigDecimal x, BigDecimal y, BigDecimal r,
+    public AltPoint(BigDecimal x, BigDecimal y, BigDecimal r,
                  String status, String currentTime, String executionTime) {
         this.x = x;
         this.y = y;

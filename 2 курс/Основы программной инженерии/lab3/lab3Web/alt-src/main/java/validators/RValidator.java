@@ -1,4 +1,4 @@
-packageAltvalidators;
+package validators;
 
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.component.UIComponent;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.ResourceBundle;
 
 @FacesValidator("rValidator")
-public class RValidator implements Validator<BigDecimal> {
+public class AltRValidator implements Validator<BigDecimal> {
     @Override
     public void validate(FacesContext context, UIComponent component, BigDecimal r) throws ValidatorException {
         ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgs");

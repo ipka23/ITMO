@@ -1,9 +1,9 @@
-packageAltutility;
+package utility;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class HitChecker {
+public class AltHitChecker {
 
     public static boolean check(BigDecimal x, BigDecimal y, BigDecimal r) {
         if (x == null || y == null || r == null) {
