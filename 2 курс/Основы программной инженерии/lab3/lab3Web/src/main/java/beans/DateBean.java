@@ -18,6 +18,7 @@ import java.util.Date;
 public class DateBean implements Serializable {
     private String timezone = "UTC";
     private Date currentDateTime;
+    //
 
     public void setTimezone(String zone) {
         this.timezone = zone;

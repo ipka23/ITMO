@@ -1,0 +1,39 @@
+    .data
+.org 0x100
+
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+buffer:	    		.byte 7, 'Hello, ________________________'
+prompt:     		.byte 19, 'What is your name?\n'
+
+
+    .text
+_start:
+    ;lui   t0, %hi(prompt)
+    ;addi  t0, t0, %lo(prompt)
+
+    lui   t1, %hi(output_addr)
+    addi  t1, t1, %lo(output_addr)
+
+    addi     t2, t2, prompt  ; t2 <- prompt + 1
+    addi     t2, t2, 1                       ;   *ptr = "H"
+    lb t3, 0(t0)
+
+; t0 - prompt
+; t1 - output_addr
+; t2 - ptr
+; t3 - n
+; t4 - tmp
+
+print_prompt:
+   beqz t3, print_end
+
+   lw t4, 0(t2) ; tmp = *prompt
+   sb t4, 0(t1) ; *output_addr = tmp;
+
+   addi     t2, t2, 1                       ;   ptr++
+
+   j print_prompt
+
+print_end:
+    halt

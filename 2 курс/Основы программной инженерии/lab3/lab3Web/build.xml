@@ -262,9 +262,8 @@
                     <redirector output="diff.txt" append="false"/>
                 </exec>
                 <exec executable="git">
-                    <arg value="reset"/>
+                    <arg value="checkout"/>
                     <arg value="HEAD~1"/>
-                    <arg value="--hard"/>
                 </exec>
                 <antcall target="history"/>
             </catch>
