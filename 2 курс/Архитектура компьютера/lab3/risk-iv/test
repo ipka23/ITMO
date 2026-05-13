@@ -1,11 +1,15 @@
     .data
 .org 0x100
-greet:	    		.byte 7, 'Hello, ________________________'
+greet:	    		.byte 7, 'Hello, ___________________________'
 prompt:     		.byte 19, 'What is your name?\n'
 stop_symbol:     .byte 1, '\n'
 end_symbol:     .byte 1, '!'
+carriage_return: .byte 1, '\r'
+buffer_addr:     .word 0
+b: .word 0x5f
 input_addr:      .word  0x80
 output_addr:     .word  0x84
+buffer_length:  .word 30
 
     .text
 _start:
@@ -27,7 +31,6 @@ print_prompt:
    beqz t2, print_greet
 
    lb t3, 0(t1) ; tmp = *prompt
-   ; todo тут еще записывать в память mem[0..31]
    sb t3, 0(t0) ; *output_addr = tmp;
 
 
@@ -43,6 +46,8 @@ print_prompt:
 ; t4 - '\n'
 ; t5 - '!'
 ; t6 - input_addr
+; a0 - buffer_addr
+; a1 - '\r'
 
 print_greet:
    lui   t1, %hi(greet)
@@ -65,29 +70,64 @@ print_greet:
    addi  t6, t6, %lo(input_addr)
    lw t6, 0(t6)
 
+   lui   a0, %hi(buffer_addr)
+   addi  a0, a0, %lo(buffer_addr)
+   lw a0, 0(a0)
+
+   lui   a1, %hi(carriage_return)
+   addi  a1, a1, %lo(carriage_return)
+   addi  a1, a1, 1
+   lb a1, 0(a1)
+   sb a1, 0(a0)
+   addi a0, a0, 1
+
+   lui   a3, %hi(buffer_length)
+   addi  a3, a3, %lo(buffer_length)
+   lb a3, 0(a3)
 
 print_hello:
    beqz t2, print_name
 
    lb t3, 0(t1)
-   ; todo тут еще записывать в память mem[0..31]
+   sb t3, 0(a0) ; todo тут еще записывать в память mem[0..31] done?
    sb t3, 0(t0)
 
    addi     t2, t2, -1 ; n--
    addi     t1, t1, 1 ; ptr++
-
+   addi a0, a0, 1
+   addi a3, a3, -1 ; buffer_length--
    j print_hello
 
 
 
 print_name:
    lb t3, 0(t6)
-   beq t4, t3, end
-   ; todo тут еще записывать в память mem[0..31]
+   beq t4, t3, end_print_name
+   sb t3, 0(a0) ; todo тут еще записывать в память mem[0..31] done?
    sb t3, 0(t0)
 
+   addi a0, a0, 1
+   addi a3, a3, -1
    j print_name
 
-end:
+;a2 - '_'
+;a3 - buffer_length
+
+end_print_name:
     sb t5, 0(t0)
-    halt
+    sb t5, 0(a0)
+    addi a0, a0, 1
+
+   lui  a2, %hi(b)
+   addi  a2, a2, %lo(b)
+   lb a2, 0(a2)
+
+loop:
+   beqz a3, end
+   sb a2, 0(a0)
+   addi a0, a0, 1
+   addi a3, a3, -1
+   j loop
+
+end:
+   halt
