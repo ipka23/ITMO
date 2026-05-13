@@ -1,0 +1,93 @@
+    .data
+.org 0x100
+greet:	    		.byte 7, 'Hello, ________________________'
+prompt:     		.byte 19, 'What is your name?\n'
+stop_symbol:     .byte 1, '\n'
+end_symbol:     .byte 1, '!'
+input_addr:      .word  0x80
+output_addr:     .word  0x84
+
+    .text
+_start:
+    lui   t0, %hi(output_addr)
+    addi  t0, t0, %lo(output_addr)
+    lw t0, 0(t0)
+
+    lui   t1, %hi(prompt)
+    addi  t1, t1, %lo(prompt)
+    lb t2, 0(t1)                       ; t2 <- MEM[t1] : n = prompt_ptr[0]
+    addi     t1, t1, 1                    ; t1 <- ptr + 1   ;   *ptr = "H"
+
+; t0 - output_addr
+; t1 - ptr
+; t2 - n
+; t3 - tmp
+
+print_prompt:
+   beqz t2, print_greet
+
+   lb t3, 0(t1) ; tmp = *prompt
+   ; todo тут еще записывать в память mem[0..31]
+   sb t3, 0(t0) ; *output_addr = tmp;
+
+
+   addi     t2, t2, -1 ; n--
+   addi     t1, t1, 1                       ;   ptr++
+
+   j print_prompt
+
+; t0 - output_addr
+; t1 - greet_ptr
+; t2 - n
+; t3 - input[i]
+; t4 - '\n'
+; t5 - '!'
+; t6 - input_addr
+
+print_greet:
+   lui   t1, %hi(greet)
+   addi  t1, t1, %lo(greet)
+
+   lb t2, 0(t1)
+   addi     t1, t1, 1 ; greet_ptr++
+
+   lui   t4, %hi(stop_symbol)
+   addi  t4, t4, %lo(stop_symbol)
+   addi  t4, t4, 1
+   lb t4, 0(t4)
+
+   lui   t5, %hi(end_symbol)
+   addi  t5, t5, %lo(end_symbol)
+   addi  t5, t5, 1
+   lb t5, 0(t5)
+
+   lui   t6, %hi(input_addr)
+   addi  t6, t6, %lo(input_addr)
+   lw t6, 0(t6)
+
+
+print_hello:
+   beqz t2, print_name
+
+   lb t3, 0(t1)
+   ; todo тут еще записывать в память mem[0..31]
+   sb t3, 0(t0)
+
+   addi     t2, t2, -1 ; n--
+   addi     t1, t1, 1 ; ptr++
+
+   j print_hello
+
+
+
+print_name:
+   lb t3, 0(t6)
+   beq t4, t3, end
+   ; todo тут еще записывать в память mem[0..31]
+   sb t3, 0(t0)
+
+   j print_name
+
+end:
+    sb t5, 0(t0)
+    halt
