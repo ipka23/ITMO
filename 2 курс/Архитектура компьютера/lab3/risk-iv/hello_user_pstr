@@ -1,6 +1,6 @@
     .data
 .org 0x100
-greet:	    		.byte 7, 'Hello, ___________________________'
+greet:	    		.byte 7, 'Hello, _______________________'
 prompt:     		.byte 19, 'What is your name?\n'
 stop_symbol:     .byte 1, '\n'
 end_symbol:     .byte 1, '!'
@@ -10,6 +10,8 @@ b: .word 0x5f
 input_addr:      .word  0x80
 output_addr:     .word  0x84
 buffer_length:  .word 30
+buffer_max_length: .word 29
+overflow_value: .word 0xCCCCCCCC
 
     .text
 _start:
@@ -86,6 +88,14 @@ print_greet:
    addi  a5, a5, %lo(buffer_start_addr)
    lw a5, 0(a5)
 
+   lui   a6, %hi(overflow_value)
+   addi  a6, a6, %lo(overflow_value)
+   lw a6, 0(a6)
+
+   lui   a7, %hi(buffer_max_length)
+   addi  a7, a7, %lo(buffer_max_length)
+   lw a7, 0(a7)
+
 print_hello:
    beqz t2, print_name
 
@@ -102,10 +112,12 @@ print_hello:
 
 
 print_name:
+   ; todo вот тут сделать проверку если a4 > 29 то сразу переход к метке overflow либо сделать проверку на длину в самом начале и уже после нее основная программа
+   ;bgt a4, a7, overflow
    lb t3, 0(t6)
    beq t4, t3, end_print_name
    sb t3, 0(a0) ;  запись в память mem[0..31]
-   sb t3, 0(t0)
+   sb t3, 0(t0) ; запись в mem[output_addr]
 
    addi a0, a0, 1
    addi a3, a3, -1
@@ -115,7 +127,8 @@ print_name:
 ; a2 - '_'
 ; a3 - buffer_length
 ; a5 - buffer_start_addr
-
+; a6 - 0xCCCCCCCC
+; a7 - buffer_max_length
 end_print_name:
     sb t5, 0(t0)
     sb t5, 0(a0)
@@ -133,6 +146,13 @@ loop:
    addi a3, a3, -1
    j loop
 
+
 end:
+   addi a7, a7, 1
+   bgt a4, a7, overflow
    sb a4, 0(a5)
+   halt
+
+overflow:
+   sw a6, 0(t0)
    halt

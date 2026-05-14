@@ -42,5 +42,8 @@ assert hello_user_pstr('Alice\n') == ('What is your name?\nHello, Alice!', '')
 # and mem[0..31]: 0d 48 65 6c 6c 6f 2c 20 41 6c 69 63 65 21 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f
 assert hello_user_pstr('Bob\n') == ('What is your name?\nHello, Bob!', '')
 # and mem[0..31]: 0b 48 65 6c 6c 6f 2c 20 42 6f 62 21 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f
-print("_"*27)
+print("_"*23)
 print(34 - len("Hello, Alice!"))
+print(len("Hello, 12345678901234567890123!"))
+print(len("Hello, 1234567890123456789012!"))
+print(hello_user_pstr('12345678901234567890123\n'))
