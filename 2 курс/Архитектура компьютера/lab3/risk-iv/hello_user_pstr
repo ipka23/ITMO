@@ -107,7 +107,7 @@ print_greet:
     lb    a7, 0(a7)              ; a7 = buffer_max_length
 
     beq   t4, t3, check_name_length
-
+; TODO сделать как процедуру, тут нужно в переменную m добавить длину строки инкрементируя на каждой итерации и класть каждую букву в стек и потом при записывать в input + m букву и на каждой итерации m--
 check_name_length:
     bgt   a4, a7, overflow       ; if n + m > buffer_max_length
 
