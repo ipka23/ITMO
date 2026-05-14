@@ -21,9 +21,9 @@ def sum_n(n):
     return total
 
 
-# assert sum_odd_n(5) == 9
-# assert sum_odd_n(10) == 25
-# assert sum_odd_n(90000) == 2025000000
+# assert sum_odd_n.s(5) == 9
+# assert sum_odd_n.s(10) == 25
+# assert sum_odd_n.s(90000) == 2025000000
 
 
 
@@ -36,7 +36,7 @@ n = 100000
 # print(c)
 # print("---")
 # for n in range(1, n + 1):
-#     print(f"n = {n} | s1 = {(n // 2 + n % 2)**2} | s2 = {sum_odd_n(n)}")
+#     print(f"n = {n} | s1 = {(n // 2 + n % 2)**2} | s2 = {sum_odd_n.s(n)}")
 # print(5//2)'
 print(sum_odd_n(100000))
 print(hex(2**31))
