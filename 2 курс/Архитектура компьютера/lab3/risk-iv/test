@@ -12,7 +12,6 @@ output_addr:     .word  0x84
 buffer_length:  .word 30
 buffer_max_length: .word 29
 overflow_value: .word 0xCCCCCCCC
-buf2_start_addr: .word 0x3E8
 
     .text
 _start:
@@ -26,11 +25,6 @@ _start:
     addi     t1, t1, 1                    ; t1 <- ptr + 1   ;   *ptr = "H"
 
     addi a4, a4, 7
-
-; инициализируем стек
-   lui   sp, %hi(buf2_start_addr) ; 0x3E8 = 1000
-   addi  sp, sp, %lo(buf2_start_addr)
-   lw sp, 0(sp)
 
 ; t0 - output_addr
 ; t1 - ptr
