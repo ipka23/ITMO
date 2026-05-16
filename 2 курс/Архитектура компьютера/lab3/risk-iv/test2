@@ -11,9 +11,9 @@ buf_filler:         .word 0x5f
 input_addr:         .word 0x80
 output_addr:        .word 0x84
 buffer_length:      .word 30
-name_max_length:    .word 23
+buffer_max_length:  .word 23
 overflow_value:     .word 0xCCCCCCCC
-buf2_start_addr:    .word 0x0EFF
+buf2_start_addr:    .word 0x0FFF
 
 
 ; t0 - output_addr
@@ -30,7 +30,7 @@ buf2_start_addr:    .word 0x0EFF
 ; a4 - n + m
 ; a5 - buffer_start_addr
 ; a6 - 0xCCCCCCCC
-; a7 - name_max_length
+; a7 - buffer_max_length
 
 .text
 _start:
@@ -43,27 +43,24 @@ _start:
     lb    t2, 0(t1)              ; t2 = n
     addi  t1, t1, 1
 
-    addi  a4, a4, 7              ; a4 = n + m
+    addi  a4, zero, 7            ; a4 = 7 ("Hello, ")
 
-    ;=== в первой версии стек инициализируется напрямую адресом 0x0FFF ===
-    lui   sp, %hi(0xfff)
-    addi  sp, sp, %lo(0xfff)
+    ; stack top = 0x0FFF, memory_size = 0x1000
+    lui   sp, 1
+    addi  sp, sp, -1
 
 print_prompt:
     beqz  t2, print_greet
 
-    lb    t3, 0(t1)              ; t3 = *prompt
-    sb    t3, 0(t0)              ; вывод tmp в io[0x84]
+    lb    t3, 0(t1)
+    sb    t3, 0(t0)
 
-    addi  t2, t2, -1             ; n--
-    addi  t1, t1, 1              ; ptr++
-
+    addi  t2, t2, -1
+    addi  t1, t1, 1
     j     print_prompt
 
 
 print_greet:
-    ;=== в первой версии greet загружается после init_buffer ===
-
     lui   t4, %hi(stop_symbol)
     addi  t4, t4, %lo(stop_symbol)
     addi  t4, t4, 1
@@ -80,25 +77,23 @@ print_greet:
 
     lui   a0, %hi(buffer_addr)
     addi  a0, a0, %lo(buffer_addr)
-    lw    a0, 0(a0)
-
-    ;=== в первой версии длина Pascal-строки записывается только в конце ===
+    lw    a0, 0(a0)              ; a0 = 0
 
     lui   a3, %hi(buffer_length)
     addi  a3, a3, %lo(buffer_length)
-    lb    a3, 0(a3)              ; a3 = buffer_length
+    lb    a3, 0(a3)
 
     lui   a5, %hi(buffer_start_addr)
     addi  a5, a5, %lo(buffer_start_addr)
-    lw    a5, 0(a5)              ; a5 = buffer_start_addr
+    lw    a5, 0(a5)              ; a5 = 0
 
     lui   a6, %hi(overflow_value)
     addi  a6, a6, %lo(overflow_value)
-    lw    a6, 0(a6)              ; a6 = 0xCCCCCCCC
+    lw    a6, 0(a6)
 
-    lui   a7, %hi(name_max_length)
-    addi  a7, a7, %lo(name_max_length)
-    lb    a7, 0(a7)              ; a7 = buffer_max_length
+    lui   a7, %hi(buffer_max_length)
+    addi  a7, a7, %lo(buffer_max_length)
+    lb    a7, 0(a7)
 
     ; fill mem[0..31] with '_'
     jal   ra, init_buffer
@@ -116,54 +111,49 @@ print_hello:
     beqz  t2, check_name_length
 
     lb    t3, 0(t1)
-    sb    t3, 0(a0)              ; запись в mem[0..31]
+    sb    t3, 0(a0)
 
-    ;=== в первой версии "Hello, " не выводится сразу в io[0x84] ===
-
-    addi  t2, t2, -1             ; n--
-    addi  t1, t1, 1              ; ptr++
-    addi  a0, a0, 1              ; buffer_ptr++
+    addi  t2, t2, -1
+    addi  t1, t1, 1
+    addi  a0, a0, 1
     j     print_hello
 
 
 check_name_length:
-    ;=== в первой версии используется отдельный счётчик m в a1 ===
-    ;=== и проверка выполняется по a1 == name_max_length ===
+    addi  a1, zero, 0            ; m = 0
 
-    beq   a1, a7, overflow
+read_name_loop:
+    lb    t3, 0(t6)              ; next input char
+    beq   t3, t4, restore_buf2_addr
 
-    lb    t3, 0(t6)
-    beq   t3, t4, restore_buf2_addr  ; if tmp == '\n'
+   bgt a4, a7, overflow
 
-    sb    t3, 0(sp)              ; запись в mem[buf2]
-    addi  sp, sp, -1             ; стек растёт вниз
+    addi  sp, sp, -1             ; push char to stack
+    sb    t3, 0(sp)
 
-    addi  a4, a4, 1
     addi  a1, a1, 1              ; m++
-    j     check_name_length
+    addi  a4, a4, 1              ; n+m++
+    j     read_name_loop
+
 
 restore_buf2_addr:
-    ;=== в первой версии адрес начала стека не восстанавливается ===
     beqz  a1, overflow           ; empty input is error
     j     print_name
 
 
 print_name:
-    ;=== в первой версии имя записывается в буфер в обратном порядке ===
-    ;=== начиная с последней позиции имени ===
+    ; a0 should point to buffer base, put last name position there
     addi  a0, zero, 8
     addi  t1, a1, -1
-    add   a0, a0, t1
+    add   a0, a0, t1             ; a0 = mem[8 + m - 1]
 
 loop_print_name:
-    beqz  a1, end_print_name     ; if m == 0
+    beqz  a1, end_print_name
 
-    addi  sp, sp, 1
     lb    t3, 0(sp)              ; pop char from stack
+    addi  sp, sp, 1
 
-    sb    t3, 0(a0)              ; запись в mem[0..31]
-
-    ;=== в первой версии символы имени не выводятся сразу в io[0x84] ===
+    sb    t3, 0(a0)              ; write into buffer, from end to start
 
     addi  a0, a0, -1
     addi  a1, a1, -1
@@ -171,18 +161,13 @@ loop_print_name:
 
 
 end_print_name:
-    ;=== в первой версии '!' записывается сразу в буфер ===
-    ;=== по адресу mem[8 + m] через вычисление t1 = a4 + 1 ===
+    ; a4 is still 7 + m
+    ; write '!' at mem[8 + m] == a4 + 1
     addi  t1, a4, 1
     sb    t5, 0(t1)
 
     ; Pascal length = 8 + m
     addi  a4, a4, 1
-    addi  a0, t1, 1
-
-    ;=== в первой версии остаток буфера не заполняется здесь ===
-    ;=== буфер уже заполнен '_' процедурой init_buffer ===
-
     sb    a4, 0(a5)
 
     ; print final Pascal string from mem[0]
@@ -213,17 +198,17 @@ print_pstr_done:
 
 
 init_buffer:
-    addi  t1, zero, 32           ; t1 = 32
+    addi  t0, zero, 32
 
     lui   a2, %hi(buf_filler)
     addi  a2, a2, %lo(buf_filler)
-    lb    a2, 0(a2)              ; a2 = '_'
+    lb    a2, 0(a2)
 
 init_buffer_loop:
-    beqz  t1, init_buffer_done
-    sb    a2, 0(a0)              ; пишем '_' в mem[a0]
+    beqz  t0, init_buffer_done
+    sb    a2, 0(a0)
     addi  a0, a0, 1
-    addi  t1, t1, -1
+    addi  t0, t0, -1
     j     init_buffer_loop
 
 init_buffer_done:
